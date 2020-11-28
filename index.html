@@ -190,12 +190,12 @@
           
             
           
-          #basic rce1——wp首先进行代码审计：
+          basic rce1——wp首先进行代码审计：
 &lt;?php
 //拿到flag就不要乱玩了哦~
 error_reporting(0);     //php函数，关闭错误报告
 show_source(__FILE__);   //该函数对文件进行语法高亮显示，应该就是让PHP代码能够在HTML页面上显示。
-eval($_GET[&#39;a&#39;]);   //首先，eval()函数，把字
+eval($_GET[&#39;a&#39;]);   //首先，eval()函数，把字符
         </a>
       </p>
 
@@ -243,13 +243,14 @@ eval($_GET[&#39;a&#39;]);   //首先，eval()函数，把字
           
             
           
-          ##Markdown标题两种格式：1、使用=和-标记一二级标题一级标题=============二级标题   
+          Markdown标题两种格式：1、使用=和-标记一二级标题一级标题=============二级标题   
 
-2、使用#号，表示1~6级标题#一级标题##二级标题…………######六级标题    
+2、使用#号，表示1~6级标题       
+一级标题二级标题…………    
+六级标题
+Markdown段落换行：两个以上空格加上回车  或者 使用空行来换行    
 
-##Markdown段落换行：两个以上空格加上回车  或者 使用空行来换行    
-
-##Markdown字体1、将文本插入到两个星号（**）或两个下划线（__）表示斜体字。2、将文本插入到四个
+Markdown字体1、将文本插入到两个星号（**）或两个下划线（__）表示斜体字。2、将文本插入到四个星号中间或者四
         </a>
       </p>
 
@@ -297,15 +298,13 @@ eval($_GET[&#39;a&#39;]);   //首先，eval()函数，把字
           
             
           
-          #php变量覆盖1
-
-##WP
-&lt;html&gt;
+          php变量覆盖1
+WP&lt;html&gt;
 &lt;head&gt;
 &lt;title&gt;php-extract&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;p&gt;&lt;font color=&quot;red&quot;&gt;please use &lt;font color=&quot;blue&quot;&gt;`ct
+&lt;p&gt;&lt;font color=&quot;red&quot;&gt;please use &lt;font color=&quot;blue&quot;&gt;`ctrl+u`
         </a>
       </p>
 

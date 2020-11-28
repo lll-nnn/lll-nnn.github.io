@@ -227,10 +227,8 @@
             <h1 style="display: none">Php变量覆盖</h1>
             
             <div class="markdown-body">
-              <p>#php变量覆盖1</p>
-<hr>
-<p>##WP</p>
-<pre><code>&lt;html&gt;
+              <h1 id="php变量覆盖1"><a href="#php变量覆盖1" class="headerlink" title="php变量覆盖1"></a>php变量覆盖1</h1><hr>
+<h2 id="WP"><a href="#WP" class="headerlink" title="WP"></a>WP</h2><pre><code>&lt;html&gt;
 &lt;head&gt;
 &lt;title&gt;php-extract&lt;/title&gt;
 &lt;/head&gt;
@@ -254,8 +252,7 @@ if(isset($liwu)) &#123;
 &lt;/html&gt;</code></pre>
 <p>题目的意思是以GET方式输入liwu，经过extract函数后当作变量，将其与$content对比，若相等，则输出flag。<br>以GET方式输入 <strong>liwu&amp;flag=1</strong>这样就覆盖了一开始flag的值，$liwu和$content两个变量也会相等，就能得到flag了。<br><img src="https://ftp.bmp.ovh/imgs/2020/11/85d734f646fc46e9.png" srcset="/img/loading.gif">   </p>
 <hr>
-<p>##知识点总结</p>
-<ul>
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><ul>
 <li>这道题属于extract()函数变量覆盖。</li>
 <li>extract()函数将GET到的字符作为变量。</li>
 <li>file_get_contents()函数把整个文件读入一个字符串中。</li>
@@ -265,9 +262,8 @@ if(isset($liwu)) &#123;
 </li>
 </ul>
 <hr>
-<p>#php变量覆盖2</p>
-<hr>
-<p>##WP<br>还是先代码审计：     </p>
+<h1 id="php变量覆盖2"><a href="#php变量覆盖2" class="headerlink" title="php变量覆盖2"></a>php变量覆盖2</h1><hr>
+<h2 id="WP-1"><a href="#WP-1" class="headerlink" title="WP"></a>WP</h2><p>还是先代码审计：     </p>
 <pre><code>&lt;?php
 highlight_file(__FILE__);
 include &quot;flag.php&quot;;
@@ -296,8 +292,7 @@ die($_200);
 ?&gt;                       </code></pre>
 <p>最后输出的是$_200 = “欢迎~~~”；而flag没有输出方式，所以将$_200的值变成flag就能得到flag了。<br>GET传入_200=flag,经过for循环就会变成$_200=$flag,这样就把flag给$_200了，最后再POST个flag的值，让它不等$flag就能输出flag了。<br> <img src="https://ftp.bmp.ovh/imgs/2020/11/067bd0d3e477579e.png" srcset="/img/loading.gif">       </p>
 <hr>
-<p>##知识点总结</p>
-<ul>
+<h2 id="知识点总结-1"><a href="#知识点总结-1" class="headerlink" title="知识点总结"></a>知识点总结</h2><ul>
 <li>这道题属于**$$**变量覆盖问题。</li>
 <li>主要是for循环中：$_GET键名赋给$key,键值赋给$value,经过$$key = $$value后GET的就会变为变量。弄懂这个，这道题就出来了。</li>
 </ul>
