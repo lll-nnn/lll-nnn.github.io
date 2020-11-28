@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>MarkDown基本使用</title>
+    <link href="/2020/11/26/MarkDown/"/>
+    <url>/2020/11/26/MarkDown/</url>
+    
+    <content type="html"><![CDATA[<p>##Markdown标题<br>两种格式：<br>1、使用=和-标记一二级标题<br>一级标题<br>=============<br>二级标题   </p><hr><p>2、使用#号，表示1~6级标题<br>#一级标题<br>##二级标题<br>…………<br>######六级标题    </p><hr><p>##Markdown段落<br>换行：两个以上空格加上回车  或者 使用空行来换行    </p><hr><p>##Markdown字体<br>1、将文本插入到两个星号（**）或两个下划线（__）表示斜体字。<br>2、将文本插入到四个星号中间或者四个下划线中间表示粗体字。<br>3、将文本插入到六个星号或下划线中间表示粗斜体字。   </p><hr><p>##Markdown分隔线<br>一行星号***或——-    </p><hr><p>##Markdown删除线<br>在将要删除的文字两端加上两个波浪线,…………似乎不行啊，但是可以用HTML标签<code>&lt;del&gt;&lt;/del&gt;</code><br><del>llll-nnnnn</del>    </p><hr><p>##Markdown下划线<br>通过HTML标签<code>&lt;u&gt;&lt;/u&gt;</code><br><u>llll-nnnn</u>   </p><hr><p>##Markdown脚注<br>格式：<code>[^注明文本]</code><br>[^lll-nnn]<br>[^lll-nnn]: myself</p><hr><p>##Markdown列表<br>星号（*）、加号（+）、减号（-）作为列表标记，标记后面加一个空格再填写内容。     </p><ul><li><p>1</p></li><li><p>2</p></li></ul><ul><li>3<br>###列表嵌套<br>在子列表前面加四个空格。   </li></ul><ul><li>第一项 <ul><li>第一项嵌套的第一个元素</li><li>第一项嵌套的第二个元素<br>####列表中使用区块    </li></ul></li><li>123   <blockquote><p>123<br>456     </p></blockquote></li></ul><hr><p>##Markdown区块<br>使用<code>&gt;</code>符号，后面一个空格。    </p><blockquote><p>区块1<br>区块2<br>区块3<br>###区块嵌套<br>第一层    </p><blockquote><p>第二层    </p><blockquote><p>第三层<br>####区块中使用列表<br>区块符号后面加上列表符号即可。<br>区块中的列表       </p></blockquote></blockquote><ul><li> 第一项    </li><li> 第二项</li></ul></blockquote><hr><p>##Markdown代码<br>句子中插入代码，将代码用反引号（`）包起来。<br>整段代码，也可使用四个空格或者一个制表符（Tab）。    </p><hr><p>##Markdown链接<br><code>[链接名称](链接地址)</code><br>或者<br><code>&lt;链接地址&gt;</code><br><a href="https://lll-nnn.github.io/">lll-nnn</a><br>也可以使用变量赋值的方法 链接        </p><p><code>         这是我的博客[lll-nnn][1]。               [1]: https://lll-nnn.github.io/</code>  </p><hr><p>##Markdown插入图片<br>格式： <code>![alt 属性文本](图片地址 &quot;可选标题&quot;)</code><br>或者 像超链接那样使用变量。<br>可以使用<code>&lt;img src=&quot;url&quot; width=&quot;300&quot; heigth=&quot;300&quot;</code>设定宽度和高度<br>附：获得本地照片网络地址（url）的方法：     </p><ol><li>通过百度识图上传然后右键上传的图片查看地址。    </li><li>最好创建一个图床。图床创建方式：<a href="https://www.jianshu.com/p/d51258ef5484">https://www.jianshu.com/p/d51258ef5484</a>  </li><li>上传到其他的地方也可以，只要上传到网上即可。<br><code>![鬼刀](http://m.qpic.cn/psc?/V12Z3Zad2KK0gc/45NBuzDIW489QBoVep5mcZqHcWkXe5o2wOT*Z7lw4p5ynCBBo4qwUhcEBh9*mzSxtF4uyLYKqlixt3qQ11yt9FuqEyqhMI0.2Bu7NyxK6UU!/b&amp;bo=IAMIAiADCAIBFzA!&amp;rf=viewer_4)</code><br><img src="http://m.qpic.cn/psc?/V12Z3Zad2KK0gc/45NBuzDIW489QBoVep5mcZqHcWkXe5o2wOT*Z7lw4p5ynCBBo4qwUhcEBh9*mzSxtF4uyLYKqlixt3qQ11yt9FuqEyqhMI0.2Bu7NyxK6UU!/b&bo=IAMIAiADCAIBFzA!&rf=viewer_4" alt="鬼刀"></li></ol><hr><p>##Markdown表格<br>使用<code>|</code>来分隔不同的单元格，使用<code>-</code>来分隔表头和其他行。<br> |表头 | 表头|<br>|  -  | - |<br>| 单元格  | 单元格 |<br>| 单元格  | 单元格 |<br>表格似乎不能用啊？？？<br>等找到解决办法再写吧。。。    </p><hr><p>另外还有一些高级技巧，感觉也用不到，等用到时再写吧。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>NOTE</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>NOTE</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Php变量覆盖</title>
+    <link href="/2020/11/26/wp1-md/"/>
+    <url>/2020/11/26/wp1-md/</url>
+    
+    <content type="html"><![CDATA[<p>#php变量覆盖1</p><hr><p>##WP</p><pre><code>&lt;html&gt;&lt;head&gt;&lt;title&gt;php-extract&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;font color=&quot;red&quot;&gt;please use &lt;font color=&quot;blue&quot;&gt;`ctrl+u`&lt;/font&gt; to see the source code&lt;/font&gt;&lt;/p&gt;&lt;article&gt;$flag=&#39;xxxxxxxx&#39;;extract($_GET);           ////extract()函数将GET到的字符作为变量if(isset($liwu)) &#123;    $content=trim(file_get_contents($flag));          ////file_get_contents() 把整个文件读入$content中。trim()移除字符串两侧的字符。    if($liwu==$content) &#123;        echo&#39;flag&#123;xxxxxxxxxxx&#125;&#39;;    &#125;    else &#123;        echo &#39;please try other operation.&#39;;    &#125;&#125;?&gt;&lt;/article&gt;&lt;/body&gt;&lt;/html&gt;</code></pre><p>题目的意思是以GET方式输入liwu，经过extract函数后当作变量，将其与$content对比，若相等，则输出flag。<br>以GET方式输入 <strong>liwu&amp;flag=1</strong>这样就覆盖了一开始flag的值，$liwu和$content两个变量也会相等，就能得到flag了。<br><img src="https://ftp.bmp.ovh/imgs/2020/11/85d734f646fc46e9.png">   </p><hr><p>##知识点总结</p><ul><li>这道题属于extract()函数变量覆盖。</li><li>extract()函数将GET到的字符作为变量。</li><li>file_get_contents()函数把整个文件读入一个字符串中。</li><li>trim()函数移除字符串两侧的空白字符或其他预定义字符。<ul><li>至于本题为什么要用这个函数，可能是因为本来的flag含有空格或其他字符吧。   </li></ul></li></ul><hr><p>#php变量覆盖2</p><hr><p>##WP<br>还是先代码审计：     </p><pre><code>&lt;?phphighlight_file(__FILE__);include &quot;flag.php&quot;;$_403 = &quot;拒绝访问&quot;;$_200 = &quot;欢迎~~~&quot;;if ($_SERVER[&quot;REQUEST_METHOD&quot;] != &quot;POST&quot;)    die(&quot;sssssssspost…&quot;);     ////表明输入请求的方式应该为POSTif ( !isset($_POST[&quot;flag&quot;]) )    die($_403);        ////判断是否通过POST提交了flag变量foreach ($_GET as $key =&gt; $value)      ////foreach()就是for循环    $$key = $$value;  ////$_GET键名赋给$key,键值赋给$value,经过$$key = $$value后GET的就会变为变量foreach ($_POST as $key =&gt; $value)    $$key = $value;if ( $_POST[&quot;flag&quot;] !== $flag )    die($_403);echo &quot;This is your flag : &quot;. $flag . &quot;\n&quot;;die($_200);      ?&gt;                       </code></pre><p>最后输出的是$_200 = “欢迎~~~”；而flag没有输出方式，所以将$_200的值变成flag就能得到flag了。<br>GET传入_200=flag,经过for循环就会变成$_200=$flag,这样就把flag给$_200了，最后再POST个flag的值，让它不等$flag就能输出flag了。<br> <img src="https://ftp.bmp.ovh/imgs/2020/11/067bd0d3e477579e.png">       </p><hr><p>##知识点总结</p><ul><li>这道题属于**$$**变量覆盖问题。</li><li>主要是for循环中：$_GET键名赋给$key,键值赋给$value,经过$$key = $$value后GET的就会变为变量。弄懂这个，这道题就出来了。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>WP</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>WP</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>HTML基础学习笔记</title>
     <link href="/2020/11/24/html/"/>
     <url>/2020/11/24/html/</url>

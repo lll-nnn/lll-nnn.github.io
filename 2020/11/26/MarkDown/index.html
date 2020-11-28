@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>HTML基础学习笔记 - lll-nnnのblog</title>
+  <title>MarkDown基本使用 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="HTML基础学习笔记">
+            <span class="h2" id="subtitle" title="MarkDown基本使用">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-11-24 19:49" pubdate>
-        2020年11月24日 晚上
+      <time datetime="2020-11-26 18:07" pubdate>
+        2020年11月26日 晚上
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      325 字
+      703 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      8
        分钟
     </span>
   
@@ -224,35 +224,77 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">HTML基础学习笔记</h1>
+            <h1 style="display: none">MarkDown基本使用</h1>
             
             <div class="markdown-body">
-              <h2 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h2><h3 id="html标题"><a href="#html标题" class="headerlink" title="html标题"></a>html标题</h3><p>html标题通过<br><code>&lt;h1&gt;最大标题&lt;/h1&gt;</code><br><code>&lt;h2&gt;&lt;/h2&gt;</code><br>…………<br><code>&lt;h6&gt;最小标题&lt;/h6&gt;</code><br>这些标签来定义。   </p>
-<h3 id="html段落"><a href="#html段落" class="headerlink" title="html段落"></a>html段落</h3><p>html段落通过标签<code>&lt;p&gt;一个段落&lt;/p&gt;</code>定义。   </p>
-<h3 id="html链接"><a href="#html链接" class="headerlink" title="html链接"></a>html链接</h3><p>html链接通过标签<code>&lt;a&gt;&lt;/a&gt;</code>定义。<br><code>&lt;a href=&quot;https://lll-nnn.github.io/&quot; target=&quot;_blank&quot;&gt;lll-nnnのblog&lt;/a&gt;</code>   </p>
-<h3 id="html图像"><a href="#html图像" class="headerlink" title="html图像"></a>html图像</h3><p>html图像通过标签<code>&lt;img&gt;</code>定义。<br><code>&lt;img src=&quot;url&quot; &gt;</code></p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;style&gt;
-     body &#123;background-color:gainsboro&#125;
-&lt;/style&gt;
-&lt;base href=&quot;https://lll-nnn.github.io/&quot; target=&quot;_blank&quot;&gt;   &lt;!--target=&quot;_blank&quot;   在新窗口打开文档--&gt;
-&lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;title&gt; HTML STUDY&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;一级标题&lt;/h1&gt;
-&lt;h2&gt;二级标题&lt;/h2&gt;
-&lt;h6&gt;最后一级标题&lt;/h6&gt;
-&lt;p&gt;段落&lt;/p&gt;
-&lt;!--HTML链接--&gt;
-&lt;a href=&quot;https://lll-nnn.github.io/&quot; target=&quot;_blank&quot; rel=&quot;myself&quot;&gt;lll-nnnのblog&lt;/a&gt;     &lt;!--rel用于指定当前文档与被连接文档的关系--&gt;
-&lt;!--HTML图像--&gt;
-&lt;img src=&quot;C:\Users\ASUS\OneDrive\桌面\paper\guidao.jpg&quot; ait=&quot;guidao&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-<p><img src="https://ftp.bmp.ovh/imgs/2020/11/55f7b2cabe9b8915.png" srcset="/img/loading.gif"></p>
+              <p>##Markdown标题<br>两种格式：<br>1、使用=和-标记一二级标题<br>一级标题<br>=============<br>二级标题   </p>
+<hr>
+<p>2、使用#号，表示1~6级标题<br>#一级标题<br>##二级标题<br>…………<br>######六级标题    </p>
+<hr>
+<p>##Markdown段落<br>换行：两个以上空格加上回车  或者 使用空行来换行    </p>
+<hr>
+<p>##Markdown字体<br>1、将文本插入到两个星号（**）或两个下划线（__）表示斜体字。<br>2、将文本插入到四个星号中间或者四个下划线中间表示粗体字。<br>3、将文本插入到六个星号或下划线中间表示粗斜体字。   </p>
+<hr>
+<p>##Markdown分隔线<br>一行星号***或——-    </p>
+<hr>
+<p>##Markdown删除线<br>在将要删除的文字两端加上两个波浪线,…………似乎不行啊，但是可以用HTML标签<code>&lt;del&gt;&lt;/del&gt;</code><br><del>llll-nnnnn</del>    </p>
+<hr>
+<p>##Markdown下划线<br>通过HTML标签<code>&lt;u&gt;&lt;/u&gt;</code><br><u>llll-nnnn</u>   </p>
+<hr>
+<p>##Markdown脚注<br>格式：<code>[^注明文本]</code><br>[^lll-nnn]<br>[^lll-nnn]: myself</p>
+<hr>
+<p>##Markdown列表<br>星号（*）、加号（+）、减号（-）作为列表标记，标记后面加一个空格再填写内容。     </p>
+<ul>
+<li><p>1</p>
+</li>
+<li><p>2</p>
+</li>
+</ul>
+<ul>
+<li>3<br>###列表嵌套<br>在子列表前面加四个空格。   </li>
+</ul>
+<ul>
+<li>第一项 <ul>
+<li>第一项嵌套的第一个元素</li>
+<li>第一项嵌套的第二个元素<br>####列表中使用区块    </li>
+</ul>
+</li>
+<li>123   <blockquote>
+<p>123<br>456     </p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<p>##Markdown区块<br>使用<code>&gt;</code>符号，后面一个空格。    </p>
+<blockquote>
+<p>区块1<br>区块2<br>区块3<br>###区块嵌套<br>第一层    </p>
+<blockquote>
+<p>第二层    </p>
+<blockquote>
+<p>第三层<br>####区块中使用列表<br>区块符号后面加上列表符号即可。<br>区块中的列表       </p>
+</blockquote>
+</blockquote>
+<ul>
+<li> 第一项    </li>
+<li> 第二项</li>
+</ul>
+</blockquote>
+<hr>
+<p>##Markdown代码<br>句子中插入代码，将代码用反引号（`）包起来。<br>整段代码，也可使用四个空格或者一个制表符（Tab）。    </p>
+<hr>
+<p>##Markdown链接<br><code>[链接名称](链接地址)</code><br>或者<br><code>&lt;链接地址&gt;</code><br><a href="https://lll-nnn.github.io/">lll-nnn</a><br>也可以使用变量赋值的方法 链接        </p>
+<p><code>         这是我的博客[lll-nnn][1]。               [1]: https://lll-nnn.github.io/</code>  </p>
+<hr>
+<p>##Markdown插入图片<br>格式： <code>![alt 属性文本](图片地址 &quot;可选标题&quot;)</code><br>或者 像超链接那样使用变量。<br>可以使用<code>&lt;img src=&quot;url&quot; width=&quot;300&quot; heigth=&quot;300&quot;</code>设定宽度和高度<br>附：获得本地照片网络地址（url）的方法：     </p>
+<ol>
+<li>通过百度识图上传然后右键上传的图片查看地址。    </li>
+<li>最好创建一个图床。图床创建方式：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d51258ef5484">https://www.jianshu.com/p/d51258ef5484</a>  </li>
+<li>上传到其他的地方也可以，只要上传到网上即可。<br><code>![鬼刀](http://m.qpic.cn/psc?/V12Z3Zad2KK0gc/45NBuzDIW489QBoVep5mcZqHcWkXe5o2wOT*Z7lw4p5ynCBBo4qwUhcEBh9*mzSxtF4uyLYKqlixt3qQ11yt9FuqEyqhMI0.2Bu7NyxK6UU!/b&amp;bo=IAMIAiADCAIBFzA!&amp;rf=viewer_4)</code><br><img src="http://m.qpic.cn/psc?/V12Z3Zad2KK0gc/45NBuzDIW489QBoVep5mcZqHcWkXe5o2wOT*Z7lw4p5ynCBBo4qwUhcEBh9*mzSxtF4uyLYKqlixt3qQ11yt9FuqEyqhMI0.2Bu7NyxK6UU!/b&bo=IAMIAiADCAIBFzA!&rf=viewer_4" srcset="/img/loading.gif" alt="鬼刀"></li>
+</ol>
+<hr>
+<p>##Markdown表格<br>使用<code>|</code>来分隔不同的单元格，使用<code>-</code>来分隔表头和其他行。<br> |表头 | 表头|<br>|  -  | - |<br>| 单元格  | 单元格 |<br>| 单元格  | 单元格 |<br>表格似乎不能用啊？？？<br>等找到解决办法再写吧。。。    </p>
+<hr>
+<p>另外还有一些高级技巧，感觉也用不到，等用到时再写吧。</p>
 
             </div>
             <hr>
@@ -283,18 +325,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/11/26/wp1-md/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Php变量覆盖</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/11/18/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2020/11/26/wp1-md/">
+                        <span class="hidden-mobile">Php变量覆盖</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

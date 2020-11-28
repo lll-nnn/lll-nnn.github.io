@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>HTML基础学习笔记 - lll-nnnのblog</title>
+  <title>Php变量覆盖 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="HTML基础学习笔记">
+            <span class="h2" id="subtitle" title="Php变量覆盖">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-11-24 19:49" pubdate>
-        2020年11月24日 晚上
+      <time datetime="2020-11-26 17:23" pubdate>
+        2020年11月26日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      325 字
+      592 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      8
        分钟
     </span>
   
@@ -224,35 +224,83 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">HTML基础学习笔记</h1>
+            <h1 style="display: none">Php变量覆盖</h1>
             
             <div class="markdown-body">
-              <h2 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h2><h3 id="html标题"><a href="#html标题" class="headerlink" title="html标题"></a>html标题</h3><p>html标题通过<br><code>&lt;h1&gt;最大标题&lt;/h1&gt;</code><br><code>&lt;h2&gt;&lt;/h2&gt;</code><br>…………<br><code>&lt;h6&gt;最小标题&lt;/h6&gt;</code><br>这些标签来定义。   </p>
-<h3 id="html段落"><a href="#html段落" class="headerlink" title="html段落"></a>html段落</h3><p>html段落通过标签<code>&lt;p&gt;一个段落&lt;/p&gt;</code>定义。   </p>
-<h3 id="html链接"><a href="#html链接" class="headerlink" title="html链接"></a>html链接</h3><p>html链接通过标签<code>&lt;a&gt;&lt;/a&gt;</code>定义。<br><code>&lt;a href=&quot;https://lll-nnn.github.io/&quot; target=&quot;_blank&quot;&gt;lll-nnnのblog&lt;/a&gt;</code>   </p>
-<h3 id="html图像"><a href="#html图像" class="headerlink" title="html图像"></a>html图像</h3><p>html图像通过标签<code>&lt;img&gt;</code>定义。<br><code>&lt;img src=&quot;url&quot; &gt;</code></p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
+              <p>#php变量覆盖1</p>
+<hr>
+<p>##WP</p>
+<pre><code>&lt;html&gt;
 &lt;head&gt;
-&lt;style&gt;
-     body &#123;background-color:gainsboro&#125;
-&lt;/style&gt;
-&lt;base href=&quot;https://lll-nnn.github.io/&quot; target=&quot;_blank&quot;&gt;   &lt;!--target=&quot;_blank&quot;   在新窗口打开文档--&gt;
-&lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;title&gt; HTML STUDY&lt;/title&gt;
+&lt;title&gt;php-extract&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;h1&gt;一级标题&lt;/h1&gt;
-&lt;h2&gt;二级标题&lt;/h2&gt;
-&lt;h6&gt;最后一级标题&lt;/h6&gt;
-&lt;p&gt;段落&lt;/p&gt;
-&lt;!--HTML链接--&gt;
-&lt;a href=&quot;https://lll-nnn.github.io/&quot; target=&quot;_blank&quot; rel=&quot;myself&quot;&gt;lll-nnnのblog&lt;/a&gt;     &lt;!--rel用于指定当前文档与被连接文档的关系--&gt;
-&lt;!--HTML图像--&gt;
-&lt;img src=&quot;C:\Users\ASUS\OneDrive\桌面\paper\guidao.jpg&quot; ait=&quot;guidao&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;
+&lt;p&gt;&lt;font color=&quot;red&quot;&gt;please use &lt;font color=&quot;blue&quot;&gt;`ctrl+u`&lt;/font&gt; to see the source code&lt;/font&gt;&lt;/p&gt;
+&lt;article&gt;
+$flag=&#39;xxxxxxxx&#39;;
+extract($_GET);           ////extract()函数将GET到的字符作为变量
+if(isset($liwu)) &#123;
+    $content=trim(file_get_contents($flag));          ////file_get_contents() 把整个文件读入$content中。trim()移除字符串两侧的字符。
+    if($liwu==$content) &#123;
+        echo&#39;flag&#123;xxxxxxxxxxx&#125;&#39;;
+    &#125;
+    else &#123;
+        echo &#39;please try other operation.&#39;;
+    &#125;
+&#125;
+?&gt;
+&lt;/article&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<p><img src="https://ftp.bmp.ovh/imgs/2020/11/55f7b2cabe9b8915.png" srcset="/img/loading.gif"></p>
+<p>题目的意思是以GET方式输入liwu，经过extract函数后当作变量，将其与$content对比，若相等，则输出flag。<br>以GET方式输入 <strong>liwu&amp;flag=1</strong>这样就覆盖了一开始flag的值，$liwu和$content两个变量也会相等，就能得到flag了。<br><img src="https://ftp.bmp.ovh/imgs/2020/11/85d734f646fc46e9.png" srcset="/img/loading.gif">   </p>
+<hr>
+<p>##知识点总结</p>
+<ul>
+<li>这道题属于extract()函数变量覆盖。</li>
+<li>extract()函数将GET到的字符作为变量。</li>
+<li>file_get_contents()函数把整个文件读入一个字符串中。</li>
+<li>trim()函数移除字符串两侧的空白字符或其他预定义字符。<ul>
+<li>至于本题为什么要用这个函数，可能是因为本来的flag含有空格或其他字符吧。   </li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>#php变量覆盖2</p>
+<hr>
+<p>##WP<br>还是先代码审计：     </p>
+<pre><code>&lt;?php
+highlight_file(__FILE__);
+include &quot;flag.php&quot;;
+
+$_403 = &quot;拒绝访问&quot;;
+$_200 = &quot;欢迎~~~&quot;;
+
+if ($_SERVER[&quot;REQUEST_METHOD&quot;] != &quot;POST&quot;)
+    die(&quot;sssssssspost…&quot;);     ////表明输入请求的方式应该为POST
+
+if ( !isset($_POST[&quot;flag&quot;]) )
+    die($_403);        ////判断是否通过POST提交了flag变量
+
+foreach ($_GET as $key =&gt; $value)      ////foreach()就是for循环
+    $$key = $$value;  ////$_GET键名赋给$key,键值赋给$value,经过$$key = $$value后GET的就会变为变量
+
+foreach ($_POST as $key =&gt; $value)
+    $$key = $value;
+
+if ( $_POST[&quot;flag&quot;] !== $flag )
+    die($_403);
+
+echo &quot;This is your flag : &quot;. $flag . &quot;\n&quot;;
+die($_200);      
+
+?&gt;                       </code></pre>
+<p>最后输出的是$_200 = “欢迎~~~”；而flag没有输出方式，所以将$_200的值变成flag就能得到flag了。<br>GET传入_200=flag,经过for循环就会变成$_200=$flag,这样就把flag给$_200了，最后再POST个flag的值，让它不等$flag就能输出flag了。<br> <img src="https://ftp.bmp.ovh/imgs/2020/11/067bd0d3e477579e.png" srcset="/img/loading.gif">       </p>
+<hr>
+<p>##知识点总结</p>
+<ul>
+<li>这道题属于**$$**变量覆盖问题。</li>
+<li>主要是for循环中：$_GET键名赋给$key,键值赋给$value,经过$$key = $$value后GET的就会变为变量。弄懂这个，这道题就出来了。</li>
+</ul>
 
             </div>
             <hr>
@@ -262,7 +310,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/NOTE/">NOTE</a>
+                      <a class="hover-with-bg" href="/categories/WP/">WP</a>
                     
                   </div>
                 
@@ -270,7 +318,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/NOTE/">NOTE</a>
+                      <a class="hover-with-bg" href="/tags/WP/">WP</a>
                     
                   </div>
                 
@@ -283,9 +331,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/11/26/wp1-md/">
+                      <a href="/2020/11/26/MarkDown/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Php变量覆盖</span>
+                        <span class="hidden-mobile">MarkDown基本使用</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -293,8 +341,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/11/18/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2020/11/24/html/">
+                        <span class="hidden-mobile">HTML基础学习笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
