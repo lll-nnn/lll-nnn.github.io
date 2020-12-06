@@ -29,6 +29,56 @@
   
   
   <entry>
+    <title>Php伪协议</title>
+    <link href="/2020/12/04/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/"/>
+    <url>/2020/12/04/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="PHP伪协议"><a href="#PHP伪协议" class="headerlink" title="PHP伪协议"></a>PHP伪协议</h1><ul><li>PHP伪协议事实上就是支持的协议与封装协议。</li><li>首先，介绍一些CTF中常见的文件包含函数：<ul><li>1.include：包含并对给定的文件进行计算。</li><li>2.require：用于引入或者包含外部php文件。<blockquote><p>include和require的区别：include引入文件报错后会继续执行代码，而require引入文件时，遇到错误后就会停止运行下面的代码。        </p></blockquote></li><li>3.include_once:包含并运行指定文件，与include的区别是这个只能包含一次。</li><li>4.require_once:与require相同，区别也是包含一次。</li><li>5.highlight_file：语法高亮一个文件。</li><li>6.show_source：这是highlight_file的别名。</li><li>7.readfile：输出文件，成功时返回从文件中读入的字节数。</li><li>8.file_get_contents ：将整个文件读入一个字符串。</li><li>9.fopen：打开文件或者URL。</li><li>10.file：把整个文件读入一个数组中。</li></ul></li></ul><hr><ul><li><strong>file://协议</strong>          <blockquote><p>用于访问本地文件系统，CTF中通常用来读取文件<br>file://+文件的绝对路径和文件名<br>file://+文件的相对路径和文件名<br>file://+文件的网络路径和文件名             </p></blockquote><hr></li><li>  <strong>php://协议</strong>      <blockquote><p>用于访问各个输入/输出流，在CTF中经常使用php://filter来读取一个文件的源码，使用php://input来执行PHP代码。<br>php://input:可以访问请求的原始数据的只读流，在POST请求中访问POST中的data<br>php://output:允许以print和echo一样的方式写入到输出缓冲区<br>php://fd:允许直接访问指定的文件描述符<br>php://memory   php://temp:文件包装器的数据流，允许读写临时数据。<br>php://filter:一种原封装器，设计用于数据流打开时的筛选过滤应用。       </p><blockquote><p>相关参数：<br>resource=&lt;要过滤的数据流&gt;<br>read=&lt;读链的过滤器&gt;<br>write=&lt;写链的过滤器&gt;<br>&lt;;两个链的过滤器&gt;任何没有以read=或write=做前缀的筛选器列表会视情况应用于读或写链     </p><blockquote><p>字符串过滤器<br>string.rot13:rot13变换<br>string.toupper:转大写字母<br>string.tolower:转小写字母<br>string.strip_tags:去除html、php语言标签<br>转换过滤器<br>conver.base64-encode&amp;convert.base64-decode:base64编码解码<br>convert.quoted-printable-encode&amp;canvert.quoted-printable-decode:quoted-printable字符串与8-bit字符串编码解码<br>还用压缩过滤器和加密过滤器，感觉用不到，以后见到相关题再写吧<br>伪协议题常用的两句话：php://filter/read=convert.base64-encode/resource=[文件名]<br>php://input+[POST DATA]执行PHP代码      </p></blockquote></blockquote></blockquote></li></ul><hr><blockquote><p>zip://&amp;bzip://&amp;zlib://协议<br>作用：他们都是压缩流，可以访问压缩文件中的子文件</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>NOTE</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>NOTE</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>伪协议--WP</title>
+    <link href="/2020/12/03/wxyWP/"/>
+    <url>/2020/12/03/wxyWP/</url>
+    
+    <content type="html"><![CDATA[<h2 id="伪协议1"><a href="#伪协议1" class="headerlink" title="伪协议1"></a>伪协议1</h2><p>题目：</p><pre><code>                    针不戳，吃柠檬的感觉针不戳    &lt;?php    error_reporting(0);    echo &#39;&lt;center&gt;&lt;strong&gt;针不戳，吃柠檬的感觉针不戳&lt;/strong&gt;&lt;/center&gt;&#39;;    highlight_file(__FILE__);    $file=$_GET[&#39;file&#39;];    if (isset($file))&#123;        if(preg_match(&#39;/php|file|zip|bzip|zlib|base|data/&#39;,$file))&#123;            echo (&#39;hacker!!!&#39;);        &#125;else &#123;            include $file;          ////include 语句包含并运行指定文件。        &#125;    &#125;    #不对劲，总感觉写错了啥，算了，先去吃柠檬~    ?&gt; </code></pre><p>这次的题目值得注意的是这个<code>preg_match</code>函数中没有 <strong>i</strong>，也就是说这个正则匹配是区分大小写的，所以将涉及到的过滤的词换成大写即可。<br>根据题目，或者根据  <code>include $file</code> 判断这是一道伪协议题，url中输入<code> ?file=Php://filter/read=convert.Base64-encode/resource=flag.php</code> ,什么也没有，把<code>.php</code>删了，回车得到一段base64编码：<br><img src="https://ftp.bmp.ovh/imgs/2020/12/eb3a088303494cf6.png"></p><p>解码后得到flag：<br><img src="https://ftp.bmp.ovh/imgs/2020/12/34b02328261e3877.png"><br>这里的flag包含在flag文件里我是猜的，但弄了好一会儿还是不知道怎么知道flag包含在这个文件里，问了徐神后说，这就是猜的············<br>好吧，看来还是我做题的经验不够啊。<br>至于为什么flag文件没有后缀，因为Linux中文件可以没有扩展名，出题应该就是在Linux下出的吧。          </p><hr><h2 id="伪协议2"><a href="#伪协议2" class="headerlink" title="伪协议2"></a>伪协议2</h2><p>题目：</p><pre><code>                针不戳，吃柠檬的感觉针不戳    &lt;?php    error_reporting(0);    echo &#39;&lt;center&gt;&lt;strong&gt;针不戳，吃柠檬的感觉针不戳&lt;/strong&gt;&lt;/center&gt;&#39;;    highlight_file(__FILE__);    $file=$_GET[&#39;file&#39;];    if (isset($file))&#123;        if(preg_match(&#39;/php|file|zip|bzip|zlib|base|data/i&#39;,$file))&#123;            echo (&#39;hacker!!!&#39;);        &#125;else &#123;            $a=str_replace(&quot;troye&quot;,&quot;&quot;,$file);       ////str_replace替换函数，意思是将$file中的troye替换没有。            include $a;        &#125;    &#125;    #不对劲，总感觉写错了啥，算了,继续吃柠檬~    ?&gt; </code></pre><p>这一次<code>preg_match</code>函数中加上了<strong>i</strong>，区分大小写了，但下面的<code>str_replace</code>函数提供了另一种绕过方式，所以可以将<code>preg_match</code>过滤的词中插入troye便可绕过输入<code>?file=ptroyehp://filter/read=convert.btroyease64-encode/resource=flag</code>得到base64编码：<img src="https://ftp.bmp.ovh/imgs/2020/12/2cf1778026b759e0.png"><br>解码后得到flag：<br><img src="https://ftp.bmp.ovh/imgs/2020/12/579dbc421b42e0a4.png">        </p><hr><h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><blockquote><p><code>include</code>函数：包含并对给定的文件进行计算。<br><code>str_replace</code>函数：替换字符串中的一些字符（区分大小写）。而 <code>str_ireplace() </code>函数执行不区分大小写的搜索。<br>CTF伪协议常用的两句话：<br><code>php://filter/read=convert.base64-encode/resource=[文件名]</code>读取文件源码<br><code>php://input+[POST DATA]</code>  执行PHP代码</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>WP</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>WP</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Bugku刷题记录</title>
     <link href="/2020/11/30/bugku/"/>
     <url>/2020/11/30/bugku/</url>
