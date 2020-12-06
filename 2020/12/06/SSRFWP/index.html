@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>SSRF - lll-nnnのblog</title>
+  <title>SSRF--WP - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="SSRF">
+            <span class="h2" id="subtitle" title="SSRF--WP">
               
             </span>
 
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      319 字
+      513 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      7
        分钟
     </span>
   
@@ -224,7 +224,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">SSRF</h1>
+            <h1 style="display: none">SSRF--WP</h1>
             
             <div class="markdown-body">
               <h2 id="SSRF–WP"><a href="#SSRF–WP" class="headerlink" title="SSRF–WP"></a>SSRF–WP</h2><p>题目：        </p>
@@ -248,7 +248,24 @@
 ?&gt;
 这个怎么绕过呢？          </code></pre>
 <p>第一个<code>preg_match</code>意思是$url中必须包含<code>dotnet.com</code>;<br>第二个<code>!preg_match</code>意思是不能匹配到其中的字符，有<strong>i</strong>，包含大小写，这样就把伪协议的路堵死了。<br>这个dotnet.com似乎没有什么用，就可以在后面加个@进行绕过：<br><code>dotnet.com@123=123</code><br>既然伪协议的路没法走，然后去找<code>file_get_contents</code>相关的知识，原来PHP还可以进行目录穿越：<br><strong>php源码中，在向目标请求时先会判断使用的协议。如果协议无法识别，就会认为它是个目录。<br>所以我们就可以构造的payload(php如果识别不了就会当成一个目录)在进行目录穿越，穿越到根目录读取flag</strong><br>payload:<code>?url=dotnet.com@0://dotnet.com/../../../../../../../flag</code><br>得到flag<br><img src="https://ftp.bmp.ovh/imgs/2020/12/fe21b3b3e2b74d5c.png" srcset="/img/loading.gif">             </p>
-<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2>
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><blockquote>
+<ul>
+<li><p>SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。          </p>
+</li>
+<li><p>SSRF中的绕过过滤：<br>@绕过：<a target="_blank" rel="noopener" href="http://www.baidu.com@127.0.0.1=127.0.0.1/">http://www.baidu.com@127.0.0.1=127.0.0.1</a><br>将IP地址转换成十进制、八进制、十六进制：192.168.0.1&gt;&gt;&gt;&gt;0300.0250.0.1(八进制)</p>
+</li>
+<li><p>.xip.io：       </p>
+<blockquote>
+<p>192.168.0.1.xip.io&gt;&gt;&gt;192.168.0.1<br><a target="_blank" rel="noopener" href="http://www.10.0.0.1.xip.io/">www.10.0.0.1.xip.io</a> = 10.0.0.1<br>mysite.10.0.0.1.xip.io = 10.0.0.1<br>foo.bar.10.0.0.1.xip.io = 10.0.0.1            </p>
+</blockquote>
+</li>
+<li><p>端口绕过：127.0.0.1&gt;&gt;&gt;127.0.0.1: 80        </p>
+</li>
+<li><p>目录穿越：php源码中，在向目标请求时先会判断使用的协议。如果协议无法识别，就会认为它是个目录</p>
+</li>
+</ul>
+</blockquote>
+
             </div>
             <hr>
             <div>
