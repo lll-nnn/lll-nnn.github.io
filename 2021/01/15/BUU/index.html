@@ -227,11 +227,10 @@
             <h1 style="display: none">BUU每日一题1</h1>
             
             <div class="markdown-body">
-              <p>##一、            </p>
-<ul>
+              <h2 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h2><ul>
 <li>题目： PHP代码审计</li>
 </ul>
-<p>页面一个表情，查看源代码<br><img src="buu/101.png" srcset="/img/loading.gif"><br>访问<code>source.php</code>,得到PHP代码     </p>
+<p>页面一个表情，查看源代码<br><img src="./buu/101.png" srcset="/img/loading.gif"><br>访问<code>source.php</code>,得到PHP代码     </p>
 <pre><code>     &lt;?php
         highlight_file(__FILE__);
         class emmm
@@ -286,11 +285,11 @@
 </ul>
 <p>首先，看到个<code>hint.php</code>,传个<code>file=hint.php</code>得到的结果是：<code>flag not here, and flag in ffffllllaaaagggg</code>这个告诉了我们flag所在的文件名；      </p>
 <p>分析一下为什么：第一个、第二个<code>if</code>可以过去，截取函数那里，先加个 ？ 然后截取第一个字符到 ？ ，还是<code>hint.php</code>;没有经过url编码，解码后还是那样；下面一个也一样；最后include函数包含并运行<code>hint.php</code>，得到其中的内容。             </p>
-<p>接下来是include函数的利用：<img src="buu/102.png" srcset="/img/loading.gif"></p>
+<p>接下来是include函数的利用：<img src="./buu/102.png" srcset="/img/loading.gif"></p>
 <ul>
 <li>解决</li>
 </ul>
-<p>传参：<code>file=hint.php?/../../../../../../ffffllllaaaagggg</code><br>得到flag；其中<code>file=hint.php?/</code>将其当作文件夹，<code>../</code>到上一级目录，最少四个，因为一般Web服务的文件夹在<code>/var/www/html</code>目录中，再加上<code>source.php?/</code>这个“文件夹”，所以我们总共需要<code>../</code>四次来返回到根目录,从而打开文件，得到flag。<img src="buu/103.png" srcset="/img/loading.gif"></p>
+<p>传参：<code>file=hint.php?/../../../../../../ffffllllaaaagggg</code><br>得到flag；其中<code>file=hint.php?/</code>将其当作文件夹，<code>../</code>到上一级目录，最少四个，因为一般Web服务的文件夹在<code>/var/www/html</code>目录中，再加上<code>source.php?/</code>这个“文件夹”，所以我们总共需要<code>../</code>四次来返回到根目录,从而打开文件，得到flag。<img src="./buu/103.png" srcset="/img/loading.gif"></p>
 <ul>
 <li>知识点           <blockquote>
 <ul>
