@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>MarkDown基本使用 - lll-nnnのblog</title>
+  <title>BUU每日一题1 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="MarkDown基本使用">
+            <span class="h2" id="subtitle" title="BUU每日一题1">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-11-26 18:07" pubdate>
-        2020年11月26日 晚上
+      <time datetime="2021-01-15 13:11" pubdate>
+        2021年1月15日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      731 字
+      804 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      10
        分钟
     </span>
   
@@ -224,86 +224,84 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">MarkDown基本使用</h1>
+            <h1 style="display: none">BUU每日一题1</h1>
             
             <div class="markdown-body">
-              <h2 id="Markdown标题"><a href="#Markdown标题" class="headerlink" title="Markdown标题"></a>Markdown标题</h2><p>两种格式：<br>1、使用=和-标记一二级标题<br>一级标题<br>=============<br>二级标题   </p>
-<hr>
-<p>2、使用#号，表示1~6级标题       </p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>…………    </p>
-<h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><hr>
-<h2 id="Markdown段落"><a href="#Markdown段落" class="headerlink" title="Markdown段落"></a>Markdown段落</h2><p>换行：两个以上空格加上回车  或者 使用空行来换行    </p>
-<hr>
-<h2 id="Markdown字体"><a href="#Markdown字体" class="headerlink" title="Markdown字体"></a>Markdown字体</h2><p>1、将文本插入到两个星号（**）或两个下划线（__）表示斜体字。<br>2、将文本插入到四个星号中间或者四个下划线中间表示粗体字。<br>3、将文本插入到六个星号或下划线中间表示粗斜体字。   </p>
-<hr>
-<h2 id="Markdown分隔线"><a href="#Markdown分隔线" class="headerlink" title="Markdown分隔线"></a>Markdown分隔线</h2><p>一行星号***或——-    </p>
-<hr>
-<h2 id="Markdown删除线"><a href="#Markdown删除线" class="headerlink" title="Markdown删除线"></a>Markdown删除线</h2><p>在将要删除的文字两端加上两个波浪线,…………似乎不行啊，但是可以用HTML标签<code>&lt;del&gt;&lt;/del&gt;</code><br><del>llll-nnnnn</del>    </p>
-<hr>
-<h2 id="Markdown下划线"><a href="#Markdown下划线" class="headerlink" title="Markdown下划线"></a>Markdown下划线</h2><p>通过HTML标签<code>&lt;u&gt;&lt;/u&gt;</code><br><u>llll-nnnn</u>   </p>
-<hr>
-<h2 id="Markdown脚注"><a href="#Markdown脚注" class="headerlink" title="Markdown脚注"></a>Markdown脚注</h2><p>格式：<code>[^注明文本]</code><br>[^lll-nnn]<br>[^lll-nnn]: myself</p>
-<hr>
-<h2 id="Markdown列表"><a href="#Markdown列表" class="headerlink" title="Markdown列表"></a>Markdown列表</h2><p>星号（*）、加号（+）、减号（-）作为列表标记，标记后面加一个空格再填写内容。     </p>
+              <p>##一、            </p>
 <ul>
-<li><p>1</p>
-</li>
-<li><p>2</p>
-</li>
+<li>题目： PHP代码审计</li>
 </ul>
+<p>页面一个表情，查看源代码<br><img src="buu/101.png" srcset="/img/loading.gif"><br>访问<code>source.php</code>,得到PHP代码     </p>
+<pre><code>     &lt;?php
+        highlight_file(__FILE__);
+        class emmm
+        &#123;
+            public static function checkFile(&amp;$page)
+                &#123;
+                $whitelist = [&quot;source&quot;=&gt;&quot;source.php&quot;,&quot;hint&quot;=&gt;&quot;hint.php&quot;];     //$whitelist有&quot;source.php&quot;和&quot;hint.php&quot;两个字符串
+                if (! isset($page) || !is_string($page)) &#123;       //要求$page存在且是字符串
+                    echo &quot;you can&#39;t see it&quot;;
+                    return false;
+                &#125;
+
+                if (in_array($page, $whitelist)) &#123;
+                    return true;        //$page中的字符串应该含于$whitelist中
+                &#125;
+
+                $_page = mb_substr(
+                    $page,
+                    0,
+                    mb_strpos($page . &#39;?&#39;, &#39;?&#39;)
+                );          //截取$page中第一个字符到 ？ 注意mb_strpos函数第一个 ？ 前是个连接符 .
+                if (in_array($_page, $whitelist)) &#123;
+                    return true;      
+                &#125;            //再次比较
+
+                $_page = urldecode($page);    //将$page解码
+                $_page = mb_substr(
+                    $_page,
+                    0,
+                    mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)
+                );       //截取
+                if (in_array($_page, $whitelist)) &#123;
+                    return true;
+                &#125;       //比较
+                echo &quot;you can&#39;t see it&quot;;
+                return false;
+            &#125;
+        &#125;
+
+        if (! empty($_REQUEST[&#39;file&#39;])
+            &amp;&amp; is_string($_REQUEST[&#39;file&#39;])
+            &amp;&amp; emmm::checkFile($_REQUEST[&#39;file&#39;])
+        ) &#123;
+            include $_REQUEST[&#39;file&#39;];
+            exit;
+        &#125; else &#123;
+            echo &quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;;
+&#125;  
+?&gt; </code></pre>
 <ul>
-<li>3   <h3 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h3>在子列表前面加四个空格。   </li>
+<li>分析</li>
 </ul>
+<p>首先，看到个<code>hint.php</code>,传个<code>file=hint.php</code>得到的结果是：<code>flag not here, and flag in ffffllllaaaagggg</code>这个告诉了我们flag所在的文件名；      </p>
+<p>分析一下为什么：第一个、第二个<code>if</code>可以过去，截取函数那里，先加个 ？ 然后截取第一个字符到 ？ ，还是<code>hint.php</code>;没有经过url编码，解码后还是那样；下面一个也一样；最后include函数包含并运行<code>hint.php</code>，得到其中的内容。             </p>
+<p>接下来是include函数的利用：<img src="buu/102.png" srcset="/img/loading.gif"></p>
 <ul>
-<li>第一项 <ul>
-<li>第一项嵌套的第一个元素</li>
-<li>第一项嵌套的第二个元素     <h4 id="列表中使用区块"><a href="#列表中使用区块" class="headerlink" title="列表中使用区块"></a>列表中使用区块</h4></li>
+<li>解决</li>
 </ul>
-</li>
-<li>123   <blockquote>
-<p>123<br>456     </p>
-</blockquote>
-</li>
-</ul>
-<hr>
-<h2 id="Markdown区块"><a href="#Markdown区块" class="headerlink" title="Markdown区块"></a>Markdown区块</h2><p>使用<code>&gt;</code>符号，后面一个空格。    </p>
-<blockquote>
-<p>区块1<br>区块2<br>区块3     </p>
-</blockquote>
-<h3 id="区块嵌套"><a href="#区块嵌套" class="headerlink" title="区块嵌套"></a>区块嵌套</h3><blockquote>
-<p>第一层    </p>
-<blockquote>
-<p>第二层    </p>
-<blockquote>
-<p>第三层     </p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h4 id="区块中使用列表"><a href="#区块中使用列表" class="headerlink" title="区块中使用列表"></a>区块中使用列表</h4><p>区块符号后面加上列表符号即可。</p>
-<blockquote>
-<p>区块中的列表       </p>
+<p>传参：<code>file=hint.php?/../../../../../../ffffllllaaaagggg</code><br>得到flag；其中<code>file=hint.php?/</code>将其当作文件夹，<code>../</code>到上一级目录，最少四个，因为一般Web服务的文件夹在<code>/var/www/html</code>目录中，再加上<code>source.php?/</code>这个“文件夹”，所以我们总共需要<code>../</code>四次来返回到根目录,从而打开文件，得到flag。<img src="buu/103.png" srcset="/img/loading.gif"></p>
 <ul>
-<li> 第一项    </li>
-<li> 第二项</li>
+<li>知识点           <blockquote>
+<ul>
+<li><code>in_array</code>函数：检查数组中是否存在某个值<br>语法：````in_arry(mixed $needle,arry $haystack,bool $strict =false):bool ``<br>如果没有设置$strick=true,将比较类型是否相同<br>mixed的意思是可以为任意类型<br>如果needle是字符串，则比较是区分大小写的<br>如果找到needle则返回true，否则返回false<br><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.in-array.php">MORE</a> </li>
+<li><code>mb_substr</code>函数：返回字符串的一部分，<code>substr()</code>函数只针对英文字符，<code>mb_substr</code>还支持中文文字<br>语法：<code>mb_substr ( string $str , int $start , int $length = NULL , string $encoding = mb_internal_encoding() ) : string</code><br>$str:提取目标<br>$start:开始提取的位置；负数的话从尾处第start个字符开始<br>$length ：提取长度；如果省略或传入NULL，则会提取到尾部<br>$encoding: 为字符编码；如果省略或是NULL，则使用内部字符编码。<br>返回值：提取到的字符<br><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.mb-substr.php">MORE</a>          </li>
+<li>is_string函数：检测变量是否是字符串。<br><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.is-string.php">MORE</a>                       </li>
+<li><code>mb_strpos</code>函数：查找字符串在另一个字符串中首次出现的位置<br>语法：<code>mb_strpos ( string $haystack , string $needle , int $offset = 0 , string $encoding = mb_internal_encoding() ) : int</code><br>第一个字符的位置是 0，第二个字符的位置是 1，以此类推。<br>$offset: 搜索位置的偏移。如果没有提供该参数，将会使用 0。负数的 offset 会从字符串尾部开始统计。<br><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.mb-strpos.php">MORE</a></li>
 </ul>
 </blockquote>
-<hr>
-<h2 id="Markdown代码"><a href="#Markdown代码" class="headerlink" title="Markdown代码"></a>Markdown代码</h2><p>句子中插入代码，将代码用反引号（`）包起来。<br>整段代码，也可使用四个空格或者一个制表符（Tab）。    </p>
-<hr>
-<h2 id="Markdown链接"><a href="#Markdown链接" class="headerlink" title="Markdown链接"></a>Markdown链接</h2><p><code>[链接名称](链接地址)</code><br>或者<br><code>&lt;链接地址&gt;</code><br><a href="https://lll-nnn.github.io/">lll-nnn</a><br>也可以使用变量赋值的方法 链接        </p>
-<p><code>         这是我的博客[lll-nnn][1]。               [1]: https://lll-nnn.github.io/</code>  </p>
-<hr>
-<h2 id="Markdown插入图片"><a href="#Markdown插入图片" class="headerlink" title="Markdown插入图片"></a>Markdown插入图片</h2><p>格式： <code>![alt 属性文本](图片地址 &quot;可选标题&quot;)</code><br>或者 像超链接那样使用变量。<br>可以使用<code>&lt;img src=&quot;url&quot; width=&quot;300&quot; heigth=&quot;300&quot;</code>设定宽度和高度<br>附：获得本地照片网络地址（url）的方法：     </p>
-<ol>
-<li>通过百度识图上传然后右键上传的图片查看地址。    </li>
-<li>最好创建一个图床。图床创建方式：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d51258ef5484">https://www.jianshu.com/p/d51258ef5484</a>  </li>
-<li>xxxx.md 引入图片时，先把图片复制到xxxx文件夹中 然后在xxxx.md中按照markdown的格式引入图片：<br><code>![你想输入的替代文字](xxxx/图片名.jpg)</code></li>
-</ol>
-<p><code>![鬼刀](http://m.qpic.cn/psc?/V12Z3Zad2KK0gc/45NBuzDIW489QBoVep5mcZqHcWkXe5o2wOT*Z7lw4p5ynCBBo4qwUhcEBh9*mzSxtF4uyLYKqlixt3qQ11yt9FuqEyqhMI0.2Bu7NyxK6UU!/b&amp;bo=IAMIAiADCAIBFzA!&amp;rf=viewer_4)</code><br><img src="https://ftp.bmp.ovh/imgs/2020/11/1498818c58bca487.jpg" srcset="/img/loading.gif"></p>
-<hr>
-<h2 id="Markdown表格"><a href="#Markdown表格" class="headerlink" title="Markdown表格"></a>Markdown表格</h2><p>使用<code>|</code>来分隔不同的单元格，使用<code>-</code>来分隔表头和其他行。<br> |表头 | 表头|<br>|  -  | - |<br>| 单元格  | 单元格 |<br>| 单元格  | 单元格 |<br>表格似乎不能用啊？？？<br>等找到解决办法再写吧。。。    </p>
-<hr>
-<p>另外还有一些高级技巧，感觉也用不到，等用到时再写吧。</p>
+</li>
+</ul>
 
             </div>
             <hr>
@@ -313,7 +311,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/NOTE/">NOTE</a>
+                      <a class="hover-with-bg" href="/categories/wp/">wp</a>
                     
                   </div>
                 
@@ -321,7 +319,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/NOTE/">NOTE</a>
+                      <a class="hover-with-bg" href="/tags/wp/">wp</a>
                     
                   </div>
                 
@@ -334,18 +332,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/11/28/RCEWP/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Basic Rce---WP</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/11/26/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96WP/">
-                        <span class="hidden-mobile">Php变量覆盖</span>
+                      <a href="/2020/12/06/SSRFWP/">
+                        <span class="hidden-mobile">SSRF--WP</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
