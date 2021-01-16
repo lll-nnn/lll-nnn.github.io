@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>SSRF--WP - lll-nnnのblog</title>
+  <title>BUU每日一题1 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="SSRF--WP">
+            <span class="h2" id="subtitle" title="BUU每日一题1">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-12-06 10:31" pubdate>
-        2020年12月6日 上午
+      <time datetime="2021-01-15 13:11" pubdate>
+        2021年1月15日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      511 字
+      804 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      10
        分钟
     </span>
   
@@ -224,47 +224,84 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">SSRF--WP</h1>
+            <h1 style="display: none">BUU每日一题1</h1>
             
             <div class="markdown-body">
-              <h2 id="SSRF–WP"><a href="#SSRF–WP" class="headerlink" title="SSRF–WP"></a>SSRF–WP</h2><p>题目：        </p>
-<pre><code>            啊这，这怎么...这file_get_contents()有啥用呢
-&lt;?php
-    echo&#39;&lt;center&gt;&lt;strong&gt;啊这，这怎么...这file_get_contents()有啥用呢&lt;/strong&gt;&lt;/center&gt;&#39;;
-    highlight_file(__FILE__);
-    $url =$_GET [&#39;url&#39;];
-    if (preg_match(&#39;/dotnet\.com/&#39;, $url))&#123;
-        if(!preg_match(&#39;/php|file|zip|bzip|zlib|base|data/i&#39;, $url)) &#123;
-            echo (file_get_contents($url));
+              <h2 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h2><ul>
+<li>题目： PHP代码审计</li>
+</ul>
+<p>页面一个表情，查看源代码<br><img src="https://ftp.bmp.ovh/imgs/2021/01/6b4ea505386b6788.png" srcset="/img/loading.gif"></p>
+<p>访问<code>source.php</code>,得到PHP代码     </p>
+<pre><code>     &lt;?php
+        highlight_file(__FILE__);
+        class emmm
+        &#123;
+            public static function checkFile(&amp;$page)
+                &#123;
+                $whitelist = [&quot;source&quot;=&gt;&quot;source.php&quot;,&quot;hint&quot;=&gt;&quot;hint.php&quot;];     //$whitelist有&quot;source.php&quot;和&quot;hint.php&quot;两个字符串
+                if (! isset($page) || !is_string($page)) &#123;       //要求$page存在且是字符串
+                    echo &quot;you can&#39;t see it&quot;;
+                    return false;
+                &#125;
+
+                if (in_array($page, $whitelist)) &#123;
+                    return true;        //$page中的字符串应该含于$whitelist中
+                &#125;
+
+                $_page = mb_substr(
+                    $page,
+                    0,
+                    mb_strpos($page . &#39;?&#39;, &#39;?&#39;)
+                );          //截取$page中第一个字符到 ？ 注意mb_strpos函数第一个 ？ 前是个连接符 .
+                if (in_array($_page, $whitelist)) &#123;
+                    return true;      
+                &#125;            //再次比较
+
+                $_page = urldecode($page);    //将$page解码
+                $_page = mb_substr(
+                    $_page,
+                    0,
+                    mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)
+                );       //截取
+                if (in_array($_page, $whitelist)) &#123;
+                    return true;
+                &#125;       //比较
+                echo &quot;you can&#39;t see it&quot;;
+                return false;
+            &#125;
         &#125;
-        else &#123;
-            echo(&#39;没看到过滤了吗...&#39;);
-        &#125;
-    &#125;
-    else&#123;
-        echo (&quot;这个怎么绕过呢？&quot;) ;
-    &#125;
-//flag is in &#39;/flag&#39;
-?&gt;
-这个怎么绕过呢？          </code></pre>
-<p>第一个<code>preg_match</code>意思是$url中必须包含<code>dotnet.com</code>;<br>第二个<code>!preg_match</code>意思是不能匹配到其中的字符，有<strong>i</strong>，包含大小写，这样就把伪协议的路堵死了。<br>这个dotnet.com似乎没有什么用，就可以在后面加个@进行绕过：<br><code>dotnet.com@123=123</code><br>既然伪协议的路没法走，然后去找<code>file_get_contents</code>相关的知识，原来PHP还可以进行目录穿越：<br><strong>php源码中，在向目标请求时先会判断使用的协议。如果协议无法识别，就会认为它是个目录。<br>所以我们就可以构造的payload(php如果识别不了就会当成一个目录)在进行目录穿越，穿越到根目录读取flag</strong><br>payload:<code>/?url=dotnet.com@0://../../../../../../../../flag</code><br>得到flag<br><img src="https://ftp.bmp.ovh/imgs/2020/12/fe21b3b3e2b74d5c.png" srcset="/img/loading.gif">             </p>
-<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><blockquote>
+
+        if (! empty($_REQUEST[&#39;file&#39;])
+            &amp;&amp; is_string($_REQUEST[&#39;file&#39;])
+            &amp;&amp; emmm::checkFile($_REQUEST[&#39;file&#39;])
+        ) &#123;
+            include $_REQUEST[&#39;file&#39;];
+            exit;
+        &#125; else &#123;
+            echo &quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;;
+&#125;  
+?&gt; </code></pre>
 <ul>
-<li><p>SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。          </p>
-</li>
-<li><p>SSRF中的绕过过滤：<br>@绕过：<a target="_blank" rel="noopener" href="http://www.baidu.com@127.0.0.1=127.0.0.1/">http://www.baidu.com@127.0.0.1=127.0.0.1</a><br>将IP地址转换成十进制、八进制、十六进制：192.168.0.1&gt;&gt;&gt;&gt;0300.0250.0.1(八进制)</p>
-</li>
-<li><p>.xip.io：       </p>
-<blockquote>
-<p>192.168.0.1.xip.io&gt;&gt;&gt;192.168.0.1<br><a target="_blank" rel="noopener" href="http://www.10.0.0.1.xip.io/">www.10.0.0.1.xip.io</a> = 10.0.0.1<br>mysite.10.0.0.1.xip.io = 10.0.0.1<br>foo.bar.10.0.0.1.xip.io = 10.0.0.1            </p>
-</blockquote>
-</li>
-<li><p>端口绕过：127.0.0.1&gt;&gt;&gt;127.0.0.1: 80        </p>
-</li>
-<li><p>目录穿越：php源码中，在向目标请求时先会判断使用的协议。如果协议无法识别，就会认为它是个目录</p>
-</li>
+<li>分析</li>
+</ul>
+<p>首先，看到个<code>hint.php</code>,传个<code>file=hint.php</code>得到的结果是：<code>flag not here, and flag in ffffllllaaaagggg</code>这个告诉了我们flag所在的文件名；      </p>
+<p>分析一下为什么：第一个、第二个<code>if</code>可以过去，截取函数那里，先加个 ？ 然后截取第一个字符到 ？ ，还是<code>hint.php</code>;没有经过url编码，解码后还是那样；下面一个也一样；最后include函数包含并运行<code>hint.php</code>，得到其中的内容。             </p>
+<p>接下来是include函数的利用：<img src="https://ftp.bmp.ovh/imgs/2021/01/5ef880466d9cffdb.png" srcset="/img/loading.gif"></p>
+<ul>
+<li>解决</li>
+</ul>
+<p>传参：<code>file=hint.php?/../../../../../../ffffllllaaaagggg</code><br>得到flag；其中<code>file=hint.php?/</code>将其当作文件夹，<code>../</code>到上一级目录，最少四个，因为一般Web服务的文件夹在<code>/var/www/html</code>目录中，再加上<code>source.php?/</code>这个“文件夹”，所以我们总共需要<code>../</code>四次来返回到根目录,从而打开文件，得到flag。<img src="https://ftp.bmp.ovh/imgs/2021/01/8875ef30b6a63f6e.png" srcset="/img/loading.gif"></p>
+<ul>
+<li>知识点           <blockquote>
+<ul>
+<li><code>in_array</code>函数：检查数组中是否存在某个值<br>语法：````in_arry(mixed $needle,arry $haystack,bool $strict =false):bool ``<br>如果没有设置$strick=true,将比较类型是否相同<br>mixed的意思是可以为任意类型<br>如果needle是字符串，则比较是区分大小写的<br>如果找到needle则返回true，否则返回false<br><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.in-array.php">MORE</a> </li>
+<li><code>mb_substr</code>函数：返回字符串的一部分，<code>substr()</code>函数只针对英文字符，<code>mb_substr</code>还支持中文文字<br>语法：<code>mb_substr ( string $str , int $start , int $length = NULL , string $encoding = mb_internal_encoding() ) : string</code><br>$str:提取目标<br>$start:开始提取的位置；负数的话从尾处第start个字符开始<br>$length ：提取长度；如果省略或传入NULL，则会提取到尾部<br>$encoding: 为字符编码；如果省略或是NULL，则使用内部字符编码。<br>返回值：提取到的字符<br><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.mb-substr.php">MORE</a>          </li>
+<li>is_string函数：检测变量是否是字符串。<br><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.is-string.php">MORE</a>                       </li>
+<li><code>mb_strpos</code>函数：查找字符串在另一个字符串中首次出现的位置<br>语法：<code>mb_strpos ( string $haystack , string $needle , int $offset = 0 , string $encoding = mb_internal_encoding() ) : int</code><br>第一个字符的位置是 0，第二个字符的位置是 1，以此类推。<br>$offset: 搜索位置的偏移。如果没有提供该参数，将会使用 0。负数的 offset 会从字符串尾部开始统计。<br><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.mb-strpos.php">MORE</a></li>
 </ul>
 </blockquote>
+</li>
+</ul>
 
             </div>
             <hr>
@@ -274,7 +311,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/WP/">WP</a>
+                      <a class="hover-with-bg" href="/categories/wp/">wp</a>
                     
                   </div>
                 
@@ -282,7 +319,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/WP/">WP</a>
+                      <a class="hover-with-bg" href="/tags/wp/">wp</a>
                     
                   </div>
                 
@@ -295,9 +332,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/01/15/BUU001/">
+                      <a href="/2021/01/15/GFSJ/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">BUU每日一题1</span>
+                        <span class="hidden-mobile">GFSJ</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -305,8 +342,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/12/04/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
-                        <span class="hidden-mobile">Php伪协议</span>
+                      <a href="/2020/12/06/SSRFWP/">
+                        <span class="hidden-mobile">SSRF--WP</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
