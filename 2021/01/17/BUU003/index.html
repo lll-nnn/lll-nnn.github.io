@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Hello World - lll-nnnのblog</title>
+  <title>BUU每日一题003 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hello World">
+            <span class="h2" id="subtitle" title="BUU每日一题003">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-01-16 22:51" pubdate>
-        2021年1月16日 晚上
+      <time datetime="2021-01-17 11:43" pubdate>
+        2021年1月17日 中午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      75 字
+      218 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      2
        分钟
     </span>
   
@@ -224,28 +224,36 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">BUU每日一题003</h1>
             
             <div class="markdown-body">
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="hljs bash">$ hexo server</code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="hljs bash">$ hexo generate</code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="hljs bash">$ hexo deploy</code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+              <h2 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h2><ul>
+<li><p>题目：[极客大挑战 2019]EasySQL<br>打开网页：<img src="https://ftp.bmp.ovh/imgs/2021/01/e63e9622302a8b1e.png" srcset="/img/loading.gif">           </p>
+</li>
+<li><p>分析<br>F12看到源码中有个check.php,访问后也没得到有价值的信息；<br>题目是EasySQL，那就是SQL注入了吧；<br>输入：用户名：1’       密码：1<br>发现报错：<img src="https://ftp.bmp.ovh/imgs/2021/01/3ddef4ddc63b0e86.png" srcset="/img/loading.gif"><br>所以应该是字符型注入           </p>
+</li>
+<li><p>解<br><img src="https://ftp.bmp.ovh/imgs/2021/01/06ec27df80b3a0e3.png" srcset="/img/loading.gif"><br>得到flag：<br><img src="https://ftp.bmp.ovh/imgs/2021/01/0144b5f527675cfb.png" srcset="/img/loading.gif"><br>或者使用万能密码：<code>admin&#39; or &#39;1&#39;=&#39;1</code><br>拼接的sql语句为：<code>username=admin&#39; or &#39;1&#39;=&#39;1&amp;password=admin&#39; or &#39;1&#39;=&#39;1</code><br>也可以得到flag。      </p>
+</li>
+<li><p>知识点      </p>
+</li>
+<li><p>*字符型注入**<br>存在SQL注入漏洞的URL参数为字符串类型（需要使用单引号表示）<br>关键在于<strong>单引号闭合</strong><br>mysql数据库对于单引号的规则如下：</p>
+<pre><code>  &gt; 单引号必须成对出现，否则数据库就会报错。           
+   如果两个单引号之间内容为空，数据库自动忽略。</code></pre>
+</li>
+</ul>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/wp/">wp</a>
+                    
+                  </div>
                 
               </div>
               

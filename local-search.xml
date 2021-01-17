@@ -4,13 +4,19 @@
   
   
   <entry>
-    <title>Hello World</title>
-    <link href="/2021/01/16/hello-world/"/>
-    <url>/2021/01/16/hello-world/</url>
+    <title>BUU每日一题003</title>
+    <link href="/2021/01/17/BUU003/"/>
+    <url>/2021/01/17/BUU003/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="hljs bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="hljs bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="hljs bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h2><ul><li><p>题目：[极客大挑战 2019]EasySQL<br>打开网页：<img src="https://ftp.bmp.ovh/imgs/2021/01/e63e9622302a8b1e.png">           </p></li><li><p>分析<br>F12看到源码中有个check.php,访问后也没得到有价值的信息；<br>题目是EasySQL，那就是SQL注入了吧；<br>输入：用户名：1’       密码：1<br>发现报错：<img src="https://ftp.bmp.ovh/imgs/2021/01/3ddef4ddc63b0e86.png"><br>所以应该是字符型注入           </p></li><li><p>解<br><img src="https://ftp.bmp.ovh/imgs/2021/01/06ec27df80b3a0e3.png"><br>得到flag：<br><img src="https://ftp.bmp.ovh/imgs/2021/01/0144b5f527675cfb.png"><br>或者使用万能密码：<code>admin&#39; or &#39;1&#39;=&#39;1</code><br>拼接的sql语句为：<code>username=admin&#39; or &#39;1&#39;=&#39;1&amp;password=admin&#39; or &#39;1&#39;=&#39;1</code><br>也可以得到flag。      </p></li><li><p>知识点      </p></li><li><p>*字符型注入**<br>存在SQL注入漏洞的URL参数为字符串类型（需要使用单引号表示）<br>关键在于<strong>单引号闭合</strong><br>mysql数据库对于单引号的规则如下：</p><pre><code>  &gt; 单引号必须成对出现，否则数据库就会报错。              如果两个单引号之间内容为空，数据库自动忽略。</code></pre></li></ul>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
     
   </entry>
   
@@ -166,31 +172,6 @@
     <tags>
       
       <tag>WP</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>MYPHP</title>
-    <link href="/2020/11/29/MYPHP/"/>
-    <url>/2020/11/29/MYPHP/</url>
-    
-    <content type="html"><![CDATA[<h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h1><hr><h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
-    
-    
-    <categories>
-      
-      <category>NOTE</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>NOTE</tag>
       
     </tags>
     
