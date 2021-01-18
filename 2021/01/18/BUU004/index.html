@@ -17,9 +17,25 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 - lll-nnnのblog</title>
+  <title>BUU每日一题004 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
 
 
 
@@ -47,7 +63,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -146,9 +162,46 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="BUU每日一题004">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-18 15:17" pubdate>
+        2021年1月18日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      194 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -161,70 +214,90 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 14 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/11/28/RCEWP/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Basic Rce---WP</span>
-      <time style="float: right;">11-28</time>
-    </a>
-  
-    
-    <a href="/2020/11/26/MarkDown/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">MarkDown基本使用</span>
-      <time style="float: right;">11-26</time>
-    </a>
-  
-    
-    <a href="/2020/11/26/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96WP/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Php变量覆盖</span>
-      <time style="float: right;">11-26</time>
-    </a>
-  
-    
-    <a href="/2020/11/24/html/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">HTML基础学习笔记</span>
-      <time style="float: right;">11-24</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">BUU每日一题004</h1>
+            
+            <div class="markdown-body">
+              <h2 id="四、"><a href="#四、" class="headerlink" title="四、"></a>四、</h2><ul>
+<li>题目：[SUCTF 2019]EasySQL<br><img src="https://ftp.bmp.ovh/imgs/2021/01/756a703b3be17b15.png" srcset="/img/loading.gif"><br>又是挨打的一天，哎       </li>
+<li>分析<br>试了几下，发现了四种回显，<br><img src="https://ftp.bmp.ovh/imgs/2021/01/a072e95bbf3c2e3e.png" srcset="/img/loading.gif"><br><img src="https://ftp.bmp.ovh/imgs/2021/01/3d393a1fd8f639c1.png" srcset="/img/loading.gif"><br>第三种输出<code>Nonono</code>;第四种无输出；看到0和1，本来以为是布尔值注入，但弄了半天也没个结果，还是去看WP吧     </li>
+<li>解<br>原来可以堆叠注入，居然没想到……..<br>然后<code>1;show databases;</code>得到库；<code>1;show tables;</code>得到个Flag表<img src="https://ftp.bmp.ovh/imgs/2021/01/4c78cf42207b044f.png" srcset="/img/loading.gif"><br><code>1;select * from Flag;</code>发现得不到flag；看WP说是过滤了flag、from等；而且比赛时源码泄露了？？<br>源码：<code>select $_GET[&#39;query&#39;] || flag from flag</code><br>payload1:<code>*,1</code>     </li>
+</ul>
+<p>payload2:<code>1;set sql_mode=PIPES_AS_CONCAT;select 1</code></p>
+<p>得到flag<img src="https://ftp.bmp.ovh/imgs/2021/01/a7cdd5bc1578ebf6.png" srcset="/img/loading.gif">       </p>
+<ul>
+<li><p>知识点</p>
+<p>  在oracle 缺省支持 通过 ‘ || ’ 来实现字符串拼接。</p>
+<p>  但在mysql 缺省不支持。需要调整mysql 的sql_mode<br>  模式：pipes_as_concat 来实现oracle 的一些功能。</p>
+</li>
+</ul>
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
-
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/wp/">wp</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/17/leve1/">
+                        <span class="hidden-mobile">Leve1</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -307,9 +380,15 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
 
 
 
