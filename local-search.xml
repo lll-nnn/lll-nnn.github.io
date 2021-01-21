@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日一题007</title>
+    <link href="/2021/01/21/BUU007/"/>
+    <url>/2021/01/21/BUU007/</url>
+    
+    <content type="html"><![CDATA[<h2 id="七、"><a href="#七、" class="headerlink" title="七、"></a>七、</h2><ul><li>题目：[ACTF2020 新生赛]Exec<br><img src="https://ftp.bmp.ovh/imgs/2021/01/3d1a38e39bff6cb0.png">    </li><li>分析<br>和昨天一样，又是一道ping的题目，<code>;ls</code>一下，发现一个<code>index.php</code>，再试一下<code>;ls -a</code>也没有flag相关的，这道题似乎没有什么过滤啊，查看根目录吧<code>ls /</code>,发现flag文件<img src="https://ftp.bmp.ovh/imgs/2021/01/9e0031abde862323.png"><br>之后cat得到flag。          </li><li>解<br><code>payload：cat /flag</code><img src="https://ftp.bmp.ovh/imgs/2021/01/455302e4fdf00d14.png"></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题006</title>
     <link href="/2021/01/20/BUU006/"/>
     <url>/2021/01/20/BUU006/</url>
