@@ -17,9 +17,25 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 - lll-nnnのblog</title>
+  <title>Buu每日一题008 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
 
 
 
@@ -47,7 +63,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -141,14 +157,51 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/011.jpg') no-repeat center center;
+         style="background: url('/img/llll.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="Buu每日一题008">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-22 16:10" pubdate>
+        2021年1月22日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      348 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -161,70 +214,93 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 22 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/01/17/BUU003/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">BUU每日一题003</span>
-      <time style="float: right;">01-17</time>
-    </a>
-  
-    
-    <a href="/2021/01/16/BUU002/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">BUU每日一题002</span>
-      <time style="float: right;">01-16</time>
-    </a>
-  
-    
-    <a href="/2021/01/15/GFSJ/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">GFSJ</span>
-      <time style="float: right;">01-15</time>
-    </a>
-  
-    
-    <a href="/2021/01/15/BUU001/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">BUU每日一题001</span>
-      <time style="float: right;">01-15</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Buu每日一题008</h1>
+            
+            <div class="markdown-body">
+              <h2 id="八、"><a href="#八、" class="headerlink" title="八、"></a>八、</h2><ul>
+<li>题目：[护网杯 2018]easy_tornado<br><img src="https://ftp.bmp.ovh/imgs/2021/01/dda44cc856f68e99.png" srcset="/img/loading.gif">        </li>
+<li>分析<br>三个文件，打开后<img src="https://ftp.bmp.ovh/imgs/2021/01/a8795c859978059a.png" srcset="/img/loading.gif"><br><img src="https://ftp.bmp.ovh/imgs/2021/01/f58ca7b8ec5ab046.png" srcset="/img/loading.gif"><br><img src="https://ftp.bmp.ovh/imgs/2021/01/4611fedc253b2ebd.png" srcset="/img/loading.gif"><br>第一个给了flag所在的文件<br>第二个render是渲染的意思，不知道有什么用<br>的三个hint是提示的意思<code>file?filename=/flag.txt&amp;filehash=3d518951e756f5b32ac20ed58cd605d6</code>提示的是后面filehash的加密方式吧，所以现在要找到cookie_secret了<br>其实一开始不知道这道题是什么意思，试图访问<br>fllllllllllllag，出现了报错的页面<img src="https://ftp.bmp.ovh/imgs/2021/01/7ccf51202666afbb.png" srcset="/img/loading.gif"><br>url中的<code>msg=Error</code>和页面显示的一样，改成123的话页面也能跟着变，所以用这个得到cookie_secret，但不是直接访问，而是<code>error?msg=&#123;&#123;handler.settings&#125;&#125;</code><img src="https://ftp.bmp.ovh/imgs/2021/01/db67ed2001e1f9a1.png" srcset="/img/loading.gif"><br>接下来按hint.txt中加密即可            </li>
+<li>解<br>payload：<code> file?filename=/fllllllllllllag&amp;filehash=06d6f09671ddf3eb27de7e2ef86a5d05</code> 得到flag<img src="https://ftp.bmp.ovh/imgs/2021/01/c2696ad17fea66f3.png" srcset="/img/loading.gif">    </li>
+<li>知识点      </li>
+<li>*tornado**       <blockquote>
+<p>Tornado 是一个Python网络框架， 异步网络库，最初由 开发 FriendFeed 。 通过使用非阻塞网络I / O，Tornado 可以扩展到成千上万的开放连接，非常适合 长轮询 ， WebSockets 等 需要与每个用户保持长期连接的应用程序。       </p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>在tornado模板中，存在一些可以访问的快速对象,这里用到的是handler.settings，handler 指向RequestHandler，而RequestHandler.settings又指向self.application.settings，所以handler.settings就指向RequestHandler.application.settings了，这里面就是我们的一些环境变量              </p>
+</blockquote>
+<blockquote>
+<p>看别人说这个叫做<strong>模板注入</strong><br>各种东西吧，看了一下午也不理解，哎  ,tbl<br><a target="_blank" rel="noopener" href="https://www.tornadoweb.org/en/latest/guide/security.html?highlight=cookie_secret#cookies-and-secure-cookies">MORE</a></p>
+</blockquote>
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/2021/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/2021/">1</a><span class="page-number current">2</span>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
-
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/wp/">wp</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/21/level9/">
+                        <span class="hidden-mobile">Level9</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -307,9 +383,15 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
 
 
 
