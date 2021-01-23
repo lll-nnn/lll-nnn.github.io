@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU009</title>
+    <link href="/2021/01/23/BUU009/"/>
+    <url>/2021/01/23/BUU009/</url>
+    
+    <content type="html"><![CDATA[<h2 id="九、"><a href="#九、" class="headerlink" title="九、"></a>九、</h2><ul><li>题目：[RoarCTF 2019]Easy Calc<br>打开靶场，一个简单的计算器，在源代码中发现一些东西<br><img src="https://raw.githubusercontent.com/lll-nnn/lll-nnn.github.io/master/picgo/20210123183527.png"><br>WAF和calc.php,访问calca.php<br><img src="https://raw.githubusercontent.com/lll-nnn/lll-nnn.github.io/master/picgo/20210123183726.png"></li><li>分析<br>本来以为是个简单的命令执行，但是我错了，输入num的值，发现不能输入字母，只能是数字或者运算符，才会有回显，<code>WAF</code><br>看了别人的wp说num前加括号可以绕过<br>然后输入<code> num=system(chr(39).ls.chr(39))</code>什么也没有，看了下<code> num=phpinfo()</code>发现system和其他一些函数被禁了,使用scandir,过滤的字符可以用chr编码         </li><li>解<br><code> num=var_dump(scandir(chr(47)))</code><br><img src="https://raw.githubusercontent.com/lll-nnn/lll-nnn.github.io/master/picgo/20210123185447.png"><br>打开f1agg：<code>? num=var_dump(file_get_contents(chr(47).chr(102).chr(49).chr(97).chr(103).chr(103)))</code>得到flag<br><img src="https://raw.githubusercontent.com/lll-nnn/lll-nnn.github.io/master/picgo/20210123185454.png">                   </li><li>知识点         </li><li>*几个函数：**      <blockquote><p><code>scandir</code> — 列出指定路径中的文件和目录,返回一个数组<br><code>file_get_contents</code> — 将整个文件读入一个字符串<br><code>var_dump</code> — 打印变量的相关信息        </p></blockquote></li></ul><p><strong>WAF</strong>      </p><blockquote><p>Web Application Firewall<br>Web应用防火墙是通过执行一系列针对HTTP/HTTPS的安全策略来专门为Web应用提供保护的一款产品。         </p></blockquote><p><strong>PHP的字符串解析特性</strong>         </p><blockquote><p>PHP将查询字符串（在URL或正文中）转换为内部<code>$_GET</code>或的关联数组<code>$_POST</code>。例如：<code>/?foo=bar</code>变成<code>Array([foo] =&gt; &quot;bar&quot;)</code>。值得注意的是，查询字符串在解析的过程中会将某些字符删除或用下划线代替。例如，<code>/?%20news[id%00=42</code>会转换为<code>Array([news_id] =&gt; 42)</code>。<br>在本题中利用空格，变量<code>num</code>变成了<code>空格num</code>，WAF找不到num这个变量，也就不起作用了，而变量进入到PHP语句中，空格会被删除       </p></blockquote><p>另外，这道题还可以用http走私攻击，但搞不懂      </p><p><code>tbl</code></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Buu每日一题008</title>
     <link href="/2021/01/22/Buu008/"/>
     <url>/2021/01/22/Buu008/</url>
