@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日一题010</title>
+    <link href="/2021/01/24/BUU010/"/>
+    <url>/2021/01/24/BUU010/</url>
+    
+    <content type="html"><![CDATA[<h2 id="十、"><a href="#十、" class="headerlink" title="十、"></a>十、</h2><ul><li>题目：[极客大挑战 2019]Http<br>打开网页    <img src="https://ftp.bmp.ovh/imgs/2021/01/48773f6455d50f52.png"></li><li>解<br>在源码中发现<code>Secret.php</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/b363b77c699739bc.png"><br>burp抓包，加上<code>Referer:    https://www.Sycsecret.com</code>值得注意的是<code>:</code>和<code>https://www.Sycsecret.com</code>中间要有四个空格<br><img src="https://ftp.bmp.ovh/imgs/2021/01/458f225deefe3ba1.png"><br>提示要用<code>Syclover</code>访问，将firefox改为Syclover<br><img src="https://ftp.bmp.ovh/imgs/2021/01/aa2a208a708a3cd6.png"><br>要在本地才可访问，将IP地址改为<code>127.0.0.1</code><img src="https://ftp.bmp.ovh/imgs/2021/01/305c71705fdf6cee.png"><br>得到flag          </li><li>知识点<br>几个常见请求头       <blockquote><p><code>Referer</code>:告诉服务器我是从哪个页面链接过来的<br><code>X-Forwarded-For </code>:用来表示 HTTP 请求端真实 IP<br><code>User-Agent:Mozilla/...</code>告诉HTTP服务器， 客户端使用的操作系统和浏览器的名称和版本<br><code>Cookie</code>用来存储一些用户信息以便让服务器辨别用户身份的<br><code>Cache-Control:max-age=10</code> 是通知浏览器10秒之内不要烦我，自己从缓冲区中刷新<br><code>Content-Type</code>:告诉客户端，资源文件的类型，还有字符编码<br><code>Data</code>:服务端发送资源时的服务时间<br><code>Server</code>:服务器和相对应的版本<br><code>Connection</code>:keep-alive告诉客户端服务器的tcp连接是一个长连接            </p></blockquote></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU009</title>
     <link href="/2021/01/23/BUU009/"/>
     <url>/2021/01/23/BUU009/</url>
