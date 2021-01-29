@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      690 字
+      726 字
     </span>
   
 
@@ -287,7 +287,10 @@ def change():
 <pre><code>def strlower(username):
     username = nodeprep.prepare(username)
     return username      </code></pre>
-<p>登录有session<br>改密码还需要session验证用户<br>注册和修改密码都要经过一次strlower<br>nodeprep.prepare函数会将unicode字符<code>ᴬ</code>转换成<code>A</code>，而<code>A</code>在调用一次nodeprep.prepare函数会把<code>A</code>转换成<code>a</code><br>所以可以用Unicode字符<code>ᴬᴰᴹᴵᴺ</code>注册，然后再修改一次密码，这样就把admin的密码重置了，然后登陆即可          </p>
+<p>登录有session<br>改密码还需要session验证用户<br>注册和修改密码都要经过一次strlower<br>nodeprep.prepare函数会将unicode字符<code>ᴬ</code>转换成<code>A</code>，而<code>A</code>在调用一次nodeprep.prepare函数会把<code>A</code>转换成<code>a</code><br><a target="_blank" rel="noopener" href="https://unicode-table.com/en/blocks/phonetic-extensions/">unicode字符</a><br><img src="https://ftp.bmp.ovh/imgs/2021/01/51a248229b93b61a.png" srcset="/img/loading.gif">         </p>
+<p>所以可以用Unicode字符<code>ᴬᴰᴹᴵᴺ</code>注册，注册完成后会发现显示的是ADMIN,然后再修改一次密码，这样就把admin的密码重置了，然后登陆即可               </p>
+<hr>
+<p>这道题还有其他一些解法，但我有点理解不了<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44677409/article/details/100733581">MORE</a></p>
 <h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul>
 <li><p>Unicode字符         </p>
 <blockquote>
@@ -322,6 +325,12 @@ def change():
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/01/29/BUU015/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">BUU每日一题015</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
