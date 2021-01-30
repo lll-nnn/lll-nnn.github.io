@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日一题016</title>
+    <link href="/2021/01/30/BUU016/"/>
+    <url>/2021/01/30/BUU016/</url>
+    
+    <content type="html"><![CDATA[<h2 id="十六、"><a href="#十六、" class="headerlink" title="十六、"></a>十六、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[极客大挑战 2019]BuyFlag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/87d8cda4288f7a77.png">     </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>F12源代码注释中有东西              </p><pre><code>    ~~~post money and password~~~if (isset($_POST[&#39;password&#39;])) &#123;    $password = $_POST[&#39;password&#39;];    if (is_numeric($password)) &#123;        echo &quot;password can&#39;t be number&lt;/br&gt;&quot;;    &#125;elseif ($password == 404) &#123;        echo &quot;Password Right!&lt;/br&gt;&quot;;    &#125;&#125;</code></pre><p>然后hackbar提交<code>password=404a&amp;&amp;money=100000000</code>没有任何回显，看wp说要抓包<br><img src="https://ftp.bmp.ovh/imgs/2021/01/0c41b9b77eda1d97.png"><br>把<code>user=0</code>改为<code>user=1</code>具体什么原因不清楚，看别人的wp，都说<code>ctfer的直觉</code>???????<br><img src="https://ftp.bmp.ovh/imgs/2021/01/4d7c3957f073e099.png"><br>提示太长，将<code>1000000000</code>改为科学计数法<code>1e9</code>得到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/9ef31f33edb1070a.png">    </p><hr><ul><li>其他解法<br>strcmp漏洞<br>php版本&lt;5.3<br>比较字符串<br><code>strcmp( string $str1, string $str2) : int</code><br>如果 str1 小于 str2 返回 &lt; 0；如果 str1 大于 str2 返回 &gt; 0；如果两者相等，返回 0<br>当这个函数接受到了不符合的类型，这个函数将发生错误，但是在5.3之前的php中，显示了报错的警告信息后，将return 0 !!!! 也就是虽然报了错，但却判定其相等了。<br>这道题money用的strcmp函数是猜的<br>传入<code>money[]=1</code>得到flag<img src="https://ftp.bmp.ovh/imgs/2021/01/a17a95096707fae9.png"><br>is_numeric函数<br>在后面加<code>%20</code>可以绕过<img src="https://ftp.bmp.ovh/imgs/2021/01/879552bbb54de0aa.png">           </li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题015</title>
     <link href="/2021/01/29/BUU015/"/>
     <url>/2021/01/29/BUU015/</url>
