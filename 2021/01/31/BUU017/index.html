@@ -17,9 +17,25 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 - lll-nnnのblog</title>
+  <title>BUU每日一题017 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
 
 
 
@@ -47,7 +63,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -141,14 +157,51 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/011.jpg') no-repeat center center;
+         style="background: url('/img/llll.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="BUU每日一题017">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-31 13:01" pubdate>
+        2021年1月31日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      468 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -161,58 +214,125 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 31 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/12/06/SSRFWP/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">SSRF--WP</span>
-      <time style="float: right;">12-06</time>
-    </a>
-  
-    
-    <a href="/2020/12/04/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Php伪协议</span>
-      <time style="float: right;">12-04</time>
-    </a>
-  
-    
-    <a href="/2020/12/04/bugku/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Bugku刷题记录</span>
-      <time style="float: right;">12-04</time>
-    </a>
-  
-    
-    <a href="/2020/12/03/wxyWP/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">伪协议--WP</span>
-      <time style="float: right;">12-03</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">BUU每日一题017</h1>
+            
+            <div class="markdown-body">
+              <h2 id="十七、"><a href="#十七、" class="headerlink" title="十七、"></a>十七、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[SUCTF 2019]CheckIn<br><img src="https://ftp.bmp.ovh/imgs/2021/01/cf0dc95dec9e9c82.png" srcset="/img/loading.gif">   </p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>文件上传<br>并且给了源码<code>https://github.com/team-su/SUCTF-2019/tree/master/Web/checkIn</code>          </p>
+<pre><code>&lt;?php
+// error_reporting(0);
+$userdir = &quot;uploads/&quot; . md5($_SERVER[&quot;REMOTE_ADDR&quot;]);
+if (!file_exists($userdir)) &#123;
+    mkdir($userdir, 0777, true);
+&#125;
+file_put_contents($userdir . &quot;/index.php&quot;, &quot;&quot;);
+if (isset($_POST[&quot;upload&quot;])) &#123;
+    $tmp_name = $_FILES[&quot;fileUpload&quot;][&quot;tmp_name&quot;];
+    $name = $_FILES[&quot;fileUpload&quot;][&quot;name&quot;];
+    if (!$tmp_name) &#123;
+        die(&quot;filesize too big!&quot;);
+    &#125;
+    if (!$name) &#123;
+        die(&quot;filename cannot be empty!&quot;);
+    &#125;
+    $extension = substr($name, strrpos($name, &quot;.&quot;) + 1);         //得到后缀
+    if (preg_match(&quot;/ph|htacess/i&quot;, $extension)) &#123;
+        die(&quot;illegal suffix!&quot;);           //i区分了大小写
+    &#125;
+    if (mb_strpos(file_get_contents($tmp_name), &quot;&lt;?&quot;) !== FALSE) &#123;
+        die(&quot;&amp;lt;? in contents!&quot;);
+    &#125;                  //过滤&lt;?
+    $image_type = exif_imagetype($tmp_name);    //判断图像类型
+    if (!$image_type) &#123;
+        die(&quot;exif_imagetype:not image!&quot;);
+    &#125;
+    $upload_file_path = $userdir . &quot;/&quot; . $name;
+    move_uploaded_file($tmp_name, $upload_file_path);
+    echo &quot;Your dir &quot; . $userdir. &#39; &lt;br&gt;&#39;;
+    echo &#39;Your files : &lt;br&gt;&#39;;
+    var_dump(scandir($userdir));
+&#125;</code></pre>
+<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>看别人wp知道需要上传个<code>.user.ini</code><br>然后在上传图片马<br><code>exif_imagetype</code>可以用文件头绕过<code>GIF89a</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/39c550bc2f0f01d7.png" srcset="/img/loading.gif"><br><img src="https://ftp.bmp.ovh/imgs/2021/01/707658987a1ea540.png" srcset="/img/loading.gif"><br>蚁剑连接，根目录下找到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/643389a70dcab484.png" srcset="/img/loading.gif"><br>或者<br>构造这样的马：<code>&lt;script language=&quot;php&quot;&gt;system(&#39;cat /flag&#39;);&lt;/script&gt; </code>直接访问<code>http://f07dace7-4865-447a-acdb-e7612afc49d7.node3.buuoj.cn/uploads/852aff287f54bca0ed7757a702913e50/index.php</code>即可得到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/8b3db3af2203d029.png" srcset="/img/loading.gif">     </p>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul>
+<li><code>.user.ini</code>         <ul>
+<li> php.ini是php默认的配置文件，其中包含有许多php的配置，这些配置又分为下面几种<img src="https://ftp.bmp.ovh/imgs/2021/01/e091aabefa65091e.png" srcset="/img/loading.gif">        </li>
+<li> <code>PHP_INI_USER</code>的配置项可以在<code>.user.ini</code>中设置  </li>
+<li> <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/ini.list.php">php.ini配置选项列表</a>        </li>
+<li>其中有一个<code>auto_append_file</code> <img src="https://ftp.bmp.ovh/imgs/2021/01/5408d7feb83d1e15.png" srcset="/img/loading.gif">意思就是可以让php文件执行前包含一个指定的文件         </li>
+<li>修改了<code>.user.ini</code>后，不需要重启服务器中间件，只需要等待user_ini.cache_ttl所设置的时间（默认为300秒），即可被重新加载　               </li>
+<li>利用条件：1.服务器脚本语言为PHP；2.上传的目录下要有可执行的php文件（如本题的index.php）3.服务器使用CGI/FastCGI模式</li>
+</ul>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://wooyun.js.org/drops/user.ini%E6%96%87%E4%BB%B6%E6%9E%84%E6%88%90%E7%9A%84PHP%E5%90%8E%E9%97%A8.html">MORE</a></p>
 
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/wp/">wp</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/30/BUU016/">
+                        <span class="hidden-mobile">BUU每日一题016</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -295,9 +415,15 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
 
 
 
