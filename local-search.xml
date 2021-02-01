@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日一题018</title>
+    <link href="/2021/02/01/BUU018/"/>
+    <url>/2021/02/01/BUU018/</url>
+    
+    <content type="html"><![CDATA[<h2 id="十八、"><a href="#十八、" class="headerlink" title="十八、"></a>十八、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[BJDCTF2020]Easy MD5<br><img src="https://ftp.bmp.ovh/imgs/2021/02/a09e4e215d6be9b9.png"> </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>无论提交什么都没有什么回应<br>响应头里发现个hint<img src="https://ftp.bmp.ovh/imgs/2021/02/85ff7f61e127f882.png"><br>提交的参数会经过md5函数，true的意思是返回16位原始二进制格式的字符串<img src="https://ftp.bmp.ovh/imgs/2021/02/44eeb75c3480556f.png"><br>对于一个字符串，MD5默认时返回32位的16进制的字符串，有true后，32位每两位对应的十进制对应的ASCII码中的字符<br>比如：<code>ffifdyop</code>MD5后是<code>276f722736c95d99e921722cf9ed621c</code>,27对应十进制的39，39在ASCII码表中是<code>&#39;</code>单引号；所以上面的经过<code>md5($pass,true)</code>后是<code>&#39;or&#39;6\xc9]\x99\xe9!r,\xf9\xedb\x1c</code>带入到sql语句中就是<code>select * from &#39;admin&#39; where password=&#39;&#39; or &#39;6xxxxx&#39;</code>就永真了<br>输入<code>ffifdyop</code>查询<img src="https://ftp.bmp.ovh/imgs/2021/02/099cb5b53d346299.png"><br>可以数组绕过         </p><h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p><code>a[]=1&amp;b[]=2</code><img src="https://ftp.bmp.ovh/imgs/2021/02/2ac547d4b6ae0d1d.png"><br>访问<code>levell14.php</code><img src="https://ftp.bmp.ovh/imgs/2021/02/4ff741a8ea4d3ca8.png">        </p><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p><code>select * from &#39;admin&#39; where password=md5($pass,true)</code>绕过——–<code>ffifdyop</code><br>php弱类型比较<br><code>0exxx</code><br><code>数组</code>        </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题017</title>
     <link href="/2021/01/31/BUU017/"/>
     <url>/2021/01/31/BUU017/</url>
