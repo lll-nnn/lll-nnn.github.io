@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>BUU每日一题023</title>
+    <link href="/2021/02/06/BUU023/"/>
+    <url>/2021/02/06/BUU023/</url>
+    
+    <content type="html"><![CDATA[<h2 id="二十三、"><a href="#二十三、" class="headerlink" title="二十三、"></a>二十三、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[GXYCTF2019]BabySQli<br><img src="https://ftp.bmp.ovh/imgs/2021/02/882964df2e56c968.png">  </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><code>name=admin&amp;pw=123</code>———–<code>wrong pass!</code><br><code>name=admin&#39;&amp;pw=123</code>———-<code>报错</code><br><code>name=admin&amp;pw=1&#39;</code>————<code>wrong pass!</code><br>说明<code>name</code>存在注入，<code>pw</code>不存在<br>在<code>search.php</code>页面源码注释中发现：<br><code>MMZFM422K5HDASKDN5TVU3SKOZRFGQRRMMZFM6KJJBSG6WSYJJWESSCWPJNFQSTVLFLTC3CJIQYGOSTZKJ2VSVZRNRFHOPJ5</code><br>base32然后base64解码得到SQL语句<br><code>select * from user where username = &#39;$name&#39;</code><br><code>or、=、(、)</code>被过滤，但OR可以<br><code>admin&#39; Order by 4#</code>———<code>Error: Unknown column &#39;4&#39; in &#39;order clause&#39; </code>说明有三列<br><code>1&#39; union select 1,2,3#</code>看回显位，结果是<code>wrong user!</code><br>将1改为<code>&#39;admin&#39;</code>,还是wrong user；改到第二位，变成了wrong pass，说明admin在第二列       </p><hr><p>在BUU给的这道题的源码中<img src="https://ftp.bmp.ovh/imgs/2021/02/0eafd76c74fd6cb3.png"><br><code>arr[1]==&#39;admin&#39;</code>那么<code>arr[2]</code>应该就是输入的pw吧<br>需要<code>md5($password) == $arr[2]</code><br>所以只要传入的pw的MD5等于第三位就行了 </p><hr><p>如果没有源码的提示，正确的思路应该是利用sql的特性：<code>在联合查询并不存在的数据时，联合查询就会构造一个虚拟的数据</code>     </p><h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>name=1&#39; union select 1,&#39;admin&#39;,&#39;202cb962ac59075b964b07152d234b70&#39;#</code>&amp;&amp;<code>pw=123</code><img src="https://ftp.bmp.ovh/imgs/2021/02/dee35a5c0bf7263c.png">        </p><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p><code>sql特性</code>     </p><blockquote><p><img src="https://ftp.bmp.ovh/imgs/2021/02/0b5f477cb43f3a6c.png"><br><img src="https://ftp.bmp.ovh/imgs/2021/02/0c57b06eb2a85b33.png"></p></blockquote>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Ctfhub</title>
+    <link href="/2021/02/05/ctfhub/"/>
+    <url>/2021/02/05/ctfhub/</url>
+    
+    <content type="html"><![CDATA[<h2 id="备份文件下载"><a href="#备份文件下载" class="headerlink" title="备份文件下载"></a>备份文件下载</h2><h3 id="网站源码"><a href="#网站源码" class="headerlink" title="网站源码"></a>网站源码</h3><p>打开靶场是这样<br><img src="https://s1.imagehub.cc/images/2021/02/05/01.png" alt="01.png"><br>试出了<code>www.zip</code><img src="https://ftp.bmp.ovh/imgs/2021/02/e4a53dc8cc6e31e3.png"><br>差点让我以为是misc。。。。。。。。<br>看wp说是访问该文件名才能得到    <img src="https://s1.imagehub.cc/images/2021/02/05/03.png" alt="03.png">      </p><h3 id="vim缓存"><a href="#vim缓存" class="headerlink" title="vim缓存"></a>vim缓存</h3><ul><li>知识点    <blockquote><p>vim编辑文件会自动生成备份文件以及临时文件<br>临时文件是在编辑文本时就会创建的文件，如果程序正常退出，临时文件自动删除，如果意外退出就会保留，文件名为  <code>.filename.swp，</code>（第一次产生的交换文件名为<code>.filename.txt.swp</code>；再次意外退出后，将会产生名为<code>.filename.txt.swo</code>的交换文件；而第三次产生的交换文件则为<code>.filename.txt.swn</code>）      </p></blockquote></li></ul><p><img src="https://s1.imagehub.cc/images/2021/02/05/04.png" alt="04.png"><br>根据提示，访问<code>.index.php.swp</code>得到文件       </p><h3 id="DS-Store"><a href="#DS-Store" class="headerlink" title=".DS_Store"></a>.DS_Store</h3><ul><li>知识点   <blockquote><p><code>.DS_Store</code>是 Mac OS 保存文件夹的自定义属性的隐藏文件。通过<code>.DS_Store</code>可以知道这个目录里面所有文件的清单。</p></blockquote></li></ul><p>得到文件后用记事本打开，notepad会有许多<code>NULL</code>      </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>note</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题022</title>
     <link href="/2021/02/05/BUU022/"/>
     <url>/2021/02/05/BUU022/</url>
