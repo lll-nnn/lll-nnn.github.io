@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日一题025</title>
+    <link href="/2021/02/08/BUU025/"/>
+    <url>/2021/02/08/BUU025/</url>
+    
+    <content type="html"><![CDATA[<h2 id="二十五、"><a href="#二十五、" class="headerlink" title="二十五、"></a>二十五、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[MRCTF2020]你传你ma呢<br><img src="https://ftp.bmp.ovh/imgs/2021/02/c1862f50b71396ed.png">  </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>一道上传题<br>php、phtml都不能传，只能是jpg或者png<br>看wp说是要用到<code>.htaccess</code><br>里面写上</p><pre><code>SetHandler application/x-httpd-php//这语句的作用是让Apache将其他类型文件均以php格式解析     </code></pre><h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>先上传<code>.htaccess</code><br>抓包改一下<code>Content-Type</code><br>在上传马，后缀改为<code>.jpg</code><br>蚁剑连接<br>根目录下得到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/02/8fe79ecab142d608.png">  </p><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p><code>.htaccess</code>文件     </p><blockquote><p><code>.htaccess</code>文件(或者”分布式配置文件”）,全称是Hypertext Access(超文本入口)。提供了针对目录改变配置的方法， 即，在一个特定的文档目录中放置一个包含一个或多个指令的文件， 以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过Apache的AllowOverride指令来设置。    </p><p><code>SetHandler application/x-httpd-php .jpg</code><br>//将jpg以php解析 </p></blockquote>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题024</title>
     <link href="/2021/02/07/BUU024/"/>
     <url>/2021/02/07/BUU024/</url>
