@@ -181,6 +181,49 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/02/09/BUU026/">BUU每日一题026</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/09/BUU026/">
+          
+          
+            
+          
+          二十六、题目[BJDCTF 2nd]fake google 
+分析源码中没发现什么随便输个看看不知道提示的什么意思，看了wp知道是ssti模板注入按下图判断模板引擎输入：&#123;&#123;7*7&#125;&#125;所以应该是jinja2；如果用tplmap的话可以直接得到是jinja2         
+解payload：&#123;% for c in [].__class__.__b
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-09 17:16" pubdate>
+              2021-02-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/02/08/BUU025/">BUU每日一题025</a>
       </h1>
 
@@ -577,56 +620,11 @@ Do you wan
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/31/BUU017/">BUU每日一题017</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/31/BUU017/">
-          
-          
-            
-          
-          十七、题目[SUCTF 2019]CheckIn   
-分析文件上传并且给了源码https://github.com/team-su/SUCTF-2019/tree/master/Web/checkIn          
-&lt;?php
-// error_reporting(0);
-$userdir = &quot;uploads/&quot; . md5($_SERVER[&quot;REM
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-31 13:01" pubdate>
-              2021-01-31
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

