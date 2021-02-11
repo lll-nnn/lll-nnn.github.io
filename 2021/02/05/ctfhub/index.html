@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      349 字
+      638 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      7
        分钟
     </span>
   
@@ -244,7 +244,14 @@
 <p>得到文件后用记事本打开，notepad会有许多<code>NULL</code>      </p>
 <h2 id="Git泄露"><a href="#Git泄露" class="headerlink" title="Git泄露"></a>Git泄露</h2><h3 id="log"><a href="#log" class="headerlink" title="log"></a>log</h3><p>根据提示用<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44841017/article/details/105733100">githack</a><br><code>python GitHack.py http://challenge-01d55127514c37b5.sandbox.ctfhub.com:10080/.git/</code>需要注意的是，githack需要在python2下运行kali默认python是2.x,如需更换运行命令<code>alias python=’/usr/bin/python3’</code>这只是暂时的，重新开启终端会还原 <img src="https://ftp.bmp.ovh/imgs/2021/02/723886d5344eeed7.png" srcset="/img/loading.gif"><br><code>git log</code>查看提交commit history<img src="https://ftp.bmp.ovh/imgs/2021/02/c0eb6c8ca5a7bde7.png" srcset="/img/loading.gif"><br><code>git diff</code>比较文件的不同，即比较文件在暂存区和工作区的差异。<br><img src="https://ftp.bmp.ovh/imgs/2021/02/e469825c9cdfb249.png" srcset="/img/loading.gif"><br>或者直接<code>git log -p</code>也可<a target="_blank" rel="noopener" href="https://blog.csdn.net/jjlovefj/article/details/86476925">more</a></p>
 <h3 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h3><p><img src="https://ftp.bmp.ovh/imgs/2021/02/0a4ff12cf20d5d8c.png" srcset="/img/loading.gif"> </p>
-<h3 id="index"><a href="#index" class="headerlink" title="index"></a>index</h3><p><img src="https://ftp.bmp.ovh/imgs/2021/02/71d91a8d826e6a27.png" srcset="/img/loading.gif"><br><img src="https://ae02.alicdn.com/kf/H4a3d4c7743ad4c14aa8436a33fcd3867E.jpg" srcset="/img/loading.gif" alt="206.png"></p>
+<h3 id="index"><a href="#index" class="headerlink" title="index"></a>index</h3><p><img src="https://ftp.bmp.ovh/imgs/2021/02/71d91a8d826e6a27.png" srcset="/img/loading.gif"><br><img src="https://ae02.alicdn.com/kf/H4a3d4c7743ad4c14aa8436a33fcd3867E.jpg" srcset="/img/loading.gif" alt="206.png">      </p>
+<h2 id="svn泄露"><a href="#svn泄露" class="headerlink" title="svn泄露"></a>svn泄露</h2><p><img src="https://ae04.alicdn.com/kf/H4a82f10c66a441eb88e7f4605de8a5fc4.jpg" srcset="/img/loading.gif" alt="301.png"><br>当开发人员使用 SVN 进行版本控制，对站点自动部署。如果配置不当,可能会将.svn文件夹直接部署到线上环境。这就引起了 SVN 泄露漏洞。</p>
+<p>需要用到一个工具<code>https://github.com/kost/dvcs-ripper</code>            </p>
+<ul>
+<li>安装 ：<code>sudo apt-get install perl libio-socket-ssl-perl libdbd-sqlite3-perl libclass-dbi-perl libio-all-lwp-perl</code>     </li>
+<li>下载：<code>git clone https://github.com/kost/dvcs-ripper</code>       </li>
+<li>进入目录—-<code>./rip-svn.pl -v -u http://challenge-05b7bb06a8d52597.sandbox.ctfhub.com:10080/.svn/</code><br><img src="https://ae02.alicdn.com/kf/H29c34143c01d4d5d8e779d0e2486633bO.jpg" srcset="/img/loading.gif" alt="302.png"><br>svn1.7及以后版本则只在项目根目录生成一个.svn文件夹，里面的pristine文件夹里包含了整个项目的所有文件备份<img src="https://sc02.alicdn.com/kf/He5b38923481e44aa991f5d9a8af4c606r.jpg" srcset="/img/loading.gif" alt="303.png">     <h2 id="HG泄露"><a href="#HG泄露" class="headerlink" title="HG泄露"></a>HG泄露</h2>当开发人员使用 Mercurial 进行版本控制，对站点自动部署。如果配置不当,可能会将.hg 文件夹直接部署到线上环境。这就引起了 hg 泄露漏洞。<br>使用<code>dvcs-ripper</code>里的<code>rip-hg.pl</code>获取<code>.hg</code><br><img src="https://ae03.alicdn.com/kf/H8d9f7059f12149038acda9a79def182fz.jpg" srcset="/img/loading.gif" alt="304.png"><br>进入<code>.hg/</code><img src="https://ae04.alicdn.com/kf/H20378cb9f63b45fb87a76966b69ee5b82.jpg" srcset="/img/loading.gif" alt="305.png"><br>网页访问得到flag     <h2 id="密码口令"><a href="#密码口令" class="headerlink" title="密码口令"></a>密码口令</h2><h3 id="默认口令"><a href="#默认口令" class="headerlink" title="默认口令"></a>默认口令</h3><img src="https://ae04.alicdn.com/kf/H1008cfe9ce7444b3941d6673d77452d1T.jpg" srcset="/img/loading.gif" alt="401.png"><br>百度搜索:<code>常见设备默认口令</code><br>找到亿邮邮件网关的默认用户名和密码—登录<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40399254/article/details/106469069">常见设备默认口令</a></li>
+</ul>
 
             </div>
             <hr>
