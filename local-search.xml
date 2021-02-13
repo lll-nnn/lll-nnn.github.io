@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU030</title>
+    <link href="/2021/02/13/BUU030/"/>
+    <url>/2021/02/13/BUU030/</url>
+    
+    <content type="html"><![CDATA[<h2 id="三十、"><a href="#三十、" class="headerlink" title="三十、"></a>三十、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[RoarCTF 2019]Easy Java<br><img src="https://ae03.alicdn.com/kf/H06f76bd90727420d9a893f3f4a243f6c6.jpg" alt="01.png">          </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>题目是easy Java，对Java的了解不是很多<br>help点击后的页面是<img src="https://ae04.alicdn.com/kf/Had5c3fd12baf421f8b1023f21b324039V.jpg" alt="02.png"><br>看wp说改为以POST方式，得到一个word文件，但没啥用<br>考点：<code>WEB-INF/web.xml</code>泄露          </p><h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p><code>filename=WEB-INF/web.xml</code>提交得到文件<img src="https://ae04.alicdn.com/kf/H22b1b111c74341ed9855f318ce43b62ba.jpg" alt="03.png"><br>在文件中发现flag相关的路径<code>/Flag</code><img src="https://ae02.alicdn.com/kf/H956a300f54424ef691634d55c4389913L.jpg" alt="04.png"><br>访问，得到路径<img src="https://ae03.alicdn.com/kf/H1309e326ea0b42e395c89b6a17a516cak.jpg" alt="05.png"><br>这个和刚才文件里的<code>FlagController</code>的完整类名一样，只不过<code>/</code>换成<code>.</code><br>提交<code>filename=WEB-INF/classes/com/wm/ctf/FlagController.class</code>得到文件，发现一串base64，解码得到flag<img src="https://ae03.alicdn.com/kf/H5c274b3ec4a7496684b8bc36509309af6.jpg" alt="06.png">     </p><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul><li>WEB-INF/web.xml泄露<br><img src="https://ae02.alicdn.com/kf/H675a2d221b8c489b8ceae6abde6a176dX.jpg" alt="07.png">        </li><li>Java web工程目录结构<br><img src="https://ae03.alicdn.com/kf/H02fb99991afc4e9a8f4d9c7e395a1fa6G.jpg" alt="08.png">     </li><li>servlet访问URL映射配置    </li><li>Servlet（Server Applet）是Java Servlet的简称，称为小服务程序或服务连接器，用Java编写的服务器端程序，具有独立于平台和协议的特性，主要功能在于交互式地浏览和生成数据，生成动态Web内容。            </li><li>狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。Servlet运行于支持Java的应用服务器中。从原理上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。        </li><li>由于客户端是通过URL地址访问Web服务器中的资源，所以Servlet程序若想被外界访问，必须把Servlet程序映射到一个URL地址上，这个工作在web.xml文件中使用<servlet>元素和<servlet-mapping>元素完成。<servlet>元素用于注册Servlet，它包含有两个主要的子元素：<servlet-name>和<servlet-class>，分别用于设置Servlet的注册名称和Servlet的完整类名。一个<servlet-mapping>元素用于映射一个已注册的Servlet的一个对外访问路径，它包含有两个子元素：<servlet-name>和<url-pattern>，分别用于指定Servlet的注册名称和Servlet的对外访问路径，如：</li></ul><p><img src="https://ae04.alicdn.com/kf/He9286c2954d14cf28a02afe6f7531d1ah.jpg" alt="09.png">        </p><p><a href="https://www.cnblogs.com/karsa/p/13130130.html">转自</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题029</title>
     <link href="/2021/02/12/BUU029/"/>
     <url>/2021/02/12/BUU029/</url>

@@ -17,9 +17,25 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 - lll-nnnのblog</title>
+  <title>BUU030 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
 
 
 
@@ -47,7 +63,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -141,14 +157,51 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/011.jpg') no-repeat center center;
+         style="background: url('/img/llll.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="BUU030">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-13 17:42" pubdate>
+        2021年2月13日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      486 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      5
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -161,82 +214,90 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 46 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/12/04/bugku/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Bugku刷题记录</span>
-      <time style="float: right;">12-04</time>
-    </a>
-  
-    
-    <a href="/2020/12/03/wxyWP/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">伪协议--WP</span>
-      <time style="float: right;">12-03</time>
-    </a>
-  
-    
-    <a href="/2020/11/28/RCEWP/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Basic Rce---WP</span>
-      <time style="float: right;">11-28</time>
-    </a>
-  
-    
-    <a href="/2020/11/26/MarkDown/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">MarkDown基本使用</span>
-      <time style="float: right;">11-26</time>
-    </a>
-  
-    
-    <a href="/2020/11/26/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96WP/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Php变量覆盖</span>
-      <time style="float: right;">11-26</time>
-    </a>
-  
-    
-    <a href="/2020/11/24/html/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">HTML基础学习笔记</span>
-      <time style="float: right;">11-24</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">BUU030</h1>
+            
+            <div class="markdown-body">
+              <h2 id="三十、"><a href="#三十、" class="headerlink" title="三十、"></a>三十、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[RoarCTF 2019]Easy Java<br><img src="https://ae03.alicdn.com/kf/H06f76bd90727420d9a893f3f4a243f6c6.jpg" srcset="/img/loading.gif" alt="01.png">          </p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>题目是easy Java，对Java的了解不是很多<br>help点击后的页面是<img src="https://ae04.alicdn.com/kf/Had5c3fd12baf421f8b1023f21b324039V.jpg" srcset="/img/loading.gif" alt="02.png"><br>看wp说改为以POST方式，得到一个word文件，但没啥用<br>考点：<code>WEB-INF/web.xml</code>泄露          </p>
+<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p><code>filename=WEB-INF/web.xml</code>提交得到文件<img src="https://ae04.alicdn.com/kf/H22b1b111c74341ed9855f318ce43b62ba.jpg" srcset="/img/loading.gif" alt="03.png"><br>在文件中发现flag相关的路径<code>/Flag</code><img src="https://ae02.alicdn.com/kf/H956a300f54424ef691634d55c4389913L.jpg" srcset="/img/loading.gif" alt="04.png"><br>访问，得到路径<img src="https://ae03.alicdn.com/kf/H1309e326ea0b42e395c89b6a17a516cak.jpg" srcset="/img/loading.gif" alt="05.png"><br>这个和刚才文件里的<code>FlagController</code>的完整类名一样，只不过<code>/</code>换成<code>.</code><br>提交<code>filename=WEB-INF/classes/com/wm/ctf/FlagController.class</code>得到文件，发现一串base64，解码得到flag<img src="https://ae03.alicdn.com/kf/H5c274b3ec4a7496684b8bc36509309af6.jpg" srcset="/img/loading.gif" alt="06.png">     </p>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul>
+<li>WEB-INF/web.xml泄露<br><img src="https://ae02.alicdn.com/kf/H675a2d221b8c489b8ceae6abde6a176dX.jpg" srcset="/img/loading.gif" alt="07.png">        </li>
+<li>Java web工程目录结构<br><img src="https://ae03.alicdn.com/kf/H02fb99991afc4e9a8f4d9c7e395a1fa6G.jpg" srcset="/img/loading.gif" alt="08.png">     </li>
+<li>servlet访问URL映射配置    </li>
+<li>Servlet（Server Applet）是Java Servlet的简称，称为小服务程序或服务连接器，用Java编写的服务器端程序，具有独立于平台和协议的特性，主要功能在于交互式地浏览和生成数据，生成动态Web内容。            </li>
+<li>狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。Servlet运行于支持Java的应用服务器中。从原理上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。        </li>
+<li>由于客户端是通过URL地址访问Web服务器中的资源，所以Servlet程序若想被外界访问，必须把Servlet程序映射到一个URL地址上，这个工作在web.xml文件中使用<servlet>元素和<servlet-mapping>元素完成。<servlet>元素用于注册Servlet，它包含有两个主要的子元素：<servlet-name>和<servlet-class>，分别用于设置Servlet的注册名称和Servlet的完整类名。一个<servlet-mapping>元素用于映射一个已注册的Servlet的一个对外访问路径，它包含有两个子元素：<servlet-name>和<url-pattern>，分别用于指定Servlet的注册名称和Servlet的对外访问路径，如：</li>
+</ul>
+<p><img src="https://ae04.alicdn.com/kf/He9286c2954d14cf28a02afe6f7531d1ah.jpg" srcset="/img/loading.gif" alt="09.png">        </p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/karsa/p/13130130.html">转自</a></p>
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/page/4/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
-
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/wp/">wp</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/12/BUU029/">
+                        <span class="hidden-mobile">BUU每日一题029</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -319,9 +380,15 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
 
 
 
