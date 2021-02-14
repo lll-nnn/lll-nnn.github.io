@@ -4,7 +4,26 @@
   
   
   <entry>
-    <title>BUU030</title>
+    <title>BUU每日一题031</title>
+    <link href="/2021/02/14/BUU031/"/>
+    <url>/2021/02/14/BUU031/</url>
+    
+    <content type="html"><![CDATA[<h2 id="三十一、"><a href="#三十一、" class="headerlink" title="三十一、"></a>三十一、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[GKCTF2020]cve版签到<img src="https://ae04.alicdn.com/kf/Hd6f117af6427409b82e72633a23c23f80.jpg" alt="01.png">        </p><p><img src="https://ae04.alicdn.com/kf/H28029521cc6044938bd53bc4f26855ec2.jpg" alt="02.png">         </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>hint中应该是一个漏洞编号，百度一下<img src="https://ae02.alicdn.com/kf/H6eef43faf302452385b72f1c2a050747z.jpg" alt="03.png"><br>看下PHP版本  <img src="https://ae02.alicdn.com/kf/H5ef7d07828da403f95bf00e6b8b83553n.jpg" alt="04.png"><br>符合<br>看一下<code>127.0.0.1</code>,但用<code>\ 0</code>截断没回显，换成<code>%00</code>即可<img src="https://ae02.alicdn.com/kf/H1edfc2e6326f4b59bce8ef6367469123v.jpg" alt="05.png"><br>host结尾必须是123，将1改为123即可      </p><h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>?url=http://127.0.0.123%00www.ctfhub.com</code><br><img src="https://sc02.alicdn.com/kf/H23cec03d1a224fbf91a96bd93d2d4631t.jpg" alt="06.png"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>BUU每日一题030</title>
     <link href="/2021/02/13/BUU030/"/>
     <url>/2021/02/13/BUU030/</url>
     
