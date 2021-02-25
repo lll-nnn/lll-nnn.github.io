@@ -229,7 +229,7 @@
             <div class="markdown-body">
               <h2 id="十六、"><a href="#十六、" class="headerlink" title="十六、"></a>十六、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[极客大挑战 2019]BuyFlag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/87d8cda4288f7a77.png" srcset="/img/loading.gif">     </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>F12源代码注释中有东西              </p>
-<pre><code>    ~~~post money and password~~~
+<div class="hljs"><pre><code>    ~~~post money and password~~~
 if (isset($_POST[&#39;password&#39;])) &#123;
     $password = $_POST[&#39;password&#39;];
     if (is_numeric($password)) &#123;
@@ -237,7 +237,7 @@ if (isset($_POST[&#39;password&#39;])) &#123;
     &#125;elseif ($password == 404) &#123;
         echo &quot;Password Right!&lt;/br&gt;&quot;;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>然后hackbar提交<code>password=404a&amp;&amp;money=100000000</code>没有任何回显，看wp说要抓包<br><img src="https://ftp.bmp.ovh/imgs/2021/01/0c41b9b77eda1d97.png" srcset="/img/loading.gif"><br>把<code>user=0</code>改为<code>user=1</code>具体什么原因不清楚，看别人的wp，都说<code>ctfer的直觉</code>???????<br><img src="https://ftp.bmp.ovh/imgs/2021/01/4d7c3957f073e099.png" srcset="/img/loading.gif"><br>提示太长，将<code>1000000000</code>改为科学计数法<code>1e9</code>得到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/9ef31f33edb1070a.png" srcset="/img/loading.gif">    </p>
 <hr>
 <ul>
@@ -451,10 +451,12 @@ if (isset($_POST[&#39;password&#39;])) &#123;
 
 
 
-//背景线条
-{% if theme.canvas_nest %}
+<!--//背景线条      {% if theme.canvas_nest %}-->
 <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 {% endif %}
+
+<!-- 样式二（飘动的彩带） -->
+<script src="https://g.joyinshare.com/hc/piao.js" type="text/javascript"></script>
 
 </body>
 </html>

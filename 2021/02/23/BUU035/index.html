@@ -229,7 +229,7 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[BJDCTF2020]Mark loves cat<br><img src="https://ftp.bmp.ovh/imgs/2021/02/7c08fb9e1218a7c9.png" srcset="/img/loading.gif"></p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>一个看上去很正常的网页，没发现什么点—–扫目录吧<br>看到<code>.git</code>泄露<br>githack<br>下来的只有一个<code>assets</code>文件夹，看别人的WP是有<code>index.php</code>的？？？？？？？       </p>
-<pre><code>&lt;?php
+<div class="hljs"><pre><code>&lt;?php
 
 include &#39;flag.php&#39;;
 
@@ -261,7 +261,7 @@ if($_POST[&#39;flag&#39;] === &#39;flag&#39;  || $_GET[&#39;flag&#39;] === &#39;
 
 
 
-echo &quot;the flag is: &quot;.$flag;     </code></pre>
+echo &quot;the flag is: &quot;.$flag;     </code></pre></div>
 <p>变量覆盖<br>GET和POST flag才会执行最后的输出，可是这样就吧<code>$flag</code>给覆盖了  </p>
 <p>可以将<code>$yds</code>覆盖成<code>$flag</code>借助<code>$$x = $$y;</code>       </p>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload1：GET  <code>?yds=flag</code>       </p>
@@ -474,10 +474,12 @@ echo &quot;the flag is: &quot;.$flag;     </code></pre>
 
 
 
-//背景线条
-{% if theme.canvas_nest %}
+<!--//背景线条      {% if theme.canvas_nest %}-->
 <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 {% endif %}
+
+<!-- 样式二（飘动的彩带） -->
+<script src="https://g.joyinshare.com/hc/piao.js" type="text/javascript"></script>
 
 </body>
 </html>

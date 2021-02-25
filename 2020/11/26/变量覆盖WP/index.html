@@ -228,7 +228,7 @@
             
             <div class="markdown-body">
               <h1 id="php变量覆盖1"><a href="#php变量覆盖1" class="headerlink" title="php变量覆盖1"></a>php变量覆盖1</h1><hr>
-<h2 id="WP"><a href="#WP" class="headerlink" title="WP"></a>WP</h2><pre><code>&lt;html&gt;
+<h2 id="WP"><a href="#WP" class="headerlink" title="WP"></a>WP</h2><div class="hljs"><pre><code>&lt;html&gt;
 &lt;head&gt;
 &lt;title&gt;php-extract&lt;/title&gt;
 &lt;/head&gt;
@@ -249,7 +249,7 @@ if(isset($liwu)) &#123;
 ?&gt;
 &lt;/article&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+&lt;/html&gt;</code></pre></div>
 <p>题目的意思是以GET方式输入liwu，经过extract函数后当作变量，将其与$content对比，若相等，则输出flag。<br>以GET方式输入 <strong>liwu&amp;flag=1</strong>这样就覆盖了一开始flag的值，$liwu和$content两个变量也会相等，就能得到flag了。<br><img src="https://ftp.bmp.ovh/imgs/2020/11/85d734f646fc46e9.png" srcset="/img/loading.gif">   </p>
 <hr>
 <h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><ul>
@@ -264,7 +264,7 @@ if(isset($liwu)) &#123;
 <hr>
 <h1 id="php变量覆盖2"><a href="#php变量覆盖2" class="headerlink" title="php变量覆盖2"></a>php变量覆盖2</h1><hr>
 <h2 id="WP-1"><a href="#WP-1" class="headerlink" title="WP"></a>WP</h2><p>还是先代码审计：     </p>
-<pre><code>&lt;?php
+<div class="hljs"><pre><code>&lt;?php
 highlight_file(__FILE__);
 include &quot;flag.php&quot;;
 
@@ -289,7 +289,7 @@ if ( $_POST[&quot;flag&quot;] !== $flag )
 echo &quot;This is your flag : &quot;. $flag . &quot;\n&quot;;
 die($_200);      
 
-?&gt;                       </code></pre>
+?&gt;                       </code></pre></div>
 <p>最后输出的是$_200 = “欢迎~~~”；而flag没有输出方式，所以将$_200的值变成flag就能得到flag了。<br>GET传入_200=flag,经过for循环就会变成$_200=$flag,这样就把flag给$_200了，最后再POST个flag的值，让它不等$flag就能输出flag了。<br> <img src="https://ftp.bmp.ovh/imgs/2020/11/067bd0d3e477579e.png" srcset="/img/loading.gif">       </p>
 <hr>
 <h2 id="知识点总结-1"><a href="#知识点总结-1" class="headerlink" title="知识点总结"></a>知识点总结</h2><ul>
@@ -511,10 +511,12 @@ die($_200);
 
 
 
-//背景线条
-{% if theme.canvas_nest %}
+<!--//背景线条      {% if theme.canvas_nest %}-->
 <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 {% endif %}
+
+<!-- 样式二（飘动的彩带） -->
+<script src="https://g.joyinshare.com/hc/piao.js" type="text/javascript"></script>
 
 </body>
 </html>
