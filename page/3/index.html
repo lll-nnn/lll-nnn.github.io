@@ -1,228 +1,785 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>lll-nnnのblog - LN</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="BLOG">
-<meta property="og:type" content="website">
-<meta property="og:title" content="lll-nnnのblog">
-<meta property="og:url" content="http://lll-nnn.github.io/page/3/index.html">
-<meta property="og:site_name" content="lll-nnnのblog">
-<meta property="og:description" content="BLOG">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://lll-nnn.github.io/null">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://lll-nnn.github.io/null"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://lll-nnn.github.io/page/3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  date_suffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-    },
-    fancybox: {
-      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isanchor: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2021-02-28 13:47:25'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
 
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
 
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
 
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/L.jpg">
+  <link rel="icon" type="image/png" href="/img/L.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="BLOG">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <title>lll-nnnのblog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LLNN</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    })(window)</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">lll-nnnのblog</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">lll-nnnのblog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/02/05/ctfhub/" title="Ctfhub">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ctfhub"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/05/ctfhub/" title="Ctfhub">Ctfhub</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-05T14:11:21.000Z" title="发表于 2021-02-05 22:11:21">2021-02-05</time></span></div><div class="content">备份文件下载网站源码打开靶场是这样试出了www.zip差点让我以为是misc。。。。。。。。看wp说是访问该文件名才能得到          
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/ln.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="All the disadvantages are caused by the incompetence of the parties">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/05/ctfhub/">Ctfhub</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/05/ctfhub/">
+          
+          
+            
+          
+          备份文件下载网站源码打开靶场是这样试出了www.zip差点让我以为是misc。。。。。。。。看wp说是访问该文件名才能得到          
 vim缓存
 知识点    
-vim编辑文件会自动生成备份文件以及临时文件临时文件是在编辑文本时就会创建的文件，如果程序正常退出，临时文件自动删除，如果意外退出就会保留，文件名为  .filename.swp，（第一次产生的交换文件名为.filename.txt.swp；再次意外退出后，将会产生名为.filename.txt.swo的交换文件；而第三次产生的交换文件则为.filename.txt.swn）      
+vim编辑文件会自动生成备份文件以及临时文件临时文件是在编辑文本时就会创建的文件，如果程序正常退出，临时文件自动删除，如果意外退出就会保留，文件名为  .filename.swp，（第一次产生的交换文件名为.filename.t
+        </a>
+      </p>
 
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-05 22:11" pubdate>
+              2021-02-05
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/note/">note</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/05/BUU022/">BUU每日一题022</a>
+      </h1>
 
-根据提示，访问.index.php.swp得到文件       
-.DS_Store
-知识点   
-.DS_Store是 Mac OS 保存文件夹的自定义属性的隐藏文件。通过.DS_Store可以知道这个目录里面所有文件的清单。
+      <p class="index-excerpt">
+        <a href="/2021/02/05/BUU022/">
+          
+          
+            
+          
+          二十二、题目[网鼎杯 2018]Fakebook
+分析转了一圈没发现什么信息，先join注册一个看看吧注册后发现自己的用户名可以点点进去url中有?no=1加上个单引号—–报错可以注入?no=2/2返回原来的界面—判断是数字型注入经测试，union和select连在一起被过滤，可以union/**/select绕过?no=2 union/**/select 1,2,3,4%23看回显位可以看到是2
+        </a>
+      </p>
 
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-05 15:27" pubdate>
+              2021-02-05
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/04/BUU021/">BUU每日一题021</a>
+      </h1>
 
-得到文件后用记事本打开，notepad会有许多NULL      
-Git泄露log根据提示用githackpython GitHack.py http://challenge-01d55127 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/02/05/BUU022/" title="BUU每日一题022">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题022"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/05/BUU022/" title="BUU每日一题022">BUU每日一题022</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-05T07:27:49.000Z" title="发表于 2021-02-05 15:27:49">2021-02-05</time></span></div><div class="content">二十二、题目[网鼎杯 2018]Fakebook
-分析转了一圈没发现什么信息，先join注册一个看看吧注册后发现自己的用户名可以点点进去url中有?no=1加上个单引号—–报错可以注入?no=2/2返回原来的界面—判断是数字型注入经测试，union和select连在一起被过滤，可以union/**/select绕过?no=2 union/**/select 1,2,3,4%23看回显位可以看到是2位，接下来在2位上做文章?no=2 union/**/select 1,(select database()),3,4%23看库名——-fakebook?no=2 union/**/select 1,(select group_concat(table_name)from information_schema.tables where table_schema=&#39;fakebook&#39;),3,4%23表名——users?no=2 union/**/select 1,(select group_concat(column_name)from information_schema。co ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/02/04/BUU021/" title="BUU每日一题021">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题021"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/04/BUU021/" title="BUU每日一题021">BUU每日一题021</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-04T04:14:32.000Z" title="发表于 2021-02-04 12:14:32">2021-02-04</time></span></div><div class="content">二十一、题目[极客大挑战 2019]HardSQL     
+      <p class="index-excerpt">
+        <a href="/2021/02/04/BUU021/">
+          
+          
+            
+          
+          二十一、题目[极客大挑战 2019]HardSQL     
 分析1&#39;报错1&#39;#没有报错应该是单引号吧1&#39; order by 1#又是过滤select、or、and、空格、=…….又过滤了好多1^1正常，^没有被过看wp说用报错注入extractvalue或者updatexml空格用括号=可以用like代替         
-解0x7e=’~’1%27^extractvalue(1,concat(0x7e,(select(database())),0x7e))%23获取当前库 1%27^extractvalue(1,concat(0x7e,(select(table_name)from(information_schema.tables)where(table_schema)like(&#39;geek&#39;)),0x7e))%23获取表   1%27^extractvalue(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/02/03/BUU020/" title="BUU每日一题020">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题020"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/03/BUU020/" title="BUU每日一题020">BUU每日一题020</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-03T14:45:08.000Z" title="发表于 2021-02-03 22:45:08">2021-02-03</time></span></div><div class="content">二十、题目[CISCN2019 华北赛区 Day2 Web1]Hack World       
+解0x7e=’~’1%27^extractval
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-04 12:14" pubdate>
+              2021-02-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/03/BUU020/">BUU每日一题020</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/03/BUU020/">
+          
+          
+            
+          
+          二十、题目[CISCN2019 华北赛区 Day2 Web1]Hack World       
 分析输入与回显      
 0         
 Error Occured When Fetch Result.           
 1           
 Hello, glzjin wants a girlfriend.           
 2            
-Do you want to be my girlfriend?          
-3     
-Error Occured When Fetch Result.  
-1&#39; or 1=1#     
-SQL Injection Checked.      
-应该是有过滤的，burp看看482的都被过滤了union、select、空格、#、+、-。。。。。  同时也可以看到ascii和substr没有被过，输入2/2可以判断是数字型空格可以用()绕过或者异或1^payload:1^(if((ascii(substr((select(flag)from(flag)),1,1))=102),0,1)) 
-别人 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/02/02/BUU019/" title="BUU每日一题019">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题019"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/02/BUU019/" title="BUU每日一题019">BUU每日一题019</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-02T14:17:36.000Z" title="发表于 2021-02-02 22:17:36">2021-02-02</time></span></div><div class="content">十九、题目[ZJCTF 2019]NiZhuanSiWei      
-分析传一个$text要其等于welcome to the zjctf这里用的file_get_contents函数可以用data://text/plain;base64,伪协议传入下面file中过滤了flag，看来不能用php://filter伪协议读取flag.php了，但可以读取useless.php看看有什么payload：?text=data://text/plain;base64,d2VsY29tZSB0byB0aGUgempjdGY=&amp;file=php://filter/read=convert.base64-encode/resource=useless.php
-&lt;?php  
+Do you wan
+        </a>
+      </p>
 
-class Flag&#123;  //flag.php  
-    public $file;  
-    public function __tostring()&#123;  
-        if(isset($this-&gt;file))&#123;  
-            echo file_ ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/02/01/BUU018/" title="BUU每日一题018">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题018"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/01/BUU018/" title="BUU每日一题018">BUU每日一题018</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-01T07:47:54.000Z" title="发表于 2021-02-01 15:47:54">2021-02-01</time></span></div><div class="content">十八、题目[BJDCTF2020]Easy MD5 
-分析无论提交什么都没有什么回应响应头里发现个hint提交的参数会经过md5函数，true的意思是返回16位原始二进制格式的字符串对于一个字符串，MD5默认时返回32位的16进制的字符串，有true后，32位每两位对应的十进制对应的ASCII码中的字符比如：ffifdyopMD5后是276f722736c95d99e921722cf9ed621c,27对应十进制的39，39在ASCII码表中是&#39;单引号；所以上面的经过md5($pass,true)后是&#39;or&#39;6\xc9]\x99\xe9!r,\xf9\xedb\x1c带入到sql语句中就是select * from &#39;admin&#39; where password=&#39;&#39; or &#39;6xxxxx&#39;就永真了输入ffifdyop查询可以数组绕过         
-解a[]=1&amp;b[]=2访问levell14.php        
-知识点select * from &#39;admin&#39; where passw ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/01/31/BUU017/" title="BUU每日一题017">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题017"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/31/BUU017/" title="BUU每日一题017">BUU每日一题017</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-31T05:01:53.000Z" title="发表于 2021-01-31 13:01:53">2021-01-31</time></span></div><div class="content">十七、题目[SUCTF 2019]CheckIn   
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-03 22:45" pubdate>
+              2021-02-03
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/02/BUU019/">BUU每日一题019</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/02/BUU019/">
+          
+          
+            
+          
+          十九、题目[ZJCTF 2019]NiZhuanSiWei      
+分析传一个$text要其等于welcome to the zjctf这里用的file_get_contents函数可以用data://text/plain;base64,伪协议传入下面file中过滤了flag，看来不能用php://filter伪协议读取flag.php了，但可以读取useless.php看看有什么payloa
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-02 22:17" pubdate>
+              2021-02-02
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/01/BUU018/">BUU每日一题018</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/01/BUU018/">
+          
+          
+            
+          
+          十八、题目[BJDCTF2020]Easy MD5 
+分析无论提交什么都没有什么回应响应头里发现个hint提交的参数会经过md5函数，true的意思是返回16位原始二进制格式的字符串对于一个字符串，MD5默认时返回32位的16进制的字符串，有true后，32位每两位对应的十进制对应的ASCII码中的字符比如：ffifdyopMD5后是276f722736c95d99e921722cf9ed621c
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-01 15:47" pubdate>
+              2021-02-01
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/31/BUU017/">BUU每日一题017</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/31/BUU017/">
+          
+          
+            
+          
+          十七、题目[SUCTF 2019]CheckIn   
 分析文件上传并且给了源码https://github.com/team-su/SUCTF-2019/tree/master/Web/checkIn          
 &lt;?php
 // error_reporting(0);
-$userdir = &quot;uploads/&quot; . md5($_SERVER[&quot;REMOTE_ADDR&quot;]);
-if (!file_exists($userdir)) &#123;
-    mkdir($userdir, 0777, true);
-&#125;
-file_put_contents($userdir . &quot;/index.php&quot;, &quot;&quot;);
-if (isset($_POST[&quot;upload&quot;])) &#123;
-    $tmp_name = $_FILES[&quot;fileUpload&quot;][&quot;tmp_name&quot;];
-    $name = $_FILES[&q ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/01/30/BUU016/" title="BUU每日一题016">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题016"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/30/BUU016/" title="BUU每日一题016">BUU每日一题016</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-30T04:45:29.000Z" title="发表于 2021-01-30 12:45:29">2021-01-30</time></span></div><div class="content">十六、题目[极客大挑战 2019]BuyFlag     
+$userdir = &quot;uploads/&quot; . md5($_SERVER[&quot;REM
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-31 13:01" pubdate>
+              2021-01-31
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/30/BUU016/">BUU每日一题016</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/30/BUU016/">
+          
+          
+            
+          
+          十六、题目[极客大挑战 2019]BuyFlag     
 分析F12源代码注释中有东西              
     ~~~post money and password~~~
 if (isset($_POST[&#39;password&#39;])) &#123;
     $password = $_POST[&#39;password&#39;];
-    if (is_numeric($password)) &#123;
-        echo &quot;password can&#39;t be number&lt;/br&gt;&quot;;
-    &#125;elseif ($password == 404) &#123;
-        echo &quot;Password Right!&lt;/br&gt;&quot;;
-    &#125;
-&#125;
-然后hackbar提交password=404a&amp;&amp;money=100000000没有任何回显，看wp说要抓包把user=0改为user=1具体什么原因不清楚，看别人的wp，都说ct ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/01/29/BUU015/" title="BUU每日一题015">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题015"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/29/BUU015/" title="BUU每日一题015">BUU每日一题015</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-29T04:28:49.000Z" title="发表于 2021-01-29 12:28:49">2021-01-29</time></span></div><div class="content">十五、题目[ACTF2020 新生赛]BackupFile       
+    if (is_numeri
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-30 12:45" pubdate>
+              2021-01-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/29/BUU015/">BUU每日一题015</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/29/BUU015/">
+          
+          
+            
+          
+          十五、题目[ACTF2020 新生赛]BackupFile       
 分析题目是backupfileindex.php.bak得到一个文件，里面是源代码intval函数–获取变量的整数值         
 解payload：?key=123得到flag     
 知识点
  backupfile-------index.php.bak       
-intval函数Note:如果 base 是 0，通过检测 var 的格式来决定使用的进制：如果字符串包括了 “0x” (或 “0X”) 的前缀，使用 16 进制 (hex)；否则，如果字符串以 “0” 开始，使用 8 进制(octal)；否则，将使用 10 进制 (decimal)。 
+intval函数Note:如果 base 是 
+        </a>
+      </p>
 
-</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/01/28/BUU014/" title="BUU每日一题014">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题014"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/28/BUU014/" title="BUU每日一题014">BUU每日一题014</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-28T09:51:05.000Z" title="发表于 2021-01-28 17:51:05">2021-01-28</time></span></div><div class="content">十四、题目[HCTF 2018]admin       
-分析F12所以应该以admin登录，使用burp爆破密码，发现不行网页还有注册功能，尝试注册admin，果然，已注册那随便注册一个看看吧，注册后网页还有修改密码的功能，打开，在F12中发现打开GitHub页面，应该是网页的源码了hctf_flask/app/routes.py这里找到各个模块的源码pythonflask这一堆？？！！还是去看wp吧          
-解源码的主要内容注册模块：      
-@app.route(&#39;/register&#39;, methods = [&#39;GET&#39;, &#39;POST&#39;])
-def register():
-
-    if current_user.is_authenticated:
-        return redirect(url_for(&#39;index&#39;))
-
-    form = RegisterForm()
-    if request.method == &#39;POST&#39;:
-        name = str ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/null" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">John Doe</div><div class="author-info__description">BLOG</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">57</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/02/27/BUU039/" title="BUU每日一题039"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题039"/></a><div class="content"><a class="title" href="/2021/02/27/BUU039/" title="BUU每日一题039">BUU每日一题039</a><time datetime="2021-02-27T06:50:16.000Z" title="发表于 2021-02-27 14:50:16">2021-02-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/26/BUU038/" title="BUU每日一题038"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题038"/></a><div class="content"><a class="title" href="/2021/02/26/BUU038/" title="BUU每日一题038">BUU每日一题038</a><time datetime="2021-02-26T06:20:31.000Z" title="发表于 2021-02-26 14:20:31">2021-02-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/25/BUU037/" title="BUU每日一题037"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题037"/></a><div class="content"><a class="title" href="/2021/02/25/BUU037/" title="BUU每日一题037">BUU每日一题037</a><time datetime="2021-02-25T05:55:34.000Z" title="发表于 2021-02-25 13:55:34">2021-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/24/hgameweek3/" title="Hgameweek3"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hgameweek3"/></a><div class="content"><a class="title" href="/2021/02/24/hgameweek3/" title="Hgameweek3">Hgameweek3</a><time datetime="2021-02-24T12:15:42.000Z" title="发表于 2021-02-24 20:15:42">2021-02-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/24/BUU036/" title="BUU每日一题036"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUU每日一题036"/></a><div class="content"><a class="title" href="/2021/02/24/BUU036/" title="BUU每日一题036">BUU每日一题036</a><time datetime="2021-02-24T06:14:10.000Z" title="发表于 2021-02-24 14:14:10">2021-02-24</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
-            <i class="fas fa-folder-open"></i>
-            <span>分类</span>
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-29 12:28" pubdate>
+              2021-01-29
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/28/BUU014/">BUU每日一题014</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/28/BUU014/">
+          
+          
+            
+          
+          十四、题目[HCTF 2018]admin       
+分析F12所以应该以admin登录，使用burp爆破密码，发现不行网页还有注册功能，尝试注册admin，果然，已注册那随便注册一个看看吧，注册后网页还有修改密码的功能，打开，在F12中发现打开GitHub页面，应该是网页的源码了hctf_flask/app/routes.py这里找到各个模块的源码pythonflask这一堆？？！！还是去看
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-28 17:51" pubdate>
+              2021-01-28
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
             </div>
-            <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NOTE/"><span class="card-category-list-name">NOTE</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/WP/"><span class="card-category-list-name">WP</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/wp/"><span class="card-category-list-name">wp</span><span class="card-category-list-count">1</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/NOTE/" style="font-size: 1.23em; color: #999ea6">NOTE</a> <a href="/tags/WP/" style="font-size: 1.37em; color: #99a4b2">WP</a> <a href="/tags/noet/" style="font-size: 1.1em; color: #999">noet</a> <a href="/tags/note/" style="font-size: 1.37em; color: #99a4b2">note</a> <a href="/tags/wp/" style="font-size: 1.5em; color: #99a9bf">wp</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/02/"><span class="card-archive-list-date">二月 2021</span><span class="card-archive-list-count">26</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">23</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">4</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">57</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-02-28T05:47:25.153Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By John Doe</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+<!--//背景线条      {% if theme.canvas_nest %}-->
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+{% endif %}
+
+<!-- 样式二（飘动的彩带） -->
+<script src="https://g.joyinshare.com/hc/piao.js" type="text/javascript"></script>
+
+</body>
+</html>
