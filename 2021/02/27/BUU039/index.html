@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      470 字
+      468 字
     </span>
   
 
@@ -231,9 +231,9 @@
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>一段报错信息      </p>
 <div class="hljs"><pre><code>Warning: date(): It is not safe to rely on the system&#39;s timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone &#39;UTC&#39; for now, but please set date.timezone to select your timezone. in /var/www/html/index.php on line 24
 2021-02-27 06:14:05 am        </code></pre></div>
-<p>而且没五秒页面会刷新一次<br>抓包看看<img src="https://ftp.bmp.ovh/imgs/2021/02/0efeb58411f3be9b.png" srcset="/img/loading.gif"><br>前面一个date,后面是时间—–函数执行<br>读取<code>index.php</code><br><code>func=file_get_contents&amp;p=index.php</code>   </p>
-<div class="hljs"><pre><code>```php
-&lt;?php
+<p>而且没五秒页面会刷新一次  </p>
+<p>抓包看看<img src="https://ftp.bmp.ovh/imgs/2021/02/0efeb58411f3be9b.png" srcset="/img/loading.gif"><br>前面一个date,后面是时间—–函数执行<br>读取<code>index.php</code><br><code>func=file_get_contents&amp;p=index.php</code>   </p>
+<div class="hljs"><pre><code>&lt;?php
     $disable_fun = array(&quot;exec&quot;,&quot;shell_exec&quot;,&quot;system&quot;,&quot;passthru&quot;,&quot;proc_open&quot;,&quot;show_source&quot;,&quot;phpinfo&quot;,&quot;popen&quot;,&quot;dl&quot;,&quot;eval&quot;,&quot;proc_terminate&quot;,&quot;touch&quot;,&quot;escapeshellcmd&quot;,&quot;escapeshellarg&quot;,&quot;assert&quot;,&quot;substr_replace&quot;,&quot;call_user_func_array&quot;,&quot;call_user_func&quot;,&quot;array_filter&quot;, &quot;array_walk&quot;,  &quot;array_map&quot;,&quot;registregister_shutdown_function&quot;,&quot;register_tick_function&quot;,&quot;filter_var&quot;, &quot;filter_var_array&quot;, &quot;uasort&quot;, &quot;uksort&quot;, &quot;array_reduce&quot;,&quot;array_walk&quot;, &quot;array_walk_recursive&quot;,&quot;pcntl_exec&quot;,&quot;fopen&quot;,&quot;fwrite&quot;,&quot;file_put_contents&quot;);
     function gettime($func, $p) &#123;
         $result = call_user_func($func, $p);
@@ -261,9 +261,7 @@
         &#125;else &#123;
             die(&quot;Hacker...&quot;);
         &#125;
-    &#125;
-    ?&gt; 
-```      </code></pre></div>
+    &#125;</code></pre></div>
 <p>可以看到禁了很多函数<br>有个class<br>可以用反序列<code>unserialize</code>函数      </p>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><div class="hljs"><pre><code>&lt;?php
 
@@ -305,6 +303,12 @@ echo $b;       </code></pre></div>
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/02/28/BUU040/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">BUU每日一题040</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

