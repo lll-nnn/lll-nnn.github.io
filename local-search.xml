@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日一题044</title>
+    <link href="/2021/03/04/BUU044/"/>
+    <url>/2021/03/04/BUU044/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[BSidesCF 2020]Had a bad day<br><img src="https://ftp.bmp.ovh/imgs/2021/03/f5f5f1cac583c37f.png">   </p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>点击其中一个后会出来一张图片，而且URL变成<code>http://3c2d7f7c-2f24-42ca-84de-dfa013335bf4.node3.buuoj.cn/index.php?category=woofers</code><br>本来以为是SQL注入，加了个<code>&#39;</code><br>回显：<img src="https://ftp.bmp.ovh/imgs/2021/03/d6e58884d2fe94c0.png"><br>是文件包含<br><code>php://filter/read=convert.base64-encode/source=flag.php</code><br>回显：<code>Sorry, we currently only support woofers and meowers.</code><br>试一下<code>index</code><br>成功读出    </p><pre><code>            &lt;?php            $file = $_GET[&#39;category&#39;];            if(isset($file))            &#123;                if( strpos( $file, &quot;woofers&quot; ) !==  false || strpos( $file, &quot;meowers&quot; ) !==  false || strpos( $file, &quot;index&quot;))&#123;                    include ($file . &#39;.php&#39;);                &#125;                else&#123;                    echo &quot;Sorry, we currently only support woofers and meowers.&quot;;                &#125;            &#125;            ?&gt;          </code></pre><p>然后没招了<br>看了WP<br><code>伪协议嵌套</code>       </p><h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：<code>php://filter/read=convert.base64-encode/index/resource=flag</code></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题043</title>
     <link href="/2021/03/03/BUU043/"/>
     <url>/2021/03/03/BUU043/</url>
