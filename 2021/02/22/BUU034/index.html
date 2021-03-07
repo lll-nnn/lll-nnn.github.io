@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      617 字
+      618 字
     </span>
   
 
@@ -229,38 +229,42 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[安洵杯 2019]easy_web<img src="https://ae03.alicdn.com/kf/U37981b99273b48eda811753994099f30i.jpg" srcset="/img/loading.gif" alt="01.png">    </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>照例查看源代码<br>发现个图片base64，解码后就是左上角那个图<br>url中有一段可疑字符串<code>TXpVek5UTTFNbVUzTURabE5qYz0</code>应该是base64吧，尝试解码，但解不出来，别的编码？看wp后就是base64啊？？—–加个等号—解出来了<br>还是base64，再解，然后是<code>hex</code>解码——得到<code>555.png</code>那个图片的名字<br>这样的话就可以用此方法读取文件了<br>读取<code>index.php</code>  </p>
-<div class="hljs"><pre><code>&lt;?php
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 error_reporting(E_ALL || ~ E_NOTICE);
-header(&#39;content-type:text/html;charset=utf-8&#39;);
-$cmd = $_GET[&#39;cmd&#39;];
-if (!isset($_GET[&#39;img&#39;]) || !isset($_GET[&#39;cmd&#39;])) 
-    header(&#39;Refresh:0;url=./index.php?img=TXpVek5UTTFNbVUzTURabE5qYz0&amp;cmd=&#39;);
-$file = hex2bin(base64_decode(base64_decode($_GET[&#39;img&#39;])));
+header(<span class="hljs-string">&#x27;content-type:text/html;charset=utf-8&#x27;</span>);
+$cmd = $_GET[<span class="hljs-string">&#x27;cmd&#x27;</span>];
+<span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;img&#x27;</span>]) || !<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;cmd&#x27;</span>])) 
+    header(<span class="hljs-string">&#x27;Refresh:0;url=./index.php?img=TXpVek5UTTFNbVUzTURabE5qYz0&amp;cmd=&#x27;</span>);
+$file = hex2bin(base64_decode(base64_decode($_GET[<span class="hljs-string">&#x27;img&#x27;</span>])));
 
-$file = preg_replace(&quot;/[^a-zA-Z0-9.]+/&quot;, &quot;&quot;, $file);
-if (preg_match(&quot;/flag/i&quot;, $file)) &#123;
-    echo &#39;&lt;img src =&quot;./ctf3.jpeg&quot;&gt;&#39;;
-    die(&quot;xixi～ no flag&quot;);
-&#125; else &#123;
+$file = preg_replace(<span class="hljs-string">&quot;/[^a-zA-Z0-9.]+/&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, $file);
+<span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/flag/i&quot;</span>, $file)) &#123;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;img src =&quot;./ctf3.jpeg&quot;&gt;&#x27;</span>;
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;xixi～ no flag&quot;</span>);
+&#125; <span class="hljs-keyword">else</span> &#123;
     $txt = base64_encode(file_get_contents($file));
-    echo &quot;&lt;img src=&#39;data:image/gif;base64,&quot; . $txt . &quot;&#39;&gt;&lt;/img&gt;&quot;;
-    echo &quot;&lt;br&gt;&quot;;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;img src=&#x27;data:image/gif;base64,&quot;</span> . $txt . <span class="hljs-string">&quot;&#x27;&gt;&lt;/img&gt;&quot;</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
 &#125;
-echo $cmd;
-echo &quot;&lt;br&gt;&quot;;
-if (preg_match(&quot;/ls|bash|tac|nl|more|less|head|wget|tail|vi|cat|od|grep|sed|bzmore|bzless|pcre|paste|diff|file|echo|sh|\&#39;|\&quot;|\`|;|,|\*|\?|\\|\\\\|\n|\t|\r|\xA0|\&#123;|\&#125;|\(|\)|\&amp;[^\d]|@|\||\\$|\[|\]|&#123;|&#125;|\(|\)|-|&lt;|&gt;/i&quot;, $cmd)) &#123;
-    echo(&quot;forbid ~&quot;);
-    echo &quot;&lt;br&gt;&quot;;
-&#125; else &#123;
-    if ((string)$_POST[&#39;a&#39;] !== (string)$_POST[&#39;b&#39;] &amp;&amp; md5($_POST[&#39;a&#39;]) === md5($_POST[&#39;b&#39;])) &#123;
-        echo `$cmd`;
-    &#125; else &#123;
-        echo (&quot;md5 is funny ~&quot;);
+<span class="hljs-keyword">echo</span> $cmd;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+<span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/ls|bash|tac|nl|more|less|head|wget|tail|vi|cat|od|grep|sed|bzmore|bzless|pcre|paste|diff|file|echo|sh|\&#x27;|\&quot;|\`|;|,|\*|\?|\\|\\\\|\n|\t|\r|\xA0|\&#123;|\&#125;|\(|\)|\&amp;[^\d]|@|\||\\$|\[|\]|&#123;|&#125;|\(|\)|-|&lt;|&gt;/i&quot;</span>, $cmd)) &#123;
+    <span class="hljs-keyword">echo</span>(<span class="hljs-string">&quot;forbid ~&quot;</span>);
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+&#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-keyword">if</span> ((<span class="hljs-keyword">string</span>)$_POST[<span class="hljs-string">&#x27;a&#x27;</span>] !== (<span class="hljs-keyword">string</span>)$_POST[<span class="hljs-string">&#x27;b&#x27;</span>] &amp;&amp; md5($_POST[<span class="hljs-string">&#x27;a&#x27;</span>]) === md5($_POST[<span class="hljs-string">&#x27;b&#x27;</span>])) &#123;
+        <span class="hljs-keyword">echo</span> `$cmd`;
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-keyword">echo</span> (<span class="hljs-string">&quot;md5 is funny ~&quot;</span>);
     &#125;
-
+	
 &#125;
 
-?&gt;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
+
+
+
+```html
 &lt;html&gt;
 &lt;style&gt;
   body&#123;
@@ -272,7 +276,8 @@ if (preg_match(&quot;/ls|bash|tac|nl|more|less|head|wget|tail|vi|cat|od|grep|sed
 &lt;/style&gt;
 &lt;body&gt;
 &lt;/body&gt;
-&lt;/html&gt;       </code></pre></div>
+&lt;/html&gt;     
+```       </code></pre>
 <p>一个MD5的强比较       </p>
 <div class="hljs"><pre><code>a=%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%00%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%55%5d%83%60%fb%5f%07%fe%a2
 &amp;b=%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%02%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%d5%5d%83%60%fb%5f%07%fe%a2      </code></pre></div>

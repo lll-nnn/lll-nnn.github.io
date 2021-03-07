@@ -232,55 +232,55 @@
 </ul>
 <p>页面一个表情，查看源代码<br><img src="https://ftp.bmp.ovh/imgs/2021/01/6b4ea505386b6788.png" srcset="/img/loading.gif"></p>
 <p>访问<code>source.php</code>,得到PHP代码     </p>
-<div class="hljs"><pre><code>     &lt;?php
-        highlight_file(__FILE__);
-        class emmm
-        &#123;
-            public static function checkFile(&amp;$page)
-                &#123;
-                $whitelist = [&quot;source&quot;=&gt;&quot;source.php&quot;,&quot;hint&quot;=&gt;&quot;hint.php&quot;];     //$whitelist有&quot;source.php&quot;和&quot;hint.php&quot;两个字符串
-                if (! isset($page) || !is_string($page)) &#123;       //要求$page存在且是字符串
-                    echo &quot;you can&#39;t see it&quot;;
-                    return false;
-                &#125;
-
-                if (in_array($page, $whitelist)) &#123;
-                    return true;        //$page中的字符串应该含于$whitelist中
-                &#125;
-
-                $_page = mb_substr(
-                    $page,
-                    0,
-                    mb_strpos($page . &#39;?&#39;, &#39;?&#39;)
-                );          //截取$page中第一个字符到 ？ 注意mb_strpos函数第一个 ？ 前是个连接符 .
-                if (in_array($_page, $whitelist)) &#123;
-                    return true;      
-                &#125;            //再次比较
-
-                $_page = urldecode($page);    //将$page解码
-                $_page = mb_substr(
-                    $_page,
-                    0,
-                    mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)
-                );       //截取
-                if (in_array($_page, $whitelist)) &#123;
-                    return true;
-                &#125;       //比较
-                echo &quot;you can&#39;t see it&quot;;
-                return false;
-            &#125;
-        &#125;
-
-        if (! empty($_REQUEST[&#39;file&#39;])
-            &amp;&amp; is_string($_REQUEST[&#39;file&#39;])
-            &amp;&amp; emmm::checkFile($_REQUEST[&#39;file&#39;])
-        ) &#123;
-            include $_REQUEST[&#39;file&#39;];
-            exit;
-        &#125; else &#123;
-            echo &quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;;
-&#125;  
-?&gt; </code></pre></div>
+<div class="hljs"><pre><code><pre><code class="hljs php">		<span class="hljs-meta">&lt;?php</span>
+  		 highlight_file(<span class="hljs-keyword">__FILE__</span>);
+   		<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">emmm</span></span>
+<span class="hljs-class">   		</span>&#123;
+       		<span class="hljs-keyword">public</span> <span class="hljs-built_in">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkFile</span>(<span class="hljs-params">&amp;$page</span>)</span>
+<span class="hljs-function">      	 		</span>&#123;
+	            $whitelist = [<span class="hljs-string">&quot;source&quot;</span>=&gt;<span class="hljs-string">&quot;source.php&quot;</span>,<span class="hljs-string">&quot;hint&quot;</span>=&gt;<span class="hljs-string">&quot;hint.php&quot;</span>];     <span class="hljs-comment">//$whitelist有&quot;source.php&quot;和&quot;hint.php&quot;两个字符串</span>
+	            <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">isset</span>($page) || !is_string($page)) &#123;       <span class="hljs-comment">//要求$page存在且是字符串</span>
+	                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;
+	                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+	            &#125;
+	
+	            <span class="hljs-keyword">if</span> (in_array($page, $whitelist)) &#123;
+	                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;        <span class="hljs-comment">//$page中的字符串应该含于$whitelist中</span>
+	            &#125;
+	
+	            $_page = mb_substr(
+	                $page,
+	                <span class="hljs-number">0</span>,
+	                mb_strpos($page . <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>)
+	            );          <span class="hljs-comment">//截取$page中第一个字符到 ？ 注意mb_strpos函数第一个 ？ 前是个连接符 .</span>
+	            <span class="hljs-keyword">if</span> (in_array($_page, $whitelist)) &#123;
+	                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;      
+	            &#125;            <span class="hljs-comment">//再次比较</span>
+	
+	            $_page = urldecode($page);    <span class="hljs-comment">//将$page解码</span>
+	            $_page = mb_substr(
+	                $_page,
+	                <span class="hljs-number">0</span>,
+	                mb_strpos($_page . <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>)
+	            );       <span class="hljs-comment">//截取</span>
+	            <span class="hljs-keyword">if</span> (in_array($_page, $whitelist)) &#123;
+	                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+	            &#125;       <span class="hljs-comment">//比较</span>
+	            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;
+	            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+	        &#125;
+	    &#125;
+	
+	    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">empty</span>($_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>])
+	        &amp;&amp; is_string($_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>])
+	        &amp;&amp; emmm::checkFile($_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>])
+	    ) &#123;
+	        <span class="hljs-keyword">include</span> $_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>];
+	        <span class="hljs-keyword">exit</span>;
+	    &#125; <span class="hljs-keyword">else</span> &#123;
+	        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;
+   &#125;  
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <ul>
 <li>分析</li>
 </ul>
@@ -334,7 +334,7 @@
                     
                       <a href="/2021/01/15/shuashua/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">GFSJ</span>
+                        <span class="hidden-mobile">Shuashua</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

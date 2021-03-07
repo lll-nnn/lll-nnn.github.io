@@ -249,19 +249,19 @@
 <h2 id="9-本地包含"><a href="#9-本地包含" class="headerlink" title="9.本地包含"></a>9.本地包含</h2><p>这道题的网站好像坏了，打开后什么也没有，抓包，御剑都试了，什么也没有，看别人以前的WP是有一段PHP代码的。 </p>
 <hr>
 <h2 id="10-变量1"><a href="#10-变量1" class="headerlink" title="10.变量1"></a>10.变量1</h2><p>首先代码审计               </p>
-<div class="hljs"><pre><code>flag In the variable ! &lt;?php      ////flag在一个变量中
-
-error_reporting(0);
-include &quot;flag1.php&quot;;
-highlight_file(__file__);
-if(isset($_GET[&#39;args&#39;]))&#123;
-$args = $_GET[&#39;args&#39;];
-if(!preg_match(&quot;/^\w+$/&quot;,$args))&#123;     ////正则表达式，意思是如果字符串不是全部由字母（包含大小写），数字，下划线组成的，就会输出 args error!
-    die(&quot;args error!&quot;);
+<div class="hljs"><pre><code><pre><code class="hljs php">flag In the variable !     <span class="hljs-comment">////flag在一个变量中</span>
+<span class="hljs-meta">&lt;?php</span>      
+error_reporting(<span class="hljs-number">0</span>);
+<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;flag1.php&quot;</span>;
+highlight_file(<span class="hljs-keyword">__file__</span>);
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;args&#x27;</span>]))&#123;
+   $args = $_GET[<span class="hljs-string">&#x27;args&#x27;</span>];
+   <span class="hljs-keyword">if</span>(!preg_match(<span class="hljs-string">&quot;/^\w+$/&quot;</span>,$args))&#123;     <span class="hljs-comment">////正则表达式，意思是如果字符串不是全部由字母（包含大小写），数字，下划线组成的，就会输出 args error!</span>
+       <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;args error!&quot;</span>);
+   &#125;
+   <span class="hljs-keyword">eval</span>(<span class="hljs-string">&quot;var_dump($<span class="hljs-subst">$args</span>);&quot;</span>);         <span class="hljs-comment">////$$args可变变量，将$args作为变量。</span>
 &#125;
-eval(&quot;var_dump($$args);&quot;);         ////$$args可变变量，将$args作为变量。
-&#125;
-?&gt;               </code></pre></div>
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>所以什么能够将变量显示出来呢，答案是全局变量 GLOBALS<br>$GLOBALS — 引用全局作用域中可用的全部变量<br>输入 args=GLOBALS 得到flag。<br><img src="https://ftp.bmp.ovh/imgs/2020/12/136889d8f52006b5.png" srcset="/img/loading.gif"></p>
 <h4 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h4><ul>
 <li>首先是preg_match那一段，注意还有个 ！ ，       </li>

