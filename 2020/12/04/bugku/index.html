@@ -1,0 +1,529 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/L.jpg">
+  <link rel="icon" type="image/png" href="/img/L.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#FFFFF2">
+  <meta name="description" content="BLOG">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <title>Bugku刷题记录 - 1__/\/のblog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/arduino-light.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="1__/\/のblog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>1__/\/</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/llll.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Bugku刷题记录">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-04 18:17" pubdate>
+        2020年12月4日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Bugku刷题记录</h1>
+            
+            <div class="markdown-body">
+              <h1 id="bugku–wp"><a href="#bugku–wp" class="headerlink" title="bugku–wp"></a>bugku–wp</h1><hr>
+<h2 id="1-web2"><a href="#1-web2" class="headerlink" title="1.web2"></a>1.web2</h2><p>打开题目地址，F12查看源码的到flag。 </p>
+<hr>
+<h2 id="2-计算器"><a href="#2-计算器" class="headerlink" title="2.计算器"></a>2.计算器</h2><p>数学题计算，输入结果发现只能输入一个数字，应该是限制了长度，修改源码后重新提交，得到flag。         </p>
+<hr>
+<h2 id="3-web基础-GET"><a href="#3-web基础-GET" class="headerlink" title="3.web基础$_GET"></a>3.web基础$_GET</h2><p>URL中输入what=flag得到flag。        </p>
+<hr>
+<h2 id="4-web基础-amp-POST"><a href="#4-web基础-amp-POST" class="headerlink" title="4.web基础&amp;_POST"></a>4.web基础&amp;_POST</h2><p>用hackbar提交what=flag得到flag。   </p>
+<hr>
+<h2 id="5-矛盾"><a href="#5-矛盾" class="headerlink" title="5.矛盾"></a>5.矛盾</h2><p><img src="https://ftp.bmp.ovh/imgs/2020/12/47c19a360df3b2fc.png" srcset="/img/loading.gif"><br>is_numeric() 函数用于检测变量是否为数字或数字字符串。<br>题目的意思是$num的值为1，但不是数字，PHP是弱类型语言，==进行转换时会把字符串转换成第一位，所以传入num=1aa，得到flag。  </p>
+<hr>
+<h2 id="6-web3"><a href="#6-web3" class="headerlink" title="6.web3"></a>6.web3</h2><p><img src="https://ftp.bmp.ovh/imgs/2020/12/3e9fed55d2d084fd.png" srcset="/img/loading.gif"><br>不知道该怎么办，F12发现啥也没有，将阻止页面创建对话框勾选上，再次F12得到一串Unicode编码，解码得到flag。       </p>
+<hr>
+<h2 id="7-域名解析"><a href="#7-域名解析" class="headerlink" title="7.域名解析"></a>7.域名解析</h2><p><img src="https://ftp.bmp.ovh/imgs/2020/12/39ef3bd33297fc5c.png" srcset="/img/loading.gif"><br>不知道啥是域名解析，网上搜了一大堆都是买域名什么的，还是直接去看别人的wp吧。<br>将C:\Windows\System32\drivers\etc这个路径下的hosts文件末尾加上 123.206.87.240 flag.baidu.com 然后浏览器打flag.baidu.com<br>就能看到flag了。<br>关于域名解析：域名解析是把域名指向网站空间IP，让人们通过注册的域名可以方便地访问到网站的一种服务。IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。域名解析就是域名到IP地址的转换过程。域名的解析工作由DNS服务器完成。      </p>
+<p>Windows中hosts文件的作用：将一些常用的网址域名与其对应的IP地址建立一个关联“数据库”，当用户在浏览器中输入一个需要登录的网址时，系统会首先自动从Hosts文件中寻找对应的IP地址，一旦找到，系统会立即打开对应网页，如果没有找到，则系统会再将网址提交DNS域名解析服务器进行IP地址的解析。       </p>
+<p>对于hosts文件的修改会出现ctrl+s后会保存为另一个文件，解决办法：<br>进入hosts的目录后：<img src="https://ftp.bmp.ovh/imgs/2020/12/081b9deac349513a.png" srcset="/img/loading.gif"><br>输入cmd，进入管理员管理界面，再输入notepad hosts，回车后弹出hosts文件，修改后CTRL+s保存即可。</p>
+<hr>
+<h2 id="8-你必须让他停下来"><a href="#8-你必须让他停下来" class="headerlink" title="8.你必须让他停下来"></a>8.你必须让他停下来</h2><p>打开题目地址后发现一直在刷新，F12查看源代码后发现每次刷新都会是不同的图片，burp抓包看看吧，不断send后得到flag<br> <img src="https://ftp.bmp.ovh/imgs/2020/12/beefc7458013777d.png" srcset="/img/loading.gif">          </p>
+<hr>
+<h2 id="9-本地包含"><a href="#9-本地包含" class="headerlink" title="9.本地包含"></a>9.本地包含</h2><p>这道题的网站好像坏了，打开后什么也没有，抓包，御剑都试了，什么也没有，看别人以前的WP是有一段PHP代码的。 </p>
+<hr>
+<h2 id="10-变量1"><a href="#10-变量1" class="headerlink" title="10.变量1"></a>10.变量1</h2><p>首先代码审计               </p>
+<div class="hljs"><pre><code><pre><code class="hljs php">flag In the variable !     <span class="hljs-comment">////flag在一个变量中</span>
+<span class="hljs-meta">&lt;?php</span>      
+error_reporting(<span class="hljs-number">0</span>);
+<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;flag1.php&quot;</span>;
+highlight_file(<span class="hljs-keyword">__file__</span>);
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;args&#x27;</span>]))&#123;
+   $args = $_GET[<span class="hljs-string">&#x27;args&#x27;</span>];
+   <span class="hljs-keyword">if</span>(!preg_match(<span class="hljs-string">&quot;/^\w+$/&quot;</span>,$args))&#123;     <span class="hljs-comment">////正则表达式，意思是如果字符串不是全部由字母（包含大小写），数字，下划线组成的，就会输出 args error!</span>
+       <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;args error!&quot;</span>);
+   &#125;
+   <span class="hljs-keyword">eval</span>(<span class="hljs-string">&quot;var_dump($<span class="hljs-subst">$args</span>);&quot;</span>);         <span class="hljs-comment">////$$args可变变量，将$args作为变量。</span>
+&#125;
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<p>所以什么能够将变量显示出来呢，答案是全局变量 GLOBALS<br>$GLOBALS — 引用全局作用域中可用的全部变量<br>输入 args=GLOBALS 得到flag。<br><img src="https://ftp.bmp.ovh/imgs/2020/12/136889d8f52006b5.png" srcset="/img/loading.gif"></p>
+<h4 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h4><ul>
+<li>首先是preg_match那一段，注意还有个 ！ ，       </li>
+<li>两个//表示开始和结束，</li>
+<li>^表示开始字符串，</li>
+<li>$表示结束字符串，</li>
+<li>\w表示包含【a-z，A-Z, _ , 0-9】，</li>
+<li>+表示一个或者多个\w。</li>
+<li>注意是字符串 全部 【a-z，A-Z, _ , 0-9】这些组成才true。        </li>
+<li>还有就是那个带两个美元符号的可变变量。</li>
+<li>全局变量：</li>
+<li>$GLOBALS — 引用全局作用域中可用的全部变量。</li>
+<li>$_SERVER 这种超全局变量保存关于报头、路径和脚本位置的信息。</li>
+<li>REQUEST\GET\POST也都是全局变量。            </li>
+<li><hr>
+<h2 id="11-web5"><a href="#11-web5" class="headerlink" title="11.web5"></a>11.web5</h2><img src="https://ftp.bmp.ovh/imgs/2020/12/5b59308e8f0baff2.png" srcset="/img/loading.gif"><br>F12后看到一堆奇怪的符号，根据题目提示应该是 JSPFUCK 编码；解码方法：将其复制粘贴到控制台后回车，得到flag<br><img src="https://ftp.bmp.ovh/imgs/2020/12/4341596e2726364f.png" srcset="/img/loading.gif"><br>注意题目要求，提交时字母大写！！<br>jjencode、aaencode这两个也可以用此方法解码。<br>jjencode:<img src="https://ftp.bmp.ovh/imgs/2020/12/4c6f2b82c79f2d09.png" srcset="/img/loading.gif"><br>aaencode:<img src="https://ftp.bmp.ovh/imgs/2020/12/8331e5413d3b5f56.png" srcset="/img/loading.gif"></li>
+</ul>
+<hr>
+<h2 id="12-头等舱"><a href="#12-头等舱" class="headerlink" title="12.头等舱"></a>12.头等舱</h2><p>打开地址后，页面上写有什么也没有几个字，不知道啥意思，御剑，burp一起上，发现send后得到flag。<br> <img src="https://ftp.bmp.ovh/imgs/2020/12/1b08738f709f6956.png" srcset="/img/loading.gif"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/WP/">WP</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/WP/">WP</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/04/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Php伪协议</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/03/wxyWP/">
+                        <span class="hidden-mobile">伪协议--WP</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+<!--//背景线条      {% if theme.canvas_nest %}-->
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+{% endif %}
+
+<!-- fireworks-->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+
+</body>
+</html>
