@@ -2356,7 +2356,7 @@
   
   
   <entry>
-    <title>404</title>
+    <title>关于</title>
     <link href="/"/>
     <url>/</url>
     
@@ -2367,7 +2367,7 @@
   
   
   <entry>
-    <title>Categories</title>
+    <title>404</title>
     <link href="/"/>
     <url>/</url>
     
@@ -2400,6 +2400,28 @@
   
   
   <entry>
+    <title>Categories</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>分类</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Friends</title>
     <link href="/"/>
     <url>/</url>
@@ -2422,18 +2444,7 @@
   
   
   <entry>
-    <title>分类</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>关于</title>
+    <title>标签</title>
     <link href="/"/>
     <url>/</url>
     
@@ -2445,17 +2456,6 @@
   
   <entry>
     <title>Tags</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>标签</title>
     <link href="/"/>
     <url>/</url>
     
