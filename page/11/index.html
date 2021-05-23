@@ -186,6 +186,58 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/18/BUU004/" target="_self">
+          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="BUU每日一题004">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/18/BUU004/">BUU每日一题004</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/18/BUU004/">
+          
+          
+            
+          
+          四、
+题目：[SUCTF 2019]EasySQL又是挨打的一天，哎       
+
+分析试了几下，发现了四种回显，第三种输出Nonono;第四种无输出；看到0和1，本来以为是布尔值注入，但弄了半天也没个结果，还是去看WP吧     
+
+解原来可以堆叠注入，居然没想到……..然后1;show databases;得到库；1;show tables;得到个Flag表1;select * from F
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-18 15:17" pubdate>
+              2021-01-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/01/17/leve1/" target="_self">
           <img src="/img/top.jpg" srcset="/img/loading.gif" alt="Level1~~level4">
         </a>
@@ -668,65 +720,6 @@ include和require的区别：include引入文件报错后会继续执行代码�
             <i class="iconfont icon-date"></i>
             <time datetime="2020-12-03 18:28" pubdate>
               2020-12-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/WP/">WP</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/WP/">WP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/11/28/RCEWP/" target="_self">
-          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="Basic Rce---WP">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/11/28/RCEWP/">Basic Rce---WP</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/11/28/RCEWP/">
-          
-          
-            
-          
-          basic rce1——wp首先进行代码审计：
-&lt;?php
-//拿到flag就不要乱玩了哦~
-error_reporting(0);     //php函数，关闭错误报告
-show_source(__FILE__);   //该函数对文件进行语法高亮显示，应该就是让PHP代码能够在HTML页面上显示。
-eval($_GET[&#39;a&#39;]);   //首先，eval()函数，把字符
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-11-28 17:15" pubdate>
-              2020-11-28
             </time>
           </div>
         

