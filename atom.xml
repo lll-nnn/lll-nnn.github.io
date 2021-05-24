@@ -6,10 +6,43 @@
   <link href="http://lll-nnn.github.io/atom.xml" rel="self"/>
   
   <link href="http://lll-nnn.github.io/"/>
-  <updated>2021-05-23T16:00:16.125Z</updated>
+  <updated>2021-05-24T15:03:50.273Z</updated>
   <id>http://lll-nnn.github.io/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Avatar Uploader 1</title>
+    <link href="http://lll-nnn.github.io/2021/05/24/BUU88/"/>
+    <id>http://lll-nnn.github.io/2021/05/24/BUU88/</id>
+    <published>2021-05-24T14:43:09.000Z</published>
+    <updated>2021-05-24T15:03:50.273Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><p>打开环境  </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/ec5696d2927c25ee.png"><br>先随便输个进去看看<br><img src="https://ftp.bmp.ovh/imgs/2021/05/5c988c69bedf52e1.png">     </p><p>文件上传   </p><p>尝试了几下，感觉没戏，只让上传PNG    </p><p>看下WP<br>给了源码    </p><p><code>upload.php</code>    </p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>error_reporting(<span class="hljs-number">0</span>);<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;config.php&#x27;</span>);<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;lib/util.php&#x27;</span>);<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;lib/session.php&#x27;</span>);$session = <span class="hljs-keyword">new</span> SecureClientSession(CLIENT_SESSION_ID, SECRET_KEY);<span class="hljs-comment">// check whether file is uploaded</span><span class="hljs-keyword">if</span> (!file_exists($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>]) || !is_uploaded_file($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>])) &#123;<span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;No file was uploaded.&#x27;</span>);&#125;<span class="hljs-comment">// check file size</span><span class="hljs-keyword">if</span> ($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;size&#x27;</span>] &gt; <span class="hljs-number">256000</span>) &#123;<span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;Uploaded file is too large.&#x27;</span>);&#125;<span class="hljs-comment">// check file type</span>$finfo = finfo_open(FILEINFO_MIME_TYPE);$type = finfo_file($finfo, $_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>]);finfo_close($finfo);<span class="hljs-keyword">if</span> (!in_array($type, [<span class="hljs-string">&#x27;image/png&#x27;</span>])) &#123;<span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;Uploaded file is not PNG format.&#x27;</span>);&#125;<span class="hljs-comment">// check file width/height</span>$size = getimagesize($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>]);<span class="hljs-keyword">if</span> ($size[<span class="hljs-number">0</span>] &gt; <span class="hljs-number">256</span> || $size[<span class="hljs-number">1</span>] &gt; <span class="hljs-number">256</span>) &#123;<span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;Uploaded image is too large.&#x27;</span>);&#125;<span class="hljs-keyword">if</span> ($size[<span class="hljs-number">2</span>] !== IMAGETYPE_PNG) &#123;<span class="hljs-comment">// I hope this never happens...</span><span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;What happened...? OK, the flag for part 1 is: &lt;code&gt;&#x27;</span> . getenv(<span class="hljs-string">&#x27;FLAG1&#x27;</span>) . <span class="hljs-string">&#x27;&lt;/code&gt;&#x27;</span>);&#125;<span class="hljs-comment">// ok</span>$filename = bin2hex(random_bytes(<span class="hljs-number">4</span>)) . <span class="hljs-string">&#x27;.png&#x27;</span>;move_uploaded_file($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>], UPLOAD_DIR . <span class="hljs-string">&#x27;/&#x27;</span> . $filename);$session-&gt;set(<span class="hljs-string">&#x27;avatar&#x27;</span>, $filename);flash(<span class="hljs-string">&#x27;info&#x27;</span>, <span class="hljs-string">&#x27;Your avatar has been successfully updated!&#x27;</span>);redirect(<span class="hljs-string">&#x27;/&#x27;</span>);</code></pre></code></pre><p><code>getimagesize</code>函数返回的是一个数组     </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/856b33eae66eb5e9.png">      </p><p><code>[0]</code>和<code>[1]</code>分别是宽度和高度<br><code>[2]</code>是图片的类型    </p><pre><code>GIF，JPG，PNG，SWF，SWC，PSD，TIFF，BMP，IFF，JP2，JPX，JB2，JPC，XBM 或 WBMP       按此顺序的编号1=&gt;GIF、3=&gt;PNG     </code></pre><p>按源码的要求，需要<code>finfo_file()</code>为<code>imag/png</code>；而<code>getimagesize</code>得到的<code>$size[2]!==IMAGETYPE_PNG</code>       </p><p><code>finfo_file()</code>识别PNG文件十六进制下的第一行，删掉剩余的数据即可绕过<code>getimagesize()</code>    </p><p>所以用<code>winhex</code>对文件处理<br><img src="https://ftp.bmp.ovh/imgs/2021/05/cef90b357e70f2a4.png">      </p><p>上传后即可得到flag   </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/cc52aa2d9fdf817e.png"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;PHP&quot;&gt;&lt;a href=&quot;#PHP&quot; class=&quot;headerlink&quot; title=&quot;PHP&quot;&gt;&lt;/a&gt;PHP&lt;/h2&gt;&lt;p&gt;打开环境  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ftp.bmp.ovh/imgs/2021/05/ec5696d29</summary>
+      
+    
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
+    
+    <category term="php" scheme="http://lll-nnn.github.io/categories/CTF/php/"/>
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
+    
+    <category term="WP" scheme="http://lll-nnn.github.io/tags/WP/"/>
+    
+    <category term="php" scheme="http://lll-nnn.github.io/tags/php/"/>
+    
+    <category term="upload" scheme="http://lll-nnn.github.io/tags/upload/"/>
+    
+  </entry>
   
   <entry>
     <title>海洋大学CTF</title>
@@ -553,28 +586,6 @@ error</summary>
       
       
     <summary type="html">&lt;h2 id=&quot;PicDown&quot;&gt;&lt;a href=&quot;#PicDown&quot; class=&quot;headerlink&quot; title=&quot;PicDown&quot;&gt;&lt;/a&gt;PicDown&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://ae03.alicdn.com/kf/Uce6df5309dde</summary>
-      
-    
-    
-    
-    
-    <category term="wp" scheme="http://lll-nnn.github.io/tags/wp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Encode_and_encode</title>
-    <link href="http://lll-nnn.github.io/2021/04/16/BUU71/"/>
-    <id>http://lll-nnn.github.io/2021/04/16/BUU71/</id>
-    <published>2021-04-16T14:29:34.000Z</published>
-    <updated>2021-04-16T14:46:16.828Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="c—-a—-i"><a href="#c—-a—-i" class="headerlink" title="c—-a—-i"></a>c—-a—-i</h2><pre><code><pre><code class="hljs php"> <span class="hljs-meta">&lt;?php</span>error_reporting(<span class="hljs-number">0</span>);<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;source&#x27;</span>])) &#123;  show_source(<span class="hljs-keyword">__FILE__</span>);  <span class="hljs-keyword">exit</span>();&#125;<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">is_valid</span>(<span class="hljs-params">$str</span>) </span>&#123;  $banword = [    <span class="hljs-comment">// no path traversal</span>    <span class="hljs-string">&#x27;\.\.&#x27;</span>,    <span class="hljs-comment">// no stream wrapper</span>    <span class="hljs-string">&#x27;(php|file|glob|data|tp|zip|zlib|phar):&#x27;</span>,    <span class="hljs-comment">// no data exfiltration</span>    <span class="hljs-string">&#x27;flag&#x27;</span>  ];  $regexp = <span class="hljs-string">&#x27;/&#x27;</span> . implode(<span class="hljs-string">&#x27;|&#x27;</span>, $banword) . <span class="hljs-string">&#x27;/i&#x27;</span>;  <span class="hljs-keyword">if</span> (preg_match($regexp, $str)) &#123;    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  &#125;  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;&#125;$body = file_get_contents(<span class="hljs-string">&#x27;php://input&#x27;</span>);$json = json_decode($body, <span class="hljs-literal">true</span>);<span class="hljs-keyword">if</span> (is_valid($body) &amp;&amp; <span class="hljs-keyword">isset</span>($json) &amp;&amp; <span class="hljs-keyword">isset</span>($json[<span class="hljs-string">&#x27;page&#x27;</span>])) &#123;  $page = $json[<span class="hljs-string">&#x27;page&#x27;</span>];  $content = file_get_contents($page);  <span class="hljs-keyword">if</span> (!$content || !is_valid($content)) &#123;    $content = <span class="hljs-string">&quot;&lt;p&gt;not found&lt;/p&gt;\n&quot;</span>;  &#125;&#125; <span class="hljs-keyword">else</span> &#123;  $content = <span class="hljs-string">&#x27;&lt;p&gt;invalid request&lt;/p&gt;&#x27;</span>;&#125;<span class="hljs-comment">// no data exfiltration!!!</span>$content = preg_replace(<span class="hljs-string">&#x27;/HarekazeCTF\&#123;.+\&#125;/i&#x27;</span>, <span class="hljs-string">&#x27;HarekazeCTF&#123;&amp;lt;censored&amp;gt;&#125;&#x27;</span>, $content);<span class="hljs-keyword">echo</span> json_encode([<span class="hljs-string">&#x27;content&#x27;</span> =&gt; $content]);</code></pre></code></pre><p>以json的格式post数据，读取flag文件        </p><p>json中可以用utf-16编码       </p><p>php—-&gt;<code>\u0070\u0068\u0070</code><br>flag—–&gt;<code>\u0066\u006C\u0061\u0067</code>       </p><p>伪协议读取即可        </p><p>payload：<code>&#123; &quot;page&quot; : &quot;\u0070\u0068\u0070://filter/read=convert.Base64-encode/resource=/\u0066\u006c\u0061\u0067&quot;&#125;</code></p><p><img src="https://ae04.alicdn.com/kf/Uc0dae37fec114059ba662aef6c3440a4s.jpg" alt="01.png"></p><hr><hr><p><img src="https://ae03.alicdn.com/kf/U077aee7bf14d4989834bd3d5c060ab95X.jpg" alt="我是伞兵">    </p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;c—-a—-i&quot;&gt;&lt;a href=&quot;#c—-a—-i&quot; class=&quot;headerlink&quot; title=&quot;c—-a—-i&quot;&gt;&lt;/a&gt;c—-a—-i&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&lt;pre&gt;&lt;code class=&quot;hljs php&quot;&gt; &lt;span class=&quot;</summary>
       
     
     

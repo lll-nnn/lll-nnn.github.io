@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>Avatar Uploader 1</title>
+    <link href="/2021/05/24/BUU88/"/>
+    <url>/2021/05/24/BUU88/</url>
+    
+    <content type="html"><![CDATA[<h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><p>打开环境  </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/ec5696d2927c25ee.png"><br>先随便输个进去看看<br><img src="https://ftp.bmp.ovh/imgs/2021/05/5c988c69bedf52e1.png">     </p><p>文件上传   </p><p>尝试了几下，感觉没戏，只让上传PNG    </p><p>看下WP<br>给了源码    </p><p><code>upload.php</code>    </p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>error_reporting(<span class="hljs-number">0</span>);<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;config.php&#x27;</span>);<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;lib/util.php&#x27;</span>);<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;lib/session.php&#x27;</span>);$session = <span class="hljs-keyword">new</span> SecureClientSession(CLIENT_SESSION_ID, SECRET_KEY);<span class="hljs-comment">// check whether file is uploaded</span><span class="hljs-keyword">if</span> (!file_exists($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>]) || !is_uploaded_file($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>])) &#123;<span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;No file was uploaded.&#x27;</span>);&#125;<span class="hljs-comment">// check file size</span><span class="hljs-keyword">if</span> ($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;size&#x27;</span>] &gt; <span class="hljs-number">256000</span>) &#123;<span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;Uploaded file is too large.&#x27;</span>);&#125;<span class="hljs-comment">// check file type</span>$finfo = finfo_open(FILEINFO_MIME_TYPE);$type = finfo_file($finfo, $_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>]);finfo_close($finfo);<span class="hljs-keyword">if</span> (!in_array($type, [<span class="hljs-string">&#x27;image/png&#x27;</span>])) &#123;<span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;Uploaded file is not PNG format.&#x27;</span>);&#125;<span class="hljs-comment">// check file width/height</span>$size = getimagesize($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>]);<span class="hljs-keyword">if</span> ($size[<span class="hljs-number">0</span>] &gt; <span class="hljs-number">256</span> || $size[<span class="hljs-number">1</span>] &gt; <span class="hljs-number">256</span>) &#123;<span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;Uploaded image is too large.&#x27;</span>);&#125;<span class="hljs-keyword">if</span> ($size[<span class="hljs-number">2</span>] !== IMAGETYPE_PNG) &#123;<span class="hljs-comment">// I hope this never happens...</span><span class="hljs-built_in">error</span>(<span class="hljs-string">&#x27;What happened...? OK, the flag for part 1 is: &lt;code&gt;&#x27;</span> . getenv(<span class="hljs-string">&#x27;FLAG1&#x27;</span>) . <span class="hljs-string">&#x27;&lt;/code&gt;&#x27;</span>);&#125;<span class="hljs-comment">// ok</span>$filename = bin2hex(random_bytes(<span class="hljs-number">4</span>)) . <span class="hljs-string">&#x27;.png&#x27;</span>;move_uploaded_file($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>], UPLOAD_DIR . <span class="hljs-string">&#x27;/&#x27;</span> . $filename);$session-&gt;set(<span class="hljs-string">&#x27;avatar&#x27;</span>, $filename);flash(<span class="hljs-string">&#x27;info&#x27;</span>, <span class="hljs-string">&#x27;Your avatar has been successfully updated!&#x27;</span>);redirect(<span class="hljs-string">&#x27;/&#x27;</span>);</code></pre></code></pre><p><code>getimagesize</code>函数返回的是一个数组     </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/856b33eae66eb5e9.png">      </p><p><code>[0]</code>和<code>[1]</code>分别是宽度和高度<br><code>[2]</code>是图片的类型    </p><pre><code>GIF，JPG，PNG，SWF，SWC，PSD，TIFF，BMP，IFF，JP2，JPX，JB2，JPC，XBM 或 WBMP       按此顺序的编号1=&gt;GIF、3=&gt;PNG     </code></pre><p>按源码的要求，需要<code>finfo_file()</code>为<code>imag/png</code>；而<code>getimagesize</code>得到的<code>$size[2]!==IMAGETYPE_PNG</code>       </p><p><code>finfo_file()</code>识别PNG文件十六进制下的第一行，删掉剩余的数据即可绕过<code>getimagesize()</code>    </p><p>所以用<code>winhex</code>对文件处理<br><img src="https://ftp.bmp.ovh/imgs/2021/05/cef90b357e70f2a4.png">      </p><p>上传后即可得到flag   </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/cc52aa2d9fdf817e.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF</category>
+      
+      <category>php</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+      <tag>WP</tag>
+      
+      <tag>php</tag>
+      
+      <tag>upload</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>海洋大学CTF</title>
     <link href="/2021/05/23/%E6%B5%B7%E6%B4%8B%E5%A4%A7%E5%AD%A6CTF/"/>
     <url>/2021/05/23/%E6%B5%B7%E6%B4%8B%E5%A4%A7%E5%AD%A6CTF/</url>
@@ -2400,62 +2433,7 @@
   
   
   <entry>
-    <title>关于</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Categories</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>About</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>分类</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Categories</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Html</title>
     <link href="/"/>
     <url>/</url>
     
@@ -2477,7 +2455,51 @@
   
   
   <entry>
-    <title>Tags</title>
+    <title>Html</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Categories</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Categories</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>关于</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>分类</title>
     <link href="/"/>
     <url>/</url>
     
@@ -2489,6 +2511,17 @@
   
   <entry>
     <title>标签</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Tags</title>
     <link href="/"/>
     <url>/</url>
     
