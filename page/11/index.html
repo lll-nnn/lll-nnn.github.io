@@ -186,6 +186,156 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/20/BUU006/" target="_self">
+          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="BUU每日一题006">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/20/BUU006/">BUU每日一题006</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/20/BUU006/">
+          
+          
+            
+          
+          六、
+题目：[GXYCTF2019]Ping Ping Ping   
+分析ls一下，得到可能含有flag的文件ping的命令执行，经检验，空格和flag被过滤空格可以用$IFS代替；flag可以用变量拼接绕过         
+解     
+*payload：**/?ip=127.0.0.1;a=ag.php;b=fl;cat$IFS$b$a得到flag另外/?ip=127.0.0.1;cat$
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-20 16:33" pubdate>
+              2021-01-20
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/19/level5/" target="_self">
+          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="Level5">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/19/level5/">Level5</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/19/level5/">
+          
+          
+            
+          
+          level5
+分析GET-Double injection-Single Quotes-StringGET-双重注入-单引号-字符串输入?id=1，输出为：?id=22没有输出；?id=1&#39;报错；根据题目，应该用双重注入：一个select语句中再嵌套一个select语句，嵌套的这个语句称作子查询，如select concat((select database()));几个函数：    
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-19 17:38" pubdate>
+              2021-01-19
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/note/">note</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/19/BUU005/" target="_self">
+          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="BUU每日一题005">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/19/BUU005/">BUU每日一题005</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/19/BUU005/">
+          
+          
+            
+          
+          五、
+题目：[极客大挑战 2019]LoveSQL []       
+分析传入username=1&#39;&amp;&amp;password=1&#39;发现报错，所以可以的得出两处均存在sql注入，再次传入username=1&quot;&amp;&amp;password=1&quot;,发现没有报错，而是NO,Wrong username password！！！接下来按流程走一走：  
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-19 13:41" pubdate>
+              2021-01-19
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/01/18/leve2/" target="_self">
           <img src="/img/top.jpg" srcset="/img/loading.gif" alt="Leve2">
         </a>
@@ -543,189 +693,6 @@ sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security 
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/12/06/SSRFWP/" target="_self">
-          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="SSRF--WP">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/06/SSRFWP/">SSRF--WP</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/06/SSRFWP/">
-          
-          
-            
-          
-          SSRF–WP题目：        
-            啊这，这怎么...这file_get_contents()有啥用呢
-&lt;?php
-    echo&#39;&lt;center&gt;&lt;strong&gt;啊这，这怎么...这file_get_contents()有啥用呢&lt;/strong&gt;&lt;/center&gt;&#39;;
-    highlight_f
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-06 10:31" pubdate>
-              2020-12-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/WP/">WP</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/WP/">WP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/12/04/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/" target="_self">
-          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="Php伪协议">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/04/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/">Php伪协议</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/04/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
-          
-          
-            
-          
-          PHP伪协议
-PHP伪协议事实上就是支持的协议与封装协议。
-首先，介绍一些CTF中常见的文件包含函数：
-1.include：包含并对给定的文件进行计算。
-2.require：用于引入或者包含外部php文件。
-include和require的区别：include引入文件报错后会继续执行代码，而require引入文件时，遇到错误后就会停止运行下面的代码。        
-
-
-3.include_onc
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-04 21:54" pubdate>
-              2020-12-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/NOTE/">NOTE</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/NOTE/">NOTE</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/12/04/bugku/" target="_self">
-          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="Bugku刷题记录">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/04/bugku/">Bugku刷题记录</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/04/bugku/">
-          
-          
-            
-          
-          bugku–wp
-1.web2打开题目地址，F12查看源码的到flag。 
-
-2.计算器数学题计算，输入结果发现只能输入一个数字，应该是限制了长度，修改源码后重新提交，得到flag。         
-
-3.web基础$_GETURL中输入what=flag得到flag。        
-
-4.web基础&amp;_POST用hackbar提交what=flag得到flag。   
-
-5.矛盾is
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-04 18:17" pubdate>
-              2020-12-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/WP/">WP</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/WP/">WP</a>
             
           </div>
         

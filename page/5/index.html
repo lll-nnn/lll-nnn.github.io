@@ -186,6 +186,157 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/03/27/BUU59/" target="_self">
+          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="MRCTF2020套娃">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/03/27/BUU59/">MRCTF2020套娃</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/03/27/BUU59/">
+          
+          
+            
+          
+          php打开是这样：查看源码       
+http://localhost/aaa/index.php?p=222&amp;q=333
+结果：
+$_SERVER[&#39;QUERY_STRING&#39;] = &quot;p=222&amp;q=333&quot;;
+$_SERVER[&#39;REQUEST_URI&#39;]  = &quot;/aaa/index.php?p=222&am
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-27 16:10" pubdate>
+              2021-03-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/03/22/BUU58/" target="_self">
+          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="GWCTF 2019枯燥的抽奖">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/03/22/BUU58/">GWCTF 2019枯燥的抽奖</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/03/22/BUU58/">
+          
+          
+            
+          
+          **看看源码，发现check.php随机数没有seed，比较还是===看WP吧php mt_seed伪随机数漏洞需要根据给的前十位用php_mt_seed这个工具爆破出seed，然后根据seed执行代码得到$str，然后提交即可先将前十位转换为php_mt_seed需要的格式      
+&lt;?php
+$pass=&#x27;FiPnfNN8Dn&#x27;;
+$str=&#x27;abcde
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-22 23:49" pubdate>
+              2021-03-22
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/03/21/BUU57/" target="_self">
+          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="Dropbox">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/03/21/BUU57/">Dropbox</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/03/21/BUU57/">
+          
+          
+            
+          
+          好难试了一波SQL注入，感觉不行注册—–登录—–上传个文件（这里上传文件也不行）下载—抓包发现可以任意文件读取，记得要跳到上级目录../../最终将所有PHP文件读取出来，但不能直接读flag，被过了接下来就是代码审计了    
+class.php里      
+public function close() &#123;
+    return file_get_contents($this-&g
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-21 23:20" pubdate>
+              2021-03-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/03/18/BUU56/" target="_self">
           <img src="/img/top.jpg" srcset="/img/loading.gif" alt="BUU56">
         </a>
@@ -529,162 +680,6 @@ call_user_func——&gt;把第一个参数作为回调函数调用
             <i class="iconfont icon-date"></i>
             <time datetime="2021-03-11 16:36" pubdate>
               2021-03-11
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/03/10/BUU049/" target="_self">
-          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="BUU每日一题">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/10/BUU049/">BUU每日一题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/10/BUU049/">
-          
-          
-            
-          
-          题目[WUSTCTF2020]朴实无华      
-分析没啥东西，看看robots.txt         
-User-agent: *
-Disallow: /fAke_f1agggg.php     
-访问访问后出现源码      
-&lt;?php
-header(&#x27;Content-type:text/html;charset=utf-8&#x27;);
-error_reporting
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-10 10:47" pubdate>
-              2021-03-10
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/03/09/BUU048/" target="_self">
-          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="BUU每日一题">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/09/BUU048/">BUU每日一题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/09/BUU048/">
-          
-          
-            
-          
-          题目[BJDCTF 2nd]简单注入       
-分析又过滤了好多&#39;、&quot;、select、-、=、like、and看WP说有提示—-&gt;robots.txt一般遇到看不懂的题我才会试一下常见的目录，没想到…….这和hgame那道一样\转义         
-解```python
-import requests
-import time
-import datetime
-
-url=
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-09 16:28" pubdate>
-              2021-03-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/03/08/BUU047/" target="_self">
-          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="BUU每日一题">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/08/BUU047/">BUU每日一题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/08/BUU047/">
-          
-          
-            
-          
-          题目[SWPU2019]Web1     
-分析注册登录后考虑XSS但试了试，感觉不行看看WP是填写广告名那里存在SQL注入有过滤#、or、--、information、空格....双写也绕不过报错信息You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server vers
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-08 23:33" pubdate>
-              2021-03-08
             </time>
           </div>
         

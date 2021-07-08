@@ -186,6 +186,217 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/06/BUU83/" target="_self">
+          <img src="/img/0001.jpg" srcset="/img/loading.gif" alt="Bestphp&#39;s Revenge">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/06/BUU83/">Bestphp&#39;s Revenge</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/06/BUU83/">
+          
+          
+            
+          
+          Knowledge
+PHP中SESSION反序列化   
+PHP中的session中的内容是以文件的方式存储的，并不是存于内存中，存储方式由配置项session.save_handler控制，默认文件。
+文件以sess_sessionid进行命名，文件的内容是session值序列化后的内容
+在php.ini中存在三项配置：
+session.save_path=&quot;&quot;   –设置s
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-06 23:28" pubdate>
+              2021-05-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/php/">php</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/php/">php</a>
+            
+              <a href="/tags/serialize/">serialize</a>
+            
+              <a href="/tags/%E5%8E%9F%E7%94%9F%E7%B1%BB/">原生类</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/04/BUU82/" target="_self">
+          <img src="/img/123.jpg" srcset="/img/loading.gif" alt="Flag Shop">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/04/BUU82/">Flag Shop</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/04/BUU82/">
+          
+          
+            
+          
+          |_|-|打开环境
+
+点一下buy flag     
+弹出了&#123;&quot;title&quot;:&quot;error&quot;,&quot;message&quot;:&quot;no enough jkl&quot;&#125;     
+想到了应该是要伪造cookie     
+顺便看看robots.txt，居然有    
+User-agent: *
+Disallow: /f
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-04 21:29" pubdate>
+              2021-05-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/jwt/">jwt</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/jwt/">jwt</a>
+            
+              <a href="/tags/ruby/">ruby</a>
+            
+              <a href="/tags/ERB/">ERB</a>
+            
+              <a href="/tags/SSTI/">SSTI</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/01/BUU81/" target="_self">
+          <img src="/img/26s.jpg" srcset="/img/loading.gif" alt="Ezinclude">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/01/BUU81/">Ezinclude</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/01/BUU81/">
+          
+          
+            
+          
+          【-+-    -+-】进入环境      
+注释中有Hint      
+&lt;!--md5($secret.$name)===$pass --&gt;        
+应该是要传入name和pass       
+响应头里有一段hash值       
+当成pass传入，name不传     
+?pass=fa25e54758d5d5c1927781a6ede89f8a      
+有跳转，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-01 23:07" pubdate>
+              2021-05-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/PHP/">PHP</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/">文件读取</a>
+            
+              <a href="/tags/php-filter-string-strip-tags/">php://filter/string.strip_tags</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/04/30/BUU80/" target="_self">
           <img src="/img/1s.jpg" srcset="/img/loading.gif" alt="Easyphp">
         </a>
@@ -243,11 +454,11 @@ if(isset($_GET
             
               <a href="/tags/CTF/">CTF</a>
             
+              <a href="/tags/WP/">WP</a>
+            
               <a href="/tags/unserialize/">unserialize</a>
             
               <a href="/tags/char-escape/">char.escape</a>
-            
-              <a href="/tags/WP/">WP</a>
             
           </div>
         
@@ -569,167 +780,6 @@ Think PHP V6.0.0任意文件操作漏洞
             <i class="iconfont icon-date"></i>
             <time datetime="2021-04-24 16:57" pubdate>
               2021-04-24
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/23/BUU74/" target="_self">
-          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="EzPHP">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/23/BUU74/">EzPHP</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/23/BUU74/">
-          
-          
-            
-          
-          -*-代码审计    
-```php
- &lt;?php
-highlight_file(__FILE__);
-error_reporting(0); 
-
-$file = &quot;1nD3x.php&quot;;
-$shana = $_GET[&#39;shana&#39;];
-$passwd = $_GET[&#39;passwd&#39;];
-$arg = &#39;&#39;;
-$code
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-23 22:43" pubdate>
-              2021-04-23
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/22/BUU73/" target="_self">
-          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="SQLi">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/22/BUU73/">SQLi</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/22/BUU73/">
-          
-          
-            
-          
-          .`.      
-robots.txt     
-User-agent: *
-Disallow: /hint.txt      
-hint.txt      
-$black_list = &quot;/limit|by|substr|mid|,|admin|benchmark|like|or|char|union|substring|select|greatest|%00|\&#39;|=| |
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-22 19:10" pubdate>
-              2021-04-22
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/18/BUU72/" target="_self">
-          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="PicDown">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/18/BUU72/">PicDown</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/18/BUU72/">
-          
-          
-            
-          
-          PicDown      
-随便输，url变成了http://7a97406b-5c95-46e4-be43-8311778ca05e.node3.buuoj.cn/?url=127.0.0.1看到url，以为是ssrf,试了几下，感觉不是，看了wp       
-是任意文件读取，甚至不需要目录穿越        
-直接读/flag可以读出来         
-/proc目录      
-Linu
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-18 22:25" pubdate>
-              2021-04-18
             </time>
           </div>
         
