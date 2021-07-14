@@ -186,6 +186,106 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/09/BUU026/" target="_self">
+          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="BUU每日一题026">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/09/BUU026/">BUU每日一题026</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/09/BUU026/">
+          
+          
+            
+          
+          二十六、题目[BJDCTF 2nd]fake google 
+分析源码中没发现什么随便输个看看不知道提示的什么意思，看了wp知道是ssti模板注入按下图判断模板引擎输入：&#123;&#123;7*7&#125;&#125;所以应该是jinja2；如果用tplmap的话可以直接得到是jinja2         
+解payload：&#123;% for c in [].__class__.__b
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-09 17:16" pubdate>
+              2021-02-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/08/BUU025/" target="_self">
+          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="BUU每日一题025">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/08/BUU025/">BUU每日一题025</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/08/BUU025/">
+          
+          
+            
+          
+          二十五、题目[MRCTF2020]你传你ma呢  
+分析一道上传题php、phtml都不能传，只能是jpg或者png看wp说是要用到.htaccess里面写上
+SetHandler application/x-httpd-php
+//这语句的作用是让Apache将其他类型文件均以php格式解析     
+解先上传.htaccess抓包改一下Content-Type在上传马，后缀改为.jpg蚁剑连接
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-08 15:24" pubdate>
+              2021-02-08
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/02/07/BUU024/" target="_self">
           <img src="/img/top.jpg" srcset="/img/loading.gif" alt="BUU每日一题024">
         </a>
@@ -587,114 +687,11 @@ Do you wan
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/31/BUU017/" target="_self">
-          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="BUU每日一题017">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/31/BUU017/">BUU每日一题017</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/31/BUU017/">
-          
-          
-            
-          
-          十七、题目[SUCTF 2019]CheckIn   
-分析文件上传并且给了源码https://github.com/team-su/SUCTF-2019/tree/master/Web/checkIn          
-&lt;?php
-// error_reporting(0);
-$userdir = &quot;uploads/&quot; . md5($_SERVER[&quot;REM
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-31 13:01" pubdate>
-              2021-01-31
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/30/BUU016/" target="_self">
-          <img src="/img/top.jpg" srcset="/img/loading.gif" alt="BUU每日一题016">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/30/BUU016/">BUU每日一题016</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/30/BUU016/">
-          
-          
-            
-          
-          十六、题目[极客大挑战 2019]BuyFlag     
-分析F12源代码注释中有东西              
-	~~~post money and password~~~
-if (isset($_POST[&#x27;password&#x27;])) &#123;
-	$password = $_POST[&#x27;password&#x27;];
-	if (is_numeric($pa
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-30 12:45" pubdate>
-              2021-01-30
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/8/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/8/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/10/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

