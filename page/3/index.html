@@ -186,6 +186,147 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/08/BUU84/" target="_self">
+          <img src="/img/0003.jpg" srcset="/img/loading.gif" alt="Ezaudit">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/08/BUU84/">Ezaudit</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/08/BUU84/">
+          
+          
+            
+          
+          -0-)     
+题目打开是这样，挺正经的，以为是什么漏洞，源码中也没有提示     
+看一眼题目名Ezaudit简单的审计     
+哦   
+www.zip  
+果然   
+下载下来是index.php     
+&lt;?php 
+header(&#x27;Content-type:text/html; charset=utf-8&#x27;);
+error_reporting(0);
+i
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-08 18:07" pubdate>
+              2021-05-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/php/">php</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/php/">php</a>
+            
+              <a href="/tags/mt-srand/">mt_srand</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/06/BUU83/" target="_self">
+          <img src="/img/0001.jpg" srcset="/img/loading.gif" alt="Bestphp&#39;s Revenge">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/06/BUU83/">Bestphp&#39;s Revenge</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/06/BUU83/">
+          
+          
+            
+          
+          Knowledge
+PHP中SESSION反序列化   
+PHP中的session中的内容是以文件的方式存储的，并不是存于内存中，存储方式由配置项session.save_handler控制，默认文件。
+文件以sess_sessionid进行命名，文件的内容是session值序列化后的内容
+在php.ini中存在三项配置：
+session.save_path=&quot;&quot;   –设置s
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-06 23:28" pubdate>
+              2021-05-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/php/">php</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/php/">php</a>
+            
+              <a href="/tags/serialize/">serialize</a>
+            
+              <a href="/tags/%E5%8E%9F%E7%94%9F%E7%B1%BB/">原生类</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/05/04/BUU82/" target="_self">
           <img src="/img/123.jpg" srcset="/img/loading.gif" alt="Flag Shop">
         </a>
@@ -657,117 +798,6 @@ if( array_key_exists( &quot;code&quot;, $_GET ) &amp;&amp; $_GET[ &#x27;code&#x2
             <i class="iconfont icon-date"></i>
             <time datetime="2021-04-25 17:07" pubdate>
               2021-04-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/24/BUU75/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="EasyThinking">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/24/BUU75/">EasyThinking</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/24/BUU75/">
-          
-          
-            
-          
-          -_-看到thinking应该想到应该是thinkphp吧输入个不存在的路径报错：       
-     
-Think PHP V6.0.0任意文件操作漏洞       
-    
-32位的PHPSESSID改成一个32位的PHP文件名  
-      
-搜索里面填入一句话      
-就会被存放到之前写的文件里面访问http://93a0778c-632e-4f47-9ba1-8d8017ef
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-24 16:57" pubdate>
-              2021-04-24
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/23/BUU74/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="EzPHP">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/23/BUU74/">EzPHP</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/23/BUU74/">
-          
-          
-            
-          
-          -*-代码审计    
-```php
- &lt;?php
-highlight_file(__FILE__);
-error_reporting(0); 
-
-$file = &quot;1nD3x.php&quot;;
-$shana = $_GET[&#39;shana&#39;];
-$passwd = $_GET[&#39;passwd&#39;];
-$arg = &#39;&#39;;
-$code
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-23 22:43" pubdate>
-              2021-04-23
             </time>
           </div>
         
