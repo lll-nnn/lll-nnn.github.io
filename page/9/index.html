@@ -186,6 +186,54 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/22/BUU034/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题034">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/22/BUU034/">BUU每日一题034</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/22/BUU034/">
+          
+          
+            
+          
+          题目[安洵杯 2019]easy_web    
+分析照例查看源代码发现个图片base64，解码后就是左上角那个图url中有一段可疑字符串TXpVek5UTTFNbVUzTURabE5qYz0应该是base64吧，尝试解码，但解不出来，别的编码？看wp后就是base64啊？？—–加个等号—解出来了还是base64，再解，然后是hex解码——得到555.png那个图片的名字这样的话就可以用此方法读取
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-22 15:55" pubdate>
+              2021-02-22
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/02/21/BUU033/" target="_self">
           <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题033">
         </a>
@@ -643,60 +691,11 @@ print(&#
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/02/09/BUU026/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题026">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/02/09/BUU026/">BUU每日一题026</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/02/09/BUU026/">
-          
-          
-            
-          
-          二十六、题目[BJDCTF 2nd]fake google 
-分析源码中没发现什么随便输个看看不知道提示的什么意思，看了wp知道是ssti模板注入按下图判断模板引擎输入：&#123;&#123;7*7&#125;&#125;所以应该是jinja2；如果用tplmap的话可以直接得到是jinja2         
-解payload：&#123;% for c in [].__class__.__b
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-09 17:16" pubdate>
-              2021-02-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/8/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/10/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/8/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/10/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   
