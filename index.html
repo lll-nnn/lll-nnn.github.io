@@ -186,6 +186,77 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/16/HECTF/" target="_self">
+          <img src="/img/00150.jpg" srcset="/img/loading.gif" alt="HECTF">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/16/HECTF/">HECTF</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/16/HECTF/">
+          
+          
+            
+          
+          LFI_to_RCE题目：
+&lt;?php
+    show_source(&#x27;./index.php&#x27;);
+    include $_GET[&#x27;file&#x27;];
+?&gt;
+session文件包含，写入shell到session文件
+poc
+import threading
+import requests
+from concurrent.futures i
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-16 23:38" pubdate>
+              2021-11-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/php/">php</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/php/">php</a>
+            
+              <a href="/tags/session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%86%99shell/">session文件包含写shell</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/11/07/hackergame2021/" target="_self">
           <img src="/img/00119.jpg" srcset="/img/loading.gif" alt="Hackergame2021">
         </a>
@@ -749,71 +820,6 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Fi
               <a href="/tags/WP/">WP</a>
             
               <a href="/tags/xxe/">xxe</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/08/01/BUU90/" target="_self">
-          <img src="/img/0032.png" srcset="/img/loading.gif" alt="Eating_cms">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/01/BUU90/">Eating_cms</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/01/BUU90/">
-          
-          
-            
-          
-          [N1CTF 2018]eating_cmsparse_url()解析漏洞
-function.php中
-function filter_directory()
-&#123;
-    $keywords = [&quot;flag&quot;,&quot;manage&quot;,&quot;ffffllllaaaaggg&quot;];
-    $uri = parse_url($_SERVER[
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-01 11:49" pubdate>
-              2021-08-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/CTF/">CTF</a>
-            
-              <a href="/categories/CTF/rce/">rce</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CTF/">CTF</a>
-            
-              <a href="/tags/WP/">WP</a>
-            
-              <a href="/tags/rce/">rce</a>
             
           </div>
         
