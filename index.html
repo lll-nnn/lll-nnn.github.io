@@ -186,6 +186,134 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/29/CVE-2021-41773/" target="_self">
+          <img src="/img/00162.jpg" srcset="/img/loading.gif" alt="CVE-2021-41773">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/29/CVE-2021-41773/">CVE-2021-41773</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/29/CVE-2021-41773/">
+          
+          
+            
+          
+          利用条件仅apache 2.4.49
+apache 目录穿越payload：/cgi-bin/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd
+/icons/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd
+apache rce需要启用mod_cgid和mod_cgi模块
+mod_cgi模块的功能是根据输入脚本类型选择不同解析器进行执行，常用的解析器
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-29 10:24" pubdate>
+              2021-11-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CVE/">CVE</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a>
+            
+              <a href="/tags/CVE/">CVE</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/26/geekchallenge/" target="_self">
+          <img src="/img/00206.jpg" srcset="/img/loading.gif" alt="Geekchallenge">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/26/geekchallenge/">Geekchallenge</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/26/geekchallenge/">
+          
+          
+            
+          
+          temp这道不是极客大挑战的，就写这里吧
+&lt;html&gt;
+&lt;!--if($_REQUEST[&#x27;mode&#x27;]!=&quot;begin&quot;)&#123;
+    die(&quot;Welcome PHP Games!&quot;);
+&#125;--&gt;
+&lt;/html&gt;
+&lt;?php
+error_reporting(0);
+inclu
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-26 00:31" pubdate>
+              2021-11-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/wp/">wp</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/geekchallenge/">geekchallenge</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/11/16/HECTF/" target="_self">
           <img src="/img/00150.jpg" srcset="/img/loading.gif" alt="HECTF">
         </a>
@@ -693,133 +821,6 @@ class SYCLOVER &#123;
               <a href="/tags/WP/">WP</a>
             
               <a href="/tags/php/">php</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/09/05/BUU92/" target="_self">
-          <img src="/img/0036.jpg" srcset="/img/loading.gif" alt="SWPU2019 Web3">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/09/05/BUU92/">SWPU2019 Web3</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/09/05/BUU92/">
-          
-          
-            
-          
-          [SWPU2019]Web3打开环境随便登个admin  admin点击upload会得到Permission denied!注意到网站标题是CTF-Flask-Demo,所以去解一下session解密脚本：
-#!/usr/bin/env python3
-# flask-session-cookie-manager-master  也能解session
-import sys
-import zlib
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-09-05 22:54" pubdate>
-              2021-09-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/CTF/">CTF</a>
-            
-              <a href="/categories/CTF/flask/">flask</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CTF/">CTF</a>
-            
-              <a href="/tags/WP/">WP</a>
-            
-              <a href="/tags/flask/">flask</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/08/01/BUU91/" target="_self">
-          <img src="/img/0034.jpg" srcset="/img/loading.gif" alt="Bnv">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/01/BUU91/">Bnv</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/01/BUU91/">
-          
-          
-            
-          
-          [GoogleCTF2019 Quals]Bnvsubmit抓包   
-POST /api/search HTTP/1.1
-Host: c430f277-c1c5-4e12-bb0b-b09fef668afa.node4.buuoj.cn
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Fi
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-01 12:10" pubdate>
-              2021-08-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/CTF/">CTF</a>
-            
-              <a href="/categories/CTF/xxe/">xxe</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CTF/">CTF</a>
-            
-              <a href="/tags/WP/">WP</a>
-            
-              <a href="/tags/xxe/">xxe</a>
             
           </div>
         

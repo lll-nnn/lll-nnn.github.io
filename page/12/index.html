@@ -186,6 +186,104 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/24/BUU010/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题010">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/24/BUU010/">BUU每日一题010</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/24/BUU010/">
+          
+          
+            
+          
+          十、
+题目：[极客大挑战 2019]Http打开网页    
+解在源码中发现Secret.phpburp抓包，加上Referer:    https://www.Sycsecret.com值得注意的是:和https://www.Sycsecret.com中间要有四个空格提示要用Syclover访问，将firefox改为Syclover要在本地才可访问，将IP地址改为127.0.0.1得到flag 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-24 14:07" pubdate>
+              2021-01-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/23/BUU009/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU009">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/23/BUU009/">BUU009</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/23/BUU009/">
+          
+          
+            
+          
+          九、
+题目：[RoarCTF 2019]Easy Calc打开靶场，一个简单的计算器，在源代码中发现一些东西WAF和calc.php,访问calca.php
+分析本来以为是个简单的命令执行，但是我错了，输入num的值，发现不能输入字母，只能是数字或者运算符，才会有回显，WAF看了别人的wp说num前加括号可以绕过然后输入 num=system(chr(39).ls.chr(39))什么也没有，看了
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-23 18:29" pubdate>
+              2021-01-23
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/01/22/Buu008/" target="_self">
           <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Buu每日一题008">
         </a>
@@ -577,106 +675,6 @@ sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security 
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/18/BUU004/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题004">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/18/BUU004/">BUU每日一题004</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/18/BUU004/">
-          
-          
-            
-          
-          四、
-题目：[SUCTF 2019]EasySQL又是挨打的一天，哎       
-
-分析试了几下，发现了四种回显，第三种输出Nonono;第四种无输出；看到0和1，本来以为是布尔值注入，但弄了半天也没个结果，还是去看WP吧     
-
-解原来可以堆叠注入，居然没想到……..然后1;show databases;得到库；1;show tables;得到个Flag表1;select * from F
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-18 15:17" pubdate>
-              2021-01-18
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/17/leve1/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Level1~~level4">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/17/leve1/">Level1~~level4</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/17/leve1/">
-          
-          
-            
-          
-          level1输入id=1,有回显；此外，2，3，4……12均有回显，说明有12条数据。
-接下来使用order by 1 %23order by 1,2 %23…….得到一共有三列将id=1改为一个数据库不存在的id值，如861，使用union select 1,2,3联合查询语句查看页面的显示位。2，3两个显示位；id=33&#39; union select 1,(select group_co
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-17 15:02" pubdate>
-              2021-01-17
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/noet/">noet</a>
             
           </div>
         
