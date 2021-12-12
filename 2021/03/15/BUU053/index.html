@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -250,12 +258,12 @@
 </li>
 <li><code>&lt;!ENTITY 文件名  SYSTEM &quot;url或协议&quot;&gt;</code>造成文件读取，csrf等  </li>
 </ol>
-<div class="hljs"><pre><code>     &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;      ##XML声明
+<pre><code>     &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;      ##XML声明
     &lt;!DOCTYPE a[          ##a--&gt;文件名
       &lt;!ENTITY admin SYSTEM &quot;http://10.0.93.11&quot;&gt;     ##admin---&gt;实体名
       ]&gt;
 
-    &lt;user&gt;&lt;username&gt;&amp;admin;&lt;/username&gt;&lt;password&gt;123&lt;/password&gt;&lt;/user&gt;          ##&amp;admin;---&gt;实体调用&#123;一个实体由三部分构成: 一个和号 (&amp;), 一个实体名称, 以及一个分号 (;)&#125;          </code></pre></div>
+    &lt;user&gt;&lt;username&gt;&amp;admin;&lt;/username&gt;&lt;password&gt;123&lt;/password&gt;&lt;/user&gt;          ##&amp;admin;---&gt;实体调用&#123;一个实体由三部分构成: 一个和号 (&amp;), 一个实体名称, 以及一个分号 (;)&#125;          </code></pre>
 <p>XML外部实体<code>admin</code>被赋值为：<code>http://10.0.93.11</code>,在解析XML时，实体<code>admin</code>的值会被替换为<code>http://10.0.93.11</code>的内容值，关键字<code>SYSTEM</code>会告诉XML解析器，<code>admin</code>实体的值将从其后的URL中读取，并把读取的内容替换<code>admin</code>出现的地方。<br>XML支持的协议：<br><img src="https://ftp.bmp.ovh/imgs/2021/03/e8ca3a5eafb7b626.gif" srcset="/img/loading.gif">       </p>
 <p>ENTITY 实体，在一个甚至多个XML文档中频繁使用某一条数据，我们可以预先定义一个这条数据的“别名”，即一个ENTITY，然后在这些文档中需要该数据的地方调用它。        </p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/backlion/p/9302528.html">MORE</a></p>
@@ -403,6 +411,8 @@
 
 
 
+  
+    
   
 
 

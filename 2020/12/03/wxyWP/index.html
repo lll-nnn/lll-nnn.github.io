@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -239,7 +247,7 @@
             
             <div class="markdown-body">
               <h2 id="伪协议1"><a href="#伪协议1" class="headerlink" title="伪协议1"></a>伪协议1</h2><p>题目：</p>
-<div class="hljs"><pre><code>                    针不戳，吃柠檬的感觉针不戳
+<pre><code>                    针不戳，吃柠檬的感觉针不戳
     &lt;?php
     error_reporting(0);
     echo &#39;&lt;center&gt;&lt;strong&gt;针不戳，吃柠檬的感觉针不戳&lt;/strong&gt;&lt;/center&gt;&#39;;
@@ -253,12 +261,12 @@
         &#125;
     &#125;
     #不对劲，总感觉写错了啥，算了，先去吃柠檬~
-    ?&gt; </code></pre></div>
+    ?&gt; </code></pre>
 <p>这次的题目值得注意的是这个<code>preg_match</code>函数中没有 <strong>i</strong>，也就是说这个正则匹配是区分大小写的，所以将涉及到的过滤的词换成大写即可。<br>根据题目，或者根据  <code>include $file</code> 判断这是一道伪协议题，url中输入<code> ?file=Php://filter/read=convert.Base64-encode/resource=flag.php</code> ,什么也没有，把<code>.php</code>删了，回车得到一段base64编码：<br><img src="https://ftp.bmp.ovh/imgs/2020/12/eb3a088303494cf6.png" srcset="/img/loading.gif"></p>
 <p>解码后得到flag：<br><img src="https://ftp.bmp.ovh/imgs/2020/12/34b02328261e3877.png" srcset="/img/loading.gif"><br>这里的flag包含在flag文件里我是猜的，但弄了好一会儿还是不知道怎么知道flag包含在这个文件里，问了徐神后说，这就是猜的············<br>好吧，看来还是我做题的经验不够啊。<br>至于为什么flag文件没有后缀，因为Linux中文件可以没有扩展名，出题应该就是在Linux下出的吧。          </p>
 <hr>
 <h2 id="伪协议2"><a href="#伪协议2" class="headerlink" title="伪协议2"></a>伪协议2</h2><p>题目：</p>
-<div class="hljs"><pre><code>                针不戳，吃柠檬的感觉针不戳
+<pre><code>                针不戳，吃柠檬的感觉针不戳
     &lt;?php
     error_reporting(0);
     echo &#39;&lt;center&gt;&lt;strong&gt;针不戳，吃柠檬的感觉针不戳&lt;/strong&gt;&lt;/center&gt;&#39;;
@@ -273,7 +281,7 @@
         &#125;
     &#125;
     #不对劲，总感觉写错了啥，算了,继续吃柠檬~
-    ?&gt; </code></pre></div>
+    ?&gt; </code></pre>
 <p>这一次<code>preg_match</code>函数中加上了<strong>i</strong>，区分大小写了，但下面的<code>str_replace</code>函数提供了另一种绕过方式，所以可以将<code>preg_match</code>过滤的词中插入troye便可绕过输入<code>?file=ptroyehp://filter/read=convert.btroyease64-encode/resource=flag</code>得到base64编码：<img src="https://ftp.bmp.ovh/imgs/2020/12/2cf1778026b759e0.png" srcset="/img/loading.gif"><br>解码后得到flag：<br><img src="https://ftp.bmp.ovh/imgs/2020/12/579dbc421b42e0a4.png" srcset="/img/loading.gif">        </p>
 <hr>
 <h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><blockquote>
@@ -430,6 +438,8 @@
 
 
 
+  
+    
   
 
 

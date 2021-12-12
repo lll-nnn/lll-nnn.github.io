@@ -186,6 +186,79 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/24/BUU88/" target="_self">
+          <img src="/img/0016.png" srcset="/img/loading.gif" alt="Avatar Uploader 1">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/24/BUU88/">Avatar Uploader 1</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/24/BUU88/">
+          
+          
+            
+          
+          PHP打开环境  
+先随便输个进去看看     
+文件上传   
+尝试了几下，感觉没戏，只让上传PNG    
+看下WP给了源码    
+upload.php    
+&lt;?php
+error_reporting(0);
+
+require_once('config.php');
+require_once('lib/util.php');
+require_once('lib/session.ph
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-24 22:43" pubdate>
+              2021-05-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/php/">php</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/php/">php</a>
+            
+              <a href="/tags/upload/">upload</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/05/23/%E6%B5%B7%E6%B4%8B%E5%A4%A7%E5%AD%A6CTF/" target="_self">
           <img src="/img/0013.jpg" srcset="/img/loading.gif" alt="海洋大学CTF">
         </a>
@@ -275,10 +348,10 @@ import
           
           o)o打开环境，发现是文件上传，还给了部分源码
    
-if($contents=file_get_contents($_FILES[&quot;file&quot;][&quot;tmp_name&quot;]))&#123;
+if($contents=file_get_contents($_FILES["file"]["tmp_name"]))&#123;
     $data=substr($contents,5);
     foreach ($black_char as $b) &#123;
-        if (str
+        if (stripos($data, $b) !== 
         </a>
       </p>
 
@@ -349,9 +422,9 @@ github上搜索得到源码
 主要是helper.php    
 &lt;?php
 class helper &#123;
-    protected $folder = &quot;pic/&quot;;
+    protected $folder = "pic/";
     protected $ifview = False; 
-    protected 
+    protected $config = 
         </a>
       </p>
 
@@ -491,7 +564,7 @@ from time import sleep
 
 def count():
     s = requests.session()       #会话保持
-    url = &#x27;http://ee15b87d-2094-4459-97e9-6c7d3f888
+    url = 'http://ee15b87d-2094-4459-97e9-6c7d3f88800d.n
         </a>
       </p>
 
@@ -561,9 +634,9 @@ www.zip
 果然   
 下载下来是index.php     
 &lt;?php 
-header(&#x27;Content-type:text/html; charset=utf-8&#x27;);
+header('Content-type:text/html; charset=utf-8');
 error_reporting(0);
-i
+if(isset($_
         </a>
       </p>
 
@@ -815,79 +888,6 @@ Disallow: /f
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/30/BUU80/" target="_self">
-          <img src="/img/1s.jpg" srcset="/img/loading.gif" alt="Easyphp">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/30/BUU80/">Easyphp</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/30/BUU80/">
-          
-          
-            
-          
-          unserialize char-escape
-没有registe.php     
-一开始猜的是SQL注入       
-注入了一会，有点想放弃了，看了下www.zip   
-居然有     
-看来不是SQLi了      
-四个PHP文件    
-index.php      
-&lt;?php
-require_once &quot;lib.php&quot;;
-
-if(isset($_GET
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-30 23:02" pubdate>
-              2021-04-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/CTF/">CTF</a>
-            
-              <a href="/categories/CTF/unserialize/">unserialize</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CTF/">CTF</a>
-            
-              <a href="/tags/unserialize/">unserialize</a>
-            
-              <a href="/tags/char-escape/">char.escape</a>
-            
-              <a href="/tags/WP/">WP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -987,6 +987,8 @@ if(isset($_GET
 
 
 
+  
+    
   
 
 

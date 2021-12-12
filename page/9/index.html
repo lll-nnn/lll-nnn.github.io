@@ -186,6 +186,55 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/25/BUU037/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题037">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/25/BUU037/">BUU每日一题037</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/25/BUU037/">
+          
+          
+            
+          
+          题目[GWCTF 2019]我有一个数据库         
+分析目录扫描到phpmyadmin(为什么我的就扫不到？御剑，dirsearch,dirb都扫不到？？？？？)然后是phpmyadmin4.81的一个远程文件读取漏洞      
+解payload：/phpmyadmin/index.php?target=db_sql.php%253f/../../../../../../../../f
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-25 13:55" pubdate>
+              2021-02-25
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/02/24/hgameweek3/" target="_self">
           <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Hgameweek3">
         </a>
@@ -309,10 +358,13 @@ $cards = arra
 分析一个看上去很正常的网页，没发现什么点—–扫目录吧看到.git泄露githack下来的只有一个assets文件夹，看别人的WP是有index.php的？？？？？？？       
 &lt;?php
 
-include &#x27;flag.php&#x27;;
+include 'flag.php';
 
-$yds = &quot;dog&quot;;
-$is = &quot;cat
+$yds = "dog";
+$is = "cat";
+$handsome = 'yds';
+
+fo
         </a>
       </p>
 
@@ -517,8 +569,8 @@ if(!isset($_SESSION[&#39;username&#39;]))&#123;
           三十二、题目[GXYCTF2019]禁止套娃    
 分析源码什么也没有，robots.txt、www.zip、index.phps都没有，然后扫目录，也没有什么看WP吧/.git泄露？？？？？？为什么我扫不出来，而且GitHack后什么也没有？？？？…………………..泄露的源码：        
 &lt;?php
-include &quot;flag.php&quot;;
-echo &quot;
+include "flag.php";
+echo "flag在哪里呢？&lt;br
         </a>
       </p>
 
@@ -644,57 +696,6 @@ echo &quot;
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/02/12/BUU029/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题029">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/02/12/BUU029/">BUU每日一题029</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/02/12/BUU029/">
-          
-          
-            
-          
-          二十九、题目[BUUCTF 2018]Online ToolPHP代码审计      
-分析&lt;?php
-
-if (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;
-    $_SERVER[&#x27;REMOTE_ADDR&#x27;] = $_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;]
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-12 13:35" pubdate>
-              2021-02-12
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -794,6 +795,8 @@ if (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;
 
 
 
+  
+    
   
 
 

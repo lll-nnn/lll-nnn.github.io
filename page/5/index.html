@@ -186,6 +186,65 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/04/16/BUU71/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Encode_and_encode">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/16/BUU71/">Encode_and_encode</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/16/BUU71/">
+          
+          
+            
+          
+          c—-a—-i &lt;?php
+error_reporting(0);
+
+if (isset($_GET['source'])) &#123;
+  show_source(__FILE__);
+  exit();
+&#125;
+
+function is_valid($str) &#123;
+  $banword = [
+    // no path traversal
+    '\.\.',
+ 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-16 22:29" pubdate>
+              2021-04-16
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/04/16/nep1/" target="_self">
           <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Nep1">
         </a>
@@ -358,8 +417,8 @@ $comm2 = &#39;&quot;&#39; . $comm2 . &#39;&quot;&
           n_A_n	 &lt;?php
 	function get_the_flag()&#123;
 	    // webadmin will remove your upload file every 20 min!!!! 
-	    $userdir = &quot;upload/tmp_&quot;.md5($_SERVER[&#x27;REMOTE_ADDR&#x27;]);
-	    if(!
+	    $userdir = "upload/tmp_".md5($_SERVER['REMOTE_ADDR']);
+	    if(!file_exists($userdir
         </a>
       </p>
 
@@ -458,8 +517,9 @@ mysql&gt; select benchmark(100000000,1+1);
             
           
           —&lt;?php
-    if (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;
-        $http_x_headers = explode(&#x27;,&#x27;, $_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;]);    ##以逗号分割$_SERVER[&#x27;HTTP_
+    if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) &#123;
+        $http_x_headers = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);    ##以逗号分割$_SERVER['HTTP_X_FORWARDED_FOR']，返回数组
+        $_SE
         </a>
       </p>
 
@@ -567,7 +627,7 @@ class A&#123;
 二次注入      
 提示了账号和密码，一般后面是三位数字，爆破是666write_do.php看WP是git泄露Githack一下下载下来write_do.php  ，但是是残缺的，git log历史commit里也没add write_do.php??      
 &lt;?php
-include &quot;mysql.
+include "mysql.php";
         </a>
       </p>
 
@@ -626,57 +686,6 @@ $pattern = &#39;/select|insert|update|delete|and|or|join|like|regexp|where|union
             <i class="iconfont icon-date"></i>
             <time datetime="2021-04-04 14:54" pubdate>
               2021-04-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/03/BUU64/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Can You Guess It?">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/03/BUU64/">Can You Guess It?</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/03/BUU64/">
-          
-          
-            
-          
-          ‘0’&lt;?php
-include &#x27;config.php&#x27;; // FLAG is defined in config.php
-
-if (preg_match(&#x27;/config\.php\/*$/i&#x27;, $_SERVER[&#x27;PHP_SELF&#x27;])) &#123;
-  exit(&quot;I don&#x27;t know what
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-03 15:38" pubdate>
-              2021-04-03
             </time>
           </div>
         
@@ -792,6 +801,8 @@ if (preg_match(&#x27;/config\.php\/*$/i&#x27;, $_SERVER[&#x27;PHP_SELF&#x27;])) 
 
 
 
+  
+    
   
 
 

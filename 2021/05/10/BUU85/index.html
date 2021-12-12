@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      143 字
+      131 字
     </span>
   
 
@@ -242,28 +250,28 @@
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/0d2f6b843629e1dc.png" srcset="/img/loading.gif"></p>
 <p>python脚本      </p>
 <p>还不会写，研究下大佬的      </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> re
-<span class="hljs-keyword">import</span> requests
-<span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
+<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re
+<span class="token keyword">import</span> requests
+<span class="token keyword">from</span> time <span class="token keyword">import</span> sleep
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">count</span>():</span>
-    s = requests.session()       <span class="hljs-comment">#会话保持</span>
-    url = <span class="hljs-string">&#x27;http://ee15b87d-2094-4459-97e9-6c7d3f88800d.node3.buuoj.cn/&#x27;</span>
-    match = re.<span class="hljs-built_in">compile</span>(<span class="hljs-string">r&quot;[0-9]+ [+|-] [0-9]+&quot;</span>)  <span class="hljs-comment">#正则匹配   +：匹配前面的表达式一次或多次</span>
-    r = s.get(url)
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1001</span>):
-        sleep(<span class="hljs-number">0.1</span>)
-        <span class="hljs-built_in">str</span> = match.findall(r.text)[<span class="hljs-number">0</span>]
-        print(<span class="hljs-built_in">str</span>)
-        <span class="hljs-comment"># print(eval(str))</span>
-        data = &#123;<span class="hljs-string">&quot;answer&quot;</span> : <span class="hljs-built_in">eval</span>(<span class="hljs-built_in">str</span>)&#125;   <span class="hljs-comment">#eval执行</span>
-        r = s.post(url, data=data)
-        r.encoding = <span class="hljs-string">&quot;utf-8&quot;</span>
-        print(<span class="hljs-string">&#x27;&#123;&#125; : &#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(i,<span class="hljs-built_in">eval</span>(<span class="hljs-built_in">str</span>)))
-        <span class="hljs-comment"># print(r.text)</span>
-    print(r.text)
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    count()</code></pre></div></code></pre>
+<span class="token keyword">def</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> requests<span class="token punctuation">.</span>session<span class="token punctuation">(</span><span class="token punctuation">)</span>       <span class="token comment">#会话保持</span>
+    url <span class="token operator">=</span> <span class="token string">'http://ee15b87d-2094-4459-97e9-6c7d3f88800d.node3.buuoj.cn/'</span>
+    match <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">r"[0-9]+ [+|-] [0-9]+"</span><span class="token punctuation">)</span>  <span class="token comment">#正则匹配   +：匹配前面的表达式一次或多次</span>
+    r <span class="token operator">=</span> s<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1001</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        sleep<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+        <span class="token builtin">str</span> <span class="token operator">=</span> match<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>r<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">)</span>
+        <span class="token comment"># print(eval(str))</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"answer"</span> <span class="token punctuation">:</span> <span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span>   <span class="token comment">#eval执行</span>
+        r <span class="token operator">=</span> s<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+        r<span class="token punctuation">.</span>encoding <span class="token operator">=</span> <span class="token string">"utf-8"</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'&#123;&#125; : &#123;&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment"># print(r.text)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    count<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></code></pre>
 
             </div>
             <hr>
@@ -423,6 +431,8 @@
 
 
 
+  
+    
   
 
 

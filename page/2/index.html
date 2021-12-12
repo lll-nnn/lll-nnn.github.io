@@ -186,6 +186,74 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/09/07/BUU93/" target="_self">
+          <img src="/img/0038.jpg" srcset="/img/loading.gif" alt="极客大挑战 2020 Greatphp">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/07/BUU93/">极客大挑战 2020 Greatphp</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/09/07/BUU93/">
+          
+          
+            
+          
+          [极客大挑战 2020]Greatphp给了源码
+&lt;?php
+error_reporting(0);
+class SYCLOVER &#123;
+    public $syc;
+    public $lover;
+
+    public function __wakeup()&#123;
+        if( ($this->syc != $this->lover) &amp;&amp
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-07 22:01" pubdate>
+              2021-09-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/php/">php</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/php/">php</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/09/05/BUU92/" target="_self">
           <img src="/img/0036.jpg" srcset="/img/loading.gif" alt="SWPU2019 Web3">
         </a>
@@ -334,8 +402,9 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Fi
 function.php中
 function filter_directory()
 &#123;
-    $keywords = [&quot;flag&quot;,&quot;manage&quot;,&quot;ffffllllaaaaggg&quot;];
-    $uri = parse_url($_SERVER[
+    $keywords = ["flag","manage","ffffllllaaaaggg"];
+    $uri = parse_url($_SERVER["REQUEST_URI"]);
+    parse_str
         </a>
       </p>
 
@@ -400,10 +469,12 @@ function filter_directory()
 1^0=1
 0^0=0   
 %ff对应的是十进制的255，二进制就是111111111,所以它与其他异或后再与原来的异或就等于原来的       
-res=&#x27;phpinfo&#x27;     ##要异或的
+res='phpinfo'     ##要异或的
 temp=[]
 for i in res:
-    temp.append(hex(int(hex(ord(i)),16)^
+    temp.append(hex(int(hex(ord(i)),16)^0xff))
+
+fo
         </a>
       </p>
 
@@ -714,9 +785,9 @@ W&amp;M 的WP
     import time
 
     def ord2hex(string):
-    result = &#x27;&#x27;
+    result = ''
     for i in string:
-   
+        resul
         </a>
       </p>
 
@@ -748,79 +819,6 @@ W&amp;M 的WP
               <a href="/tags/WP/">WP</a>
             
               <a href="/tags/sql/">sql</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/05/24/BUU88/" target="_self">
-          <img src="/img/0016.png" srcset="/img/loading.gif" alt="Avatar Uploader 1">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/24/BUU88/">Avatar Uploader 1</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/05/24/BUU88/">
-          
-          
-            
-          
-          PHP打开环境  
-先随便输个进去看看     
-文件上传   
-尝试了几下，感觉没戏，只让上传PNG    
-看下WP给了源码    
-upload.php    
-&lt;?php
-error_reporting(0);
-
-require_once(&#x27;config.php&#x27;);
-require_once(&#x27;lib/util.php&#x27;);
-require_
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-24 22:43" pubdate>
-              2021-05-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/CTF/">CTF</a>
-            
-              <a href="/categories/CTF/php/">php</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CTF/">CTF</a>
-            
-              <a href="/tags/WP/">WP</a>
-            
-              <a href="/tags/php/">php</a>
-            
-              <a href="/tags/upload/">upload</a>
             
           </div>
         
@@ -927,6 +925,8 @@ require_
 
 
 
+  
+    
   
 
 

@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -239,7 +247,7 @@
             
             <div class="markdown-body">
               <h2 id="SSRF–WP"><a href="#SSRF–WP" class="headerlink" title="SSRF–WP"></a>SSRF–WP</h2><p>题目：        </p>
-<div class="hljs"><pre><code>            啊这，这怎么...这file_get_contents()有啥用呢
+<pre><code>            啊这，这怎么...这file_get_contents()有啥用呢
 &lt;?php
     echo&#39;&lt;center&gt;&lt;strong&gt;啊这，这怎么...这file_get_contents()有啥用呢&lt;/strong&gt;&lt;/center&gt;&#39;;
     highlight_file(__FILE__);
@@ -257,7 +265,7 @@
     &#125;
 //flag is in &#39;/flag&#39;
 ?&gt;
-这个怎么绕过呢？          </code></pre></div>
+这个怎么绕过呢？          </code></pre>
 <p>第一个<code>preg_match</code>意思是$url中必须包含<code>dotnet.com</code>;<br>第二个<code>!preg_match</code>意思是不能匹配到其中的字符，有<strong>i</strong>，包含大小写，这样就把伪协议的路堵死了。<br>这个dotnet.com似乎没有什么用，就可以在后面加个@进行绕过：<br><code>dotnet.com@123=123</code><br>既然伪协议的路没法走，然后去找<code>file_get_contents</code>相关的知识，原来PHP还可以进行目录穿越：<br><strong>php源码中，在向目标请求时先会判断使用的协议。如果协议无法识别，就会认为它是个目录。<br>所以我们就可以构造的payload(php如果识别不了就会当成一个目录)在进行目录穿越，穿越到根目录读取flag</strong><br>payload:<code>/?url=dotnet.com@0://../../../../../../../../flag</code><br>得到flag<br><img src="https://ftp.bmp.ovh/imgs/2020/12/fe21b3b3e2b74d5c.png" srcset="/img/loading.gif">             </p>
 <h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><blockquote>
 <ul>
@@ -427,6 +435,8 @@
 
 
 
+  
+    
   
 
 

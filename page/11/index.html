@@ -186,6 +186,55 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/04/BUU021/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题021">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/04/BUU021/">BUU每日一题021</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/04/BUU021/">
+          
+          
+            
+          
+          二十一、题目[极客大挑战 2019]HardSQL     
+分析1&#39;报错1&#39;#没有报错应该是单引号吧1&#39; order by 1#又是过滤select、or、and、空格、=…….又过滤了好多1^1正常，^没有被过看wp说用报错注入extractvalue或者updatexml空格用括号=可以用like代替         
+解0x7e=’~’1%27^extractval
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-04 12:14" pubdate>
+              2021-02-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/02/03/BUU020/" target="_self">
           <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题020">
         </a>
@@ -357,7 +406,8 @@ Do you wan
 分析文件上传并且给了源码https://github.com/team-su/SUCTF-2019/tree/master/Web/checkIn          
 &lt;?php
 // error_reporting(0);
-$userdir = &quot;uploads/&quot; . md5($_SERVER[&quot;REM
+$userdir = "uploads/" . md5($_SERVER["REMOTE_ADDR"]);
+if
         </a>
       </p>
 
@@ -407,9 +457,10 @@ $userdir = &quot;uploads/&quot; . md5($_SERVER[&quot;REM
           十六、题目[极客大挑战 2019]BuyFlag     
 分析F12源代码注释中有东西              
 	~~~post money and password~~~
-if (isset($_POST[&#x27;password&#x27;])) &#123;
-	$password = $_POST[&#x27;password&#x27;];
-	if (is_numeric($pa
+if (isset($_POST['password'])) &#123;
+	$password = $_POST['password'];
+	if (is_numeric($password)) &#123;
+		ec
         </a>
       </p>
 
@@ -631,55 +682,6 @@ intval函数Note:如果 base 是
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/25/BUU011/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题011">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/25/BUU011/">BUU每日一题011</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/25/BUU011/">
-          
-          
-            
-          
-          十一、题目：[极客大挑战 2019]PHP         
-分析网页提示说备份网站，用御剑扫，没扫出来换为dirsearch扫出来一个www.zip加到url后面http://63f0b170-4c01-4aa2-9608-5d33d689c712.node3.buuoj.cn/www.zip得到一个压缩包，内有五个文件主要内容：index.php :    
-		&lt;?php       
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-25 16:32" pubdate>
-              2021-01-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -779,6 +781,8 @@ intval函数Note:如果 base 是
 
 
 
+  
+    
   
 
 

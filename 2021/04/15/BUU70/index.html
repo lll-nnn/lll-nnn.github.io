@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/base16/-gigavolt.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -243,13 +251,13 @@
 <p>应该注意到comm1中没有过滤<code>tac</code>     </p>
 <p>flag被过，可以用通配符<code>f???</code>      </p>
 <p>一开始觉得用<code>;</code>把file毙了就行了，但我忽略了     </p>
-<div class="hljs"><pre><code>$comm1 = &#39;&quot;&#39; . $comm1 . &#39;&quot;&#39;;
-$comm2 = &#39;&quot;&#39; . $comm2 . &#39;&quot;&#39;;</code></pre></div>
+<pre><code>$comm1 = &#39;&quot;&#39; . $comm1 . &#39;&quot;&#39;;
+$comm2 = &#39;&quot;&#39; . $comm2 . &#39;&quot;&#39;;</code></pre>
 <p>还应该闭合双引号         </p>
 <p>payload：<code>?comm1=&quot;;tac /f???;&quot;</code><br>payload：<code>?comm1=&quot;;tac /fl\ag;&quot;</code><br>之前遇到过这个，两个<code>\\</code>过滤不了<code>\</code>，因为要经过PHP和正则两层解析，最后匹配的是个<code>|</code><br><img src="https://ae04.alicdn.com/kf/U20fbfe11e83c4e30a3043885763b63b9L.jpg" srcset="/img/loading.gif" alt="02.png"><br>file闭合，命令执行           </p>
 <p>这样一道题在本地试了半天，太菜了        </p>
 <p>###Linux通配符     </p>
-<div class="hljs"><pre><code>|     #管道符，或者（正则）   #命令1 | 命令2，命令1的结果传递给命令2
+<pre><code>|     #管道符，或者（正则）   #命令1 | 命令2，命令1的结果传递给命令2
 &gt;     #输出重定向   #清空原文内容，然后向文件里追加内容
 &gt;&gt;    #输出追加重定向   #追加到文件最后一行
 &lt;     #输入重定向
@@ -266,7 +274,7 @@ $     #以。。。结尾（正则）
 []      #表示一个范围（正则，通配符）
 &#123;&#125;      #产生一个序列（通配符）
 .       #当前目录的硬链接
-..      #上级目录的硬链接</code></pre></div>
+..      #上级目录的硬链接</code></pre>
 <p><img src="https://ae03.alicdn.com/kf/U7a5bcd1aa2484b7d9ee175e7b557cd0dt.jpg" srcset="/img/loading.gif" alt="03.png"></p>
 
             </div>
@@ -412,6 +420,8 @@ $     #以。。。结尾（正则）
 
 
 
+  
+    
   
 
 
