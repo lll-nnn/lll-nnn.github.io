@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
@@ -13,7 +13,7 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#FFFFF2">
+  <meta name="theme-color" content="#6b99a1">
   <meta name="description" content="BLOG">
   <meta name="author" content="">
   <meta name="keywords" content="">
@@ -181,6 +181,56 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/03/21/BUU57/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Dropbox">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/03/21/BUU57/">Dropbox</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/03/21/BUU57/">
+          
+          
+            
+          
+          好难试了一波SQL注入，感觉不行注册—–登录—–上传个文件（这里上传文件也不行）下载—抓包发现可以任意文件读取，记得要跳到上级目录../../最终将所有PHP文件读取出来，但不能直接读flag，被过了接下来就是代码审计了    
+class.php里      
+public function close() &#123;
+    return file_get_contents($this-&g
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-21 23:20" pubdate>
+              2021-03-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -638,54 +688,6 @@ url=
             <i class="iconfont icon-date"></i>
             <time datetime="2021-03-09 16:28" pubdate>
               2021-03-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/03/08/BUU047/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/08/BUU047/">BUU每日一题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/08/BUU047/">
-          
-          
-            
-          
-          题目[SWPU2019]Web1     
-分析注册登录后考虑XSS但试了试，感觉不行看看WP是填写广告名那里存在SQL注入有过滤#、or、--、information、空格....双写也绕不过报错信息You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server vers
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-08 23:33" pubdate>
-              2021-03-08
             </time>
           </div>
         
