@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>SCTF2021</title>
+    <link href="/2021/12/28/SCTF2021/"/>
+    <url>/2021/12/28/SCTF2021/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Loginme"><a href="#Loginme" class="headerlink" title="Loginme"></a>Loginme</h2><p>签到go题</p><p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112281045198.png"><br>给了源码</p><p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112281046293.png"><br>需要从localhost访问<br><a href="https://pkg.go.dev/github.com/gin-gonic/gin#Context.ClientIP">https://pkg.go.dev/github.com/gin-gonic/gin#Context.ClientIP</a><br>这里</p><p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112281047584.png"><br>所以可以用<code>x-real-ip</code><br>然后GET传参age获取admin的password<br><code>age=&#123;&#123;$&#125;`或者`&#123;&#123;.Password&#125;&#125;</code><br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112281050227.png"></p><p><a href="https://team-su.github.io/passages/2021-12-25-SCTF/">Write ups of TEAM-SU</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF</category>
+      
+      <category>wp</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+      <tag>WP</tag>
+      
+      <tag>SCTF2021</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>摆烂杯</title>
     <link href="/2021/12/27/%E6%91%86%E7%83%82%E6%9D%AF/"/>
     <url>/2021/12/27/%E6%91%86%E7%83%82%E6%9D%AF/</url>
@@ -3045,6 +3076,17 @@
   
   
   <entry>
+    <title>关于</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>404</title>
     <link href="/"/>
     <url>/</url>
@@ -3067,7 +3109,40 @@
   
   
   <entry>
-    <title>关于</title>
+    <title>Friends</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Html</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>标签</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Tags</title>
     <link href="/"/>
     <url>/</url>
     
@@ -3101,50 +3176,6 @@
   
   <entry>
     <title>Categories</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Friends</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>标签</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Tags</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Html</title>
     <link href="/"/>
     <url>/</url>
     

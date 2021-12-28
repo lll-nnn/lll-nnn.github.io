@@ -17,9 +17,33 @@
   <meta name="description" content="BLOG">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>归档 - 1__/\/のblog</title>
+  <title>SCTF2021 - 1__/\/のblog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
 
 
 
@@ -54,7 +78,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -148,18 +172,59 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/00110.jpg') no-repeat center center;
+         style="background: url('/img/00198.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="SCTF2021">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-28 10:43" pubdate>
+        2021年12月28日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      56 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
           
         </div>
       </div>
@@ -168,58 +233,97 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 137 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/05/04/BUU82/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Flag Shop</span>
-      <time style="float: right;">05-04</time>
-    </a>
-  
-    
-    <a href="/2021/05/01/BUU81/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Ezinclude</span>
-      <time style="float: right;">05-01</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SCTF2021</h1>
+            
+            <div class="markdown-body">
+              <h2 id="Loginme"><a href="#Loginme" class="headerlink" title="Loginme"></a>Loginme</h2><p>签到go题</p>
+<p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112281045198.png" srcset="/img/loading.gif"><br>给了源码</p>
+<p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112281046293.png" srcset="/img/loading.gif"><br>需要从localhost访问<br><a target="_blank" rel="noopener" href="https://pkg.go.dev/github.com/gin-gonic/gin#Context.ClientIP">https://pkg.go.dev/github.com/gin-gonic/gin#Context.ClientIP</a><br>这里</p>
+<p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112281047584.png" srcset="/img/loading.gif"><br>所以可以用<code>x-real-ip</code><br>然后GET传参age获取admin的password<br><code>age=&#123;&#123;$&#125;`或者`&#123;&#123;.Password&#125;&#125;</code><br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112281050227.png" srcset="/img/loading.gif"></p>
+<p><a target="_blank" rel="noopener" href="https://team-su.github.io/passages/2021-12-25-SCTF/">Write ups of TEAM-SU</a></p>
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/2021/05/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/2021/05/">1</a><span class="page-number current">2</span>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
-
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/CTF/">CTF</a>
+                    
+                      <a class="hover-with-bg" href="/categories/CTF/wp/">wp</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/CTF/">CTF</a>
+                    
+                      <a class="hover-with-bg" href="/tags/WP/">WP</a>
+                    
+                      <a class="hover-with-bg" href="/tags/SCTF2021/">SCTF2021</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/12/27/%E6%91%86%E7%83%82%E6%9D%AF/">
+                        <span class="hidden-mobile">摆烂杯</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+
     
 
     
@@ -304,9 +408,15 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
 
 
 
