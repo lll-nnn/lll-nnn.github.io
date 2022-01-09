@@ -186,6 +186,109 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/21/BUU007/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题007">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/21/BUU007/">BUU每日一题007</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/21/BUU007/">
+          
+          
+            
+          
+          七、
+题目：[ACTF2020 新生赛]Exec    
+分析和昨天一样，又是一道ping的题目，;ls一下，发现一个index.php，再试一下;ls -a也没有flag相关的，这道题似乎没有什么过滤啊，查看根目录吧ls /,发现flag文件之后cat得到flag。          
+解payload：cat /flag
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-21 14:16" pubdate>
+              2021-01-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/20/BUU006/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题006">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/20/BUU006/">BUU每日一题006</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/20/BUU006/">
+          
+          
+            
+          
+          六、
+题目：[GXYCTF2019]Ping Ping Ping   
+分析ls一下，得到可能含有flag的文件ping的命令执行，经检验，空格和flag被过滤空格可以用$IFS代替；flag可以用变量拼接绕过         
+解     
+*payload：**/?ip=127.0.0.1;a=ag.php;b=fl;cat$IFS$b$a得到flag另外/?ip=127.0.0.1;cat$
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-20 16:33" pubdate>
+              2021-01-20
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/01/19/level5/" target="_self">
           <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Level5">
         </a>
@@ -577,129 +680,6 @@ sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security 
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/15/BUU001/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题001">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/15/BUU001/">BUU每日一题001</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/15/BUU001/">
-          
-          
-            
-          
-          一、
-题目： PHP代码审计
-
-页面一个表情，查看源代码
-访问source.php,得到PHP代码     
-		&lt;?php
-  		 highlight_file(__FILE__);
-   		class emmm
-   		&#123;
-       		public static function checkFile(&amp;$page)
-      	 		&#123;
-	   
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-15 13:11" pubdate>
-              2021-01-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/wp/">wp</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/12/06/SSRFWP/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="SSRF--WP">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/06/SSRFWP/">SSRF--WP</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/06/SSRFWP/">
-          
-          
-            
-          
-          SSRF–WP题目：        
-            啊这，这怎么...这file_get_contents()有啥用呢
-&lt;?php
-    echo&#39;&lt;center&gt;&lt;strong&gt;啊这，这怎么...这file_get_contents()有啥用呢&lt;/strong&gt;&lt;/center&gt;&#39;;
-    highlight_f
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-06 10:31" pubdate>
-              2020-12-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/WP/">WP</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/WP/">WP</a>
             
           </div>
         

