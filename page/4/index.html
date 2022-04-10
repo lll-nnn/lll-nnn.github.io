@@ -186,6 +186,429 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/24/BUU88/" target="_self">
+          <img src="/img/0016.png" srcset="/img/loading.gif" alt="Avatar Uploader 1">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/24/BUU88/">Avatar Uploader 1</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/24/BUU88/">
+          
+          
+            
+          
+          PHP打开环境  
+先随便输个进去看看     
+文件上传   
+尝试了几下，感觉没戏，只让上传PNG    
+看下WP给了源码    
+upload.php    
+&lt;?php
+error_reporting(0);
+
+require_once('config.php');
+require_once('lib/util.php');
+require_once('lib/session.ph
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-24 22:43" pubdate>
+              2021-05-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/php/">php</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/php/">php</a>
+            
+              <a href="/tags/upload/">upload</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/23/%E6%B5%B7%E6%B4%8B%E5%A4%A7%E5%AD%A6CTF/" target="_self">
+          <img src="/img/0013.jpg" srcset="/img/loading.gif" alt="海洋大学CTF">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/23/%E6%B5%B7%E6%B4%8B%E5%A4%A7%E5%AD%A6CTF/">海洋大学CTF</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/23/%E6%B5%B7%E6%B4%8B%E5%A4%A7%E5%AD%A6CTF/">
+          
+          
+            
+          
+          合成大晦气js里找到flag    
+      
+白给密码    
+sql注入，不过这道题对username和password进行base64编码；抓包后万能密码得到flag    
+        
+Deep♂Dark♂Database上一道题的环境，不过还有flag，应该在数据库里；最简单的时间盲注，什么也没过滤   
+import requests
+import base64
+import
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-23 23:14" pubdate>
+              2021-05-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/php/">php</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/php/">php</a>
+            
+              <a href="/tags/sql/">sql</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/19/BUU87/" target="_self">
+          <img src="/img/0011.png" srcset="/img/loading.gif" alt="GetShell">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/19/BUU87/">GetShell</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/19/BUU87/">
+          
+          
+            
+          
+          o)o打开环境，发现是文件上传，还给了部分源码
+   
+if($contents=file_get_contents($_FILES["file"]["tmp_name"]))&#123;
+    $data=substr($contents,5);
+    foreach ($black_char as $b) &#123;
+        if (stripos($data, $b) !== 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-19 11:35" pubdate>
+              2021-05-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/php/">php</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/php/">php</a>
+            
+              <a href="/tags/getshell/">getshell</a>
+            
+              <a href="/tags/upload/">upload</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/15/BUU86/" target="_self">
+          <img src="/img/0009.jpg" srcset="/img/loading.gif" alt="不是文件上传">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/15/BUU86/">不是文件上传</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/15/BUU86/">
+          
+          
+            
+          
+          __--__题目说不是文件上传，看一下www.zip   
+没有？？
+看了WP，是   
+github上搜索得到源码      
+主要是helper.php    
+&lt;?php
+class helper &#123;
+    protected $folder = "pic/";
+    protected $ifview = False; 
+    protected $config = 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-15 00:02" pubdate>
+              2021-05-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/php/">php</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/php/">php</a>
+            
+              <a href="/tags/serialize/">serialize</a>
+            
+              <a href="/tags/sql/">sql</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/11/wicctf/" target="_self">
+          <img src="/img/0007.jpg" srcset="/img/loading.gif" alt="Wicctf">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/11/wicctf/">Wicctf</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/11/wicctf/">
+          
+          
+            
+          
+          UploadHub文件上传题给了源码，其中有些配置文件看不懂，放弃了   
+     
+一开始上传PHP文件，上传成功了，但访问返回了文件中的内容，应该是没有解析PHP文件     
+这时候就应该找apache中的相关配置了    
+      
+这个设为了off会限制目录下的PHP文件没有执行权限        
+通过传入.htaccess文件来覆盖配置文件中的设置（.htaccess文件作用所
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-11 17:00" pubdate>
+              2021-05-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/wicctf/">wicctf</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/wicctf/">wicctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/10/BUU85/" target="_self">
+          <img src="/img/0005.jpg" srcset="/img/loading.gif" alt="StrongestMind">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/10/BUU85/">StrongestMind</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/10/BUU85/">
+          
+          
+            
+          
+          PY打开环境 
+
+python脚本      
+还不会写，研究下大佬的      
+import re
+import requests
+from time import sleep
+
+def count():
+    s = requests.session()       #会话保持
+    url = 'http://ee15b87d-2094-4459-97e9-6c7d3f88800d.n
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-10 23:19" pubdate>
+              2021-05-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/python/">python</a>
+            
+              <a href="/tags/exp/">exp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/05/08/BUU84/" target="_self">
           <img src="/img/0003.jpg" srcset="/img/loading.gif" alt="Ezaudit">
         </a>
@@ -465,362 +888,11 @@ Disallow: /f
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/30/BUU80/" target="_self">
-          <img src="/img/1s.jpg" srcset="/img/loading.gif" alt="Easyphp">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/30/BUU80/">Easyphp</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/30/BUU80/">
-          
-          
-            
-          
-          unserialize char-escape
-没有registe.php     
-一开始猜的是SQL注入       
-注入了一会，有点想放弃了，看了下www.zip   
-居然有     
-看来不是SQLi了      
-四个PHP文件    
-index.php      
-&lt;?php
-require_once "lib.php";
-
-if(isset($_GET['action']
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-30 23:02" pubdate>
-              2021-04-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/CTF/">CTF</a>
-            
-              <a href="/categories/CTF/unserialize/">unserialize</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CTF/">CTF</a>
-            
-              <a href="/tags/unserialize/">unserialize</a>
-            
-              <a href="/tags/char-escape/">char.escape</a>
-            
-              <a href="/tags/WP/">WP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/29/BUU79/" target="_self">
-          <img src="/img/11.jpg" srcset="/img/loading.gif" alt="Unfinish">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/29/BUU79/">Unfinish</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/29/BUU79/">
-          
-          
-            
-          
-          SQL 二次注入      
-URL为：http://0394ab22-e370-4cca-91f6-05a8ac92ab21.node3.buuoj.cn/login.php     
-有login.php,看下有没有register.php      
-果然      
-随便注册个看看可以看到在侧边栏这里显示了我们的用户名          
-二次注入       
-过滤了,和informat
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-29 23:46" pubdate>
-              2021-04-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/CTF/">CTF</a>
-            
-              <a href="/categories/CTF/SQL/">SQL</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-              <a href="/tags/CTF/">CTF</a>
-            
-              <a href="/tags/SQL/">SQL</a>
-            
-              <a href="/tags/%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5/">二次注入</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/27/BUU78/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Double Secret">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/27/BUU78/">Double Secret</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/27/BUU78/">
-          
-          
-            
-          
-          _-__-打开是这样       
-各种找，发现robots.txt有一句话—–It is Android ctf????    
-然后就扫目录，/secrect      
-得到：Tell me your secret.I will encrypt it so others can&#39;t see       
-传入参数：?secrect=123—-&gt;d]      
-然后试试其他的，
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-27 15:42" pubdate>
-              2021-04-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/26/BUU77/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="I_&lt;3_Flask">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/26/BUU77/">I_&lt;3_Flask</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/26/BUU77/">
-          
-          
-            
-          
-          1_1       
-题目是flask，应该是SSTI了吧但没参数        
-arjun这个可以来爆破参数先下载，然后到arjun目录下       
-安装        
-使用        
-爆破出参数是name        
-除此之外就没啥了payload：&#123;&#123;().__class__.__bases__[0].__subclasses__()[182].__in
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-26 21:02" pubdate>
-              2021-04-26
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/25/nep2/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Nep2">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/25/nep2/">Nep2</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/25/nep2/">
-          
-          
-            
-          
-          视频二：https://www.hacker101.com/sessions/pentest_owasp
-1.目前owasp的十大web安全漏洞是哪些？这些漏洞排名是按照漏洞的严重程度排序的还是按照漏洞的常见程度排序的？（2分）
-1. Injection----&gt;注入，Sql，nosql,OS injection,LDAP injection       
-2. Broken Authent
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-25 20:11" pubdate>
-              2021-04-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/note/">note</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/25/BUU76/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="JustEscape">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/25/BUU76/">JustEscape</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/25/BUU76/">
-          
-          
-            
-          
-          js vm2      
-下面两个demo     
-看下run.php     
-&lt;?php
-if( array_key_exists( "code", $_GET ) &amp;&amp; $_GET[ 'code' ] != NULL ) &#123;
-    $code = $_GET['code'];
-    echo eval(code);
-&#125; else &#123;
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-25 17:07" pubdate>
-              2021-04-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

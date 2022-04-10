@@ -186,6 +186,312 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/12/BUU029/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题029">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/12/BUU029/">BUU每日一题029</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/12/BUU029/">
+          
+          
+            
+          
+          二十九、题目[BUUCTF 2018]Online ToolPHP代码审计      
+分析&lt;?php
+
+if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) &#123;
+    $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
+&#125;   //获取IP地址
+
+if(!isset
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-12 13:35" pubdate>
+              2021-02-12
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/11/BUU028/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题028">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/11/BUU028/">BUU每日一题028</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/11/BUU028/">
+          
+          
+            
+          
+          二十八、题目[强网杯 2019]高明的黑客      
+分析访问www.tar.gz得到一个压缩包，里面有3002个PHP文件，有shell，应该是只有一个是有效的吧，所以考的应该是python写脚本的能力了         
+解大佬的脚本      
+import os
+import requests
+import re
+import threading
+import time
+print('开
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-11 23:04" pubdate>
+              2021-02-11
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/10/BUU027/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题027">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/10/BUU027/">BUU每日一题027</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/10/BUU027/">
+          
+          
+            
+          
+          二十七、题目[GYCTF2020]Blacklist       
+分析和之前做过的差不多，相当于升级版，也可以用堆叠注入，但这次加了一些过滤，改名字的操作不行了1&#39;;show databases;得到库名1&#39;;show tables;得到表名1&#39;;show columns from `FlagHere`; 得到列名select被禁了，看wp说用handler      
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-10 17:20" pubdate>
+              2021-02-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/09/httpsmuggling/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Httpsmuggling">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/09/httpsmuggling/">Httpsmuggling</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/09/httpsmuggling/">
+          
+          
+            
+          
+          HTTPsmuggling原理图片转自反向代理服务器与后端服务器之间会重用TCP连接当我们向代理服务器发送请求时，如果两个服务器的实现方式不同，两者对我们发送的请求识别不同，可能代理服务器认为这是一个HTTP请求，然后将其转发给了后端的源站服务器，但源站服务器经过解析处理后，只认为其中的一部分为正常请求，剩下的那一部分，就算是走私的请求。      
+利用判断Apache ATS 6.0.06.2
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-09 23:21" pubdate>
+              2021-02-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/note/">note</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/09/BUU026/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题026">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/09/BUU026/">BUU每日一题026</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/09/BUU026/">
+          
+          
+            
+          
+          二十六、题目[BJDCTF 2nd]fake google 
+分析源码中没发现什么随便输个看看不知道提示的什么意思，看了wp知道是ssti模板注入按下图判断模板引擎输入：&#123;&#123;7*7&#125;&#125;所以应该是jinja2；如果用tplmap的话可以直接得到是jinja2         
+解payload：&#123;% for c in [].__class__.__b
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-09 17:16" pubdate>
+              2021-02-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/08/BUU025/" target="_self">
+          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题025">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/08/BUU025/">BUU每日一题025</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/08/BUU025/">
+          
+          
+            
+          
+          二十五、题目[MRCTF2020]你传你ma呢  
+分析一道上传题php、phtml都不能传，只能是jpg或者png看wp说是要用到.htaccess里面写上
+SetHandler application/x-httpd-php
+//这语句的作用是让Apache将其他类型文件均以php格式解析     
+解先上传.htaccess抓包改一下Content-Type在上传马，后缀改为.jpg蚁剑连接
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-08 15:24" pubdate>
+              2021-02-08
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/02/07/BUU024/" target="_self">
           <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题024">
         </a>
@@ -388,315 +694,11 @@ vim编辑文件会自动生成备份文件以及临时文件临时文件是在�
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/02/04/BUU021/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题021">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/02/04/BUU021/">BUU每日一题021</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/02/04/BUU021/">
-          
-          
-            
-          
-          二十一、题目[极客大挑战 2019]HardSQL     
-分析1&#39;报错1&#39;#没有报错应该是单引号吧1&#39; order by 1#又是过滤select、or、and、空格、=…….又过滤了好多1^1正常，^没有被过看wp说用报错注入extractvalue或者updatexml空格用括号=可以用like代替         
-解0x7e=’~’1%27^extractval
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-04 12:14" pubdate>
-              2021-02-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/02/03/BUU020/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题020">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/02/03/BUU020/">BUU每日一题020</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/02/03/BUU020/">
-          
-          
-            
-          
-          二十、题目[CISCN2019 华北赛区 Day2 Web1]Hack World       
-分析输入与回显      
-0         
-Error Occured When Fetch Result.           
-1           
-Hello, glzjin wants a girlfriend.           
-2            
-Do you wan
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-03 22:45" pubdate>
-              2021-02-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/02/02/BUU019/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题019">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/02/02/BUU019/">BUU每日一题019</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/02/02/BUU019/">
-          
-          
-            
-          
-          十九、题目[ZJCTF 2019]NiZhuanSiWei      
-分析传一个$text要其等于welcome to the zjctf这里用的file_get_contents函数可以用data://text/plain;base64,伪协议传入下面file中过滤了flag，看来不能用php://filter伪协议读取flag.php了，但可以读取useless.php看看有什么payloa
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-02 22:17" pubdate>
-              2021-02-02
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/02/01/BUU018/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题018">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/02/01/BUU018/">BUU每日一题018</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/02/01/BUU018/">
-          
-          
-            
-          
-          十八、题目[BJDCTF2020]Easy MD5 
-分析无论提交什么都没有什么回应响应头里发现个hint提交的参数会经过md5函数，true的意思是返回16位原始二进制格式的字符串对于一个字符串，MD5默认时返回32位的16进制的字符串，有true后，32位每两位对应的十进制对应的ASCII码中的字符比如：ffifdyopMD5后是276f722736c95d99e921722cf9ed621c
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-01 15:47" pubdate>
-              2021-02-01
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/31/BUU017/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题017">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/31/BUU017/">BUU每日一题017</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/31/BUU017/">
-          
-          
-            
-          
-          十七、题目[SUCTF 2019]CheckIn   
-分析文件上传并且给了源码https://github.com/team-su/SUCTF-2019/tree/master/Web/checkIn          
-&lt;?php
-// error_reporting(0);
-$userdir = "uploads/" . md5($_SERVER["REMOTE_ADDR"]);
-if
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-31 13:01" pubdate>
-              2021-01-31
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/30/BUU016/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BUU每日一题016">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/30/BUU016/">BUU每日一题016</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/30/BUU016/">
-          
-          
-            
-          
-          十六、题目[极客大挑战 2019]BuyFlag     
-分析F12源代码注释中有东西              
-	~~~post money and password~~~
-if (isset($_POST['password'])) &#123;
-	$password = $_POST['password'];
-	if (is_numeric($password)) &#123;
-		ec
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-30 12:45" pubdate>
-              2021-01-30
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/10/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/12/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/10/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/12/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   
