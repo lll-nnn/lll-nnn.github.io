@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      761 字
+      804 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      19
+      10
        分钟
     </span>
   
@@ -245,61 +238,67 @@
             <!-- SEO header -->
             <h1 style="display: none">BUU每日一题001</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h2><ul>
 <li>题目： PHP代码审计</li>
 </ul>
 <p>页面一个表情，查看源代码<br><img src="https://ftp.bmp.ovh/imgs/2021/01/6b4ea505386b6788.png" srcset="/img/loading.gif"></p>
 <p>访问<code>source.php</code>,得到PHP代码     </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php">		<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-  		 <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   		<span class="token keyword">class</span> <span class="token class-name">emmm</span>
-   		<span class="token punctuation">&#123;</span>
-       		<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">checkFile</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token variable">$page</span><span class="token punctuation">)</span>
-      	 		<span class="token punctuation">&#123;</span>
-	            <span class="token variable">$whitelist</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token double-quoted-string string">"source"</span><span class="token operator">=</span><span class="token operator">></span><span class="token double-quoted-string string">"source.php"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"hint"</span><span class="token operator">=</span><span class="token operator">></span><span class="token double-quoted-string string">"hint.php"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>     <span class="token comment">//$whitelist有"source.php"和"hint.php"两个字符串</span>
-	            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$page</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">is_string</span><span class="token punctuation">(</span><span class="token variable">$page</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>       <span class="token comment">//要求$page存在且是字符串</span>
-	                <span class="token keyword">echo</span> <span class="token double-quoted-string string">"you can't see it"</span><span class="token punctuation">;</span>
-	                <span class="token keyword">return</span> <span class="token boolean constant">false</span><span class="token punctuation">;</span>
-	            <span class="token punctuation">&#125;</span>
+<div class="hljs"><pre><code><pre><code class="hljs php">		<span class="hljs-meta">&lt;?php</span>
+  		 highlight_file(<span class="hljs-keyword">__FILE__</span>);
+   		<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">emmm</span></span>
+<span class="hljs-class">   		</span>&#123;
+       		<span class="hljs-keyword">public</span> <span class="hljs-built_in">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkFile</span>(<span class="hljs-params">&amp;$page</span>)</span>
+<span class="hljs-function">      	 		</span>&#123;
+	            $whitelist = [<span class="hljs-string">&quot;source&quot;</span>=&gt;<span class="hljs-string">&quot;source.php&quot;</span>,<span class="hljs-string">&quot;hint&quot;</span>=&gt;<span class="hljs-string">&quot;hint.php&quot;</span>];     <span class="hljs-comment">//$whitelist有&quot;source.php&quot;和&quot;hint.php&quot;两个字符串</span>
+	            <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">isset</span>($page) || !is_string($page)) &#123;       <span class="hljs-comment">//要求$page存在且是字符串</span>
+	                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;
+	                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+	            &#125;
 	
-	            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$page</span><span class="token punctuation">,</span> <span class="token variable">$whitelist</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	                <span class="token keyword">return</span> <span class="token boolean constant">true</span><span class="token punctuation">;</span>        <span class="token comment">//$page中的字符串应该含于$whitelist中</span>
-	            <span class="token punctuation">&#125;</span>
+	            <span class="hljs-keyword">if</span> (in_array($page, $whitelist)) &#123;
+	                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;        <span class="hljs-comment">//$page中的字符串应该含于$whitelist中</span>
+	            &#125;
 	
-	            <span class="token variable">$_page</span> <span class="token operator">=</span> <span class="token function">mb_substr</span><span class="token punctuation">(</span>
-	                <span class="token variable">$page</span><span class="token punctuation">,</span>
-	                <span class="token number">0</span><span class="token punctuation">,</span>
-	                <span class="token function">mb_strpos</span><span class="token punctuation">(</span><span class="token variable">$page</span> <span class="token punctuation">.</span> <span class="token single-quoted-string string">'?'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'?'</span><span class="token punctuation">)</span>
-	            <span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">//截取$page中第一个字符到 ？ 注意mb_strpos函数第一个 ？ 前是个连接符 .</span>
-	            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$_page</span><span class="token punctuation">,</span> <span class="token variable">$whitelist</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	                <span class="token keyword">return</span> <span class="token boolean constant">true</span><span class="token punctuation">;</span>      
-	            <span class="token punctuation">&#125;</span>            <span class="token comment">//再次比较</span>
+	            $_page = mb_substr(
+	                $page,
+	                <span class="hljs-number">0</span>,
+	                mb_strpos($page . <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>)
+	            );          <span class="hljs-comment">//截取$page中第一个字符到 ？ 注意mb_strpos函数第一个 ？ 前是个连接符 .</span>
+	            <span class="hljs-keyword">if</span> (in_array($_page, $whitelist)) &#123;
+	                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;      
+	            &#125;            <span class="hljs-comment">//再次比较</span>
 	
-	            <span class="token variable">$_page</span> <span class="token operator">=</span> <span class="token function">urldecode</span><span class="token punctuation">(</span><span class="token variable">$page</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//将$page解码</span>
-	            <span class="token variable">$_page</span> <span class="token operator">=</span> <span class="token function">mb_substr</span><span class="token punctuation">(</span>
-	                <span class="token variable">$_page</span><span class="token punctuation">,</span>
-	                <span class="token number">0</span><span class="token punctuation">,</span>
-	                <span class="token function">mb_strpos</span><span class="token punctuation">(</span><span class="token variable">$_page</span> <span class="token punctuation">.</span> <span class="token single-quoted-string string">'?'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'?'</span><span class="token punctuation">)</span>
-	            <span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">//截取</span>
-	            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$_page</span><span class="token punctuation">,</span> <span class="token variable">$whitelist</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	                <span class="token keyword">return</span> <span class="token boolean constant">true</span><span class="token punctuation">;</span>
-	            <span class="token punctuation">&#125;</span>       <span class="token comment">//比较</span>
-	            <span class="token keyword">echo</span> <span class="token double-quoted-string string">"you can't see it"</span><span class="token punctuation">;</span>
-	            <span class="token keyword">return</span> <span class="token boolean constant">false</span><span class="token punctuation">;</span>
-	        <span class="token punctuation">&#125;</span>
-	    <span class="token punctuation">&#125;</span>
+	            $_page = urldecode($page);    <span class="hljs-comment">//将$page解码</span>
+	            $_page = mb_substr(
+	                $_page,
+	                <span class="hljs-number">0</span>,
+	                mb_strpos($_page . <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>)
+	            );       <span class="hljs-comment">//截取</span>
+	            <span class="hljs-keyword">if</span> (in_array($_page, $whitelist)) &#123;
+	                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+	            &#125;       <span class="hljs-comment">//比较</span>
+	            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;
+	            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+	        &#125;
+	    &#125;
 	
-	    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-	        <span class="token operator">&amp;&amp;</span> <span class="token function">is_string</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-	        <span class="token operator">&amp;&amp;</span> emmm<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">checkFile</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-	    <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	        <span class="token keyword">include</span> <span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-	        <span class="token keyword">exit</span><span class="token punctuation">;</span>
-	    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-	        <span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;br>&lt;img src=\"https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\" />"</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>  
-<span class="token delimiter important">?></span></span> </code></pre></code></pre>
+	    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">empty</span>($_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>])
+	        &amp;&amp; is_string($_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>])
+	        &amp;&amp; emmm::checkFile($_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>])
+	    ) &#123;
+	        <span class="hljs-keyword">include</span> $_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>];
+	        <span class="hljs-keyword">exit</span>;
+	    &#125; <span class="hljs-keyword">else</span> &#123;
+	        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;
+   &#125;  
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <ul>
 <li>分析</li>
 </ul>
@@ -446,7 +445,7 @@
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -472,8 +471,6 @@
 
 
 
-  
-    
   
 
 

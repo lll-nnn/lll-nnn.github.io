@@ -37,6 +37,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -45,7 +46,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -148,12 +149,12 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/006.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152226553.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="All the disadvantages are caused by the incompetence of the parties">
+            <span class="h2" id="subtitle" title="君子终日乾乾，夕惕若厉，无咎！">
               
             </span>
 
@@ -209,7 +210,7 @@
 不能有0
 构造提交得到flag
 一行代码 &lt;?php
-echo !(!(include "flag.php")||(!error_reporting(0))||stripos($_GET['filename'],'.')||($_GET['id']!=0)||(strlen($_GET['content'])&l
+echo !(!(include &quot;flag.php&quot;)||(!error_reporting(0))||stripos($_GET[&#x27;filename&#x27;],&#x27;.&#x27;)||($_GET[&#x27;id
         </a>
       </p>
 
@@ -394,16 +395,14 @@ apache 目录穿越payload：/cgi-bin/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd
             
           
           temp这道不是极客大挑战的，就写这里吧
-&lt;html>
-&lt;!--if($_REQUEST['mode']!="begin")&#123;
-    die("Welcome PHP Games!");
-&#125;-->
-&lt;/html>
+&lt;html&gt;
+&lt;!--if($_REQUEST[&#x27;mode&#x27;]!=&quot;begin&quot;)&#123;
+    die(&quot;Welcome PHP Games!&quot;);
+&#125;--&gt;
+&lt;/html&gt;
 &lt;?php
 error_reporting(0);
-include 'fl4g.php';
-
-if($_REQUEST['mode']!="
+inclu
         </a>
       </p>
 
@@ -465,14 +464,14 @@ if($_REQUEST['mode']!="
           
           LFI_to_RCE题目：
 &lt;?php
-    show_source('./index.php');
-    include $_GET['file'];
-?>
+    show_source(&#x27;./index.php&#x27;);
+    include $_GET[&#x27;file&#x27;];
+?&gt;
 session文件包含，写入shell到session文件
 poc
 import threading
 import requests
-from concurrent.futures import ThreadPoolExecuto
+from concurrent.futures i
         </a>
       </p>
 
@@ -596,15 +595,14 @@ unix时间戳点next后url会加上page=1,时间就会加一秒
             
           
           迷路的魔法少女&lt;?php
-highlight_file('index.php');
+highlight_file(&#x27;index.php&#x27;);
 
 extract($_GET);
 error_reporting(0);
 function String2Array($data)
 &#123;
-    if($data == '') return array();
-    @eval("\$array = $data;");
-    return $arr
+    if($data == &#x27;&#x27;) return array();
+    @eval(&quot;\$array = 
         </a>
       </p>
 
@@ -666,11 +664,9 @@ function String2Array($data)
           
           middle_magic&lt;?php
     highlight_file(__FILE__);
-    include "./flag.php";
-    include "./result.php";
-    if(isset($_GET['aaa']) &amp;&amp; strlen($_GET['aaa']) &lt; 20)&#123;
-
-        $aaa = preg_
+    include &quot;./flag.php&quot;;
+    include &quot;./result.php&quot;;
+    if(isset($_GET[&#x27;aaa&#x27;]) &amp;&amp; strlen($_GET[&#x27;aaa&#x27
         </a>
       </p>
 
@@ -906,7 +902,7 @@ addslashes函数会转义字符有个session_start()函数看WP说可以伪造se
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -932,8 +928,6 @@ addslashes函数会转义字符有个session_start()函数看WP说可以伪造se
 
 
 
-  
-    
   
 
 

@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      149 字
+      162 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      2
        分钟
     </span>
   
@@ -245,22 +238,28 @@
             <!-- SEO header -->
             <h1 style="display: none">BUU每日一题044</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[BSidesCF 2020]Had a bad day<br><img src="https://ftp.bmp.ovh/imgs/2021/03/f5f5f1cac583c37f.png" srcset="/img/loading.gif">   </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>点击其中一个后会出来一张图片，而且URL变成<code>http://3c2d7f7c-2f24-42ca-84de-dfa013335bf4.node3.buuoj.cn/index.php?category=woofers</code><br>本来以为是SQL注入，加了个<code>&#39;</code><br>回显：<img src="https://ftp.bmp.ovh/imgs/2021/03/d6e58884d2fe94c0.png" srcset="/img/loading.gif"><br>是文件包含<br><code>php://filter/read=convert.base64-encode/source=flag.php</code><br>回显：<code>Sorry, we currently only support woofers and meowers.</code><br>试一下<code>index</code><br>成功读出    </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token variable">$file</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'category'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+$file = $_GET[<span class="hljs-string">&#x27;category&#x27;</span>];
 
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-	<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token function">strpos</span><span class="token punctuation">(</span> <span class="token variable">$file</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"woofers"</span> <span class="token punctuation">)</span> <span class="token operator">!==</span>  <span class="token boolean constant">false</span> <span class="token operator">||</span> <span class="token function">strpos</span><span class="token punctuation">(</span> <span class="token variable">$file</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"meowers"</span> <span class="token punctuation">)</span> <span class="token operator">!==</span>  <span class="token boolean constant">false</span> <span class="token operator">||</span> <span class="token function">strpos</span><span class="token punctuation">(</span> <span class="token variable">$file</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"index"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-		<span class="token keyword">include</span> <span class="token punctuation">(</span><span class="token variable">$file</span> <span class="token punctuation">.</span> <span class="token single-quoted-string string">'.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
-	<span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-		<span class="token keyword">echo</span> <span class="token double-quoted-string string">"Sorry, we currently only support woofers and meowers."</span><span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token delimiter important">?></span></span>  </code></pre></code></pre>
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($file))
+&#123;
+	<span class="hljs-keyword">if</span>( strpos( $file, <span class="hljs-string">&quot;woofers&quot;</span> ) !==  <span class="hljs-literal">false</span> || strpos( $file, <span class="hljs-string">&quot;meowers&quot;</span> ) !==  <span class="hljs-literal">false</span> || strpos( $file, <span class="hljs-string">&quot;index&quot;</span>))&#123;
+		<span class="hljs-keyword">include</span> ($file . <span class="hljs-string">&#x27;.php&#x27;</span>);
+	&#125;
+	<span class="hljs-keyword">else</span>&#123;
+		<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Sorry, we currently only support woofers and meowers.&quot;</span>;
+	&#125;
+&#125;
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>然后没招了<br>看了WP<br><code>伪协议嵌套</code>       </p>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：<code>php://filter/read=convert.base64-encode/index/resource=flag</code></p>
 
@@ -381,7 +380,7 @@
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -407,8 +406,6 @@
 
 
 
-  
-    
   
 
 

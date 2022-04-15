@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      386 字
+      404 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      6
        分钟
     </span>
   
@@ -245,6 +238,12 @@
             <!-- SEO header -->
             <h1 style="display: none">Hgame2022</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：2 个月前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="webpack-engine"><a href="#webpack-engine" class="headerlink" title="webpack-engine"></a>webpack-engine</h2><blockquote>
 <p>Webpack 是一个开源的前端打包工具。Webpack 提供了前端开发缺乏的模块化开发方式，将各种静态资源视为模块，并从它生成优化过的代码。</p>
@@ -259,42 +258,42 @@
 <h2 id="一本单词书"><a href="#一本单词书" class="headerlink" title="一本单词书"></a>一本单词书</h2><p>登录：<code>adm1n 1080a</code></p>
 <p>主要是encode和decode两个函数</p>
 <p>传输数据格式为：<code>&#123;&quot;2&quot;:&quot;2&quot;&#125;</code></p>
-<pre class="language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function">encode</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">:</span> string <span class="token punctuation">&#123;</span>
-    <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
-    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$data</span> <span class="token keyword">as</span> <span class="token variable">$k</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$v</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token variable">$result</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token variable">$k</span> <span class="token punctuation">.</span> <span class="token single-quoted-string string">'|'</span> <span class="token punctuation">.</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+<div class="hljs"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">encode</span>(<span class="hljs-params">$data</span>): <span class="hljs-title">string</span> </span>&#123;
+    $result = <span class="hljs-string">&#x27;&#x27;</span>;
+    <span class="hljs-keyword">foreach</span> ($data <span class="hljs-keyword">as</span> $k =&gt; $v) &#123;
+        $result .= $k . <span class="hljs-string">&#x27;|&#x27;</span> . serialize($v);
+    &#125;
 
-    <span class="token keyword">return</span> <span class="token variable">$result</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span></code></pre>
+    <span class="hljs-keyword">return</span> $result;
+&#125;</code></pre></div>
 
 <p><code>&#123;&quot;a&quot;:&quot;1&quot;,&quot;b&quot;:&quot;1&quot;&#125;</code>—–&gt;encode后<code>a|s:1:&quot;1&quot;;b|s:1:&quot;1&quot;;</code>—–&gt;decode后</p>
-<pre><code>array(2) &#123;
+<div class="hljs"><pre><code>array(2) &#123;
 [&quot;a&quot;]=&gt;
 string(1) &quot;1&quot;
 [&quot;b&quot;]=&gt;
 string(1) &quot;1&quot;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202202061736398.png" srcset="/img/loading.gif"></p>
 <h2 id="FileSystem"><a href="#FileSystem" class="headerlink" title="FileSystem"></a>FileSystem</h2><p><code>main.go</code></p>
-<pre class="language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
+<div class="hljs"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token punctuation">(</span>
-	<span class="token string">"log"</span>
-	<span class="token string">"net/http"</span>
-<span class="token punctuation">)</span>
+<span class="hljs-keyword">import</span> (
+	<span class="hljs-string">&quot;log&quot;</span>
+	<span class="hljs-string">&quot;net/http&quot;</span>
+)
 
-<span class="token keyword">func</span> <span class="token function">fileHandler</span><span class="token punctuation">(</span>w http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> r <span class="token operator">*</span>http<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	http<span class="token punctuation">.</span><span class="token function">FileServer</span><span class="token punctuation">(</span>http<span class="token punctuation">.</span><span class="token function">Dir</span><span class="token punctuation">(</span><span class="token string">"./"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ServeHTTP</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> r<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">fileHandler</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;
+	http.FileServer(http.Dir(<span class="hljs-string">&quot;./&quot;</span>)).ServeHTTP(w, r)
+&#125;
 
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	http<span class="token punctuation">.</span><span class="token function">HandleFunc</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> fileHandler<span class="token punctuation">)</span>
-	http<span class="token punctuation">.</span><span class="token function">HandleFunc</span><span class="token punctuation">(</span><span class="token string">"/there_may_be_a_flag"</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>w http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> r <span class="token operator">*</span>http<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		w<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">byte</span><span class="token punctuation">(</span><span class="token string">`No! You can't see the flag!`</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-	<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-	log<span class="token punctuation">.</span><span class="token function">Fatal</span><span class="token punctuation">(</span>http<span class="token punctuation">.</span><span class="token function">ListenAndServe</span><span class="token punctuation">(</span><span class="token string">":8889"</span><span class="token punctuation">,</span> <span class="token boolean">nil</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span></code></pre>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;
+	http.HandleFunc(<span class="hljs-string">&quot;/&quot;</span>, fileHandler)
+	http.HandleFunc(<span class="hljs-string">&quot;/there_may_be_a_flag&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;
+		w.Write([]<span class="hljs-keyword">byte</span>(<span class="hljs-string">`No! You can&#x27;t see the flag!`</span>))
+	&#125;)
+	log.Fatal(http.ListenAndServe(<span class="hljs-string">&quot;:8889&quot;</span>, <span class="hljs-literal">nil</span>))
+&#125;</code></pre></div>
 <p>利用点：</p>
 <ol>
 <li>CONNECT方法不执行路径规范化</li>
@@ -436,7 +435,7 @@ string(1) &quot;1&quot;
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -462,8 +461,6 @@ string(1) &quot;1&quot;
 
 
 
-  
-    
   
 
 

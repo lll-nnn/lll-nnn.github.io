@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      4
        分钟
     </span>
   
@@ -245,6 +238,12 @@
             <!-- SEO header -->
             <h1 style="display: none">BUU每日一题</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[NCTF2019]True XML cookbook<br><img src="https://ftp.bmp.ovh/imgs/2021/03/f8a90def8d4a5fab.png" srcset="/img/loading.gif">      </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>之前也做过一道这样的xml<br>抓包<br>直接用之前的payload打一下      </p>
@@ -258,12 +257,12 @@
 </li>
 <li><code>&lt;!ENTITY 文件名  SYSTEM &quot;url或协议&quot;&gt;</code>造成文件读取，csrf等  </li>
 </ol>
-<pre><code>     &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;      ##XML声明
+<div class="hljs"><pre><code>     &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;      ##XML声明
     &lt;!DOCTYPE a[          ##a--&gt;文件名
       &lt;!ENTITY admin SYSTEM &quot;http://10.0.93.11&quot;&gt;     ##admin---&gt;实体名
       ]&gt;
 
-    &lt;user&gt;&lt;username&gt;&amp;admin;&lt;/username&gt;&lt;password&gt;123&lt;/password&gt;&lt;/user&gt;          ##&amp;admin;---&gt;实体调用&#123;一个实体由三部分构成: 一个和号 (&amp;), 一个实体名称, 以及一个分号 (;)&#125;          </code></pre>
+    &lt;user&gt;&lt;username&gt;&amp;admin;&lt;/username&gt;&lt;password&gt;123&lt;/password&gt;&lt;/user&gt;          ##&amp;admin;---&gt;实体调用&#123;一个实体由三部分构成: 一个和号 (&amp;), 一个实体名称, 以及一个分号 (;)&#125;          </code></pre></div>
 <p>XML外部实体<code>admin</code>被赋值为：<code>http://10.0.93.11</code>,在解析XML时，实体<code>admin</code>的值会被替换为<code>http://10.0.93.11</code>的内容值，关键字<code>SYSTEM</code>会告诉XML解析器，<code>admin</code>实体的值将从其后的URL中读取，并把读取的内容替换<code>admin</code>出现的地方。<br>XML支持的协议：<br><img src="https://ftp.bmp.ovh/imgs/2021/03/e8ca3a5eafb7b626.gif" srcset="/img/loading.gif">       </p>
 <p>ENTITY 实体，在一个甚至多个XML文档中频繁使用某一条数据，我们可以预先定义一个这条数据的“别名”，即一个ENTITY，然后在这些文档中需要该数据的地方调用它。        </p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/backlion/p/9302528.html">MORE</a></p>
@@ -385,7 +384,7 @@
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -411,8 +410,6 @@
 
 
 
-  
-    
   
 
 

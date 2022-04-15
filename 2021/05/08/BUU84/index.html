@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      660 字
+      757 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      21
+      12
        分钟
     </span>
   
@@ -245,6 +238,12 @@
             <!-- SEO header -->
             <h1 style="display: none">Ezaudit</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="0"><a href="#0" class="headerlink" title="-0-)"></a>-0-)</h2><p><img src="https://zebra-common-system-pre.oss-cn-shanghai.aliyuncs.com/bmdev/e304316d-4424-4850-b53e-7392e0c5c05e.png" srcset="/img/loading.gif" alt="01.png">     </p>
 <p>题目打开是这样，挺正经的，以为是什么漏洞，源码中也没有提示     </p>
@@ -253,58 +252,58 @@
 <p><code>www.zip</code>  </p>
 <p>果然   </p>
 <p>下载下来是<code>index.php</code>     </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> 
-<span class="token function">header</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'Content-type:text/html; charset=utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'login'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token variable">$username</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token variable">$password</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token variable">$Private_key</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'Private_key'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token variable">$username</span> <span class="token operator">==</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span><span class="token variable">$password</span> <span class="token operator">==</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">)</span> <span class="token operator">||</span><span class="token punctuation">(</span><span class="token variable">$Private_key</span> <span class="token operator">==</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 若为空,视为未填写,提示错误,并3秒后返回登录界面</span>
-        <span class="token function">header</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'refresh:2; url=login.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">echo</span> <span class="token double-quoted-string string">"用户名、密码、密钥不能为空啦,crispr会让你在2秒后跳转到登录界面的!"</span><span class="token punctuation">;</span>
-        <span class="token keyword">exit</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-    <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$Private_key</span> <span class="token operator">!=</span> <span class="token single-quoted-string string">'*************'</span> <span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token function">header</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'refresh:2; url=login.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">echo</span> <span class="token double-quoted-string string">"假密钥，咋会让你登录?crispr会让你在2秒后跳转到登录界面的!"</span><span class="token punctuation">;</span>
-        <span class="token keyword">exit</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> 
+header(<span class="hljs-string">&#x27;Content-type:text/html; charset=utf-8&#x27;</span>);
+error_reporting(<span class="hljs-number">0</span>);
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;login&#x27;</span>]))&#123;
+    $username = $_POST[<span class="hljs-string">&#x27;username&#x27;</span>];
+    $password = $_POST[<span class="hljs-string">&#x27;password&#x27;</span>];
+    $Private_key = $_POST[<span class="hljs-string">&#x27;Private_key&#x27;</span>];
+    <span class="hljs-keyword">if</span> (($username == <span class="hljs-string">&#x27;&#x27;</span>) || ($password == <span class="hljs-string">&#x27;&#x27;</span>) ||($Private_key == <span class="hljs-string">&#x27;&#x27;</span>)) &#123;
+        <span class="hljs-comment">// 若为空,视为未填写,提示错误,并3秒后返回登录界面</span>
+        header(<span class="hljs-string">&#x27;refresh:2; url=login.html&#x27;</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;用户名、密码、密钥不能为空啦,crispr会让你在2秒后跳转到登录界面的!&quot;</span>;
+        <span class="hljs-keyword">exit</span>;
+&#125;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>($Private_key != <span class="hljs-string">&#x27;*************&#x27;</span> )
+    &#123;
+        header(<span class="hljs-string">&#x27;refresh:2; url=login.html&#x27;</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;假密钥，咋会让你登录?crispr会让你在2秒后跳转到登录界面的!&quot;</span>;
+        <span class="hljs-keyword">exit</span>;
+    &#125;
 
-    <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$Private_key</span> <span class="token operator">===</span> <span class="token single-quoted-string string">'************'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token variable">$getuser</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"SELECT flag FROM user WHERE username= 'crispr' AND password = '<span class="token interpolation"><span class="token variable">$password</span></span>'"</span><span class="token punctuation">.</span><span class="token single-quoted-string string">';'</span><span class="token punctuation">;</span> 
-        <span class="token variable">$link</span><span class="token operator">=</span><span class="token function">mysql_connect</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"localhost"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"root"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">mysql_select_db</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"test"</span><span class="token punctuation">,</span><span class="token variable">$link</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token variable">$getuser</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token variable">$row</span><span class="token operator">=</span><span class="token function">mysql_fetch_assoc</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;tr>&lt;td>"</span><span class="token punctuation">.</span><span class="token variable">$row</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"username"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"&lt;/td>&lt;td>"</span><span class="token punctuation">.</span><span class="token variable">$row</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"flag"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"&lt;/td>&lt;td>"</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
+    <span class="hljs-keyword">else</span>&#123;
+        <span class="hljs-keyword">if</span>($Private_key === <span class="hljs-string">&#x27;************&#x27;</span>)&#123;
+        $getuser = <span class="hljs-string">&quot;SELECT flag FROM user WHERE username= &#x27;crispr&#x27; AND password = &#x27;<span class="hljs-subst">$password</span>&#x27;&quot;</span>.<span class="hljs-string">&#x27;;&#x27;</span>; 
+        $link=mysql_connect(<span class="hljs-string">&quot;localhost&quot;</span>,<span class="hljs-string">&quot;root&quot;</span>,<span class="hljs-string">&quot;root&quot;</span>);
+        mysql_select_db(<span class="hljs-string">&quot;test&quot;</span>,$link);
+        $result = mysql_query($getuser);
+        <span class="hljs-keyword">while</span>($row=mysql_fetch_assoc($result))&#123;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;tr&gt;&lt;td&gt;&quot;</span>.$row[<span class="hljs-string">&quot;username&quot;</span>].<span class="hljs-string">&quot;&lt;/td&gt;&lt;td&gt;&quot;</span>.$row[<span class="hljs-string">&quot;flag&quot;</span>].<span class="hljs-string">&quot;&lt;/td&gt;&lt;td&gt;&quot;</span>;
+        &#125;
+    &#125;
+    &#125;
 
-<span class="token punctuation">&#125;</span> 
-<span class="token comment">// genarate public_key </span>
-<span class="token keyword">function</span> <span class="token function">public_key</span><span class="token punctuation">(</span><span class="token variable">$length</span> <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token variable">$strings1</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'</span><span class="token punctuation">;</span>
-    <span class="token variable">$public_key</span> <span class="token operator">=</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token variable">$i</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token variable">$length</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span> <span class="token punctuation">)</span>
-    <span class="token variable">$public_key</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$strings1</span><span class="token punctuation">,</span> <span class="token function">mt_rand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$strings1</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token variable">$public_key</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
+&#125; 
+<span class="hljs-comment">// genarate public_key </span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">public_key</span>(<span class="hljs-params">$length = <span class="hljs-number">16</span></span>) </span>&#123;
+    $strings1 = <span class="hljs-string">&#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#x27;</span>;
+    $public_key = <span class="hljs-string">&#x27;&#x27;</span>;
+    <span class="hljs-keyword">for</span> ( $i = <span class="hljs-number">0</span>; $i &lt; $length; $i++ )
+    $public_key .= substr($strings1, mt_rand(<span class="hljs-number">0</span>, strlen($strings1) - <span class="hljs-number">1</span>), <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> $public_key;
+  &#125;
 
-  <span class="token comment">//genarate private_key</span>
-  <span class="token keyword">function</span> <span class="token function">private_key</span><span class="token punctuation">(</span><span class="token variable">$length</span> <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token variable">$strings2</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'</span><span class="token punctuation">;</span>
-    <span class="token variable">$private_key</span> <span class="token operator">=</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token variable">$i</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token variable">$length</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span> <span class="token punctuation">)</span>
-    <span class="token variable">$private_key</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$strings2</span><span class="token punctuation">,</span> <span class="token function">mt_rand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$strings2</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token variable">$private_key</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token variable">$Public_key</span> <span class="token operator">=</span> <span class="token function">public_key</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token comment">//$Public_key = KVQP0LdJKRaV3n9D  how to get crispr's private_key???</span></span></code></pre></code></pre>
+  <span class="hljs-comment">//genarate private_key</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">private_key</span>(<span class="hljs-params">$length = <span class="hljs-number">12</span></span>) </span>&#123;
+    $strings2 = <span class="hljs-string">&#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#x27;</span>;
+    $private_key = <span class="hljs-string">&#x27;&#x27;</span>;
+    <span class="hljs-keyword">for</span> ( $i = <span class="hljs-number">0</span>; $i &lt; $length; $i++ )
+    $private_key .= substr($strings2, mt_rand(<span class="hljs-number">0</span>, strlen($strings2) - <span class="hljs-number">1</span>), <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> $private_key;
+  &#125;
+  $Public_key = public_key();
+  <span class="hljs-comment">//$Public_key = KVQP0LdJKRaV3n9D  how to get crispr&#x27;s private_key???</span></code></pre></div></code></pre>
 <p>首先要获取到<code>private_key</code>    </p>
 <p>之前也做过一道<code>mt_rand</code>的题目，那一道是根据前几位得到<code>seed</code>      </p>
 <p>这次用<code>public_key</code>得到<code>seed</code>这两个应该是同一个<code>seed</code>吧   </p>
@@ -312,66 +311,66 @@
 <p>找了一个新的脚本     </p>
 <p>发现少了一位，我之前那道题是怎么做出来的！！！？？？   </p>
 <p>PHP版：     </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token variable">$pass</span><span class="token operator">=</span><span class="token single-quoted-string string">'KVQP0LdJKRaV3n9D'</span><span class="token punctuation">;</span>
-<span class="token variable">$str</span><span class="token operator">=</span><span class="token single-quoted-string string">'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'</span><span class="token punctuation">;</span>
-<span class="token variable">$result</span><span class="token operator">=</span><span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
-<span class="token variable">$len1</span><span class="token operator">=</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$pass</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$len2</span><span class="token operator">=</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token variable">$len1</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$j</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token variable">$j</span><span class="token operator">&lt;</span><span class="token variable">$len2</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token variable">$j</span><span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$pass</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token operator">===</span><span class="token variable">$str</span><span class="token punctuation">[</span><span class="token variable">$j</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        <span class="token punctuation">&#123;</span>
-            <span class="token keyword">echo</span> <span class="token double-quoted-string string">"<span class="token interpolation"><span class="token variable">$j</span></span> <span class="token interpolation"><span class="token variable">$j</span></span> 0 <span class="token interpolation"><span class="token variable">$len2</span></span> "</span><span class="token punctuation">;</span>
-            <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token delimiter important">?></span></span></code></pre></code></pre>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+$pass=<span class="hljs-string">&#x27;KVQP0LdJKRaV3n9D&#x27;</span>;
+$str=<span class="hljs-string">&#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#x27;</span>;
+$result=<span class="hljs-string">&#x27;&#x27;</span>;
+$len1=strlen($pass);
+$len2=strlen($str)<span class="hljs-number">-1</span>;
+<span class="hljs-keyword">for</span>($i=<span class="hljs-number">0</span>;$i&lt;$len1;$i++)
+&#123;
+    <span class="hljs-keyword">for</span>($j=<span class="hljs-number">0</span>;$j&lt;$len2+<span class="hljs-number">1</span>;$j++)
+    &#123;
+        <span class="hljs-keyword">if</span>($pass[$i]===$str[$j])
+        &#123;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$j</span> <span class="hljs-subst">$j</span> 0 <span class="hljs-subst">$len2</span> &quot;</span>;
+            <span class="hljs-keyword">break</span>;
+        &#125;
+    &#125;
+&#125;
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>python版：    </p>
-<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># -*- coding: utf-8 -*-</span>
-s <span class="token operator">=</span> <span class="token string">'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'</span>
-key <span class="token operator">=</span> <span class="token string">'KVQP0LdJKRaV3n9D'</span>
-m <span class="token operator">=</span> <span class="token string">''</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> key<span class="token punctuation">:</span>
-    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> i <span class="token operator">==</span> s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            m <span class="token operator">+=</span> <span class="token string">"&#123;&#125; &#123;&#125; 0 &#123;&#125; "</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>j<span class="token punctuation">,</span>j<span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span></code></pre></code></pre>
+<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+s = <span class="hljs-string">&#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#x27;</span>
+key = <span class="hljs-string">&#x27;KVQP0LdJKRaV3n9D&#x27;</span>
+m = <span class="hljs-string">&#x27;&#x27;</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> key:
+    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)):
+        <span class="hljs-keyword">if</span> i == s[j]:
+            m += <span class="hljs-string">&quot;&#123;&#125; &#123;&#125; 0 &#123;&#125; &quot;</span>.<span class="hljs-built_in">format</span>(j,j,<span class="hljs-built_in">len</span>(s)<span class="hljs-number">-1</span>)
+print(m)</code></pre></div></code></pre>
 <p>转换后的结果：      </p>
-<pre><code>36 36 0 61 47 47 0 61 42 42 0 61 41 41 0 61 52 52 0 61 37 37 0 61 3 3 0 61 35 35 0 61 36 36 0 61 43 43 0 61 0 0 0 61 47 47 0 61 55 55 0 61 13 13 0 61 61 61 0 61 29 29 0 61      </code></pre>
+<div class="hljs"><pre><code>36 36 0 61 47 47 0 61 42 42 0 61 41 41 0 61 52 52 0 61 37 37 0 61 3 3 0 61 35 35 0 61 36 36 0 61 43 43 0 61 0 0 0 61 47 47 0 61 55 55 0 61 13 13 0 61 61 61 0 61 29 29 0 61      </code></pre></div>
 <p><img src="https://zebra-common-system-pre.oss-cn-shanghai.aliyuncs.com/bmdev/bd326a1b-2d71-4537-b51c-fdfe509f1aaa.png" srcset="/img/loading.gif" alt="02.png">      </p>
 <p>注意这里的PHP版本为<code>5.2.1 to 7.0.x</code>如果版本不对的话，生成的也不一样。</p>
 <p>重新生成<code>private_key</code>        </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token function">mt_srand</span><span class="token punctuation">(</span><span class="token number">1775196155</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// genarate public_key </span>
-<span class="token keyword">function</span> <span class="token function">public_key</span><span class="token punctuation">(</span><span class="token variable">$length</span> <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token variable">$strings1</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'</span><span class="token punctuation">;</span>
-    <span class="token variable">$public_key</span> <span class="token operator">=</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token variable">$length</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token variable">$public_key</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$strings1</span><span class="token punctuation">,</span> <span class="token function">mt_rand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$strings1</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token variable">$public_key</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+mt_srand(<span class="hljs-number">1775196155</span>);
+<span class="hljs-comment">// genarate public_key </span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">public_key</span>(<span class="hljs-params">$length = <span class="hljs-number">16</span></span>)</span>
+<span class="hljs-function"></span>&#123;
+    $strings1 = <span class="hljs-string">&#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#x27;</span>;
+    $public_key = <span class="hljs-string">&#x27;&#x27;</span>;
+    <span class="hljs-keyword">for</span> ($i = <span class="hljs-number">0</span>; $i &lt; $length; $i++)
+        $public_key .= substr($strings1, mt_rand(<span class="hljs-number">0</span>, strlen($strings1) - <span class="hljs-number">1</span>), <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> $public_key;
+&#125;
 
-<span class="token comment">//genarate private_key</span>
-<span class="token keyword">function</span> <span class="token function">private_key</span><span class="token punctuation">(</span><span class="token variable">$length</span> <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token variable">$strings2</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'</span><span class="token punctuation">;</span>
-    <span class="token variable">$private_key</span> <span class="token operator">=</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token variable">$length</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token variable">$private_key</span> <span class="token punctuation">.</span><span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$strings2</span><span class="token punctuation">,</span> <span class="token function">mt_rand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$strings2</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token variable">$private_key</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-comment">//genarate private_key</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">private_key</span>(<span class="hljs-params">$length = <span class="hljs-number">12</span></span>)</span>
+<span class="hljs-function"></span>&#123;
+    $strings2 = <span class="hljs-string">&#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#x27;</span>;
+    $private_key = <span class="hljs-string">&#x27;&#x27;</span>;
+    <span class="hljs-keyword">for</span> ($i = <span class="hljs-number">0</span>; $i &lt; $length; $i++)
+        $private_key .= substr($strings2, mt_rand(<span class="hljs-number">0</span>, strlen($strings2) - <span class="hljs-number">1</span>), <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> $private_key;
+&#125;
 
-<span class="token keyword">echo</span> <span class="token function">public_key</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">private_key</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre></code></pre>
+<span class="hljs-keyword">echo</span> public_key().<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+<span class="hljs-keyword">echo</span> private_key();</code></pre></div></code></pre>
 <p>得到：     </p>
-<pre><code>KVQP0LdJKRaV3n9D
-XuNhoueCDCGc   </code></pre>
+<div class="hljs"><pre><code>KVQP0LdJKRaV3n9D
+XuNhoueCDCGc   </code></pre></div>
 <p>sql万能公式得到flag：     </p>
 <p><img src="https://zebra-common-system-pre.oss-cn-shanghai.aliyuncs.com/bmdev/654d7ca9-db67-400a-b992-0afefb8809be.png" srcset="/img/loading.gif" alt="03.png"></p>
 
@@ -507,7 +506,7 @@ XuNhoueCDCGc   </code></pre>
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -533,8 +532,6 @@ XuNhoueCDCGc   </code></pre>
 
 
 
-  
-    
   
 
 

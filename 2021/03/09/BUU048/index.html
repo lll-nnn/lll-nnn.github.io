@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      5
        分钟
     </span>
   
@@ -245,10 +238,16 @@
             <!-- SEO header -->
             <h1 style="display: none">BUU每日一题</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[BJDCTF 2nd]简单注入<br><img src="https://ftp.bmp.ovh/imgs/2021/03/44e4763d0293348f.png" srcset="/img/loading.gif">       </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>又过滤了好多<br><code>&#39;、&quot;、select、-、=、like、and</code><br>看WP说有提示—-&gt;<code>robots.txt</code><br>一般遇到看不懂的题我才会试一下常见的目录，没想到…….<br><img src="https://ftp.bmp.ovh/imgs/2021/03/9c3fc6bade9ff396.png" srcset="/img/loading.gif"><br>这和hgame那道一样<br><code>\</code>转义         </p>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><pre><code>```python
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><div class="hljs"><pre><code>```python
 import requests
 import time
 import datetime
@@ -279,7 +278,7 @@ for i in range(1,20):
         break
     flag=flag+chr(mid)
     print(flag)      
-```          </code></pre>
+```          </code></pre></div>
 <p>时间盲注也能跑出来，就是有点儿慢<br>or后面0或者1的回显不同<br>0——&gt;<code>You konw ,P3rh4ps needs a girl friend</code><br>1——&gt;<code>BJD needs to be stronger</code><br>—&gt;bool盲注</p>
 <p>这题的报表直接对列来操作，因为在上面的SQL语句中有<code>FROM users</code>，而且=和like都被过了，只能这样了吧<br><img src="https://ftp.bmp.ovh/imgs/2021/03/17cfe81b59870b7a.png" srcset="/img/loading.gif"></p>
 
@@ -400,7 +399,7 @@ for i in range(1,20):
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -426,8 +425,6 @@ for i in range(1,20):
 
 
 
-  
-    
   
 
 

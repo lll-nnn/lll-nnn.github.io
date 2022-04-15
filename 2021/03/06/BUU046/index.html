@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      4
        分钟
     </span>
   
@@ -245,10 +238,16 @@
             <!-- SEO header -->
             <h1 style="display: none">BUU每日打卡</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[WesternCTF2018]shrine        </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>源码：    </p>
-<pre><code>```python
+<div class="hljs"><pre><code>```python
 import flask
 import os
 
@@ -275,7 +274,7 @@ def shrine(shrine):
 
 if __name__ == &#39;__main__&#39;:
     app.run(debug=True)     
-```   </code></pre>
+```   </code></pre></div>
 <p>两个路由，第二个存在SSTI<img src="https://ftp.bmp.ovh/imgs/2021/03/45aacf69b12a54b2.png" srcset="/img/loading.gif"><br>flag在config里，但config和self被禁了<br>如果没被禁的话就可以直接<code>&#123;&#123;config&#125;&#125;</code>或者<code>&#123;&#123;self.dict&#125;&#125;</code><br>可以用<code>url_for</code>和<code>get_flashed_message</code>       </p>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload1：<code>&#123;&#123;url_for.__globals__['current_app'].config&#125;&#125;</code>        </p>
 <p><code>url_for</code>用于给指定的函数创建url，加上<code>__globals</code>可以访问所有的路由，然后读取当前APP的config<br>payload2：<code>&#123;&#123;get_flashed_messages.__globals__['current_app'].config&#125;&#125;</code><br><code>get_flashed_messages</code>返回之前在Flask中通过 flash() 传入的闪现信息列表。把字符串对象表示的消息加入到一个消息队列中，然后通过调用 <code>get_flashed_messages()</code> 方法取出,闪现信息只能取出一次，取出后闪现信息会被清空.        </p>
@@ -398,7 +397,7 @@ if __name__ == &#39;__main__&#39;:
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -424,8 +423,6 @@ if __name__ == &#39;__main__&#39;:
 
 
 
-  
-    
   
 
 

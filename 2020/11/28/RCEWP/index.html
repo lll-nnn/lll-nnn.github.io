@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      19
+      9
        分钟
     </span>
   
@@ -245,22 +238,28 @@
             <!-- SEO header -->
             <h1 style="display: none">Basic Rce---WP</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h1 id="basic-rce1——wp"><a href="#basic-rce1——wp" class="headerlink" title="basic rce1——wp"></a>basic rce1——wp</h1><p>首先进行代码审计：</p>
-<pre><code>&lt;?php
+<div class="hljs"><pre><code>&lt;?php
 //拿到flag就不要乱玩了哦~
 error_reporting(0);     //php函数，关闭错误报告
 show_source(__FILE__);   //该函数对文件进行语法高亮显示，应该就是让PHP代码能够在HTML页面上显示。
 eval($_GET[&#39;a&#39;]);   //首先，eval()函数，把字符串按照PHP代码来计算，该字符串必须是合法的PHP代码，即以分号结尾；括号里就是以GET的方式输入a.
-?&gt;    </code></pre>
+?&gt;    </code></pre></div>
 <p>整个题目就是这样了，但是一点flag的影子都没有，结合eval()函数，猜想应该是通过一段代码将flag显示出来，所以首先应该要知道包含flag的文件名，system()函数可以执行系统命令。<br>system(‘ls’)一下，注意：不要忘记单引号！！！！！<br><img src="https://ftp.bmp.ovh/imgs/2020/11/d7d0a05f4b5bb4e7.png" srcset="/img/loading.gif"><br>知道了文件名f111a9.php，接下来就用命令打开它，打开文件的命令有：<br><img src="https://ftp.bmp.ovh/imgs/2020/11/f86c87a349a74379.png" srcset="/img/loading.gif"><br>逐个试了一下，发现只有 tac 可以得到flag：<br><img src="https://ftp.bmp.ovh/imgs/2020/11/1c5262a8578d0993.png" srcset="/img/loading.gif">          </p>
 <hr>
 <h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><ul>
 <li>eval()函数：将字符串按照代码计算。（代码执行）（一句话木马）</li>
 <li>system()函数：命令执行。    <h2 id="一些想法"><a href="#一些想法" class="headerlink" title="一些想法"></a>一些想法</h2></li>
-<li>代码执行和命令执行的区别：代码执行实际上就是调用服务器网站代码进行执行；而命令执行是通过易受攻击的应用在主机上执行任意命令。<pre><code>* 如：       
-&lt;?php         </code></pre>
-  eval(“echo 1+1;”);    //2<br>  system(“echo 1+1;”);  //1+1;               <pre><code>?&gt;</code></pre>
+<li>代码执行和命令执行的区别：代码执行实际上就是调用服务器网站代码进行执行；而命令执行是通过易受攻击的应用在主机上执行任意命令。<div class="hljs"><pre><code>* 如：       
+&lt;?php         </code></pre></div>
+  eval(“echo 1+1;”);    //2<br>  system(“echo 1+1;”);  //1+1;               <div class="hljs"><pre><code>?&gt;</code></pre></div>
 </li>
 </ul>
 <p>虽然还是有点不太理解，等以后深入学习应该就懂了吧。      </p>
@@ -272,7 +271,7 @@ eval($_GET[&#39;a&#39;]);   //首先，eval()函数，把字符串按照PHP代�
 </li>
 <li><hr>
 <h1 id="basic-rce2——wp"><a href="#basic-rce2——wp" class="headerlink" title="basic rce2——wp"></a>basic rce2——wp</h1><p>代码审计：   </p>
-<pre><code> &lt;?php                
+<div class="hljs"><pre><code> &lt;?php                
  //flag in flag                
  error_ reporting(0);              
  show_source(__FILE__);                   
@@ -284,7 +283,7 @@ eval($_GET[&#39;a&#39;]);   //首先，eval()函数，把字符串按照PHP代�
      $a = eval($Ram);              
  &#125;else&#123;            
      echo &quot;&lt;script&gt;alert(&#39;爬爬爬我最会爬了&#39;)&lt;/script&gt;&quot;;           
- &#125;</code></pre>
+ &#125;</code></pre></div>
 </li>
 </ul>
 <p>首先整段代码没有输出flag的语句，也没有包含flag的文件名，和上一题差不多，只不过这一题要涉及到preg_match()函数的绕过，还是先sysytem(‘ls’);查看一下文件名：<br><img src="https://ftp.bmp.ovh/imgs/2020/11/7b1689d1b2425481.png" srcset="/img/loading.gif"><br>preg_match()函数用取反绕过，将命令取反url编码：<img src="https://ftp.bmp.ovh/imgs/2020/11/a4396685470b825d.png" srcset="/img/loading.gif"><br>输入得到flag：<br><img src="https://ftp.bmp.ovh/imgs/2020/11/69ce879a72e63742.png" srcset="/img/loading.gif">  </p>
@@ -420,7 +419,7 @@ eval($_GET[&#39;a&#39;]);   //首先，eval()函数，把字符串按照PHP代�
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -446,8 +445,6 @@ eval($_GET[&#39;a&#39;]);   //首先，eval()函数，把字符串按照PHP代�
 
 
 
-  
-    
   
 
 

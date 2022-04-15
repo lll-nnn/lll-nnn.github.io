@@ -37,6 +37,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -45,7 +46,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -148,12 +149,12 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/006.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152226553.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="All the disadvantages are caused by the incompetence of the parties">
+            <span class="h2" id="subtitle" title="君子终日乾乾，夕惕若厉，无咎！">
               
             </span>
 
@@ -209,9 +210,9 @@ W&amp;M 的WP
     import time
 
     def ord2hex(string):
-    result = ''
+    result = &#x27;&#x27;
     for i in string:
-        resul
+   
         </a>
       </p>
 
@@ -280,9 +281,9 @@ upload.php
 &lt;?php
 error_reporting(0);
 
-require_once('config.php');
-require_once('lib/util.php');
-require_once('lib/session.ph
+require_once(&#x27;config.php&#x27;);
+require_once(&#x27;lib/util.php&#x27;);
+require_
         </a>
       </p>
 
@@ -416,10 +417,10 @@ import
           
           o)o打开环境，发现是文件上传，还给了部分源码
    
-if($contents=file_get_contents($_FILES["file"]["tmp_name"]))&#123;
+if($contents=file_get_contents($_FILES[&quot;file&quot;][&quot;tmp_name&quot;]))&#123;
     $data=substr($contents,5);
     foreach ($black_char as $b) &#123;
-        if (stripos($data, $b) !== 
+        if (str
         </a>
       </p>
 
@@ -490,9 +491,9 @@ github上搜索得到源码
 主要是helper.php    
 &lt;?php
 class helper &#123;
-    protected $folder = "pic/";
+    protected $folder = &quot;pic/&quot;;
     protected $ifview = False; 
-    protected $config = 
+    protected 
         </a>
       </p>
 
@@ -632,7 +633,7 @@ from time import sleep
 
 def count():
     s = requests.session()       #会话保持
-    url = 'http://ee15b87d-2094-4459-97e9-6c7d3f88800d.n
+    url = &#x27;http://ee15b87d-2094-4459-97e9-6c7d3f888
         </a>
       </p>
 
@@ -702,9 +703,9 @@ www.zip
 果然   
 下载下来是index.php     
 &lt;?php 
-header('Content-type:text/html; charset=utf-8');
+header(&#x27;Content-type:text/html; charset=utf-8&#x27;);
 error_reporting(0);
-if(isset($_
+i
         </a>
       </p>
 
@@ -960,7 +961,7 @@ Disallow: /f
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -986,8 +987,6 @@ Disallow: /f
 
 
 
-  
-    
   
 
 

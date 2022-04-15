@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      7
        分钟
     </span>
   
@@ -245,16 +238,22 @@
             <!-- SEO header -->
             <h1 style="display: none">Dropbox</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="好难"><a href="#好难" class="headerlink" title="好难"></a>好难</h2><p><img src="https://ftp.bmp.ovh/imgs/2021/03/d3fb5b0878474c49.png" srcset="/img/loading.gif"><br>试了一波SQL注入，感觉不行<br>注册—–登录—–上传个文件（这里上传文件也不行）<br><img src="https://ftp.bmp.ovh/imgs/2021/03/1f1922e979bb74c1.png" srcset="/img/loading.gif"><br>下载—抓包<br>发现可以任意文件读取，记得要跳到上级目录<code>../../</code><br><img src="https://ftp.bmp.ovh/imgs/2021/03/8dbcc3256e9e1151.png" srcset="/img/loading.gif"><br>最终将所有PHP文件读取出来，但不能直接读flag，被过了<br><img src="https://ftp.bmp.ovh/imgs/2021/03/78134ae933f2e358.png" srcset="/img/loading.gif"><br>接下来就是代码审计了    </p>
 <p><code>class.php</code>里      </p>
-<pre><code>public function close() &#123;
+<div class="hljs"><pre><code>public function close() &#123;
     return file_get_contents($this-&gt;filename);  
 
 
 
 public function __destruct() &#123;
-    $this-&gt;db-&gt;close();      </code></pre>
+    $this-&gt;db-&gt;close();      </code></pre></div>
 <p>但没有输出，也没有反序列化的地方<br>输出—&gt;filelist的destruct里有个echo      </p>
 <p>phar(“Php Archive”)是PHP里的一种打包文件；其中的数据以序列化的形式保存。<br>phar文件结构：    </p>
 <ol>
@@ -274,7 +273,7 @@ public function __destruct() &#123;
 <p>所以可以将我们构造反序化脚本放入phar，生成phar文件，再用<code>phar://</code>反序列化       </p>
 <p>pop链：<code>User-&gt;$db-&gt;FileList-&gt;$files-&gt;File</code>     </p>
 <p>大佬的脚本：        </p>
-<pre><code>```php
+<div class="hljs"><pre><code>```php
 &lt;?php
 class User &#123;
     public $db;
@@ -308,7 +307,7 @@ $phar-&gt;addFromString(&quot;exp.txt&quot;, &quot;test&quot;); //添加要压�
 //签名自动计算
 $phar-&gt;stopBuffering();
 ?&gt;
-```       </code></pre>
+```       </code></pre></div>
 <p>运行后会生成个<code>phar.phar</code>文件<br>运行报错的话，要改一下<code>php.ini</code><br><img src="https://ftp.bmp.ovh/imgs/2021/03/dc7fa7ae8eec3de3.png" srcset="/img/loading.gif"><br><code>phar.readonly</code>默认是开启的<br>将文件上传，改<code>Content-Type: image/gif</code><br>上传后删除此文件，抓包<br><img src="https://ftp.bmp.ovh/imgs/2021/03/8b004b7f88b8ad26.png" srcset="/img/loading.gif">    </p>
 <h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2715">phar</a>    </p>
 <ul>
@@ -436,7 +435,7 @@ $phar-&gt;stopBuffering();
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -462,8 +461,6 @@ $phar-&gt;stopBuffering();
 
 
 
-  
-    
   
 
 

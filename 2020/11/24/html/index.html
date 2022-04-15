@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      5
        分钟
     </span>
   
@@ -245,12 +238,18 @@
             <!-- SEO header -->
             <h1 style="display: none">HTML基础学习笔记</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h2><h3 id="html标题"><a href="#html标题" class="headerlink" title="html标题"></a>html标题</h3><p>html标题通过<br><code>&lt;h1&gt;最大标题&lt;/h1&gt;</code><br><code>&lt;h2&gt;&lt;/h2&gt;</code><br>…………<br><code>&lt;h6&gt;最小标题&lt;/h6&gt;</code><br>这些标签来定义。   </p>
 <h3 id="html段落"><a href="#html段落" class="headerlink" title="html段落"></a>html段落</h3><p>html段落通过标签<code>&lt;p&gt;一个段落&lt;/p&gt;</code>定义。   </p>
 <h3 id="html链接"><a href="#html链接" class="headerlink" title="html链接"></a>html链接</h3><p>html链接通过标签<code>&lt;a&gt;&lt;/a&gt;</code>定义。<br><code>&lt;a href=&quot;https://lll-nnn.github.io/&quot; target=&quot;_blank&quot;&gt;lll-nnnのblog&lt;/a&gt;</code>   </p>
 <h3 id="html图像"><a href="#html图像" class="headerlink" title="html图像"></a>html图像</h3><p>html图像通过标签<code>&lt;img&gt;</code>定义。<br><code>&lt;img src=&quot;url&quot; &gt;</code></p>
-<pre><code>&lt;!DOCTYPE html&gt;
+<div class="hljs"><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 &lt;style&gt;
@@ -270,7 +269,7 @@
 &lt;!--HTML图像--&gt;
 &lt;img src=&quot;C:\Users\ASUS\OneDrive\桌面\paper\guidao.jpg&quot; ait=&quot;guidao&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+&lt;/html&gt;</code></pre></div>
 <p><img src="https://ftp.bmp.ovh/imgs/2020/11/55f7b2cabe9b8915.png" srcset="/img/loading.gif"></p>
 
             </div>
@@ -391,7 +390,7 @@
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -417,8 +416,6 @@
 
 
 
-  
-    
   
 
 

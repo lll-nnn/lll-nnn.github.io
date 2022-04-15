@@ -37,6 +37,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -45,7 +46,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -148,12 +149,12 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/006.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152226553.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="All the disadvantages are caused by the incompetence of the parties">
+            <span class="h2" id="subtitle" title="君子终日乾乾，夕惕若厉，无咎！">
               
             </span>
 
@@ -187,7 +188,7 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/04/04/BUU65/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="CyberPunk">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="CyberPunk">
         </a>
       </div>
     
@@ -236,7 +237,7 @@ $pattern = &#39;/select|insert|update|delete|and|or|join|like|regexp|where|union
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/04/03/BUU64/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Can You Guess It?">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="Can You Guess It?">
         </a>
       </div>
     
@@ -253,10 +254,10 @@ $pattern = &#39;/select|insert|update|delete|and|or|join|like|regexp|where|union
             
           
           ‘0’&lt;?php
-include 'config.php'; // FLAG is defined in config.php
+include &#x27;config.php&#x27;; // FLAG is defined in config.php
 
-if (preg_match('/config\.php\/*$/i', $_SERVER['PHP_SELF'])) &#123;
-  exit("I don't know what you are thinking, but I won't let you r
+if (preg_match(&#x27;/config\.php\/*$/i&#x27;, $_SERVER[&#x27;PHP_SELF&#x27;])) &#123;
+  exit(&quot;I don&#x27;t know what
         </a>
       </p>
 
@@ -287,7 +288,7 @@ if (preg_match('/config\.php\/*$/i', $_SERVER['PHP_SELF'])) &#123;
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/04/02/BUU63/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Easyweb">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="Easyweb">
         </a>
       </div>
     
@@ -342,7 +343,7 @@ $id=isset($_GET[&quot;id&quot;])?$_GET[&quot;id&quot;]:&quot;1&quo
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/04/01/BUU62/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="BJDCTF 2nd Xss之光">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BJDCTF 2nd Xss之光">
         </a>
       </div>
     
@@ -362,8 +363,7 @@ $id=isset($_GET[&quot;id&quot;])?$_GET[&quot;id&quot;]:&quot;1&quo
 用原生类—Exception—所有异常的基类     
 然后弹cookie    
 &lt;?php
-$a=new Exception("&lt;script>alert(document.cookie)&lt;/script>");
-echo
+$a=new Exception(&quot;&lt;script&gt;alert(document.cookie)&lt;/script&
         </a>
       </p>
 
@@ -394,7 +394,7 @@ echo
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/03/31/BUU61/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="FBCTF2019 RCEService">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="FBCTF2019 RCEService">
         </a>
       </div>
     
@@ -414,9 +414,9 @@ echo
 看WP都直接给出的源码，也不知道哪来的‘？’       
 &lt;?php
 
-putenv('PATH=/home/rceservice/jail');
+putenv(&#x27;PATH=/home/rceservice/jail&#x27;);
 
-if (isset($_REQUES
+if (isse
         </a>
       </p>
 
@@ -447,7 +447,7 @@ if (isset($_REQUES
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/03/30/BUU60/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="极客大挑战 2019 RCE ME">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="极客大挑战 2019 RCE ME">
         </a>
       </div>
     
@@ -466,10 +466,10 @@ if (isset($_REQUES
           好难代码审计       
 &lt;?php
 error_reporting(0);
-if(isset($_GET['code']))&#123;
-            $code=$_GET['code'];
-                    if(strlen($code)>40)&#123;
-                                        die("T
+if(isset($_GET[&#x27;code&#x27;]))&#123;
+            $code=$_GET[&#x27;code&#x27;];
+                    if(strlen($code)&gt;40)&#123;
+                       
         </a>
       </p>
 
@@ -500,7 +500,7 @@ if(isset($_GET['code']))&#123;
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/03/28/ppppp/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Ppppp">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="Ppppp">
         </a>
       </div>
     
@@ -525,7 +525,7 @@ if(isset($_GET['code']))&#123;
 	    public $A2;
 	    public function __call($name,$param)
 	    &#123;
-	        if($this->&#123;$name&#
+	        if($this-&gt;&#123;$nam
         </a>
       </p>
 
@@ -556,7 +556,7 @@ if(isset($_GET['code']))&#123;
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/03/27/Nepctf/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="Nepctf">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="Nepctf">
         </a>
       </div>
     
@@ -575,10 +575,9 @@ if(isset($_GET['code']))&#123;
           little_trick&lt;?php
     error_reporting(0);
     highlight_file(__FILE__);
-    $nep = $_GET['nep'];
-    $len = $_GET['len'];
-    if(intval($len)&lt;8 &amp;&amp; strlen($nep)&lt;13)&#123;
-        eval(
+    $nep = $_GET[&#x27;nep&#x27;];
+    $len = $_GET[&#x27;len&#x27;];
+    if(intval($len)&lt;8 &amp;&amp; strlen($nep)&lt;13)
         </a>
       </p>
 
@@ -609,7 +608,7 @@ if(isset($_GET['code']))&#123;
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/03/27/BUU59/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="MRCTF2020套娃">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="MRCTF2020套娃">
         </a>
       </div>
     
@@ -660,7 +659,7 @@ $_SERVER[&#39;REQUEST_URI&#39;]  = &quot;/aaa/index.php?p=222&am
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/03/22/BUU58/" target="_self">
-          <img src="/img/0027.jpg" srcset="/img/loading.gif" alt="GWCTF 2019枯燥的抽奖">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="GWCTF 2019枯燥的抽奖">
         </a>
       </div>
     
@@ -678,8 +677,8 @@ $_SERVER[&#39;REQUEST_URI&#39;]  = &quot;/aaa/index.php?p=222&am
           
           **看看源码，发现check.php随机数没有seed，比较还是===看WP吧php mt_seed伪随机数漏洞需要根据给的前十位用php_mt_seed这个工具爆破出seed，然后根据seed执行代码得到$str，然后提交即可先将前十位转换为php_mt_seed需要的格式      
 &lt;?php
-$pass='FiPnfNN8Dn';
-$str='abcdefghijklmnopqrst
+$pass=&#x27;FiPnfNN8Dn&#x27;;
+$str=&#x27;abcde
         </a>
       </p>
 
@@ -778,7 +777,7 @@ $str='abcdefghijklmnopqrst
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -804,8 +803,6 @@ $str='abcdefghijklmnopqrst
 
 
 
-  
-    
   
 
 

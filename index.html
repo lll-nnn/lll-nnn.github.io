@@ -37,6 +37,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -45,7 +46,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -148,12 +149,12 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/006.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152226553.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="All the disadvantages are caused by the incompetence of the parties">
+            <span class="h2" id="subtitle" title="君子终日乾乾，夕惕若厉，无咎！">
               
             </span>
 
@@ -187,7 +188,7 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2022/04/15/bypass-disable-function/" target="_self">
-          <img src="/img/00232.png" srcset="/img/loading.gif" alt="Bypass_disable_function">
+          <img src="/img/00194.png" srcset="/img/loading.gif" alt="Bypass_disable_function">
         </a>
       </div>
     
@@ -206,15 +207,15 @@
           phpinfo拿到phpinfo后需要关注的对象
 PHP Variables
 
-比如**$_SERVER[‘PATH’]**获取系统环境变量
-**$_SERVER[‘DOCUMENT_ROOT’]**获取网站路径
+比如$_SERVER[&#39;PATH&#39;]获取系统环境变量
+$_SERVER[&#39;DOCUMENT_ROOT&#39;]获取网站路径
 
 open_basedir
 PHP Version 7.2.9
 disable_functions
 allow_url_include
 allow_url_fopen
-auto_appe
+a
         </a>
       </p>
 
@@ -282,12 +283,11 @@ class crow
     public $v2;
 
     function eval() &#123;
-        echo new $this->v1($this->v2);
+        echo new $this-&gt;v1($this-&gt;v2);
     &#125;
 
     public function __invoke()
     &#123;
-     
         </a>
       </p>
 
@@ -349,11 +349,11 @@ class crow
           
             
           
-          InterestingPHP&lt;?php highlight_file(__FILE__); @eval($_GET['exp']);?>
+          InterestingPHP&lt;?php highlight_file(__FILE__); @eval($_GET[&#x27;exp&#x27;]);?&gt;
 phpinfo被ban,可以var_dump(ini_get_all());
 disable_function  
 open_basedir
-bypass—-&gt;https://github.com/mm0r1/exploits/blob/master
+bypass—-&gt;https://github.com/mm0r1/exploit
         </a>
       </p>
 
@@ -941,7 +941,7 @@ Writ
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -967,8 +967,6 @@ Writ
 
 
 
-  
-    
   
 
 

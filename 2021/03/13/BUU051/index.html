@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -172,7 +165,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/0087.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152231002.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      3
        分钟
     </span>
   
@@ -245,6 +238,12 @@
             <!-- SEO header -->
             <h1 style="display: none">BUU每日一题</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[NPUCTF2020]ReadlezPHP<br><img src="https://ftp.bmp.ovh/imgs/2021/03/574f24b54f71d30b.png" srcset="/img/loading.gif">  </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>F12发现源码        </p>
@@ -254,7 +253,7 @@
 <li><code>call_user_func</code>——&gt;把第一个参数作为回调函数调用       </li>
 </ol>
 <p>flag在phpinfo中<br>payload：     </p>
-<pre><code>```php
+<div class="hljs"><pre><code>```php
 &lt;?php
 calss HelloPhp
 &#123;
@@ -268,7 +267,7 @@ echo urlencode(serialize($test));
 //结果
 
 O:8:&quot;HelloPhp&quot;:2:&#123;s:1:&quot;a&quot;;s:7:&quot;phpinfo&quot;;s:1:&quot;b&quot;;s:14:&quot;call_user_func&quot;;&#125;   
-```        </code></pre>
+```        </code></pre></div>
 <p>我看有些师傅的WP序列化之前urlencode了一下，这里不加也可       </p>
 <p>但我想到之前做过的一道ACTF的题，也是<code>$b($a)</code>的形式，那道题就必须要urlencode，所以保险起见，还是加上吧     </p>
 <p>assert和eval的区别：      </p>
@@ -394,7 +393,7 @@ O:8:&quot;HelloPhp&quot;:2:&#123;s:1:&quot;a&quot;;s:7:&quot;phpinfo&quot;;s:1:&
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -420,8 +419,6 @@ O:8:&quot;HelloPhp&quot;:2:&#123;s:1:&quot;a&quot;;s:7:&quot;phpinfo&quot;;s:1:&
 
 
 
-  
-    
   
 
 

@@ -29,15 +29,7 @@
     
     
       
-      
-        
-          
-          
-          
-        
-        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
-      
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
     
   
 
@@ -61,6 +53,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
+<link rel="stylesheet" href="/css/mac.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
@@ -69,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"lll-nnn.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"always","icon":"❡"},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -209,7 +202,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      28
+      14
        分钟
     </span>
   
@@ -245,6 +238,12 @@
             <!-- SEO header -->
             <h1 style="display: none">Flag Shop</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：1 年前
+                
+              </p>
+            
             <div class="markdown-body">
               <h2 id=""><a href="#" class="headerlink" title="|_|-|"></a>|_|-|</h2><p>打开环境</p>
 <p><img src="https://img13.360buyimg.com/ddimg/jfs/t1/172950/8/7918/21544/60915946Edcb47200/b52ca327067e551d.png" srcset="/img/loading.gif" alt="01.png"></p>
@@ -252,10 +251,10 @@
 <p>弹出了<code>&#123;&quot;title&quot;:&quot;error&quot;,&quot;message&quot;:&quot;no enough jkl&quot;&#125;</code>     </p>
 <p>想到了应该是要伪造cookie     </p>
 <p>顺便看看<code>robots.txt</code>，居然有    </p>
-<pre><code>User-agent: *
-Disallow: /filebak     </code></pre>
+<div class="hljs"><pre><code>User-agent: *
+Disallow: /filebak     </code></pre></div>
 <p><code>/filebak</code>     </p>
-<pre><code>```ruby
+<div class="hljs"><pre><code>```ruby
 require &#39;sinatra&#39;
 require &#39;sinatra/cookies&#39;
 require &#39;sinatra/json&#39;
@@ -342,7 +341,7 @@ def islogin
     redirect to(&#39;/shop&#39;)
   end
 end
-```   </code></pre>
+```   </code></pre></div>
 <p>虽然看不懂是啥，但看到了jwt     </p>
 <p>cookie应该就是jwt了吧     </p>
 <p>解码一下     </p>
@@ -356,7 +355,7 @@ end
 <hr>
 <p>ruby的ERB模板注入     </p>
 <p>主要的代码    </p>
-<pre><code>```ruby
+<div class="hljs"><pre><code>```ruby
 get &quot;/work&quot; do
   islogin
   auth = JWT.decode cookies[:auth],ENV[&quot;SECRET&quot;] , true, &#123; algorithm: &#39;HS256&#39; &#125;
@@ -376,7 +375,7 @@ get &quot;/work&quot; do
 
   end
 end
-```      </code></pre>
+```      </code></pre></div>
 <p>参数<code>SECRET</code>与真的<code>SECRET</code>匹配，成功则返回flag    </p>
 <p>参数<code>do</code>与<code>name</code>，如果do的值与name的前七位加上<code> is working</code>一样，会弹出<code>&lt;script&gt;alert(&#39;#&#123;params[:name][0,7]&#125; working successfully!&#39;)&lt;/script&gt;</code><br>这里存在模板注入</p>
 <p>REB模板注入的格式<code>&lt;%=7*7%&gt;</code>——-&gt;49      </p>
@@ -530,7 +529,7 @@ end
   <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":200})
     NProgress.start()
     document.addEventListener('DOMContentLoaded', function() {
       window.NProgress && window.NProgress.inc();
@@ -556,8 +555,6 @@ end
 
 
 
-  
-    
   
 
 
