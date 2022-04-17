@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -247,7 +255,7 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[WesternCTF2018]shrine        </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>源码：    </p>
-<div class="hljs"><pre><code>```python
+<pre><code>```python
 import flask
 import os
 
@@ -274,7 +282,7 @@ def shrine(shrine):
 
 if __name__ == &#39;__main__&#39;:
     app.run(debug=True)     
-```   </code></pre></div>
+```   </code></pre>
 <p>两个路由，第二个存在SSTI<img src="https://ftp.bmp.ovh/imgs/2021/03/45aacf69b12a54b2.png" srcset="/img/loading.gif"><br>flag在config里，但config和self被禁了<br>如果没被禁的话就可以直接<code>&#123;&#123;config&#125;&#125;</code>或者<code>&#123;&#123;self.dict&#125;&#125;</code><br>可以用<code>url_for</code>和<code>get_flashed_message</code>       </p>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload1：<code>&#123;&#123;url_for.__globals__['current_app'].config&#125;&#125;</code>        </p>
 <p><code>url_for</code>用于给指定的函数创建url，加上<code>__globals</code>可以访问所有的路由，然后读取当前APP的config<br>payload2：<code>&#123;&#123;get_flashed_messages.__globals__['current_app'].config&#125;&#125;</code><br><code>get_flashed_messages</code>返回之前在Flask中通过 flash() 传入的闪现信息列表。把字符串对象表示的消息加入到一个消息队列中，然后通过调用 <code>get_flashed_messages()</code> 方法取出,闪现信息只能取出一次，取出后闪现信息会被清空.        </p>
@@ -423,6 +431,8 @@ if __name__ == &#39;__main__&#39;:
 
 
 
+  
+    
   
 
 

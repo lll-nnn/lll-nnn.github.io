@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -254,7 +262,7 @@
 <p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/3950"><code>PDO下的SQL注入</code></a><br>PDO—&gt;php数据对象       </p>
 <p>PDO支持多语句执行，也就是堆叠注入      </p>
 <p>PDO中的query()函数同数据库交互</p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 $dbms=<span class="hljs-string">&#x27;mysql&#x27;</span>;
 $host=<span class="hljs-string">&#x27;192.168.27.61&#x27;</span>;
 $dbName=<span class="hljs-string">&#x27;test&#x27;</span>;
@@ -273,12 +281,12 @@ $stmt = $pdo-&gt;query($sql);
 &#123;
     var_dump($row);
     <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
-&#125;</code></pre></div></code></pre>
+&#125;</code></pre></code></pre>
 <p>prepare预处理      </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/07/fb83bbb774d5c639.png" srcset="/img/loading.gif">      </p>
 <p>以此结合十六进制注入    </p>
 <p>找了WP的脚本，但跑不出来-_-</p>
-<div class="hljs"><pre><code><pre><code class="hljs python">    <span class="hljs-comment">#author: c1e4r</span>
+<pre><code><pre><code class="hljs python">    <span class="hljs-comment">#author: c1e4r</span>
     <span class="hljs-keyword">import</span> requests
     <span class="hljs-keyword">import</span> json
     <span class="hljs-keyword">import</span> time
@@ -330,24 +338,24 @@ $stmt = $pdo-&gt;query($sql);
                 extract($viewData);
                 include $this-&gt;viewPath;
             &#125;
-        &#125;</code></pre></div></code></pre>
+        &#125;</code></pre></code></pre>
 <p><code>extract</code>可以进行变量覆盖     </p>
 <p>找到<code>UserController.php</code>中调用了<code>loadView</code>且第二个参数可控      </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionList</span>(<span class="hljs-params"></span>)</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionList</span>(<span class="hljs-params"></span>)</span>
 <span class="hljs-function">    </span>&#123;
         $params = $_REQUEST;
         $userModel = <span class="hljs-keyword">new</span> UserModel();
         $listData = $userModel-&gt;getPageList($params);
         <span class="hljs-keyword">$this</span>-&gt;loadView(<span class="hljs-string">&#x27;userList&#x27;</span>, $listData );
-    &#125;</code></pre></div></code></pre>
+    &#125;</code></pre></code></pre>
 <p>在<code>userindex.php</code>中</p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>($img_file)) &#123;
     $img_file = <span class="hljs-string">&#x27;/../favicon.ico&#x27;</span>;
 &#125;
 $img_dir = dirname(<span class="hljs-keyword">__FILE__</span>) . $img_file;
 $img_base64 = imgToBase64($img_dir);
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;img src=&quot;&#x27;</span> . $img_base64 . <span class="hljs-string">&#x27;&quot;&gt;&#x27;</span>;</code></pre></div></code></pre>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;img src=&quot;&#x27;</span> . $img_base64 . <span class="hljs-string">&#x27;&quot;&gt;&#x27;</span>;</code></pre></code></pre>
 <p>所以传入<code>img_file=/../flag.php</code>   </p>
 <p>需要先进入<code>userIndex.php</code>，url中修改<code>r=UserIndex</code>     </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/07/f579ea716508e496.png" srcset="/img/loading.gif">   </p>
@@ -489,6 +497,8 @@ $img_base64 = imgToBase64($img_dir);
 
 
 
+  
+    
   
 
 

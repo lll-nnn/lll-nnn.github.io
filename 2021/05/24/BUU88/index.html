@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -251,7 +259,7 @@
 <p>尝试了几下，感觉没戏，只让上传PNG    </p>
 <p>看下WP<br>给了源码    </p>
 <p><code>upload.php</code>    </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 error_reporting(<span class="hljs-number">0</span>);
 
 <span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;config.php&#x27;</span>);
@@ -294,12 +302,12 @@ move_uploaded_file($_FILES[<span class="hljs-string">&#x27;file&#x27;</span>][<s
 
 $session-&gt;set(<span class="hljs-string">&#x27;avatar&#x27;</span>, $filename);
 flash(<span class="hljs-string">&#x27;info&#x27;</span>, <span class="hljs-string">&#x27;Your avatar has been successfully updated!&#x27;</span>);
-redirect(<span class="hljs-string">&#x27;/&#x27;</span>);</code></pre></div></code></pre>
+redirect(<span class="hljs-string">&#x27;/&#x27;</span>);</code></pre></code></pre>
 <p><code>getimagesize</code>函数返回的是一个数组     </p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/856b33eae66eb5e9.png" srcset="/img/loading.gif">      </p>
 <p><code>[0]</code>和<code>[1]</code>分别是宽度和高度<br><code>[2]</code>是图片的类型    </p>
-<div class="hljs"><pre><code>GIF，JPG，PNG，SWF，SWC，PSD，TIFF，BMP，IFF，JP2，JPX，JB2，JPC，XBM 或 WBMP       
-按此顺序的编号1=&gt;GIF、3=&gt;PNG     </code></pre></div>
+<pre><code>GIF，JPG，PNG，SWF，SWC，PSD，TIFF，BMP，IFF，JP2，JPX，JB2，JPC，XBM 或 WBMP       
+按此顺序的编号1=&gt;GIF、3=&gt;PNG     </code></pre>
 <p>按源码的要求，需要<code>finfo_file()</code>为<code>imag/png</code>；而<code>getimagesize</code>得到的<code>$size[2]!==IMAGETYPE_PNG</code>       </p>
 <p><code>finfo_file()</code>识别PNG文件十六进制下的第一行，删掉剩余的数据即可绕过<code>getimagesize()</code>    </p>
 <p>所以用<code>winhex</code>对文件处理<br><img src="https://ftp.bmp.ovh/imgs/2021/05/cef90b357e70f2a4.png" srcset="/img/loading.gif">      </p>
@@ -464,6 +472,8 @@ redirect(<span class="hljs-string">&#x27;/&#x27;</span>);</code></pre></div></co
 
 
 
+  
+    
   
 
 

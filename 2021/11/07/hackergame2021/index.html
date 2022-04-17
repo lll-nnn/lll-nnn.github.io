@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -249,7 +257,7 @@
 <p><code>unix时间戳</code><br>点next后url会加上<code>page=1</code>,时间就会加一秒</p>
 <p>时间戳网站<code>https://tool.chinaz.com/tools/unixtime.aspx</code></p>
 <p>也可以用二分法</p>
-<div class="hljs"><pre><code>测试 100000000000，太大 =&gt; (100000000000 + 0) / 2 = 50000000000
+<pre><code>测试 100000000000，太大 =&gt; (100000000000 + 0) / 2 = 50000000000
 测试 50000000000，太大 =&gt; (50000000000 + 0) / 2 = 25000000000
 测试 25000000000，太大 =&gt; (25000000000 + 0) / 2 = 12500000000
 测试 12500000000，太大 =&gt; (12500000000 + 0) / 2 = 6250000000
@@ -266,10 +274,10 @@
 测试 1629638671，太小（2021 年 8 月）=&gt; (1629638671 + 1635742187) / 2 = 1632690429
 测试 1632690429，太小（2021 年 9 月）=&gt; (1632690429 + 1635742187) / 2 = 1634216308
 测试 1634216308，太小（2021 年 10 月 14 日）=&gt; (1634216308 + 1635742187) / 2 = 1634979247
-1634979247 得到答案（2021-10-23 16:54:07 +08:00）</code></pre></div>
+1634979247 得到答案（2021-10-23 16:54:07 +08:00）</code></pre>
 <h2 id="卖瓜"><a href="#卖瓜" class="headerlink" title="卖瓜"></a>卖瓜</h2><p><img src="https://i.bmp.ovh/imgs/2021/11/8d62245630118b5c.png" srcset="/img/loading.gif"><br>显然，69是组合不出20的</p>
 <p>需要猜测源码，<code>intval</code></p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">action</span>(<span class="hljs-params"></span>)</span>
+<pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">action</span>(<span class="hljs-params"></span>)</span>
 <span class="hljs-function"></span>&#123;
     check_last_action();
     $bottle_6 = intval($_POST[<span class="hljs-string">&#x27;b6&#x27;</span>]);
@@ -279,10 +287,10 @@
     &#125;
     $_SESSION[<span class="hljs-string">&#x27;pool&#x27;</span>] += intval($bottle_6 * <span class="hljs-number">6</span> + $bottle_9 * <span class="hljs-number">9</span>);
     header(<span class="hljs-string">&#x27;Location: /&#x27;</span>);
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 <p><code>整数溢出会变为float,然后再用intval后，就会变成负数</code></p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-keyword">echo</span> PHP_INT_MAX;   <span class="hljs-comment">//9223372036854775807</span>
+<pre><code class="hljs php"><span class="hljs-keyword">echo</span> PHP_INT_MAX;   <span class="hljs-comment">//9223372036854775807</span>
 $a=<span class="hljs-number">9223372036854775807</span>;
 $b=<span class="hljs-number">9223372036854775808</span>;
 $ia=intval($a);
@@ -290,11 +298,11 @@ $ib=intval($b);
 var_dump($a);   <span class="hljs-comment">//int(9223372036854775807)</span>
 var_dump($b);   <span class="hljs-comment">//float(9.2233720368548E+18)</span>
 var_dump($ia);  <span class="hljs-comment">// int(9223372036854775807)</span>
-var_dump($ib);  <span class="hljs-comment">//int(-9223372036854775808)</span></code></pre></div>
+var_dump($ib);  <span class="hljs-comment">//int(-9223372036854775808)</span></code></pre>
 
-<div class="hljs"><pre><code>1024819115206086200 * 9 = 9223372036854775800
-1024819115206086201 * 9 = 9223372036854775809</code></pre></div>
-<div class="hljs"><pre><code class="hljs php">$b = <span class="hljs-number">1024819115206086201</span> * <span class="hljs-number">9</span>;
+<pre><code>1024819115206086200 * 9 = 9223372036854775800
+1024819115206086201 * 9 = 9223372036854775809</code></pre>
+<pre><code class="hljs php">$b = <span class="hljs-number">1024819115206086201</span> * <span class="hljs-number">9</span>;
 $ib = intval($b); <span class="hljs-comment">// int(-9223372036854775808)</span>
 $b = <span class="hljs-number">1024819115206086200</span> * <span class="hljs-number">9</span>;
 $ib += intval($b); <span class="hljs-comment">// int(-8)</span>
@@ -305,15 +313,15 @@ $ib += intval($b); <span class="hljs-comment">// int(-9223372036854775807)</span
 $b = <span class="hljs-number">1024819115206086200</span> * <span class="hljs-number">9</span>;
 $ib += intval($b); <span class="hljs-comment">// int(-7)</span>
 $b = <span class="hljs-number">3</span> * <span class="hljs-number">9</span>;
-$ib += intval($b); <span class="hljs-comment">// int(20)</span></code></pre></div>
+$ib += intval($b); <span class="hljs-comment">// int(20)</span></code></pre>
 
 <p>操作六次</p>
-<div class="hljs"><pre><code>1024819115206086201 * 9
+<pre><code>1024819115206086201 * 9
 1024819115206086200 * 9
 1 * 9
 1024819115206086201 * 9
 1024819115206086200 * 9
-3 * 9</code></pre></div>
+3 * 9</code></pre>
 <p>其他两道<br>一道GraphQL，还有一道js逆向分析，不懂<br><a target="_blank" rel="noopener" href="https://github.com/USTC-Hackergame/hackergame2021-writeups">https://github.com/USTC-Hackergame/hackergame2021-writeups</a></p>
 
             </div>
@@ -468,6 +476,8 @@ $ib += intval($b); <span class="hljs-comment">// int(20)</span></code></pre></di
 
 
 
+  
+    
   
 
 

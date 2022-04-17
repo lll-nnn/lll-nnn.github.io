@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -247,7 +255,7 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[BJDCTF2020]Mark loves cat<br><img src="https://ftp.bmp.ovh/imgs/2021/02/7c08fb9e1218a7c9.png" srcset="/img/loading.gif"></p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>一个看上去很正常的网页，没发现什么点—–扫目录吧<br>看到<code>.git</code>泄露<br>githack<br>下来的只有一个<code>assets</code>文件夹，看别人的WP是有<code>index.php</code>的？？？？？？？       </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
 <span class="hljs-keyword">include</span> <span class="hljs-string">&#x27;flag.php&#x27;</span>;
 
@@ -279,7 +287,7 @@ $handsome = <span class="hljs-string">&#x27;yds&#x27;</span>;
 
 
 
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;the flag is: &quot;</span>.$flag;</code></pre></div></code></pre>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;the flag is: &quot;</span>.$flag;</code></pre></code></pre>
 <p>变量覆盖<br>GET和POST flag才会执行最后的输出，可是这样就吧<code>$flag</code>给覆盖了  </p>
 <p>可以将<code>$yds</code>覆盖成<code>$flag</code>借助<code>$$x = $$y;</code>       </p>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload1：GET  <code>?yds=flag</code>       </p>
@@ -428,6 +436,8 @@ $handsome = <span class="hljs-string">&#x27;yds&#x27;</span>;
 
 
 
+  
+    
   
 
 

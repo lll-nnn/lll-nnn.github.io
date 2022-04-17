@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -247,7 +255,7 @@
             <div class="markdown-body">
               <h2 id="十七、"><a href="#十七、" class="headerlink" title="十七、"></a>十七、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[SUCTF 2019]CheckIn<br><img src="https://ftp.bmp.ovh/imgs/2021/01/cf0dc95dec9e9c82.png" srcset="/img/loading.gif">   </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>文件上传<br>并且给了源码<code>https://github.com/team-su/SUCTF-2019/tree/master/Web/checkIn</code>          </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-comment">// error_reporting(0);</span>
 $userdir = <span class="hljs-string">&quot;uploads/&quot;</span> . md5($_SERVER[<span class="hljs-string">&quot;REMOTE_ADDR&quot;</span>]);
 <span class="hljs-keyword">if</span> (!file_exists($userdir)) &#123;
@@ -279,7 +287,7 @@ file_put_contents($userdir . <span class="hljs-string">&quot;/index.php&quot;</s
     <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Your dir &quot;</span> . $userdir. <span class="hljs-string">&#x27; &lt;br&gt;&#x27;</span>;
     <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your files : &lt;br&gt;&#x27;</span>;
     var_dump(scandir($userdir));
-&#125;</code></pre></div></code></pre>
+&#125;</code></pre></code></pre>
 <h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>看别人wp知道需要上传个<code>.user.ini</code><br>然后在上传图片马<br><code>exif_imagetype</code>可以用文件头绕过<code>GIF89a</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/39c550bc2f0f01d7.png" srcset="/img/loading.gif"><br><img src="https://ftp.bmp.ovh/imgs/2021/01/707658987a1ea540.png" srcset="/img/loading.gif"><br>蚁剑连接，根目录下找到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/643389a70dcab484.png" srcset="/img/loading.gif"><br>或者<br>构造这样的马：<code>&lt;script language=&quot;php&quot;&gt;system(&#39;cat /flag&#39;);&lt;/script&gt; </code>直接访问<code>http://f07dace7-4865-447a-acdb-e7612afc49d7.node3.buuoj.cn/uploads/852aff287f54bca0ed7757a702913e50/index.php</code>即可得到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/8b3db3af2203d029.png" srcset="/img/loading.gif">     </p>
 <h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul>
 <li><code>.user.ini</code>         <ul>
@@ -437,6 +445,8 @@ file_put_contents($userdir . <span class="hljs-string">&quot;/index.php&quot;</s
 
 
 
+  
+    
   
 
 

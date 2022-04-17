@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -240,7 +248,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 年前
+                  本文最后更新于：1 天前
                 
               </p>
             
@@ -267,19 +275,19 @@
 <h2 id="9-本地包含"><a href="#9-本地包含" class="headerlink" title="9.本地包含"></a>9.本地包含</h2><p>这道题的网站好像坏了，打开后什么也没有，抓包，御剑都试了，什么也没有，看别人以前的WP是有一段PHP代码的。 </p>
 <hr>
 <h2 id="10-变量1"><a href="#10-变量1" class="headerlink" title="10.变量1"></a>10.变量1</h2><p>首先代码审计               </p>
-<div class="hljs"><pre><code><pre><code class="hljs php">flag In the variable !     <span class="hljs-comment">////flag在一个变量中</span>
-<span class="hljs-meta">&lt;?php</span>      
-error_reporting(<span class="hljs-number">0</span>);
-<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;flag1.php&quot;</span>;
-highlight_file(<span class="hljs-keyword">__file__</span>);
-<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;args&#x27;</span>]))&#123;
-   $args = $_GET[<span class="hljs-string">&#x27;args&#x27;</span>];
-   <span class="hljs-keyword">if</span>(!preg_match(<span class="hljs-string">&quot;/^\w+$/&quot;</span>,$args))&#123;     <span class="hljs-comment">////正则表达式，意思是如果字符串不是全部由字母（包含大小写），数字，下划线组成的，就会输出 args error!</span>
-       <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;args error!&quot;</span>);
-   &#125;
-   <span class="hljs-keyword">eval</span>(<span class="hljs-string">&quot;var_dump($<span class="hljs-subst">$args</span>);&quot;</span>);         <span class="hljs-comment">////$$args可变变量，将$args作为变量。</span>
-&#125;
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php">flag In the variable !     ////flag在一个变量中
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>      
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">include</span> <span class="token double-quoted-string string">"flag1.php"</span><span class="token punctuation">;</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'args'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+<span class="token variable">$args</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'args'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/^\w+$/"</span><span class="token punctuation">,</span><span class="token variable">$args</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>     <span class="token comment">////正则表达式，意思是如果字符串不是全部由字母（包含大小写），数字，下划线组成的，就会输出 args error!</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"args error!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"var_dump(<span class="token interpolation"><span class="token variable">$$args</span></span>);"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">////$$args可变变量，将$args作为变量。</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span>               </code></pre></code></pre>
 <p>所以什么能够将变量显示出来呢，答案是全局变量 GLOBALS<br>$GLOBALS — 引用全局作用域中可用的全部变量<br>输入 args=GLOBALS 得到flag。<br><img src="https://ftp.bmp.ovh/imgs/2020/12/136889d8f52006b5.png" srcset="/img/loading.gif"></p>
 <h4 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h4><ul>
 <li>首先是preg_match那一段，注意还有个 ！ ，       </li>
@@ -294,9 +302,9 @@ highlight_file(<span class="hljs-keyword">__file__</span>);
 <li>$GLOBALS — 引用全局作用域中可用的全部变量。</li>
 <li>$_SERVER 这种超全局变量保存关于报头、路径和脚本位置的信息。</li>
 <li>REQUEST\GET\POST也都是全局变量。            </li>
-<li><hr>
-<h2 id="11-web5"><a href="#11-web5" class="headerlink" title="11.web5"></a>11.web5</h2><img src="https://ftp.bmp.ovh/imgs/2020/12/5b59308e8f0baff2.png" srcset="/img/loading.gif"><br>F12后看到一堆奇怪的符号，根据题目提示应该是 JSPFUCK 编码；解码方法：将其复制粘贴到控制台后回车，得到flag<br><img src="https://ftp.bmp.ovh/imgs/2020/12/4341596e2726364f.png" srcset="/img/loading.gif"><br>注意题目要求，提交时字母大写！！<br>jjencode、aaencode这两个也可以用此方法解码。<br>jjencode:<img src="https://ftp.bmp.ovh/imgs/2020/12/4c6f2b82c79f2d09.png" srcset="/img/loading.gif"><br>aaencode:<img src="https://ftp.bmp.ovh/imgs/2020/12/8331e5413d3b5f56.png" srcset="/img/loading.gif"></li>
 </ul>
+<hr>
+<h2 id="11-web5"><a href="#11-web5" class="headerlink" title="11.web5"></a>11.web5</h2><p><img src="https://ftp.bmp.ovh/imgs/2020/12/5b59308e8f0baff2.png" srcset="/img/loading.gif"><br>F12后看到一堆奇怪的符号，根据题目提示应该是 JSPFUCK 编码；解码方法：将其复制粘贴到控制台后回车，得到flag<br><img src="https://ftp.bmp.ovh/imgs/2020/12/4341596e2726364f.png" srcset="/img/loading.gif"><br>注意题目要求，提交时字母大写！！<br>jjencode、aaencode这两个也可以用此方法解码。<br>jjencode:<img src="https://ftp.bmp.ovh/imgs/2020/12/4c6f2b82c79f2d09.png" srcset="/img/loading.gif"><br>aaencode:<img src="https://ftp.bmp.ovh/imgs/2020/12/8331e5413d3b5f56.png" srcset="/img/loading.gif"></p>
 <hr>
 <h2 id="12-头等舱"><a href="#12-头等舱" class="headerlink" title="12.头等舱"></a>12.头等舱</h2><p>打开地址后，页面上写有什么也没有几个字，不知道啥意思，御剑，burp一起上，发现send后得到flag。<br> <img src="https://ftp.bmp.ovh/imgs/2020/12/1b08738f709f6956.png" srcset="/img/loading.gif"></p>
 
@@ -308,7 +316,7 @@ highlight_file(<span class="hljs-keyword">__file__</span>);
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/WP/">WP</a>
+                      <a class="hover-with-bg" href="/categories/CTF/">CTF</a>
                     
                   </div>
                 
@@ -316,7 +324,7 @@ highlight_file(<span class="hljs-keyword">__file__</span>);
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/WP/">WP</a>
+                      <a class="hover-with-bg" href="/tags/bugku/">bugku</a>
                     
                   </div>
                 
@@ -450,6 +458,8 @@ highlight_file(<span class="hljs-keyword">__file__</span>);
 
 
 
+  
+    
   
 
 

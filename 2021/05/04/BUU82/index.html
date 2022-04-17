@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -251,10 +259,10 @@
 <p>弹出了<code>&#123;&quot;title&quot;:&quot;error&quot;,&quot;message&quot;:&quot;no enough jkl&quot;&#125;</code>     </p>
 <p>想到了应该是要伪造cookie     </p>
 <p>顺便看看<code>robots.txt</code>，居然有    </p>
-<div class="hljs"><pre><code>User-agent: *
-Disallow: /filebak     </code></pre></div>
+<pre><code>User-agent: *
+Disallow: /filebak     </code></pre>
 <p><code>/filebak</code>     </p>
-<div class="hljs"><pre><code>```ruby
+<pre><code>```ruby
 require &#39;sinatra&#39;
 require &#39;sinatra/cookies&#39;
 require &#39;sinatra/json&#39;
@@ -341,7 +349,7 @@ def islogin
     redirect to(&#39;/shop&#39;)
   end
 end
-```   </code></pre></div>
+```   </code></pre>
 <p>虽然看不懂是啥，但看到了jwt     </p>
 <p>cookie应该就是jwt了吧     </p>
 <p>解码一下     </p>
@@ -355,7 +363,7 @@ end
 <hr>
 <p>ruby的ERB模板注入     </p>
 <p>主要的代码    </p>
-<div class="hljs"><pre><code>```ruby
+<pre><code>```ruby
 get &quot;/work&quot; do
   islogin
   auth = JWT.decode cookies[:auth],ENV[&quot;SECRET&quot;] , true, &#123; algorithm: &#39;HS256&#39; &#125;
@@ -375,7 +383,7 @@ get &quot;/work&quot; do
 
   end
 end
-```      </code></pre></div>
+```      </code></pre>
 <p>参数<code>SECRET</code>与真的<code>SECRET</code>匹配，成功则返回flag    </p>
 <p>参数<code>do</code>与<code>name</code>，如果do的值与name的前七位加上<code> is working</code>一样，会弹出<code>&lt;script&gt;alert(&#39;#&#123;params[:name][0,7]&#125; working successfully!&#39;)&lt;/script&gt;</code><br>这里存在模板注入</p>
 <p>REB模板注入的格式<code>&lt;%=7*7%&gt;</code>——-&gt;49      </p>
@@ -555,6 +563,8 @@ end
 
 
 
+  
+    
   
 
 

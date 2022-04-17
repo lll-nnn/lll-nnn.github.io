@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -247,7 +255,7 @@
             <div class="markdown-body">
               <h2 id="sql"><a href="#sql" class="headerlink" title="sql"></a>sql</h2><p>MT的第一题，时间盲注，但是常见的字符都过了<code>ascii</code>、<code>substr</code>,大于号小于号等于号，<code>lile</code>,<code>if</code>都过了，不会了   </p>
 <p><code>W&amp;M</code> 的WP   </p>
-<div class="hljs"><pre><code><pre><code class="hljs python">    <span class="hljs-keyword">import</span> requests <span class="hljs-keyword">as</span> req
+<pre><code><pre><code class="hljs python">    <span class="hljs-keyword">import</span> requests <span class="hljs-keyword">as</span> req
     <span class="hljs-keyword">import</span> time
 
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ord2hex</span>(<span class="hljs-params">string</span>):</span>
@@ -439,7 +447,7 @@ MT
 <span class="hljs-string">    $ra=$_GET[&quot;ra&quot;];</span>
 <span class="hljs-string">    $rd=$_GET[&quot;rd&quot;];</span>
 <span class="hljs-string">    $method= new $rc($ra, $rb);</span>
-<span class="hljs-string">    var_dump($method-&gt;$rd());</span></code></pre></div></code></pre>
+<span class="hljs-string">    var_dump($method-&gt;$rd());</span></code></pre></code></pre>
 <p>利用PHP原生类读取类中的注释<br><code>ReflectionMethod</code>  </p>
 <p><code>public ReflectionMethod::__construct ( mixed $class , string $name )</code><br>–&gt;$class类的名称      </p>
 <p>–&gt;$name方法的名称         </p>
@@ -449,7 +457,7 @@ MT
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/e78bf4d72e174c59.png" srcset="/img/loading.gif">     </p>
 <p>payload:<code>rc=ReflectionMethond&amp;ra=User&amp;rb=q&amp;rd=getDocComment</code>      </p>
 <p>ReflectionMethod里的其他方法    </p>
-<div class="hljs"><pre><code>```php
+<pre><code>```php
 $ref = new ReflectionClass(B::class);
 
 //print_r(ReflectionClass::export(demo::class));
@@ -503,7 +511,7 @@ var_dump($ref-&gt;newInstanceArgs([]));
 var_dump($ref-&gt;newInstanceWithoutConstructor()); // 创建一个新的实例而不调用他的构造函数
 $ref-&gt;setStaticPropertyValue (&#39;prop_static&#39;, &#39;222&#39;); // 设置静态属性的值, 无返回值
 var_dump($ref-&gt;__toString ()); // 返回 ReflectionClass 对象字符串的表示形式。
-​```</code></pre></div>
+​```</code></pre>
 <p><a target="_blank" rel="noopener" href="http://www.xl-bit.cn/index.php/archives/434/">Bit’s Blog —-CISCN2021—初赛—WP（及部分解题思路）</a></p>
 
             </div>
@@ -662,6 +670,8 @@ var_dump($ref-&gt;__toString ()); // 返回 ReflectionClass 对象字符串的�
 
 
 
+  
+    
   
 
 

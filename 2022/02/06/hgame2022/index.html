@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -258,25 +266,25 @@
 <h2 id="一本单词书"><a href="#一本单词书" class="headerlink" title="一本单词书"></a>一本单词书</h2><p>登录：<code>adm1n 1080a</code></p>
 <p>主要是encode和decode两个函数</p>
 <p>传输数据格式为：<code>&#123;&quot;2&quot;:&quot;2&quot;&#125;</code></p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">encode</span>(<span class="hljs-params">$data</span>): <span class="hljs-title">string</span> </span>&#123;
+<pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">encode</span>(<span class="hljs-params">$data</span>): <span class="hljs-title">string</span> </span>&#123;
     $result = <span class="hljs-string">&#x27;&#x27;</span>;
     <span class="hljs-keyword">foreach</span> ($data <span class="hljs-keyword">as</span> $k =&gt; $v) &#123;
         $result .= $k . <span class="hljs-string">&#x27;|&#x27;</span> . serialize($v);
     &#125;
 
     <span class="hljs-keyword">return</span> $result;
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 <p><code>&#123;&quot;a&quot;:&quot;1&quot;,&quot;b&quot;:&quot;1&quot;&#125;</code>—–&gt;encode后<code>a|s:1:&quot;1&quot;;b|s:1:&quot;1&quot;;</code>—–&gt;decode后</p>
-<div class="hljs"><pre><code>array(2) &#123;
+<pre><code>array(2) &#123;
 [&quot;a&quot;]=&gt;
 string(1) &quot;1&quot;
 [&quot;b&quot;]=&gt;
 string(1) &quot;1&quot;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202202061736398.png" srcset="/img/loading.gif"></p>
 <h2 id="FileSystem"><a href="#FileSystem" class="headerlink" title="FileSystem"></a>FileSystem</h2><p><code>main.go</code></p>
-<div class="hljs"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main
+<pre><code class="hljs go"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> (
 	<span class="hljs-string">&quot;log&quot;</span>
@@ -293,7 +301,7 @@ string(1) &quot;1&quot;
 		w.Write([]<span class="hljs-keyword">byte</span>(<span class="hljs-string">`No! You can&#x27;t see the flag!`</span>))
 	&#125;)
 	log.Fatal(http.ListenAndServe(<span class="hljs-string">&quot;:8889&quot;</span>, <span class="hljs-literal">nil</span>))
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>利用点：</p>
 <ol>
 <li>CONNECT方法不执行路径规范化</li>
@@ -461,6 +469,8 @@ string(1) &quot;1&quot;
 
 
 
+  
+    
   
 
 

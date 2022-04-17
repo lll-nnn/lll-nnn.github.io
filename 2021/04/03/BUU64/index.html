@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -245,7 +253,7 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="‘0’"><a href="#‘0’" class="headerlink" title="‘0’"></a>‘0’</h2><div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+              <h2 id="‘0’"><a href="#‘0’" class="headerlink" title="‘0’"></a>‘0’</h2><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-keyword">include</span> <span class="hljs-string">&#x27;config.php&#x27;</span>; <span class="hljs-comment">// FLAG is defined in config.php</span>
 
 <span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&#x27;/config\.php\/*$/i&#x27;</span>, $_SERVER[<span class="hljs-string">&#x27;PHP_SELF&#x27;</span>])) &#123;
@@ -255,7 +263,7 @@
 <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;source&#x27;</span>])) &#123;
   highlight_file(basename($_SERVER[<span class="hljs-string">&#x27;PHP_SELF&#x27;</span>]));
   <span class="hljs-keyword">exit</span>();
-&#125;</code></pre></div></code></pre>
+&#125;</code></pre></code></pre>
 <p><code>$_SERVER[&#39;&#39;PHP_SELF&#39;&#39;]</code>—–&gt;获取网页地址<br>下面的是个幌子<br><a target="_blank" rel="noopener" href="https://bugs.php.net/bug.php?id=62119">basename漏洞</a>—–&gt;会去掉文件名开头的非ASCII值<br>ascii的范围是<code>0~255</code>，但<code>128~255</code>没在表中       </p>
 <p>payload：<code>/index.php/config.php/%ff?source</code></p>
 
@@ -402,6 +410,8 @@
 
 
 
+  
+    
   
 
 

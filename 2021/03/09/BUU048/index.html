@@ -29,7 +29,15 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css" />
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.22.0/themes/prism-funky.min.css" />
+      
+      
     
   
 
@@ -247,7 +255,7 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[BJDCTF 2nd]简单注入<br><img src="https://ftp.bmp.ovh/imgs/2021/03/44e4763d0293348f.png" srcset="/img/loading.gif">       </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>又过滤了好多<br><code>&#39;、&quot;、select、-、=、like、and</code><br>看WP说有提示—-&gt;<code>robots.txt</code><br>一般遇到看不懂的题我才会试一下常见的目录，没想到…….<br><img src="https://ftp.bmp.ovh/imgs/2021/03/9c3fc6bade9ff396.png" srcset="/img/loading.gif"><br>这和hgame那道一样<br><code>\</code>转义         </p>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><div class="hljs"><pre><code>```python
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><pre><code>```python
 import requests
 import time
 import datetime
@@ -278,7 +286,7 @@ for i in range(1,20):
         break
     flag=flag+chr(mid)
     print(flag)      
-```          </code></pre></div>
+```          </code></pre>
 <p>时间盲注也能跑出来，就是有点儿慢<br>or后面0或者1的回显不同<br>0——&gt;<code>You konw ,P3rh4ps needs a girl friend</code><br>1——&gt;<code>BJD needs to be stronger</code><br>—&gt;bool盲注</p>
 <p>这题的报表直接对列来操作，因为在上面的SQL语句中有<code>FROM users</code>，而且=和like都被过了，只能这样了吧<br><img src="https://ftp.bmp.ovh/imgs/2021/03/17cfe81b59870b7a.png" srcset="/img/loading.gif"></p>
 
@@ -425,6 +433,8 @@ for i in range(1,20):
 
 
 
+  
+    
   
 
 
