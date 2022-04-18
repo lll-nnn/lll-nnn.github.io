@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      800 字
+      761 字
     </span>
   
 
@@ -255,31 +255,31 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[0CTF 2016]piapiapia<br><img src="https://ftp.bmp.ovh/imgs/2021/03/c2d7bb4e15e7e536.png" srcset="/img/loading.gif">    </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><code>www.zip</code>泄露<br><img src="https://ftp.bmp.ovh/imgs/2021/03/f14c9ff26da419bd.png" srcset="/img/loading.gif"><br>主要利用点：    </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-	<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;class.php&#x27;</span>);
-	<span class="hljs-keyword">if</span>($_SESSION[<span class="hljs-string">&#x27;username&#x27;</span>] == <span class="hljs-literal">null</span>) &#123;
-		<span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Login First&#x27;</span>);	
-	&#125;
-	$username = $_SESSION[<span class="hljs-string">&#x27;username&#x27;</span>];
-	$profile=$user-&gt;show_profile($username);
-	<span class="hljs-keyword">if</span>($profile  == <span class="hljs-literal">null</span>) &#123;
-		header(<span class="hljs-string">&#x27;Location: update.php&#x27;</span>);
-	&#125;
-	<span class="hljs-keyword">else</span> &#123;
-		$profile = unserialize($profile);
-		$phone = $profile[<span class="hljs-string">&#x27;phone&#x27;</span>];
-		$email = $profile[<span class="hljs-string">&#x27;email&#x27;</span>];
-		$nickname = $profile[<span class="hljs-string">&#x27;nickname&#x27;</span>];
-		$photo = base64_encode(file_get_contents($profile[<span class="hljs-string">&#x27;photo&#x27;</span>]));
-<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+	<span class="token keyword">require_once</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'class.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'username'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token constant">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">die</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'Login First'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	
+	<span class="token punctuation">&#125;</span>
+	<span class="token variable">$username</span> <span class="token operator">=</span> <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token variable">$profile</span><span class="token operator">=</span><span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">show_profile</span><span class="token punctuation">(</span><span class="token variable">$username</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$profile</span>  <span class="token operator">==</span> <span class="token constant">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token function">header</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'Location: update.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+		<span class="token variable">$profile</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$profile</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token variable">$phone</span> <span class="token operator">=</span> <span class="token variable">$profile</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'phone'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token variable">$email</span> <span class="token operator">=</span> <span class="token variable">$profile</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'email'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token variable">$nickname</span> <span class="token operator">=</span> <span class="token variable">$profile</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'nickname'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token variable">$photo</span> <span class="token operator">=</span> <span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$profile</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'photo'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span>   </code></pre></code></pre>
 <p><code>file_get_contents</code><br>读取<code>config.php</code>      </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-	$config[<span class="hljs-string">&#x27;hostname&#x27;</span>] = <span class="hljs-string">&#x27;127.0.0.1&#x27;</span>;
-	$config[<span class="hljs-string">&#x27;username&#x27;</span>] = <span class="hljs-string">&#x27;root&#x27;</span>;
-	$config[<span class="hljs-string">&#x27;password&#x27;</span>] = <span class="hljs-string">&#x27;&#x27;</span>;
-	$config[<span class="hljs-string">&#x27;database&#x27;</span>] = <span class="hljs-string">&#x27;&#x27;</span>;
-	$flag = <span class="hljs-string">&#x27;&#x27;</span>;
-<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+	<span class="token variable">$config</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'hostname'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'127.0.0.1'</span><span class="token punctuation">;</span>
+	<span class="token variable">$config</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'root'</span><span class="token punctuation">;</span>
+	<span class="token variable">$config</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'password'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
+	<span class="token variable">$config</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'database'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
+	<span class="token variable">$flag</span> <span class="token operator">=</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span>       </code></pre></code></pre>
 <p><code>update.php</code>      </p>
 <pre><code>```php
 &lt;?php

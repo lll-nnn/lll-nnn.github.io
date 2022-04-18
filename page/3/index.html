@@ -187,6 +187,138 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/16/HECTF/" target="_blank">
+          <img src="/img/00150.jpg" srcset="/img/loading.gif" alt="HECTF">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/16/HECTF/">HECTF</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/16/HECTF/">
+          
+          
+            
+          
+          LFI_to_RCE题目：
+&lt;?php
+    show_source('./index.php');
+    include $_GET['file'];
+?>
+session文件包含，写入shell到session文件
+poc
+import threading
+import requests
+from concurrent.futures import ThreadPoolExecuto
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-16 23:38" pubdate>
+              2021-11-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/php/">php</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/php/">php</a>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%86%99shell/">session文件包含写shell</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/07/hackergame2021/" target="_blank">
+          <img src="/img/00119.jpg" srcset="/img/loading.gif" alt="Hackergame2021">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/07/hackergame2021/">Hackergame2021</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/07/hackergame2021/">
+          
+          
+            
+          
+          签到
+unix时间戳点next后url会加上page=1,时间就会加一秒
+时间戳网站https://tool.chinaz.com/tools/unixtime.aspx
+也可以用二分法
+测试 100000000000，太大 =&gt; (100000000000 + 0) / 2 = 50000000000
+测试 50000000000，太大 =&gt; (50000000000 + 0) / 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-07 15:12" pubdate>
+              2021-11-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/10/29/DAS/" target="_blank">
           <img src="/img/00106.jpg" srcset="/img/loading.gif" alt="DAS X 吉林工师">
         </a>
@@ -205,14 +337,15 @@
             
           
           迷路的魔法少女&lt;?php
-highlight_file(&#x27;index.php&#x27;);
+highlight_file('index.php');
 
 extract($_GET);
 error_reporting(0);
 function String2Array($data)
 &#123;
-    if($data == &#x27;&#x27;) return array();
-    @eval(&quot;\$array = 
+    if($data == '') return array();
+    @eval("\$array = $data;");
+    return $arr
         </a>
       </p>
 
@@ -239,11 +372,11 @@ function String2Array($data)
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/php/">php</a>
+            
               <a href="/tags/CTF/">CTF</a>
             
               <a href="/tags/WP/">WP</a>
-            
-              <a href="/tags/php/">php</a>
             
           </div>
         
@@ -274,9 +407,11 @@ function String2Array($data)
           
           middle_magic&lt;?php
     highlight_file(__FILE__);
-    include &quot;./flag.php&quot;;
-    include &quot;./result.php&quot;;
-    if(isset($_GET[&#x27;aaa&#x27;]) &amp;&amp; strlen($_GET[&#x27;aaa&#x27
+    include "./flag.php";
+    include "./result.php";
+    if(isset($_GET['aaa']) &amp;&amp; strlen($_GET['aaa']) &lt; 20)&#123;
+
+        $aaa = preg_
         </a>
       </p>
 
@@ -530,7 +665,7 @@ class SYCLOVER &#123;
     public $lover;
 
     public function __wakeup()&#123;
-        if( ($this-&gt;syc != $this-&gt;lover) &am
+        if( ($this->syc != $this->lover) &amp;&amp
         </a>
       </p>
 
@@ -557,11 +692,11 @@ class SYCLOVER &#123;
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/php/">php</a>
+            
               <a href="/tags/CTF/">CTF</a>
             
               <a href="/tags/WP/">WP</a>
-            
-              <a href="/tags/php/">php</a>
             
           </div>
         
@@ -696,144 +831,11 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Fi
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/08/01/BUU90/" target="_blank">
-          <img src="/img/0032.png" srcset="/img/loading.gif" alt="Eating_cms">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/01/BUU90/">Eating_cms</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/01/BUU90/">
-          
-          
-            
-          
-          [N1CTF 2018]eating_cmsparse_url()解析漏洞
-function.php中
-function filter_directory()
-&#123;
-    $keywords = [&quot;flag&quot;,&quot;manage&quot;,&quot;ffffllllaaaaggg&quot;];
-    $uri = parse_url($_SERVER[
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-01 11:49" pubdate>
-              2021-08-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/CTF/">CTF</a>
-            
-              <a href="/categories/CTF/rce/">rce</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CTF/">CTF</a>
-            
-              <a href="/tags/WP/">WP</a>
-            
-              <a href="/tags/rce/">rce</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/07/14/%E5%BC%82%E6%88%96/" target="_blank">
-          <img src="/img/0030.png" srcset="/img/loading.gif" alt="异或^">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/14/%E5%BC%82%E6%88%96/">异或^</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/14/%E5%BC%82%E6%88%96/">
-          
-          
-            
-          
-          异或异或就是二进制对应位上运算：   
-1^1=0  
-1^0=1
-0^0=0   
-%ff对应的是十进制的255，二进制就是111111111,所以它与其他异或后再与原来的异或就等于原来的       
-res='phpinfo'     ##要异或的
-temp=[]
-for i in res:
-    temp.append(hex(int(hex(ord(i)),16)^0xff))
-
-fo
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-14 07:47" pubdate>
-              2021-07-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CTF/">CTF</a>
-            
-              <a href="/tags/knowledge/">knowledge</a>
-            
-              <a href="/tags/or-or/">or^or</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

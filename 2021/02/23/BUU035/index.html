@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      210 字
+      181 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      2
        分钟
     </span>
   
@@ -255,39 +255,39 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[BJDCTF2020]Mark loves cat<br><img src="https://ftp.bmp.ovh/imgs/2021/02/7c08fb9e1218a7c9.png" srcset="/img/loading.gif"></p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>一个看上去很正常的网页，没发现什么点—–扫目录吧<br>看到<code>.git</code>泄露<br>githack<br>下来的只有一个<code>assets</code>文件夹，看别人的WP是有<code>index.php</code>的？？？？？？？       </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="hljs-keyword">include</span> <span class="hljs-string">&#x27;flag.php&#x27;</span>;
+<span class="token keyword">include</span> <span class="token single-quoted-string string">'flag.php'</span><span class="token punctuation">;</span>
 
-$yds = <span class="hljs-string">&quot;dog&quot;</span>;
-$is = <span class="hljs-string">&quot;cat&quot;</span>;
-$handsome = <span class="hljs-string">&#x27;yds&#x27;</span>;
+<span class="token variable">$yds</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"dog"</span><span class="token punctuation">;</span>
+<span class="token variable">$is</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"cat"</span><span class="token punctuation">;</span>
+<span class="token variable">$handsome</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'yds'</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">foreach</span>($_POST <span class="hljs-keyword">as</span> $x =&gt; $y)&#123;
-    $$x = $y;
-&#125;
+<span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$_POST</span> <span class="token keyword">as</span> <span class="token variable">$x</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$y</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token variable">$$x</span> <span class="token operator">=</span> <span class="token variable">$y</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-keyword">foreach</span>($_GET <span class="hljs-keyword">as</span> $x =&gt; $y)&#123;
-    $$x = $$y;
-&#125;
+<span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$_GET</span> <span class="token keyword">as</span> <span class="token variable">$x</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$y</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token variable">$$x</span> <span class="token operator">=</span> <span class="token variable">$$y</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-keyword">foreach</span>($_GET <span class="hljs-keyword">as</span> $x =&gt; $y)&#123;
-    <span class="hljs-keyword">if</span>($_GET[<span class="hljs-string">&#x27;flag&#x27;</span>] === $x &amp;&amp; $x !== <span class="hljs-string">&#x27;flag&#x27;</span>)&#123;
-        <span class="hljs-keyword">exit</span>($handsome);
-    &#125;
-&#125;
+<span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$_GET</span> <span class="token keyword">as</span> <span class="token variable">$x</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$y</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'flag'</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token variable">$x</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$x</span> <span class="token operator">!==</span> <span class="token single-quoted-string string">'flag'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token variable">$handsome</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;flag&#x27;</span>]) &amp;&amp; !<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;flag&#x27;</span>]))&#123;
-    <span class="hljs-keyword">exit</span>($yds);
-&#125;
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'flag'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'flag'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token variable">$yds</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-keyword">if</span>($_POST[<span class="hljs-string">&#x27;flag&#x27;</span>] === <span class="hljs-string">&#x27;flag&#x27;</span>  || $_GET[<span class="hljs-string">&#x27;flag&#x27;</span>] === <span class="hljs-string">&#x27;flag&#x27;</span>)&#123;
-    <span class="hljs-keyword">exit</span>($is);
-&#125;
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'flag'</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token single-quoted-string string">'flag'</span>  <span class="token operator">||</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'flag'</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token single-quoted-string string">'flag'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token variable">$is</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
 
 
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;the flag is: &quot;</span>.$flag;</code></pre></code></pre>
+<span class="token keyword">echo</span> <span class="token double-quoted-string string">"the flag is: "</span><span class="token punctuation">.</span><span class="token variable">$flag</span><span class="token punctuation">;</span>     </span></code></pre></code></pre>
 <p>变量覆盖<br>GET和POST flag才会执行最后的输出，可是这样就吧<code>$flag</code>给覆盖了  </p>
 <p>可以将<code>$yds</code>覆盖成<code>$flag</code>借助<code>$$x = $$y;</code>       </p>
 <h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>payload1：GET  <code>?yds=flag</code>       </p>

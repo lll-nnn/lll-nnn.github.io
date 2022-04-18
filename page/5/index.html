@@ -187,6 +187,145 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/15/BUU86/" target="_blank">
+          <img src="/img/0009.jpg" srcset="/img/loading.gif" alt="不是文件上传">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/15/BUU86/">不是文件上传</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/15/BUU86/">
+          
+          
+            
+          
+          __--__题目说不是文件上传，看一下www.zip   
+没有？？
+看了WP，是   
+github上搜索得到源码      
+主要是helper.php    
+&lt;?php
+class helper &#123;
+    protected $folder = "pic/";
+    protected $ifview = False; 
+    protected $config = 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-15 00:02" pubdate>
+              2021-05-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/php/">php</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/php/">php</a>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/serialize/">serialize</a>
+            
+              <a href="/tags/sql/">sql</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/11/wicctf/" target="_blank">
+          <img src="/img/0007.jpg" srcset="/img/loading.gif" alt="Wicctf">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/11/wicctf/">Wicctf</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/11/wicctf/">
+          
+          
+            
+          
+          UploadHub文件上传题给了源码，其中有些配置文件看不懂，放弃了   
+     
+一开始上传PHP文件，上传成功了，但访问返回了文件中的内容，应该是没有解析PHP文件     
+这时候就应该找apache中的相关配置了    
+      
+这个设为了off会限制目录下的PHP文件没有执行权限        
+通过传入.htaccess文件来覆盖配置文件中的设置（.htaccess文件作用所
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-11 17:00" pubdate>
+              2021-05-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/wicctf/">wicctf</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/wicctf/">wicctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/05/10/BUU85/" target="_blank">
           <img src="/img/0005.jpg" srcset="/img/loading.gif" alt="StrongestMind">
         </a>
@@ -214,7 +353,7 @@ from time import sleep
 
 def count():
     s = requests.session()       #会话保持
-    url = &#x27;http://ee15b87d-2094-4459-97e9-6c7d3f888
+    url = 'http://ee15b87d-2094-4459-97e9-6c7d3f88800d.n
         </a>
       </p>
 
@@ -284,9 +423,9 @@ www.zip
 果然   
 下载下来是index.php     
 &lt;?php 
-header(&#x27;Content-type:text/html; charset=utf-8&#x27;);
+header('Content-type:text/html; charset=utf-8');
 error_reporting(0);
-i
+if(isset($_
         </a>
       </p>
 
@@ -313,11 +452,11 @@ i
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/php/">php</a>
+            
               <a href="/tags/CTF/">CTF</a>
             
               <a href="/tags/WP/">WP</a>
-            
-              <a href="/tags/php/">php</a>
             
               <a href="/tags/mt-srand/">mt_srand</a>
             
@@ -380,11 +519,11 @@ session.save_path=&quot;&quot;   –设置s
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/php/">php</a>
+            
               <a href="/tags/CTF/">CTF</a>
             
               <a href="/tags/WP/">WP</a>
-            
-              <a href="/tags/php/">php</a>
             
               <a href="/tags/serialize/">serialize</a>
             
@@ -568,9 +707,9 @@ Disallow: /f
 四个PHP文件    
 index.php      
 &lt;?php
-require_once &quot;lib.php&quot;;
+require_once "lib.php";
 
-if(isset($_GET
+if(isset($_GET['action']
         </a>
       </p>
 
@@ -665,9 +804,9 @@ URL为：http://0394ab22-e370-4cca-91f6-05a8ac92ab21.node3.buuoj.cn/login.php
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/CTF/">CTF</a>
-            
               <a href="/tags/wp/">wp</a>
+            
+              <a href="/tags/CTF/">CTF</a>
             
               <a href="/tags/SQL/">SQL</a>
             
@@ -731,114 +870,11 @@ URL为：http://0394ab22-e370-4cca-91f6-05a8ac92ab21.node3.buuoj.cn/login.php
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/26/BUU77/" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="I_&lt;3_Flask">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/26/BUU77/">I_&lt;3_Flask</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/26/BUU77/">
-          
-          
-            
-          
-          1_1       
-题目是flask，应该是SSTI了吧但没参数        
-arjun这个可以来爆破参数先下载，然后到arjun目录下       
-安装        
-使用        
-爆破出参数是name        
-除此之外就没啥了payload：&#123;&#123;().__class__.__bases__[0].__subclasses__()[182].__in
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-26 21:02" pubdate>
-              2021-04-26
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/25/nep2/" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="Nep2">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/25/nep2/">Nep2</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/25/nep2/">
-          
-          
-            
-          
-          视频二：https://www.hacker101.com/sessions/pentest_owasp
-1.目前owasp的十大web安全漏洞是哪些？这些漏洞排名是按照漏洞的严重程度排序的还是按照漏洞的常见程度排序的？（2分）
-1. Injection----&gt;注入，Sql，nosql,OS injection,LDAP injection       
-2. Broken Authent
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-25 20:11" pubdate>
-              2021-04-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/note/">note</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/4/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

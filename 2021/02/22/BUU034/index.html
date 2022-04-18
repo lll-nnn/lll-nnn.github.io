@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      618 字
+      558 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      9
        分钟
     </span>
   
@@ -255,38 +255,38 @@
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[安洵杯 2019]easy_web<img src="https://ae03.alicdn.com/kf/U37981b99273b48eda811753994099f30i.jpg" srcset="/img/loading.gif" alt="01.png">    </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>照例查看源代码<br>发现个图片base64，解码后就是左上角那个图<br>url中有一段可疑字符串<code>TXpVek5UTTFNbVUzTURabE5qYz0</code>应该是base64吧，尝试解码，但解不出来，别的编码？看wp后就是base64啊？？—–加个等号—解出来了<br>还是base64，再解，然后是<code>hex</code>解码——得到<code>555.png</code>那个图片的名字<br>这样的话就可以用此方法读取文件了<br>读取<code>index.php</code>  </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-error_reporting(E_ALL || ~ E_NOTICE);
-header(<span class="hljs-string">&#x27;content-type:text/html;charset=utf-8&#x27;</span>);
-$cmd = $_GET[<span class="hljs-string">&#x27;cmd&#x27;</span>];
-<span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;img&#x27;</span>]) || !<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;cmd&#x27;</span>])) 
-    header(<span class="hljs-string">&#x27;Refresh:0;url=./index.php?img=TXpVek5UTTFNbVUzTURabE5qYz0&amp;cmd=&#x27;</span>);
-$file = hex2bin(base64_decode(base64_decode($_GET[<span class="hljs-string">&#x27;img&#x27;</span>])));
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token constant">E_ALL</span> <span class="token operator">||</span> <span class="token operator">~</span> <span class="token constant">E_NOTICE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">header</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'content-type:text/html;charset=utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$cmd</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'img'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+    <span class="token function">header</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'Refresh:0;url=./index.php?img=TXpVek5UTTFNbVUzTURabE5qYz0&amp;cmd='</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$file</span> <span class="token operator">=</span> <span class="token function">hex2bin</span><span class="token punctuation">(</span><span class="token function">base64_decode</span><span class="token punctuation">(</span><span class="token function">base64_decode</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'img'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-$file = preg_replace(<span class="hljs-string">&quot;/[^a-zA-Z0-9.]+/&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, $file);
-<span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/flag/i&quot;</span>, $file)) &#123;
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;img src =&quot;./ctf3.jpeg&quot;&gt;&#x27;</span>;
-    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;xixi～ no flag&quot;</span>);
-&#125; <span class="hljs-keyword">else</span> &#123;
-    $txt = base64_encode(file_get_contents($file));
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;img src=&#x27;data:image/gif;base64,&quot;</span> . $txt . <span class="hljs-string">&quot;&#x27;&gt;&lt;/img&gt;&quot;</span>;
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
-&#125;
-<span class="hljs-keyword">echo</span> $cmd;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
-<span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/ls|bash|tac|nl|more|less|head|wget|tail|vi|cat|od|grep|sed|bzmore|bzless|pcre|paste|diff|file|echo|sh|\&#x27;|\&quot;|\`|;|,|\*|\?|\\|\\\\|\n|\t|\r|\xA0|\&#123;|\&#125;|\(|\)|\&amp;[^\d]|@|\||\\$|\[|\]|&#123;|&#125;|\(|\)|-|&lt;|&gt;/i&quot;</span>, $cmd)) &#123;
-    <span class="hljs-keyword">echo</span>(<span class="hljs-string">&quot;forbid ~&quot;</span>);
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
-&#125; <span class="hljs-keyword">else</span> &#123;
-    <span class="hljs-keyword">if</span> ((<span class="hljs-keyword">string</span>)$_POST[<span class="hljs-string">&#x27;a&#x27;</span>] !== (<span class="hljs-keyword">string</span>)$_POST[<span class="hljs-string">&#x27;b&#x27;</span>] &amp;&amp; md5($_POST[<span class="hljs-string">&#x27;a&#x27;</span>]) === md5($_POST[<span class="hljs-string">&#x27;b&#x27;</span>])) &#123;
-        <span class="hljs-keyword">echo</span> `$cmd`;
-    &#125; <span class="hljs-keyword">else</span> &#123;
-        <span class="hljs-keyword">echo</span> (<span class="hljs-string">&quot;md5 is funny ~&quot;</span>);
-    &#125;
+<span class="token variable">$file</span> <span class="token operator">=</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/[^a-zA-Z0-9.]+/"</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">""</span><span class="token punctuation">,</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/flag/i"</span><span class="token punctuation">,</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token single-quoted-string string">'&lt;img src ="./ctf3.jpeg">'</span><span class="token punctuation">;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"xixi～ no flag"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$txt</span> <span class="token operator">=</span> <span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;img src='data:image/gif;base64,"</span> <span class="token punctuation">.</span> <span class="token variable">$txt</span> <span class="token punctuation">.</span> <span class="token double-quoted-string string">"'>&lt;/img>"</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">echo</span> <span class="token variable">$cmd</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/ls|bash|tac|nl|more|less|head|wget|tail|vi|cat|od|grep|sed|bzmore|bzless|pcre|paste|diff|file|echo|sh|\'|\"|\`|;|,|\*|\?|\\|\\\\|\n|\t|\r|\xA0|\&#123;|\&#125;|\(|\)|\&amp;[^\d]|@|\||\\$|\[|\]|&#123;|&#125;|\(|\)|-|&lt;|>/i"</span><span class="token punctuation">,</span> <span class="token variable">$cmd</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"forbid ~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'a'</span><span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'b'</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'a'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'b'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> `<span class="token variable">$cmd</span>`<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token punctuation">(</span><span class="token double-quoted-string string">"md5 is funny ~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 	
-&#125;
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-meta">?&gt;</span></code></pre>
+<span class="token delimiter important">?></span></span>         </code></pre>
 
 
 

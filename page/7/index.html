@@ -187,6 +187,105 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/04/13/BUU69/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="SimplePHP">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/13/BUU69/">SimplePHP</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/13/BUU69/">
+          
+          
+            
+          
+          ‘__’      
+一开始上传文件，试了一波，感觉不行查看文件里也没有上传的文件，url变成了这http://c8f4d1a6-6922-4386-b8ad-5454fdc52a38.node3.buuoj.cn/file.php?file=感觉可以伪协议读取一波文件，网页注释中flag is in f1ag.php但没法直接读flag，但读不出来，看了WP，后面直接加文件名就行了，不用伪协议。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-13 16:10" pubdate>
+              2021-04-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/04/12/BUU68/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="EasyWeb">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/12/BUU68/">EasyWeb</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/12/BUU68/">
+          
+          
+            
+          
+          n_A_n	 &lt;?php
+	function get_the_flag()&#123;
+	    // webadmin will remove your upload file every 20 min!!!! 
+	    $userdir = "upload/tmp_".md5($_SERVER['REMOTE_ADDR']);
+	    if(!file_exists($userdir
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-12 22:36" pubdate>
+              2021-04-12
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/04/11/SQL/" target="_blank">
           <img src="/img/004.jpg" srcset="/img/loading.gif" alt="SQL">
         </a>
@@ -263,8 +362,9 @@ mysql&gt; select benchmark(100000000,1+1);
             
           
           —&lt;?php
-    if (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;
-        $http_x_headers = explode(&#x27;,&#x27;, $_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;]);    ##以逗号分割$_SERVER[&#x27;HTTP_
+    if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) &#123;
+        $http_x_headers = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);    ##以逗号分割$_SERVER['HTTP_X_FORWARDED_FOR']，返回数组
+        $_SE
         </a>
       </p>
 
@@ -372,7 +472,7 @@ class A&#123;
 二次注入      
 提示了账号和密码，一般后面是三位数字，爆破是666write_do.php看WP是git泄露Githack一下下载下来write_do.php  ，但是是残缺的，git log历史commit里也没add write_do.php??      
 &lt;?php
-include &quot;mysql.
+include "mysql.php";
         </a>
       </p>
 
@@ -469,10 +569,10 @@ $pattern = &#39;/select|insert|update|delete|and|or|join|like|regexp|where|union
             
           
           ‘0’&lt;?php
-include &#x27;config.php&#x27;; // FLAG is defined in config.php
+include 'config.php'; // FLAG is defined in config.php
 
-if (preg_match(&#x27;/config\.php\/*$/i&#x27;, $_SERVER[&#x27;PHP_SELF&#x27;])) &#123;
-  exit(&quot;I don&#x27;t know what
+if (preg_match('/config\.php\/*$/i', $_SERVER['PHP_SELF'])) &#123;
+  exit("I don't know what you are thinking, but I won't let you r
         </a>
       </p>
 
@@ -578,7 +678,8 @@ $id=isset($_GET[&quot;id&quot;])?$_GET[&quot;id&quot;]:&quot;1&quo
 用原生类—Exception—所有异常的基类     
 然后弹cookie    
 &lt;?php
-$a=new Exception(&quot;&lt;script&gt;alert(document.cookie)&lt;/script&
+$a=new Exception("&lt;script>alert(document.cookie)&lt;/script>");
+echo
         </a>
       </p>
 
@@ -604,117 +705,11 @@ $a=new Exception(&quot;&lt;script&gt;alert(document.cookie)&lt;/script&
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/03/31/BUU61/" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="FBCTF2019 RCEService">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/31/BUU61/">FBCTF2019 RCEService</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/31/BUU61/">
-          
-          
-            
-          
-          ‘o’  ‘o’命令执行ls一下，用JSON格式：&#123;&quot;cmd&quot;:&quot;ls&quot;&#125;得到一个index.php除此之外，输入其他命令会报错，过滤了    
-看WP都直接给出的源码，也不知道哪来的‘？’       
-&lt;?php
-
-putenv(&#x27;PATH=/home/rceservice/jail&#x27;);
-
-if (isse
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-31 23:31" pubdate>
-              2021-03-31
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/03/30/BUU60/" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="极客大挑战 2019 RCE ME">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/30/BUU60/">极客大挑战 2019 RCE ME</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/30/BUU60/">
-          
-          
-            
-          
-          好难代码审计       
-&lt;?php
-error_reporting(0);
-if(isset($_GET[&#x27;code&#x27;]))&#123;
-            $code=$_GET[&#x27;code&#x27;];
-                    if(strlen($code)&gt;40)&#123;
-                       
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-30 10:41" pubdate>
-              2021-03-30
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/6/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/6/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

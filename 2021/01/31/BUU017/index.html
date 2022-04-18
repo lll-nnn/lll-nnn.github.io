@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      468 字
+      424 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      6
        分钟
     </span>
   
@@ -255,39 +255,39 @@
             <div class="markdown-body">
               <h2 id="十七、"><a href="#十七、" class="headerlink" title="十七、"></a>十七、</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>[SUCTF 2019]CheckIn<br><img src="https://ftp.bmp.ovh/imgs/2021/01/cf0dc95dec9e9c82.png" srcset="/img/loading.gif">   </p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>文件上传<br>并且给了源码<code>https://github.com/team-su/SUCTF-2019/tree/master/Web/checkIn</code>          </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// error_reporting(0);</span>
-$userdir = <span class="hljs-string">&quot;uploads/&quot;</span> . md5($_SERVER[<span class="hljs-string">&quot;REMOTE_ADDR&quot;</span>]);
-<span class="hljs-keyword">if</span> (!file_exists($userdir)) &#123;
-    mkdir($userdir, <span class="hljs-number">0777</span>, <span class="hljs-literal">true</span>);
-&#125;
-file_put_contents($userdir . <span class="hljs-string">&quot;/index.php&quot;</span>, <span class="hljs-string">&quot;&quot;</span>);
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&quot;upload&quot;</span>])) &#123;
-    $tmp_name = $_FILES[<span class="hljs-string">&quot;fileUpload&quot;</span>][<span class="hljs-string">&quot;tmp_name&quot;</span>];
-    $name = $_FILES[<span class="hljs-string">&quot;fileUpload&quot;</span>][<span class="hljs-string">&quot;name&quot;</span>];
-    <span class="hljs-keyword">if</span> (!$tmp_name) &#123;
-        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;filesize too big!&quot;</span>);
-    &#125;
-    <span class="hljs-keyword">if</span> (!$name) &#123;
-        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;filename cannot be empty!&quot;</span>);
-    &#125;
-    $extension = substr($name, strrpos($name, <span class="hljs-string">&quot;.&quot;</span>) + <span class="hljs-number">1</span>);         <span class="hljs-comment">//得到后缀</span>
-    <span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/ph|htacess/i&quot;</span>, $extension)) &#123;
-        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;illegal suffix!&quot;</span>);           <span class="hljs-comment">//i区分了大小写</span>
-    &#125;
-    <span class="hljs-keyword">if</span> (mb_strpos(file_get_contents($tmp_name), <span class="hljs-string">&quot;&lt;?&quot;</span>) !== <span class="hljs-literal">FALSE</span>) &#123;
-        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;&amp;lt;? in contents!&quot;</span>);
-    &#125;                  <span class="hljs-comment">//过滤<span class="hljs-meta">&lt;?</span></span>
-    $image_type = exif_imagetype($tmp_name);    <span class="hljs-comment">//判断图像类型</span>
-    <span class="hljs-keyword">if</span> (!$image_type) &#123;
-        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;exif_imagetype:not image!&quot;</span>);
-    &#125;
-    $upload_file_path = $userdir . <span class="hljs-string">&quot;/&quot;</span> . $name;
-    move_uploaded_file($tmp_name, $upload_file_path);
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Your dir &quot;</span> . $userdir. <span class="hljs-string">&#x27; &lt;br&gt;&#x27;</span>;
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your files : &lt;br&gt;&#x27;</span>;
-    var_dump(scandir($userdir));
-&#125;</code></pre></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// error_reporting(0);</span>
+<span class="token variable">$userdir</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"uploads/"</span> <span class="token punctuation">.</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"REMOTE_ADDR"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">file_exists</span><span class="token punctuation">(</span><span class="token variable">$userdir</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token variable">$userdir</span><span class="token punctuation">,</span> <span class="token number">0777</span><span class="token punctuation">,</span> <span class="token boolean constant">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$userdir</span> <span class="token punctuation">.</span> <span class="token double-quoted-string string">"/index.php"</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"upload"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$tmp_name</span> <span class="token operator">=</span> <span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"fileUpload"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"tmp_name"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token variable">$name</span> <span class="token operator">=</span> <span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"fileUpload"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"name"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$tmp_name</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"filesize too big!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$name</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"filename cannot be empty!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token variable">$extension</span> <span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token function">strrpos</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"."</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">//得到后缀</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/ph|htacess/i"</span><span class="token punctuation">,</span> <span class="token variable">$extension</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"illegal suffix!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">//i区分了大小写</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">mb_strpos</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$tmp_name</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"&lt;?"</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token boolean constant">FALSE</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"&amp;lt;? in contents!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>                  <span class="token comment">//过滤&lt;?</span>
+    <span class="token variable">$image_type</span> <span class="token operator">=</span> <span class="token function">exif_imagetype</span><span class="token punctuation">(</span><span class="token variable">$tmp_name</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//判断图像类型</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$image_type</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"exif_imagetype:not image!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token variable">$upload_file_path</span> <span class="token operator">=</span> <span class="token variable">$userdir</span> <span class="token punctuation">.</span> <span class="token double-quoted-string string">"/"</span> <span class="token punctuation">.</span> <span class="token variable">$name</span><span class="token punctuation">;</span>
+    <span class="token function">move_uploaded_file</span><span class="token punctuation">(</span><span class="token variable">$tmp_name</span><span class="token punctuation">,</span> <span class="token variable">$upload_file_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token double-quoted-string string">"Your dir "</span> <span class="token punctuation">.</span> <span class="token variable">$userdir</span><span class="token punctuation">.</span> <span class="token single-quoted-string string">' &lt;br>'</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token single-quoted-string string">'Your files : &lt;br>'</span><span class="token punctuation">;</span>
+    <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">scandir</span><span class="token punctuation">(</span><span class="token variable">$userdir</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>       </span></code></pre></code></pre>
 <h3 id="解"><a href="#解" class="headerlink" title="解"></a>解</h3><p>看别人wp知道需要上传个<code>.user.ini</code><br>然后在上传图片马<br><code>exif_imagetype</code>可以用文件头绕过<code>GIF89a</code><br><img src="https://ftp.bmp.ovh/imgs/2021/01/39c550bc2f0f01d7.png" srcset="/img/loading.gif"><br><img src="https://ftp.bmp.ovh/imgs/2021/01/707658987a1ea540.png" srcset="/img/loading.gif"><br>蚁剑连接，根目录下找到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/643389a70dcab484.png" srcset="/img/loading.gif"><br>或者<br>构造这样的马：<code>&lt;script language=&quot;php&quot;&gt;system(&#39;cat /flag&#39;);&lt;/script&gt; </code>直接访问<code>http://f07dace7-4865-447a-acdb-e7612afc49d7.node3.buuoj.cn/uploads/852aff287f54bca0ed7757a702913e50/index.php</code>即可得到flag<br><img src="https://ftp.bmp.ovh/imgs/2021/01/8b3db3af2203d029.png" srcset="/img/loading.gif">     </p>
 <h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul>
 <li><code>.user.ini</code>         <ul>

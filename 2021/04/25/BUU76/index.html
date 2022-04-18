@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      268 字
+      261 字
     </span>
   
 
@@ -256,14 +256,14 @@
               <h2 id="js-vm2"><a href="#js-vm2" class="headerlink" title="js vm2"></a>js vm2</h2><p><img src="https://sc01.alicdn.com/kf/H375cdea26ac54e8c8ee6dfdf19c4a90ag.png" srcset="/img/loading.gif" alt="01.png">      </p>
 <p>下面两个demo     </p>
 <p>看下<code>run.php</code>     </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">if</span>( array_key_exists( <span class="hljs-string">&quot;code&quot;</span>, $_GET ) &amp;&amp; $_GET[ <span class="hljs-string">&#x27;code&#x27;</span> ] != <span class="hljs-literal">NULL</span> ) &#123;
-    $code = $_GET[<span class="hljs-string">&#x27;code&#x27;</span>];
-    <span class="hljs-keyword">echo</span> <span class="hljs-keyword">eval</span>(code);
-&#125; <span class="hljs-keyword">else</span> &#123;
-    highlight_file(<span class="hljs-keyword">__FILE__</span>);
-&#125;
-<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token function">array_key_exists</span><span class="token punctuation">(</span> <span class="token double-quoted-string string">"code"</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span> <span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span> <span class="token single-quoted-string string">'code'</span> <span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$code</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'code'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token keyword">eval</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span></code></pre></code></pre>
 <p>试了下，感觉什么都执行不了     </p>
 <p>前面提示说<code>真的是 PHP 嘛</code><br>难道不是PHP      </p>
 <p>看下WP   </p>

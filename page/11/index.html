@@ -187,6 +187,111 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/23/BUU035/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题035">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/23/BUU035/">BUU每日一题035</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/23/BUU035/">
+          
+          
+            
+          
+          题目[BJDCTF2020]Mark loves cat
+分析一个看上去很正常的网页，没发现什么点—–扫目录吧看到.git泄露githack下来的只有一个assets文件夹，看别人的WP是有index.php的？？？？？？？       
+&lt;?php
+
+include 'flag.php';
+
+$yds = "dog";
+$is = "cat";
+$handsome = 'yds';
+
+fo
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-23 18:19" pubdate>
+              2021-02-23
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/22/BUU034/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题034">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/22/BUU034/">BUU每日一题034</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/22/BUU034/">
+          
+          
+            
+          
+          题目[安洵杯 2019]easy_web    
+分析照例查看源代码发现个图片base64，解码后就是左上角那个图url中有一段可疑字符串TXpVek5UTTFNbVUzTURabE5qYz0应该是base64吧，尝试解码，但解不出来，别的编码？看wp后就是base64啊？？—–加个等号—解出来了还是base64，再解，然后是hex解码——得到555.png那个图片的名字这样的话就可以用此方法读取
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-22 15:55" pubdate>
+              2021-02-22
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/02/21/BUU033/" target="_blank">
           <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题033">
         </a>
@@ -314,8 +419,8 @@ if(!isset($_SESSION[&#39;username&#39;]))&#123;
           三十二、题目[GXYCTF2019]禁止套娃    
 分析源码什么也没有，robots.txt、www.zip、index.phps都没有，然后扫目录，也没有什么看WP吧/.git泄露？？？？？？为什么我扫不出来，而且GitHack后什么也没有？？？？…………………..泄露的源码：        
 &lt;?php
-include &quot;flag.php&quot;;
-echo &quot;
+include "flag.php";
+echo "flag在哪里呢？&lt;br
         </a>
       </p>
 
@@ -465,8 +570,11 @@ echo &quot;
           二十九、题目[BUUCTF 2018]Online ToolPHP代码审计      
 分析&lt;?php
 
-if (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;
-    $_SERVER[&#x27;REMOTE_ADDR&#x27;] = $_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;]
+if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) &#123;
+    $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
+&#125;   //获取IP地址
+
+if(!isset
         </a>
       </p>
 
@@ -521,7 +629,7 @@ import requests
 import re
 import threading
 import time
-print(&#
+print('开
         </a>
       </p>
 
@@ -596,115 +704,11 @@ print(&#
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/02/09/httpsmuggling/" target="_blank">
-          <img src="/img/0021.jpg" srcset="/img/loading.gif" alt="Httpsmuggling">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/02/09/httpsmuggling/">Httpsmuggling</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/02/09/httpsmuggling/">
-          
-          
-            
-          
-          HTTPsmuggling原理图片转自反向代理服务器与后端服务器之间会重用TCP连接当我们向代理服务器发送请求时，如果两个服务器的实现方式不同，两者对我们发送的请求识别不同，可能代理服务器认为这是一个HTTP请求，然后将其转发给了后端的源站服务器，但源站服务器经过解析处理后，只认为其中的一部分为正常请求，剩下的那一部分，就算是走私的请求。      
-利用判断Apache ATS 6.0.06.2
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-09 23:21" pubdate>
-              2021-02-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/HTTP%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/">HTTP请求走私</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/02/09/BUU026/" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题026">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/02/09/BUU026/">BUU每日一题026</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/02/09/BUU026/">
-          
-          
-            
-          
-          二十六、题目[BJDCTF 2nd]fake google 
-分析源码中没发现什么随便输个看看不知道提示的什么意思，看了wp知道是ssti模板注入按下图判断模板引擎输入：&#123;&#123;7*7&#125;&#125;所以应该是jinja2；如果用tplmap的话可以直接得到是jinja2         
-解payload：&#123;% for c in [].__class__.__b
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-09 17:16" pubdate>
-              2021-02-09
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/10/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/12/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/10/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

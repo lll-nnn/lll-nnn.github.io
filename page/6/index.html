@@ -187,6 +187,109 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/04/26/BUU77/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="I_&lt;3_Flask">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/26/BUU77/">I_&lt;3_Flask</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/26/BUU77/">
+          
+          
+            
+          
+          1_1       
+题目是flask，应该是SSTI了吧但没参数        
+arjun这个可以来爆破参数先下载，然后到arjun目录下       
+安装        
+使用        
+爆破出参数是name        
+除此之外就没啥了payload：&#123;&#123;().__class__.__bases__[0].__subclasses__()[182].__in
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-26 21:02" pubdate>
+              2021-04-26
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/04/25/nep2/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="Nep2">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/25/nep2/">Nep2</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/25/nep2/">
+          
+          
+            
+          
+          视频二：https://www.hacker101.com/sessions/pentest_owasp
+1.目前owasp的十大web安全漏洞是哪些？这些漏洞排名是按照漏洞的严重程度排序的还是按照漏洞的常见程度排序的？（2分）
+1. Injection----&gt;注入，Sql，nosql,OS injection,LDAP injection       
+2. Broken Authent
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-25 20:11" pubdate>
+              2021-04-25
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/note/">note</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/04/25/BUU76/" target="_blank">
           <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="JustEscape">
         </a>
@@ -208,9 +311,11 @@
 下面两个demo     
 看下run.php     
 &lt;?php
-if( array_key_exists( &quot;code&quot;, $_GET ) &amp;&amp; $_GET[ &#x27;code&#x27; ] != NULL ) &#123;
-    $code = $_GET[&#x27;code&#x27;];
-    echo e
+if( array_key_exists( "code", $_GET ) &amp;&amp; $_GET[ 'code' ] != NULL ) &#123;
+    $code = $_GET['code'];
+    echo eval(code);
+&#125; else &#123;
+
         </a>
       </p>
 
@@ -475,7 +580,7 @@ Linu
           c—-a—-i &lt;?php
 error_reporting(0);
 
-if (isset($_GET[&#x27;source&#x27;])) &#123;
+if (isset($_GET['source'])) &#123;
   show_source(__FILE__);
   exit();
 &#125;
@@ -483,7 +588,8 @@ if (isset($_GET[&#x27;source&#x27;])) &#123;
 function is_valid($str) &#123;
   $banword = [
     // no path traversal
-   
+    '\.\.',
+ 
         </a>
       </p>
 
@@ -613,110 +719,11 @@ $comm2 = &#39;&quot;&#39; . $comm2 . &#39;&quot;&
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/13/BUU69/" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="SimplePHP">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/13/BUU69/">SimplePHP</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/13/BUU69/">
-          
-          
-            
-          
-          ‘__’      
-一开始上传文件，试了一波，感觉不行查看文件里也没有上传的文件，url变成了这http://c8f4d1a6-6922-4386-b8ad-5454fdc52a38.node3.buuoj.cn/file.php?file=感觉可以伪协议读取一波文件，网页注释中flag is in f1ag.php但没法直接读flag，但读不出来，看了WP，后面直接加文件名就行了，不用伪协议。
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-13 16:10" pubdate>
-              2021-04-13
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/12/BUU68/" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="EasyWeb">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/12/BUU68/">EasyWeb</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/12/BUU68/">
-          
-          
-            
-          
-          n_A_n	 &lt;?php
-	function get_the_flag()&#123;
-	    // webadmin will remove your upload file every 20 min!!!! 
-	    $userdir = &quot;upload/tmp_&quot;.md5($_SERVER[&#x27;REMOTE_ADDR&#x27;]);
-	    if(!
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-12 22:36" pubdate>
-              2021-04-12
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/5/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/7/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/5/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

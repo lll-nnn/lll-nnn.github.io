@@ -187,6 +187,112 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/03/31/BUU61/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="FBCTF2019 RCEService">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/03/31/BUU61/">FBCTF2019 RCEService</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/03/31/BUU61/">
+          
+          
+            
+          
+          ‘o’  ‘o’命令执行ls一下，用JSON格式：&#123;&quot;cmd&quot;:&quot;ls&quot;&#125;得到一个index.php除此之外，输入其他命令会报错，过滤了    
+看WP都直接给出的源码，也不知道哪来的‘？’       
+&lt;?php
+
+putenv('PATH=/home/rceservice/jail');
+
+if (isset($_REQUES
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-31 23:31" pubdate>
+              2021-03-31
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/03/30/BUU60/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="极客大挑战 2019 RCE ME">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/03/30/BUU60/">极客大挑战 2019 RCE ME</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/03/30/BUU60/">
+          
+          
+            
+          
+          好难代码审计       
+&lt;?php
+error_reporting(0);
+if(isset($_GET['code']))&#123;
+            $code=$_GET['code'];
+                    if(strlen($code)>40)&#123;
+                                        die("T
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-30 10:41" pubdate>
+              2021-03-30
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/wp/">wp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/03/28/ppppp/" target="_blank">
           <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="Ppppp">
         </a>
@@ -213,7 +319,7 @@
 	    public $A2;
 	    public function __call($name,$param)
 	    &#123;
-	        if($this-&gt;&#123;$nam
+	        if($this->&#123;$name&#
         </a>
       </p>
 
@@ -263,9 +369,10 @@
           little_trick&lt;?php
     error_reporting(0);
     highlight_file(__FILE__);
-    $nep = $_GET[&#x27;nep&#x27;];
-    $len = $_GET[&#x27;len&#x27;];
-    if(intval($len)&lt;8 &amp;&amp; strlen($nep)&lt;13)
+    $nep = $_GET['nep'];
+    $len = $_GET['len'];
+    if(intval($len)&lt;8 &amp;&amp; strlen($nep)&lt;13)&#123;
+        eval(
         </a>
       </p>
 
@@ -365,8 +472,8 @@ $_SERVER[&#39;REQUEST_URI&#39;]  = &quot;/aaa/index.php?p=222&am
           
           **看看源码，发现check.php随机数没有seed，比较还是===看WP吧php mt_seed伪随机数漏洞需要根据给的前十位用php_mt_seed这个工具爆破出seed，然后根据seed执行代码得到$str，然后提交即可先将前十位转换为php_mt_seed需要的格式      
 &lt;?php
-$pass=&#x27;FiPnfNN8Dn&#x27;;
-$str=&#x27;abcde
+$pass='FiPnfNN8Dn';
+$str='abcdefghijklmnopqrst
         </a>
       </p>
 
@@ -600,114 +707,11 @@ PHP反序列化
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/03/15/BUU053/" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/15/BUU053/">BUU每日一题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/15/BUU053/">
-          
-          
-            
-          
-          题目[NCTF2019]True XML cookbook      
-分析之前也做过一道这样的xml抓包直接用之前的payload打一下      
-可以根目录找一下flag—–&gt;没有看WP这道题要打内网的hosts里似乎没啥看/proc/net/arp这个文件也有IP地址但直接http://10.0.93.2会报错还要对D段爆破一下    
-     
-不理解。。。。。。。。。。这个IP
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-15 18:00" pubdate>
-              2021-03-15
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/03/14/BUU052/" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/lll-nnn/picture/picgo/202204152227451.jpg" srcset="/img/loading.gif" alt="BUU每日一题">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/14/BUU052/">BUU每日一题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/14/BUU052/">
-          
-          
-            
-          
-          题目[BJDCTF2020]EasySearch     
-分析sql注入了一波，感觉不行看WP说是index.php.swp泄露    
-&lt;?php
-	ob_start();
-	function get_hash()&#123;
-		$chars = &#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-14 23:23" pubdate>
-              2021-03-14
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/wp/">wp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/7/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/9/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/7/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

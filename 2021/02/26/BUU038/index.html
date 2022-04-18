@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      586 字
+      501 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      8
        分钟
     </span>
   
@@ -254,116 +254,116 @@
             
             <div class="markdown-body">
               <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>[De1CTF 2019]SSRF Me<br>hint：<code>flag is in ./flag.txt</code>         </p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><pre><code><pre><code class="hljs python"><span class="hljs-comment">#! /usr/bin/env python</span>
-<span class="hljs-comment">#encoding=utf-8</span>
-<span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask
-<span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> request
-<span class="hljs-keyword">import</span> socket
-<span class="hljs-keyword">import</span> hashlib
-<span class="hljs-keyword">import</span> urllib
-<span class="hljs-keyword">import</span> sys
-<span class="hljs-keyword">import</span> os
-<span class="hljs-keyword">import</span> json
-reload(sys)
-sys.setdefaultencoding(<span class="hljs-string">&#x27;latin1&#x27;</span>)
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><pre><code><pre class="language-python" data-language="python"><code class="language-python"><span class="token comment">#! /usr/bin/env python</span>
+<span class="token comment">#encoding=utf-8</span>
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> request
+<span class="token keyword">import</span> socket
+<span class="token keyword">import</span> hashlib
+<span class="token keyword">import</span> urllib
+<span class="token keyword">import</span> sys
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> json
+<span class="token builtin">reload</span><span class="token punctuation">(</span>sys<span class="token punctuation">)</span>
+sys<span class="token punctuation">.</span>setdefaultencoding<span class="token punctuation">(</span><span class="token string">'latin1'</span><span class="token punctuation">)</span>
 
-app = Flask(__name__)
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
 
-secert_key = os.urandom(<span class="hljs-number">16</span>)
-
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Task</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, action, param, sign, ip</span>):</span>         <span class="hljs-comment">##函数--各个定义</span>
-        self.action = action
-        self.param = param
-        self.sign = sign
-        self.sandbox = md5(ip)
-        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">not</span> os.path.exists(self.sandbox)):          <span class="hljs-comment">#SandBox For Remote_Addr</span>
-            os.mkdir(self.sandbox)
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Exec</span>(<span class="hljs-params">self</span>):</span>         <span class="hljs-comment">##函数</span>
-        result = &#123;&#125;
-        result[<span class="hljs-string">&#x27;code&#x27;</span>] = <span class="hljs-number">500</span>
-        <span class="hljs-keyword">if</span> (self.checkSign()):
-            <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;scan&quot;</span> <span class="hljs-keyword">in</span> self.action:
-                tmpfile = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./%s/result.txt&quot;</span> % self.sandbox, <span class="hljs-string">&#x27;w&#x27;</span>)
-                resp = scan(self.param)      <span class="hljs-comment">##扫描目录</span>
-                <span class="hljs-keyword">if</span> (resp == <span class="hljs-string">&quot;Connection Timeout&quot;</span>):
-                    result[<span class="hljs-string">&#x27;data&#x27;</span>] = resp
-                <span class="hljs-keyword">else</span>:
-                    <span class="hljs-built_in">print</span> resp
-                    tmpfile.write(resp)
-                    tmpfile.close()
-                result[<span class="hljs-string">&#x27;code&#x27;</span>] = <span class="hljs-number">200</span>
-            <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;read&quot;</span> <span class="hljs-keyword">in</span> self.action:
-                f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./%s/result.txt&quot;</span> % self.sandbox, <span class="hljs-string">&#x27;r&#x27;</span>)
-                result[<span class="hljs-string">&#x27;code&#x27;</span>] = <span class="hljs-number">200</span>
-                result[<span class="hljs-string">&#x27;data&#x27;</span>] = f.read()       <span class="hljs-comment">##读取</span>
-            <span class="hljs-keyword">if</span> result[<span class="hljs-string">&#x27;code&#x27;</span>] == <span class="hljs-number">500</span>:
-                result[<span class="hljs-string">&#x27;data&#x27;</span>] = <span class="hljs-string">&quot;Action Error&quot;</span>
-        <span class="hljs-keyword">else</span>:
-            result[<span class="hljs-string">&#x27;code&#x27;</span>] = <span class="hljs-number">500</span>
-            result[<span class="hljs-string">&#x27;msg&#x27;</span>] = <span class="hljs-string">&quot;Sign Error&quot;</span>
-        <span class="hljs-keyword">return</span> result
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">checkSign</span>(<span class="hljs-params">self</span>):</span>          <span class="hljs-comment">##检查</span>
-        <span class="hljs-keyword">if</span> (getSign(self.action, self.param) == self.sign):
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
-        <span class="hljs-keyword">else</span>:
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+secert_key <span class="token operator">=</span> os<span class="token punctuation">.</span>urandom<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span>
 
 
-<span class="hljs-comment">#generate Sign For Action Scan.</span>
-<span class="hljs-meta">@app.route(&quot;/geneSign&quot;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])                 ##路由1----&gt;对传参加密</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">geneSign</span>():</span>
-    param = urllib.unquote(request.args.get(<span class="hljs-string">&quot;param&quot;</span>, <span class="hljs-string">&quot;&quot;</span>))
-    action = <span class="hljs-string">&quot;scan&quot;</span>
-    <span class="hljs-keyword">return</span> getSign(action, param)
+<span class="token keyword">class</span> <span class="token class-name">Task</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> action<span class="token punctuation">,</span> param<span class="token punctuation">,</span> sign<span class="token punctuation">,</span> ip<span class="token punctuation">)</span><span class="token punctuation">:</span>         <span class="token comment">##函数--各个定义</span>
+        self<span class="token punctuation">.</span>action <span class="token operator">=</span> action
+        self<span class="token punctuation">.</span>param <span class="token operator">=</span> param
+        self<span class="token punctuation">.</span>sign <span class="token operator">=</span> sign
+        self<span class="token punctuation">.</span>sandbox <span class="token operator">=</span> md5<span class="token punctuation">(</span>ip<span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sandbox<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>          <span class="token comment">#SandBox For Remote_Addr</span>
+            os<span class="token punctuation">.</span>mkdir<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sandbox<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">Exec</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>         <span class="token comment">##函数</span>
+        result <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+        result<span class="token punctuation">[</span><span class="token string">'code'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">500</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>checkSign<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> <span class="token string">"scan"</span> <span class="token keyword">in</span> self<span class="token punctuation">.</span>action<span class="token punctuation">:</span>
+                tmpfile <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"./%s/result.txt"</span> <span class="token operator">%</span> self<span class="token punctuation">.</span>sandbox<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span>
+                resp <span class="token operator">=</span> scan<span class="token punctuation">(</span>self<span class="token punctuation">.</span>param<span class="token punctuation">)</span>      <span class="token comment">##扫描目录</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>resp <span class="token operator">==</span> <span class="token string">"Connection Timeout"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    result<span class="token punctuation">[</span><span class="token string">'data'</span><span class="token punctuation">]</span> <span class="token operator">=</span> resp
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    <span class="token keyword">print</span> resp
+                    tmpfile<span class="token punctuation">.</span>write<span class="token punctuation">(</span>resp<span class="token punctuation">)</span>
+                    tmpfile<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                result<span class="token punctuation">[</span><span class="token string">'code'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">200</span>
+            <span class="token keyword">if</span> <span class="token string">"read"</span> <span class="token keyword">in</span> self<span class="token punctuation">.</span>action<span class="token punctuation">:</span>
+                f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"./%s/result.txt"</span> <span class="token operator">%</span> self<span class="token punctuation">.</span>sandbox<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span>
+                result<span class="token punctuation">[</span><span class="token string">'code'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">200</span>
+                result<span class="token punctuation">[</span><span class="token string">'data'</span><span class="token punctuation">]</span> <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>       <span class="token comment">##读取</span>
+            <span class="token keyword">if</span> result<span class="token punctuation">[</span><span class="token string">'code'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">500</span><span class="token punctuation">:</span>
+                result<span class="token punctuation">[</span><span class="token string">'data'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Action Error"</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            result<span class="token punctuation">[</span><span class="token string">'code'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">500</span>
+            result<span class="token punctuation">[</span><span class="token string">'msg'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Sign Error"</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token keyword">def</span> <span class="token function">checkSign</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>          <span class="token comment">##检查</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>getSign<span class="token punctuation">(</span>self<span class="token punctuation">.</span>action<span class="token punctuation">,</span> self<span class="token punctuation">.</span>param<span class="token punctuation">)</span> <span class="token operator">==</span> self<span class="token punctuation">.</span>sign<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">True</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
 
 
-<span class="hljs-meta">@app.route(&#x27;/De1ta&#x27;,methods=[&#x27;GET&#x27;,&#x27;POST&#x27;])              ##路由2------&gt;执行</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">challenge</span>():</span>
-    action = urllib.unquote(request.cookies.get(<span class="hljs-string">&quot;action&quot;</span>))
-    param = urllib.unquote(request.args.get(<span class="hljs-string">&quot;param&quot;</span>, <span class="hljs-string">&quot;&quot;</span>))
-    sign = urllib.unquote(request.cookies.get(<span class="hljs-string">&quot;sign&quot;</span>))
-    ip = request.remote_addr
-    <span class="hljs-keyword">if</span>(waf(param)):
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;No Hacker!!!!&quot;</span>
-    task = Task(action, param, sign, ip)
-    <span class="hljs-keyword">return</span> json.dumps(task.Exec())
-<span class="hljs-meta">@app.route(&#x27;/&#x27;)        ##路由3----&gt;首页</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span>():</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;code.txt&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>).read()
+<span class="token comment">#generate Sign For Action Scan.</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">"/geneSign"</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>                 <span class="token comment">##路由1---->对传参加密</span>
+<span class="token keyword">def</span> <span class="token function">geneSign</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    param <span class="token operator">=</span> urllib<span class="token punctuation">.</span>unquote<span class="token punctuation">(</span>request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"param"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    action <span class="token operator">=</span> <span class="token string">"scan"</span>
+    <span class="token keyword">return</span> getSign<span class="token punctuation">(</span>action<span class="token punctuation">,</span> param<span class="token punctuation">)</span>
 
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">scan</span>(<span class="hljs-params">param</span>):</span>
-    socket.setdefaulttimeout(<span class="hljs-number">1</span>)
-    <span class="hljs-keyword">try</span>:
-        <span class="hljs-keyword">return</span> urllib.urlopen(param).read()[:<span class="hljs-number">50</span>]
-    <span class="hljs-keyword">except</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Connection Timeout&quot;</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/De1ta'</span><span class="token punctuation">,</span>methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span><span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>              <span class="token comment">##路由2------>执行</span>
+<span class="token keyword">def</span> <span class="token function">challenge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    action <span class="token operator">=</span> urllib<span class="token punctuation">.</span>unquote<span class="token punctuation">(</span>request<span class="token punctuation">.</span>cookies<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"action"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    param <span class="token operator">=</span> urllib<span class="token punctuation">.</span>unquote<span class="token punctuation">(</span>request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"param"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    sign <span class="token operator">=</span> urllib<span class="token punctuation">.</span>unquote<span class="token punctuation">(</span>request<span class="token punctuation">.</span>cookies<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"sign"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    ip <span class="token operator">=</span> request<span class="token punctuation">.</span>remote_addr
+    <span class="token keyword">if</span><span class="token punctuation">(</span>waf<span class="token punctuation">(</span>param<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"No Hacker!!!!"</span>
+    task <span class="token operator">=</span> Task<span class="token punctuation">(</span>action<span class="token punctuation">,</span> param<span class="token punctuation">,</span> sign<span class="token punctuation">,</span> ip<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>task<span class="token punctuation">.</span>Exec<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>        <span class="token comment">##路由3---->首页</span>
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"code.txt"</span><span class="token punctuation">,</span><span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">scan</span><span class="token punctuation">(</span>param<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    socket<span class="token punctuation">.</span>setdefaulttimeout<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> urllib<span class="token punctuation">.</span>urlopen<span class="token punctuation">(</span>param<span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">50</span><span class="token punctuation">]</span>
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"Connection Timeout"</span>
 
 
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getSign</span>(<span class="hljs-params">action, param</span>):</span>        <span class="hljs-comment">##加密函数</span>
-    <span class="hljs-keyword">return</span> hashlib.md5(secert_key + param + action).hexdigest()
+<span class="token keyword">def</span> <span class="token function">getSign</span><span class="token punctuation">(</span>action<span class="token punctuation">,</span> param<span class="token punctuation">)</span><span class="token punctuation">:</span>        <span class="token comment">##加密函数</span>
+    <span class="token keyword">return</span> hashlib<span class="token punctuation">.</span>md5<span class="token punctuation">(</span>secert_key <span class="token operator">+</span> param <span class="token operator">+</span> action<span class="token punctuation">)</span><span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">md5</span>(<span class="hljs-params">content</span>):</span>
-    <span class="hljs-keyword">return</span> hashlib.md5(content).hexdigest()
+<span class="token keyword">def</span> <span class="token function">md5</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> hashlib<span class="token punctuation">.</span>md5<span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">waf</span>(<span class="hljs-params">param</span>):</span>
-    check=param.strip().lower()
-    <span class="hljs-keyword">if</span> check.startswith(<span class="hljs-string">&quot;gopher&quot;</span>) <span class="hljs-keyword">or</span> check.startswith(<span class="hljs-string">&quot;file&quot;</span>):
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
-    <span class="hljs-keyword">else</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+<span class="token keyword">def</span> <span class="token function">waf</span><span class="token punctuation">(</span>param<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    check<span class="token operator">=</span>param<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> check<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">"gopher"</span><span class="token punctuation">)</span> <span class="token keyword">or</span> check<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">"file"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
 
 
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    app.debug = <span class="hljs-literal">False</span>
-    app.run(host=<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>)</code></pre></code></pre>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>debug <span class="token operator">=</span> <span class="token boolean">False</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">)</span>         </code></pre></code></pre>
 <p>利用点：     </p>
 <pre><code>result[&#39;data&#39;] = f.read()        </code></pre>
 <p>前提是action里有read和scan,还要通过检查<br>可以通过路由1获得加密后的sign<br><code>geneSign()</code>里<code>action=&quot;scan&quot;</code>所以我们要在param里加上read<br>获得sign后<br>在路由2里修改cookie传参即可        </p>

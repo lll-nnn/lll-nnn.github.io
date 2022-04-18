@@ -200,7 +200,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      580 字
+      559 字
     </span>
   
 
@@ -262,14 +262,14 @@ Firefox-----好用的开发人员工具......</code></pre>
 
 对应用程序的每个按钮都看看，并思考程序可能被攻击的方式</code></pre>
 <p>3.审计以下代码：</p>
-<pre><code><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[ <span class="hljs-string">&#x27; name &#x27;</span> ]))&#123;
-<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Hello <span class="hljs-subst">&#123;$_GET[&#x27;name&#x27;]&#125;</span> !&lt;/h1&gt;&quot;</span>;
-&#125;
-<span class="hljs-meta">?&gt;</span>
-&lt;form method=<span class="hljs-string">&quot;GET&quot;</span>&gt;
-Enter your name: &lt;input type=<span class="hljs-string">&quot;input&quot;</span> name=<span class="hljs-string">&quot;name&quot;</span>&gt;&lt;br&gt;
-&lt;input type=<span class="hljs-string">&quot; submit&quot;</span>&gt;</code></pre></code></pre>
+<pre><code><pre class="language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span> <span class="token single-quoted-string string">' name '</span> <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+<span class="token keyword">echo</span> <span class="token double-quoted-string string">"&lt;h1>Hello <span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span></span> !&lt;/h1>"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>GET<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+Enter your name: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>input<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span> submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre></code></pre>
 <p>本段代码涉及到客户端，服务端以及通信协议。<br>运行在客户端的代码主要有HTML以及javascript，由浏览器核心负责解释</p>
 <p>通信协议为HTTP协议，有多种格式的请求包，常见的为POST与GET</p>
 <p>运行在服务端的代码为php，由php核心负责解释。</p>

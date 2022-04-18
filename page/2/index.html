@@ -187,6 +187,147 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/01/19/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" target="_blank">
+          <img src="/img/00182.jpg" srcset="/img/loading.gif" alt="Java反序列化">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/19/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">Java反序列化</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/19/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+          
+          
+            
+          
+          基础知识一个类要想能够被序列化和反序列化，必须实现Serializable接口
+java.io.ObjectOutputStream代表对象输出流，它的writeObject(Object obj)方法可对参数指定的obj对象进行序列化，把得到的字节序列写到一个目标输出流中。
+java.io.ObjectInputStream代表对象输入流，它的readObject()方法从一个源输入流中读取字节
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-19 19:15" pubdate>
+              2022-01-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+              <a href="/tags/java/">java</a>
+            
+              <a href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">反序列化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/01/12/ctfshow-ssrf/" target="_blank">
+          <img src="/img/00259.jpg" srcset="/img/loading.gif" alt="Ctfshow-Ssrf">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/12/ctfshow-ssrf/">Ctfshow-Ssrf</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/12/ctfshow-ssrf/">
+          
+          
+            
+          
+          web351-web358各种绕127.0.0.1
+
+http://sudo.cc
+
+127.1
+
+http://0/
+
+http://0.0.0.0
+
+localhost
+
+十六进制：0x7f.0.0.1        7F000001
+
+八进制：177.0.0.1            
+
+十进制：2130706433
+
+二进制：1111111000000000000000000000001
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-12 20:22" pubdate>
+              2022-01-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/CTF/">CTF</a>
+            
+              <a href="/categories/CTF/wp/">wp</a>
+            
+              <a href="/categories/CTF/wp/ctfshow/">ctfshow</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/WP/">WP</a>
+            
+              <a href="/tags/ctfshow/">ctfshow</a>
+            
+              <a href="/tags/ssrf/">ssrf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2022/01/10/PHP-CVE/" target="_blank">
           <img src="/img/00251.jpg" srcset="/img/loading.gif" alt="PHP-CVE">
         </a>
@@ -464,7 +605,7 @@ Writ
 不能有0
 构造提交得到flag
 一行代码 &lt;?php
-echo !(!(include &quot;flag.php&quot;)||(!error_reporting(0))||stripos($_GET[&#x27;filename&#x27;],&#x27;.&#x27;)||($_GET[&#x27;id
+echo !(!(include "flag.php")||(!error_reporting(0))||stripos($_GET['filename'],'.')||($_GET['id']!=0)||(strlen($_GET['content'])&l
         </a>
       </p>
 
@@ -649,14 +790,16 @@ apache 目录穿越payload：/cgi-bin/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd
             
           
           temp这道不是极客大挑战的，就写这里吧
-&lt;html&gt;
-&lt;!--if($_REQUEST[&#x27;mode&#x27;]!=&quot;begin&quot;)&#123;
-    die(&quot;Welcome PHP Games!&quot;);
-&#125;--&gt;
-&lt;/html&gt;
+&lt;html>
+&lt;!--if($_REQUEST['mode']!="begin")&#123;
+    die("Welcome PHP Games!");
+&#125;-->
+&lt;/html>
 &lt;?php
 error_reporting(0);
-inclu
+include 'fl4g.php';
+
+if($_REQUEST['mode']!="
         </a>
       </p>
 
@@ -695,143 +838,11 @@ inclu
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/11/16/HECTF/" target="_blank">
-          <img src="/img/00150.jpg" srcset="/img/loading.gif" alt="HECTF">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/16/HECTF/">HECTF</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/16/HECTF/">
-          
-          
-            
-          
-          LFI_to_RCE题目：
-&lt;?php
-    show_source(&#x27;./index.php&#x27;);
-    include $_GET[&#x27;file&#x27;];
-?&gt;
-session文件包含，写入shell到session文件
-poc
-import threading
-import requests
-from concurrent.futures i
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-16 23:38" pubdate>
-              2021-11-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/CTF/">CTF</a>
-            
-              <a href="/categories/CTF/php/">php</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CTF/">CTF</a>
-            
-              <a href="/tags/WP/">WP</a>
-            
-              <a href="/tags/php/">php</a>
-            
-              <a href="/tags/session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E5%86%99shell/">session文件包含写shell</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/11/07/hackergame2021/" target="_blank">
-          <img src="/img/00119.jpg" srcset="/img/loading.gif" alt="Hackergame2021">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/11/07/hackergame2021/">Hackergame2021</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/11/07/hackergame2021/">
-          
-          
-            
-          
-          签到
-unix时间戳点next后url会加上page=1,时间就会加一秒
-时间戳网站https://tool.chinaz.com/tools/unixtime.aspx
-也可以用二分法
-测试 100000000000，太大 =&gt; (100000000000 + 0) / 2 = 50000000000
-测试 50000000000，太大 =&gt; (50000000000 + 0) / 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-11-07 15:12" pubdate>
-              2021-11-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/CTF/">CTF</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CTF/">CTF</a>
-            
-              <a href="/tags/WP/">WP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   
